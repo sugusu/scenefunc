@@ -1,0 +1,39 @@
+{
+  "run_id": "P920-PAIR-v1_20261104T174408Z",
+  "frozen_at": "2026-11-04T17:44:08.673483+00:00",
+  "question": "Can two arms use exactly identical supervised reason/action token sequences, decision/example counts and observations while changing only the teacher-forced reason before action prediction?",
+  "root": "/data/wyh/scene_cvpr_20261020/design_decisions_920",
+  "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/research_support/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "source_lock": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/data_readiness_v1/OFFICIAL_SOURCE_LOCK.json",
+  "source_lock_sha256": "9e2a35d15d2586207a1ef599d903ffabc1520c3bea3e1019acd91fe439510ef2",
+  "fixture": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DATA-v1_20261104T114417Z/loader/fixtures/paired/episode.json",
+  "fixture_sha256": "20eb8f70041127d90070fbf6008140fefab4ee4746efa65a88d74f6f6bc14acc",
+  "scripts": {
+    "decision_pairing.py": "f6481d14371b6e94161bcca4e22ba9b15afae775106ea5485f5ab57cd286b734",
+    "audit_decision_pairing.py": "c43eaaecaf392de5be74f85ccb28be2780a64b7fd2446ec43fb97a6d606c567f"
+  },
+  "processor": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "fixed_length": 8192,
+  "max_pixels": 65536,
+  "budget": {
+    "wall_timeout_seconds": 180,
+    "decision_units_per_arm": 1,
+    "examples_per_decision": 2,
+    "image_instances_per_arm": 10,
+    "model_weight_loads": 0,
+    "model_calls": 0,
+    "gpu_seconds": 0,
+    "optimizer_updates": 0,
+    "output_bytes_max": 20971520
+  },
+  "acceptance": [
+    "exact reason targets match",
+    "exact action targets match",
+    "equal two-example decision batch and image tensors",
+    "paired action sees reason, separate action does not",
+    "input and evaluation-only truth are not loss targets",
+    "padded labels masked and causal target count equal",
+    "mismatched reason/action/state rejected"
+  ],
+  "scope": "Engineering fixture only. No professional labels, no execution of fixture action, no training. No runtime/FLOP equality or learning-effect claim."
+}

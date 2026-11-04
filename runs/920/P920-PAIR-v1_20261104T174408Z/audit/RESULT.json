@@ -1,0 +1,135 @@
+{
+  "started_at": "2026-11-04T17:44:17.749690+00:00",
+  "status": "passed_engineering_only",
+  "model_calls": 0,
+  "model_weights_loaded": false,
+  "training_updates": 0,
+  "professional_samples_admitted": 0,
+  "plan_sha256": "29fa9022f6c08e9bd2dfcc033c03680ab47720ffa40329067e4f8652d0e8d536",
+  "checks": {
+    "reason_supervised_ids_exact_match": true,
+    "reason_nonempty_supervision": true,
+    "action_supervised_ids_exact_match": true,
+    "action_nonempty_supervision": true,
+    "same_reason_example": true,
+    "reason_present_only_in_paired_action_context": true,
+    "paired_reason_prefix_masked": true,
+    "two_examples_same_five_views_each": true,
+    "same_dense_batch_shapes": true,
+    "same_image_tensors": true,
+    "padded_labels_and_mask_valid": true,
+    "same_causal_target_count": true,
+    "no_evaluation_truth_in_context": true,
+    "no_cuda_initialization": true,
+    "action_mismatch_rejected": true,
+    "reason_mismatch_rejected": true,
+    "state_mismatch_rejected": true
+  },
+  "arms": {
+    "paired": {
+      "decisions": 1,
+      "examples": 2,
+      "action_examples": 1,
+      "reason_examples": 1,
+      "image_instances": 10,
+      "supervised_tokens": 83,
+      "unpadded_input_tokens": 2630,
+      "batch_shapes": {
+        "input_ids": [
+          2,
+          8192
+        ],
+        "attention_mask": [
+          2,
+          8192
+        ],
+        "labels": [
+          2,
+          8192
+        ],
+        "pixel_values": [
+          2240,
+          1536
+        ],
+        "image_grid_thw": [
+          10,
+          3
+        ]
+      },
+      "components": [
+        {
+          "role": "reason",
+          "input_tokens": 1290,
+          "supervised_tokens": 32,
+          "decoded_target": "<think>\nENGINEERING_REASON_ONLY: Preserve the existing wardrobe_0 instance while editing desk_0. A replacement wardrobe with the same shape would lose identity.\n</think>",
+          "supervised_ids_sha256": "95c411320526f2bf51d67095e7bdf9b45cbb681f93310dff3e194d27e541856c",
+          "input_ids_sha256": "34b01d73ecd2039b195b1eafbb549541675a839cbcd3af82bcd289bc91766d4c",
+          "labels_sha256": "e3f467b0c4ef564270c1f9250af43fd6532e923d1edd0837c011821017c388ee"
+        },
+        {
+          "role": "action",
+          "input_tokens": 1340,
+          "supervised_tokens": 51,
+          "decoded_target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"desk_0\", \"x\": 0.2, \"y\": 1.45, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n",
+          "supervised_ids_sha256": "574e0ed495fefa1853c61432f5ef206be44a9eb77fa8b7d5484c1af5e6e669fe",
+          "input_ids_sha256": "e2ef7f3908d35c2d5872d48e8199abd564752aa7ed8b2a9604b8dbc1b8ca30ec",
+          "labels_sha256": "b5bc5f37062af95048715085fb552e00261465f90a3bfa13ee39f9e0b89c2e45"
+        }
+      ]
+    },
+    "separate": {
+      "decisions": 1,
+      "examples": 2,
+      "action_examples": 1,
+      "reason_examples": 1,
+      "image_instances": 10,
+      "supervised_tokens": 83,
+      "unpadded_input_tokens": 2601,
+      "batch_shapes": {
+        "input_ids": [
+          2,
+          8192
+        ],
+        "attention_mask": [
+          2,
+          8192
+        ],
+        "labels": [
+          2,
+          8192
+        ],
+        "pixel_values": [
+          2240,
+          1536
+        ],
+        "image_grid_thw": [
+          10,
+          3
+        ]
+      },
+      "components": [
+        {
+          "role": "reason",
+          "input_tokens": 1290,
+          "supervised_tokens": 32,
+          "decoded_target": "<think>\nENGINEERING_REASON_ONLY: Preserve the existing wardrobe_0 instance while editing desk_0. A replacement wardrobe with the same shape would lose identity.\n</think>",
+          "supervised_ids_sha256": "95c411320526f2bf51d67095e7bdf9b45cbb681f93310dff3e194d27e541856c",
+          "input_ids_sha256": "34b01d73ecd2039b195b1eafbb549541675a839cbcd3af82bcd289bc91766d4c",
+          "labels_sha256": "e3f467b0c4ef564270c1f9250af43fd6532e923d1edd0837c011821017c388ee"
+        },
+        {
+          "role": "action",
+          "input_tokens": 1311,
+          "supervised_tokens": 51,
+          "decoded_target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"desk_0\", \"x\": 0.2, \"y\": 1.45, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n",
+          "supervised_ids_sha256": "574e0ed495fefa1853c61432f5ef206be44a9eb77fa8b7d5484c1af5e6e669fe",
+          "input_ids_sha256": "ee28b04d2fb020de89f3fcb856b28e10d02216cf987c134c697108070a514562",
+          "labels_sha256": "e5332161ce95faca017b89291fb63a2ec60b2e46044dd6ad0a5d6ba8c4f63c00"
+        }
+      ]
+    }
+  },
+  "exit_code": 0,
+  "limitation": "No optimization, trained model, timing/FLOP parity, qualified professional sample or design-quality inference. Equal shapes do not prove equal runtime; unpadded conditioning differs by design.",
+  "ended_at": "2026-11-04T17:44:21.710723+00:00"
+}
