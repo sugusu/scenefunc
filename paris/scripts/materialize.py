@@ -6,7 +6,10 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--run',type=Path,required=True);ap.add_argument('--data',type=Path,required=True);ap.add_argument('--geometry-python',type=Path,required=True);ap.add_argument('--model-python',type=Path,required=True);ap.add_argument('--render-python',type=Path,required=True);a=ap.parse_args()
  run=a.run.resolve();run.mkdir(parents=True,exist_ok=False);work=run/'work';work.mkdir()
- maps={'@WORK@':str(work),'@LEGACY@/envs/hsm_cpu/bin/python':str(a.geometry_python.resolve()),'@LEGACY@/official_assets/hssd-models':str(a.data.resolve()/'hssd-models'),'@GEOMETRY_DEPS@':'','@RENDER_PYTHON@':str(a.render_python.resolve())}
+ # Preserve venv executable symlinks: realpath would select the base interpreter
+ # and silently lose this environment's installed packages.
+ interpreters={k:str(getattr(a,k).expanduser().absolute()) for k in ['geometry_python','model_python','render_python']}
+ maps={'@WORK@':str(work),'@LEGACY@/envs/hsm_cpu/bin/python':interpreters['geometry_python'],'@LEGACY@/official_assets/hssd-models':str(a.data.resolve()/'hssd-models'),'@GEOMETRY_DEPS@':'','@RENDER_PYTHON@':interpreters['render_python']}
  promptdir=a.data/'upstream/paris_A_inference_20261104/source/prompts'
  template=(promptdir/'furniture_system_prompt').read_text();tools=(promptdir/'furniture_tool').read_text().rstrip()
  for arm in ['A','B']:
@@ -35,7 +38,7 @@ def main():
  (inp/'preparation.json').write_text(json.dumps(prep,indent=2))
  try:parent=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
  except subprocess.CalledProcessError:parent='uncommitted'
- config={'parent_commit':parent,'work':str(work),'data':str(a.data.resolve()),'geometry_python':str(a.geometry_python.resolve()),'model_python':str(a.model_python.resolve()),'render_python':str(a.render_python.resolve()),'mapping':maps,'changes':['Absolute path relocation','Fresh-run retry comparison only if prior failed request exists'],'source_records':sources}
+ config={'parent_commit':parent,'work':str(work),'data':str(a.data.resolve()),**interpreters,'mapping':maps,'changes':['Absolute path relocation','Preserve venv executable symlinks','Fresh-run retry comparison only if prior failed request exists'],'source_records':sources}
  (run/'run_config.json').write_text(json.dumps(config,indent=2)+'\n')
  print(json.dumps({'run':str(run),'work':str(work),'parent_commit':parent,'files':len(sources)}))
 if __name__=='__main__':main()
