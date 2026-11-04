@@ -1,0 +1,103 @@
+{
+  "status": "whole_room_diagnostics_completed",
+  "evaluated_at": "2026-11-04T19:14:32.650713+00:00",
+  "audit_plan_sha256": "e7679916ae6f5b2f40ff4cee5deb7054312a4155ed9c26ee6e15fc8fa64b28fe",
+  "input_manifest_sha256": "02d1089280cf469a6533c917d581029adb10a90b1dc7232b8551717e43930b46",
+  "inventory": [],
+  "immutable_records_unchanged": {
+    "shell_north": true,
+    "shell_south": true,
+    "shell_east": true,
+    "shell_west": true,
+    "shell_door": true,
+    "shell_window": true
+  },
+  "bounds": [],
+  "positive_aabb_pairs": [],
+  "surface_intersection_pairs": 0,
+  "access": {
+    "settings": {
+      "grid_m": 0.013888888888888888,
+      "assumed_body_height_m": 1.8,
+      "square_body_widths_m": [
+        0.4,
+        0.5,
+        0.6
+      ],
+      "entry_center_xy_m": [
+        3.7916666666666665,
+        -1.1111111111111112
+      ],
+      "entry_inward_normal_xy": [
+        -1,
+        0
+      ],
+      "approach_points_xy_m": {}
+    },
+    "obstacle_count": 10,
+    "scenarios": [
+      {
+        "square_body_width_m": 0.4,
+        "entry_grid_point_m": [
+          3.5624999999999996,
+          -1.1180555555555556
+        ],
+        "entry_cell_clear": true,
+        "reachable_floor_center_area_m2": 30.6304012345679,
+        "targets": {}
+      },
+      {
+        "square_body_width_m": 0.5,
+        "entry_grid_point_m": [
+          3.506944444444444,
+          -1.1180555555555556
+        ],
+        "entry_cell_clear": true,
+        "reachable_floor_center_area_m2": 29.682870370370367,
+        "targets": {}
+      },
+      {
+        "square_body_width_m": 0.6,
+        "entry_grid_point_m": [
+          3.4652777777777772,
+          -1.1180555555555556
+        ],
+        "entry_cell_clear": true,
+        "reachable_floor_center_area_m2": 28.4429012345679,
+        "targets": {}
+      }
+    ],
+    "door_assumption": "Single east doorway assumed fully open without leaf geometry; no hinge or sweep acceptance.",
+    "limits": [
+      "Full-height AABB footprints are conservative, including gaps within furniture.",
+      "Grid 1/72 m and square body scenarios; not a human model or accessibility standard.",
+      "A failed conservative route is a warning, not proof no human route exists.",
+      "A successful route does not verify sitting, opening storage, reaching, turning or comfort."
+    ]
+  },
+  "free_floor": {
+    "largest_grid_empty_rectangle_m2": 35.547839506172835,
+    "bounds_xyxy_m": [
+      -3.763888888888889,
+      -2.361111111111111,
+      3.763888888888889,
+      2.361111111111111
+    ],
+    "width_depth_m": [
+      7.527777777777778,
+      4.722222222222222
+    ],
+    "scope": "Empty axis-aligned floor rectangle under conservative AABBs and assumed clear height, anywhere in room; not an activity pass or reachable human area."
+  },
+  "whole_room_success": "unknown_not_accepted",
+  "professional_review": false,
+  "scene_edits": 0,
+  "model_calls": 0,
+  "limits": [
+    "Presence does not establish use; static doors/lids/folds/services not simulated.",
+    "Surface intersection is not penetration depth; absence does not rule out containment or instability.",
+    "Conservative AABB routes may block gaps; endpoints are deterministic hypotheses, not measured resident needs.",
+    "Sanitary enclosure, privacy, installation, comfort and aesthetics remain unknown.",
+    "Development source-informed shell, no held-out generalization or learning result."
+  ]
+}

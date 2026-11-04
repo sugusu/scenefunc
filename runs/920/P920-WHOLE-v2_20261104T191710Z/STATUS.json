@@ -1,0 +1,50 @@
+{
+  "run_id": "P920-WHOLE-v2_20261104T191710Z",
+  "updated_at": "2026-11-04T19:36:34.160503+00:00",
+  "question": "With identical fixed weights/catalog/task, does stopping at one syntactically complete native tool action permit the actual observation-action loop to construct the dwelling? This is an engineering interface correction, not learned design improvement.",
+  "stage": "partial_scene_independently_audited",
+  "status": "failed_budget_with_preserved_partial_scene",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z",
+  "completed_planned": {
+    "tool_calls": {
+      "completed": 15,
+      "planned": 24
+    },
+    "model_calls": {
+      "completed": 15,
+      "planned": 24
+    }
+  },
+  "configuration_hashes": {
+    "plan": "64663d1b749c391e7d2c07b65b29add6e0a2964e898ac409bd364e4ad3849814",
+    "input_manifest": "02d1089280cf469a6533c917d581029adb10a90b1dc7232b8551717e43930b46"
+  },
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WHOLE-v2_20261104T191710Z/SUMMARY.json",
+  "failure_reason": "Next input was 12630 tokens > 12288; encoder refused without truncation or new forward. Completed 15 actual model/tool calls.",
+  "started_at": "2026-11-04T19:19:16.523070+00:00",
+  "ended_at": "2026-11-04T19:32:39.157895+00:00",
+  "next_step": "Keep six-object checkpoint; compact redundant context transparently, then freeze continuation and geometry/use-feedback comparison. No training or fresh redraw.",
+  "actual_execution": {
+    "started_at": "2026-11-04T19:19:16.460519+00:00",
+    "status": "failed",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/run_catalog_policy.py",
+      "--plan",
+      "runs/920/P920-WHOLE-v2_20261104T191710Z/POLICY_PLAN.json",
+      "--phase",
+      "rollout",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z/rollout"
+    ],
+    "timeout_seconds": 2400,
+    "pid": 1141047,
+    "start_ticks": "47780504",
+    "log": "runs/920/P920-WHOLE-v2_20261104T191710Z/rollout_execution/stage.log",
+    "ended_at": "2026-11-04T19:32:41.703320+00:00",
+    "elapsed_seconds": 805.2428178089904,
+    "exit_code": 1,
+    "first_log": "2026-11-04T19:19:16.523278+00:00 begin whole-room rollout"
+  },
+  "whole_room_accepted": false
+}

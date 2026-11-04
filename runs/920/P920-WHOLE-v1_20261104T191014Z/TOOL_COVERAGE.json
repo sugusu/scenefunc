@@ -1,0 +1,34 @@
+{
+  "reviewed_at": "2026-11-04T19:15:19.897504+00:00",
+  "sources": {
+    "stage_schemas": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/stage_schemas.py",
+      "sha256": "658516c442c70f8f9b26a0c3714ddc323893c7f55ee29ad4179db47524276ce1"
+    },
+    "floor_plan_tools": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/floor_plan_agents/tools/floor_plan_tools.py",
+      "sha256": "306b367172e7084cab96a6e17227912b933888b72c4801502f556858751d2311"
+    },
+    "catalog_adapter": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_project_session.py",
+      "sha256": "1cc129ad95718460d9f919989f0fee4722c289c004e3bdfa06dbc229a50fdcbf"
+    }
+  },
+  "findings": [
+    {
+      "capability": "Native floor-plan creation",
+      "evidence": "generate_room_specs creates and places room specifications; resize_room modifies dimensions, add_door/add_window operate on resulting walls.",
+      "scope": "This is a separate floor-plan stage, not an exposed in-place partition edit on the imported supplied shell."
+    },
+    {
+      "capability": "Wall stage",
+      "evidence": "generate_wall_assets/place_wall_object/move_wall_object/remove_wall_object operate on mounted wall objects, not architectural interior wall geometry."
+    },
+    {
+      "capability": "Current construction catalog",
+      "evidence": "Only query/add/move/remove/facing native furniture tools; fixed shell, ground templates, no rescale or articulation.",
+      "remaining": "Static screen geometry may provide visual obstruction, but no measured opacity, enclosure, plumbing or installation acceptance."
+    }
+  ],
+  "decision": "Proceed with one entire-room development baseline with explicit capability limits. Failure or unknown sanitary privacy remains a result; do not substitute procedural walls or claim screen equals bathroom."
+}

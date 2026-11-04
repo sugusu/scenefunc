@@ -8,7 +8,7 @@ from pathlib import Path
 import struct
 
 import bpy
-from mathutils import Vector
+from mathutils import Vector, Matrix
 
 
 def digest(path):
@@ -39,6 +39,20 @@ def main():
         bpy.ops.wm.read_factory_settings(use_empty=True)
         bpy.ops.import_scene.gltf(filepath=str(source))
         scene = bpy.context.scene
+        source_rotation = item.get('source_to_native_rotation')
+        if source_rotation is not None:
+            rotation = Matrix(source_rotation)
+            identity = rotation @ rotation.transposed()
+            if (len(rotation) != 3 or abs(rotation.determinant()-1) > 1e-8 or
+                    any(abs(identity[i][j]-(i == j)) > 1e-8 for i in range(3) for j in range(3))):
+                raise ValueError('Preview frame must be a proper rigid rotation')
+            # glTF importer already maps +Y-up to Blender +Z-up. Apply only
+            # the remaining source-to-native rotation, matching the native SDF.
+            imported_axes = Matrix(((1,0,0),(0,0,-1),(0,1,0)))
+            correction = (rotation @ imported_axes.transposed()).to_4x4()
+            for obj in list(scene.objects):
+                if obj.parent is None:
+                    obj.matrix_world = correction @ obj.matrix_world
         meshes = [o for o in scene.objects if o.type == 'MESH']
         bpy.context.view_layer.update()
         points = [o.matrix_world @ Vector(v) for o in meshes for v in o.bound_box]
@@ -83,7 +97,8 @@ def main():
                         'imported_extents_z_up_m': list(extent), 'mesh_nodes': len(meshes),
                         'rescaled': False, 'camera_vector': camera_vector,
                         'recorded_up': item['up'], 'recorded_front': item['front'],
-                        'recorded_frame_rotation_applied': False, 'visual_review': 'pending'})
+                        'recorded_frame_rotation_applied': source_rotation is not None,
+                        'source_to_native_rotation': source_rotation, 'visual_review': 'pending'})
         (a.out / 'PREVIEWS.json').write_text(json.dumps(records, indent=2) + '\n')
     print(json.dumps({'rendered_candidates': len(records)}), flush=True)
 

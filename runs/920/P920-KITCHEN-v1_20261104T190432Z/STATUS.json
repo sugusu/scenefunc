@@ -1,0 +1,135 @@
+{
+  "run_id": "P920-KITCHEN-v1_20261104T190432Z",
+  "stage": "static_candidates_reviewed",
+  "status": "completed_limited_acceptance",
+  "question": "Do the two fixed IDs provide real static floor-standing cooking and screen geometry? Source articulation and architectural enclosure remain unsupported.",
+  "updated_at": "2026-11-04T19:10:14.890744+00:00",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KITCHEN-v1_20261104T190432Z",
+  "completed_planned": {
+    "assets": {
+      "completed": 2,
+      "planned": 2
+    },
+    "images": {
+      "completed": 3,
+      "planned": 3
+    }
+  },
+  "configuration_hashes": {
+    "request": "6bbe1a7686f37b4b8e3f40b917f11ca5bd2b7f4da71c60a3a8ec9c5435b778a2",
+    "shortlist": "862d3f5c2d12da0c81bab262e05a233c3c958a4737de3c3598526e07bd7ee375"
+  },
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-KITCHEN-v1_20261104T190432Z/VISUAL_REVIEW.json",
+  "failure_reason": null,
+  "next_step": "Include unscaled static cooker and screen in complete-room baseline; do not count screen as a verified bathroom enclosure.",
+  "executions": {
+    "render_execution": {
+      "started_at": "2026-11-04T19:05:56.131581+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-KITCHEN-v1_20261104T190432Z/INSPECTION_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KITCHEN-v1_20261104T190432Z/previews"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "47700471",
+      "log": "runs/920/P920-KITCHEN-v1_20261104T190432Z/render_execution/stage.log",
+      "ended_at": "2026-11-04T19:05:58.104169+00:00",
+      "elapsed_seconds": 1.9725979689974338,
+      "exit_code": 0,
+      "first_log": "2026-11-04T19:05:56.564714+00:00 begin fixed candidate visual inspection"
+    },
+    "metadata_execution": {
+      "started_at": "2026-11-04T19:04:47.640419+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "HTTPS_PROXY=http://127.0.0.1:19998",
+        "HTTP_PROXY=http://127.0.0.1:19998",
+        "HF_HUB_ETAG_TIMEOUT=15",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/prepare_fixture_assets.py",
+        "--request",
+        "runs/920/P920-KITCHEN-v1_20261104T190432Z/REQUEST.json",
+        "--out",
+        "runs/920/P920-KITCHEN-v1_20261104T190432Z/ASSET_PLAN.json"
+      ],
+      "timeout_seconds": 60,
+      "pid": 1137376,
+      "start_ticks": "47693622",
+      "log": "runs/920/P920-KITCHEN-v1_20261104T190432Z/metadata_execution/stage.log",
+      "ended_at": "2026-11-04T19:04:48.861003+00:00",
+      "elapsed_seconds": 1.220595347986091,
+      "exit_code": 0,
+      "first_log": "{\"files\": 4, \"bytes\": 6170143, \"downloaded\": 0}"
+    },
+    "orientation_execution": {
+      "started_at": "2026-11-04T19:07:24.373477+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-KITCHEN-v1_20261104T190432Z/ORIENTATION_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KITCHEN-v1_20261104T190432Z/orientation"
+      ],
+      "timeout_seconds": 120,
+      "pid": 7,
+      "start_ticks": "47709295",
+      "log": "runs/920/P920-KITCHEN-v1_20261104T190432Z/orientation_execution/stage.log",
+      "ended_at": "2026-11-04T19:07:25.944357+00:00",
+      "elapsed_seconds": 1.5708975809975527,
+      "exit_code": 0,
+      "first_log": "2026-11-04T19:07:24.817960+00:00 begin fixed candidate visual inspection"
+    },
+    "measure_execution": {
+      "started_at": "2026-11-04T19:05:43.055505+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/inspect_decision_assets.py",
+        "--download",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KITCHEN-v1_20261104T190432Z/download/DOWNLOAD.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KITCHEN-v1_20261104T190432Z/MEASUREMENTS.json"
+      ],
+      "timeout_seconds": 60,
+      "pid": 7,
+      "start_ticks": "47699164",
+      "log": "runs/920/P920-KITCHEN-v1_20261104T190432Z/measure_execution/stage.log",
+      "ended_at": "2026-11-04T19:05:43.874072+00:00",
+      "elapsed_seconds": 0.8185978349647485,
+      "exit_code": 0,
+      "first_log": "2026-11-04T19:05:43.455333+00:00 begin candidate mesh inspection"
+    },
+    "download_execution": {
+      "started_at": "2026-11-04T19:05:13.221069+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "HTTPS_PROXY=http://127.0.0.1:19998",
+        "HTTP_PROXY=http://127.0.0.1:19998",
+        "HF_HUB_ETAG_TIMEOUT=15",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/fetch_asset_bundle.py",
+        "--plan",
+        "runs/920/P920-KITCHEN-v1_20261104T190432Z/ASSET_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KITCHEN-v1_20261104T190432Z/download"
+      ],
+      "timeout_seconds": 120,
+      "pid": 1137449,
+      "start_ticks": "47696180",
+      "log": "runs/920/P920-KITCHEN-v1_20261104T190432Z/download_execution/stage.log",
+      "ended_at": "2026-11-04T19:05:21.369156+00:00",
+      "elapsed_seconds": 8.148099261976313,
+      "exit_code": 0,
+      "first_log": "verified 3d780643626fa80329154d35920d87d0df72d2fc mesh 4169464"
+    }
+  }
+}

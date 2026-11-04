@@ -1,0 +1,108 @@
+{
+  "run_id": "P920-CATALOG-v1_20261104T184340Z",
+  "updated_at": "2026-11-04T18:54:13.914250+00:00",
+  "question": "Can real catalog templates create distinct native instances with actual asset bindings and survive cold-process continuation on a sourced development shell?",
+  "status": "native_catalog_contract_passed_orientation_and_lifetime_id_gap_found",
+  "completed": 2,
+  "planned": 2,
+  "config_and_input_hashes": {
+    "builder": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/microapartments_v1/geneva/BUILDER_INPUT_DRAFT.json",
+      "sha256": "9c21c1473a3a2063b21b25bb78ed6b70f1ec2ddbb88787017fb65d2a6fcf6364"
+    },
+    "resource_manifest": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ACTIVITY-v1_20261104T170002Z/replay/checkpoint_4/manifest.json",
+      "sha256": "645f14df47b189272620e5418032c7c45b9a8dc5b9b0a6c9446c25510672cb0f"
+    },
+    "fixtures": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FIXTURE-v2_20261104T183538Z/download/DOWNLOAD.json",
+      "sha256": "634f26c914493c6fdd5d7af53a719a9417e5d4aae1ddc48b9c2c040447185f08"
+    }
+  },
+  "plan_sha256": "7487f623d12d7d8e1f398bf1e96586de880d9c3a81582cd4a72d4017bf9d4eeb",
+  "latest_verifiable_artifact": "runs/920/P920-CATALOG-v1_20261104T184340Z/VISUAL_REVIEW.json",
+  "failure_reason": null,
+  "next_step": "v2 changes toilet template axes explicitly; v3 separately guards instance identity after deletion.",
+  "actual_exit_code": 0,
+  "execution_summary": [
+    {
+      "phase": "build",
+      "status": "shell_and_catalog_prepared_not_furnished_room",
+      "checks_passed": 0,
+      "actual_execution": {
+        "started_at": "2026-11-04T18:43:52.011147+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/build_geneva_catalog.py",
+          "--plan",
+          "runs/920/P920-CATALOG-v1_20261104T184340Z/BUILD_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CATALOG-v1_20261104T184340Z/build"
+        ],
+        "timeout_seconds": 120,
+        "pid": 6,
+        "start_ticks": "47568059",
+        "log": "runs/920/P920-CATALOG-v1_20261104T184340Z/build_execution/stage.log",
+        "ended_at": "2026-11-04T18:43:54.184605+00:00",
+        "elapsed_seconds": 2.173468019987922,
+        "exit_code": 0,
+        "first_log": "Prepared development shell and catalog 14 61537275"
+      }
+    },
+    {
+      "phase": "prepare",
+      "status": "native_catalog_prepare_completed",
+      "checks_passed": 18,
+      "actual_execution": {
+        "started_at": "2026-11-04T18:44:28.455926+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/audit_catalog_construction.py",
+          "--plan",
+          "runs/920/P920-CATALOG-v1_20261104T184340Z/SESSION_PLAN.json",
+          "--phase",
+          "prepare",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CATALOG-v1_20261104T184340Z/prepare"
+        ],
+        "timeout_seconds": 300,
+        "pid": 1132776,
+        "start_ticks": "47571704",
+        "log": "runs/920/P920-CATALOG-v1_20261104T184340Z/prepare_execution/stage.log",
+        "ended_at": "2026-11-04T18:45:14.091035+00:00",
+        "elapsed_seconds": 45.635122343024705,
+        "exit_code": 0,
+        "first_log": "2026-11-04T18:44:28.528855+00:00 begin catalog prepare"
+      }
+    },
+    {
+      "phase": "resume",
+      "status": "native_catalog_resume_completed",
+      "checks_passed": 17,
+      "actual_execution": {
+        "started_at": "2026-11-04T18:45:48.373928+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/audit_catalog_construction.py",
+          "--plan",
+          "runs/920/P920-CATALOG-v1_20261104T184340Z/SESSION_PLAN.json",
+          "--phase",
+          "resume",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CATALOG-v1_20261104T184340Z/resume"
+        ],
+        "timeout_seconds": 300,
+        "pid": 1133440,
+        "start_ticks": "47579695",
+        "log": "runs/920/P920-CATALOG-v1_20261104T184340Z/resume_execution/stage.log",
+        "ended_at": "2026-11-04T18:46:34.157910+00:00",
+        "elapsed_seconds": 45.78399388701655,
+        "exit_code": 0,
+        "first_log": "2026-11-04T18:45:48.444590+00:00 begin catalog resume"
+      }
+    }
+  ]
+}

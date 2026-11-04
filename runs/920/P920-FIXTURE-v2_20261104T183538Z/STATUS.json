@@ -1,0 +1,79 @@
+{
+  "run_id": "P920-FIXTURE-v2_20261104T183538Z",
+  "updated_at": "2026-11-04T18:45:27.126362+00:00",
+  "question": "Acquire and inspect complete bathroom mesh candidates without claiming articulated function.",
+  "status": "asset_geometry_preparation_complete_function_unknown",
+  "completed": 4,
+  "planned": 4,
+  "plan_sha256": "f24bdcde0af734420eb4f74da19ea7cf2c40f7102dd72916aff3e328bb2d1365",
+  "latest_verifiable_artifact": "runs/920/P920-FIXTURE-v2_20261104T183538Z/VISUAL_REVIEW.json",
+  "failure_reason": null,
+  "next_step": "Use actual assets in explicit native catalog; independently check enclosure use and complete-room requirements.",
+  "actual_exit_code": 0,
+  "execution": {
+    "download": {
+      "started_at": "2026-11-04T18:35:55.821664+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "HTTPS_PROXY=http://127.0.0.1:19998",
+        "HTTP_PROXY=http://127.0.0.1:19998",
+        "HF_HUB_ETAG_TIMEOUT=15",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/fetch_asset_bundle.py",
+        "--plan",
+        "runs/920/P920-FIXTURE-v2_20261104T183538Z/ASSET_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FIXTURE-v2_20261104T183538Z/download"
+      ],
+      "timeout_seconds": 240,
+      "pid": 1131607,
+      "start_ticks": "47520440",
+      "log": "runs/920/P920-FIXTURE-v2_20261104T183538Z/download_execution/stage.log",
+      "ended_at": "2026-11-04T18:36:03.769716+00:00",
+      "elapsed_seconds": 7.948065441974904,
+      "exit_code": 0,
+      "first_log": "verified dfc33bed23e9440507bca1a1409763942a913cd5 mesh 908952"
+    },
+    "measure": {
+      "started_at": "2026-11-04T18:36:39.612006+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/inspect_decision_assets.py",
+        "--download",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FIXTURE-v2_20261104T183538Z/download/DOWNLOAD.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FIXTURE-v2_20261104T183538Z/MEASUREMENTS.json"
+      ],
+      "timeout_seconds": 60,
+      "pid": 7,
+      "start_ticks": "47524819",
+      "log": "runs/920/P920-FIXTURE-v2_20261104T183538Z/measure_execution/stage.log",
+      "ended_at": "2026-11-04T18:36:40.280166+00:00",
+      "elapsed_seconds": 0.6681731370044872,
+      "exit_code": 0,
+      "first_log": "2026-11-04T18:36:39.952812+00:00 begin candidate mesh inspection"
+    },
+    "render": {
+      "started_at": "2026-11-04T18:36:40.491924+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-FIXTURE-v2_20261104T183538Z/INSPECTION_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FIXTURE-v2_20261104T183538Z/previews"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "47524907",
+      "log": "runs/920/P920-FIXTURE-v2_20261104T183538Z/render_execution/stage.log",
+      "ended_at": "2026-11-04T18:36:42.363979+00:00",
+      "elapsed_seconds": 1.872071992023848,
+      "exit_code": 0,
+      "first_log": "2026-11-04T18:36:40.932222+00:00 begin fixed candidate visual inspection"
+    }
+  }
+}

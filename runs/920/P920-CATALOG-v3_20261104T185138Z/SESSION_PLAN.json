@@ -1,0 +1,88 @@
+{
+  "run_id": "P920-CATALOG-v3_20261104T185138Z",
+  "frozen_at": "2026-11-04T18:51:38.068953+00:00",
+  "designer": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+  "scenesmith": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+  "code_sha256": {
+    "build_geneva_catalog.py": "2af13a66eb195c6b0bd2253058911a85081226f028be0d204e6eb2e1094054df",
+    "build_reference_room.py": "16d10aacf595c4aad426a85fc6ea50cb17d537d377aae88f8232cfab230b4ea4",
+    "catalog_project_session.py": "1cc129ad95718460d9f919989f0fee4722c289c004e3bdfa06dbc229a50fdcbf",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a",
+    "audit_catalog_construction.py": "97f05fb3e6554b55d8e033ea32931d26a99260ded48efe5559a8e3d61c4194a8"
+  },
+  "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CATALOG-v2_20261104T184805Z/build/bundle",
+  "manifest_sha256": "27f2167fb15a31455d76fcb916df16ac894aacde909db9e6ca14c2ee8d70f42c",
+  "prepared_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CATALOG-v3_20261104T185138Z/prepare/checkpoint",
+  "prepare_result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CATALOG-v3_20261104T185138Z/prepare/RESULT.json",
+  "catalog_entries": 14,
+  "prepare_calls": [
+    {
+      "name": "add_furniture_to_scene_tool",
+      "arguments": {
+        "asset_id": "catalog_f983ff568379c97ee9dfa7095b02a7688fbf60a4",
+        "x": 0.0,
+        "y": 0.0,
+        "yaw": 0.0
+      }
+    },
+    {
+      "name": "remove_furniture_tool",
+      "arguments": {
+        "object_id": "toilet_0"
+      }
+    },
+    {
+      "name": "add_furniture_to_scene_tool",
+      "arguments": {
+        "asset_id": "catalog_f983ff568379c97ee9dfa7095b02a7688fbf60a4",
+        "x": 0.0,
+        "y": 0.0,
+        "yaw": 0.0
+      }
+    }
+  ],
+  "resume_calls": [
+    {
+      "name": "remove_furniture_tool",
+      "arguments": {
+        "object_id": "toilet_1"
+      }
+    },
+    {
+      "name": "add_furniture_to_scene_tool",
+      "arguments": {
+        "asset_id": "catalog_f983ff568379c97ee9dfa7095b02a7688fbf60a4",
+        "x": 0.0,
+        "y": 0.0,
+        "yaw": 0.0
+      }
+    }
+  ],
+  "budget": {
+    "catalog_entries": 14,
+    "build_seconds": 120,
+    "bundle_max_bytes": 268435456,
+    "session_seconds_per_phase": 300,
+    "tool_calls_total": 5,
+    "images_total": 10,
+    "cpu_cores": 4,
+    "total_output_max_bytes": 1073741824,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "purpose": "Identity safety regression after source inspection revealed native ID recycling; no design preference, model or training claim.",
+  "question": "Does object identity remain distinct after delete/recreate and cold-process continuation, even when reusing the same geometry asset?",
+  "previous_contract": "P920-CATALOG-v1_20261104T184340Z",
+  "scope": "catalog_furniture_construction_v2",
+  "expected_added_ids": {
+    "prepare": [
+      "toilet_0",
+      "toilet_1"
+    ],
+    "resume": [
+      "toilet_2"
+    ]
+  }
+}

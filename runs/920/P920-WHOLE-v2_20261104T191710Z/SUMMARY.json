@@ -1,0 +1,141 @@
+{
+  "recorded_at": "2026-11-04T19:35:40.225325+00:00",
+  "run_id": "P920-WHOLE-v2_20261104T191710Z",
+  "rollout_status": "failed",
+  "actual_model_calls": 15,
+  "failed_pre_generation_attempts": 1,
+  "actual_tool_calls": 15,
+  "tool_counts": {
+    "add_furniture_to_scene_tool": 6,
+    "get_current_scene_state": 4,
+    "check_facing_tool": 3,
+    "move_furniture_tool": 2
+  },
+  "output_tokens": 1296,
+  "generation_seconds": 107.49267370300367,
+  "model_loading_seconds": 69.35940301092342,
+  "peak_allocated_bytes": 20677592576,
+  "successful_input_token_range": [
+    7813,
+    12178
+  ],
+  "failure_reasons": [
+    "Input has 12630 tokens, exceeds 12288; not truncated"
+  ],
+  "last_completed_checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z/rollout/round_014/checkpoint",
+    "manifest_sha256": "67fbfafb41e4ecd641422ff625987517b432f152741dd79c080d3b14b6073bb2",
+    "state_sha256": "7092e4d5f4c30e333842f1edefbba669e83bed2a12963f28fed67b044874acc0",
+    "step_idx": 15
+  },
+  "furniture_count": 6,
+  "actual_furniture": [
+    "queen_bed_0",
+    "shower_0",
+    "toilet_0",
+    "screen_0",
+    "bookshelf_0",
+    "cooker_0"
+  ],
+  "intersection_pairs": [
+    [
+      "bookshelf_0",
+      "queen_bed_0"
+    ],
+    [
+      "cooker_0",
+      "screen_0"
+    ]
+  ],
+  "outside_room_count": 0,
+  "immutable_structure_unchanged": true,
+  "largest_empty_rectangle_m2": 10.165895061728394,
+  "conditional_access": [
+    {
+      "square_body_width_m": 0.4,
+      "reachable_of_hypothetical_approach_points": [
+        5,
+        7
+      ],
+      "unreachable": [
+        "bookshelf_0:front",
+        "cooker_0:front"
+      ]
+    },
+    {
+      "square_body_width_m": 0.5,
+      "reachable_of_hypothetical_approach_points": [
+        3,
+        7
+      ],
+      "unreachable": [
+        "queen_bed_0:left_side",
+        "shower_0:front",
+        "bookshelf_0:front",
+        "cooker_0:front"
+      ]
+    },
+    {
+      "square_body_width_m": 0.6,
+      "reachable_of_hypothetical_approach_points": [
+        2,
+        7
+      ],
+      "unreachable": [
+        "queen_bed_0:left_side",
+        "shower_0:front",
+        "screen_0:front",
+        "bookshelf_0:front",
+        "cooker_0:front"
+      ]
+    }
+  ],
+  "post_hoc_schema_review": {
+    "mismatches": [
+      {
+        "turn": 1,
+        "tool": "get_current_scene_state",
+        "errors": [
+          "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+        ],
+        "native_success": true
+      },
+      {
+        "turn": 4,
+        "tool": "get_current_scene_state",
+        "errors": [
+          "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+        ],
+        "native_success": true
+      },
+      {
+        "turn": 8,
+        "tool": "get_current_scene_state",
+        "errors": [
+          "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+        ],
+        "native_success": true
+      },
+      {
+        "turn": 12,
+        "tool": "get_current_scene_state",
+        "errors": [
+          "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+        ],
+        "native_success": true
+      }
+    ],
+    "jsonschema_version": "4.26.0",
+    "scope": "Validate recorded arguments against advertised schemas; no replay, new scoring thresholds or model change."
+  },
+  "whole_room_accepted": false,
+  "professional_review": false,
+  "training_updates": 0,
+  "interpretation": "Partial baseline only: visible mesh intersections, missing functional inventory and unknown privacy/installation. Empty area or native tool success cannot establish usable dwelling or learned design improvement.",
+  "sources": {
+    "rollout/RESULT.json": "31c47b2b6f9d4d74f40c841f9906cd0eb1d771928e021f51cb6d80e6a9d366bd",
+    "FINAL_AUDIT.json": "9669810efca7a9414b0545aba9e7779d5b17d8c204e4b493e696bed6fbecba88",
+    "prepare/observation.json": "16dbe0d1cfa073bb8373a7dac0036d6a7513947e5f244bc0239a5db385c687aa"
+  },
+  "report_script_sha256": "34c8170424f85584e06ab1766202c39fc081fb18ef04c37d0fa1d4dcb67d5ef7"
+}

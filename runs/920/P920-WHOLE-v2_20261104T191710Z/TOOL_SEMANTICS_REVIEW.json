@@ -1,0 +1,31 @@
+{
+  "reviewed_at": "2026-11-04T19:30:45.371333+00:00",
+  "analysis_kind": "exploratory source inspection prompted by actual model behavior; not a preregistered outcome or a prompt change",
+  "source": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/furniture_agents/tools/scene_tools.py",
+    "sha256": "35238fb4b9580f09d2cd3812bfaee2bee466260d304f475155adeaad08453304",
+    "revision": "e888297a8b0a2f3acbb8634edf9def59cceab836"
+  },
+  "findings": [
+    {
+      "tool": "get_current_scene_state",
+      "source_lines": [
+        163,
+        172
+      ],
+      "fact": "It serializes every entry of scene.objects and sets furniture_count=len(objects). In this imported adapter six immutable structural/opening records are also scene.objects.",
+      "implication": "Native furniture_count overcounts actual furniture by six in this run. Independent audit filters object_type. Preserve original receipts."
+    },
+    {
+      "tool": "check_facing_tool",
+      "source_lines": [
+        292,
+        336
+      ],
+      "fact": "For away it casts a native local -Y XY ray against target world AABB; returns a yaw based on an orientation target point. It ignores occluding objects and Z-height differences.",
+      "implication": "A successful away relation is an orientation result, not bathing privacy, blocked sightlines or ergonomic access. Do not promote it into a functional label."
+    }
+  ],
+  "runtime_or_model_modified": false,
+  "professional_review": false
+}

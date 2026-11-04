@@ -1,0 +1,10 @@
+2026-11-04T19:32:35.373434+00:00 begin generate
+2026-11-04T19:32:38.430167+00:00 failed
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py", line 104, in <module>
+    if __name__=='__main__':main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py", line 61, in main
+    inputs,encoding=engine.encode(json.loads(a.request.read_text()))
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/paris/src/native_local_inference_20261104/local_vlm.py", line 122, in encode
+    raise ValueError(f'Input has {length} tokens, exceeds {self.max_input_tokens}; not truncated')
+ValueError: Input has 12630 tokens, exceeds 12288; not truncated

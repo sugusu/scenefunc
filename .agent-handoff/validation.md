@@ -101,3 +101,23 @@ CORPUS-v1启动导入失败0.116276秒/exit1；v2使用明确的现有用户site
 本批71新增/修改路径、44JSON解析、9Python AST通过；PAIR/CORPUS共29个run归档、32个服务器产物大小/SHA一致；30原文片段与其PDF页字符范围逐字匹配。CORPUS输入/执行源码哈希匹配，服务器索引96256字节低于5MiB。当前工具实现指纹、catalog与脚本SHA一致，Geneva仍显式未就绪。无历史paris/run改动、超5MiB新增Git文件或常见凭据签名；非原始log/patch的diff --check通过。没有重跑已完成模型、引擎或训练。验证回执 ../preflight/PAIR_CORPUS_BATCH_VALIDATION.json；本批仍待小时提交窗口，不虚报已推送。
 
 发布前新增HSSD元数据阶段：根目录查询退出0/1.019821秒；一个CSV取得退出0/2.776297秒，Git blob/SHA/字节核验通过。未下载网格。后续全量{'paths': 81, 'json': 50, 'python_ast': 11}解析/AST与常见凭据/大小检查通过；新脚本/回执/结果精确哈希见 CATALOG_ACQUISITION_PROVENANCE.json，不改已执行脚本。
+
+小时批次 254910e72ba374040410e593229be5ff0cddbc35：18:30:36 UTC本地提交81文件，push退出0/4.283159秒，ls-remote退出0/1.220688秒、18:31:13.900405 UTC完整SHA精确相同。main/AutoDL与历史结果未改，原始log保留，非log/patch暂存diff检查通过。只留发布后记账给下批，不重跑已完成实验。
+
+## 2026-11-05（本地）FIXTURE/CATALOG检查
+
+FIXTURE-v1 metadata0.918969秒退出1、后续路径诊断1.521286秒退出0；v2下载7.948065秒、量测0.668173秒、2图1.872072秒均退出0。两实际网格直接看，未接受门盖/安装功能。CATALOG-v1 build2.173468秒；prepare45.635122秒/18检查，resume45.783994秒/17检查，10图；prepare五图直接看发现朝向错误。v2 build2.223814秒，明确轴变换预览1.320234秒且直接看；均退出0。
+
+CATALOG-v3两进程45.635825/44.822846秒退出0，20+21检查，5次实际工具，10图；最终五图直接看，马桶语义朝向和箭头一致。实际同资产删建toilet_0→_1→_2，旧ID跨checkpoint保留不复用。只有工程命令，无模型/训练/专业标签/完整住宅结果。已冷恢复prepare包；最终resume包只做逐文件验证，不重复恢复或动作。
+
+113新增/修改路径，51JSON解析、35Python AST、92归档产物大小/SHA、28冻结代码项、6原生bundle/402资源文件通过。四新夹具原件哈希一致，旧existing_project_session/native_checkpoint/native_project与HEAD逐字节相同；无历史paris/run修改、超5MiBGit文件或常见凭据模式。非原始log/patch的diff --check通过，全部运行在冻结预算内。详见 ../preflight/CATALOG_BATCH_VALIDATION.json。
+
+最后为未来构建加固mesh/frame原件复核；四现有原件均通过相同大小/SHA核验，AST通过，未为这一输入检查重复生成或渲染。各已执行run保留实际代码版本，不能把当前builder当历史脚本。工作尚在本地，下一实质提交不早于19:30:36 UTC。
+
+## 2026-11-05（本地）WHOLE实际运行与终态
+
+KITCHEN元数据1.2206s/0、下载8.1481s/0、量测0.8186s/0、2图1.9726s/0、纠正1图1.5709s/0，三图直接看。WHOLE-v1 build5.4849s/0、prepare87.072s/0（7813token、5图、四权重SHA）、rollout70.0086s/1，实际1模型0工具。v2单动作边界8检查通过、prepare86.3185s/0，rollout805.2428s/1；15模型15工具，16th仅CPU编码超12630>12288，非第16次推理。
+
+预先冻结的空壳audit2.1227s/0、终态audit3.8800s/0、报告0.1666s/0。6家具2对实际面相交，6结构记录未改；末次五图直接看、状态绑定与checkpoint native state精确一致。4次query额外参数不符合schema而原生仍成功，标为事后发现。无全文重跑/训练；旧prepare已冷恢复，最终step15包只做资源哈希。GPU0回落4MiB且记录进程已退出，当前无活跃作业。
+
+本批提交前374路径、223JSON、70Python AST、345归档产物、41冻结代码项通过；新增18原生bundle/1380资源文件、17状态绑定/85图像哈希核验通过，无新>5MiBGit文件/常见凭据模式/历史改动。旧三helper与HEAD字节一致。报告复制到 research/920/whole_room_baseline_v1/BATCH_VALIDATION.json；该副本不计入前述374路径基数。非log/patch diff --check通过。

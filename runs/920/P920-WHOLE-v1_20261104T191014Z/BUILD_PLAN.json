@@ -1,0 +1,91 @@
+{
+  "run_id": "P920-WHOLE-v1_20261104T191014Z",
+  "frozen_at": "2026-11-04T19:10:14.890744+00:00",
+  "question": "Prepare one actual model whole-room construction attempt from an empty assumed development shell with 16 real static templates.",
+  "inputs": {
+    "builder": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/microapartments_v1/geneva/BUILDER_INPUT_DRAFT.json",
+      "sha256": "9c21c1473a3a2063b21b25bb78ed6b70f1ec2ddbb88787017fb65d2a6fcf6364"
+    },
+    "resource_manifest": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ACTIVITY-v1_20261104T170002Z/replay/checkpoint_4/manifest.json",
+      "sha256": "645f14df47b189272620e5418032c7c45b9a8dc5b9b0a6c9446c25510672cb0f"
+    },
+    "fixtures": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WHOLE-v1_20261104T191014Z/COMBINED_DOWNLOAD.json",
+      "sha256": "2ae4c76039a678f19896c1d74da69715f80521c35e89524c7d62ae5a07e1b2bd"
+    }
+  },
+  "scenesmith": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+  "geometry_assumptions": {
+    "kind": "researcher_engineering_assumptions_not_measured_source_facts",
+    "height_m": 2.6,
+    "door_height_m": 2.0,
+    "window_sill_m": 0.8,
+    "window_height_m": 1.5,
+    "door_state": "assumed_open_no_leaf_geometry",
+    "window_interpretation": "unconfirmed_continuous_west_glazing_from_source_outline",
+    "privacy_partitions": "not_reconstructed; absent partitions do not satisfy bathing privacy"
+  },
+  "reuse_object_resources": [
+    "recon_refrigerator_0",
+    "recon_kitchen_counter_0",
+    "recon_kitchen_sink_0",
+    "recon_queen_bed_0",
+    "recon_bookshelf_0",
+    "recon_storage_bin_0",
+    "recon_dining_table_0",
+    "recon_dining_chair_1_0",
+    "recon_sofa_0",
+    "recon_coffee_table_0",
+    "recon_floor_lamp_0",
+    "recon_washroom_vanity_0"
+  ],
+  "fixture_names": {
+    "f983ff568379c97ee9dfa7095b02a7688fbf60a4": "toilet",
+    "dfc33bed23e9440507bca1a1409763942a913cd5": "shower",
+    "50d2f90f2ef2466c22a1d1da45fc657763cbfb2a": "cooker",
+    "3d780643626fa80329154d35920d87d0df72d2fc": "screen"
+  },
+  "budget": {
+    "catalog_entries": 16,
+    "build_seconds": 120,
+    "bundle_max_bytes": 268435456,
+    "session_seconds_per_phase": 0,
+    "tool_calls_total": 0,
+    "images_total": 0,
+    "cpu_cores": 4,
+    "total_output_max_bytes": 1073741824,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "code_sha256": {
+    "build_geneva_catalog.py": "d0e2c30636545cba85b12f9e2707e944700f865eae739385788328bfd69e556c",
+    "build_reference_room.py": "16d10aacf595c4aad426a85fc6ea50cb17d537d377aae88f8232cfab230b4ea4",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19"
+  },
+  "previous_attempt": "P920-CATALOG-v2_20261104T184805Z",
+  "fixture_front_correction_degrees": {
+    "f983ff568379c97ee9dfa7095b02a7688fbf60a4": 180.0,
+    "dfc33bed23e9440507bca1a1409763942a913cd5": 0.0,
+    "50d2f90f2ef2466c22a1d1da45fc657763cbfb2a": 180.0,
+    "3d780643626fa80329154d35920d87d0df72d2fc": 0.0
+  },
+  "orientation_evidence": {
+    "source": "../runtime/P920-CATALOG-v1_20261104T184340Z/prepare/house/room_geneva_development/rollout_furniture/step_003.topdown.png",
+    "sha256": "8ceeb8bf5ea203f1ba4ed57e3667503be3078d6c045f535ebcdfbb661b8cacdd",
+    "review": "Actual bowl projects toward native -Y while arrow denotes +Y; rotate the whole toilet template 180 degrees around Z. Shower correction not established."
+  },
+  "fixture_limitations": {
+    "50d2f90f2ef2466c22a1d1da45fc657763cbfb2a": [
+      "Static floor-standing cooker mesh; doors, heat, utilities, extraction and installation unverified."
+    ],
+    "3d780643626fa80329154d35920d87d0df72d2fc": [
+      "Static folded screen; no unfolding; opacity and stability unmeasured. It is not a sealed bathroom enclosure."
+    ]
+  },
+  "catalog_limitations": [
+    "Static fixtures available; no door/lid/folding actions, plumbing, heat or installation simulation.",
+    "Screen can be placed as furniture but no architectural partition-building tool is exposed. Bathroom privacy and enclosure are unverified."
+  ]
+}
