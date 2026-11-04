@@ -1,0 +1,56 @@
+{
+  "recorded_at": "2026-11-04T09:18:57.061003+00:00",
+  "baseline_sha": "bdabc219772112ff2aee0b4a14ffd86809f48cb1",
+  "model_environment": "/data/wyh/conda/envs/c15_genrec",
+  "geometry_environment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry",
+  "python_no_user_site": true,
+  "python": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.57.1",
+  "gpu_inventory": {
+    "time_utc": "2026-11-04T08:33:57.284880+00:00",
+    "gpu": {
+      "command": [
+        "nvidia-smi",
+        "--query-gpu=index,name,uuid,memory.total,memory.free,driver_version",
+        "--format=csv"
+      ],
+      "returncode": 0,
+      "stdout": "index, name, uuid, memory.total [MiB], memory.free [MiB], driver_version\n0, NVIDIA GeForce RTX 3090, GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1, 24576 MiB, 24121 MiB, 580.178.04\n1, NVIDIA GeForce RTX 3090, GPU-3be0bba6-ad57-928a-12ac-8f0a635b3187, 24576 MiB, 24121 MiB, 580.178.04\n2, NVIDIA GeForce RTX 3090, GPU-5ad70303-7bde-c00c-5020-adf5faed7ebb, 24576 MiB, 24121 MiB, 580.178.04\n3, NVIDIA GeForce RTX 3090, GPU-2c1b15e0-785d-fe13-80da-ea00abe745b9, 24576 MiB, 24121 MiB, 580.178.04\n",
+      "stderr": ""
+    },
+    "compute_processes": {
+      "command": [
+        "nvidia-smi",
+        "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+        "--format=csv"
+      ],
+      "returncode": 0,
+      "stdout": "gpu_uuid, pid, process_name, used_gpu_memory [MiB]\n",
+      "stderr": ""
+    },
+    "matching_processes": [],
+    "legacy_locks": [
+      {
+        "path": "/data/wyh/scene_cvpr_20261020/work/gpu0.lock",
+        "exists": true,
+        "available": true
+      },
+      {
+        "path": "/data/wyh/scene_cvpr_20261020/work/gpu1.lock",
+        "exists": true,
+        "available": true
+      }
+    ]
+  },
+  "attention": "native Torch 2.8 SDPA on Ampere; no V100 repeat_kv patch applied",
+  "precision": "float16",
+  "batch_size": 1,
+  "seed": 0,
+  "engineering_output_cap": 32,
+  "formal_output_cap": 2048,
+  "formal_rounds_started": 0,
+  "assets_available": false,
+  "no_model_quantization": true,
+  "no_training": true
+}

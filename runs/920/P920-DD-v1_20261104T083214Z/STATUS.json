@@ -3,13 +3,13 @@
   "run_id": "P920-DD-v1_20261104T083214Z",
   "baseline_sha": "bdabc219772112ff2aee0b4a14ffd86809f48cb1",
   "branch": "runs/920",
-  "updated_at": "2026-11-04T09:12:59.842475+00:00",
+  "updated_at": "2026-11-04T09:20:18.408595+00:00",
   "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920",
   "runtime_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DD-v1_20261104T083214Z",
   "research_question": "From each identical unrevised A/B draft, does one revision with measured functional-use feedback improve practical usability beyond the same geometry feedback, and at what cost?",
-  "stage": "preflight",
+  "stage": "model_environment_weights_accepted",
   "status": "partial",
-  "activity": "Model download continues; assets and executor source verification are blocked",
+  "activity": "model_environment_weights_accepted",
   "completed_planned": {
     "formal_draft_rounds": {
       "completed": 0,
@@ -33,7 +33,8 @@
     "RUN_PROTOCOL.json": "4b6ba471df9f7e45c3f8c11d859038e98540fd8a947b8fb4fac101083024292b",
     "weights.lock.json": "a5295fa2b055c410178d160e6ef024116db9113289d17cc1eaee728189128769",
     "assets.lock.json": "521661ab65933adadf09d07707fd0c68c9c602959f382a18b9fd1b4f476fb94d",
-    "upstream.lock.json": "b3d0c5846064d3432064a84f1d3ccc9f0d2345565856ed23e31a1323ecc475e6"
+    "upstream.lock.json": "b3d0c5846064d3432064a84f1d3ccc9f0d2345565856ed23e31a1323ecc475e6",
+    "upstream.920.lock.json": "438cf1aed066c12022c37a2a167aaec7b79dd14d207b2b87a165fc8b4ae0765a"
   },
   "input_hashes": {
     "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/巴黎开间双条件/输入A.json": "0c621411daeea088a0a5b98ae438878892fa1114fe36016d1413263d68b7c754",
@@ -42,9 +43,42 @@
     "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/同项目原柜实验/冻结开发输入/19_remote_studio/需求卡.svg": "70cf3c649fd3e7db81e3459a80d5bebab7495821725e853e1576812b6f66532e"
   },
   "latest_verifiable_artifacts": [
-    "evidence/HSSD_ACCESS_CHECK.json",
-    "evidence/autodl_reference_recomputed.json",
-    "evidence/CUDA_PREFLIGHT.json"
+    {
+      "path": "evidence/MODEL_DOWNLOAD_RECEIPT.json",
+      "sha256": "b0b26711216c7fac27989c19f963ed811eef1e3cdd2aa0f492e0c7aacaed1363"
+    },
+    {
+      "path": "evidence/MODEL_DOWNLOAD_LAUNCH.json",
+      "sha256": "3826acf6a827559cc532d66ffdde02525fbb26249cdedadab22a7fb7a8337f72"
+    },
+    {
+      "path": "evidence/MODEL_CPU_VALIDATION.json",
+      "sha256": "3057e8058df941c00d044027e522c3c9a9997e4542b802a400964a1eb8f54ea1"
+    },
+    {
+      "path": "evidence/RUN_PROTOCOL.json",
+      "sha256": "4b6ba471df9f7e45c3f8c11d859038e98540fd8a947b8fb4fac101083024292b"
+    },
+    {
+      "path": "evidence/model_download.log",
+      "sha256": "c5676f4041430668b8a7d59cb7b4063c1ba9e3273fc2072e908bf27d683124f0"
+    },
+    {
+      "path": "evidence/REPOSITORY_WEIGHTS_MATCH.json",
+      "sha256": "fc13330febcdfcbf9a6470e659f733ce6b4d74a2af295ef2b49fe66c369b0764"
+    },
+    {
+      "path": "evidence/UPSTREAM_DOWNLOAD_920.json",
+      "sha256": "c980c75871a0d53c677a5a55a786fbf3949bd2ed084c0b0782283d46353e9fef"
+    },
+    {
+      "path": "evidence/upstream_download_920.log",
+      "sha256": "b0d1461f82150e747cada6df9ce84e07b6125d4e8b963e8671b67d0e8d463a8b"
+    },
+    {
+      "path": "evidence/geometry_install.log",
+      "sha256": "34e98adec3d0bbb101f614d3d003a47370bd7ea7e5c75fccb0a77fb77dd88b34"
+    }
   ],
   "failure_reasons": [
     {
@@ -53,18 +87,14 @@
       "error_code": "GatedRepo",
       "at": "2026-11-04T09:10:14.505102+00:00",
       "effect": "No real furniture meshes; no furnished scene or G/U evaluation can run."
-    },
-    {
-      "code": "UPSTREAM_HASH_MISMATCH",
-      "path": "native_room_bridge_20261104/source/scenesmith/furniture_agents/tools/furniture_tools.py",
-      "effect": "Actual official response differs from lock; preserved for diagnosis, not accepted as verified executor."
     }
   ],
-  "next_step": "Complete local weight verification and bounded model preflight; diagnose official source mismatch; resume asset download when user grants provider access.",
+  "next_step": "After user configures HSSD-authorized credentials, download selected locked assets, reconstruct and audit both unrevised drafts, then validate five-view memory budget before four G/U revision calls.",
   "model_download_receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/MODEL_DOWNLOAD_RECEIPT.json",
   "model_started_at": null,
   "model_first_log": null,
   "model_exit_code": null,
   "historical_autodl_results_used_as_920_results": false,
-  "model_or_training_advantage_claim": null
+  "model_or_training_advantage_claim": null,
+  "source_difference": "Official pinned source independently verified; see evidence/UPSTREAM_LOCK_CORRECTION.json. Historical executor byte equivalence is not claimed."
 }
