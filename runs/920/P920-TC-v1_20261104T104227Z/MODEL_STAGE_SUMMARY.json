@@ -1,0 +1,135 @@
+{
+  "updated_at": "2026-11-04T11:05:10.831040+00:00",
+  "run_id": "P920-TC-v1_20261104T104227Z",
+  "phase": "model_generation_ended_postprocessing_not_run",
+  "formal_batch": {
+    "started_at": "2026-11-04T10:47:17.457165+00:00",
+    "status": "failed",
+    "command": [
+      "python3",
+      "scripts/920/run_formal_models.py",
+      "--root",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920",
+      "--run-id",
+      "P920-TC-v1_20261104T104227Z"
+    ],
+    "timeout_seconds": 5400,
+    "pid": 1073457,
+    "start_ticks": "44708604",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-TC-v1_20261104T104227Z/execution/formal_models/stage.log",
+    "ended_at": "2026-11-04T10:49:39.221006+00:00",
+    "elapsed_seconds": 141.7638023980544,
+    "exit_code": 1,
+    "first_log": "{\"started_at\": \"2026-11-04T10:47:17.738827+00:00\", \"status\": \"running\", \"kind\": \"formal\", \"label\": \"A_G\", \"command\": [\"/data/wyh/conda/envs/c15_genrec/bin/python\", \"/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/comparison_model.py\", \"--root\", \"/data/wyh/scene_cvpr_20261020/design_decisions_920\", \"--run-id\", \"P920-TC-v1_20261104T104227Z\", \"--kind\", \"formal\", \"--label\", \"A_G\", \"--child\"], \"pid\": 1073458, \"start_ticks\": \"44708608\", \"gpu_uuid\": \"GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1\", \"free_mib\": 24121, \"total_mib\": 24576, \"driver\": \"580.178.04\", \"required_free_bytes\": 23105004000, \"host_available_bytes\": 129392398336, \"probe_source\": \"B_U\", \"log\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-TC-v1_20261104T104227Z/model_runs/formal_A_G/model.log\", \"timeout_seconds\": 1200, \"child_pid\": 1073463, \"child_start_ticks\": \"44708632\"}"
+  },
+  "formal_attempts_completed": 4,
+  "formal_attempts_planned": 4,
+  "formal_generations_normal": 3,
+  "formal_generations_truncated": 1,
+  "probe_calls": 1,
+  "new_calls_during_goal_reframing": 0,
+  "tool_execution_completed": false,
+  "revised_scenes_available": false,
+  "quality_or_training_conclusion": null,
+  "formal_results": [
+    {
+      "label": "A_G",
+      "status": "completed",
+      "exit_code": 0,
+      "started_at": "2026-11-04T10:47:17.738827+00:00",
+      "ended_at": "2026-11-04T10:47:40.008159+00:00",
+      "first_log": "2026-11-04T10:47:21.314710+00:00 loading fixed FP16 model for formal A_G",
+      "output_tokens": 311,
+      "parsed_proposals": [
+        {
+          "name": "check_physics",
+          "arguments": {}
+        }
+      ],
+      "proposals_executed": false
+    },
+    {
+      "label": "A_U",
+      "status": "completed",
+      "exit_code": 0,
+      "started_at": "2026-11-04T10:47:40.271992+00:00",
+      "ended_at": "2026-11-04T10:48:01.145329+00:00",
+      "first_log": "2026-11-04T10:47:43.861497+00:00 loading fixed FP16 model for formal A_U",
+      "output_tokens": 258,
+      "parsed_proposals": [
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "nightstand_0"
+          }
+        },
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "wardrobe_0"
+          }
+        },
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "low_bookcase_0"
+          }
+        },
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "dining_chair_0"
+          }
+        },
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "dining_chair_1"
+          }
+        }
+      ],
+      "proposals_executed": false
+    },
+    {
+      "label": "B_G",
+      "status": "length_limit_no_execution",
+      "exit_code": 1,
+      "started_at": "2026-11-04T10:48:01.417724+00:00",
+      "ended_at": "2026-11-04T10:49:20.561033+00:00",
+      "first_log": "2026-11-04T10:48:04.922483+00:00 loading fixed FP16 model for formal B_G",
+      "output_tokens": 2048,
+      "parsed_proposals": null,
+      "proposals_executed": false
+    },
+    {
+      "label": "B_U",
+      "status": "completed",
+      "exit_code": 0,
+      "started_at": "2026-11-04T10:49:20.760316+00:00",
+      "ended_at": "2026-11-04T10:49:39.148008+00:00",
+      "first_log": "2026-11-04T10:49:24.313033+00:00 loading fixed FP16 model for formal B_U",
+      "output_tokens": 175,
+      "parsed_proposals": [
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "dining_chair_0"
+          }
+        },
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "dining_chair_1"
+          }
+        },
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "nightstand_0"
+          }
+        }
+      ],
+      "proposals_executed": false
+    }
+  ]
+}

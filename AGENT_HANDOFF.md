@@ -48,6 +48,7 @@
 
 - Codex project rules: `AGENTS.md`
 - Long-term research acceptance: `research/920/RESEARCH_GOAL.md`
+- UI-ready Goal text and synchronization: `research/920/GOAL_TEXT.txt`, `research/920/GOAL_SYNC.json`
 - Only Codex project rules were installed; no Claude configuration was created.
 
 ## Closeout Rule

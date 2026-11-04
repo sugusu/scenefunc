@@ -11,7 +11,7 @@ Recover the current objective, status, immediate next action, active files, bloc
 ## Continue Specific Task
 
 ```text
-Continue the active 920 research Goal in research/920/RESEARCH_GOAL.md. Resume the next uncompleted item from .agent-handoff/snapshot.md; do not rerun or overwrite P920-DD-v1.
+Continue the overall 920 research objective in research/920/RESEARCH_GOAL.md: learn sourced real-project design decisions and evaluate complete unseen rooms. Read research/920/GOAL_SYNC.json and query the app Goal before claiming it is active or synchronized. Resume the next uncompleted item from .agent-handoff/snapshot.md; do not rerun P920-DD-v1 or expand Paris diagnostics in place of the main data/algorithm work. Training requires separate approval; a request to continue does not grant it.
 
 Treat this as an explicit request to continue execution. Do not answer "No response requested." First state what you believe the previous step was, identify the next concrete action, then continue. If context is insufficient, recover from AGENT_HANDOFF.md and the required .agent-handoff files before acting.
 

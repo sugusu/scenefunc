@@ -1,10 +1,10 @@
 # 当前研究状态
 
-- 更新：2026-11-04；执行者：Codex。
-- 目标：按 research/920/RESEARCH_GOAL.md 推进至可复现、主张有证据支撑的论文成果包。线程 Goal 已 active；设置完成不等于研究完成。
-- P920-DD-v1 已验收，原始结果和两个最终提交保留。原始最终提交 6bed83aa33369e2b8fd190d233639eb344065bf4。
-- 当前阶段 R1：新 run_id P920-TC-v1_20261104T104227Z 已完成 CPU 编码与协议冻结，四输入 6604/7187/7190/7685 tokens，尚未运行新模型。协议在 runs/920/P920-TC-v1_20261104T104227Z/。
-- 下一步：comparison_model.py --run-id P920-TC-v1_20261104T104227Z --kind probe --label B_U 做守门预检；通过后 run_formal_models.py 用同 run-id 恰好执行四臂，再 process_revisions.py 与 score_comparison.py；不得覆盖或重新标记 v1。
-- 并行待办：重试 Git 发布原提交；最新已核验远端 ca494838a38fb4542937a784cc42efc7ba32c702，最新 SSH push 仍 publickey 失败。该问题不阻断本机 R1 工作。
-- 关键文件：research/920/RESEARCH_GOAL.md、research/920/tool_contract_audit_v1.json、scripts/920/audit_tool_contract.py、runs/920/P920-DD-v1_20261104T083214Z/README.md。
-- 未解：相关工作创新边界、可信同项目专业配对数据、独立项目测试集、整屋用途验收、人类盲评。均未达到论文验收。
+- 更新：2026-11-04；执行者：Codex。用户本轮要求将整体架构与算法写入长期目标。
+- 总目标：在 Scene-Designer 上学习真实项目的设计决定，生成满足生活活动的完整可编辑三维房间；见 research/920/RESEARCH_GOAL.md。项目为划分单位，决定为训练单位，整屋为评价对象。
+- 实际 Goal：paused，仍为旧 objective；当前工具不能编辑正文。新正文在 research/920/GOAL_TEXT.txt，待界面编辑并恢复。不得假称已同步，不得虚报完成以另建 Goal。
+- 主线下一步：本地核验真实项目来源／许可／家族和三维可表达性，建立覆盖账与第一条可信同项目可回放决定；核对上游建设／评审接口与实际 SFT 加载器。训练须单独审定，未获训练授权。
+- P920-DD-v1 本机已验收，保留原始文件和最终提交 6bed83aa33369e2b8fd190d233639eb344065bf4；整屋成功仍 unknown，无训练或泛化结论。
+- 已有工具诊断 P920-TC-v1_20261104T104227Z：预检和四次正式生成均结束，正式批次退出 1（B_G 达 token 上限）；其余三次正常结束。仅动作提案，尚未执行／评分场景，无新作业运行。保存输出，不重抽；本轮未新增模型调用。
+- Git：最新已核验远端 ca494838a38fb4542937a784cc42efc7ba32c702，SSH 发布失败待恢复；本地 HEAD 与待推送链见 ../GIT_PUBLICATION_STATUS.json，不重写提交链。
+- 研究未完成：可信配对、独立项目测试、整屋量测／盲评、公平学习对照和论文成果包均未验收。巴黎与工具诊断仅作支撑证据。
