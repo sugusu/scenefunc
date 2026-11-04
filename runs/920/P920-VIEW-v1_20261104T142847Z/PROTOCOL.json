@@ -1,0 +1,33 @@
+{
+  "run_id": "P920-VIEW-v1_20261104T142847Z",
+  "created_at": "2026-11-04T14:28:47.593340+00:00",
+  "question": "Does world-coordinate camera-side panel filtering fix the observed north occlusion without hiding the sole north wall from side/rear views?",
+  "scope": "Four CPU renders of the existing immutable synthetic one-wall blend; no session replay or new scene state.",
+  "timeout_seconds": 180,
+  "cpu_affinity_count": 4,
+  "render_threads": 4,
+  "render_samples": 8,
+  "renders_planned": 4,
+  "tool_calls": 0,
+  "model_calls": 0,
+  "training_updates": 0,
+  "paid_external_calls": 0,
+  "source_blend": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v3_20261104T141050Z/audit/house/room_store_b/rollout_furniture/step_002.blend",
+  "source_blend_sha256": "a6763129bb961cb6e2e77947467d6937fbf95fac42af5c4bf77fc9552e04877f",
+  "source_state_binding": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v3_20261104T141050Z/audit/house/room_store_b/rollout_furniture/step_002.state_binding.json",
+  "source_state_binding_sha256": "33912d41c30e7986e88cf9e8d3aab98867bad99390a4384c83f55cc9d627ae93",
+  "base_designer_sha": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "base_renderer_sha256": "0992e390b7dc0c88c52f55b2d1794f90a095bf105fb4ac75fe1ff8285b55f865",
+  "patch": "patches/920/cardinal_world_panels.patch",
+  "patch_sha256": "b43af77520fdf597e22e471ba419beeefcc780540ad9cfcb0ab1c9fa9eead9f1",
+  "patched_renderer": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/tools/render_cardinal_views.py",
+  "patched_renderer_sha256": "b33e26fd566be91d1f53ff7289bb604c217c31cc758b228e0c416dd347dd97c7",
+  "audit_script": "scripts/920/audit_cardinal_visibility.py",
+  "audit_script_sha256": "4abf3cb9c761a549a238adc4a19a8a4d0f41f4f09f72e26b09e74eb4ec54b3a1",
+  "limits": [
+    "Geometric heuristic still lacks semantic wall identity; diagonal/curved walls and tall thin furniture are not validated.",
+    "Topdown labels and textual summary are unchanged and still overstate walls in this partial fixture.",
+    "No complete five-view/session/checkpoint/room-usability or learning acceptance."
+  ],
+  "recovery": "Apply the recorded patch with git apply --check and git apply on the fixed Designer checkout; run the recorded execution command with a fresh out/receipt directory and original source blend. Patched renderer hash must match."
+}

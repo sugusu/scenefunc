@@ -1,0 +1,169 @@
+[
+  {
+    "route": "/session/existing",
+    "request": {
+      "bundle_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/invalid_code",
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/rejected_code"
+    },
+    "status_code": 422,
+    "elapsed_seconds": 0.040451036009471864,
+    "response": {
+      "detail": "Checkpoint runtime code differs; explicit migration is required"
+    }
+  },
+  {
+    "route": "/session/existing",
+    "request": {
+      "bundle_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/invalid_history",
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/rejected_history"
+    },
+    "status_code": 422,
+    "elapsed_seconds": 0.01515490998281166,
+    "response": {
+      "detail": "Checkpoint receipt chain is discontinuous"
+    }
+  },
+  {
+    "route": "/session/existing",
+    "request": {
+      "bundle_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/checkpoint_after_prepare",
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.3574952330091037,
+    "response": {
+      "status": "state_loaded",
+      "room_id": "store_b",
+      "project_id": "native_import_fixture",
+      "scene_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house",
+      "backend_generation_started": false,
+      "initial_object_ids": [
+        "north_wall",
+        "table_0"
+      ],
+      "resumed_step_idx": 2,
+      "scope": "existing_objects_furniture_revision"
+    }
+  },
+  {
+    "route": "/session/stage",
+    "request": {
+      "stage": "furniture"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 3.4195322819869034,
+    "response": {
+      "stage": "furniture",
+      "steps_dir_container": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture",
+      "steps_dir_host": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture"
+    }
+  },
+  {
+    "route": "/session/observation",
+    "request": null,
+    "status_code": 200,
+    "elapsed_seconds": 25.70360892097233,
+    "response": {
+      "stage": "furniture",
+      "step_idx": 2,
+      "system": "Revise the supplied room for its original design request using the existing objects. Keep the recorded object identities and immutability constraints. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\nAvailable executable tools:\n[{\"description\": \"See all furniture currently in the room with precise spatial data.\\n\\nShows existing furniture with positions, rotations, and bounding boxes.\\nEach object includes:\\n- dimensions: Width, depth, height in meters (object's local frame)\\n- world_bounds: Min/max corners showing exact space occupied in world\\n\\nUse this to check clearances, understand scale, and plan placements.\", \"name\": \"get_current_scene_state\", \"parameters\": {\"additionalProperties\": false, \"properties\": {}, \"required\": [], \"title\": \"get_current_scene_state_args\", \"type\": \"object\"}}, {\"description\": \"Move existing furniture to a new floor position.\\n\\nFurniture sits flat on the floor at z=0 with upright orientation.\\nYou can only control the x, y position and yaw rotation (rotation\\naround the vertical axis).\\n\\nUse this to relocate furniture that's already in the room. You need\\nthe object ID from when you placed it or from 'get_current_scene_state'.\", \"name\": \"move_furniture_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"object_id\": {\"description\": \"ID of the furniture item to move.\", \"title\": \"Object Id\", \"type\": \"string\"}, \"x\": {\"description\": \"New X position in the room (meters).\", \"title\": \"X\", \"type\": \"number\"}, \"y\": {\"description\": \"New Y position in the room (meters).\", \"title\": \"Y\", \"type\": \"number\"}, \"yaw\": {\"default\": 0.0, \"description\": \"New yaw rotation in degrees around vertical axis (default: 0.0).\\nPositive values rotate counterclockwise in top-down view.\", \"title\": \"Yaw\", \"type\": \"number\"}}, \"required\": [\"object_id\", \"x\", \"y\", \"yaw\"], \"title\": \"move_furniture_tool_args\", \"type\": \"object\"}}, {\"description\": \"Remove furniture from the room.\\n\\nUse this to delete furniture you no longer want. You need the object ID\\nfrom when you placed it or from 'get_current_scene_state'.\", \"name\": \"remove_furniture_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"object_id\": {\"description\": \"ID of the furniture item to remove.\", \"title\": \"Object Id\", \"type\": \"string\"}}, \"required\": [\"object_id\"], \"title\": \"remove_furniture_tool_args\", \"type\": \"object\"}}, {\"description\": \"Verify furniture orientation relationships and get exact rotation angles.\\n\\nIMPORTANT: Use this tool to check facing relationships - it's MORE\\nRELIABLE than visual assessment. Always verify orientation-critical\\nfurniture with this tool after placement or rotation.\\n\\nChecks whether object A is correctly oriented relative to object B,\\nand provides the exact rotation needed for perfect alignment.\", \"name\": \"check_facing_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"direction\": {\"default\": \"toward\", \"description\": \"Direction to check. Valid values:\\n- \\\"toward\\\": Check if object A faces toward object B (default).\\n  Use for: chairs→tables, sofas→TVs, seating→focal points.\\n- \\\"away\\\": Check if object A faces away from object B.\\n  Use for: furniture against walls (drawers, shelves, washing\\n  machines, desks with backs to walls).\", \"title\": \"Direction\", \"type\": \"string\"}, \"object_a_id\": {\"description\": \"ID of the first object (the one being checked).\", \"title\": \"Object A Id\", \"type\": \"string\"}, \"object_b_id\": {\"description\": \"ID of the second object (the target).\", \"title\": \"Object B Id\", \"type\": \"string\"}}, \"required\": [\"object_a_id\", \"object_b_id\", \"direction\"], \"title\": \"check_facing_tool_args\", \"type\": \"object\"}}]\n## SUPPLIED ROOM GEOMETRY (native room coordinates, metres):\n{\"room_id\": \"store_b\", \"room_type\": \"studio\", \"recorded_length\": 5.0, \"recorded_width\": 4.0, \"wall_count\": 1, \"wall_objects\": [{\"object_id\": \"north_wall\", \"immutable\": true, \"bounds_min\": [-2.5, 1.975, 0.0], \"bounds_max\": [2.5, 2.025, 2.5]}], \"recorded_openings\": [], \"completeness\": \"Only the supplied structure is described; enclosure is not inferred.\"}",
+      "room_prompt": "Keep the existing table instance; inspect its current state.\nCURRENT NATIVE STATE:\n{\"project_id\": \"native_import_fixture\", \"room_id\": \"store_b\", \"design_request\": \"Keep the existing table instance; inspect its current state.\", \"request_provenance\": \"researcher_engineering_fixture\", \"original_request\": null, \"unknowns\": [\"No real resident, source project or physics validation.\"], \"objects\": {\"table_0\": {\"object_id\": \"table_0\", \"object_type\": \"furniture\", \"name\": \"Fixture table\", \"description\": \"Synthetic box\", \"transform\": {\"translation\": [-0.3992090992652621, 0.749669991684149, 0.0], \"rotation_wxyz\": [0.9847046238834855, 0.0, 0.0, 0.17423203982759206]}, \"geometry_path\": null, \"sdf_path\": \"table.sdf\", \"image_path\": null, \"support_surfaces\": [{\"surface_id\": \"S_1\", \"bounding_box_min\": [-0.5, -0.4, 0.0], \"bounding_box_max\": [0.5, 0.4, 0.0], \"transform\": {\"translation\": [0.0, 0.0, 0.7], \"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0]}, \"link_name\": null}], \"placement_info\": null, \"metadata\": {\"asset_source\": \"researcher_engineering_fixture\"}, \"bbox_min\": [-0.5, -0.4, 0.0], \"bbox_max\": [0.5, 0.4, 0.7], \"immutable\": false, \"scale_factor\": 1.0}, \"north_wall\": {\"object_id\": \"north_wall\", \"object_type\": \"wall\", \"name\": \"North wall\", \"description\": \"Synthetic wall\", \"transform\": {\"translation\": [0.0, 2.0, 1.25], \"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0]}, \"geometry_path\": null, \"sdf_path\": null, \"image_path\": null, \"support_surfaces\": [], \"placement_info\": null, \"metadata\": {}, \"bbox_min\": [-2.5, -0.025, -1.25], \"bbox_max\": [2.5, 0.025, 1.25], \"immutable\": true, \"scale_factor\": 1.0}}, \"asset_bindings\": {\"table_0\": {\"asset_id\": \"fixture_box_1\", \"identity_provenance\": \"researcher_created_not_historical\", \"asset_origin\": \"bottom_center_native_floor_placement\"}, \"north_wall\": {\"asset_id\": \"fixture_wall_1\", \"identity_provenance\": \"researcher_created_structure\"}}, \"prior_tool_receipts\": [{\"step_idx\": 1, \"tool_calls\": [{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"table_0\", \"x\": -0.4, \"y\": 0.75, \"yaw\": 20.0}}], \"results\": [{\"name\": \"move_furniture_tool\", \"output\": {\"success\": true, \"message\": \"Successfully moved Fixture table to new position and rotation\", \"object_id\": \"table_0\", \"error_type\": null, \"current_position\": null, \"attempted_position\": null, \"current_rotation\": null, \"attempted_rotation\": null, \"suggested_action\": null}}], \"before_sha256\": \"595ab1d5729d07f1bda7cca18e9b9787dc1ca37e5232d1a7c4ba0d9ba0348cb7\", \"after_sha256\": \"b447b72b27291a0597a516a812ca4cf0aaaf99c58058e45002381c926d188ef6\"}, {\"step_idx\": 2, \"tool_calls\": [{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"north_wall\", \"x\": -0.4, \"y\": 0.75, \"yaw\": 20.0}}], \"results\": [{\"name\": \"move_furniture_tool\", \"output\": {\"success\": false, \"message\": \"Cannot move North wall: architectural element is immutable\", \"object_id\": \"north_wall\", \"error_type\": \"immutable_object\", \"current_position\": null, \"attempted_position\": null, \"current_rotation\": null, \"attempted_rotation\": null, \"suggested_action\": \"Walls and architectural elements cannot be repositioned\"}}], \"before_sha256\": \"b447b72b27291a0597a516a812ca4cf0aaaf99c58058e45002381c926d188ef6\", \"after_sha256\": \"b447b72b27291a0597a516a812ca4cf0aaaf99c58058e45002381c926d188ef6\"}], \"history_status\": \"recorded_native_session\", \"total_tool_batches\": 2}",
+      "memory_str": "# Memory snapshot\nYour last 2 action(s) (oldest → newest):\n  step-2: move_furniture_tool(object_id='table_0', x=-0.4, y=0.75, yaw=20.0)  ✓ Successfully moved Fixture table to new position and rotation\n  step-1: move_furniture_tool(object_id='north_wall', x=-0.4, y=0.75, yaw=20.0)  ❌ FAILED: Cannot move North wall: architectural element is immutable",
+      "image_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.topdown.png",
+      "image_paths": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.topdown.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.south.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.east.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.west.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.north.png"
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": "Revise the supplied room for its original design request using the existing objects. Keep the recorded object identities and immutability constraints. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\nAvailable executable tools:\n[{\"description\": \"See all furniture currently in the room with precise spatial data.\\n\\nShows existing furniture with positions, rotations, and bounding boxes.\\nEach object includes:\\n- dimensions: Width, depth, height in meters (object's local frame)\\n- world_bounds: Min/max corners showing exact space occupied in world\\n\\nUse this to check clearances, understand scale, and plan placements.\", \"name\": \"get_current_scene_state\", \"parameters\": {\"additionalProperties\": false, \"properties\": {}, \"required\": [], \"title\": \"get_current_scene_state_args\", \"type\": \"object\"}}, {\"description\": \"Move existing furniture to a new floor position.\\n\\nFurniture sits flat on the floor at z=0 with upright orientation.\\nYou can only control the x, y position and yaw rotation (rotation\\naround the vertical axis).\\n\\nUse this to relocate furniture that's already in the room. You need\\nthe object ID from when you placed it or from 'get_current_scene_state'.\", \"name\": \"move_furniture_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"object_id\": {\"description\": \"ID of the furniture item to move.\", \"title\": \"Object Id\", \"type\": \"string\"}, \"x\": {\"description\": \"New X position in the room (meters).\", \"title\": \"X\", \"type\": \"number\"}, \"y\": {\"description\": \"New Y position in the room (meters).\", \"title\": \"Y\", \"type\": \"number\"}, \"yaw\": {\"default\": 0.0, \"description\": \"New yaw rotation in degrees around vertical axis (default: 0.0).\\nPositive values rotate counterclockwise in top-down view.\", \"title\": \"Yaw\", \"type\": \"number\"}}, \"required\": [\"object_id\", \"x\", \"y\", \"yaw\"], \"title\": \"move_furniture_tool_args\", \"type\": \"object\"}}, {\"description\": \"Remove furniture from the room.\\n\\nUse this to delete furniture you no longer want. You need the object ID\\nfrom when you placed it or from 'get_current_scene_state'.\", \"name\": \"remove_furniture_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"object_id\": {\"description\": \"ID of the furniture item to remove.\", \"title\": \"Object Id\", \"type\": \"string\"}}, \"required\": [\"object_id\"], \"title\": \"remove_furniture_tool_args\", \"type\": \"object\"}}, {\"description\": \"Verify furniture orientation relationships and get exact rotation angles.\\n\\nIMPORTANT: Use this tool to check facing relationships - it's MORE\\nRELIABLE than visual assessment. Always verify orientation-critical\\nfurniture with this tool after placement or rotation.\\n\\nChecks whether object A is correctly oriented relative to object B,\\nand provides the exact rotation needed for perfect alignment.\", \"name\": \"check_facing_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"direction\": {\"default\": \"toward\", \"description\": \"Direction to check. Valid values:\\n- \\\"toward\\\": Check if object A faces toward object B (default).\\n  Use for: chairs→tables, sofas→TVs, seating→focal points.\\n- \\\"away\\\": Check if object A faces away from object B.\\n  Use for: furniture against walls (drawers, shelves, washing\\n  machines, desks with backs to walls).\", \"title\": \"Direction\", \"type\": \"string\"}, \"object_a_id\": {\"description\": \"ID of the first object (the one being checked).\", \"title\": \"Object A Id\", \"type\": \"string\"}, \"object_b_id\": {\"description\": \"ID of the second object (the target).\", \"title\": \"Object B Id\", \"type\": \"string\"}}, \"required\": [\"object_a_id\", \"object_b_id\", \"direction\"], \"title\": \"check_facing_tool_args\", \"type\": \"object\"}}]\n## SUPPLIED ROOM GEOMETRY (native room coordinates, metres):\n{\"room_id\": \"store_b\", \"room_type\": \"studio\", \"recorded_length\": 5.0, \"recorded_width\": 4.0, \"wall_count\": 1, \"wall_objects\": [{\"object_id\": \"north_wall\", \"immutable\": true, \"bounds_min\": [-2.5, 1.975, 0.0], \"bounds_max\": [2.5, 2.025, 2.5]}], \"recorded_openings\": [], \"completeness\": \"Only the supplied structure is described; enclosure is not inferred.\"}"
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "image",
+              "image": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.topdown.png"
+            },
+            {
+              "type": "image",
+              "image": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.south.png"
+            },
+            {
+              "type": "image",
+              "image": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.east.png"
+            },
+            {
+              "type": "image",
+              "image": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.west.png"
+            },
+            {
+              "type": "image",
+              "image": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.north.png"
+            },
+            {
+              "type": "text",
+              "text": "## Task\nKeep the existing table instance; inspect its current state.\nCURRENT NATIVE STATE:\n{\"project_id\": \"native_import_fixture\", \"room_id\": \"store_b\", \"design_request\": \"Keep the existing table instance; inspect its current state.\", \"request_provenance\": \"researcher_engineering_fixture\", \"original_request\": null, \"unknowns\": [\"No real resident, source project or physics validation.\"], \"objects\": {\"table_0\": {\"object_id\": \"table_0\", \"object_type\": \"furniture\", \"name\": \"Fixture table\", \"description\": \"Synthetic box\", \"transform\": {\"translation\": [-0.3992090992652621, 0.749669991684149, 0.0], \"rotation_wxyz\": [0.9847046238834855, 0.0, 0.0, 0.17423203982759206]}, \"geometry_path\": null, \"sdf_path\": \"table.sdf\", \"image_path\": null, \"support_surfaces\": [{\"surface_id\": \"S_1\", \"bounding_box_min\": [-0.5, -0.4, 0.0], \"bounding_box_max\": [0.5, 0.4, 0.0], \"transform\": {\"translation\": [0.0, 0.0, 0.7], \"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0]}, \"link_name\": null}], \"placement_info\": null, \"metadata\": {\"asset_source\": \"researcher_engineering_fixture\"}, \"bbox_min\": [-0.5, -0.4, 0.0], \"bbox_max\": [0.5, 0.4, 0.7], \"immutable\": false, \"scale_factor\": 1.0}, \"north_wall\": {\"object_id\": \"north_wall\", \"object_type\": \"wall\", \"name\": \"North wall\", \"description\": \"Synthetic wall\", \"transform\": {\"translation\": [0.0, 2.0, 1.25], \"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0]}, \"geometry_path\": null, \"sdf_path\": null, \"image_path\": null, \"support_surfaces\": [], \"placement_info\": null, \"metadata\": {}, \"bbox_min\": [-2.5, -0.025, -1.25], \"bbox_max\": [2.5, 0.025, 1.25], \"immutable\": true, \"scale_factor\": 1.0}}, \"asset_bindings\": {\"table_0\": {\"asset_id\": \"fixture_box_1\", \"identity_provenance\": \"researcher_created_not_historical\", \"asset_origin\": \"bottom_center_native_floor_placement\"}, \"north_wall\": {\"asset_id\": \"fixture_wall_1\", \"identity_provenance\": \"researcher_created_structure\"}}, \"prior_tool_receipts\": [{\"step_idx\": 1, \"tool_calls\": [{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"table_0\", \"x\": -0.4, \"y\": 0.75, \"yaw\": 20.0}}], \"results\": [{\"name\": \"move_furniture_tool\", \"output\": {\"success\": true, \"message\": \"Successfully moved Fixture table to new position and rotation\", \"object_id\": \"table_0\", \"error_type\": null, \"current_position\": null, \"attempted_position\": null, \"current_rotation\": null, \"attempted_rotation\": null, \"suggested_action\": null}}], \"before_sha256\": \"595ab1d5729d07f1bda7cca18e9b9787dc1ca37e5232d1a7c4ba0d9ba0348cb7\", \"after_sha256\": \"b447b72b27291a0597a516a812ca4cf0aaaf99c58058e45002381c926d188ef6\"}, {\"step_idx\": 2, \"tool_calls\": [{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"north_wall\", \"x\": -0.4, \"y\": 0.75, \"yaw\": 20.0}}], \"results\": [{\"name\": \"move_furniture_tool\", \"output\": {\"success\": false, \"message\": \"Cannot move North wall: architectural element is immutable\", \"object_id\": \"north_wall\", \"error_type\": \"immutable_object\", \"current_position\": null, \"attempted_position\": null, \"current_rotation\": null, \"attempted_rotation\": null, \"suggested_action\": \"Walls and architectural elements cannot be repositioned\"}}], \"before_sha256\": \"b447b72b27291a0597a516a812ca4cf0aaaf99c58058e45002381c926d188ef6\", \"after_sha256\": \"b447b72b27291a0597a516a812ca4cf0aaaf99c58058e45002381c926d188ef6\"}], \"history_status\": \"recorded_native_session\", \"total_tool_batches\": 2}\n\n## Memory\n# Memory snapshot\nYour last 2 action(s) (oldest → newest):\n  step-2: move_furniture_tool(object_id='table_0', x=-0.4, y=0.75, yaw=20.0)  ✓ Successfully moved Fixture table to new position and rotation\n  step-1: move_furniture_tool(object_id='north_wall', x=-0.4, y=0.75, yaw=20.0)  ❌ FAILED: Cannot move North wall: architectural element is immutable"
+            }
+          ]
+        }
+      ],
+      "state_binding": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture/step_002.state_binding.json",
+      "steps_dir_host": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/resume/house/room_store_b/rollout_furniture"
+    }
+  },
+  {
+    "route": "/session/step",
+    "request": {
+      "tool_calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "table_0",
+            "x": 0.8,
+            "y": -0.2,
+            "yaw": -15.0
+          }
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.04730207601096481,
+    "response": {
+      "results": [
+        {
+          "name": "move_furniture_tool",
+          "output": {
+            "success": true,
+            "message": "Successfully moved Fixture table to new position and rotation",
+            "object_id": "table_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          }
+        }
+      ]
+    }
+  },
+  {
+    "route": "/session/checkpoint",
+    "request": {
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/checkpoint_after_resume"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.11184686899650842,
+    "response": {
+      "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/checkpoint_after_resume",
+      "manifest_sha256": "0828d10c0a97a56306a084994139b8d2f74b5a2926e0df35cd013f9b825c2c6f",
+      "state_sha256": "daf1f02bffda26b4ddd44540068509f6a05b23e9a7d7556d1cfb85dda4148f87",
+      "step_idx": 3
+    }
+  }
+]

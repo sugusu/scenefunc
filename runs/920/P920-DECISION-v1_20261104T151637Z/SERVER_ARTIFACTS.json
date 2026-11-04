@@ -1,0 +1,20 @@
+{
+  "schema": "scenefunc-server-artifact-list-v1",
+  "artifacts": [
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DECISION-v1_20261104T151637Z/audit/INITIAL_PROXY_INVENTORY.json",
+      "bytes": 16831,
+      "sha256": "90a1941cb5d6a1f0abf6cf3414a65c4f407c8ddb8055db4eaeed1903684e5c83",
+      "role": "31 generated initial proxy records, not professional action data"
+    }
+  ],
+  "recovery_command": [
+    "python3",
+    "scripts/920/audit_decision_references.py",
+    "--protocol",
+    "runs/920/P920-DECISION-v1_20261104T151637Z/PROTOCOL.json",
+    "--out",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DECISION-v1_20261104T151637Z/audit"
+  ],
+  "recovery_instruction": "Use a new --out directory; verify input hashes from PROTOCOL.json. Full upstream data stays on server."
+}

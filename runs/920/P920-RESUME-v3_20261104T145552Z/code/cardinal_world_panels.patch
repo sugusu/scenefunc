@@ -1,0 +1,64 @@
+diff --git a/tools/render_cardinal_views.py b/tools/render_cardinal_views.py
+index 68a786b..ec5ace3 100644
+--- a/tools/render_cardinal_views.py
++++ b/tools/render_cardinal_views.py
+@@ -17,6 +17,14 @@ import bpy
+ from mathutils import Vector
+ 
+ 
++def world_box(obj):
++    """Include parent transforms, notably the imported glTF axis conversion."""
++    points = [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
++    lo = Vector(tuple(min(point[i] for point in points) for i in range(3)))
++    hi = Vector(tuple(max(point[i] for point in points) for i in range(3)))
++    return lo, hi
++
++
+ def render(blend: Path, out: Path, width: int, height: int, elevation: float, overwrite: bool = False, views: tuple[str, ...] = ('east','north','west','south')) -> None:
+     bpy.ops.wm.open_mainfile(filepath=str(blend))
+     scene = bpy.context.scene
+@@ -80,23 +88,39 @@ def render(blend: Path, out: Path, width: int, height: int, elevation: float, ov
+         az = math.radians(azimuth)
+         direction = Vector((math.cos(elev) * math.cos(az), math.cos(elev) * math.sin(az), math.sin(elev)))
+ 
+-        # Hide the camera-side wall panels, retaining the side walls, floor,
+-        # windows, and all furniture as in the original SFT renderer.
++        # Retain the upstream thin-panel heuristic, but measure in world
++        # coordinates and exclude rear/side panels. This is not a semantic
++        # wall classifier: a tall thin furniture panel can still match.
+         candidates = []
+         for obj in room_meshes:
+-            if obj.dimensions.z > 2.0 and min(obj.dimensions.x, obj.dimensions.y) < 0.1:
+-                wall_center = sum((obj.matrix_world @ Vector(v) for v in obj.bound_box), Vector()) / 8
+-                candidates.append((wall_center.dot(direction), obj))
++            wall_lo, wall_hi = world_box(obj)
++            dimensions = wall_hi - wall_lo
++            thin_axis = 0 if dimensions.x < dimensions.y else 1
++            wall_center = (wall_lo + wall_hi) / 2
++            horizontal_offset = Vector((wall_center.x - center.x, wall_center.y - center.y, 0))
++            if (dimensions.z > 2.0 and dimensions[thin_axis] < 0.1
++                    and abs(direction[thin_axis]) > 0.5
++                    and horizontal_offset.dot(direction) > 0.01):
++                candidates.append((horizontal_offset.dot(direction), obj))
++        hidden_panels = []
+         if candidates:
+             nearest = max(value for value, _ in candidates)
+             for value, obj in candidates:
+                 if value > nearest - 0.3:
+                     obj.hide_render = True
++                    hidden_panels.append(obj.name)
+ 
+         camera.location = center + direction * distance
+         camera.rotation_euler = (center - camera.location).to_track_quat("-Z", "Y").to_euler()
+         scene.render.filepath = str(out / f"{blend.stem}.{label}.png")
+         bpy.ops.render.render(write_still=True)
++        Path(scene.render.filepath + '.visibility.json').write_text(json.dumps({
++            'blend_sha256': hashlib.sha256(blend.read_bytes()).hexdigest(),
++            'view': label, 'camera_location': list(camera.location),
++            'policy': 'world_axis_aligned_camera_side_thin_panel_heuristic',
++            'hidden_panel_names': hidden_panels,
++            'limits': 'No semantic wall identity; diagonal/curved walls are not covered.',
++        }, indent=2) + '\n')
+         print(f"[render] wrote {scene.render.filepath}")
+ 
+     # Final captures have explicit post-action provenance. Register the views

@@ -1,0 +1,100 @@
+{
+  "run_id": "P920-ASSET-v1_20261104T152109Z",
+  "updated_at": "2026-11-04T15:24:04.594949+00:00",
+  "stage": "candidate_assets_verified_and_measured",
+  "status": "completed_with_scope_limits",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z",
+  "question": "Acquire two fixed coffee-table candidate meshes and coordinate records for a labelled whole-room reconstruction.",
+  "completed_planned": {
+    "files": {
+      "completed": 4,
+      "planned": 4
+    },
+    "meshes_measured": {
+      "completed": 2,
+      "planned": 2
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "f579400052861f999f69706d893095d5cc8a0c01f4d99a24ec4ec714c3f78dbb",
+    "script_sha256": "606f0cafb0e9f66b8ee7c04a394e20812559ed422ce0d7321a6778a3ce1e00aa",
+    "geometry_plan_sha256": "9060b378a88473dcd58bd6cad9cd1de70e624fc7c48aed2ab4f59b457a45b4d4"
+  },
+  "input_hashes": {
+    "asset_lock_sha256": "521661ab65933adadf09d07707fd0c68c9c602959f382a18b9fd1b4f476fb94d"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "DOWNLOAD.json",
+    "GEOMETRY.json",
+    "execution/download/receipt.json",
+    "execution/geometry/receipt.json"
+  ],
+  "failure_reasons": [],
+  "next_step": "Inspect candidate shape/support, choose or reject against whole-room reconstruction; preserve real dimensions and unknown mass. No project asset accepted yet.",
+  "execution": {
+    "started_at": "2026-11-04T15:22:38.262898+00:00",
+    "status": "completed",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/inspect_decision_assets.py",
+      "--download",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/download/DOWNLOAD.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/GEOMETRY.json"
+    ],
+    "timeout_seconds": 30,
+    "pid": 7,
+    "start_ticks": "46360684",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/execution/geometry/stage.log",
+    "ended_at": "2026-11-04T15:22:38.931309+00:00",
+    "elapsed_seconds": 0.6684254339779727,
+    "exit_code": 0,
+    "first_log": "2026-11-04T15:22:38.676992+00:00 begin candidate mesh inspection"
+  },
+  "execution_stages": {
+    "download": {
+      "started_at": "2026-11-04T15:21:28.845745+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "HF_HUB_DISABLE_XET=1",
+        "HF_HUB_DISABLE_PROGRESS_BARS=1",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/fetch_decision_assets.py",
+        "--plan",
+        "runs/920/P920-ASSET-v1_20261104T152109Z/PROTOCOL.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/download"
+      ],
+      "timeout_seconds": 180,
+      "pid": 1105373,
+      "start_ticks": "46353743",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/execution/download/stage.log",
+      "ended_at": "2026-11-04T15:21:36.291136+00:00",
+      "elapsed_seconds": 7.445403561985586,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:21:28.997766+00:00 begin pinned decision asset preparation"
+    },
+    "geometry": {
+      "started_at": "2026-11-04T15:22:38.262898+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/inspect_decision_assets.py",
+        "--download",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/download/DOWNLOAD.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/GEOMETRY.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 7,
+      "start_ticks": "46360684",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ASSET-v1_20261104T152109Z/execution/geometry/stage.log",
+      "ended_at": "2026-11-04T15:22:38.931309+00:00",
+      "elapsed_seconds": 0.6684254339779727,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:22:38.676992+00:00 begin candidate mesh inspection"
+    }
+  }
+}

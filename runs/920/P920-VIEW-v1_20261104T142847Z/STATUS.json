@@ -1,0 +1,62 @@
+{
+  "run_id": "P920-VIEW-v1_20261104T142847Z",
+  "updated_at": "2026-11-04T14:31:05.285051+00:00",
+  "stage": "saved_scene_camera_side_visibility_verified",
+  "status": "completed_with_scope_limits",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-VIEW-v1_20261104T142847Z",
+  "question": "Does world-coordinate camera-side panel filtering fix the observed north occlusion without hiding the sole north wall from side/rear views?",
+  "completed_planned": {
+    "renders": {
+      "completed": 4,
+      "planned": 4
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "1f93d7187420280f6ebe5fecc0bc28bdad9e4a47d2c362428c4a15ffe4a2d505",
+    "patch_sha256": "b43af77520fdf597e22e471ba419beeefcc780540ad9cfcb0ab1c9fa9eead9f1",
+    "audit_sha256": "4abf3cb9c761a549a238adc4a19a8a4d0f41f4f09f72e26b09e74eb4ec54b3a1"
+  },
+  "input_hashes": {
+    "blend_sha256": "a6763129bb961cb6e2e77947467d6937fbf95fac42af5c4bf77fc9552e04877f"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "VISUAL_REVIEW.json",
+    "execution/render/receipt.json"
+  ],
+  "failure_reasons": [],
+  "next_step": "Correct summary/topdown labels from actual structure, finish full session checkpoint/history continuation, and connect a sourced replayable project decision.",
+  "execution": {
+    "started_at": "2026-11-04T14:28:56.589968+00:00",
+    "status": "completed",
+    "command": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "SCENE_RENDER_THREADS=4",
+      "SCENE_RENDER_SAMPLES=8",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/audit_cardinal_visibility.py",
+      "--renderer",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/tools/render_cardinal_views.py",
+      "--blend",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v3_20261104T141050Z/audit/house/room_store_b/rollout_furniture/step_002.blend",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-VIEW-v1_20261104T142847Z/render"
+    ],
+    "timeout_seconds": 180,
+    "pid": 6,
+    "start_ticks": "46038517",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-VIEW-v1_20261104T142847Z/execution/render/stage.log",
+    "ended_at": "2026-11-04T14:29:04.583863+00:00",
+    "elapsed_seconds": 7.993907772994135,
+    "exit_code": 0,
+    "first_log": "2026-11-04T14:28:56.634521+00:00 begin saved native cardinal render"
+  },
+  "process": null,
+  "remaining_limitations": [
+    "Synthetic one-wall scene; tall thin furniture and diagonal/curved walls remain outside verified scope.",
+    "Topdown boundary labels and textual summary remain inconsistent with partial fixture.",
+    "Four saved-scene images; no repeat of live session or complete checkpoint restoration.",
+    "No model calls, training, whole-room quality or scientific performance claim."
+  ]
+}

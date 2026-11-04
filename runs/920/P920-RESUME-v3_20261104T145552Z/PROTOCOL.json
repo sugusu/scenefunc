@@ -1,0 +1,67 @@
+{
+  "run_id": "P920-RESUME-v3_20261104T145552Z",
+  "created_at": "2026-11-04T14:55:52.663379+00:00",
+  "question": "Can the saved third-step checkpoint continue while exact tool hashes remain intact and native quaternion serialization differences are recorded separately?",
+  "source_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/checkpoint_after_resume",
+  "source_manifest_sha256": "0828d10c0a97a56306a084994139b8d2f74b5a2926e0df35cd013f9b825c2c6f",
+  "prior_protocol": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-RESUME-v2_20261104T144744Z/PROTOCOL.json",
+  "prior_protocol_sha256": "2d2fb704a91719f6044a7053714a24867bef1e63f268b0661046fc2a5b647d7d",
+  "prior_state_roundtrip_diagnosis": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-RESUME-v2_20261104T144744Z/STATE_ROUNDTRIP_DIFFERENCE.json",
+  "prior_state_roundtrip_diagnosis_sha256": "b46ce58148eda51989f11f90c1b354da1a0f854335819a6e093b10bd0f478a87",
+  "timeout_seconds": 180,
+  "cpu_affinity_count": 4,
+  "checks_planned": 14,
+  "tool_calls_max": 1,
+  "tool_scope": [
+    "get_current_scene_state"
+  ],
+  "edits_replayed": 0,
+  "observations": 0,
+  "renders": 0,
+  "model_calls": 0,
+  "training_updates": 0,
+  "paid_external_calls": 0,
+  "asset_generation_calls": 0,
+  "disk_soft_limit_mib": 40,
+  "scripts": {
+    "scripts/920/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "scripts/920/native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "scripts/920/existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a",
+    "scripts/920/audit_checkpoint_roundtrip.py": "fbfb2754550765b96ffa997ee1e586c6b70f15b2cf62d30553b3e00d5b6eb1bf"
+  },
+  "runtime_patches": {
+    "updated_at": "2026-11-04T14:41:56.854414+00:00",
+    "designer_checkout": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+    "base_git_sha": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "patches": [
+      {
+        "path": "patches/920/cardinal_world_panels.patch",
+        "sha256": "b43af77520fdf597e22e471ba419beeefcc780540ad9cfcb0ab1c9fa9eead9f1",
+        "affected_file": "tools/render_cardinal_views.py",
+        "base_file_sha256": "0992e390b7dc0c88c52f55b2d1794f90a095bf105fb4ac75fe1ff8285b55f865",
+        "patched_file_sha256": "b33e26fd566be91d1f53ff7289bb604c217c31cc758b228e0c416dd347dd97c7",
+        "validation_run": "P920-VIEW-v1_20261104T142847Z"
+      },
+      {
+        "path": "patches/920/native_structure_labels.patch",
+        "sha256": "7631981dd71eef8d1b84b543657455f279fbaa0f01a32e14648e596cdebd60b4",
+        "affected_files": {
+          "src/render_observation.py": "5c55c915cd142aadab8c9984cd2d80459f5ae4339113fed1490b384e7c2dc058",
+          "src_critic/pil_annotate.py": "129a034a90f82545ec695f4644a42029afd535c2069d87520829cc5aff0ca422"
+        },
+        "validation_run": "P920-RESUME-v1_20261104T144156Z"
+      }
+    ],
+    "applied_to_runtime_checkout": true,
+    "full_system_acceptance": false,
+    "warning": "Historical SESSION/ENV records describe the prior unpatched renderer. Future experiments must freeze this additional patch/hash or restore the fixed source. Do not silently attribute the patched behavior to the upstream base commit."
+  },
+  "migration_allowed_change": "Only runtime_fingerprint for the two explicitly verified recovery helper files; scene/memory/receipts/counters/config unchanged",
+  "restoration_rule": "Exact history hashes are checked against serialized scene bytes. Only transform.rotation_wxyz float differences <= 1e-12 are allowed in native reconstruction, with paths, exact before/after values and hashes recorded as non-tool events. Other state changes are rejected.",
+  "limits": [
+    "Cooperative checkpoint between completed batches only, not recovery of in-flight process crashes.",
+    "Existing-object native furniture scope only; no generation backend/model state restoration.",
+    "No additional views: v2 step-2 views remain distinct from the third-step state continued here.",
+    "Synthetic engineering fixture, not professional training data, physics or whole-room evaluation."
+  ]
+}

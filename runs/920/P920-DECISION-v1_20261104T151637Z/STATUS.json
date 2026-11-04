@@ -1,0 +1,64 @@
+{
+  "run_id": "P920-DECISION-v1_20261104T151637Z",
+  "updated_at": "2026-11-04T15:19:33.232721+00:00",
+  "stage": "source_decision_review_packet_prepared",
+  "status": "completed_with_data_gaps",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DECISION-v1_20261104T151637Z",
+  "question": "Do the two generated references contain the sourced professional decisions, and are their target assets locally available?",
+  "completed_planned": {
+    "cases": {
+      "completed": 2,
+      "planned": 2
+    },
+    "initial_furniture_records": {
+      "completed": 31,
+      "planned": 31
+    },
+    "local_asset_hashes": {
+      "completed": 23,
+      "planned": 23
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "49c115c2e73fe93a48288216b71dec9b82ffa5ad909473ed3bc718d5f9bb9679",
+    "script_sha256": "d4a59c4f1d468ced600fc1a394e7bb9c17214f80dbb1c158c5aba5f7095dc5dd"
+  },
+  "input_hashes": {
+    "embedded": "18be390d3d949ae471a8e68d715e47bc3c46a4891cb141bae9ca5d84bb9d42e0",
+    "assets": "521661ab65933adadf09d07707fd0c68c9c602959f382a18b9fd1b4f476fb94d",
+    "source_relations": "17222a5c7136812dbbd47085a86d1865695dbc768c63776d9565617a569faa4c"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "execution/audit/receipt.json",
+    "SERVER_ARTIFACTS.json",
+    "research/920/decision_packets_v1/DECISION_PACKETS.json"
+  ],
+  "failure_reasons": [],
+  "next_step": "Inspect fixed coffee-table asset candidates, then construct a labelled whole-room native initial bundle; retain review and training gates.",
+  "execution": {
+    "started_at": "2026-11-04T15:16:44.825464+00:00",
+    "status": "completed",
+    "command": [
+      "python3",
+      "scripts/920/audit_decision_references.py",
+      "--protocol",
+      "runs/920/P920-DECISION-v1_20261104T151637Z/PROTOCOL.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DECISION-v1_20261104T151637Z/audit"
+    ],
+    "timeout_seconds": 60,
+    "pid": 6,
+    "start_ticks": "46325341",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DECISION-v1_20261104T151637Z/execution/audit/stage.log",
+    "ended_at": "2026-11-04T15:16:45.092597+00:00",
+    "elapsed_seconds": 0.2671406519948505,
+    "exit_code": 0,
+    "first_log": "2026-11-04T15:16:44.869196+00:00 begin source-decision reference audit"
+  },
+  "data_gaps": [
+    "No authentic source-project action traces in the generated snapshots.",
+    "No local asset in either exact target category.",
+    "Native reconstruction, scoped rights and professional review remain outstanding."
+  ]
+}

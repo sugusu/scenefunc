@@ -1,0 +1,52 @@
+{
+  "run_id": "P920-DECISION-v1_20261104T151637Z",
+  "frozen_at": "2026-11-04T15:16:37.452247+00:00",
+  "question": "Do the two generated references contain the sourced professional decisions, and are their target assets locally available?",
+  "scope": "read-only local data preparation; not a model experiment or training approval",
+  "budget": {
+    "cases": 2,
+    "initial_furniture_records": 31,
+    "local_asset_hashes": 23,
+    "wall_seconds": 60,
+    "model_calls": 0,
+    "engine_edits": 0,
+    "training_updates": 0
+  },
+  "inputs": {
+    "embedded": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SOURCE-v1_20261104T122131Z/recovery/embedded_data.json",
+      "sha256": "18be390d3d949ae471a8e68d715e47bc3c46a4891cb141bae9ca5d84bb9d42e0"
+    },
+    "assets": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/paris/config/assets.lock.json",
+      "sha256": "521661ab65933adadf09d07707fd0c68c9c602959f382a18b9fd1b4f476fb94d"
+    },
+    "source_relations": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/source_recovery_v1/SOURCE_RELATIONS.json",
+      "sha256": "17222a5c7136812dbbd47085a86d1865695dbc768c63776d9565617a569faa4c"
+    }
+  },
+  "script": {
+    "path": "scripts/920/audit_decision_references.py",
+    "sha256": "d4a59c4f1d468ced600fc1a394e7bb9c17214f80dbb1c158c5aba5f7095dc5dd"
+  },
+  "asset_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/scenefunc/hssd-models",
+  "cases": [
+    {
+      "decision_id": "nyc_veurink_nursery_keep_existing_cabinet",
+      "reference_key": "26_writer_nursary",
+      "target_name": "tall_storage_cabinet",
+      "target_asset_categories": [
+        "cabinet.n.01"
+      ]
+    },
+    {
+      "decision_id": "nyc_chan_dancer_studio_clear_movement_space",
+      "reference_key": "10_dancer-studio",
+      "target_name": "coffee_table",
+      "target_asset_categories": [
+        "coffee_table.n.01"
+      ]
+    }
+  ]
+}

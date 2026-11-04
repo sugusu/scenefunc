@@ -1,0 +1,102 @@
+[
+  {
+    "route": "/session/existing",
+    "request": {
+      "bundle_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v3_20261104T145552Z/audit/migrated_checkpoint",
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v3_20261104T145552Z/audit/house"
+    },
+    "response": {
+      "status": "state_loaded",
+      "room_id": "store_b",
+      "project_id": "native_import_fixture",
+      "scene_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v3_20261104T145552Z/audit/house",
+      "backend_generation_started": false,
+      "initial_object_ids": [
+        "north_wall",
+        "table_0"
+      ],
+      "resumed_step_idx": 3,
+      "scope": "existing_objects_furniture_revision"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.3761735989828594
+  },
+  {
+    "route": "/session/stage",
+    "request": {
+      "stage": "furniture"
+    },
+    "response": {
+      "stage": "furniture",
+      "steps_dir_container": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v3_20261104T145552Z/audit/house/room_store_b/rollout_furniture",
+      "steps_dir_host": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v3_20261104T145552Z/audit/house/room_store_b/rollout_furniture"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 3.4313948649796657
+  },
+  {
+    "route": "/session/step",
+    "request": {
+      "tool_calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {}
+        }
+      ]
+    },
+    "response": {
+      "results": [
+        {
+          "name": "get_current_scene_state",
+          "output": {
+            "success": true,
+            "furniture_count": 2,
+            "objects": [
+              {
+                "object_id": "table_0",
+                "description": "Synthetic box",
+                "position_x": 0.8005549483073978,
+                "position_y": -0.2001220453761769,
+                "rotation_degrees": -14.863735197923392,
+                "dimensions": {
+                  "width": 1.0,
+                  "depth": 0.8,
+                  "height": 0.7
+                }
+              },
+              {
+                "object_id": "north_wall",
+                "description": "Synthetic wall",
+                "position_x": 0.0,
+                "position_y": 2.0,
+                "rotation_degrees": 0.0,
+                "dimensions": {
+                  "width": 5.0,
+                  "depth": 0.05,
+                  "height": 2.5
+                }
+              }
+            ],
+            "message": null
+          }
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.013252286007627845
+  },
+  {
+    "route": "/session/checkpoint",
+    "request": {
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v3_20261104T145552Z/audit/checkpoint_after_query"
+    },
+    "response": {
+      "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v3_20261104T145552Z/audit/checkpoint_after_query",
+      "manifest_sha256": "298c936088232c1d6682f6795afb362be6160ddd14830152eed9800e9df7714e",
+      "state_sha256": "fd0df7016fa9a315187fa7ab495eadf78609c0693d8a452ab823546b31b238e6",
+      "step_idx": 4
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.09420491300988942
+  }
+]

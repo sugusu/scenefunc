@@ -1,0 +1,134 @@
+[
+  {
+    "route": "/session/existing",
+    "request": {
+      "bundle_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SESSION-v3_20261104T141050Z/input_bundle",
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/prepare/house"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.3765290669980459,
+    "response": {
+      "status": "state_loaded",
+      "room_id": "store_b",
+      "project_id": "native_import_fixture",
+      "scene_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/prepare/house",
+      "backend_generation_started": false,
+      "initial_object_ids": [
+        "north_wall",
+        "table_0"
+      ],
+      "resumed_step_idx": null,
+      "scope": "existing_objects_furniture_revision"
+    }
+  },
+  {
+    "route": "/session/stage",
+    "request": {
+      "stage": "furniture"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 3.369241606036667,
+    "response": {
+      "stage": "furniture",
+      "steps_dir_container": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/prepare/house/room_store_b/rollout_furniture",
+      "steps_dir_host": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/prepare/house/room_store_b/rollout_furniture"
+    }
+  },
+  {
+    "route": "/session/step",
+    "request": {
+      "tool_calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "table_0",
+            "x": -0.4,
+            "y": 0.75,
+            "yaw": 20.0
+          }
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.015923098020721227,
+    "response": {
+      "results": [
+        {
+          "name": "move_furniture_tool",
+          "output": {
+            "success": true,
+            "message": "Successfully moved Fixture table to new position and rotation",
+            "object_id": "table_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          }
+        }
+      ]
+    }
+  },
+  {
+    "route": "/session/step",
+    "request": {
+      "tool_calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "north_wall",
+            "x": -0.4,
+            "y": 0.75,
+            "yaw": 20.0
+          }
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.007240460952743888,
+    "response": {
+      "results": [
+        {
+          "name": "move_furniture_tool",
+          "output": {
+            "success": false,
+            "message": "Cannot move North wall: architectural element is immutable",
+            "object_id": "north_wall",
+            "error_type": "immutable_object",
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": "Walls and architectural elements cannot be repositioned"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "route": "/session/checkpoint",
+    "request": {
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/checkpoint_after_prepare"
+    },
+    "status_code": 200,
+    "elapsed_seconds": 0.08089407900115475,
+    "response": {
+      "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/checkpoint_after_prepare",
+      "manifest_sha256": "fc5f6ac4cafcb130341653c8176506d96ecbb18d1eda6b17a91fc648b0233c3e",
+      "state_sha256": "f60cbeee61da38bb7a2b3876e4310b32cb19497d307b9bc045f6c6f3012d1464",
+      "step_idx": 2
+    }
+  },
+  {
+    "route": "/session/checkpoint",
+    "request": {
+      "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/checkpoint_after_prepare"
+    },
+    "status_code": 422,
+    "elapsed_seconds": 0.005736574996262789,
+    "response": {
+      "detail": "Checkpoint destination must be new and outside the active project"
+    }
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "run_id": "P920-RESUME-v1_20261104T144156Z",
+  "created_at": "2026-11-04T14:41:56.854414+00:00",
+  "question": "Can a native existing-object session be checkpointed, closed, restored in a different process and continued with identity, state, counters, memory and real receipts intact?",
+  "scope": "Synthetic two-room input, selected one-wall room; real native furniture tools and local services, process-separated FastAPI TestClient phases.",
+  "phases": {
+    "prepare": {
+      "timeout_seconds": 300,
+      "tool_calls_max": 2,
+      "observations_max": 0,
+      "checks_planned": 6
+    },
+    "resume": {
+      "timeout_seconds": 300,
+      "tool_calls_max": 1,
+      "observations_max": 1,
+      "checks_planned": 16
+    }
+  },
+  "cpu_affinity_count": 4,
+  "render_threads": 4,
+  "render_samples": 8,
+  "images_max": 5,
+  "model_calls": 0,
+  "training_updates": 0,
+  "paid_external_calls": 0,
+  "asset_generation_calls": 0,
+  "disk_soft_limit_mib": 150,
+  "input_bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SESSION-v3_20261104T141050Z/input_bundle",
+  "input_manifest_sha256": "fc5ac9573971bc9e0c634c60b6f85cda9cf7d1b7adaac92ec6aadaa8ea4cb8f1",
+  "scripts": {
+    "scripts/920/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "scripts/920/native_checkpoint.py": "ec3ea183b495ba29e210bb8b500b78d3a62d05131c8adb5c73782e547ca2f7be",
+    "scripts/920/existing_project_session.py": "5a3b94c6524e3637404817e1d95b74f85850b473fc5c6afc3dcbc154e3b41741",
+    "scripts/920/audit_session_checkpoint.py": "f20560b3f49072a41ae6a7e58e8208e987a7434faca3bcdf586878f74b8691ef"
+  },
+  "runtime_patches": {
+    "updated_at": "2026-11-04T14:41:56.854414+00:00",
+    "designer_checkout": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+    "base_git_sha": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "patches": [
+      {
+        "path": "patches/920/cardinal_world_panels.patch",
+        "sha256": "b43af77520fdf597e22e471ba419beeefcc780540ad9cfcb0ab1c9fa9eead9f1",
+        "affected_file": "tools/render_cardinal_views.py",
+        "base_file_sha256": "0992e390b7dc0c88c52f55b2d1794f90a095bf105fb4ac75fe1ff8285b55f865",
+        "patched_file_sha256": "b33e26fd566be91d1f53ff7289bb604c217c31cc758b228e0c416dd347dd97c7",
+        "validation_run": "P920-VIEW-v1_20261104T142847Z"
+      },
+      {
+        "path": "patches/920/native_structure_labels.patch",
+        "sha256": "7631981dd71eef8d1b84b543657455f279fbaa0f01a32e14648e596cdebd60b4",
+        "affected_files": {
+          "src/render_observation.py": "5c55c915cd142aadab8c9984cd2d80459f5ae4339113fed1490b384e7c2dc058",
+          "src_critic/pil_annotate.py": "129a034a90f82545ec695f4644a42029afd535c2069d87520829cc5aff0ca422"
+        },
+        "validation_run": "P920-RESUME-v1_20261104T144156Z"
+      }
+    ],
+    "applied_to_runtime_checkout": true,
+    "full_system_acceptance": false,
+    "warning": "Historical SESSION/ENV records describe the prior unpatched renderer. Future experiments must freeze this additional patch/hash or restore the fixed source. Do not silently attribute the patched behavior to the upstream base commit."
+  },
+  "environment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native",
+  "frozen_environment_protocol": "runs/920/P920-ENV-v1_20261104T131606Z/PROTOCOL.json",
+  "limits": [
+    "Cooperative checkpoints between completed tool batches, not in-flight crash recovery.",
+    "Existing-object furniture scope; no model generation state, acquisition or wall/ceiling-stage restoration.",
+    "Synthetic engineering fixture, not professional data, collision score or whole-room quality evaluation.",
+    "Observed resumed image is at checkpoint step 2; after the continuing step 3 the final checkpoint is state evidence, with no new final image under this budget.",
+    "Unknown geometry/material dependency closure outside the existing native import checks remains unverified."
+  ],
+  "next_gate": "Use truthful observations and full recorded editing history for sourced project replay; no training authorization."
+}

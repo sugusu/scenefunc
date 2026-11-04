@@ -1,0 +1,1354 @@
+{
+  "scope": "existing_objects_furniture_revision",
+  "config": "scene_designer",
+  "effective_config": {
+    "experiment": {
+      "tasks": [
+        "generate_scenes"
+      ],
+      "csv_path": null,
+      "prompts": [
+        "A bedroom with a bed, two nightstands, and a wardrobe in the corner of the room.",
+        "A living room with a two-seater sofa against the wall, a square rug in the middle in front of the sofa, and two large plants on the floor near the sofa.",
+        "A classroom with six student desks, each with a chair. A teacher's desk sits at the front near the chalkboard, which hangs on the wall."
+      ],
+      "num_workers": 20,
+      "pipeline": {
+        "start_stage": "floor_plan",
+        "stop_stage": "manipuland",
+        "resume_from_path": null,
+        "parallel_rooms": false,
+        "max_parallel_rooms": 1
+      },
+      "geometry_generation_server": {
+        "host": "127.0.0.1",
+        "port": 17005
+      },
+      "hssd_retrieval_server": {
+        "host": "127.0.0.1",
+        "port": 17006
+      },
+      "articulated_retrieval_server": {
+        "host": "127.0.0.1",
+        "port": 17007
+      },
+      "objaverse_retrieval_server": {
+        "host": "127.0.0.1",
+        "port": 17009
+      },
+      "materials_retrieval_server": {
+        "host": "127.0.0.1",
+        "port": 17008,
+        "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/materials",
+        "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/materials/embeddings",
+        "use_top_k": 5
+      },
+      "sceneeval_export": {
+        "enabled": true,
+        "asset_id_prefix": "scenesmith"
+      },
+      "projection": {
+        "enabled": true,
+        "large_scene_optimization_threshold": 100,
+        "collision_penetration_threshold_m": 0.001,
+        "furniture": {
+          "enabled": true,
+          "xy_only": false,
+          "fix_rotation": true,
+          "influence_distance": 0.02,
+          "solver_name": "snopt",
+          "iteration_limit": 5000,
+          "time_limit_s": 360.0
+        },
+        "final": {
+          "enabled": true,
+          "xy_only": false,
+          "fix_rotation": true,
+          "influence_distance": 0.02,
+          "solver_name": "snopt",
+          "iteration_limit": 10000,
+          "time_limit_s": 360.0
+        },
+        "simulation": {
+          "enabled": true,
+          "simulation_time_s": 15.0,
+          "time_step_s": 0.001,
+          "timeout_s": 600.0,
+          "save_html": false
+        }
+      },
+      "_name": "indoor_scene_generation",
+      "output_dir": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/prepare/house"
+    },
+    "floor_plan_agent": {
+      "mode": "room",
+      "session_memory": {
+        "enabled": true,
+        "keep_last_n_turns": 1,
+        "enable_summarization": true,
+        "summarization_model": "gpt-5.5",
+        "summarization_thinking": "low",
+        "intra_turn_observation_stripping": {
+          "enabled": true,
+          "keep_last_n_observations": 2
+        }
+      },
+      "rendering": {
+        "blender_server_host": "127.0.0.1",
+        "blender_server_port_range": [
+          8000,
+          8050
+        ],
+        "render_size": 1024
+      },
+      "materials": {
+        "use_retrieval_server": true,
+        "default_wall_material": "Plaster001_1K-JPG",
+        "default_floor_material": "Wood094_1K-JPG",
+        "server_host": "127.0.0.1",
+        "server_port": 17008
+      },
+      "min_floor_plan_dim_m": 1.5,
+      "max_floor_plan_dim_m": 20,
+      "wall_height": {
+        "min": 2.0,
+        "max": 4.5,
+        "default": 2.5
+      },
+      "wall_thickness": 0.05,
+      "floor_thickness": 0.1,
+      "room_placement": {
+        "timeout_seconds": 5.0,
+        "scoring_weights": {
+          "compactness": 1.0,
+          "stability": 1.0
+        },
+        "min_opening_separation": 0.5,
+        "exterior_wall_clearance_m": 20.0
+      },
+      "doors": {
+        "width_range": [
+          0.9,
+          1.9
+        ],
+        "height_range": [
+          2.0,
+          2.4
+        ],
+        "default_width": 0.9,
+        "default_height": 2.1,
+        "exterior_clearance": 20.0
+      },
+      "windows": {
+        "width_range": [
+          0.6,
+          3.0
+        ],
+        "height_range": [
+          0.6,
+          2.0
+        ],
+        "default_width": 1.2,
+        "default_height": 1.2,
+        "default_sill_height": 0.9,
+        "segment_margin": 0.3
+      },
+      "openai": {
+        "model": "gpt-5.2",
+        "service_tier": "default",
+        "vision_detail": "high",
+        "reasoning_effort": {
+          "planner": "low",
+          "designer": "high",
+          "critic": "high"
+        },
+        "verbosity": {
+          "planner": "medium",
+          "designer": "low",
+          "critic": "medium"
+        },
+        "summarization_model": "gpt-5.2"
+      },
+      "api_timeout": {
+        "connect": 30.0,
+        "read": 1800,
+        "write": 1800,
+        "pool": 1800
+      },
+      "max_critique_rounds": 2,
+      "reset_single_category_threshold": 2,
+      "reset_total_sum_threshold": 1,
+      "early_finish_min_score": 8,
+      "clearance_zones": {
+        "door_clearance_distance": 0.8,
+        "window_clearance_distance": 0.5
+      },
+      "agents": {
+        "planner_agent": {
+          "name": "floor_plan_planner",
+          "max_turns": 500,
+          "prompt": "PLANNER_AGENT"
+        },
+        "designer_agent": {
+          "name": "floor_plan_designer",
+          "max_turns": 1000,
+          "prompt": "DESIGNER_AGENT"
+        },
+        "critic_agent": {
+          "name": "floor_plan_critic",
+          "max_turns": 500,
+          "prompt": "CRITIC_AGENT"
+        }
+      },
+      "_name": "stateful_floor_plan_agent"
+    },
+    "furniture_agent": {
+      "session_memory": {
+        "enabled": true,
+        "keep_last_n_turns": 1,
+        "enable_summarization": true,
+        "summarization_model": "gpt-5.5",
+        "summarization_thinking": "low",
+        "intra_turn_observation_stripping": {
+          "enabled": true,
+          "keep_last_n_observations": 2
+        }
+      },
+      "rendering": {
+        "layout": "top_plus_sides",
+        "top_view_width": 1024,
+        "top_view_height": 1024,
+        "side_view_count": 4,
+        "side_view_width": 512,
+        "side_view_height": 512,
+        "background_color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "blender_server_host": "127.0.0.1",
+        "blender_server_port_range": [
+          18100,
+          18120
+        ],
+        "retry_count": 10,
+        "retry_delay": 3,
+        "server_startup_delay": 0.1,
+        "port_cleanup_delay": 0.1,
+        "taa_samples": 8,
+        "annotations": {
+          "enable_set_of_mark_labels": true,
+          "enable_bounding_boxes": true,
+          "enable_direction_arrows": true,
+          "enable_partial_walls": true,
+          "enable_support_surface_debug": false,
+          "enable_convex_hull_debug": false
+        }
+      },
+      "asset_manager": {
+        "general_asset_source": "generated",
+        "backend": "sam3d",
+        "router": {
+          "enabled": false,
+          "parallel_workers": 10,
+          "analysis_max_retries": 3,
+          "strategies": {
+            "generated": {
+              "enabled": false,
+              "max_retries": 2
+            },
+            "articulated": {
+              "enabled": false,
+              "max_retries": 3,
+              "use_lenient_validation": true
+            },
+            "thin_covering": {
+              "enabled": false,
+              "max_retries": 3,
+              "thickness_m": 0.003,
+              "texture_scale": 0.5,
+              "generator": {
+                "enabled": true,
+                "backend": "openai",
+                "max_retries": 2,
+                "default_roughness": 128,
+                "texture_scale": 0.5
+              }
+            }
+          }
+        },
+        "sam3d": {
+          "sam3_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+          "sam3d_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+          "mode": "foreground",
+          "threshold": 0.5
+        },
+        "hssd": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "objaverse": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "articulated": {
+          "enable_self_collision_filtering": true,
+          "use_top_k": 5,
+          "sources": {
+            "partnet_mobility": {
+              "enabled": false,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings"
+            },
+            "artvip": {
+              "enabled": true,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings"
+            }
+          }
+        },
+        "image_generation": {
+          "backend": "openai",
+          "openai": {
+            "quality": "low"
+          },
+          "gemini": {
+            "aspect_ratio": "1:1",
+            "image_size": "1K"
+          }
+        },
+        "skip_physics_analysis": false,
+        "physics_analysis_render_engine": "eevee",
+        "physics_analysis_cycles_samples": 8,
+        "physics_analysis_resolution": 256,
+        "num_side_views_for_physics_analysis": 4,
+        "side_view_elevation_degrees": 20.0,
+        "floater_distance_threshold": 0.05,
+        "min_mesh_dimension_meters": 0.001,
+        "mesh_relative_dimension_threshold": 0.02,
+        "validation_taa_samples": 8
+      },
+      "collision_geometry": {
+        "method": "vhacd",
+        "server_port_range": [
+          18130,
+          18150
+        ],
+        "coacd": {
+          "threshold": 0.03,
+          "max_convex_hull": -1,
+          "preprocess_mode": "auto",
+          "preprocess_resolution": 50,
+          "resolution": 2000,
+          "mcts_nodes": 20,
+          "mcts_iterations": 150,
+          "mcts_max_depth": 3,
+          "pca": false,
+          "merge": true,
+          "decimate": false,
+          "max_ch_vertex": 256,
+          "extrude": false,
+          "extrude_margin": 0.01,
+          "apx_mode": "ch",
+          "seed": 0
+        },
+        "vhacd": {
+          "max_convex_hulls": 128,
+          "resolution": 400000,
+          "max_recursion_depth": 10,
+          "max_num_vertices_per_ch": 64,
+          "min_volume_percent_error": 1.0,
+          "shrink_wrap": true,
+          "fill_mode": "flood",
+          "min_edge_length": 2,
+          "find_best_plane": false
+        }
+      },
+      "max_turns": 1000,
+      "max_critique_rounds": 3,
+      "reset_single_category_threshold": 2,
+      "reset_total_sum_threshold": 1,
+      "early_finish_min_score": 9,
+      "openai": {
+        "model": "gpt-5.2",
+        "service_tier": "default",
+        "vision_detail": "high",
+        "reasoning_effort": {
+          "planner": "low",
+          "designer": "high",
+          "critic": "high",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "verbosity": {
+          "planner": "medium",
+          "designer": "low",
+          "critic": "medium",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "summarization_model": "gpt-5.2"
+      },
+      "api_timeout": {
+        "connect": 10.0,
+        "read": 1800,
+        "write": 1800,
+        "pool": 1800
+      },
+      "loop_detection": {
+        "enabled": true,
+        "max_repeated_attempts": 25,
+        "tracking_window": 30
+      },
+      "physics_validation": {
+        "wall_thickness": 0.05,
+        "floor_penetration_tolerance_m": 0.2,
+        "object_penetration_threshold_m": 0.001,
+        "manipuland_furniture_tolerance_m": 0.02,
+        "remove_fallen_furniture": true,
+        "fallen_tilt_threshold_degrees": 45.0
+      },
+      "clearance_zones": {
+        "passage_size": 0.5,
+        "open_connection_clearance": 0.7
+      },
+      "reachability": {
+        "robot_width": 0.3
+      },
+      "snap_to_object": {
+        "voxel_pitch_meters": 0.03,
+        "min_vertices_threshold": 10000,
+        "circular_detection_volume_ratio_threshold": 0.8,
+        "iterative_snap_step_m": 0.01,
+        "max_snap_distance_m": 10.0,
+        "snap_margin_m": 0.01,
+        "max_sample_vertices": 2000
+      },
+      "placement_noise": {
+        "mode": "perfect",
+        "natural_profile": {
+          "position_xy_std_meters": 0.03,
+          "rotation_yaw_std_degrees": 1.0
+        },
+        "perfect_profile": {
+          "position_xy_std_meters": 0.001,
+          "rotation_yaw_std_degrees": 0.1
+        }
+      },
+      "context_image_generation": {
+        "enabled": false
+      },
+      "agents": {
+        "designer_agent": {
+          "name": "designer_agent",
+          "max_turns": 2000,
+          "prompt": "DESIGNER_AGENT"
+        },
+        "planner_agent": {
+          "name": "planner_agent",
+          "max_turns": 500,
+          "prompt": "STATEFUL_PLANNER_AGENT"
+        },
+        "critic_agent": {
+          "name": "critic_agent",
+          "max_turns": 500,
+          "prompt": "STATEFUL_CRITIC_AGENT"
+        }
+      },
+      "_name": "stateful_furniture_agent"
+    },
+    "wall_agent": {
+      "session_memory": {
+        "enabled": true,
+        "keep_last_n_turns": 1,
+        "enable_summarization": true,
+        "summarization_model": "gpt-5.5",
+        "summarization_thinking": "low",
+        "intra_turn_observation_stripping": {
+          "enabled": true,
+          "keep_last_n_observations": 2
+        }
+      },
+      "rendering": {
+        "top_view_width": 512,
+        "top_view_height": 512,
+        "side_view_count": 0,
+        "side_view_width": 512,
+        "side_view_height": 512,
+        "grid_divisions": 5,
+        "wall_furniture_threshold_m": 0.5,
+        "background_color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "blender_server_host": "127.0.0.1",
+        "blender_server_port_range": [
+          8000,
+          8250
+        ],
+        "retry_count": 10,
+        "retry_delay": 3,
+        "server_startup_delay": 0.1,
+        "port_cleanup_delay": 0.1,
+        "annotations": {
+          "enable_set_of_mark_labels": true,
+          "enable_bounding_boxes": true,
+          "enable_direction_arrows": false,
+          "enable_partial_walls": true,
+          "enable_support_surface_debug": false,
+          "enable_convex_hull_debug": false,
+          "enable_wall_grid": true
+        }
+      },
+      "asset_manager": {
+        "general_asset_source": "generated",
+        "backend": "sam3d",
+        "router": {
+          "enabled": true,
+          "parallel_workers": 10,
+          "analysis_max_retries": 3,
+          "strategies": {
+            "generated": {
+              "enabled": true,
+              "max_retries": 2
+            },
+            "articulated": {
+              "enabled": true,
+              "max_retries": 3,
+              "use_lenient_validation": true
+            },
+            "thin_covering": {
+              "enabled": true,
+              "max_retries": 1,
+              "thickness_m": 0.01,
+              "texture_scale": 0.5,
+              "generator": {
+                "enabled": true,
+                "backend": "openai",
+                "max_retries": 3,
+                "default_roughness": 128,
+                "texture_scale": 0.5
+              }
+            }
+          }
+        },
+        "sam3d": {
+          "sam3_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+          "sam3d_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+          "mode": "foreground",
+          "threshold": 0.5
+        },
+        "hssd": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "objaverse": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "articulated": {
+          "enable_self_collision_filtering": true,
+          "use_top_k": 5,
+          "sources": {
+            "partnet_mobility": {
+              "enabled": false,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings"
+            },
+            "artvip": {
+              "enabled": true,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings"
+            }
+          }
+        },
+        "image_generation": {
+          "backend": "openai",
+          "openai": {
+            "quality": "low"
+          },
+          "gemini": {
+            "aspect_ratio": "1:1",
+            "image_size": "1K"
+          }
+        },
+        "num_side_views_for_physics_analysis": 4,
+        "side_view_elevation_degrees": 0.0,
+        "floater_distance_threshold": 0.05,
+        "min_mesh_dimension_meters": 0.001,
+        "mesh_relative_dimension_threshold": 0.005,
+        "validation_taa_samples": 8,
+        "skip_physics_analysis": false
+      },
+      "collision_geometry": {
+        "method": "vhacd",
+        "server_port_range": [
+          7100,
+          7350
+        ],
+        "coacd": {
+          "threshold": 0.03,
+          "max_convex_hull": -1,
+          "preprocess_mode": "auto",
+          "preprocess_resolution": 50,
+          "resolution": 2000,
+          "mcts_nodes": 20,
+          "mcts_iterations": 150,
+          "mcts_max_depth": 3,
+          "pca": false,
+          "merge": true,
+          "decimate": false,
+          "max_ch_vertex": 256,
+          "extrude": false,
+          "extrude_margin": 0.01,
+          "apx_mode": "ch",
+          "seed": 0
+        },
+        "vhacd": {
+          "max_convex_hulls": 64,
+          "resolution": 400000,
+          "max_recursion_depth": 10,
+          "max_num_vertices_per_ch": 64,
+          "min_volume_percent_error": 1.0,
+          "shrink_wrap": true,
+          "fill_mode": "flood",
+          "min_edge_length": 2,
+          "find_best_plane": false
+        }
+      },
+      "max_turns": 1000,
+      "max_critique_rounds": 1,
+      "reset_single_category_threshold": 2,
+      "reset_total_sum_threshold": 1,
+      "early_finish_min_score": 7,
+      "openai": {
+        "model": "gpt-5.2",
+        "service_tier": "default",
+        "vision_detail": "high",
+        "reasoning_effort": {
+          "planner": "low",
+          "designer": "high",
+          "critic": "high",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "verbosity": {
+          "planner": "medium",
+          "designer": "low",
+          "critic": "medium",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "summarization_model": "gpt-5.2"
+      },
+      "api_timeout": {
+        "connect": 10.0,
+        "read": 1800,
+        "write": 1800,
+        "pool": 1800
+      },
+      "loop_detection": {
+        "enabled": true,
+        "max_repeated_attempts": 25,
+        "tracking_window": 30
+      },
+      "physics_validation": {
+        "wall_thickness": 0.05,
+        "floor_penetration_tolerance_m": 0.2,
+        "object_penetration_threshold_m": 0.001,
+        "manipuland_furniture_tolerance_m": 0.02
+      },
+      "clearance_zones": {
+        "passage_size": 0.5,
+        "open_connection_clearance": 0.7
+      },
+      "placement_noise": {
+        "mode": "perfect",
+        "natural_profile": {
+          "position_along_wall_std_meters": 0.02,
+          "position_height_std_meters": 0.01,
+          "rotation_std_degrees": 0.5
+        },
+        "perfect_profile": {
+          "position_along_wall_std_meters": 0.001,
+          "position_height_std_meters": 0.001,
+          "rotation_std_degrees": 0.1
+        }
+      },
+      "agents": {
+        "designer_agent": {
+          "name": "designer_agent",
+          "max_turns": 2000,
+          "prompt": "DESIGNER_AGENT"
+        },
+        "planner_agent": {
+          "name": "planner_agent",
+          "max_turns": 500,
+          "prompt": "STATEFUL_PLANNER_AGENT"
+        },
+        "critic_agent": {
+          "name": "critic_agent",
+          "max_turns": 500,
+          "prompt": "STATEFUL_CRITIC_AGENT"
+        }
+      },
+      "_name": "stateful_wall_agent"
+    },
+    "ceiling_agent": {
+      "session_memory": {
+        "enabled": true,
+        "keep_last_n_turns": 1,
+        "enable_summarization": true,
+        "summarization_model": "gpt-5.5",
+        "summarization_thinking": "low",
+        "intra_turn_observation_stripping": {
+          "enabled": true,
+          "keep_last_n_observations": 2
+        }
+      },
+      "rendering": {
+        "layout": "top_plus_sides",
+        "top_view_width": 512,
+        "top_view_height": 512,
+        "side_view_count": 2,
+        "side_view_width": 512,
+        "side_view_height": 512,
+        "background_color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "blender_server_host": "127.0.0.1",
+        "blender_server_port_range": [
+          8000,
+          8250
+        ],
+        "retry_count": 10,
+        "retry_delay": 3,
+        "server_startup_delay": 0.1,
+        "port_cleanup_delay": 0.1,
+        "annotations": {
+          "enable_set_of_mark_labels": true,
+          "enable_bounding_boxes": true,
+          "enable_direction_arrows": false,
+          "enable_partial_walls": true,
+          "enable_support_surface_debug": false,
+          "enable_convex_hull_debug": false,
+          "enable_wall_grid": false
+        }
+      },
+      "asset_manager": {
+        "general_asset_source": "generated",
+        "backend": "sam3d",
+        "router": {
+          "enabled": true,
+          "parallel_workers": 10,
+          "analysis_max_retries": 3,
+          "strategies": {
+            "generated": {
+              "enabled": true,
+              "max_retries": 2
+            },
+            "articulated": {
+              "enabled": true,
+              "max_retries": 3,
+              "use_lenient_validation": true
+            },
+            "thin_covering": {
+              "enabled": false,
+              "max_retries": 3,
+              "thickness_m": 0.003,
+              "texture_scale": 0.5,
+              "generator": {
+                "enabled": false
+              }
+            }
+          }
+        },
+        "sam3d": {
+          "sam3_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+          "sam3d_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+          "mode": "foreground",
+          "threshold": 0.5
+        },
+        "hssd": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "objaverse": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "articulated": {
+          "enable_self_collision_filtering": true,
+          "use_top_k": 5,
+          "sources": {
+            "partnet_mobility": {
+              "enabled": false,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings"
+            },
+            "artvip": {
+              "enabled": false,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings"
+            }
+          }
+        },
+        "image_generation": {
+          "backend": "openai",
+          "openai": {
+            "quality": "low"
+          },
+          "gemini": {
+            "aspect_ratio": "1:1",
+            "image_size": "1K"
+          }
+        },
+        "num_side_views_for_physics_analysis": 4,
+        "side_view_elevation_degrees": 0.0,
+        "floater_distance_threshold": 0.05,
+        "min_mesh_dimension_meters": 0.001,
+        "mesh_relative_dimension_threshold": 0.01,
+        "validation_taa_samples": 8,
+        "skip_physics_analysis": false
+      },
+      "collision_geometry": {
+        "method": "vhacd",
+        "server_port_range": [
+          7100,
+          7350
+        ],
+        "coacd": {
+          "threshold": 0.1,
+          "max_convex_hull": 32,
+          "preprocess_mode": "auto",
+          "preprocess_resolution": 50,
+          "resolution": 2000,
+          "mcts_nodes": 20,
+          "mcts_iterations": 150,
+          "mcts_max_depth": 3,
+          "pca": false,
+          "merge": true,
+          "decimate": false,
+          "max_ch_vertex": 256,
+          "extrude": false,
+          "extrude_margin": 0.01,
+          "apx_mode": "ch",
+          "seed": 0
+        },
+        "vhacd": {
+          "max_convex_hulls": 16,
+          "resolution": 100000,
+          "max_recursion_depth": 10,
+          "max_num_vertices_per_ch": 64,
+          "min_volume_percent_error": 1.0,
+          "shrink_wrap": true,
+          "fill_mode": "flood",
+          "min_edge_length": 2,
+          "find_best_plane": false
+        }
+      },
+      "max_turns": 1000,
+      "max_critique_rounds": 1,
+      "reset_single_category_threshold": 2,
+      "reset_total_sum_threshold": 1,
+      "early_finish_min_score": 7,
+      "openai": {
+        "model": "gpt-5.2",
+        "service_tier": "default",
+        "vision_detail": "high",
+        "reasoning_effort": {
+          "planner": "low",
+          "designer": "high",
+          "critic": "high",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "verbosity": {
+          "planner": "medium",
+          "designer": "low",
+          "critic": "medium",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "summarization_model": "gpt-5.2"
+      },
+      "api_timeout": {
+        "connect": 10.0,
+        "read": 1800,
+        "write": 1800,
+        "pool": 1800
+      },
+      "loop_detection": {
+        "enabled": true,
+        "max_repeated_attempts": 25,
+        "tracking_window": 30
+      },
+      "physics_validation": {
+        "wall_thickness": 0.05,
+        "floor_penetration_tolerance_m": 0.2,
+        "object_penetration_threshold_m": 0.001,
+        "manipuland_furniture_tolerance_m": 0.02
+      },
+      "clearance_zones": {
+        "passage_size": 0.5,
+        "open_connection_clearance": 0.7
+      },
+      "placement_noise": {
+        "mode": "perfect",
+        "natural_profile": {
+          "position_xy_std_meters": 0.02,
+          "rotation_yaw_std_degrees": 0.5
+        },
+        "perfect_profile": {
+          "position_xy_std_meters": 0.001,
+          "rotation_yaw_std_degrees": 0.1
+        }
+      },
+      "agents": {
+        "designer_agent": {
+          "name": "designer_agent",
+          "max_turns": 2000,
+          "prompt": "DESIGNER_AGENT"
+        },
+        "planner_agent": {
+          "name": "planner_agent",
+          "max_turns": 500,
+          "prompt": "STATEFUL_PLANNER_AGENT"
+        },
+        "critic_agent": {
+          "name": "critic_agent",
+          "max_turns": 500,
+          "prompt": "STATEFUL_CRITIC_AGENT"
+        }
+      },
+      "_name": "stateful_ceiling_agent"
+    },
+    "manipuland_agent": {
+      "session_memory": {
+        "enabled": true,
+        "keep_last_n_turns": 1,
+        "enable_summarization": true,
+        "summarization_model": "gpt-5.5",
+        "summarization_thinking": "low",
+        "intra_turn_observation_stripping": {
+          "enabled": true,
+          "keep_last_n_observations": 2
+        }
+      },
+      "rendering": {
+        "layout": "top_plus_sides",
+        "top_view_width": 1024,
+        "top_view_height": 1024,
+        "side_view_count": 4,
+        "side_view_width": 512,
+        "side_view_height": 512,
+        "background_color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "blender_server_host": "127.0.0.1",
+        "blender_server_port_range": [
+          8000,
+          8250
+        ],
+        "retry_count": 10,
+        "retry_delay": 3,
+        "server_startup_delay": 0.1,
+        "port_cleanup_delay": 0.1,
+        "annotations": {
+          "enable_set_of_mark_labels": true,
+          "enable_bounding_boxes": true,
+          "enable_direction_arrows": true,
+          "enable_partial_walls": true,
+          "enable_support_surface_debug": false,
+          "enable_convex_hull_debug": false
+        }
+      },
+      "asset_manager": {
+        "general_asset_source": "generated",
+        "backend": "sam3d",
+        "router": {
+          "enabled": true,
+          "parallel_workers": 10,
+          "analysis_max_retries": 3,
+          "strategies": {
+            "generated": {
+              "enabled": true,
+              "max_retries": 2
+            },
+            "articulated": {
+              "enabled": false,
+              "max_retries": 3,
+              "use_lenient_validation": true
+            },
+            "thin_covering": {
+              "enabled": true,
+              "max_retries": 3,
+              "thickness_m": 0.002,
+              "texture_scale": 0.5,
+              "generator": {
+                "enabled": true,
+                "backend": "openai",
+                "max_retries": 2,
+                "default_roughness": 128,
+                "texture_scale": 0.5
+              }
+            }
+          }
+        },
+        "sam3d": {
+          "sam3_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+          "sam3d_checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+          "mode": "foreground",
+          "threshold": 0.5
+        },
+        "hssd": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "objaverse": {
+          "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets",
+          "preprocessed_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/objathor-assets/preprocessed",
+          "use_top_k": 5,
+          "use_lenient_validation": true,
+          "object_type_mapping": {
+            "FURNITURE": "large_objects",
+            "MANIPULAND": "small_objects",
+            "WALL_MOUNTED": "wall_objects",
+            "CEILING_MOUNTED": "ceiling_objects"
+          }
+        },
+        "articulated": {
+          "enable_self_collision_filtering": true,
+          "use_top_k": 5,
+          "sources": {
+            "partnet_mobility": {
+              "enabled": false,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings"
+            },
+            "artvip": {
+              "enabled": true,
+              "data_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+              "embeddings_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings"
+            }
+          }
+        },
+        "image_generation": {
+          "backend": "openai",
+          "openai": {
+            "quality": "low"
+          },
+          "gemini": {
+            "aspect_ratio": "1:1",
+            "image_size": "1K"
+          }
+        },
+        "num_side_views_for_physics_analysis": 4,
+        "side_view_elevation_degrees": 20.0,
+        "floater_distance_threshold": 0.05,
+        "min_mesh_dimension_meters": 0.001,
+        "mesh_relative_dimension_threshold": 0.02,
+        "validation_taa_samples": 8
+      },
+      "collision_geometry": {
+        "method": "vhacd",
+        "server_port_range": [
+          7100,
+          7350
+        ],
+        "coacd": {
+          "threshold": 0.03,
+          "max_convex_hull": -1,
+          "preprocess_mode": "auto",
+          "preprocess_resolution": 50,
+          "resolution": 2000,
+          "mcts_nodes": 20,
+          "mcts_iterations": 150,
+          "mcts_max_depth": 3,
+          "pca": false,
+          "merge": true,
+          "decimate": false,
+          "max_ch_vertex": 256,
+          "extrude": false,
+          "extrude_margin": 0.01,
+          "apx_mode": "ch",
+          "seed": 0
+        },
+        "vhacd": {
+          "max_convex_hulls": 64,
+          "resolution": 400000,
+          "max_recursion_depth": 10,
+          "max_num_vertices_per_ch": 64,
+          "min_volume_percent_error": 1.0,
+          "shrink_wrap": true,
+          "fill_mode": "flood",
+          "min_edge_length": 2,
+          "find_best_plane": false
+        }
+      },
+      "openai": {
+        "model": "gpt-5.2",
+        "service_tier": "default",
+        "vision_detail": "high",
+        "reasoning_effort": {
+          "planner": "low",
+          "designer": "high",
+          "critic": "high",
+          "furniture_analysis": "medium",
+          "context_selection": "low",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "verbosity": {
+          "planner": "medium",
+          "designer": "low",
+          "critic": "medium",
+          "furniture_analysis": "medium",
+          "context_selection": "low",
+          "mesh_analysis": "medium",
+          "asset_analysis": "medium",
+          "asset_validation": "medium"
+        },
+        "furniture_analysis_max_retries": 3,
+        "context_selection_max_retries": 2,
+        "summarization_model": "gpt-5.2"
+      },
+      "context_furniture": {
+        "enabled": true,
+        "distance_threshold_m": 2.0,
+        "max_candidates": 30,
+        "include_images": true
+      },
+      "api_timeout": {
+        "connect": 10.0,
+        "read": 1800,
+        "write": 1800,
+        "pool": 1800
+      },
+      "loop_detection": {
+        "enabled": true,
+        "max_repeated_attempts": 25,
+        "tracking_window": 30
+      },
+      "max_critique_rounds": 2,
+      "reset_single_category_threshold": 2,
+      "reset_total_sum_threshold": 1,
+      "early_finish_min_score": 8,
+      "physics_validation": {
+        "wall_thickness": 0.05,
+        "floor_penetration_tolerance_m": 5.0,
+        "object_penetration_threshold_m": 0.001,
+        "manipuland_furniture_tolerance_m": 0.02,
+        "remove_fallen_manipulands": true,
+        "fallen_manipuland_floor_z": -1.0,
+        "fallen_manipuland_near_floor_z": 0.02,
+        "fallen_manipuland_z_displacement": 0.3
+      },
+      "clearance_zones": {
+        "passage_size": 0.5,
+        "open_connection_clearance": 0.7
+      },
+      "support_surface_extraction": {
+        "hssd": {
+          "recompute_surfaces": false
+        },
+        "face_clustering": {
+          "normal_cluster_threshold": 0.9,
+          "normal_adjacent_threshold": 0.95,
+          "horizontal_normal_z_min": 0.95,
+          "vertical_normal_z_max": 0.05
+        },
+        "filtering": {
+          "min_surface_area_m2": 0.1,
+          "min_area_ratio": 0.2,
+          "min_inscribed_radius_m": 0.1
+        },
+        "clearance": {
+          "min_clearance_m": 0.05,
+          "max_measured_clearance_m": 5.0,
+          "top_surface_clearance_m": 0.5,
+          "self_intersection_threshold_m": 0.001,
+          "clearance_percentile": 10.0
+        },
+        "height": {
+          "surface_offset_m": 0.01,
+          "use_max_z_for_surface_height": true,
+          "max_z_percentile": 99.5,
+          "height_tolerance_m": 0.05
+        }
+      },
+      "placement_noise": {
+        "natural_profile": {
+          "position_xy_std_meters": 0.01,
+          "rotation_yaw_std_degrees": 3.0
+        },
+        "perfect_profile": {
+          "position_xy_std_meters": 0.001,
+          "rotation_yaw_std_degrees": 0.1
+        },
+        "mode": "perfect"
+      },
+      "placement_validation": {
+        "top_surface_overlap_tolerance": 0.05
+      },
+      "stack_simulation": {
+        "simulation_time": 5.0,
+        "simulation_time_step": 0.001,
+        "position_threshold": 1.0
+      },
+      "fill_simulation": {
+        "max_iterations": 3,
+        "simulation_time": 5.0,
+        "simulation_time_step": 0.001,
+        "catch_floor_z": -5.0,
+        "inside_z_threshold": -2.0,
+        "interior_scale": 0.85,
+        "top_rim_height_fraction": 0.15,
+        "spawn_height_above_rim": 0.01,
+        "height_stagger_fraction": 1.0,
+        "min_height_stagger": 0.02,
+        "nlp_influence_distance": 0.02,
+        "nlp_solver_name": "snopt",
+        "max_nan_retries": 3
+      },
+      "snap_to_object": {
+        "circular_detection_volume_ratio_threshold": 0.85
+      },
+      "pile_simulation": {
+        "simulation_time": 5.0,
+        "simulation_time_step": 0.001,
+        "spawn_height_base": 0.005,
+        "height_stagger_fraction": 1.0,
+        "min_height_stagger": 0.02,
+        "spawn_radius_scale": 0.5,
+        "min_spawn_radius": 0.05,
+        "inside_z_threshold": -0.5
+      },
+      "per_furniture_postprocessing": {
+        "enabled": true,
+        "projection": {
+          "enabled": true,
+          "xy_only": false,
+          "fix_rotation": true,
+          "influence_distance": 0.02,
+          "solver_name": "snopt",
+          "iteration_limit": 10000,
+          "time_limit_s": 360.0
+        },
+        "simulation": {
+          "enabled": true,
+          "simulation_time_s": 5.0,
+          "time_step_s": 0.001,
+          "timeout_s": 300.0,
+          "save_html": false,
+          "remove_fallen_manipulands": true,
+          "fallen_manipuland_floor_z": -1.0,
+          "fallen_manipuland_near_floor_z": 0.02,
+          "fallen_manipuland_z_displacement": 0.3
+        }
+      },
+      "context_image_generation": {
+        "enabled": false
+      },
+      "agents": {
+        "designer_agent": {
+          "name": "designer",
+          "max_turns": 2000,
+          "prompt": "MANIPULAND_DESIGNER_AGENT"
+        },
+        "planner_agent": {
+          "name": "planner",
+          "max_turns": 1000,
+          "prompt": "MANIPULAND_PLANNER_AGENT"
+        },
+        "critic_agent": {
+          "name": "critic",
+          "max_turns": 500,
+          "prompt": "MANIPULAND_CRITIC_AGENT"
+        }
+      },
+      "_name": "stateful_manipuland_agent"
+    },
+    "openai": {
+      "service_tier": "default"
+    },
+    "name": "chained_replay_224217"
+  },
+  "tool_names": [
+    "get_current_scene_state",
+    "move_furniture_tool",
+    "remove_furniture_tool",
+    "check_facing_tool"
+  ],
+  "source_manifest_sha256": "fc5ac9573971bc9e0c634c60b6f85cda9cf7d1b7adaac92ec6aadaa8ea4cb8f1",
+  "backend_generation_started": false,
+  "original_request": null
+}

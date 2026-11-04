@@ -1,0 +1,131 @@
+{
+  "run_id": "P920-RESUME-v1_20261104T144156Z",
+  "updated_at": "2026-11-04T14:45:00.635254+00:00",
+  "stage": "cold_restore_rejected_generated_run_label",
+  "status": "failed",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z",
+  "question": "Can a native existing-object session be checkpointed, closed, restored in a different process and continued with identity, state, counters, memory and real receipts intact?",
+  "completed_planned": {
+    "phases": {
+      "completed": 2,
+      "planned": 2
+    },
+    "checks": {
+      "completed": 9,
+      "planned": 22
+    },
+    "tool_calls": {
+      "completed": 2,
+      "planned": 3
+    },
+    "observations": {
+      "completed": 0,
+      "planned": 1
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "0ac6107262c593dd718015984d251f3a7f632b5ac9558ebb78040f8d617b3d3b",
+    "scripts/920/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "scripts/920/native_checkpoint.py": "ec3ea183b495ba29e210bb8b500b78d3a62d05131c8adb5c73782e547ca2f7be",
+    "scripts/920/existing_project_session.py": "5a3b94c6524e3637404817e1d95b74f85850b473fc5c6afc3dcbc154e3b41741",
+    "scripts/920/audit_session_checkpoint.py": "f20560b3f49072a41ae6a7e58e8208e987a7434faca3bcdf586878f74b8691ef"
+  },
+  "input_hashes": {
+    "manifest_sha256": "fc5ac9573971bc9e0c634c60b6f85cda9cf7d1b7adaac92ec6aadaa8ea4cb8f1"
+  },
+  "latest_verifiable_artifacts": [
+    "prepare/RESULT.json",
+    "resume/RESULT.json",
+    "checkpoint_after_prepare/manifest.json",
+    "execution/resume/receipt.json"
+  ],
+  "failure_reasons": [
+    "Cold restore rejected generated run name: actual config comparison after directory relocation finds only /name differs."
+  ],
+  "next_step": "Verify configuration difference; preserve and explicitly migrate the successful checkpoint. Do not repeat the initial tools.",
+  "execution": {
+    "prepare": {
+      "started_at": "2026-11-04T14:42:11.158476+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/audit_session_checkpoint.py",
+        "--phase",
+        "prepare",
+        "--designer",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--bundle",
+        "runs/920/P920-SESSION-v3_20261104T141050Z/input_bundle",
+        "--run",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1100488,
+      "start_ticks": "46117974",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/execution/prepare/stage.log",
+      "ended_at": "2026-11-04T14:42:24.071068+00:00",
+      "elapsed_seconds": 12.912604582961649,
+      "exit_code": 0,
+      "first_log": "2026-11-04T14:42:11.234147+00:00 begin native checkpoint phase prepare"
+    },
+    "resume": {
+      "started_at": "2026-11-04T14:42:43.442186+00:00",
+      "status": "failed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/audit_session_checkpoint.py",
+        "--phase",
+        "resume",
+        "--designer",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--bundle",
+        "runs/920/P920-SESSION-v3_20261104T141050Z/input_bundle",
+        "--run",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1100755,
+      "start_ticks": "46121202",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/execution/resume/stage.log",
+      "ended_at": "2026-11-04T14:42:51.737300+00:00",
+      "elapsed_seconds": 8.295126106007956,
+      "exit_code": 1,
+      "first_log": "2026-11-04T14:42:43.512096+00:00 begin native checkpoint phase resume"
+    },
+    "configuration_diagnosis": {
+      "started_at": "2026-11-04T14:45:37.110105+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/diagnose_config.py"
+      ],
+      "timeout_seconds": 60,
+      "pid": 7,
+      "start_ticks": "46138569",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/execution/configuration_diagnosis/stage.log",
+      "ended_at": "2026-11-04T14:45:46.760046+00:00",
+      "elapsed_seconds": 9.64995402097702,
+      "exit_code": 0,
+      "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type."
+    }
+  },
+  "process": null
+}

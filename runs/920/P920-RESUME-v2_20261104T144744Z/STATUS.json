@@ -1,0 +1,133 @@
+{
+  "run_id": "P920-RESUME-v2_20261104T144744Z",
+  "updated_at": "2026-11-04T14:51:38.391921+00:00",
+  "stage": "continued_edit_saved_restore_hash_failed",
+  "status": "failed",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z",
+  "question": "Does explicit migration of the generated run-label hash allow the already captured session to resume in a separate process, retaining its actual state and receipts?",
+  "completed_planned": {
+    "phases": {
+      "completed": 2,
+      "planned": 2
+    },
+    "checks": {
+      "completed": 14,
+      "planned": 16
+    },
+    "tool_calls": {
+      "completed": 1,
+      "planned": 1
+    },
+    "observations": {
+      "completed": 1,
+      "planned": 1
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "2d2fb704a91719f6044a7053714a24867bef1e63f268b0661046fc2a5b647d7d",
+    "scripts/920/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "scripts/920/native_checkpoint.py": "4c3f1d136a7e2402156eecb1e5c5268b129c64a8098d23a95de2c66af7809a81",
+    "scripts/920/existing_project_session.py": "5a3b94c6524e3637404817e1d95b74f85850b473fc5c6afc3dcbc154e3b41741",
+    "scripts/920/audit_session_checkpoint.py": "f20560b3f49072a41ae6a7e58e8208e987a7434faca3bcdf586878f74b8691ef",
+    "scripts/920/migrate_checkpoint_run_label.py": "b9542aa5209a2601d84ff31a977bce923a26f393fa1d34ea20606274c3d238cc"
+  },
+  "input_hashes": {
+    "source_manifest_sha256": "fc5f6ac4cafcb130341653c8176506d96ecbb18d1eda6b17a91fc648b0233c3e",
+    "source_configuration_sha256": "8e812f2d3cfb432d29b8245f85f61c003c11da227361803ba4287eb3d05e2d07"
+  },
+  "latest_verifiable_artifacts": [
+    "resume/RESULT.json",
+    "resume/OBSERVATION.json",
+    "checkpoint_after_resume/manifest.json",
+    "execution/resume/receipt.json"
+  ],
+  "failure_reasons": [
+    "Third edit and new checkpoint succeeded; strict final restore hash rejected quaternion component drift of 2.7755575615628914e-17. Stored state hash equals original tool-after hash."
+  ],
+  "next_step": "Compare serialized and native round-trip state. Preserve and continue from checkpoint_after_resume; do not replay the third edit.",
+  "execution": {
+    "migration": {
+      "started_at": "2026-11-04T14:47:56.110604+00:00",
+      "status": "completed",
+      "command": [
+        "python3",
+        "scripts/920/migrate_checkpoint_run_label.py",
+        "--source",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/checkpoint_after_prepare",
+        "--destination",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/checkpoint_after_prepare",
+        "--configuration",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/prepare/house/session_configuration.json",
+        "--expected",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v1_20261104T144156Z/EXPECTED.json",
+        "--previous-helper-sha",
+        "ec3ea183b495ba29e210bb8b500b78d3a62d05131c8adb5c73782e547ca2f7be",
+        "--designer",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/migration"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "46152469",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/execution/migration/stage.log",
+      "ended_at": "2026-11-04T14:47:56.226887+00:00",
+      "elapsed_seconds": 0.11628684803145006,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"completed\", \"tools_replayed\": 0, \"source_unchanged\": true}"
+    },
+    "resume": {
+      "started_at": "2026-11-04T14:48:15.494857+00:00",
+      "status": "failed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/audit_session_checkpoint.py",
+        "--phase",
+        "resume",
+        "--designer",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/checkpoint_after_prepare",
+        "--run",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1101506,
+      "start_ticks": "46154408",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/execution/resume/stage.log",
+      "ended_at": "2026-11-04T14:48:54.353695+00:00",
+      "elapsed_seconds": 38.85885104100453,
+      "exit_code": 1,
+      "first_log": "2026-11-04T14:48:15.566648+00:00 begin native checkpoint phase resume"
+    },
+    "state_roundtrip_diagnosis": {
+      "started_at": "2026-11-04T14:51:38.446382+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/diagnose_state_roundtrip.py"
+      ],
+      "timeout_seconds": 60,
+      "pid": 8,
+      "start_ticks": "46174703",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-RESUME-v2_20261104T144744Z/execution/state_roundtrip_diagnosis/stage.log",
+      "ended_at": "2026-11-04T14:51:39.365528+00:00",
+      "elapsed_seconds": 0.9191478359862231,
+      "exit_code": 0,
+      "first_log": "{\"serialized_sha256\": \"e3d7ea54f9f845aa33207d4bddf6c91232cd4af66f8af5ad465d7b2b0514048b\", \"restored_sha256\": \"0dcff686c1b33539e8ce997623736dd73ac2d500ce0eaa2ab143970a1451f7b7\", \"last_tool_after_sha256\": \"e3d7ea54f9f845aa33207d4bddf6c91232cd4af66f8af5ad465d7b2b0514048b\", \"differences\": [{\"path\": \"/objects/table_0/transform/rotation_wxyz/3\", \"stored\": -0.12934713870020645, \"restored\": -0.12934713870020648, \"absolute_delta\": 2.7755575615628914e-17}], \"tools_executed\": 0}"
+    }
+  },
+  "process": null
+}

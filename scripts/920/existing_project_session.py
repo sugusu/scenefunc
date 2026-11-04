@@ -7,7 +7,7 @@ used. Acquisition and other stages need their resource contracts separately.
 from __future__ import annotations
 
 import asyncio
-import hashlib
+import copy
 import json
 import os
 from pathlib import Path
@@ -15,13 +15,29 @@ import sys
 import types
 
 from native_project import import_project, read_json, sha256
+from native_checkpoint import (SESSION_SCHEMA, canonical_hash, config_hash,
+                               load_session_record, runtime_fingerprint, save_checkpoint)
 
 
 TOOLS = ("get_current_scene_state", "move_furniture_tool", "remove_furniture_tool", "check_facing_tool")
 
 
-def canonical_hash(value):
-    return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False, allow_nan=False).encode()).hexdigest()
+def native_room_summary(scene):
+    """Describe supplied geometry without inventing four enclosing walls."""
+    geometry = scene.room_geometry
+    walls = []
+    for wall in geometry.walls:
+        bounds = wall.compute_world_bounds()
+        walls.append({"object_id": str(wall.object_id), "immutable": wall.immutable,
+                      "bounds_min": bounds[0].tolist() if bounds is not None else None,
+                      "bounds_max": bounds[1].tolist() if bounds is not None else None})
+    return "## SUPPLIED ROOM GEOMETRY (native room coordinates, metres):\n" + json.dumps({
+        "room_id": scene.room_id, "room_type": scene.room_type,
+        "recorded_length": geometry.length, "recorded_width": geometry.width,
+        "wall_count": len(walls), "wall_objects": walls,
+        "recorded_openings": scene.to_state_dict()["room_geometry"]["openings"],
+        "completeness": "Only the supplied structure is described; enclosure is not inferred.",
+    }, ensure_ascii=False)
 
 
 def create_app(designer: Path, scenesmith: Path):
@@ -31,7 +47,6 @@ def create_app(designer: Path, scenesmith: Path):
     import tool_server as server
     from agent_rollout_decoupled import RolloutSession
     from Designer.replay_chained import compose_full_cfg
-    from room_summary import from_house_layout_dict
     from fastapi import HTTPException
     from fastapi.responses import JSONResponse
     from pydantic import BaseModel
@@ -43,11 +58,16 @@ def create_app(designer: Path, scenesmith: Path):
         def __init__(self, project, config):
             super().__init__(project.directory, config, project.task["design_request"], stub_assets=False)
             self.project = project
+            self.resume_record = load_session_record(project)
+            self.fingerprint = runtime_fingerprint(designer, scenesmith)
+            if self.resume_record and self.resume_record["runtime_fingerprint"] != self.fingerprint:
+                raise ValueError("Checkpoint runtime code differs; explicit migration is required")
             self.scene = project.room
+            self.scene._scenefunc_structure_labels = True
             self.house_layout = project.house.layout
             self.room_geometry = self.scene.room_geometry
             self.scene.action_log_path = self.scene.scene_dir / "native_actions.json"
-            self.room_summary = from_house_layout_dict(self.house_layout.to_dict(), self.scene.room_id)
+            self.room_summary = native_room_summary(self.scene)
             self.cfg, self.cfg_dict = compose_full_cfg(config, self.scene_dir)
             # This phase edits existing native objects. No router or generation
             # backends are started; unavailable tools are removed from both the
@@ -59,7 +79,51 @@ def create_app(designer: Path, scenesmith: Path):
             cfg["rendering"]["blender_server_port_range"] = [18100, 18120]
             cfg["collision_geometry"]["server_port_range"] = [18130, 18150]
             self.cfg_dict["experiment"]["num_workers"] = max(1, ((os.cpu_count() or 1) + 3) // 4)
+            self.effective_config_hash = config_hash(self.cfg_dict, self.scene_dir)
+            if self.resume_record and (self.resume_record["config_name"] != config
+                    or self.resume_record["effective_config_sha256"] != self.effective_config_hash
+                    or self.resume_record["tool_names"] != list(TOOLS)):
+                raise ValueError("Checkpoint configuration/tool scope differs")
+            self.receipts = copy.deepcopy(self.resume_record["receipts"]) if self.resume_record else []
+            self.restoration_transitions = copy.deepcopy(self.resume_record["restoration_transitions"]) if self.resume_record else []
+            self.initial_state_sha256 = (self.resume_record["initial_state_sha256"] if self.resume_record
+                                         else canonical_hash(self.scene.to_state_dict()))
+            if self.receipts:
+                (self.scene_dir / "session_receipts.jsonl").write_text("".join(
+                    json.dumps(row, ensure_ascii=False) + "\n" for row in self.receipts))
             self.active_environment = None
+            self.fp_mat_server = None
+
+        def capture_runtime(self, env):
+            from omegaconf import OmegaConf
+            return {"schema": SESSION_SCHEMA, "stage": env.stage, "room_id": self.scene.room_id,
+                    "step_idx": env.step_idx, "memory": copy.deepcopy(env.mem),
+                    "receipts": copy.deepcopy(self.receipts),
+                    "restoration_transitions": copy.deepcopy(self.restoration_transitions),
+                    "initial_state_sha256": self.initial_state_sha256,
+                    "config_name": self.config, "effective_config_sha256": self.effective_config_hash,
+                    "tool_names": list(TOOLS), "runtime_fingerprint": self.fingerprint,
+                    "active_noise_profile": OmegaConf.to_container(env.agent.furniture_tools.active_noise_profile),
+                    "scope": "existing_objects_furniture_revision",
+                    "recovery_boundary": "between completed tool batches; no in-flight operation recovery"}
+
+        def checkpoint(self, destination):
+            if self.active_environment is None:
+                if self.resume_record is None:
+                    raise ValueError("Start the furniture stage before checkpointing")
+                record = self.resume_record
+            else:
+                record = self.capture_runtime(self.active_environment)
+            return save_checkpoint(self.project, destination, record)
+
+        def current_context(self):
+            context = self.project.visible_initial_context()
+            context["asset_bindings"] = {key: value for key, value in context["asset_bindings"].items()
+                                         if key in context["objects"]}
+            context["prior_tool_receipts"] = copy.deepcopy(self.receipts[-4:])
+            context["history_status"] = "recorded_native_session" if self.receipts else "no_prior_tool_batches"
+            context["total_tool_batches"] = len(self.receipts)
+            return context
 
         def start(self):
             raise RuntimeError("An imported session must not regenerate its floor plan")
@@ -74,6 +138,11 @@ def create_app(designer: Path, scenesmith: Path):
                 raise ValueError("Stub execution is outside the existing-room contract")
             env = super().make_roomscene_env(stage, render_gpu_id, logger, skip_render=False)
             self.active_environment = env
+            if self.resume_record is not None:
+                from omegaconf import OmegaConf
+                env.step_idx = self.resume_record["step_idx"]
+                env.mem = copy.deepcopy(self.resume_record["memory"])
+                env.agent.furniture_tools.active_noise_profile = OmegaConf.create(self.resume_record["active_noise_profile"])
             missing = set(TOOLS) - set(env.tool_map)
             if missing:
                 env.cleanup()
@@ -87,7 +156,7 @@ def create_app(designer: Path, scenesmith: Path):
                       "Inspect the current state, latest real receipts and five views. "
                       "A successful edit does not establish collision freedom or activity suitability. "
                       "Report unverified requirements as unknown.\nAvailable executable tools:\n" + schema_text)
-            initial_context = self.project.visible_initial_context()
+            initial_context = self.current_context()
             (self.scene_dir / "session_initial_context.json").write_text(json.dumps(initial_context, indent=2) + "\n")
             (self.scene_dir / "session_configuration.json").write_text(json.dumps({
                 "scope": "existing_objects_furniture_revision", "config": self.config,
@@ -97,10 +166,11 @@ def create_app(designer: Path, scenesmith: Path):
             }, indent=2) + "\n")
             original_observation = env.observation
             original_step = env.step
+            original_cleanup = env.cleanup
 
             def observation(bound_env):
                 before = self.scene.to_state_dict()
-                context = self.project.visible_initial_context()
+                context = self.current_context()
                 bound_env.room_prompt = self.project.task["design_request"] + "\nCURRENT NATIVE STATE:\n" + json.dumps(context, ensure_ascii=False)
                 bound_env.system = system + ("\n" + self.room_summary if self.room_summary else "")
                 obs = original_observation()
@@ -121,12 +191,22 @@ def create_app(designer: Path, scenesmith: Path):
                 record = {"step_idx": bound_env.step_idx, "tool_calls": tool_calls,
                           "results": result, "before_sha256": canonical_hash(before),
                           "after_sha256": canonical_hash(self.scene.to_state_dict())}
+                self.receipts.append(copy.deepcopy(record))
                 with (self.scene_dir / "session_receipts.jsonl").open("a") as stream:
                     stream.write(json.dumps(record, ensure_ascii=False) + "\n")
+                    stream.flush()
+                    os.fsync(stream.fileno())
                 return result
+
+            def cleanup(bound_env):
+                if self.active_environment is bound_env:
+                    self.resume_record = self.capture_runtime(bound_env)
+                    self.active_environment = None
+                original_cleanup()
 
             env.observation = types.MethodType(observation, env)
             env.step = types.MethodType(step, env)
+            env.cleanup = types.MethodType(cleanup, env)
             return env
 
         def close(self):
@@ -140,6 +220,9 @@ def create_app(designer: Path, scenesmith: Path):
         output_directory: str
         config: str = "scene_designer"
 
+    class CheckpointRequest(BaseModel):
+        output_directory: str
+
     # Serialize the upstream singleton application's requests. Concurrent
     # observation and edit would invalidate image/state provenance.
     serial = asyncio.Lock()
@@ -148,7 +231,7 @@ def create_app(designer: Path, scenesmith: Path):
         async with serial:
             if isinstance(server._state.session, ExistingSession):
                 allowed = {"/healthz", "/session/existing", "/session/stage", "/session/observation",
-                           "/session/step", "/session/cleanup", "/session/close"}
+                           "/session/step", "/session/cleanup", "/session/close", "/session/checkpoint"}
                 if request.url.path not in allowed:
                     return JSONResponse(status_code=409, content={"detail": "Endpoint not validated for imported-state metadata"})
             return await call_next(request)
@@ -167,10 +250,22 @@ def create_app(designer: Path, scenesmith: Path):
                 "project_id": project.manifest["project"]["project_id"],
                 "scene_directory": str(project.directory), "backend_generation_started": False,
                 "initial_object_ids": sorted(map(str, session.scene.objects)),
+                "resumed_step_idx": session.resume_record["step_idx"] if session.resume_record else None,
                 "scope": "existing_objects_furniture_revision"}
+
+    def checkpoint_existing_session(req):
+        session = server._state.session
+        if not isinstance(session, ExistingSession):
+            raise HTTPException(409, "No existing-project session to checkpoint")
+        try:
+            return session.checkpoint(Path(req.output_directory))
+        except (ValueError, KeyError, OSError) as error:
+            raise HTTPException(422, str(error)) from error
 
     # The class is local; give FastAPI the evaluated annotation explicitly.
     new_existing_session.__annotations__["req"] = ExistingRequest
     server.app.post("/session/existing")(new_existing_session)
+    checkpoint_existing_session.__annotations__["req"] = CheckpointRequest
+    server.app.post("/session/checkpoint")(checkpoint_existing_session)
     server.app.state.scenefunc_existing_installed = True
     return server.app, server
