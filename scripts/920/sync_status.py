@@ -30,6 +30,8 @@ def main():
         'MODEL_DOWNLOAD_RECEIPT.json', 'MODEL_DOWNLOAD_LAUNCH.json',
         'MODEL_CPU_VALIDATION.json', 'MODEL_FORWARD_LAUNCH.json',
         'MODEL_FORWARD_PREFLIGHT.json', 'RUN_PROTOCOL.json',
+        'MODEL_FORWARD_UTF8_LAUNCH.json', 'MODEL_FORWARD_UTF8_PREFLIGHT.json',
+        'model_forward_preflight_utf8.log',
         'model_download.log', 'model_forward_preflight.log',
         'preflight/REPOSITORY_WEIGHTS_MATCH.json',
         'preflight/UPSTREAM_DOWNLOAD_920.json',
@@ -38,6 +40,9 @@ def main():
         'preflight/upstream_download_920.log',
         'preflight/geometry_install.log',
         'preflight/model_local/A_engineering_raw_output.txt',
+        'preflight/model_local/A_engineering_raw_output_UTF8.txt',
+        'preflight/model_local/A_engineering_token_ids_UTF8.json',
+        'preflight/HSSD_AUTHENTICATED_ACCESS_CHECK.json',
     ]
     evidence = []
     for relative in sources:
@@ -52,13 +57,18 @@ def main():
     status['configuration_hashes']['upstream.920.lock.json'] = hashlib.sha256((run / 'upstream.920.lock.json').read_bytes()).hexdigest()
     status['failure_reasons'] = [x for x in status['failure_reasons'] if x['code'] != 'UPSTREAM_HASH_MISMATCH']
     status['source_difference'] = 'Official pinned source independently verified; see evidence/UPSTREAM_LOCK_CORRECTION.json. Historical executor byte equivalence is not claimed.'
-    status['next_step'] = 'After user configures HSSD-authorized credentials, download selected locked assets, reconstruct and audit both unrevised drafts, then validate five-view memory budget before four G/U revision calls.'
+    status['next_step'] = 'Finish selected asset hashes, reconstruct and audit both unrevised drafts, then validate five-view memory budget before four G/U revision calls.'
     forward = root / 'MODEL_FORWARD_PREFLIGHT.json'
     launch = root / 'MODEL_FORWARD_LAUNCH.json'
+    attempts = [json.loads(p.read_text()) for p in [forward, root / 'MODEL_FORWARD_UTF8_PREFLIGHT.json'] if p.is_file()]
+    if (root / 'MODEL_FORWARD_UTF8_LAUNCH.json').is_file():
+        launch = root / 'MODEL_FORWARD_UTF8_LAUNCH.json'
+        forward = root / 'MODEL_FORWARD_UTF8_PREFLIGHT.json'
+    status['engineering_attempts'] = attempts
     if launch.is_file():
         receipt = json.loads(launch.read_text())
         status.update(model_started_at=receipt['started_at'], model_exit_code=receipt.get('exit_code'), model_launch=receipt)
-        log = root / 'model_forward_preflight.log'
+        log = Path(receipt['log'])
         status['model_first_log'] = {'path': str(log), 'line': log.read_text().splitlines()[0] if log.exists() and log.stat().st_size else None}
         if receipt['status'] == 'running':
             status['status'] = 'running'
@@ -73,12 +83,12 @@ def main():
     local.update(updated_at=now, stage='preflight', milestone=a.stage, branch='runs/920', configuration_sha256=status['configuration_hashes']['RUN_PROTOCOL.json'],
                  repository_status=str(run / 'STATUS.json'), blockers=[x['effect'] for x in status['failure_reasons']], next_step=status['next_step'])
     local['resources']['executor'] = str(root / 'runtime' / run_id / 'work')
-    local['resources']['assets'] = 'locked HSSD selected set; access blocked by provider 401'
+    local['resources']['assets'] = 'locked HSSD selected set; authorized access verified, asset integrity pending'
     local['shared_image'] = json.loads((root / 'RUN_PROTOCOL.json').read_text())['shared_image']
     if forward.is_file():
         result = json.loads(forward.read_text())
         local['preflight']['model_forward'] = result['status']
-        local['actual_calls']['engineering_model_forward'] = {'successful': int(result['status'] == 'pass'), 'failed': int(result['status'] == 'failed')}
+        local['actual_calls']['engineering_model_forward'] = {'successful': sum(x['status'] == 'pass' for x in attempts), 'failed': sum(x['status'] == 'failed' for x in attempts)}
     atomic(root / 'STATUS.json', local)
     print(json.dumps({'run_id': run_id, 'stage': a.stage, 'status': status['status'], 'evidence_files': len(evidence)}))
 

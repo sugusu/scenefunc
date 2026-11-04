@@ -5,7 +5,7 @@ This run tests whether measured functional-use feedback improves one revision ov
 Current machine root: `/data/wyh/scene_cvpr_20261020/design_decisions_920`.
 The authoritative portable progress files are `runs/920/latest.json` and this directory's `STATUS.json`.
 
-The exact model revision and all four weight shards are verified. The original requirement card hash matches. Native first-round inputs encode to A=2237 and B=2241 tokens without truncation, matching the handoff. The engineering generation has a 32-token cap and executes no tools; it cannot establish 2048-token or five-view capacity, furnish a room, or answer the G/U research question.
+The exact model revision and all four weight shards are verified. The original requirement card hash matches. Native first-round inputs encode to A=2237 and B=2241 tokens without truncation, matching the handoff. The UTF-8 engineering retry completed with exit 0: 32 output tokens, 2.90 seconds generation, 18,126,178,304 bytes peak allocated and 18,345,885,696 bytes peak reserved. The original ASCII serialization failure remains recorded. This engineering generation executes no tools; it cannot establish 2048-token or five-view capacity, furnish a room, or answer the G/U research question.
 
 ## Resource recovery and actual commands
 
@@ -44,6 +44,6 @@ The GPU guard uses the existing shared GPU0 lock plus an experiment lock, checks
 
 ## Remaining experiment gate
 
-HSSD returned HTTP 401 `GatedRepo`. The user must accept the provider conditions using their own account and configure a read token locally. Only then can the 23 selected real meshes plus coordinate files (62,522,166 bytes total) be downloaded and checked. Tokens, weights, meshes, and full checkpoints are excluded from Git.
+HSSD initially returned HTTP 401 `GatedRepo`. After the user configured an authorized local token, both provider checks returned 200. All 23 selected real meshes plus coordinate files (62,522,166 bytes total) are downloaded and hash-verified; see `evidence/ASSET_VERIFICATION.json`. Tokens, weights, meshes, and full checkpoints are excluded from Git.
 
 After access is available: reconstruct both historical **unrevised** drafts, verify source meshes, object identities/transforms and fresh geometric audits, then validate the five-view budget. Only trusted reconstructions qualify for four same-start G/U revision calls. Otherwise record why new A/B drafts are required. No finished scene, four-cell use score, training gain, or design improvement is claimed by this preflight.
