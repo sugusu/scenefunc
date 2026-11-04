@@ -3,13 +3,13 @@
   "run_id": "P920-DD-v1_20261104T083214Z",
   "baseline_sha": "bdabc219772112ff2aee0b4a14ffd86809f48cb1",
   "branch": "runs/920",
-  "updated_at": "2026-11-04T09:20:18.408595+00:00",
+  "updated_at": "2026-11-04T09:22:52.674180+00:00",
   "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920",
   "runtime_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DD-v1_20261104T083214Z",
   "research_question": "From each identical unrevised A/B draft, does one revision with measured functional-use feedback improve practical usability beyond the same geometry feedback, and at what cost?",
-  "stage": "model_environment_weights_accepted",
+  "stage": "engineering_output_encoding_failed",
   "status": "partial",
-  "activity": "model_environment_weights_accepted",
+  "activity": "engineering_output_encoding_failed",
   "completed_planned": {
     "formal_draft_rounds": {
       "completed": 0,
@@ -56,12 +56,24 @@
       "sha256": "3057e8058df941c00d044027e522c3c9a9997e4542b802a400964a1eb8f54ea1"
     },
     {
+      "path": "evidence/MODEL_FORWARD_LAUNCH.json",
+      "sha256": "2266b79fc0b94c1df9a938d9c7735f593e288c004bcd7b09cf6de9766aad3f5a"
+    },
+    {
+      "path": "evidence/MODEL_FORWARD_PREFLIGHT.json",
+      "sha256": "b9c30a0c06a5b8dddce3866e6de9162724072f43a05720b510369d02d5828b3a"
+    },
+    {
       "path": "evidence/RUN_PROTOCOL.json",
       "sha256": "4b6ba471df9f7e45c3f8c11d859038e98540fd8a947b8fb4fac101083024292b"
     },
     {
       "path": "evidence/model_download.log",
       "sha256": "c5676f4041430668b8a7d59cb7b4063c1ba9e3273fc2072e908bf27d683124f0"
+    },
+    {
+      "path": "evidence/model_forward_preflight.log",
+      "sha256": "7e115c8aebf86d389df7e293b2d5e9821d35a41f35d58d7c8d346c68ca527fae"
     },
     {
       "path": "evidence/REPOSITORY_WEIGHTS_MATCH.json",
@@ -78,23 +90,68 @@
     {
       "path": "evidence/geometry_install.log",
       "sha256": "34e98adec3d0bbb101f614d3d003a47370bd7ea7e5c75fccb0a77fb77dd88b34"
+    },
+    {
+      "path": "evidence/A_engineering_raw_output.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   ],
   "failure_reasons": [
     {
-      "code": "HSSD_GATED_ACCESS",
-      "http_status": 401,
-      "error_code": "GatedRepo",
-      "at": "2026-11-04T09:10:14.505102+00:00",
-      "effect": "No real furniture meshes; no furnished scene or G/U evaluation can run."
+      "code": "ENGINEERING_OUTPUT_ENCODING",
+      "effect": "First bounded GPU generation reached output serialization but ASCII write failed; original exit 1 retained. One explicit UTF-8 engineering retry will follow."
     }
   ],
   "next_step": "After user configures HSSD-authorized credentials, download selected locked assets, reconstruct and audit both unrevised drafts, then validate five-view memory budget before four G/U revision calls.",
   "model_download_receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/MODEL_DOWNLOAD_RECEIPT.json",
-  "model_started_at": null,
-  "model_first_log": null,
-  "model_exit_code": null,
+  "model_started_at": "2026-11-04T09:20:37.822564+00:00",
+  "model_first_log": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/model_forward_preflight.log",
+    "line": "2026-11-04T09:20:41.480767+00:00 loading fixed FP16 model"
+  },
+  "model_exit_code": 1,
   "historical_autodl_results_used_as_920_results": false,
   "model_or_training_advantage_claim": null,
-  "source_difference": "Official pinned source independently verified; see evidence/UPSTREAM_LOCK_CORRECTION.json. Historical executor byte equivalence is not claimed."
+  "source_difference": "Official pinned source independently verified; see evidence/UPSTREAM_LOCK_CORRECTION.json. Historical executor byte equivalence is not claimed.",
+  "model_launch": {
+    "started_at": "2026-11-04T09:20:37.822564+00:00",
+    "status": "failed",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/model_forward_preflight.py",
+      "--child"
+    ],
+    "pid": 1063078,
+    "start_ticks": "44188612",
+    "boot_id": "460b0afe-463d-4722-b0fa-a2b266f87bd1",
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "gpu": 0,
+    "total_mib": 24576,
+    "free_mib": 24121,
+    "driver": "580.178.04",
+    "estimated_required_free_bytes": 22163792352,
+    "estimate_workspace_reserve_bytes": 4294967296,
+    "required_host_available_bytes": 43658429376,
+    "host_memory": {
+      "MemTotal": 134615777280,
+      "MemAvailable": 129437245440
+    },
+    "wall_timeout_seconds": 1200,
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/model_forward_preflight.log",
+    "formal_capacity_gate": "not evaluated; this gate covers engineering input and 32 output tokens only",
+    "child_pid": 1063087,
+    "child_start_ticks": "44188641",
+    "ended_at": "2026-11-04T09:21:04.237995+00:00",
+    "exit_code": 1
+  },
+  "resolved_blockers": [
+    {
+      "code": "HSSD_GATED_ACCESS",
+      "resolved_at": "2026-11-04T09:22:52.630735+00:00",
+      "evidence": "HSSD_AUTHENTICATED_ACCESS_CHECK.json",
+      "http_status": 200
+    }
+  ],
+  "engineering_model_result": "failed",
+  "formal_capacity_validated": false
 }
