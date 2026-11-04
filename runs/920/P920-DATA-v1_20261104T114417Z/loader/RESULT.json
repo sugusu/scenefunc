@@ -1,0 +1,171 @@
+{
+  "started_at": "2026-11-04T11:44:18.041320+00:00",
+  "status": "passed_engineering_only",
+  "upstream_revision": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "model_revision": "63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "training": false,
+  "model_weights_loaded": false,
+  "model_calls": 0,
+  "qualified_professional_samples": 0,
+  "scope": "Engineering loader fixtures only; no scene edits or design-quality conclusions.",
+  "source_lock_sha256": "9e2a35d15d2586207a1ef599d903ffabc1520c3bea3e1019acd91fe439510ef2",
+  "source_observation": {
+    "checkpoint": "runtime/P920-DD-v1_20261104T083214Z/drafts/A/checkpoint.json",
+    "checkpoint_sha256": "3390702a7d9d9ecaff0874b38325f9187f681c9c1804b492a9ad2060942523b2",
+    "views": [
+      {
+        "path": "runtime/P920-DD-v1_20261104T083214Z/drafts/A/views/current_state.topdown.png",
+        "sha256": "2784fd3d01e68479be63d33e168fe918ab154bfc227f57e76752357982423304"
+      },
+      {
+        "path": "runtime/P920-DD-v1_20261104T083214Z/drafts/A/views/current_state.south.png",
+        "sha256": "8e140ca4b1423ac8a2f3a1670e63433e0e0b4fc43a2dcf346fe47a081176acfd"
+      },
+      {
+        "path": "runtime/P920-DD-v1_20261104T083214Z/drafts/A/views/current_state.east.png",
+        "sha256": "6163ef06a455e5517f54bc5dbdcf5ac8d92648dc1e68e8e1ebc9293bdb9e3a90"
+      },
+      {
+        "path": "runtime/P920-DD-v1_20261104T083214Z/drafts/A/views/current_state.west.png",
+        "sha256": "bc5eea4f11d811e8ffe729f04e0b1ce4b2ce82ef47e66f9bbc471e34ff2685dc"
+      },
+      {
+        "path": "runtime/P920-DD-v1_20261104T083214Z/drafts/A/views/current_state.north.png",
+        "sha256": "c7517f0311b204503780650f0343aeea32b3347a703d08046bc55f0ae8faec05"
+      }
+    ]
+  },
+  "missing_view_error": "Scene observations require 5 distinct images ordered topdown, south, east, west, north",
+  "wrong_order_error": "Expected topdown view, got /data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DD-v1_20261104T083214Z/drafts/A/views/current_state.north.png",
+  "checks": {
+    "metadata_pair_change_has_no_effect": true,
+    "initial_state_metadata_ignored": true,
+    "paired_reason_changes_actual_labels": true,
+    "paired_reason_reaches_target": true,
+    "same_reason_reaches_separate_qa_target": true,
+    "reason_absent_from_separate_action_target": true,
+    "same_action_in_both_groups": true,
+    "all_five_views_preserved": true,
+    "missing_view_rejected": true,
+    "wrong_order_rejected": true,
+    "collator_masks_padding": true,
+    "cuda_not_initialized": true
+  },
+  "fixtures": {
+    "separate_action": {
+      "fixture_sha256": "3412bf848e3bf526b717e9ab1220136606a0163c3c7717928896983ead541d06",
+      "stage": "furniture",
+      "input_tokens": 1311,
+      "prompt_tokens_masked": 1256,
+      "supervised_tokens": 55,
+      "image_count": 5,
+      "memory": "# Memory snapshot (empty)",
+      "decoded_supervised_target": "<think>\n\n</think>\n<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"desk_0\", \"x\": 0.2, \"y\": 1.45, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n",
+      "input_ids_sha256": "ee28b04d2fb020de89f3fcb856b28e10d02216cf987c134c697108070a514562",
+      "labels_sha256": "92c304d0ff5b43e12f02c592327246f2e426934b833f05b7fe09da9e2ece6857",
+      "prompt_is_exact_prefix": true,
+      "loss_mask_matches_assistant_span": true
+    },
+    "metadata_only_changed": {
+      "fixture_sha256": "8743115e7c22decba00454362a7bfac0a8d06060a64f8969b9436f1ed420a6b7",
+      "stage": "furniture",
+      "input_tokens": 1311,
+      "prompt_tokens_masked": 1256,
+      "supervised_tokens": 55,
+      "image_count": 5,
+      "memory": "# Memory snapshot (empty)",
+      "decoded_supervised_target": "<think>\n\n</think>\n<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"desk_0\", \"x\": 0.2, \"y\": 1.45, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n",
+      "input_ids_sha256": "ee28b04d2fb020de89f3fcb856b28e10d02216cf987c134c697108070a514562",
+      "labels_sha256": "92c304d0ff5b43e12f02c592327246f2e426934b833f05b7fe09da9e2ece6857",
+      "prompt_is_exact_prefix": true,
+      "loss_mask_matches_assistant_span": true
+    },
+    "paired": {
+      "fixture_sha256": "20eb8f70041127d90070fbf6008140fefab4ee4746efa65a88d74f6f6bc14acc",
+      "stage": "furniture",
+      "input_tokens": 1340,
+      "prompt_tokens_masked": 1256,
+      "supervised_tokens": 84,
+      "image_count": 5,
+      "memory": "# Memory snapshot (empty)",
+      "decoded_supervised_target": "<think>\nENGINEERING_REASON_ONLY: Preserve the existing wardrobe_0 instance while editing desk_0. A replacement wardrobe with the same shape would lose identity.\n</think>\n<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"desk_0\", \"x\": 0.2, \"y\": 1.45, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n",
+      "input_ids_sha256": "e2ef7f3908d35c2d5872d48e8199abd564752aa7ed8b2a9604b8dbc1b8ca30ec",
+      "labels_sha256": "15657d725844c9793b932960ad99ef3d485d6b72f2ee475c0d1a4e9eae12e2dd",
+      "prompt_is_exact_prefix": true,
+      "loss_mask_matches_assistant_span": true
+    },
+    "separate_reason": {
+      "fixture_sha256": "674a2a47e4d3b1a106df33f810dead71ebc1309df586188135906a62d4f0bc10",
+      "stage": "qa",
+      "input_tokens": 1281,
+      "prompt_tokens_masked": 1244,
+      "supervised_tokens": 37,
+      "image_count": 5,
+      "memory": "",
+      "decoded_supervised_target": "<answer>\nENGINEERING_REASON_ONLY: Preserve the existing wardrobe_0 instance while editing desk_0. A replacement wardrobe with the same shape would lose identity.\n</answer><|im_end|>\n",
+      "input_ids_sha256": "179fa8f09b93955d00b315af877395d814ce6b461893a4f378f401cc51155f68",
+      "labels_sha256": "29826e225af733e71dd311d0dff1f3800a1e20f9e486df3fcf1b3e72f1866b97",
+      "prompt_is_exact_prefix": true,
+      "loss_mask_matches_assistant_span": true
+    },
+    "initial_state_metadata_only": {
+      "fixture_sha256": "e5472c2aea0e6839a9765ad6712c4193639ece0b382b4e58ae29fd35889e0270",
+      "stage": "furniture",
+      "input_tokens": 1311,
+      "prompt_tokens_masked": 1256,
+      "supervised_tokens": 55,
+      "image_count": 5,
+      "memory": "# Memory snapshot (empty)",
+      "decoded_supervised_target": "<think>\n\n</think>\n<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"desk_0\", \"x\": 0.2, \"y\": 1.45, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n",
+      "input_ids_sha256": "ee28b04d2fb020de89f3fcb856b28e10d02216cf987c134c697108070a514562",
+      "labels_sha256": "92c304d0ff5b43e12f02c592327246f2e426934b833f05b7fe09da9e2ece6857",
+      "prompt_is_exact_prefix": true,
+      "loss_mask_matches_assistant_span": true
+    }
+  },
+  "group_budgets": {
+    "paired": {
+      "samples": 1,
+      "action_examples": 1,
+      "supervised_tokens": 84
+    },
+    "separate": {
+      "samples": 2,
+      "action_examples": 1,
+      "supervised_tokens": 92
+    },
+    "matched_training_budget": false,
+    "note": "Format overhead and sample counts differ. This is a loader audit, not a frozen training comparison."
+  },
+  "official_entry_dry_run": {
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "-m",
+      "src.train_sft",
+      "--dry-run",
+      "--use-cpu",
+      "--model-path",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+      "--sft-root",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DATA-v1_20261104T114417Z/loader/fixtures/paired",
+      "--repo-root",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920",
+      "--output-dir",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DATA-v1_20261104T114417Z/loader/official_dry_run",
+      "--max-pixels",
+      "65536",
+      "--report-to",
+      "none",
+      "--dataloader-workers",
+      "0"
+    ],
+    "cwd": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/research_support/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "started_at": "2026-11-04T11:44:23.814601+00:00",
+    "ended_at": "2026-11-04T11:44:30.078858+00:00",
+    "exit_code": 0,
+    "first_log": "[init] loading processor from /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672"
+  },
+  "exit_code": 0,
+  "limitation": "No qualified same-project professional sample is available; that pre-training gate remains open.",
+  "ended_at": "2026-11-04T11:44:30.078890+00:00"
+}

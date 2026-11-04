@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-11-04T11:44:17.742470+00:00",
+  "run_id": "P920-DATA-v1_20261104T114417Z",
+  "question": "Does the real pinned SFT loader see pairing changes and mask non-assistant tokens; which professional source evidence is available on 920?",
+  "scope": "CPU-only source and loader audit; researcher-authored engineering fixtures, not training data or quality evaluation.",
+  "max_model_calls": 0,
+  "max_parameter_updates": 0,
+  "gpu_access": false,
+  "wall_timeout_seconds": 300,
+  "upstream_commit": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "source_lock_sha256": "9e2a35d15d2586207a1ef599d903ffabc1520c3bea3e1019acd91fe439510ef2",
+  "audit_script_sha256": "a679121aad1e6bef601364cbb152a3f0f8384297bc21905bcdaaec272a936eec",
+  "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DATA-v1_20261104T114417Z/loader",
+  "same_project_professional_gate_expected_status": "not_satisfied_pending_actual_evidence",
+  "checks": [
+    "metadata-only pairing is invisible",
+    "assistant rationale changes actual labels",
+    "input prefix and image tokens masked",
+    "scoring metadata excluded",
+    "initial_state metadata behavior",
+    "five-view count and order rejection",
+    "collator padding mask",
+    "official train_sft --dry-run exits before loading model"
+  ],
+  "new_scene_generation": false
+}

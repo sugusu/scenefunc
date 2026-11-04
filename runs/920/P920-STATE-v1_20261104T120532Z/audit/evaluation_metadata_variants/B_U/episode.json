@@ -1,0 +1,374 @@
+{
+  "stage": "furniture",
+  "system": "You are a furniture designer. Place floor-standing furniture in a single room.\nRoom Description: 在给定的巴黎开间内为一位居家办公的住户安排睡眠、收纳、办公和用餐。工作材料平摊占80×50厘米，用餐需要60×40厘米可用台面。住户重视窗景，也希望尽量留下日常活动空间。请交付完整可编辑的房间。吃饭期间工作材料也必须原位平摊，不能收起或移动。\nRules:\n- Execute directly without asking for confirmation\n- Complete the full design autonomously\n- Never finish while any physics collision remains\n- Use realistic, functional proportions\n- Functional fronts (doors/drawers) must face AWAY from walls\nWorkflow:\n1. Generate all needed furniture assets in one batched call for style consistency\n2. Place each piece at an approximate (x, y, yaw)\n3. Snap each piece to its wall / target furniture\n4. For corrections use move / remove / rescale\n5. Ensure the final layout matches the description\nGuidelines:\n- Furniture with doors/drawers (dressers, cabinets, beds, nightstands, desks, refrigerators) must use orientation=\"away\" when snapped to a wall\n- Keep door swing zones and passages clear\n- Scale piece count to room size (<10 m²: 3-6; 10-20 m²: 7-12; >20 m²: 12+)\n- Do NOT generate wall decor, ceiling fixtures, or surface objects — those are handled by other agents\nImage annotations (what each rendered view shows):\n- Red dots with (x, y) text are coordinate markers in meters — use them to read positions and free floor space\n- Blue wireframe boxes are 3D bounding boxes around each placed furniture piece — they show its true footprint and height\n- Blue rectangular tags with white text inside each box are the object IDs (use these IDs when calling move / remove / rescale / snap)\n- Cyan / turquoise arrows point along each furniture piece's functional front (+Y / \"away\" direction) — use them to verify that doors and drawers face into the room, not the wall\n- Colored tags on the walls label openings: green = door, orange = window, purple = open connection. Do not block these regions\nAvailable tools:\nTools available to the furniture designer. Field names, types, enums, ranges are strictly enforced.\n\n# Asset generation\n\n- generate_assets(object_descriptions: list[str], short_names: list[str], desired_dimensions: list[[w,d,h]], style_context: str = \"\") -> {success, assets: [{object_id, width, depth, height, source}]}\n  Batch-generate (or retrieve from articulated catalog) 3D furniture assets.\n  object_descriptions / short_names / desired_dimensions MUST be lists of equal length (one entry per asset).\n  desired_dimensions is a list of [width, depth, height] triplets, meters.\n  Every asset_id used in add_furniture_to_scene_tool MUST first be produced here.\n\n# Placement\n\n- add_furniture_to_scene_tool(asset_id: str, x: float, y: float, yaw: float = 0.0) -> Result\n  Place an asset in the room at (x, y, yaw). yaw in degrees; 0 faces +y (north).\n  asset_id MUST be an object_id returned by an earlier generate_assets.\n\n- snap_to_object_tool(object_id: str, target_id: str, orientation: str = \"none\") -> Result\n  Snap flush to a wall or furniture. orientation is enum [\"toward\",\"away\",\"none\"].\n    \"toward\" — face toward target (chairs → tables, sofas → TV)\n    \"away\"   — face away from target (storage furniture → walls)\n    \"none\"   — symmetric items (coffee tables)\n  orientation=\"away\" is ONLY valid when target_id is a wall id (e.g. \"wall_north\",\n  \"east_wall\"); for furniture-to-furniture snapping use orientation=\"none\".\n\n# Correction\n\n- move_furniture_tool(object_id: str, x: float, y: float, yaw: float = 0.0) -> Result\n  Absolute move/rotate of an existing object.\n\n- remove_furniture_tool(object_id: str) -> Result\n\n- rescale_furniture_tool(object_id: str, scale_factor: float) -> Result\n  Rescale the asset SDF. scale_factor > 0 and != 1.0.\n  ⚠ Affects ALL instances of the same asset (not just this object).\n\n# Validation\n\n- check_physics() -> str\n  Run the physics/collision check after placement or correction. Use its\n  result to detect furniture-floor, furniture-wall, and object collisions.\n\n# Strict rules\n\n- asset_id / object_id are CASE-SENSITIVE exact strings returned by generate_assets.\n  Never invent ids like \"chair\" (no postfix) — real ids are \"chair_0\", \"dining_chair_a1b2\".\n- desired_dimensions is list[list[float]], NOT a JSON string.\n- `snap_to_object_tool.orientation=\"away\"` to a wall is the correct idiom for storage furniture (wardrobes, dressers, cabinets, beds, nightstands, desks). Using \"toward\" makes the functional front face the wall and breaks usage.\n- Furniture sits on the floor: only x, y, yaw are exposed (z / roll / pitch are fixed internally).\nStart by generating the needed furniture assets.\nWhen complete, summarize what you placed.\n\n## Frozen room and coordinate contract\nThis input is a fixed development proxy shell, not a measured as-built Paris apartment.\nDo not change the shell. Native tool coordinates are x east, y north, z up, in metres;\nyaw 0 faces +y. Convert source [x,y,z] to native [x,-z,y], yaw=-source facing.\nThe attached image is a public input schematic, not the native ID-annotated renderer.\nIn this image blue denotes a window and orange a door; no furniture is present.\nDo not infer furniture, door swing volumes or storage capacity from this schematic.\nThe exact frozen source shell below uses x east, y up, z south; wall holes use\nfacing-local horizontal/vertical offsets. It includes a bathroom partition.\n{\"room_structure\":[{\"name\":\"wall_n\",\"location\":[0,1.25,-2.66],\"dimensions\":[5.3,2.5,0.02],\"facing\":180,\"color\":\"#F2F0EB\",\"holes\":[{\"location\":[-1.5,-0.2],\"dimensions\":[0.9,2.1]}]},{\"name\":\"wall_s\",\"location\":[0,1.25,2.66],\"dimensions\":[5.3,2.5,0.02],\"facing\":0,\"color\":\"#F2F0EB\",\"holes\":[{\"location\":[0,0.35],\"dimensions\":[1.8,1.4]}]},{\"name\":\"wall_e\",\"location\":[2.66,1.25,0],\"dimensions\":[5.3,2.5,0.02],\"facing\":270,\"color\":\"#F2F0EB\",\"holes\":[]},{\"name\":\"wall_w\",\"location\":[-2.66,1.25,0],\"dimensions\":[5.3,2.5,0.02],\"facing\":90,\"color\":\"#F2F0EB\",\"holes\":[]},{\"name\":\"bathroom_wall_s\",\"location\":[-1.65,1.25,-0.65],\"dimensions\":[2,2.5,0.02],\"facing\":0,\"color\":\"#F2F0EB\",\"holes\":[]},{\"name\":\"bathroom_wall_e\",\"location\":[-0.65,1.25,-1.65],\"dimensions\":[2,2.5,0.02],\"facing\":270,\"color\":\"#F2F0EB\",\"holes\":[{\"location\":[-0.55,-0.2],\"dimensions\":[0.7,2.1]}]},{\"name\":\"floor\",\"location\":[0,0,0],\"dimensions\":[5.3,0.04,5.3],\"color\":\"#D9C2A3\",\"holes\":[]},{\"name\":\"ceiling\",\"location\":[0,2.5,0],\"dimensions\":[5.3,0.04,5.3],\"color\":\"#FFFFFF\",\"holes\":[]},{\"name\":\"door\",\"location\":[1.5,1.05,-2.66],\"dimensions\":[0.9,2.1,0.08],\"facing\":180,\"color\":\"#2E2E2E\",\"holes\":[]},{\"name\":\"bathroom_door\",\"location\":[-0.65,1.05,-1.1],\"dimensions\":[0.7,2.1,0.08],\"facing\":270,\"color\":\"#2E2E2E\",\"holes\":[]},{\"name\":\"window\",\"location\":[0,1.6,2.64],\"dimensions\":[1.8,1.4,0.02],\"facing\":0,\"color\":\"#C7D7DB\",\"holes\":[]}],\"furniture\":[]}\n\n## Local execution scope for this first-step run\nUse the original tool names and arguments. The first generate_assets call uses\nthe existing local HSSD catalog through a deterministic metadata retrieval adapter;\nit does not call an external asset generator. Requested dimensions are preferences:\nactual dimensions and metadata provenance are returned; no silent rescaling.\nMissing categories or unsupported operations return explicit tool failures.\nThis run captures the first model turn and its tool responses; it does not certify\ncomplete room functionality. Do not omit user requirements to satisfy tool limits.\n\n\n## Frozen 920 single-revision protocol\nContinue from the actual furnished checkpoint below. The attached views, ordered\ntopdown, south, east, west, north, show its actual geometry with a ceiling cutaway;\nthere are no object-ID overlays. The task, source shell and assets are unchanged.\nUse actual object IDs and dimensions in the state evidence. You have ONE revision\nwith at most 12 emitted tool calls, including invalid or unsupported calls.\nA program with more than 12 calls is rejected without executing any call.\nExecutable tools are generate_assets, add_furniture_to_scene_tool,\nmove_furniture_tool and remove_furniture_tool. Other tools return explicit failures.\ngenerate_assets searches only the same frozen 23-mesh selected HSSD inventory,\nusing category filtering and size ranking; it is not external asset generation.\nAssets are not rescaled. Missing requested categories return failures.\nPreserve the original requirements. An intersection count is not a usability\nscore, and deleting a needed object is not automatically an improvement.\nThe native placement reference is z=0 while the shell floor top is z=0.02 m;\nthis adapter discrepancy is reported, not repaired by unrelated XY movement.\nReport remaining unknowns honestly. Do not infer complete room success.\n",
+  "task_context": {
+    "scene_description": "在给定的巴黎开间内为一位居家办公的住户安排睡眠、收纳、办公和用餐。工作材料平摊占80×50厘米，用餐需要60×40厘米可用台面。住户重视窗景，也希望尽量留下日常活动空间。请交付完整可编辑的房间。吃饭期间工作材料也必须原位平摊，不能收起或移动。\n\nCurrent checkpoint observation (before this action batch):\n{\"coordinate_convention\":\"Saved native SceneObject transform; metres, z-up, quaternion wxyz\",\"objects\":[{\"catalog_asset_id\":\"ae5831d637c88d01238d0cfafd0f49d2787076b4\",\"functional_quality_verified\":false,\"geometry_sha256\":\"c21470b6cfb9733909dadf5257a90aa1aa99b194f07d406c8a368090916e60c5\",\"immutable\":false,\"local_bbox_max\":[0.26239122450351715,0.26705610752105713,0.9397871603243289],\"local_bbox_min\":[-0.26239122450351715,-0.26705610752105713,0.0],\"name\":\"dining_chair\",\"object_id\":\"dining_chair_0\",\"scale_factor\":1.0,\"template_asset_id\":\"dining_chair_9\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.95,-1.45,0.0]}},{\"catalog_asset_id\":\"ae5831d637c88d01238d0cfafd0f49d2787076b4\",\"functional_quality_verified\":false,\"geometry_sha256\":\"c21470b6cfb9733909dadf5257a90aa1aa99b194f07d406c8a368090916e60c5\",\"immutable\":false,\"local_bbox_max\":[0.26239122450351715,0.26705610752105713,0.9397871603243289],\"local_bbox_min\":[-0.26239122450351715,-0.26705610752105713,0.0],\"name\":\"dining_chair\",\"object_id\":\"dining_chair_1\",\"scale_factor\":1.0,\"template_asset_id\":\"dining_chair_9\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-0.55,-1.45,0.0]}},{\"catalog_asset_id\":\"5d70cc76c99acee4513ec5f7fad497d2baebca9e\",\"functional_quality_verified\":false,\"geometry_sha256\":\"7dbc3d311016e36fc229ca3ae492d51eaaba37a69012aebb6dfd609967d8421b\",\"immutable\":false,\"local_bbox_max\":[0.4750000089406967,0.47239792346954346,0.7107922434806825],\"local_bbox_min\":[-0.4750000089406967,-0.47239792346954346,0.0],\"name\":\"dining_table\",\"object_id\":\"dining_table_0\",\"scale_factor\":1.0,\"template_asset_id\":\"dining_table_8\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.1,-1.45,0.0]}},{\"catalog_asset_id\":\"01495dff5eccd8289fb31fc6df511bf2a043a495\",\"functional_quality_verified\":false,\"geometry_sha256\":\"9c3ef8c53acf8e2a81566f2a4de05fe993b6635ebc5127b7ce1a5fca9598f596\",\"immutable\":false,\"local_bbox_max\":[0.7648088932037354,0.21890272200107574,1.8287910223007202],\"local_bbox_min\":[-0.7648088932037354,-0.21890272200107574,0.0],\"name\":\"dresser\",\"object_id\":\"dresser_0\",\"scale_factor\":1.0,\"template_asset_id\":\"dresser_4\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[1.85,-0.95,0.0]}},{\"catalog_asset_id\":\"84815c44d0b7569cd2c023b75d6f11d21bdb7505\",\"functional_quality_verified\":false,\"geometry_sha256\":\"18d75c1bdb8b58bb03cd271275da1dd23827c95121c00cae3f02aa905c25c869\",\"immutable\":false,\"local_bbox_max\":[0.23999999463558197,0.23499999940395355,0.6000000238418579],\"local_bbox_min\":[-0.23999999463558197,-0.23499999940395355,0.0],\"name\":\"nightstand\",\"object_id\":\"nightstand_0\",\"scale_factor\":1.0,\"template_asset_id\":\"nightstand_5\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-1.05,-0.85,0.0]}},{\"catalog_asset_id\":\"69803a92f62572f4bc4de8fc64fd84c6a6e63229\",\"functional_quality_verified\":false,\"geometry_sha256\":\"8476ab1db0105a3e3a345b463fb7b8c65374cd257c40e80bd045acb3965c7e35\",\"immutable\":false,\"local_bbox_max\":[0.2919360250234604,0.306289404630661,0.9876621499556677],\"local_bbox_min\":[-0.2919360250234604,-0.306289404630661,0.0],\"name\":\"office_chair\",\"object_id\":\"office_chair_0\",\"scale_factor\":1.0,\"template_asset_id\":\"office_chair_2\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.25,0.55,0.0]}},{\"catalog_asset_id\":\"ecf01604cd0958929fb26e0be43329844fa20e55\",\"functional_quality_verified\":false,\"geometry_sha256\":\"f6a038ce7dd6e5d8e599fb60f8d89c630954f93287bcc8675cb8d8329df08ed2\",\"immutable\":false,\"local_bbox_max\":[0.6000750064849854,0.3001004457473755,0.7602298855781555],\"local_bbox_min\":[-0.6000750064849854,-0.3001004457473755,0.0],\"name\":\"office_desk\",\"object_id\":\"office_desk_0\",\"scale_factor\":1.0,\"template_asset_id\":\"office_desk_1\",\"transform\":{\"rotation_wxyz\":[6.123233995736766e-17,0.0,0.0,1.0],\"translation\":[0.25,1.15,0.0]}},{\"catalog_asset_id\":\"16100ba2844b8f89c2ba6e30677d13ffe45d82a7\",\"functional_quality_verified\":false,\"geometry_sha256\":\"be838b44220df8e6f408512cc263785cc418ece6ccb0c634b856e1d94971be8b\",\"immutable\":false,\"local_bbox_max\":[0.7429800629615784,0.9942759275436401,0.8003939656639112],\"local_bbox_min\":[-0.7429800629615784,-0.9942759275436401,0.0],\"name\":\"queen_bed\",\"object_id\":\"queen_bed_0\",\"scale_factor\":1.0,\"template_asset_id\":\"queen_bed_0\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-0.45,-0.85,0.0]}},{\"catalog_asset_id\":\"4979cfe2e691ac484078b909543db3f21b80462f\",\"functional_quality_verified\":false,\"geometry_sha256\":\"dbeb953cd5035997126cc12597d6f9d87a4a8254249dab410419be5b7929ef1a\",\"immutable\":false,\"local_bbox_max\":[0.9007576107978821,0.47884635627269745,0.9072695106367306],\"local_bbox_min\":[-0.9007576107978821,-0.47884635627269745,0.0],\"name\":\"sofa\",\"object_id\":\"sofa_0\",\"scale_factor\":1.0,\"template_asset_id\":\"sofa_7\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-0.15,-1.9,0.0]}},{\"catalog_asset_id\":\"2a16223055b05a112ca63df1b5c10ca65ce31ef2\",\"functional_quality_verified\":false,\"geometry_sha256\":\"a06e41a29517426ebb874506bcf513fdcbecb9626108609e2c46d939cc91a46a\",\"immutable\":false,\"local_bbox_max\":[0.5456051230430603,0.33011171221733093,2.2132158279418945],\"local_bbox_min\":[-0.5456051230430603,-0.33011171221733093,-5.62798137785564e-17],\"name\":\"wardrobe\",\"object_id\":\"wardrobe_0\",\"scale_factor\":1.0,\"template_asset_id\":\"wardrobe_3\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[1.85,0.15,0.0]}}],\"physics_ready\":false,\"recent_actual_tool_receipts\":[{\"call\":{\"arguments\":{\"asset_id\":\"dining_chair_9\",\"x\":0.95,\"y\":-1.45,\"yaw\":0},\"name\":\"add_furniture_to_scene_tool\"},\"response\":{\"asset_id\":\"dining_chair_9\",\"error_type\":null,\"has_geometry\":true,\"message\":\"Successfully placed asset 'dining_chair' as object 'dining_chair_0'. Use object_id 'dining_chair_0' for remove/move operations.\",\"object_id\":\"dining_chair_0\",\"position\":{\"x\":0.95,\"y\":-1.45,\"z\":0.0},\"rotation\":{\"pitch\":0.0,\"roll\":0.0,\"yaw\":0.0},\"success\":true,\"suggested_action\":null}},{\"call\":{\"arguments\":{\"asset_id\":\"dining_chair_9\",\"x\":-0.55,\"y\":-1.45,\"yaw\":0},\"name\":\"add_furniture_to_scene_tool\"},\"response\":{\"asset_id\":\"dining_chair_9\",\"error_type\":null,\"has_geometry\":true,\"message\":\"Successfully placed asset 'dining_chair' as object 'dining_chair_1'. Use object_id 'dining_chair_1' for remove/move operations.\",\"object_id\":\"dining_chair_1\",\"position\":{\"x\":-0.55,\"y\":-1.45,\"z\":0.0},\"rotation\":{\"pitch\":0.0,\"roll\":0.0,\"yaw\":0.0},\"success\":true,\"suggested_action\":null}}],\"room_id\":\"paris_19_remote_studio\"}"
+  },
+  "provenance": {
+    "source_run": "P920-DD-v1_20261104T083214Z",
+    "source_label": "B_U",
+    "project_family": "paris_19_remote_studio",
+    "split": "development",
+    "checkpoint_sha256": "46af234736e622e7d738fbd8d97816481061324c717a6e35aba648ca62df523d",
+    "request_sha256": "e5642ee1b8f107d6c615b3d60acb7d75dfc41c9da2d84e7b5e96e29c48355509",
+    "kind": "engineering_saved_model_action_extraction",
+    "training_eligible": false,
+    "professional_rationale": false,
+    "historical_prompt_reproduction": false,
+    "transformation": "Original brief/system and actual actions; explicit pre-state/last two receipts. Original model commentary omitted."
+  },
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "",
+      "images": [
+        "runtime/P920-DD-v1_20261104T083214Z/drafts/B/views/current_state.topdown.png",
+        "runtime/P920-DD-v1_20261104T083214Z/drafts/B/views/current_state.south.png",
+        "runtime/P920-DD-v1_20261104T083214Z/drafts/B/views/current_state.east.png",
+        "runtime/P920-DD-v1_20261104T083214Z/drafts/B/views/current_state.west.png",
+        "runtime/P920-DD-v1_20261104T083214Z/drafts/B/views/current_state.north.png"
+      ],
+      "tool_calls": [
+        {
+          "name": "check_physics",
+          "arguments": {}
+        }
+      ]
+    }
+  ],
+  "evaluation_only": {
+    "marker": "EVAL_ONLY_STATE_SENTINEL",
+    "after": [
+      {
+        "object_id": "dining_chair_0",
+        "name": "dining_chair",
+        "template_asset_id": "dining_chair_9",
+        "catalog_asset_id": "ae5831d637c88d01238d0cfafd0f49d2787076b4",
+        "transform": {
+          "translation": [
+            0.95,
+            -1.45,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.26239122450351715,
+          -0.26705610752105713,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.26239122450351715,
+          0.26705610752105713,
+          0.9397871603243289
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "c21470b6cfb9733909dadf5257a90aa1aa99b194f07d406c8a368090916e60c5",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "dining_chair_1",
+        "name": "dining_chair",
+        "template_asset_id": "dining_chair_9",
+        "catalog_asset_id": "ae5831d637c88d01238d0cfafd0f49d2787076b4",
+        "transform": {
+          "translation": [
+            -0.55,
+            -1.45,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.26239122450351715,
+          -0.26705610752105713,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.26239122450351715,
+          0.26705610752105713,
+          0.9397871603243289
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "c21470b6cfb9733909dadf5257a90aa1aa99b194f07d406c8a368090916e60c5",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "dining_table_0",
+        "name": "dining_table",
+        "template_asset_id": "dining_table_8",
+        "catalog_asset_id": "5d70cc76c99acee4513ec5f7fad497d2baebca9e",
+        "transform": {
+          "translation": [
+            0.1,
+            -1.45,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.4750000089406967,
+          -0.47239792346954346,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.4750000089406967,
+          0.47239792346954346,
+          0.7107922434806825
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "7dbc3d311016e36fc229ca3ae492d51eaaba37a69012aebb6dfd609967d8421b",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "dresser_0",
+        "name": "dresser",
+        "template_asset_id": "dresser_4",
+        "catalog_asset_id": "01495dff5eccd8289fb31fc6df511bf2a043a495",
+        "transform": {
+          "translation": [
+            1.85,
+            -0.95,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.7648088932037354,
+          -0.21890272200107574,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.7648088932037354,
+          0.21890272200107574,
+          1.8287910223007202
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "9c3ef8c53acf8e2a81566f2a4de05fe993b6635ebc5127b7ce1a5fca9598f596",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "nightstand_0",
+        "name": "nightstand",
+        "template_asset_id": "nightstand_5",
+        "catalog_asset_id": "84815c44d0b7569cd2c023b75d6f11d21bdb7505",
+        "transform": {
+          "translation": [
+            -1.05,
+            -0.85,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.23999999463558197,
+          -0.23499999940395355,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.23999999463558197,
+          0.23499999940395355,
+          0.6000000238418579
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "18d75c1bdb8b58bb03cd271275da1dd23827c95121c00cae3f02aa905c25c869",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "office_chair_0",
+        "name": "office_chair",
+        "template_asset_id": "office_chair_2",
+        "catalog_asset_id": "69803a92f62572f4bc4de8fc64fd84c6a6e63229",
+        "transform": {
+          "translation": [
+            0.25,
+            0.55,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.2919360250234604,
+          -0.306289404630661,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.2919360250234604,
+          0.306289404630661,
+          0.9876621499556677
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "8476ab1db0105a3e3a345b463fb7b8c65374cd257c40e80bd045acb3965c7e35",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "office_desk_0",
+        "name": "office_desk",
+        "template_asset_id": "office_desk_1",
+        "catalog_asset_id": "ecf01604cd0958929fb26e0be43329844fa20e55",
+        "transform": {
+          "translation": [
+            0.25,
+            1.15,
+            0.0
+          ],
+          "rotation_wxyz": [
+            6.123233995736766e-17,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.6000750064849854,
+          -0.3001004457473755,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.6000750064849854,
+          0.3001004457473755,
+          0.7602298855781555
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "f6a038ce7dd6e5d8e599fb60f8d89c630954f93287bcc8675cb8d8329df08ed2",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "queen_bed_0",
+        "name": "queen_bed",
+        "template_asset_id": "queen_bed_0",
+        "catalog_asset_id": "16100ba2844b8f89c2ba6e30677d13ffe45d82a7",
+        "transform": {
+          "translation": [
+            -0.45,
+            -0.85,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.7429800629615784,
+          -0.9942759275436401,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.7429800629615784,
+          0.9942759275436401,
+          0.8003939656639112
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "be838b44220df8e6f408512cc263785cc418ece6ccb0c634b856e1d94971be8b",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "sofa_0",
+        "name": "sofa",
+        "template_asset_id": "sofa_7",
+        "catalog_asset_id": "4979cfe2e691ac484078b909543db3f21b80462f",
+        "transform": {
+          "translation": [
+            -0.15,
+            -1.9,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.9007576107978821,
+          -0.47884635627269745,
+          0.0
+        ],
+        "local_bbox_max": [
+          0.9007576107978821,
+          0.47884635627269745,
+          0.9072695106367306
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "dbeb953cd5035997126cc12597d6f9d87a4a8254249dab410419be5b7929ef1a",
+        "functional_quality_verified": false
+      },
+      {
+        "object_id": "wardrobe_0",
+        "name": "wardrobe",
+        "template_asset_id": "wardrobe_3",
+        "catalog_asset_id": "2a16223055b05a112ca63df1b5c10ca65ce31ef2",
+        "transform": {
+          "translation": [
+            1.85,
+            0.15,
+            0.0
+          ],
+          "rotation_wxyz": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "local_bbox_min": [
+          -0.5456051230430603,
+          -0.33011171221733093,
+          -5.62798137785564e-17
+        ],
+        "local_bbox_max": [
+          0.5456051230430603,
+          0.33011171221733093,
+          2.2132158279418945
+        ],
+        "immutable": false,
+        "scale_factor": 1.0,
+        "geometry_sha256": "a06e41a29517426ebb874506bcf513fdcbecb9626108609e2c46d939cc91a46a",
+        "functional_quality_verified": false
+      }
+    ]
+  }
+}
