@@ -1,0 +1,19 @@
+{
+  "status": "failed",
+  "model_calls": 0,
+  "training_updates": 0,
+  "design_edits": 0,
+  "checks": [
+    {
+      "name": "all_21_initial_furniture_ids_present",
+      "passed": true
+    },
+    {
+      "name": "six_structural_walls_and_five_openings",
+      "passed": true
+    }
+  ],
+  "failure": "RuntimeError: Scene export failed (1): 2026-11-04 23:52:55,727 - __main__ - INFO - Using provided temp directory: /tmp/blender_server_lgnr4hvv\n2026-11-04 23:52:55,727 - __main__ - INFO - Starting Blender server at 127.0.0.1:8013\n2026-11-04 23:52:55,727 - __main__ - INFO - Initializing Blender render app...\n2026-11-04 23:52:55,730 - __main__ - INFO - Starting Flask server (bpy requires main thread execution)...\n2026-11-04 23:52:55,733 - werkzeug - INFO - \u001b[31m\u001b[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.\u001b[0m\n * Running on http://127.0.0.1:8013\n2026-11-04 23:52:55,733 - werkzeug - INFO - \u001b[33mPress CTRL+C to quit\u001b[0m\n2026-11-04 23:52:56,532 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2026 23:52:56] \"GET / HTTP/1.1\" 200 -\n2026-11-04 23:52:56,539 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2026 23:52:56] \"POST /set_blend_config HTTP/1.1\" 200 -\nTraceback (most recent call last):\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/scripts/export_scene_worker.py\", line 14, in <module>\n    save_scene_as_blend(scene=scene, output_path=output,\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/agent_utils/rendering.py\", line 1392, in save_scene_as_blend\n    plant, scene_graph = create_drake_plant_and_scene_graph_from_scene(\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/agent_utils/drake_utils.py\", line 82, in create_drake_plant_and_scene_graph_from_scene\n    ProcessModelDirectives(directives, plant, parser=None)\nRuntimeError: //data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/observation/house/room_dancer_reconstruction/objects/refrigerator/object.sdf:4: error: URI 'package://scene/room_dancer_reconstruction/assets/19b181ef136dd9cbbea4505899f9015c58dca260/model.gltf' refers to unknown package 'scene'\n * Serving Flask app 'scenesmith_blender_render'\n * Debug mode: off\n",
+  "owned_descendants_cleaned": [],
+  "ended_at": "2026-11-04T15:52:58.202052+00:00"
+}

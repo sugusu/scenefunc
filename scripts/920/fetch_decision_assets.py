@@ -25,7 +25,10 @@ def main():
     print(result['started_at'], 'begin pinned decision asset preparation', flush=True)
     code = 0
     try:
-        if len(plan['files']) != 4 or sum(f['bytes'] for f in plan['files']) > 1024 * 1024:
+        budget = plan['budget']
+        if (not 0 < budget['files'] <= 64 or not 0 < budget['max_bytes'] <= 32 * 1024 * 1024
+                or len(plan['files']) != budget['files']
+                or sum(f['bytes'] for f in plan['files']) > budget['max_bytes']):
             raise ValueError('Manifest budget exceeded')
         for item in plan['files']:
             downloaded = Path(hf_hub_download(

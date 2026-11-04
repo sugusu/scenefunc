@@ -1,0 +1,242 @@
+{
+  "run_id": "P920-ROOM-v1_20261104T153247Z",
+  "updated_at": "2026-11-04T16:21:41.094357+00:00",
+  "stage": "native_observation_export_failed",
+  "status": "failed",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z",
+  "question": "Prepare whole-room native reconstruction of the development dancer reference, preserving its complete initial inventory and explicit assumptions.",
+  "completed_planned": {
+    "asset_files": {
+      "completed": 18,
+      "planned": 18
+    },
+    "initial_furniture": {
+      "completed": 21,
+      "planned": 21
+    },
+    "observations": {
+      "completed": 0,
+      "planned": 1
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "2d4d46435ba528b8867397f3fbcaa2e5e68bda97ac8a21e88ab8c4e79f7d69e6",
+    "asset_plan_sha256": "0fe728f0e2b2840e20557b1f0d64509f4d51938fb0cad1e81fddf2fef98d3bb5"
+  },
+  "input_hashes": {
+    "embedded": "18be390d3d949ae471a8e68d715e47bc3c46a4891cb141bae9ca5d84bb9d42e0",
+    "asset_lock": "521661ab65933adadf09d07707fd0c68c9c602959f382a18b9fd1b4f476fb94d"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "STATUS.json",
+    "SERVER_ARTIFACTS.json",
+    "reconstruction/RESULT.json",
+    "observation/RESULT.json"
+  ],
+  "failure_reasons": [
+    "orientation_previews failed after four images on an unsupported shelf frame; six remaining images completed in separate phase.",
+    "Actual Drake export: package://scene is not registered; 0 images and 0 tool calls."
+  ],
+  "next_step": "Continue from the same initial geometry with explicit URI relocation in P920-ROOM-v2_20261104T155505Z",
+  "execution_stages": {
+    "build": {
+      "started_at": "2026-11-04T15:48:06.096973+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/build_reference_room.py",
+        "--plan",
+        "runs/920/P920-ROOM-v1_20261104T153247Z/RECONSTRUCTION_PLAN.json",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/reconstruction"
+      ],
+      "timeout_seconds": 120,
+      "pid": 7,
+      "start_ticks": "46513468",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/build/stage.log",
+      "ended_at": "2026-11-04T15:48:28.288624+00:00",
+      "elapsed_seconds": 22.191666846978478,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:48:06.498357+00:00 begin labelled native whole-room reconstruction"
+    },
+    "download": {
+      "started_at": "2026-11-04T15:33:08.020977+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "HF_HUB_DISABLE_XET=1",
+        "HF_HUB_DISABLE_PROGRESS_BARS=1",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/fetch_decision_assets.py",
+        "--plan",
+        "runs/920/P920-ROOM-v1_20261104T153247Z/ASSET_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/download"
+      ],
+      "timeout_seconds": 240,
+      "pid": 1107059,
+      "start_ticks": "46423660",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/download/stage.log",
+      "ended_at": "2026-11-04T15:33:40.818809+00:00",
+      "elapsed_seconds": 32.79784438398201,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:33:08.173037+00:00 begin pinned decision asset preparation"
+    },
+    "geometry": {
+      "started_at": "2026-11-04T15:34:25.959323+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/inspect_decision_assets.py",
+        "--download",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/download/DOWNLOAD.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/GEOMETRY.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 7,
+      "start_ticks": "46431454",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/geometry/stage.log",
+      "ended_at": "2026-11-04T15:34:27.480581+00:00",
+      "elapsed_seconds": 1.5212705319863744,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:34:26.358609+00:00 begin candidate mesh inspection"
+    },
+    "observation": {
+      "started_at": "2026-11-04T15:52:42.407576+00:00",
+      "status": "failed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/observe_reference_room.py",
+        "--designer",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/reconstruction/bundle",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/observation"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1110106,
+      "start_ticks": "46541099",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/observation/stage.log",
+      "ended_at": "2026-11-04T15:52:59.638212+00:00",
+      "elapsed_seconds": 17.230650303012226,
+      "exit_code": 1,
+      "first_log": "2026-11-04T15:52:42.522217+00:00 begin native whole-room observation"
+    },
+    "orientation_previews": {
+      "started_at": "2026-11-04T15:37:38.086335+00:00",
+      "status": "failed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-ROOM-v1_20261104T153247Z/ORIENTATION_PREVIEW_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/orientation_previews"
+      ],
+      "timeout_seconds": 180,
+      "pid": 1108014,
+      "start_ticks": "46450667",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/orientation_previews/stage.log",
+      "ended_at": "2026-11-04T15:37:40.860043+00:00",
+      "elapsed_seconds": 2.7737233780208044,
+      "exit_code": 1,
+      "first_log": "2026-11-04T15:37:38.470174+00:00 begin fixed candidate visual inspection"
+    },
+    "orientation_remainder": {
+      "started_at": "2026-11-04T15:41:04.435863+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-ROOM-v1_20261104T153247Z/ORIENTATION_REMAINDER_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/orientation_remainder"
+      ],
+      "timeout_seconds": 180,
+      "pid": 1108658,
+      "start_ticks": "46471302",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/orientation_remainder/stage.log",
+      "ended_at": "2026-11-04T15:41:08.064649+00:00",
+      "elapsed_seconds": 3.62879945297027,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:41:04.824619+00:00 begin fixed candidate visual inspection"
+    },
+    "previews": {
+      "started_at": "2026-11-04T15:34:47.485444+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-ROOM-v1_20261104T153247Z/PREVIEW_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/previews"
+      ],
+      "timeout_seconds": 180,
+      "pid": 1107244,
+      "start_ticks": "46433607",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/previews/stage.log",
+      "ended_at": "2026-11-04T15:34:53.371957+00:00",
+      "elapsed_seconds": 5.886528241040651,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:34:47.895133+00:00 begin fixed candidate visual inspection"
+    }
+  },
+  "execution": {
+    "started_at": "2026-11-04T15:52:42.407576+00:00",
+    "status": "failed",
+    "command": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "HF_HUB_OFFLINE=1",
+      "TRANSFORMERS_OFFLINE=1",
+      "LIBGL_ALWAYS_SOFTWARE=1",
+      "EGL_PLATFORM=surfaceless",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/observe_reference_room.py",
+      "--designer",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+      "--scenesmith",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/reconstruction/bundle",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/observation"
+    ],
+    "timeout_seconds": 300,
+    "pid": 1110106,
+    "start_ticks": "46541099",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/execution/observation/stage.log",
+    "ended_at": "2026-11-04T15:52:59.638212+00:00",
+    "elapsed_seconds": 17.230650303012226,
+    "exit_code": 1,
+    "first_log": "2026-11-04T15:52:42.522217+00:00 begin native whole-room observation"
+  },
+  "process": null
+}

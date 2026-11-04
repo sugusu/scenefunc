@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T14:41:56.854414+00:00",
+  "updated_at": "2026-11-04T16:20:01.282167+00:00",
   "designer_checkout": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
   "base_git_sha": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
   "patches": [
@@ -26,9 +26,57 @@
           "result": "Native summary and actual-wall topdown labels checked; five views directly reviewed. Overall v2 exited 1 later on quaternion checkpoint hash."
         }
       ]
+    },
+    {
+      "path": "patches/920/native_structure_views.patch",
+      "sha256": "bab4d8a4c81acaddaae3bb6850373604c436715b9e5a8b992483bc511ffaae91",
+      "applied_after": [
+        "cardinal_world_panels.patch",
+        "native_structure_labels.patch"
+      ],
+      "before_file_hashes": {
+        "src/render_observation.py": "5c55c915cd142aadab8c9984cd2d80459f5ae4339113fed1490b384e7c2dc058",
+        "tools/render_cardinal_views.py": "b33e26fd566be91d1f53ff7289bb604c217c31cc758b228e0c416dd347dd97c7",
+        "tools/render_five_views.py": "7887887a9f3916cbb6d0d3fff8b790ca8df9e7ac591626635d32211950f45cad",
+        "src_critic/pil_annotate.py": "129a034a90f82545ec695f4644a42029afd535c2069d87520829cc5aff0ca422"
+      },
+      "after_file_hashes": {
+        "src/render_observation.py": "ae96efee7540144eaa683e4bf8333b0f75d36fc595744ce20fbc6c83662b65e8",
+        "tools/render_cardinal_views.py": "cac037cf956f520037b333c90c9468015a77cff7090ec32bda735fe2177a986a",
+        "tools/render_five_views.py": "5340c6599c0285248548f29414e245c805cba5e6098b552168e1393bbb5f53b6",
+        "src_critic/pil_annotate.py": "e69faaddbdf0be85e004ce8caf9bf341de8ce924cba7512e2600878e0092f104"
+      },
+      "validation_run": "P920-ROOM-v2_20261104T155505Z",
+      "scope": "Actual native structure envelopes and room-floor bounds, axis-aligned reconstruction; no general semantic wall guarantee."
+    },
+    {
+      "path": "patches/920/native_compact_labels.patch",
+      "sha256": "537f2546aba7016cbe61cac66276869bd46c7b0316d0810704eb065c3a532f14",
+      "applied_after": "native_structure_views.patch",
+      "before_file_hashes": {
+        "src/render_observation.py": "ae96efee7540144eaa683e4bf8333b0f75d36fc595744ce20fbc6c83662b65e8"
+      },
+      "after_file_hashes": {
+        "src/render_observation.py": "60dd3504f7c8e0e93a39d8babeb232c6e4fef61df729672306e6b787e7807251"
+      },
+      "validation_run": "P920-ROOM-v2_20261104T155505Z",
+      "validation_phase": "compact_topdown",
+      "scope": "Unique native object names for display, exact ID mapping saved; omit duplicate opening furniture labels; state and tools unchanged."
     }
   ],
   "applied_to_runtime_checkout": true,
   "full_system_acceptance": false,
-  "warning": "Historical SESSION/ENV records describe the prior unpatched renderer. Future experiments must freeze this additional patch/hash or restore the fixed source. Do not silently attribute the patched behavior to the upstream base commit."
+  "warning": "Historical runs keep their exact patch stage. Current runtime is base plus the four ordered patches. Checkpoints bind actual source hashes; compact-label change requires explicit migration, with original checkpoint retained.",
+  "ordered_application": [
+    "patches/920/cardinal_world_panels.patch",
+    "patches/920/native_structure_labels.patch",
+    "patches/920/native_structure_views.patch",
+    "patches/920/native_compact_labels.patch"
+  ],
+  "current_file_hashes": {
+    "src/render_observation.py": "60dd3504f7c8e0e93a39d8babeb232c6e4fef61df729672306e6b787e7807251",
+    "tools/render_cardinal_views.py": "cac037cf956f520037b333c90c9468015a77cff7090ec32bda735fe2177a986a",
+    "tools/render_five_views.py": "5340c6599c0285248548f29414e245c805cba5e6098b552168e1393bbb5f53b6",
+    "src_critic/pil_annotate.py": "e69faaddbdf0be85e004ce8caf9bf341de8ce924cba7512e2600878e0092f104"
+  }
 }

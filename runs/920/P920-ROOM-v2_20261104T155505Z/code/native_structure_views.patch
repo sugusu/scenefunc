@@ -1,0 +1,134 @@
+--- a/src/render_observation.py
++++ b/src/render_observation.py
+@@ -14,6 +14,24 @@
+     blend = save_dir / f'step_{step_idx:03d}.blend'
+     # Export the actual current state, never a previous observation.
+     _save_roomscene_blend(agent, blend)
++    if getattr(scene, '_scenefunc_structure_labels', False):
++        import hashlib
++        import json
++        records = []
++        for obj in scene.objects.values():
++            if obj.object_type.value != 'wall' and obj.metadata.get('structural_role') != 'opening':
++                continue
++            bounds = obj.compute_world_bounds()
++            if bounds is not None:
++                records.append(dict(object_id=str(obj.object_id), role='wall' if obj.object_type.value == 'wall' else 'opening',
++                                    min=bounds[0].tolist(), max=bounds[1].tolist()))
++        geometry = scene.room_geometry
++        center = geometry.floor.transform.translation()
++        blend.with_suffix('.native_structure.json').write_text(json.dumps(dict(
++            blend_sha256=hashlib.sha256(blend.read_bytes()).hexdigest(), objects=records,
++            room_bounds=dict(min=[center[0]-geometry.length/2, center[1]-geometry.width/2, 0],
++                             max=[center[0]+geometry.length/2, center[1]+geometry.width/2, geometry.wall_height]),
++            scope='Native axis-aligned structural envelopes; cutaway preserves scene state.'), indent=2)+'\n')
+     proc = subprocess.run(
+         [os.environ.get('BLENDER_PYTHON', sys.executable), str(ROOT/'tools/render_five_views.py'),
+          str(blend), '--out', str(save_dir), '--overwrite'],
+@@ -44,6 +62,8 @@
+                     boundary_label=boundaries[opening['wall_direction']],
+                     position_exact=opening['position_along_wall'],
+                     position_along_wall=opening['position_along_wall'])
++        if getattr(scene, '_scenefunc_structure_labels', False):
++            item['world_xy'] = opening['center_world'][:2]
+         (doors if opening['opening_type'] == 'door' else windows).append(item)
+     room = Room(str(getattr(scene, 'room_id', 'room')), float(geometry['length']),
+                 float(geometry['width']), float(center[0]), float(center[1]), doors, windows)
+--- a/tools/render_cardinal_views.py
++++ b/tools/render_cardinal_views.py
+@@ -50,6 +50,13 @@
+     points = [o.matrix_world @ Vector(c) for o in room_meshes for c in o.bound_box]
+     lo = Vector((min(p.x for p in points), min(p.y for p in points), min(p.z for p in points)))
+     hi = Vector((max(p.x for p in points), max(p.y for p in points), max(p.z for p in points)))
++    native = None
++    native_path = blend.with_suffix('.native_structure.json')
++    if native_path.is_file():
++        native = json.loads(native_path.read_text())
++        if native['blend_sha256'] != hashlib.sha256(blend.read_bytes()).hexdigest():
++            raise ValueError('Native structure descriptor does not match blend')
++        lo, hi = Vector(native['room_bounds']['min']), Vector(native['room_bounds']['max'])
+     center = (lo + hi) / 2
+     max_dim = max(hi.x - lo.x, hi.y - lo.y, hi.z - lo.z)
+ 
+@@ -103,7 +110,32 @@
+                     and horizontal_offset.dot(direction) > 0.01):
+                 candidates.append((horizontal_offset.dot(direction), obj))
+         hidden_panels = []
+-        if candidates:
++        native_matches = {}
++        cut_ids = []
++        if native is not None:
++            structural = []
++            for record in native['objects']:
++                a, b = Vector(record['min']), Vector(record['max'])
++                dimensions = b-a
++                axis = 0 if dimensions.x < dimensions.y else 1
++                offset = (a+b)/2-center
++                offset.z = 0
++                if abs(direction[axis]) > 0.5 and offset.dot(direction) > 0.01:
++                    structural.append((offset.dot(direction), record))
++            wall_distances = [value for value, record in structural if record['role'] == 'wall']
++            if wall_distances:
++                nearest = max(wall_distances)
++                cuts = [record for value, record in structural if value > nearest-0.3]
++                cut_ids = [record['object_id'] for record in cuts]
++                for obj in [o for o in scene.objects if o.type == 'MESH']:
++                    a, b = world_box(obj)
++                    matched = [record['object_id'] for record in cuts if all(
++                        a[k] >= record['min'][k]-1e-4 and b[k] <= record['max'][k]+1e-4 for k in range(3))]
++                    if matched:
++                        obj.hide_render = True
++                        hidden_panels.append(obj.name)
++                        native_matches[obj.name] = matched
++        elif candidates:
+             nearest = max(value for value, _ in candidates)
+             for value, obj in candidates:
+                 if value > nearest - 0.3:
+@@ -117,8 +149,9 @@
+         Path(scene.render.filepath + '.visibility.json').write_text(json.dumps({
+             'blend_sha256': hashlib.sha256(blend.read_bytes()).hexdigest(),
+             'view': label, 'camera_location': list(camera.location),
+-            'policy': 'world_axis_aligned_camera_side_thin_panel_heuristic',
++            'policy': 'native_structural_envelope_cutaway' if native is not None else 'world_axis_aligned_camera_side_thin_panel_heuristic',
+             'hidden_panel_names': hidden_panels,
++            'native_cut_ids': cut_ids, 'native_mesh_matches': native_matches,
+             'limits': 'No semantic wall identity; diagonal/curved walls are not covered.',
+         }, indent=2) + '\n')
+         print(f"[render] wrote {scene.render.filepath}")
+--- a/tools/render_five_views.py
++++ b/tools/render_five_views.py
+@@ -29,6 +29,14 @@
+         if not meshes: meshes = [o for o in bpy.context.scene.objects if o.type == "MESH"]
+         points = [o.matrix_world @ Vector(c) for o in meshes for c in o.bound_box]
+         box = [min(p.x for p in points), min(p.y for p in points), max(p.x for p in points), max(p.y for p in points)]
++        native_path = args.blend.with_suffix('.native_structure.json')
++        if native_path.is_file():
++            native = json.loads(native_path.read_text())
++            import hashlib
++            if native['blend_sha256'] != hashlib.sha256(args.blend.read_bytes()).hexdigest():
++                raise ValueError('Native structure descriptor does not match blend')
++            bounds = native['room_bounds']
++            box = [*bounds['min'][:2], *bounds['max'][:2]]
+         sys.argv = [sys.argv[0], '--blend', str(args.blend.resolve()), '--out', str(target),
+                     '--resolution', str(args.top_resolution), '--room-box', json.dumps(box)]
+         render_top()
+--- a/src_critic/pil_annotate.py
++++ b/src_critic/pil_annotate.py
+@@ -321,6 +321,8 @@
+             d.get("boundary_label", "A"), "north")
+         pos = float(d.get("position_exact", 0.0))
+         anchor_w, axis = _opening_anchor_and_axis(room, direction=direction, pos=pos)
++        if d.get("world_xy") is not None:
++            anchor_w = tuple(d["world_xy"])
+         placed.append((d.get("id", "door"), anchor_w, axis, direction, _GREEN_LABEL))
+     for w in room.windows:
+         direction = w.get("wall_direction") or {
+@@ -328,6 +330,8 @@
+         }.get(w.get("boundary_label", "A"), "north")
+         pos = float(w.get("position_along_wall", 0.0))
+         anchor_w, axis = _opening_anchor_and_axis(room, direction=direction, pos=pos)
++        if w.get("world_xy") is not None:
++            anchor_w = tuple(w["world_xy"])
+         placed.append((w.get("id", "window"), anchor_w, axis, direction, _ORANGE_LABEL))
+ 
+     for label, (wx, wy), axis, direction, bg in placed:

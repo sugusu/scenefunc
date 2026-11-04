@@ -1,0 +1,49 @@
+{
+  "frozen_at": "2026-11-04T15:55:05.910977+00:00",
+  "question": "Does the complete labelled native initial room load, expose 21 initial objects and true structure, render five state-bound views, answer one real state query and checkpoint?",
+  "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/bundle",
+  "budget": {
+    "wall_seconds": 300,
+    "cpu_cores": 4,
+    "observations": 1,
+    "images": 5,
+    "tool_calls": 1,
+    "design_edits": 0,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "scripts": {
+    "observe_reference_room.py": "3529e728c8a1c17dc4463dfd1f72ae7455cfe1b013ecdc5c64e3e97bec577836",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a",
+    "relocate_native_resource_uris.py": "aee68681803a2f6a438f9444d04b5015d1e868b5685960003189c4f87d979643"
+  },
+  "runtime_patch": {
+    "path": "patches/920/native_structure_views.patch",
+    "sha256": "bab4d8a4c81acaddaae3bb6850373604c436715b9e5a8b992483bc511ffaae91",
+    "applied_after": [
+      "cardinal_world_panels.patch",
+      "native_structure_labels.patch"
+    ],
+    "before_file_hashes": {
+      "src/render_observation.py": "5c55c915cd142aadab8c9984cd2d80459f5ae4339113fed1490b384e7c2dc058",
+      "tools/render_cardinal_views.py": "b33e26fd566be91d1f53ff7289bb604c217c31cc758b228e0c416dd347dd97c7",
+      "tools/render_five_views.py": "7887887a9f3916cbb6d0d3fff8b790ca8df9e7ac591626635d32211950f45cad",
+      "src_critic/pil_annotate.py": "129a034a90f82545ec695f4644a42029afd535c2069d87520829cc5aff0ca422"
+    },
+    "after_file_hashes": {
+      "src/render_observation.py": "ae96efee7540144eaa683e4bf8333b0f75d36fc595744ce20fbc6c83662b65e8",
+      "tools/render_cardinal_views.py": "cac037cf956f520037b333c90c9468015a77cff7090ec32bda735fe2177a986a",
+      "tools/render_five_views.py": "5340c6599c0285248548f29414e245c805cba5e6098b552168e1393bbb5f53b6",
+      "src_critic/pil_annotate.py": "e69faaddbdf0be85e004ce8caf9bf341de8ce924cba7512e2600878e0092f104"
+    }
+  },
+  "quality_criterion": "Current-state visual consistency only; native success does not establish collision-free layout, activity suitability or professional ground truth.",
+  "run_id": "P920-ROOM-v2_20261104T155505Z",
+  "parent_run": "P920-ROOM-v1_20261104T153247Z",
+  "reason": "The first real Drake export rejected package://scene URIs; migrate only the URI syntax in a copy, reuse geometry and initial state.",
+  "source_bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/reconstruction/bundle",
+  "source_manifest_sha256": "03c5326be5dbb8237cee6027cb9a36f913f545449dd14f9f14481a51fc317299",
+  "migration_budget_seconds": 60
+}

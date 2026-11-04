@@ -1,0 +1,27 @@
+{
+  "frozen_at": "2026-11-04T16:11:26.103335+00:00",
+  "question": "Which envelope warnings are already in the generated initial reference, and which arise after the declared asset substitutions/support correction?",
+  "inputs": {
+    "source": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/initial_reference.json",
+      "sha256": "5eef140591f2176fcf55b664e8c15e971adfb48821b39c5ae0e8a5f6706797e7"
+    },
+    "native": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/observation/native_initial_state.json",
+      "sha256": "189c8de28357fd3c923700b3b19f27e1d21d5c38e14980720a9a1cf34128731c"
+    },
+    "measured": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/observation/ENVELOPE_DIAGNOSTICS.json",
+      "sha256": "784d53ec0d2a18a00fa2fd17f263678587b0f6f20937f85dfc75fa9b009cd660"
+    }
+  },
+  "budget": {
+    "comparisons": 1,
+    "wall_seconds": 30,
+    "model_calls": 0,
+    "scene_edits": 0,
+    "training_updates": 0
+  },
+  "script_sha256": "b023e72ea84e65ccf1567b06f37d0f050df8ef18197a93a51af9d0df6cce582b",
+  "rules": "Same floor envelope; furniture AABBs only; exclude area_rug in both; 1e-6 boundary threshold and all 3 overlap axes >1e-4. Validate native metrics against recorded engine measurement."
+}

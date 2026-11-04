@@ -1,0 +1,35 @@
+--- a/src/render_observation.py
++++ b/src/render_observation.py
+@@ -68,11 +68,22 @@
+     room = Room(str(getattr(scene, 'room_id', 'room')), float(geometry['length']),
+                 float(geometry['width']), float(center[0]), float(center[1]), doors, windows)
+     objects = []
++    display_ids = {}
++    from collections import Counter
++    name_counts = Counter(obj.get('name') for obj in state['objects'].values())
+     for obj in state['objects'].values():
+         if obj.get('object_type') in ('wall', 'floor'): continue
++        if (getattr(scene, '_scenefunc_structure_labels', False)
++                and obj.get('metadata', {}).get('structural_role') == 'opening'):
++            continue  # Already represented by the actual opening label.
+         if not obj.get('bbox_min') or not obj.get('bbox_max'): continue
+         transform = obj['transform']
+-        objects.append(Furniture(obj['object_id'], obj.get('name', ''), obj.get('description', ''),
++        label = obj['object_id']
++        if (getattr(scene, '_scenefunc_structure_labels', False)
++                and obj.get('name') and name_counts[obj['name']] == 1):
++            label = obj['name']
++        display_ids[label] = obj['object_id']
++        objects.append(Furniture(label, obj.get('name', ''), obj.get('description', ''),
+             *transform['translation'][:2], _quat_to_yaw_deg(transform['rotation_wxyz']),
+             tuple(obj['bbox_min']), tuple(obj['bbox_max'])))
+     metadata = json.loads(Path(str(path)+'.meta.json').read_text())
+@@ -93,6 +104,8 @@
+             wall_items.append((str(wall.object_id), xy.tolist(), axis))
+         Path(str(path)+'.annotations.json').write_text(json.dumps({
+             'wall_items': wall_items, 'walls_without_bounds': omitted,
++            'display_label_to_native_object_id': display_ids,
++            'display_labels_are_names_not_tool_identifiers': True,
+             'source': 'actual_native_wall_objects',
+             'limitation': 'Axis-aligned label sliding; nonrectangular framing is not validated.',
+         }, indent=2) + '\n')

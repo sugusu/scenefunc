@@ -1,0 +1,27 @@
+{
+  "frozen_at": "2026-11-04T16:16:32.131948+00:00",
+  "question": "Restore the same complete room checkpoint with only the reviewed compact-label renderer migration; no tools or observations replayed.",
+  "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/observation/checkpoint",
+  "source_manifest_sha256": "a6fb59e9c7548a54b903092249914dd9e900ce5ac938dffc22277699789d2eab",
+  "designer": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+  "scenesmith": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+  "renderer_before_sha256": "ae96efee7540144eaa683e4bf8333b0f75d36fc595744ce20fbc6c83662b65e8",
+  "renderer_after_sha256": "60dd3504f7c8e0e93a39d8babeb232c6e4fef61df729672306e6b787e7807251",
+  "patch_sha256": "537f2546aba7016cbe61cac66276869bd46c7b0316d0810704eb065c3a532f14",
+  "script_sha256": "0c8c2a1c5b22ad940f25afa77af0a1d053bc0eea7f43542de4b5a1c895e21ded",
+  "budget": {
+    "migrations": 1,
+    "restores": 1,
+    "wall_seconds": 120,
+    "cpu_cores": 4,
+    "renders": 0,
+    "tool_calls": 0,
+    "scene_edits": 0,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "reason": "First migration validated and copied input files, then sandboxed TestClient request hung with no response until 120s timeout. One bounded host-loopback retry; no tool or model replay.",
+  "prior_receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/checkpoint_migration/receipt.json",
+  "execution_environment": "host_with_local_loopback_services",
+  "maximum_additional_attempts": 1
+}

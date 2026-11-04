@@ -1,0 +1,260 @@
+{
+  "run_id": "P920-ROOM-v2_20261104T155505Z",
+  "updated_at": "2026-11-04T16:21:41.094357+00:00",
+  "stage": "native_initial_room_verified_layout_not_accepted",
+  "status": "completed",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z",
+  "question": "Does the complete labelled native initial room load, expose 21 initial objects and true structure, render five state-bound views, answer one real state query and checkpoint?",
+  "completed_planned": {
+    "observations": {
+      "completed": 1,
+      "planned": 1
+    },
+    "tool_calls": {
+      "completed": 1,
+      "planned": 1
+    },
+    "additional_review_images": {
+      "completed": 1,
+      "planned": 1
+    },
+    "source_attribution": {
+      "completed": 1,
+      "planned": 1
+    },
+    "checkpoint_restore": {
+      "completed": 1,
+      "planned": 1
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "c0bd2b219961ddcb85a2f1c3f136642661c296b961110c2b4d770070c9cf02e3",
+    "observe_reference_room.py": "3529e728c8a1c17dc4463dfd1f72ae7455cfe1b013ecdc5c64e3e97bec577836",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a",
+    "relocate_native_resource_uris.py": "aee68681803a2f6a438f9444d04b5015d1e868b5685960003189c4f87d979643",
+    "COMPACT_TOPDOWN_PLAN.json": "7eb579a532ced16f67318de57d67cdca00d84c9d3bf8407d873ae7b799ab06af",
+    "ENVELOPE_ATTRIBUTION_PLAN.json": "fe960b0059352b4108d4ad31d66c02b3f5f34b3db3699d2963610a78aaf521f1",
+    "CHECKPOINT_MIGRATION_PLAN.json": "7bcebf79e25119024d8c4e6bccf53b84985e8da357a5c2a55a9680d6ccda2639",
+    "CHECKPOINT_MIGRATION_HOST_PLAN.json": "880fc544550fa5bbea4fc28ee38925fbab68335a1bd2264e5e89eb35be69dcb8",
+    "CHECKPOINT_RESTORE_PLAN.json": "f656ba662a019905b53c631a70df271ba5337eef700abb299a3cce83f37937ff"
+  },
+  "input_hashes": {
+    "source_manifest_sha256": "03c5326be5dbb8237cee6027cb9a36f913f545449dd14f9f14481a51fc317299"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "STATUS.json",
+    "SERVER_ARTIFACTS.json",
+    "VISUAL_REVIEW.json",
+    "ENVELOPE_ATTRIBUTION.json",
+    "checkpoint_restore/RESULT.json"
+  ],
+  "failure_reasons": [
+    "checkpoint_migration: sandbox TestClient request timed out after 120s, exit 124; exact root cause not isolated.",
+    "checkpoint_migration_host: import and state passed, stage rejected skip_render=True; exit 1. Reused migrated checkpoint and corrected stage flag, exit 0."
+  ],
+  "next_step": "Review source/input conflicts and mesh suitability before activity switching. Preserve 21 functions; do not use this invalid initial layout to score model decisions. Training requires separate approval.",
+  "execution": {
+    "started_at": "2026-11-04T16:19:16.418275+00:00",
+    "status": "completed",
+    "command": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "HF_HUB_OFFLINE=1",
+      "TRANSFORMERS_OFFLINE=1",
+      "LIBGL_ALWAYS_SOFTWARE=1",
+      "EGL_PLATFORM=surfaceless",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/migrate_room_label_checkpoint.py",
+      "--plan",
+      "runs/920/P920-ROOM-v2_20261104T155505Z/CHECKPOINT_RESTORE_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/checkpoint_restore"
+    ],
+    "timeout_seconds": 120,
+    "pid": 1114278,
+    "start_ticks": "46700500",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/checkpoint_restore/stage.log",
+    "ended_at": "2026-11-04T16:19:30.285396+00:00",
+    "elapsed_seconds": 13.867134939995594,
+    "exit_code": 0,
+    "first_log": "2026-11-04T16:19:16.490485+00:00 begin explicit room label checkpoint migration"
+  },
+  "process": null,
+  "execution_stages": {
+    "checkpoint_migration": {
+      "started_at": "2026-11-04T16:13:38.428097+00:00",
+      "status": "failed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/migrate_room_label_checkpoint.py",
+        "--plan",
+        "runs/920/P920-ROOM-v2_20261104T155505Z/CHECKPOINT_MIGRATION_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/checkpoint_migration"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "46666701",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/checkpoint_migration/stage.log",
+      "ended_at": "2026-11-04T16:15:38.495352+00:00",
+      "elapsed_seconds": 120.06726725399494,
+      "exit_code": 124,
+      "first_log": "2026-11-04T16:13:38.507878+00:00 begin explicit room label checkpoint migration"
+    },
+    "checkpoint_migration_host": {
+      "started_at": "2026-11-04T16:16:38.007256+00:00",
+      "status": "failed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/migrate_room_label_checkpoint.py",
+        "--plan",
+        "runs/920/P920-ROOM-v2_20261104T155505Z/CHECKPOINT_MIGRATION_HOST_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/checkpoint_migration_host"
+      ],
+      "timeout_seconds": 120,
+      "pid": 1113890,
+      "start_ticks": "46684659",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/checkpoint_migration_host/stage.log",
+      "ended_at": "2026-11-04T16:16:47.558105+00:00",
+      "elapsed_seconds": 9.55086494400166,
+      "exit_code": 1,
+      "first_log": "2026-11-04T16:16:38.080528+00:00 begin explicit room label checkpoint migration"
+    },
+    "checkpoint_restore": {
+      "started_at": "2026-11-04T16:19:16.418275+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/migrate_room_label_checkpoint.py",
+        "--plan",
+        "runs/920/P920-ROOM-v2_20261104T155505Z/CHECKPOINT_RESTORE_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/checkpoint_restore"
+      ],
+      "timeout_seconds": 120,
+      "pid": 1114278,
+      "start_ticks": "46700500",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/checkpoint_restore/stage.log",
+      "ended_at": "2026-11-04T16:19:30.285396+00:00",
+      "elapsed_seconds": 13.867134939995594,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:19:16.490485+00:00 begin explicit room label checkpoint migration"
+    },
+    "compact_topdown": {
+      "started_at": "2026-11-04T16:03:45.436718+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/render_compact_native_topdown.py",
+        "--plan",
+        "runs/920/P920-ROOM-v2_20261104T155505Z/COMPACT_TOPDOWN_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/compact_topdown"
+      ],
+      "timeout_seconds": 60,
+      "pid": 1112115,
+      "start_ticks": "46607402",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/compact_topdown/stage.log",
+      "ended_at": "2026-11-04T16:03:56.992397+00:00",
+      "elapsed_seconds": 11.555692263995297,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:03:45.483942+00:00 begin unchanged native topdown review render"
+    },
+    "envelope_attribution": {
+      "started_at": "2026-11-04T16:11:38.642254+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/compare_room_envelopes.py",
+        "--plan",
+        "runs/920/P920-ROOM-v2_20261104T155505Z/ENVELOPE_ATTRIBUTION_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/ENVELOPE_ATTRIBUTION.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "46654722",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/envelope_attribution/stage.log",
+      "ended_at": "2026-11-04T16:11:38.808225+00:00",
+      "elapsed_seconds": 0.16597963200183585,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:11:38.745275+00:00 begin source-to-native envelope attribution"
+    },
+    "migration": {
+      "started_at": "2026-11-04T15:55:18.897392+00:00",
+      "status": "completed",
+      "command": [
+        "python3",
+        "scripts/920/relocate_native_resource_uris.py",
+        "--source",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v1_20261104T153247Z/reconstruction/bundle",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/bundle"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "46556748",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/migration/stage.log",
+      "ended_at": "2026-11-04T15:55:19.766462+00:00",
+      "elapsed_seconds": 0.8690800939803012,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:55:18.950789+00:00 begin native resource URI relocation"
+    },
+    "observation": {
+      "started_at": "2026-11-04T15:55:57.955367+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/observe_reference_room.py",
+        "--designer",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/bundle",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/observation"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1110816,
+      "start_ticks": "46560654",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ROOM-v2_20261104T155505Z/execution/observation/stage.log",
+      "ended_at": "2026-11-04T15:56:59.192140+00:00",
+      "elapsed_seconds": 61.23678629397182,
+      "exit_code": 0,
+      "first_log": "2026-11-04T15:55:58.064944+00:00 begin native whole-room observation"
+    }
+  }
+}

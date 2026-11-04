@@ -1,0 +1,128 @@
+2026-11-04T16:16:38.080528+00:00 begin explicit room label checkpoint migration
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+2026-11-04T16:16:45.367643+00:00 request /session/existing
+2026-11-04T16:16:46.127156+00:00 request /session/stage
+{"status": "failed", "checks": 5, "failure": "ValueError: Current existing-room contract: furniture, real five views, CPU rendering"}
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/migrate_room_label_checkpoint.py", line 139, in <module>
+    main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/migrate_room_label_checkpoint.py", line 99, in main
+    post('/session/stage', {'stage': 'furniture', 'skip_render': True, 'stub_assets': False})
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/migrate_room_label_checkpoint.py", line 85, in post
+    response = client.post(route, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_client.py", line 1144, in post
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/testclient.py", line 518, in request
+    return super().request(
+           ^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_client.py", line 928, in send
+    raise exc
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_client.py", line 922, in send
+    response.read()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_models.py", line 881, in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_models.py", line 897, in iter_bytes
+    for raw_bytes in self.iter_raw():
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_models.py", line 951, in iter_raw
+    for raw_stream_bytes in self.stream:
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/httpx/_client.py", line 153, in __iter__
+    for chunk in self._stream:
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/testclient.py", line 384, in iter_body
+    exit_stack.close()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/contextlib.py", line 609, in close
+    self.__exit__(None, None, None)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/contextlib.py", line 601, in __exit__
+    raise exc_details[1]
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/contextlib.py", line 586, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/testclient.py", line 399, in close_app
+    raise exception
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/anyio/from_thread.py", line 272, in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/testclient.py", line 366, in run_app
+    await self.app(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/applications.py", line 1194, in __call__
+    await super().__call__(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/telemetry/_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/middleware/base.py", line 203, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/existing_project_session.py", line 237, in serialize_existing_requests
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/routing.py", line 374, in run_endpoint_function
+    return await run_in_threadpool(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/anyio/to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2779, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1124, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/telemetry/_api.py", line 244, in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/tool_server.py", line 258, in start_stage
+    env = s.make_roomscene_env(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/existing_project_session.py", line 136, in make_roomscene_env
+    raise ValueError("Current existing-room contract: furniture, real five views, CPU rendering")
+ValueError: Current existing-room contract: furniture, real five views, CPU rendering
