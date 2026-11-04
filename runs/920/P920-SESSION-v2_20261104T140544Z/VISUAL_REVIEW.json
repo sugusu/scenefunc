@@ -1,0 +1,12 @@
+{
+  "reviewed_at": "2026-11-04T14:10:50.529326+00:00",
+  "reviewed_images": [
+    "step_000.topdown.png",
+    "step_000.south.png"
+  ],
+  "verdict": "failed_geometry_fidelity",
+  "finding": "north_wall SceneObject incorrectly references the whole room SDF; native directive loads a second room at the wall transform, duplicating the floor and wall.",
+  "expected_native_behavior": "Upstream structural wall objects hold transform/bbox metadata with sdf_path=None; room geometry already contains walls.",
+  "additional_finding": "Tool accepts floor x/y/yaw, forces z=0, and perfect_profile still applies 1 mm / 0.1 degree standard deviations. Audit incorrectly required a literal requested XYZ string.",
+  "not_a_design_quality_score": true
+}

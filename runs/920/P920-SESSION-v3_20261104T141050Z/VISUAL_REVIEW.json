@@ -1,0 +1,25 @@
+{
+  "reviewed_at": "2026-11-04T14:21:55.859342+00:00",
+  "reviewer": "Codex visual inspection, not independent professional assessment",
+  "status": "partial_visual_validation_failed",
+  "five_view_acceptance": false,
+  "programmatic_execution_exit_code": 0,
+  "programmatic_checks_passed": 20,
+  "observed": [
+    "Before/after topdown views show the actual table translation and rotation; duplicated floor/wall from v2 is absent.",
+    "After-edit north view is blocked by the north wall, so ten valid PNG files do not establish ten useful observations.",
+    "Topdown boundary labels and textual room summary describe four walls while this partial synthetic fixture has only one structural wall. Treat that as an unresolved presentation discrepancy, not physical geometry."
+  ],
+  "diagnosis": "Actual Blender world-bbox inspection finds mesh1 height 2.50000024m and thickness 0.05000031m. Its local dimensions have z=0.05000001m due to a rotated glTF parent. Upstream local-dimension wall test returns false; equivalent world-bbox test true.",
+  "evidence": [
+    "views/step_002.north.png",
+    "views/step_002.topdown.png",
+    "diagnostics/BLEND_WORLD_GEOMETRY.json"
+  ],
+  "limits": [
+    "Synthetic partial room with one box table and one wall; not a complete room or professional design.",
+    "No collision score, human assessment, model generation or learning result.",
+    "Only existing-object furniture session; complete checkpoint/history continuation not implemented."
+  ],
+  "next_step": "Fix camera-side structural-wall classification using world coordinates and actual boundaries; validate against the saved native scene in a separately frozen finite render run."
+}

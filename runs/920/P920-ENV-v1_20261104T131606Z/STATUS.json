@@ -1,0 +1,208 @@
+{
+  "run_id": "P920-ENV-v1_20261104T131606Z",
+  "stage": "package_and_backend_resource_inspection_completed",
+  "status": "completed_with_warning",
+  "updated_at": "2026-11-04T13:52:02.604467+00:00",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ENV-v1_20261104T131606Z",
+  "question": "Can fixed official runtime source and integration be prepared in isolation, and what remains before native project-state import?",
+  "completed_planned": {
+    "source_checkouts": {
+      "completed": 2,
+      "planned": 2
+    },
+    "official_integration": {
+      "completed": 1,
+      "planned": 1
+    },
+    "isolated_environment": {
+      "completed": 1,
+      "planned": 1
+    },
+    "pinned_dependency_resolution": {
+      "completed": 1,
+      "planned": 1
+    },
+    "locked_installation": {
+      "completed": 1,
+      "planned": 1
+    },
+    "official_preflight": {
+      "completed": 1,
+      "planned": 1
+    },
+    "actual_module_imports": {
+      "completed": 5,
+      "planned": 5
+    },
+    "dependency_consistency": {
+      "completed": 0,
+      "planned": 1
+    },
+    "backend_resource_inventory": {
+      "completed": 1,
+      "planned": 1
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "a4a355400ccd7fff324d709fcce1a58b5332f645626e5fbc78f406b2d93b5f48",
+    "prepare_script_sha256": "57fbcc1e35ec8e1d4b4f9f9082d05977882345036fc6e04f48d6d33c5f446773",
+    "dependency_protocol_sha256": "5c3868fd39ffcf273c7b89942f0810ba6c2ecb7314745e7cd72c15d80dd06959",
+    "INSTALL_PROTOCOL.json": "7231575d45c6ec4a4c7b98cc67c6d6bff1da794226ba19091187c604b5ff283b",
+    "runtime-requirements-native.lock": "1440beaff9212244cc6c03d454f506c8aebd516fd4fe17b82b3ef256d7b9a40f",
+    "runtime-requirements-pinned.lock": "617074f27a3ac66f707452bf221b174f82fafb67dec5936be5a233e910b627ab",
+    "runtime-compatibility-constraints.txt": "ec9184ae3674f827bbf7cc384f19e5428517b7a19e9d69b51ec3f3eb6b67dd5f",
+    "CONSTRAINT_PROVENANCE.json": "69da1c07cb67894e81308cc04bec0c4e4938e80b3b41c18398641c1023308828",
+    "NATIVE_PLATFORM_CORRECTION.json": "d144c743b3d387c03764abaff7f4f89819248545f36fbc3f6e540bef416f3c7a",
+    "fetch_resolver.py": "5f79663c6e17216f2b5d0f4c4ef461aa3a7d6c7fa6c25a13af2aa13bafdaa113",
+    "PYTHON_HEADERS_CORRECTION.json": "29c8138309713fc54300434b35b2dc8c9f96d7c882b1f0ec4254bcd6506a1765",
+    "VERIFICATION_PROTOCOL.json": "9831346aa50dbfe0fb3178a7ef812991d26f8f28736b76f8a9aac74cce2be3a3",
+    "verify_imports.py": "b2aa8f10787dc6df975abbadd8b3395aae8d72375028e86454fba475ddaba2d0",
+    "resource_inventory_script_sha256": "f708b88536641dbb70963fb6b7aabf159667ba3dc22053038a08f764a46245ad"
+  },
+  "input_hashes": {
+    "official_execution_source_lock_sha256": "44e56d87ff1203e9cc83c71094f5722aeccce1053f77bdbaabf61c2c229b9c1b"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "MODULE_IMPORTS.json",
+    "BPY_WHEEL_METADATA.txt",
+    "runtime-requirements-pinned.lock",
+    "execution/dependency_check/receipt.json",
+    "BACKEND_RESOURCE_INVENTORY.json"
+  ],
+  "failure_reasons": [
+    "bpy 4.5.4 WHEEL records cp39-cp39-manylinux_2_28_x86_64 while installed into CPython 3.11.7; actual import passes. Original wheel metadata unchanged.",
+    "Backend service resource inventory, native session integration, model execution, physics and observation validation remain incomplete."
+  ],
+  "next_step": "Prepare native existing-room session binding with explicit finite local tool/resource scope; default full resource pipeline is incomplete.",
+  "execution": {
+    "started_at": "2026-11-04T13:50:45.119010+00:00",
+    "status": "completed",
+    "command": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "HF_HUB_OFFLINE=1",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/inspect_backend_resources.py",
+      "--scenesmith",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+      "--experiment-root",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ENV-v1_20261104T131606Z/BACKEND_RESOURCE_INVENTORY.json"
+    ],
+    "timeout_seconds": 120,
+    "pid": 3,
+    "start_ticks": "45809370",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ENV-v1_20261104T131606Z/execution/backend_resource_inventory/stage.log",
+    "ended_at": "2026-11-04T13:50:45.988117+00:00",
+    "elapsed_seconds": 0.86911567900097,
+    "exit_code": 0,
+    "first_log": "2026-11-04T13:50:45.332921+00:00 inspect declared backend defaults and local files"
+  },
+  "process": null,
+  "stages": {
+    "install_managed_python": {
+      "status": "failed",
+      "started_at": "2026-11-04T13:38:21.180813+00:00",
+      "ended_at": "2026-11-04T13:38:21.198645+00:00",
+      "exit_code": 2
+    },
+    "install_resolver": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:21:15.643187+00:00",
+      "ended_at": "2026-11-04T13:21:16.511907+00:00",
+      "exit_code": 0
+    },
+    "install_plan": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:29:44.023459+00:00",
+      "ended_at": "2026-11-04T13:30:04.121055+00:00",
+      "exit_code": 0
+    },
+    "create_venv": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:19:22.392567+00:00",
+      "ended_at": "2026-11-04T13:19:25.569639+00:00",
+      "exit_code": 0
+    },
+    "dependency_check": {
+      "status": "failed",
+      "started_at": "2026-11-04T13:42:08.161943+00:00",
+      "ended_at": "2026-11-04T13:42:08.227823+00:00",
+      "exit_code": 1
+    },
+    "install_dependencies_managed_python": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:40:32.203472+00:00",
+      "ended_at": "2026-11-04T13:41:10.366693+00:00",
+      "exit_code": 0
+    },
+    "install_managed_python_supported_flags": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:38:32.750536+00:00",
+      "ended_at": "2026-11-04T13:38:39.441765+00:00",
+      "exit_code": 0
+    },
+    "resolve_dependencies": {
+      "status": "failed",
+      "started_at": "2026-11-04T13:22:06.191426+00:00",
+      "ended_at": "2026-11-04T13:23:42.525929+00:00",
+      "exit_code": 1
+    },
+    "actual_module_imports": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:42:33.844187+00:00",
+      "ended_at": "2026-11-04T13:42:41.237446+00:00",
+      "exit_code": 0
+    },
+    "resolve_dependencies_pinned": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:27:25.153945+00:00",
+      "ended_at": "2026-11-04T13:27:46.958597+00:00",
+      "exit_code": 0
+    },
+    "resolve_dependencies_native": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:24:29.917709+00:00",
+      "ended_at": "2026-11-04T13:25:09.142739+00:00",
+      "exit_code": 0
+    },
+    "install_dependencies": {
+      "status": "failed",
+      "started_at": "2026-11-04T13:31:06.220973+00:00",
+      "ended_at": "2026-11-04T13:37:20.720817+00:00",
+      "exit_code": 1
+    },
+    "fetch_resolver": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:20:17.242269+00:00",
+      "ended_at": "2026-11-04T13:20:21.022662+00:00",
+      "exit_code": 0
+    },
+    "official_preflight": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:42:08.143391+00:00",
+      "ended_at": "2026-11-04T13:42:08.210198+00:00",
+      "exit_code": 0
+    },
+    "source_checkout": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:16:26.217441+00:00",
+      "ended_at": "2026-11-04T13:16:34.616332+00:00",
+      "exit_code": 0
+    },
+    "create_managed_venv": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:40:07.679808+00:00",
+      "ended_at": "2026-11-04T13:40:11.508883+00:00",
+      "exit_code": 0
+    },
+    "backend_resource_inventory": {
+      "status": "completed",
+      "started_at": "2026-11-04T13:50:45.119010+00:00",
+      "ended_at": "2026-11-04T13:50:45.988117+00:00",
+      "exit_code": 0
+    }
+  }
+}

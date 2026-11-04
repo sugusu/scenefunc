@@ -1,0 +1,347 @@
+{
+  "checked_at": "2026-11-04T13:50:45.901946+00:00",
+  "configuration": "scene_designer declared defaults",
+  "source_config_hashes": {
+    "configurations/ceiling_agent/base_ceiling_agent.yaml": "25f904116a26468a55aa03d07c77aba6511ed86217be549317c7fba156926421",
+    "configurations/ceiling_agent/stateful_ceiling_agent.yaml": "96786c660bd5b9fa8271c03d842ab345a3c90135079a80de47452b5be1707f72",
+    "configurations/config.yaml": "9dafdd3efeced642b65a8b35081a491f8ccc1a77753644eed1c7836d0b157cb6",
+    "configurations/experiment/base_experiment.yaml": "910754951f33ebfcea3e43781718b6d9405b0bf5d8ea695590c92279c3b9302c",
+    "configurations/experiment/indoor_scene_generation.yaml": "f61369ea2f00478dc47a51ac55afb94b2cb99b0d0bf9e450982bd67b43d1d4a7",
+    "configurations/floor_plan_agent/base_floor_plan_agent.yaml": "d6a6aeef30388686c18c09e4aa127922449708feb7c459267fb1a722eec5489e",
+    "configurations/floor_plan_agent/stateful_floor_plan_agent.yaml": "1758600286ed72cad3289e59a7c87e098770288d6a75c77cd5501cdcd47ed82b",
+    "configurations/furniture_agent/base_furniture_agent.yaml": "30535d35c79bf30f9c80f7383ae47f3bdde7e1fe4e18fb0499e83d1a43725af4",
+    "configurations/furniture_agent/stateful_furniture_agent.yaml": "cbab0bc4c98021aa8bb796bd677c8472aa14f46f9aac5b13acb6b72cb7d0de6f",
+    "configurations/manipuland_agent/base_manipuland_agent.yaml": "75f872c634f685f4f899cac828e5def8de87e085153365ce7c4ba7863e1f58c9",
+    "configurations/manipuland_agent/stateful_manipuland_agent.yaml": "5742be20828e81c2c0218548bbee48690c3f3a3d2309dce438a1cbb9d9d58868",
+    "configurations/scene_designer.yaml": "20ac4866781f629a50e7cf1bc30eb96c262ec554a512cdd50450925717ad6a75",
+    "configurations/wall_agent/base_wall_agent.yaml": "f6b60c3d802336a227318fbe7604d0c79dcac901e75136ee9078ebdd36ec2a6c",
+    "configurations/wall_agent/stateful_wall_agent.yaml": "48461a401b6a5ea0755cba315f547b02e5acd2c266fb82293ce52c162f4175b6"
+  },
+  "agents": {
+    "furniture_agent": {
+      "general_asset_source": "generated",
+      "backend": "sam3d",
+      "router_enabled": true,
+      "articulated_enabled": true,
+      "image_generation_backend": "openai",
+      "auxiliary_model": "gpt-5.2"
+    },
+    "wall_agent": {
+      "general_asset_source": "generated",
+      "backend": "sam3d",
+      "router_enabled": true,
+      "articulated_enabled": true,
+      "image_generation_backend": "openai",
+      "auxiliary_model": "gpt-5.2"
+    },
+    "ceiling_agent": {
+      "general_asset_source": "generated",
+      "backend": "sam3d",
+      "router_enabled": true,
+      "articulated_enabled": true,
+      "image_generation_backend": "openai",
+      "auxiliary_model": "gpt-5.2"
+    },
+    "manipuland_agent": {
+      "general_asset_source": "generated",
+      "backend": "sam3d",
+      "router_enabled": true,
+      "articulated_enabled": false,
+      "image_generation_backend": "openai",
+      "auxiliary_model": "gpt-5.2"
+    }
+  },
+  "resources": [
+    {
+      "configuration_key": "furniture_agent.asset_manager.sam3d.sam3_checkpoint",
+      "configured_path": "external/checkpoints/sam3.pt",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "furniture_agent.asset_manager.sam3d.sam3d_checkpoint",
+      "configured_path": "external/checkpoints/pipeline.yaml",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "furniture_agent.asset_manager.hssd.data_path",
+      "configured_path": "data/hssd-models",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "furniture_agent.asset_manager.hssd.preprocessed_path",
+      "configured_path": "data/preprocessed",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "furniture_agent.asset_manager.articulated.sources.partnet_mobility.data_path",
+      "configured_path": "data/partnet_mobility_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "furniture_agent.asset_manager.articulated.sources.partnet_mobility.embeddings_path",
+      "configured_path": "data/partnet_mobility_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "furniture_agent.asset_manager.articulated.sources.artvip.data_path",
+      "configured_path": "data/artvip_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+      "exists": false,
+      "required_by": "default_articulated_retrieval",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "furniture_agent.asset_manager.articulated.sources.artvip.embeddings_path",
+      "configured_path": "data/artvip_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings",
+      "exists": false,
+      "required_by": "default_articulated_retrieval",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.sam3d.sam3_checkpoint",
+      "configured_path": "external/checkpoints/sam3.pt",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.sam3d.sam3d_checkpoint",
+      "configured_path": "external/checkpoints/pipeline.yaml",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.hssd.data_path",
+      "configured_path": "data/hssd-models",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.hssd.preprocessed_path",
+      "configured_path": "data/preprocessed",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.articulated.sources.partnet_mobility.data_path",
+      "configured_path": "data/partnet_mobility_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.articulated.sources.partnet_mobility.embeddings_path",
+      "configured_path": "data/partnet_mobility_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.articulated.sources.artvip.data_path",
+      "configured_path": "data/artvip_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+      "exists": false,
+      "required_by": "default_articulated_retrieval",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "wall_agent.asset_manager.articulated.sources.artvip.embeddings_path",
+      "configured_path": "data/artvip_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings",
+      "exists": false,
+      "required_by": "default_articulated_retrieval",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.sam3d.sam3_checkpoint",
+      "configured_path": "external/checkpoints/sam3.pt",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.sam3d.sam3d_checkpoint",
+      "configured_path": "external/checkpoints/pipeline.yaml",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.hssd.data_path",
+      "configured_path": "data/hssd-models",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.hssd.preprocessed_path",
+      "configured_path": "data/preprocessed",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.articulated.sources.partnet_mobility.data_path",
+      "configured_path": "data/partnet_mobility_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.articulated.sources.partnet_mobility.embeddings_path",
+      "configured_path": "data/partnet_mobility_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.articulated.sources.artvip.data_path",
+      "configured_path": "data/artvip_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "ceiling_agent.asset_manager.articulated.sources.artvip.embeddings_path",
+      "configured_path": "data/artvip_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.sam3d.sam3_checkpoint",
+      "configured_path": "external/checkpoints/sam3.pt",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/sam3.pt",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.sam3d.sam3d_checkpoint",
+      "configured_path": "external/checkpoints/pipeline.yaml",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/external/checkpoints/pipeline.yaml",
+      "exists": false,
+      "required_by": "default_geometry_generation",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.hssd.data_path",
+      "configured_path": "data/hssd-models",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/hssd-models",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.hssd.preprocessed_path",
+      "configured_path": "data/preprocessed",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/preprocessed",
+      "exists": false,
+      "required_by": "alternative_hssd_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.articulated.sources.partnet_mobility.data_path",
+      "configured_path": "data/partnet_mobility_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.articulated.sources.partnet_mobility.embeddings_path",
+      "configured_path": "data/partnet_mobility_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/partnet_mobility_sdf/embeddings",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.articulated.sources.artvip.data_path",
+      "configured_path": "data/artvip_sdf",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "manipuland_agent.asset_manager.articulated.sources.artvip.embeddings_path",
+      "configured_path": "data/artvip_sdf/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/artvip_sdf/embeddings",
+      "exists": false,
+      "required_by": "inactive_articulated_option",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "experiment.materials_retrieval_server.data_path",
+      "configured_path": "data/materials",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/materials",
+      "exists": false,
+      "required_by": "default_materials_retrieval",
+      "content_validated": false
+    },
+    {
+      "configuration_key": "experiment.materials_retrieval_server.embeddings_path",
+      "configured_path": "data/materials/embeddings",
+      "resolved_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/data/materials/embeddings",
+      "exists": false,
+      "required_by": "default_materials_retrieval",
+      "content_validated": false
+    }
+  ],
+  "local_asset_cache": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/scenefunc/hssd-models",
+    "lock_sha256": "521661ab65933adadf09d07707fd0c68c9c602959f382a18b9fd1b4f476fb94d",
+    "declared_original_candidates": 436,
+    "declared_selected_assets": 23,
+    "files_present": 23,
+    "files_matching_locked_hashes": 23,
+    "full_hssd_dataset_or_retrieval_index": false
+  },
+  "default_pipeline_resource_ready": false,
+  "services_started": 0,
+  "model_calls": 0,
+  "training_updates": 0,
+  "limitations": [
+    "File existence does not validate resource content or a running service.",
+    "Existing selected assets do not reproduce the original candidate pool or full HSSD retrieval.",
+    "Auxiliary image generation and VLM requests are separate from the local Scene-Builder policy.",
+    "Agent construction can start Blender/collision services; none was constructed here."
+  ]
+}

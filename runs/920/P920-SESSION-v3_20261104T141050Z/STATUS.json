@@ -1,0 +1,76 @@
+{
+  "run_id": "P920-SESSION-v3_20261104T141050Z",
+  "stage": "native_session_programmatic_pass_visual_acceptance_failed",
+  "status": "completed_with_visual_limitations",
+  "updated_at": "2026-11-04T14:21:55.859342+00:00",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v3_20261104T141050Z",
+  "question": "Does an existing native room drive the actual Scene-Designer session, tools, receipts and state-bound five-view observations?",
+  "completed_planned": {
+    "checks": {
+      "completed": 20,
+      "planned": 20
+    },
+    "observations": {
+      "completed": 2,
+      "planned": 2
+    },
+    "tool_calls": {
+      "completed": 2,
+      "planned": 2
+    }
+  },
+  "configuration_hashes": {
+    "protocol_sha256": "aa05e6de8f167a59a319ee6ff6dc50ee06a8135fac9c6f3617f77ffad0cddba4",
+    "scripts/920/existing_project_session.py": "d43e105efb1fb85fb7306c366fe303988ed46a39a26a17ea9be048890a0f4691",
+    "scripts/920/audit_existing_session.py": "5756ff78b158a3bcf2c494e9261abce8b7e0d48373e7f2fdedec3790c00af065",
+    "scripts/920/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19"
+  },
+  "input_hashes": {
+    "manifest_sha256": "fc5ac9573971bc9e0c634c60b6f85cda9cf7d1b7adaac92ec6aadaa8ea4cb8f1"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "VISUAL_REVIEW.json",
+    "execution/audit/receipt.json",
+    "session/session_receipts.jsonl",
+    "state_bindings/step_002.state_binding.json",
+    "diagnostics/BLEND_WORLD_GEOMETRY.json"
+  ],
+  "failure_reasons": [
+    "North view blocked by wall: local dimensions omit parent-axis transform.",
+    "Boundary summary/labels overstate walls in partial fixture."
+  ],
+  "next_step": "Fix camera-side structural-wall classification using world coordinates and actual boundaries; validate against the saved native scene in a separately frozen finite render run.",
+  "execution": {
+    "started_at": "2026-11-04T14:11:32.620559+00:00",
+    "status": "completed",
+    "command": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "HF_HUB_OFFLINE=1",
+      "TRANSFORMERS_OFFLINE=1",
+      "LIBGL_ALWAYS_SOFTWARE=1",
+      "EGL_PLATFORM=surfaceless",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_existing_session.py",
+      "--designer",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+      "--scenesmith",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v3_20261104T141050Z/input_bundle",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v3_20261104T141050Z/audit"
+    ],
+    "timeout_seconds": 600,
+    "pid": 1095967,
+    "start_ticks": "45934120",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v3_20261104T141050Z/execution/audit/stage.log",
+    "ended_at": "2026-11-04T14:12:36.815080+00:00",
+    "elapsed_seconds": 64.19453165499726,
+    "exit_code": 0,
+    "first_log": "2026-11-04T14:11:32.686454+00:00 begin real session/HTTP/tools/views audit"
+  },
+  "process": null,
+  "five_view_acceptance": false
+}

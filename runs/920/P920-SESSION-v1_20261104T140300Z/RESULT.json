@@ -1,0 +1,114 @@
+{
+  "status": "failed",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "model_calls": 0,
+  "training_updates": 0,
+  "asset_generation_calls": 0,
+  "scientific_quality_evaluation": false,
+  "checks": [
+    {
+      "name": "real_rollout_session",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "selected_native_room_attached",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "same_layout_geometry_binding",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "cold_load_has_no_generation_backend",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "active_session_not_replaced",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "actual_upstream_furniture_agent",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "real_local_services_started",
+      "passed": true,
+      "evidence": null
+    }
+  ],
+  "requests": [
+    {
+      "route": "/session/existing",
+      "request": {
+        "bundle_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-IMPORT-v1_20261104T134317Z/audit/source",
+        "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v1_20261104T140300Z/audit/house"
+      },
+      "status_code": 200,
+      "elapsed_seconds": 0.41017182695213705,
+      "response": {
+        "status": "state_loaded",
+        "room_id": "store_b",
+        "project_id": "native_import_fixture",
+        "scene_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v1_20261104T140300Z/audit/house",
+        "backend_generation_started": false,
+        "initial_object_ids": [
+          "north_wall",
+          "table_0"
+        ],
+        "scope": "existing_objects_furniture_revision"
+      }
+    },
+    {
+      "route": "/session/existing",
+      "request": {
+        "bundle_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-IMPORT-v1_20261104T134317Z/audit/source",
+        "output_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v1_20261104T140300Z/audit/second"
+      },
+      "status_code": 409,
+      "elapsed_seconds": 0.005394494975917041,
+      "response": {
+        "detail": "Close the current session explicitly before importing another project"
+      }
+    },
+    {
+      "route": "/session/branch/evaluate",
+      "request": {
+        "branches": []
+      },
+      "status_code": 409,
+      "elapsed_seconds": 0.0034532930003479123,
+      "response": {
+        "detail": "Endpoint not validated for imported-state metadata"
+      }
+    },
+    {
+      "route": "/session/stage",
+      "request": {
+        "stage": "furniture",
+        "stub_assets": false,
+        "skip_render": false
+      },
+      "status_code": 200,
+      "elapsed_seconds": 3.4559485689969733,
+      "response": {
+        "stage": "furniture",
+        "steps_dir_container": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v1_20261104T140300Z/audit/house/room_store_b/rollout_furniture",
+        "steps_dir_host": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SESSION-v1_20261104T140300Z/audit/house/room_store_b/rollout_furniture"
+      }
+    }
+  ],
+  "failure": "RuntimeError: Scene export failed (1): 2026-11-04 22:03:50,735 - __main__ - INFO - Using provided temp directory: /tmp/blender_server_u0uocf14\n2026-11-04 22:03:50,735 - __main__ - INFO - Starting Blender server at 127.0.0.1:8005\n2026-11-04 22:03:50,735 - __main__ - INFO - Initializing Blender render app...\n2026-11-04 22:03:50,738 - __main__ - INFO - Starting Flask server (bpy requires main thread execution)...\n2026-11-04 22:03:50,741 - werkzeug - INFO - \u001b[31m\u001b[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.\u001b[0m\n * Running on http://127.0.0.1:8005\n2026-11-04 22:03:50,741 - werkzeug - INFO - \u001b[33mPress CTRL+C to quit\u001b[0m\n2026-11-04 22:03:51,557 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2026 22:03:51] \"GET / HTTP/1.1\" 200 -\n2026-11-04 22:03:51,563 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2026 22:03:51] \"POST /set_blend_config HTTP/1.1\" 200 -\nTraceback (most recent call last):\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/scripts/export_scene_worker.py\", line 14, in <module>\n    save_scene_as_blend(scene=scene, output_path=output,\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/agent_utils/rendering.py\", line 1392, in save_scene_as_blend\n    plant, scene_graph = create_drake_plant_and_scene_graph_from_scene(\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/agent_utils/drake_utils.py\", line 82, in create_drake_plant_and_scene_graph_from_scene\n    ProcessModelDirectives(directives, plant, parser=None)\nRuntimeError: AddJoint(): This LinkJointGraph already has joint 'sdformat_model_static_world_welds_to_room_geometry_body_link' (model instance 2) connecting link 'world' to link 'room_geometry_body_link'. Therefore adding joint 'world_welds_to_room_geometry_body_link' (model instance 2) connecting link 'world' to link 'room_geometry_body_link' is not allowed.\n * Serving Flask app 'scenesmith_blender_render'\n * Debug mode: off\n",
+  "extra_owned_children_cleaned": [],
+  "completed_at": "2026-11-04T14:03:53.242536+00:00"
+}

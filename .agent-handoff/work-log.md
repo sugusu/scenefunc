@@ -49,3 +49,19 @@
 通过 GitHub 连接读取并保存 13 个固定官方执行／安装小文件，逐个核 Git blob／大小／SHA256，未导入执行或启动服务。核实 HTTP 新会话仅接文字，阶段交接依赖 HouseLayout、RoomGeometry 和 RoomScene；原生场景序列化不含完整会话；摘要有意省略墙高与窗精确位置。完成 project_input_v1 接入方案和源锁。
 
 新增 inspect_runtime_environment.py，分别在 c15_genrec 和 geometry311 实际读取依赖元数据，满足 8/15、3/15 项，后者有 Drake；独立 Blender 仍可用于旧管线，不能把 module spec 检查解释为整机没有该软件。既有环境未改。新增 evaluation_v1 整屋评价草案与冻结清单，明确活动切换、实例保留、unknown、项目聚类、全部失败、盲评和公平训练预算；正式评测未开始。下一步准备完整隔离源码及资源方案，再实施原生导入。
+
+小时批次发布：2026-11-04 13:11:15 UTC 本地提交 d796cac4c5b084a85f06a6875d5a70bbcfa92fdd，64 文件。13:11:35—13:11:40 正常 push 退出 0；13:11:56—13:11:57 ls-remote 退出 0、SHA 匹配。没有 force-push 或重跑。仅发布后交接／状态记账留待下批；下一提交最早 14:11:15 UTC。
+
+## 2026-11-04 隔离环境与原生状态导入
+
+P920-ENV-v1 已取得两固定运行源码、完成官方集成。记录初次平台解析失败、Python.h 缺失构建失败及一次 uv 不支持参数失败，未删除旧环境／缓存。独立 CPython 3.11.7 下按哈希安装 165 包成功；官方 preflight 与实际五模块导入通过，uv pip check 的 bpy cp39 标签异常未消除。依赖锁、配置、真实起止／首日志／退出、Python 来源与关键文件哈希均归档；无服务、模型或训练。
+
+新增 native_project.py／audit_native_project.py，冻结 P920-IMPORT-v1_20261104T134317Z 后实际运行 1.07 秒、退出 0、27 项通过。两个合成原生房间恢复和继续状态编辑成立；实际确认上游计数遗漏。公开保存小型合成输入和状态，原始实验树不改。ENV／IMPORT 当前本地，按小时合并窗口最早 14:11:15 UTC；Goal 保持 active。
+
+继续完成 Hydra 默认资源盘点（无 agent 构造）：23 既有资产哈希匹配；默认 SAM3/SAM3D、ArtVIP、材料库及嵌入缺失。确认 agent 构造会启动服务，后续必须显式有限配置；新增 inspect_backend_resources.py 和小型结果，不启动服务或付费调用。
+
+## 2026-11-04 原生会话、真实工具与观察集成
+
+新增 existing_project_session.py 和 audit_existing_session.py；既有对象家具范围明确，工具来自实际 FunctionTool，禁用未准备的生成／检索后端。冻结三次有限协议，真实启动 Blender／碰撞服务并调用 native tools。v1 static/world-weld 冲突退出 1；v2 导出重复房壳、实际位姿检查失败退出 1；新输入修正原点／结构墙引用，v3 64.19 秒退出 0、20/20。一次合法移动与一次固定墙拒绝，十图绑定前后真实状态。各次源码、输入、起止／首日志／退出保留，无模型／训练／付费调用。
+
+视觉复核 v3 北侧仍被墙挡住；0.568 秒真实 blend 世界包围盒诊断确认父轴转换使上游局部高度判断失效。摘要和标注还把一墙 fixture 当四墙。记录程序成功与视觉失败，不宣布完整五视图通过。保存 final_house_state、真实回执、显式上下文和选定视图；大型 blend／所有原图留服务器并列哈希／恢复方法。当前没有活跃服务；ENV／IMPORT／SESSION 一并小时发布。

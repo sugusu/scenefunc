@@ -1,0 +1,26 @@
+2026-11-04T13:16:26.262123+00:00 git -c http.proxy=http://127.0.0.1:19998 init --quiet /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer
+2026-11-04T13:16:26.269870+00:00 git -c http.proxy=http://127.0.0.1:19998 remote add origin https://github.com/ZJU-OmniAI/Scene-Designer.git
+2026-11-04T13:16:26.400168+00:00 git -c http.proxy=http://127.0.0.1:19998 config remote.origin.promisor true
+2026-11-04T13:16:26.408206+00:00 git -c http.proxy=http://127.0.0.1:19998 config remote.origin.partialclonefilter blob:none
+2026-11-04T13:16:26.414448+00:00 git -c http.proxy=http://127.0.0.1:19998 fetch --depth=1 --filter=blob:none origin a0565e50ed7d32c0e09132b9311c0b9b91165405
+2026-11-04T13:16:27.978279+00:00 git -c http.proxy=http://127.0.0.1:19998 sparse-checkout init --cone
+2026-11-04T13:16:27.985686+00:00 git -c http.proxy=http://127.0.0.1:19998 sparse-checkout set src Designer integration scripts prompts tools trajectory_compression src_critic
+2026-11-04T13:16:27.992039+00:00 git -c http.proxy=http://127.0.0.1:19998 checkout --detach a0565e50ed7d32c0e09132b9311c0b9b91165405
+2026-11-04T13:16:29.709421+00:00 git -c http.proxy=http://127.0.0.1:19998 rev-parse HEAD
+2026-11-04T13:16:29.716145+00:00 git -c http.proxy=http://127.0.0.1:19998 status --porcelain
+2026-11-04T13:16:29.724699+00:00 git -c http.proxy=http://127.0.0.1:19998 init --quiet /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith
+2026-11-04T13:16:29.734528+00:00 git -c http.proxy=http://127.0.0.1:19998 remote add origin https://github.com/nepfaff/scenesmith.git
+2026-11-04T13:16:29.760576+00:00 git -c http.proxy=http://127.0.0.1:19998 config remote.origin.promisor true
+2026-11-04T13:16:29.799785+00:00 git -c http.proxy=http://127.0.0.1:19998 config remote.origin.partialclonefilter blob:none
+2026-11-04T13:16:29.806219+00:00 git -c http.proxy=http://127.0.0.1:19998 fetch --depth=1 --filter=blob:none origin e888297a8b0a2f3acbb8634edf9def59cceab836
+2026-11-04T13:16:31.328932+00:00 git -c http.proxy=http://127.0.0.1:19998 sparse-checkout init --cone
+2026-11-04T13:16:31.381317+00:00 git -c http.proxy=http://127.0.0.1:19998 sparse-checkout set scenesmith configurations scripts materials
+2026-11-04T13:16:31.407194+00:00 git -c http.proxy=http://127.0.0.1:19998 checkout --detach e888297a8b0a2f3acbb8634edf9def59cceab836
+2026-11-04T13:16:34.281917+00:00 git -c http.proxy=http://127.0.0.1:19998 rev-parse HEAD
+2026-11-04T13:16:34.286666+00:00 git -c http.proxy=http://127.0.0.1:19998 status --porcelain
+2026-11-04T13:16:34.321607+00:00 /usr/bin/python3 /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/scripts/setup_scenesmith.py --path /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith --check
+2026-11-04T13:16:34.388391+00:00 /usr/bin/python3 /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/scripts/setup_scenesmith.py --path /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith
+2026-11-04T13:16:34.471329+00:00 /usr/bin/python3 /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/scripts/setup_scenesmith.py --path /data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith --check
+2026-11-04T13:16:34.541617+00:00 git -c http.proxy=http://127.0.0.1:19998 status --porcelain
+2026-11-04T13:16:34.552904+00:00 git -c http.proxy=http://127.0.0.1:19998 status --porcelain
+2026-11-04T13:16:34.585378+00:00 runtime_sources_integrated

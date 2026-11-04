@@ -36,3 +36,18 @@ Git 恢复验证：push 退出 0，ls-remote 退出 0，远端 runs/920 为 c008
 归档核验：REVIEW 22 文件（不含清单自身），冻结脚本／输入 SHA 均一致，输入登记已按原哈希另存；audit 与 execution 副本逐字匹配 runtime。5 项目家族、2 决定引用有效，全属开发且 training_eligible=false。当前 38 个改动 JSON 解析通过，Python AST 与 git diff --check 通过，常见凭据签名未匹配；原已发布 paris／DD／TC／DATA／STATE 树不变。没有重跑已通过的模型／引擎实验。
 
 2026-11-04 原生接入检查：13 个官方文件均匹配固定树 Git blob、字节数和 SHA256；SceneSmith base 与原锁 e888297 一致。实际两解释器元数据检查均退出 0，确认依赖差异，未导入模型／几何／服务器代码、未跑官方完整 preflight。全部需求、场景输入、评测样本仍未声明正式就绪。原生导入实现、完整环境、专业评审与学习效果都未测试。
+
+发布验收：本批 43 个改动 JSON 可解析、64 文件约 491 KB，13 个新增官方小文件均通过来源哈希；Python AST、差异空白和常见凭据签名检查通过。d796cac push 与 ls-remote 均退出 0，远端分支 SHA 与本地完全一致。源码／原实验无需重跑。
+
+
+2026-11-04 ENV：源码准备 8.40 秒退出 0；官方集成检查／应用／复查通过。首次安装因 mathutils 编译缺 Python.h 退出 1（374.50 秒）；改独立同版 Python 后同锁安装 38.16 秒退出 0。官方 preflight 0、五实际模块导入 7.39 秒退出 0，CUDA 未初始化；uv pip check 1，保留 bpy WHEEL cp39 标签原文及警告。安装依赖成功不等于完整服务验收，所有失败阶段独立归档。
+
+2026-11-04 IMPORT：13:43:26—13:43:27 UTC、1.07 秒退出 0，实际 scenesmith.agent_utils.house.HouseScene，27 检查通过。两房间完整原生 state 字典与初态相等；表面 S_0 冲突实测，显式 counter=7 后返回 S_7，保存恢复后 S_8；房间类型、结构墙绑定与共享几何正确，其他房间不变。9 类非法输入拒绝；原始包全部字节不变，评分专用 marker 没进入显式上下文。无模型、HTTP 会话、渲染、物理、服务或专业标签验证；材质分支未动态覆盖、网格内部贴图依赖未封闭。
+
+归档核验：ENV／IMPORT 原 80 个小型产物 SHA／大小一致，三个公开合成包结构与清单均可读回，冻结 IMPORT 两脚本哈希一致；历史 DD／TC／DATA／STATE／SOURCE／REVIEW 不变，Python AST、JSON、git diff --check 与常见凭据签名检查通过。随后默认资源盘点 0.87 秒退出 0；23/23 既有资产哈希匹配，默认六类资源路径缺失，结果及回执另外归档。
+
+2026-11-04 SESSION：v1 22.9002 秒退出 1，7 项通过、0 图／工具；v2 69.7698 秒退出 1，18 项通过、2 次工具／10 图；v3 64.1945 秒退出 0，20 项通过、2 次工具／10 图。真实 FastAPI TestClient、RolloutSession、家具 agent、本地 Blender／碰撞服务及 move/rejection；不是 stub。v3 实际执行位姿与可见上下文相等，回执／图像／状态哈希对齐。真实前端 TCP 部署、完整 checkpoint 恢复、物理／用途评分未验收。
+
+v3 可视复核仍失败：北视图被墙挡住，四墙摘要／图注与部分 fixture 不符；重复房壳问题已解决。真实 blend local/world bbox 检查各约 0.57 秒退出 0：北墙 local z≈0.05m、world z≈2.5m；上游谓词 false、世界坐标谓词 true。仅诊断，无渲染器修复。所有历史输入、失败和 frozen 源码独立保留；0 模型／训练／外部付费调用。
+
+发布前复核：160 个 ENV／IMPORT／SESSION 产物大小与 SHA256 全部一致，SESSION 三次精确脚本与输入 manifest 均匹配冻结协议；101 个新增／修改 JSON 解析、19 Python AST 通过。无超过 5 MiB 的新增文件，常见凭据签名扫描无命中。git diff --check 通过；相对 d796cac 的 paris／DD／TC／DATA／STATE／SOURCE／REVIEW 历史树无改动。归档核验首次假设 v1 有 input_bundle 子目录而失败；改为读取其冻结协议中的既有 IMPORT 输入路径后通过，未改写任何历史输入。
