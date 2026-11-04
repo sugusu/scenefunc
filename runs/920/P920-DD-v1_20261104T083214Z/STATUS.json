@@ -3,13 +3,13 @@
   "run_id": "P920-DD-v1_20261104T083214Z",
   "baseline_sha": "bdabc219772112ff2aee0b4a14ffd86809f48cb1",
   "branch": "runs/920",
-  "updated_at": "2026-11-04T09:30:39.621602+00:00",
+  "updated_at": "2026-11-04T09:45:29.508596+00:00",
   "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920",
   "runtime_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DD-v1_20261104T083214Z",
   "research_question": "From each identical unrevised A/B draft, does one revision with measured functional-use feedback improve practical usability beyond the same geometry feedback, and at what cost?",
-  "stage": "first_furnished_scene_reconstructed",
+  "stage": "ab_comparison_complete",
   "status": "partial",
-  "activity": "first_furnished_scene_reconstructed",
+  "activity": "All four formal attempts and six scene scores finished; final artifact acceptance pending",
   "completed_planned": {
     "formal_draft_rounds": {
       "completed": 0,
@@ -18,11 +18,11 @@
       "reason": "Both unrevised historical drafts passed source and fresh geometry reconstruction checks"
     },
     "formal_revision_rounds": {
-      "completed": 0,
+      "completed": 4,
       "planned": 4
     },
     "furnished_scenes": {
-      "completed": 2,
+      "completed": 6,
       "planned": 6
     },
     "engineering_model_generations": {
@@ -35,7 +35,8 @@
     "weights.lock.json": "a5295fa2b055c410178d160e6ef024116db9113289d17cc1eaee728189128769",
     "assets.lock.json": "521661ab65933adadf09d07707fd0c68c9c602959f382a18b9fd1b4f476fb94d",
     "upstream.lock.json": "b3d0c5846064d3432064a84f1d3ccc9f0d2345565856ed23e31a1323ecc475e6",
-    "upstream.920.lock.json": "438cf1aed066c12022c37a2a167aaec7b79dd14d207b2b87a165fc8b4ae0765a"
+    "upstream.920.lock.json": "438cf1aed066c12022c37a2a167aaec7b79dd14d207b2b87a165fc8b4ae0765a",
+    "comparison_protocol": "30c2b97d8d9a7783ed9457849cc4d1eba25173dea7e061f4a906309c0cbc6218"
   },
   "input_hashes": {
     "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/巴黎开间双条件/输入A.json": "0c621411daeea088a0a5b98ae438878892fa1114fe36016d1413263d68b7c754",
@@ -44,85 +45,23 @@
     "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/同项目原柜实验/冻结开发输入/19_remote_studio/需求卡.svg": "70cf3c649fd3e7db81e3459a80d5bebab7495821725e853e1576812b6f66532e"
   },
   "latest_verifiable_artifacts": [
+    "RESULTS.json",
+    "ARTIFACTS.json",
+    "COMPARISON_PROTOCOL.json"
+  ],
+  "failure_reasons": [
     {
-      "path": "evidence/MODEL_DOWNLOAD_RECEIPT.json",
-      "sha256": "b0b26711216c7fac27989c19f963ed811eef1e3cdd2aa0f492e0c7aacaed1363"
+      "code": "UNSUPPORTED_PHYSICS_TOOL",
+      "count": 3,
+      "effect": "No state change in A-G, A-U, B-U"
     },
     {
-      "path": "evidence/MODEL_DOWNLOAD_LAUNCH.json",
-      "sha256": "3826acf6a827559cc532d66ffdde02525fbb26249cdedadab22a7fb7a8337f72"
-    },
-    {
-      "path": "evidence/MODEL_CPU_VALIDATION.json",
-      "sha256": "3057e8058df941c00d044027e522c3c9a9997e4542b802a400964a1eb8f54ea1"
-    },
-    {
-      "path": "evidence/MODEL_FORWARD_LAUNCH.json",
-      "sha256": "2266b79fc0b94c1df9a938d9c7735f593e288c004bcd7b09cf6de9766aad3f5a"
-    },
-    {
-      "path": "evidence/MODEL_FORWARD_PREFLIGHT.json",
-      "sha256": "b9c30a0c06a5b8dddce3866e6de9162724072f43a05720b510369d02d5828b3a"
-    },
-    {
-      "path": "evidence/RUN_PROTOCOL.json",
-      "sha256": "4b6ba471df9f7e45c3f8c11d859038e98540fd8a947b8fb4fac101083024292b"
-    },
-    {
-      "path": "evidence/MODEL_FORWARD_UTF8_LAUNCH.json",
-      "sha256": "25284f2d133136ce0cc93c02541b62c0d33762342c6c34771cb610e1b509b435"
-    },
-    {
-      "path": "evidence/MODEL_FORWARD_UTF8_PREFLIGHT.json",
-      "sha256": "5951de71cd2b64f843383f56ba7e9f88a14917e72216c1eb44df93e3a6a3956c"
-    },
-    {
-      "path": "evidence/model_forward_preflight_utf8.log",
-      "sha256": "3fff66e58f0fbf2bcb28ce1e608eeaaabcc9c324cd0b7a7593fc3212f048d07c"
-    },
-    {
-      "path": "evidence/model_download.log",
-      "sha256": "c5676f4041430668b8a7d59cb7b4063c1ba9e3273fc2072e908bf27d683124f0"
-    },
-    {
-      "path": "evidence/model_forward_preflight.log",
-      "sha256": "7e115c8aebf86d389df7e293b2d5e9821d35a41f35d58d7c8d346c68ca527fae"
-    },
-    {
-      "path": "evidence/REPOSITORY_WEIGHTS_MATCH.json",
-      "sha256": "fc13330febcdfcbf9a6470e659f733ce6b4d74a2af295ef2b49fe66c369b0764"
-    },
-    {
-      "path": "evidence/UPSTREAM_DOWNLOAD_920.json",
-      "sha256": "c980c75871a0d53c677a5a55a786fbf3949bd2ed084c0b0782283d46353e9fef"
-    },
-    {
-      "path": "evidence/upstream_download_920.log",
-      "sha256": "b0d1461f82150e747cada6df9ce84e07b6125d4e8b963e8671b67d0e8d463a8b"
-    },
-    {
-      "path": "evidence/geometry_install.log",
-      "sha256": "34e98adec3d0bbb101f614d3d003a47370bd7ea7e5c75fccb0a77fb77dd88b34"
-    },
-    {
-      "path": "evidence/A_engineering_raw_output.txt",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "path": "evidence/A_engineering_raw_output_UTF8.txt",
-      "sha256": "33389fafa1313afb6aef469dc873187fd9036d600d7080099ba94538070e1ca0"
-    },
-    {
-      "path": "evidence/A_engineering_token_ids_UTF8.json",
-      "sha256": "4712ad9721480634f8576a0eaf183876d88719df1dabb4a11730100a33124781"
-    },
-    {
-      "path": "evidence/HSSD_AUTHENTICATED_ACCESS_CHECK.json",
-      "sha256": "a112186fbc8d84c333d331b7dad1e614ec640b41da1e301c8ccda3fba2e2d9c9"
+      "code": "NONEXISTENT_OBJECT_ID",
+      "count": 1,
+      "effect": "B-G bookcase removal rejected; other five deletions executed"
     }
   ],
-  "failure_reasons": [],
-  "next_step": "Finish selected asset hashes, reconstruct and audit both unrevised drafts, then validate five-view memory budget before four G/U revision calls.",
+  "next_step": "Verify the committed evidence and final local artifacts; publish final acceptance.",
   "model_download_receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/MODEL_DOWNLOAD_RECEIPT.json",
   "model_started_at": "2026-11-04T09:23:36.310478+00:00",
   "model_first_log": {
@@ -178,7 +117,7 @@
     }
   ],
   "engineering_model_result": "pass",
-  "formal_capacity_validated": false,
+  "formal_capacity_validated": "Actual four inputs completed on one authorized 3090 without OOM; output cap 2048, realized outputs 249/380/291/284. Capacity beyond realized lengths is estimated, not exhaustively measured.",
   "assets_verified": true,
   "engineering_attempts": [
     {
@@ -285,5 +224,169 @@
       "process_maxrss_kib": 5587404
     }
   ],
-  "draft_reuse_acceptance": "DRAFT_REUSE_ACCEPTANCE.json"
+  "draft_reuse_acceptance": "DRAFT_REUSE_ACCEPTANCE.json",
+  "active_model_launch": {
+    "started_at": "2026-11-04T09:38:55.622703+00:00",
+    "status": "completed",
+    "kind": "formal",
+    "label": "B_U",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/comparison_model.py",
+      "--root",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920",
+      "--kind",
+      "formal",
+      "--label",
+      "B_U",
+      "--child"
+    ],
+    "pid": 1066079,
+    "start_ticks": "44298398",
+    "gpu_uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "free_mib": 24121,
+    "total_mib": 24576,
+    "driver": "580.178.04",
+    "required_free_bytes": 23301710304,
+    "host_available_bytes": 129411268608,
+    "probe_source": "B_U",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DD-v1_20261104T083214Z/model_runs/formal_B_U/model.log",
+    "timeout_seconds": 1200,
+    "child_pid": 1066084,
+    "child_start_ticks": "44298420",
+    "ended_at": "2026-11-04T09:39:17.472243+00:00",
+    "exit_code": 0,
+    "first_log": "2026-11-04T09:38:59.186270+00:00 loading fixed FP16 model for formal B_U"
+  },
+  "formal_model_results": [
+    {
+      "kind": "formal",
+      "label": "A_G",
+      "started_at": "2026-11-04T09:37:51.171929+00:00",
+      "status": "completed",
+      "precision": "float16",
+      "attention": "sdpa",
+      "seed": 0,
+      "use_cache": true,
+      "batch_size": 1,
+      "max_new_tokens": 2048,
+      "request_sha256": "5fc575a555999222fe1facc566bc248627b1a3a0ef2e55d9ef9c1e6e8ae98b3e",
+      "input_tensor_sha256": "57130ba150f1cc0b423f26d5b9f69f5a5cd4cee20c83a85c75838081bc86179f",
+      "formal_round": true,
+      "paid_api_calls": 0,
+      "training": false,
+      "input_tokens": 6857,
+      "load_seconds": 4.919023324036971,
+      "generation_seconds": 10.321305093006231,
+      "output_tokens": 249,
+      "raw_output_sha256": "06d7db2fe546469d20aea1445c3c0600b3e39f7c0ee57b453ac4fcc1486e85cf",
+      "ended_with_eos": true,
+      "parsed_call_count": 1,
+      "ended_at": "2026-11-04T09:38:07.101801+00:00",
+      "total_seconds": 15.912589565035887,
+      "peak_allocated_bytes": 19317780992,
+      "peak_reserved_bytes": 19675480064,
+      "maxrss_kib": 5593656
+    },
+    {
+      "kind": "formal",
+      "label": "A_U",
+      "started_at": "2026-11-04T09:38:11.701916+00:00",
+      "status": "completed",
+      "precision": "float16",
+      "attention": "sdpa",
+      "seed": 0,
+      "use_cache": true,
+      "batch_size": 1,
+      "max_new_tokens": 2048,
+      "request_sha256": "09de64e383f5e4862fa91d7164c2c2f420d031a2c6d10532ecdf1fa2a8b1f3a2",
+      "input_tensor_sha256": "ee7456147973fb9c06281d1f5ed36941558a9283a9aab0ed074f5ed093623176",
+      "formal_round": true,
+      "paid_api_calls": 0,
+      "training": false,
+      "input_tokens": 7440,
+      "load_seconds": 4.928261478955392,
+      "generation_seconds": 14.921905927010812,
+      "output_tokens": 380,
+      "raw_output_sha256": "7500989ca7dc43e345039b918e8c3d600f70025540c76805491a6630034f4c14",
+      "ended_with_eos": true,
+      "parsed_call_count": 1,
+      "ended_at": "2026-11-04T09:38:32.236484+00:00",
+      "total_seconds": 20.517167070007417,
+      "peak_allocated_bytes": 19465237504,
+      "peak_reserved_bytes": 20036190208,
+      "maxrss_kib": 5592900
+    },
+    {
+      "kind": "formal",
+      "label": "B_G",
+      "started_at": "2026-11-04T09:38:36.856783+00:00",
+      "status": "completed",
+      "precision": "float16",
+      "attention": "sdpa",
+      "seed": 0,
+      "use_cache": true,
+      "batch_size": 1,
+      "max_new_tokens": 2048,
+      "request_sha256": "dd46199e7666118d9ce8fdb6063b9fe9d11bc3e9ac8e4a10167977f9e4939754",
+      "input_tensor_sha256": "e179847688a828fd8fc228303bc87a8b1299ffd6c948c6a68a51de9e2de71bc4",
+      "formal_round": true,
+      "paid_api_calls": 0,
+      "training": false,
+      "input_tokens": 7443,
+      "load_seconds": 4.928168154030573,
+      "generation_seconds": 12.088657082000282,
+      "output_tokens": 291,
+      "raw_output_sha256": "67e9d8562cc5333e1f1965e230937d095f71fe02f2ab709088d76e32bd3f4e1b",
+      "ended_with_eos": true,
+      "parsed_call_count": 6,
+      "ended_at": "2026-11-04T09:38:54.563547+00:00",
+      "total_seconds": 17.689395738998428,
+      "peak_allocated_bytes": 19465962496,
+      "peak_reserved_bytes": 20036190208,
+      "maxrss_kib": 5593380
+    },
+    {
+      "kind": "formal",
+      "label": "B_U",
+      "started_at": "2026-11-04T09:38:59.168997+00:00",
+      "status": "completed",
+      "precision": "float16",
+      "attention": "sdpa",
+      "seed": 0,
+      "use_cache": true,
+      "batch_size": 1,
+      "max_new_tokens": 2048,
+      "request_sha256": "e5642ee1b8f107d6c615b3d60acb7d75dfc41c9da2d84e7b5e96e29c48355509",
+      "input_tensor_sha256": "f156165e50f797a83f05c03bfa0b08dde434dadf202613fc922b9b3b3be23f1a",
+      "formal_round": true,
+      "paid_api_calls": 0,
+      "training": false,
+      "input_tokens": 7938,
+      "load_seconds": 4.932342378015164,
+      "generation_seconds": 11.864752061024774,
+      "output_tokens": 284,
+      "raw_output_sha256": "5e04de747111d43af3b9ed7ab90283718853dcb4770933cb6ec7259bca87bd9b",
+      "ended_with_eos": true,
+      "parsed_call_count": 1,
+      "ended_at": "2026-11-04T09:39:16.655110+00:00",
+      "total_seconds": 17.469089830992743,
+      "peak_allocated_bytes": 19592534016,
+      "peak_reserved_bytes": 20197670912,
+      "maxrss_kib": 5593300
+    }
+  ],
+  "final_experiment_exit_status": "All four model children exited 0; all scene postprocessing exited 0; four tool calls returned failure",
+  "actual_tool_calls": {
+    "attempted": 9,
+    "successful": 5,
+    "failed": 4
+  },
+  "engineering_attempts_total": {
+    "attempted": 3,
+    "saved_success": 2,
+    "failed_serialization": 1,
+    "formal": false
+  },
+  "scientific_conclusion": "No meaningful use repair observed. A is unchanged; B-U is unchanged; B-G deletes required dining furniture, so fewer collisions are not a quality gain. No training or method superiority established."
 }
