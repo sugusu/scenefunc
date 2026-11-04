@@ -1,0 +1,19 @@
+[
+  {
+    "role": "system",
+    "content": "@NATIVE_SYSTEM_B@\n\n## Frozen room and coordinate contract\nThis input is a fixed development proxy shell, not a measured as-built Paris apartment.\nDo not change the shell. Native tool coordinates are x east, y north, z up, in metres;\nyaw 0 faces +y. Convert source [x,y,z] to native [x,-z,y], yaw=-source facing.\nThe attached image is a public input schematic, not the native ID-annotated renderer.\nIn this image blue denotes a window and orange a door; no furniture is present.\nDo not infer furniture, door swing volumes or storage capacity from this schematic.\nThe exact frozen source shell below uses x east, y up, z south; wall holes use\nfacing-local horizontal/vertical offsets. It includes a bathroom partition.\n{\"room_structure\":[{\"name\":\"wall_n\",\"location\":[0,1.25,-2.66],\"dimensions\":[5.3,2.5,0.02],\"facing\":180,\"color\":\"#F2F0EB\",\"holes\":[{\"location\":[-1.5,-0.2],\"dimensions\":[0.9,2.1]}]},{\"name\":\"wall_s\",\"location\":[0,1.25,2.66],\"dimensions\":[5.3,2.5,0.02],\"facing\":0,\"color\":\"#F2F0EB\",\"holes\":[{\"location\":[0,0.35],\"dimensions\":[1.8,1.4]}]},{\"name\":\"wall_e\",\"location\":[2.66,1.25,0],\"dimensions\":[5.3,2.5,0.02],\"facing\":270,\"color\":\"#F2F0EB\",\"holes\":[]},{\"name\":\"wall_w\",\"location\":[-2.66,1.25,0],\"dimensions\":[5.3,2.5,0.02],\"facing\":90,\"color\":\"#F2F0EB\",\"holes\":[]},{\"name\":\"bathroom_wall_s\",\"location\":[-1.65,1.25,-0.65],\"dimensions\":[2,2.5,0.02],\"facing\":0,\"color\":\"#F2F0EB\",\"holes\":[]},{\"name\":\"bathroom_wall_e\",\"location\":[-0.65,1.25,-1.65],\"dimensions\":[2,2.5,0.02],\"facing\":270,\"color\":\"#F2F0EB\",\"holes\":[{\"location\":[-0.55,-0.2],\"dimensions\":[0.7,2.1]}]},{\"name\":\"floor\",\"location\":[0,0,0],\"dimensions\":[5.3,0.04,5.3],\"color\":\"#D9C2A3\",\"holes\":[]},{\"name\":\"ceiling\",\"location\":[0,2.5,0],\"dimensions\":[5.3,0.04,5.3],\"color\":\"#FFFFFF\",\"holes\":[]},{\"name\":\"door\",\"location\":[1.5,1.05,-2.66],\"dimensions\":[0.9,2.1,0.08],\"facing\":180,\"color\":\"#2E2E2E\",\"holes\":[]},{\"name\":\"bathroom_door\",\"location\":[-0.65,1.05,-1.1],\"dimensions\":[0.7,2.1,0.08],\"facing\":270,\"color\":\"#2E2E2E\",\"holes\":[]},{\"name\":\"window\",\"location\":[0,1.6,2.64],\"dimensions\":[1.8,1.4,0.02],\"facing\":0,\"color\":\"#C7D7DB\",\"holes\":[]}],\"furniture\":[]}\n\n## Local execution scope for this first-step run\nUse the original tool names and arguments. The first generate_assets call uses\nthe existing local HSSD catalog through a deterministic metadata retrieval adapter;\nit does not call an external asset generator. Requested dimensions are preferences:\nactual dimensions and metadata provenance are returned; no silent rescaling.\nMissing categories or unsupported operations return explicit tool failures.\nThis run captures the first model turn and its tool responses; it does not certify\ncomplete room functionality. Do not omit user requirements to satisfy tool limits.\n"
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "image",
+        "image": "@WORK@/paris_A_inference_20261104/common_input_card.png"
+      },
+      {
+        "type": "text",
+        "text": "## Task\n在给定的巴黎开间内为一位居家办公的住户安排睡眠、收纳、办公和用餐。工作材料平摊占80×50厘米，用餐需要60×40厘米可用台面。住户重视窗景，也希望尽量留下日常活动空间。请交付完整可编辑的房间。吃饭期间工作材料也必须原位平摊，不能收起或移动。\n\n## Memory\nNo actions have been executed. The frozen room has no furniture."
+      }
+    ]
+  }
+]

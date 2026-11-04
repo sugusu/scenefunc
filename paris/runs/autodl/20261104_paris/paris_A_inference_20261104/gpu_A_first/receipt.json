@@ -1,0 +1,81 @@
+{
+  "phase": "generate",
+  "arm": "A",
+  "request_sha256": "fff42c0344992230e1bc86d08f3dda68513fba2512d8ea8a54b06c26a853e339",
+  "checkpoint_revision": "63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "checkpoint": "@WORK@/critic_public_runtime_20261104/checkpoint",
+  "batch_size": 1,
+  "dtype": "float16",
+  "max_new_tokens": 2048,
+  "max_input_tokens": 8192,
+  "max_pixels": 65536,
+  "seed": 0,
+  "attention": "eager",
+  "paid_api_calls": 0,
+  "training_runs": 0,
+  "model_forward": true,
+  "complete_room_success": null,
+  "status": "first_model_turn_saved",
+  "encoded": {
+    "images": [
+      {
+        "index": 0,
+        "origin": "@WORK@/paris_A_inference_20261104/common_input_card.png",
+        "sha256": "7dfc6789ce8c225b179020104ece86393d8e7942dc1821a37acbe4c9fdddcf0c",
+        "size": [
+          1520,
+          776
+        ]
+      }
+    ],
+    "input_tokens": 2237,
+    "input_shapes": {
+      "input_ids": [
+        1,
+        2237
+      ],
+      "attention_mask": [
+        1,
+        2237
+      ],
+      "pixel_values": [
+        220,
+        1536
+      ],
+      "image_grid_thw": [
+        1,
+        3
+      ]
+    },
+    "chat_template_sha256": "dcb28d7b285e9f24595f113dc41e4c6b6658ae0b685dbbae83be94c57b3d3593",
+    "max_pixels": 65536,
+    "max_input_tokens": 8192
+  },
+  "resources": {
+    "cuda_visible": true,
+    "cuda_device_count": 1,
+    "cgroup_limit_bytes": 26843545600,
+    "cpu_quota_us": 600000,
+    "cpu_period_us": 100000,
+    "gpu_free_bytes": 33745534976,
+    "gpu_total_bytes": 34072559616,
+    "gpu_name": "Tesla V100-PCIE-32GB"
+  },
+  "capacity_estimate": {
+    "dense_fp16_weights_bytes": 17534247392,
+    "max_sequence_tokens_this_call": 4285,
+    "kv_cache_bytes_at_max_output": 631848960,
+    "one_fp32_prefill_attention_score_tensor_bytes": 640533632,
+    "estimate_not_peak_measurement": true,
+    "additional_memory": "vision activations, eager attention temporaries, CUDA context/workspaces, allocator and load buffers",
+    "recommended_instance": "one V100 32 GiB; at least 24 GiB system RAM, 4 CPU cores; batch 1 FP16; no concurrent CLIP/render process",
+    "inference_duration": "unmeasured; first call only, release when saved output and tool responses are verified"
+  },
+  "model_receipt_dir": "@WORK@/paris_A_inference_20261104/gpu_A_first/calls/1793772619554729906_1495",
+  "parsed_tool_call_count": 1,
+  "tool_process_exit": 0,
+  "full_generation": false,
+  "elapsed_seconds": 161.8533120881766,
+  "peak_rss_mib": 5649.2734375,
+  "network_connection_attempts": 0
+}

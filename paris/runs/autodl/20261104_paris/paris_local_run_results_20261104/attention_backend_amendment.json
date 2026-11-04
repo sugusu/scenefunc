@@ -1,0 +1,14 @@
+{
+  "reason": "Actual CUDA OOM during eager prefill of the full 7373-token A mesh-feedback request; no model answer or action was produced",
+  "preserve_failed_attempt": true,
+  "same_complete_request_for_A": true,
+  "same_sdpa_backend_for_A_and_B": true,
+  "completed_feedback_calls_per_arm_still": 1,
+  "weights_dtype_seed_output_cap_unchanged": true,
+  "no_quality_based_retry": true,
+  "probe": "sdpa_backend_probe.json",
+  "numeric_equivalence_not_claimed_for_entire_model": true,
+  "second_failed_attempt": "SDPA efficient kernel cannot directly handle 32 query heads vs 8 KV heads on this runtime; no model answer",
+  "compatibility_fix": "Select the existing Transformers repeat_kv branch process-locally; no installed source or weights modified",
+  "compatibility_probe": "sdpa_gqa_compatibility_probe.json"
+}
