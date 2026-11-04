@@ -1,0 +1,17 @@
+{
+  "status": "posthoc development diagnostic; not preregistered or held-out",
+  "input_policy": "Use all four saved A/B draft/final states; never edit or replace them.",
+  "task_source": "Frozen input_A.json/input_B.json: work footprint 0.80 x 0.50 m and dining footprint 0.60 x 0.40 m.",
+  "purpose_A": "Separate-in-time surface use is allowed; storage and transition are not certified by this diagnostic.",
+  "purpose_B": "Work footprint remains at exactly the same location during dining; the two footprints cannot overlap.",
+  "declared_scope": "Geometric footprint witnesses on declared desk/dining-table top surfaces. Not ergonomic use, whole-task success, human preference, or rigid-body simulation.",
+  "eligible_names": ["desk", "office_desk", "dining_table"],
+  "surface_extraction": "Union of upward horizontal triangles at the mesh maximum z; z tolerance 1e-5 m, normal tolerance 1e-7, numerical inward boundary margin 1e-6 m.",
+  "obstruction_check": "Closed mesh cross-section rings of every other exported object at surface_z + 1e-4 m. Unclosed intersecting sections make free-space certification unknown. This is a planar obstruction check, not a volume sweep.",
+  "search": "Ordinary deterministic enumeration at 0.01 m center spacing, orientations 0 and 90 degrees, plus the surface bounding-box center. A returned polygon is checked against the actual triangle union. No witness means not-found, never global infeasibility.",
+  "joint_search_cap": 100000,
+  "controls": ["object AABB capacity (necessary relaxation, not proof)", "independent per-activity surface witnesses", "ordinary joint footprint enumeration with persistent work location"],
+  "hold_fixed": ["all mesh files", "object identities", "furniture transforms", "source briefs", "prior scores"],
+  "cost": "CPU only; no model inference, paid API, training, additional scene generation or GPU.",
+  "interpretation": "Existing collisions and unknown original requirements remain visible. Never turn a planar witness into a complete-scene positive or preference label. Counts are correlated states of one development room."
+}
