@@ -16,9 +16,10 @@ def read(p):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('--root',type=Path,required=True)
+    p.add_argument('--run-id',default='P920-DD-v1_20261104T083214Z')
     p.add_argument('--label',choices=['A_G','A_U','B_G','B_U'],required=True)
     a=p.parse_args()
-    run=a.root/'runtime/P920-DD-v1_20261104T083214Z'
+    run=a.root/'runtime'/a.run_id
     draft=run/'drafts'/a.label[0]
     model=run/'model_runs'/('formal_'+a.label)
     out=run/'revisions'/a.label

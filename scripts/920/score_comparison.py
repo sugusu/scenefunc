@@ -53,8 +53,9 @@ def verify_coordinates(scene_path, result):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);a=p.parse_args()
-    run=a.root/'runtime/P920-DD-v1_20261104T083214Z';rows=[]
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True)
+    p.add_argument('--run-id',default='P920-DD-v1_20261104T083214Z');a=p.parse_args()
+    run=a.root/'runtime'/a.run_id;rows=[]
     for label in ['A_draft','B_draft','A_G','A_U','B_G','B_U']:
         arm=label[0];draft=run/'drafts'/arm
         if label.endswith('draft'):
@@ -95,7 +96,7 @@ def main():
     matrices={method:{source:{'A':by_label[source+'_'+method]['surface_A'],'B':by_label[source+'_'+method]['surface_B']} for source in ['A','B']} for method in ['G','U']}
     tool_events=[(label,event) for label in ['A_G','A_U','B_G','B_U'] for event in read(run/'revisions'/label/'application.json').get('new_tool_events',[])]
     failures=[{'label':label,'call':e['call'],'response':e['response']} for label,e in tool_events if e['response'].get('success') is not True]
-    summary={'handoff_id':'P920-DD-v1','status':'analysis_complete','scored_at':datetime.now(timezone.utc).isoformat(),
+    summary={'handoff_id':a.run_id.split('_')[0],'run_id':a.run_id,'status':'analysis_complete','scored_at':datetime.now(timezone.utc).isoformat(),
              'rows':rows,'cross_requirement_surface_matrices':matrices,'tool_failures':failures,
              'formal_attempts':4,'formal_completed':sum(r['model']['status']=='completed' for r in rows if r['model']),
              'formal_output_tokens':sum(r['model']['output_tokens'] for r in rows if r['model']),

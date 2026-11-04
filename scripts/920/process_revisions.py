@@ -9,9 +9,10 @@ import sys
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True)
+    p.add_argument('--run-id',default='P920-DD-v1_20261104T083214Z')
     p.add_argument('--labels',nargs='+',default=['A_G','A_U','B_G','B_U'])
     a=p.parse_args();root=a.root.resolve();scripts=Path(__file__).resolve().parent
-    run=root/'runtime/P920-DD-v1_20261104T083214Z';geo=root/'envs/geometry311/bin/python'
+    run=root/'runtime'/a.run_id;geo=root/'envs/geometry311/bin/python'
     def stage(name,command):
         directory=run/'execution'/name
         if directory.exists():
@@ -23,7 +24,7 @@ def main():
         assert label in ['A_G','A_U','B_G','B_U']
         model=json.loads((run/'model_runs'/('formal_'+label)/'result.json').read_text())
         assert model['status']!='running'
-        stage('apply_'+label,[geo,scripts/'apply_revision.py','--root',root,'--label',label])
+        stage('apply_'+label,[geo,scripts/'apply_revision.py','--root',root,'--run-id',a.run_id,'--label',label])
         report=json.loads((run/'revisions'/label/'application.json').read_text())
         final=Path(report['final_directory'])
         audit=stage('audit_'+label,[geo,run/'work/paris_local_run_results_20261104/audit_scene.py','--checkpoint',final/'checkpoint.json','--out',final/'audit.json'])
@@ -36,7 +37,8 @@ def main():
     assert not summary.exists()
     summary.write_text(json.dumps(rows,indent=2)+'\n')
     print(json.dumps(rows),flush=True)
+    return 0 if all(row[key]==0 for row in rows for key in ['audit_exit','measure_exit','render_exit']) else 1
 
 
 if __name__=='__main__':
-    main()
+    raise SystemExit(main())

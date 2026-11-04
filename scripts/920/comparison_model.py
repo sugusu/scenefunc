@@ -34,8 +34,7 @@ def dump(p, data):
     temp.replace(p)
 
 
-def progress(root, stage, launch):
-    run_id = 'P920-DD-v1_20261104T083214Z'
+def progress(root, stage, launch, run_id='P920-DD-v1_20261104T083214Z'):
     pub = root/'scenefunc/runs/920'/run_id
     run = root/'runtime'/run_id
     results = [read(p) for p in sorted((run/'model_runs').glob('*/result.json'))]
@@ -48,6 +47,14 @@ def progress(root, stage, launch):
     status['configuration_hashes']['comparison_protocol'] = sha(run/'comparison_inputs/PROTOCOL.json')
     dump(pub/'STATUS.json', status)
     dump(pub.parent/'latest.json', {'run_id':run_id,'stage':stage,'status':status['status'],'updated_at':now(),'run_directory':str(root),'status_path':str(pub/'STATUS.json')})
+    if run_id != 'P920-DD-v1_20261104T083214Z':
+        status.update(run_id=run_id, run_directory=str(run),
+                      process=launch if launch['status']=='running' else None)
+        dump(pub/'STATUS.json', status)
+        dump(pub.parent/'latest.json', {'run_id':run_id,'stage':stage,'status':status['status'],
+             'updated_at':now(),'run_directory':str(run),'status_path':str(pub/'STATUS.json')})
+        dump(root/'STATUS.json', status)
+        return
     local = read(root/'STATUS.json')
     local.update(updated_at=now(), stage='running', milestone=stage, process={k:launch.get(k) for k in ['pid','start_ticks','child_pid']}, logs=list(set(local['logs']+[launch['log']])), next_step=status['next_step'])
     local['actual_calls']['revision_model_rounds']={'successful':sum(x['status']=='completed' for x in formal),'failed':sum(x['status'] not in ['running','completed'] for x in formal)}
@@ -123,16 +130,26 @@ def child(a, run, target):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('--root',type=Path,required=True)
+    p.add_argument('--run-id',default='P920-DD-v1_20261104T083214Z')
     p.add_argument('--kind',choices=['probe','formal'],required=True)
     p.add_argument('--label',choices=['A_G','A_U','B_G','B_U'],required=True)
     p.add_argument('--child',action='store_true')
     a=p.parse_args();a.root=a.root.resolve()
-    run=a.root/'runtime/P920-DD-v1_20261104T083214Z'
+    assert Path(a.run_id).name==a.run_id and a.run_id not in ('.','..')
+    run=a.root/'runtime'/a.run_id
     target=run/'model_runs'/((a.kind+'_')+a.label)
     if a.child:return child(a,run,target)
     assert not target.exists(),'Prior attempt exists; never overwrite or automatically retry'
     inputs=read(run/'comparison_inputs'/a.label/'receipt.json')
     protocol=read(run/'comparison_inputs/PROTOCOL.json')
+    assert inputs['input_tokens']<=protocol['max_input_tokens']<=8192
+    assert protocol['max_new_tokens']==2048 and protocol['seed']==0 and protocol['max_tool_calls']==12
+    if a.run_id != 'P920-DD-v1_20261104T083214Z':
+        assert protocol['run_id']==a.run_id
+        for name,digest in protocol['script_sha256'].items():
+            assert sha(Path(__file__).with_name(name))==digest, 'Script changed after protocol freeze: '+name
+        assert sha(run/'work/paris_local_run_results_20261104/dispatch_corrected.py')==protocol['dispatcher_sha256']
+        assert sha(run/'work/professional_data_ingest_20261104/native_src/stage_schemas.py')==protocol['native_schema_sha256']
     budget=32 if a.kind=='probe' else 2048
     required=17534247392+(inputs['input_tokens']+budget)*147456+4*1024**3
     probe=None
@@ -150,8 +167,8 @@ def main():
         mem=int(next(x.split()[1] for x in Path('/proc/meminfo').read_text().splitlines() if x.startswith('MemAvailable:')))*1024
         assert mem>=17534247392*2+8*1024**3
         target.mkdir(parents=True)
-        env.update(CUDA_VISIBLE_DEVICES=UUID,CUDA_DEVICE_ORDER='PCI_BUS_ID',PYTHONNOUSERSITE='1',PYTHONUTF8='1',PYTHONIOENCODING='utf-8',HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',OPENBLAS_NUM_THREADS='4',OMP_NUM_THREADS='4',TOKENIZERS_PARALLELISM='false')
-        command=[MODEL_PYTHON,str(Path(__file__).resolve()),'--root',str(a.root),'--kind',a.kind,'--label',a.label,'--child']
+        env.update(CUDA_VISIBLE_DEVICES=UUID,CUDA_DEVICE_ORDER='PCI_BUS_ID',PYTHONNOUSERSITE='1',PYTHONDONTWRITEBYTECODE='1',PYTHONUTF8='1',PYTHONIOENCODING='utf-8',HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',OPENBLAS_NUM_THREADS='4',OMP_NUM_THREADS='4',TOKENIZERS_PARALLELISM='false')
+        command=[MODEL_PYTHON,str(Path(__file__).resolve()),'--root',str(a.root),'--run-id',a.run_id,'--kind',a.kind,'--label',a.label,'--child']
         launch={'started_at':now(),'status':'running','kind':a.kind,'label':a.label,'command':command,
                 'pid':os.getpid(),'start_ticks':Path('/proc/self/stat').read_text().split(') ',1)[1].split()[19],
                 'gpu_uuid':UUID,'free_mib':int(gpu[2]),'total_mib':int(gpu[3]),'driver':gpu[4],
@@ -161,7 +178,7 @@ def main():
             proc=subprocess.Popen(command,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
             launch['child_pid']=proc.pid
             launch['child_start_ticks']=Path(f'/proc/{proc.pid}/stat').read_text().split(') ',1)[1].split()[19]
-            dump(target/'launch.json',launch);progress(a.root,a.kind+'_'+a.label+'_running',launch)
+            dump(target/'launch.json',launch);progress(a.root,a.kind+'_'+a.label+'_running',launch,a.run_id)
             print(json.dumps(launch),flush=True)
             try:code=proc.wait(timeout=1200)
             except subprocess.TimeoutExpired:
@@ -171,7 +188,7 @@ def main():
                 code=124
         lines=(target/'model.log').read_text(encoding='utf-8',errors='replace').splitlines()
         launch.update(ended_at=now(),status='completed' if code==0 else 'failed',exit_code=code,first_log=lines[0] if lines else None)
-        dump(target/'launch.json',launch);progress(a.root,a.kind+'_'+a.label+'_finished',launch)
+        dump(target/'launch.json',launch);progress(a.root,a.kind+'_'+a.label+'_finished',launch,a.run_id)
         print(json.dumps(launch),flush=True)
         return code
 
