@@ -74,3 +74,12 @@ DECISION 实际回执 0.267 秒／exit 0，2 案、31 记录、23 本地哈希�
 - 本次恢复原sandbox请求退出124、host阶段flag退出1均保留，不把未写RESULT的timeout算通过。最初只读命令误用python／session.json及一个不存在脚本名已改用python3和实际目录索引，未修改输入或触发模型。
 - 发布前检查：60 JSON解析、23 Python AST通过；四补丁从固定Designer原文件按序应用后，四个最终源文件SHA与实际运行一致；两run的42／51小型产物逐项哈希索引，未纳入大于5 MiB文件。常见密钥／token模式扫描无匹配（rg退出1为未找到）。非patch工作树diff --check通过；补丁中的上下文空白按原样保留。
 - 暂存后复查发现原始Blender日志含行尾空白／文件末空行，保留原始日志哈希，不清洗证据。排除原始*.log与精确*.patch的暂存diff --check通过；完整暂存检查不是无警告。
+- 发布验收：b686047d2eed99e923788aee0cd65ed5e6881b28正常push退出0，git ls-remote精确匹配。所有93个run归档条目哈希复核一致；历史runs与paris目录未修改。
+
+## 2026-11-05（本地）REPAIR、ACTIVITY、公开来源
+
+REPAIR8阶段全部退出0、81.57627797091845秒，ACTIVITY17:00:31.990043—17:03:14.550847 UTC、162.5608175539528秒退出0。ACTIVITY20执行检查、4实际工具、15图直接复核，4每步checkpoint保存；REPAIR三包和ACTIVITY四包均逐文件SHA／大小核验。未另冷恢复ACTIVITY最终包，不重跑通过阶段。工具瞬移和几何假设不作实际人体／搬运验收。
+
+公开论文下载3.9321085839765146秒退出0，17页1,236,691字节；本地渲染直接看1／13／17页，确认许可和引用错位。web截图缓存失败，改用本地pymupdf，未安装依赖。系统无pdftoppm/pdftotext，命令检查退出1无文件改动；fitz入口有弃用提示。WikiArch四文件Git blob一致；初次apply_patch为无尾换行JSON添了1字节，按原blob校验移除后精确匹配。归档脚本初次用了系统Python不支持的hashlib.file_digest，写出前退出；改流式SHA后成功。均未影响运行输入或重放动作。
+
+本批归档复核：93新增／修改路径、50 JSON解析、17 Python AST、67归档产物哈希通过；ACTIVITY冻结代码与运行副本一致。没有新增大于5MiB文件或常见凭据模式，历史run和paris无修改。专业复核材料的本地链接均存在。非原始log/patch的工作树diff --check通过，未追加无必要的引擎运行。

@@ -1,0 +1,248 @@
+{
+  "run_id": "P920-REPAIR-v1_20261104T163452Z",
+  "stage": "input_preparation_conditional_limits_recorded",
+  "status": "completed",
+  "updated_at": "2026-11-04T17:15:47.963893+00:00",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z",
+  "question": "Which warnings in the complete development initial room correspond to actual visual triangle intersections, including structural walls/openings, and is declared lamp support sampled on the actual tabletop?",
+  "completed_planned": {
+    "initial_mesh_audit": {
+      "completed": 1,
+      "planned": 1
+    },
+    "declared_reconstructions": {
+      "completed": 2,
+      "planned": 2
+    },
+    "post_mesh_audits": {
+      "completed": 2,
+      "planned": 2
+    },
+    "conditional_access_audits": {
+      "completed": 2,
+      "planned": 2
+    },
+    "observations": {
+      "completed": 1,
+      "planned": 1
+    }
+  },
+  "configuration_hashes": {
+    "PROTOCOL.json": "6651e8248f5045ed7557493bd648e86682fe6c61cf74e3fac5cc0fe63cc3db94",
+    "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1",
+    "OBSERVATION_PLAN.json": "038fb2c750b3ba4233dd8a117d6e745dadc6f2db09478033ea1ee4eef3d48513",
+    "FINAL_MESH_PLAN.json": "e46f11f27d757fdddfe852b3e26c60e1e07c38abfffec0a452a9a17242a00fee",
+    "POST_MESH_PLAN.json": "1fed9745f1791772d84bb573ee58e0247fa7aa0aa1f2e22307280f3588babe0e",
+    "INPUT_RECONSTRUCTION_PLAN.json": "0e147e424278cf7120f11dd63f534199df8a3cb25e36b8274e06ab44f46a1922",
+    "ACCESS_RECONSTRUCTION_PLAN.json": "9b8034a7c862b9aa325a46cfe2ac082bf9a14501f58716d4dcffce83eed9eea9",
+    "ACCESS_PLAN.json": "23ed2a7b13f951dc68ef578185a306ba1b5d9ae1d1572691fa2e6ebf63b80e92",
+    "FINAL_ACCESS_PLAN.json": "3350f40686f8a5ea170772e03e928cf134e11680d8f76f20fd42785321236af2"
+  },
+  "input_hashes": {
+    "source_manifest_sha256": "d81d189cf269e348e60abf22e6d3856c414754cb4ed6f1fa8022566a3961e6be"
+  },
+  "latest_verifiable_artifacts": [
+    "RESULT.json",
+    "FINAL_MESH_CONTACTS.json",
+    "FINAL_ACCESS.json",
+    "VISUAL_REVIEW.json"
+  ],
+  "failure_reasons": [],
+  "next_step": "Completed input preparation. Read ACTIVITY-v1 actual four-move replay and professional review packet; preserve negative access results.",
+  "execution": {
+    "started_at": "2026-11-04T16:52:48.671071+00:00",
+    "status": "completed",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/measure_room_access.py",
+      "--plan",
+      "runs/920/P920-REPAIR-v1_20261104T163452Z/FINAL_ACCESS_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/FINAL_ACCESS.json"
+    ],
+    "timeout_seconds": 30,
+    "pid": 6,
+    "start_ticks": "46901725",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/final_access/stage.log",
+    "ended_at": "2026-11-04T16:52:49.489775+00:00",
+    "elapsed_seconds": 0.818716834008228,
+    "exit_code": 0,
+    "first_log": "2026-11-04T16:52:49.085232+00:00 begin conditional whole-room access measurement"
+  },
+  "execution_stages": {
+    "post_mesh": {
+      "started_at": "2026-11-04T16:41:29.772190+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/inspect_native_mesh_contacts.py",
+        "--plan",
+        "runs/920/P920-REPAIR-v1_20261104T163452Z/POST_MESH_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/POST_MESH_CONTACTS.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 7,
+      "start_ticks": "46833835",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/post_mesh/stage.log",
+      "ended_at": "2026-11-04T16:41:34.254806+00:00",
+      "elapsed_seconds": 4.4826261989655904,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:41:30.169826+00:00 begin actual native mesh surface inspection"
+    },
+    "reconstruct_access": {
+      "started_at": "2026-11-04T16:52:08.157693+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/reconstruct_room_positions.py",
+        "--plan",
+        "runs/920/P920-REPAIR-v1_20261104T163452Z/ACCESS_RECONSTRUCTION_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/access_reconstructed"
+      ],
+      "timeout_seconds": 60,
+      "pid": 7,
+      "start_ticks": "46897674",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/reconstruct_access/stage.log",
+      "ended_at": "2026-11-04T16:52:10.332013+00:00",
+      "elapsed_seconds": 2.17432348895818,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:52:08.268649+00:00 begin declared whole-room input position reconstruction"
+    },
+    "observation": {
+      "started_at": "2026-11-04T16:42:40.549048+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/observe_reference_room.py",
+        "--designer",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/reconstructed/bundle",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/observation"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1117193,
+      "start_ticks": "46840913",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/observation/stage.log",
+      "ended_at": "2026-11-04T16:43:42.693499+00:00",
+      "elapsed_seconds": 62.144463345000986,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:42:40.662139+00:00 begin native whole-room observation"
+    },
+    "reconstruct_input": {
+      "started_at": "2026-11-04T16:40:47.577491+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/reconstruct_room_positions.py",
+        "--plan",
+        "runs/920/P920-REPAIR-v1_20261104T163452Z/INPUT_RECONSTRUCTION_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/reconstructed"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "46829616",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/reconstruct_input/stage.log",
+      "ended_at": "2026-11-04T16:40:49.750448+00:00",
+      "elapsed_seconds": 2.172963277960662,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:40:47.687370+00:00 begin declared whole-room input position reconstruction"
+    },
+    "final_access": {
+      "started_at": "2026-11-04T16:52:48.671071+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/measure_room_access.py",
+        "--plan",
+        "runs/920/P920-REPAIR-v1_20261104T163452Z/FINAL_ACCESS_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/FINAL_ACCESS.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "46901725",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/final_access/stage.log",
+      "ended_at": "2026-11-04T16:52:49.489775+00:00",
+      "elapsed_seconds": 0.818716834008228,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:52:49.085232+00:00 begin conditional whole-room access measurement"
+    },
+    "access": {
+      "started_at": "2026-11-04T16:49:50.299500+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/measure_room_access.py",
+        "--plan",
+        "runs/920/P920-REPAIR-v1_20261104T163452Z/ACCESS_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/ACCESS.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 7,
+      "start_ticks": "46883888",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/access/stage.log",
+      "ended_at": "2026-11-04T16:49:51.017972+00:00",
+      "elapsed_seconds": 0.7184885999886319,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:49:50.708532+00:00 begin conditional whole-room access measurement"
+    },
+    "initial_mesh": {
+      "started_at": "2026-11-04T16:35:02.272461+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/inspect_native_mesh_contacts.py",
+        "--plan",
+        "runs/920/P920-REPAIR-v1_20261104T163452Z/PROTOCOL.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/INITIAL_MESH_CONTACTS.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "46795085",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/initial_mesh/stage.log",
+      "ended_at": "2026-11-04T16:35:06.854294+00:00",
+      "elapsed_seconds": 4.581839420017786,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:35:02.678494+00:00 begin actual native mesh surface inspection"
+    },
+    "final_mesh": {
+      "started_at": "2026-11-04T16:52:48.691712+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/inspect_native_mesh_contacts.py",
+        "--plan",
+        "runs/920/P920-REPAIR-v1_20261104T163452Z/FINAL_MESH_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/FINAL_MESH_CONTACTS.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "46901727",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/execution/final_mesh/stage.log",
+      "ended_at": "2026-11-04T16:52:53.174551+00:00",
+      "elapsed_seconds": 4.48285680601839,
+      "exit_code": 0,
+      "first_log": "2026-11-04T16:52:49.100451+00:00 begin actual native mesh surface inspection"
+    }
+  },
+  "diagnostic_limitations": [
+    "No accepted human-use threshold; 0.6 m conservative access remains disconnected.",
+    "Final input five-view review completed as ACTIVITY step 0; REPAIR own images depict its earlier reconstruction."
+  ]
+}

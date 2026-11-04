@@ -1,0 +1,123 @@
+{
+  "frozen_at": "2026-11-04T16:52:08.101958+00:00",
+  "source_bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-REPAIR-v1_20261104T163452Z/reconstructed/bundle",
+  "source_manifest_sha256": "876cc6d41bb4d3bb0355ea72d063318908bb0434f39d409ec6f7290de6514177",
+  "access_diagnostic_sha256": "32fabb36a86a325feb0303f6f009f6b0b3491ff0439cdf47e6b1487b0c8eab76",
+  "script_sha256": "c298241148f30909510a228183a44d809a0955062eca542d8a8660e490743c59",
+  "scenesmith": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+  "project_id": "nyc_chan_dancer_studio_reconstruction_v3",
+  "positions": {
+    "recon_sofa_0": {
+      "expected_translation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "translation": [
+        0.35,
+        0.1,
+        0.0
+      ],
+      "reason": "Widen the bathroom-door side corridor while keeping sofa separated from bed; researcher input correction, not a model action."
+    },
+    "recon_coffee_table_0": {
+      "expected_translation": [
+        1.6,
+        0.0,
+        0.0
+      ],
+      "translation": [
+        1.55,
+        0.2,
+        0.0
+      ],
+      "reason": "Rotate the same unscaled table to fit beside the shifted sofa while retaining a seating gap and avoiding bookcase/storage; no activity parking solution provided.",
+      "rotation_wxyz": [
+        0.7071067811865476,
+        0,
+        0,
+        -0.7071067811865475
+      ]
+    },
+    "recon_floor_lamp_0": {
+      "expected_translation": [
+        0.0,
+        1.35,
+        0.0
+      ],
+      "translation": [
+        0.35,
+        -2.42,
+        0.0
+      ],
+      "reason": "Remove the north circulation bottleneck, retaining the lamp beside the bed; sampled approach point and all diagnostic thresholds remain unchanged."
+    },
+    "recon_dining_table_0": {
+      "expected_translation": [
+        -1.8,
+        0.9,
+        0.0
+      ],
+      "translation": [
+        -1.8,
+        0.85,
+        0.0
+      ],
+      "reason": "Move the table group south by 5 cm to enlarge the entrance/fridge passage; retain dimensions, assets and two chairs."
+    },
+    "recon_dining_chair_1_0": {
+      "expected_translation": [
+        -1.1,
+        1.2,
+        0.0
+      ],
+      "translation": [
+        -1.1,
+        1.15,
+        0.0
+      ],
+      "reason": "Translate with the dining group by 5 cm."
+    },
+    "recon_dining_chair_2_0": {
+      "expected_translation": [
+        -1.1,
+        0.6,
+        0.0
+      ],
+      "translation": [
+        -1.1,
+        0.55,
+        0.0
+      ],
+      "reason": "Translate with the dining group by 5 cm."
+    },
+    "recon_desk_lamp_0": {
+      "expected_translation": [
+        -1.65,
+        1.2,
+        0.7107922434806825
+      ],
+      "translation": [
+        -1.65,
+        1.15,
+        0.7107922434806825
+      ],
+      "reason": "Keep parent-relative position and actual top-surface support."
+    }
+  },
+  "visible_input_disclosure": "A further researcher input correction addresses conservative circulation warnings. Its 0.4/0.5/0.6 m square-body checks are diagnostic assumptions, not resident measurements; door operation, comfort and the eventual activity transition remain unknown.",
+  "budget": {
+    "additional_input_reconstructions": 1,
+    "wall_seconds": 60,
+    "model_calls": 0,
+    "training_updates": 0,
+    "policy_tool_calls": 0
+  },
+  "invariants": [
+    "Same 21 furniture and 11 structure IDs and asset files; no resizing or deletion",
+    "Only declared seven translations and one coffee-table rotation",
+    "Table and supported lamp translate together",
+    "Same access algorithm, body scenarios, grid and target points after reconstruction",
+    "Keep earlier input and its failed circulation diagnostics; no professional supervision labels"
+  ]
+}
