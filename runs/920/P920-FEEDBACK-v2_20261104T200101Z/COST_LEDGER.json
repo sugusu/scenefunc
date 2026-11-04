@@ -1,0 +1,60 @@
+{
+  "recorded_at": "2026-11-04T20:27:56.059514+00:00",
+  "arms": {
+    "G": {
+      "actual_model_calls": 9,
+      "actual_tool_calls": 9,
+      "input_tokens": 95407,
+      "output_tokens": 514,
+      "generation_seconds": 52.0595288790646,
+      "load_seconds": 41.31481957290089,
+      "rollout_wall_seconds": 500.4529367100331,
+      "tool_counts": {
+        "move_furniture_tool": 4,
+        "remove_furniture_tool": 1,
+        "get_current_scene_state": 2,
+        "add_furniture_to_scene_tool": 1,
+        "check_facing_tool": 1
+      },
+      "schema_mismatch_calls": 2,
+      "new_rendered_views": 45,
+      "initial_images_reused": 5
+    },
+    "U": {
+      "actual_model_calls": 9,
+      "actual_tool_calls": 9,
+      "input_tokens": 97796,
+      "output_tokens": 682,
+      "generation_seconds": 63.02258727699518,
+      "load_seconds": 42.349792092922144,
+      "rollout_wall_seconds": 514.5906083129812,
+      "tool_counts": {
+        "move_furniture_tool": 2,
+        "get_current_scene_state": 2,
+        "remove_furniture_tool": 2,
+        "check_facing_tool": 1,
+        "add_furniture_to_scene_tool": 2
+      },
+      "schema_mismatch_calls": 2,
+      "new_rendered_views": 45,
+      "initial_images_reused": 5
+    }
+  },
+  "common_lineage_cost": {
+    "source_run": "P920-WHOLE-v2_20261104T191710Z",
+    "model_calls": 15,
+    "tool_calls": 15,
+    "generated_tokens": 1296,
+    "rollout_exit_code": 1,
+    "failure": "Next input12630>12288 before a16th model call."
+  },
+  "earlier_retained_failed_attempt": {
+    "run_id": "P920-WHOLE-v1_20261104T191014Z",
+    "model_calls": 1,
+    "tool_calls": 0,
+    "generated_tokens": 1024,
+    "failure": "Multi-action length truncation, no action executed."
+  },
+  "accounting": "Within the two-arm comparison shared15 are counted once overall, or carried into each24-call lineage. Do not charge shared model calls twice. Earlier v1 is additional research preparation cost, not part of either matched arm. No retry or training in the feedback comparison.",
+  "wall_time_limit": "G final audit/export overlapped U rollout; do not interpret wall-clock difference as a controlled method-compute effect. Token counts and generation timings are actual recorded values, not FLOP equivalence."
+}

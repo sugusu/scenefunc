@@ -1,0 +1,24 @@
+{
+  "run_id": "P920-FEEDBACK-v1_20261104T195244Z",
+  "stage": "prepare_failed_before_model",
+  "status": "failed",
+  "updated_at": "2026-11-04T20:01:01.771936+00:00",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v1_20261104T195244Z",
+  "question": "Restore same step15 checkpoint and reuse its actual five views under exact state equality.",
+  "completed_planned": {
+    "model_calls": [
+      0,
+      18
+    ],
+    "tool_calls": [
+      0,
+      18
+    ]
+  },
+  "configuration_hashes": {
+    "protocol": "4ab6cf3fd21f72a569fccc2f16f1b052f21067eef44db4c6898fd50dac1f2254"
+  },
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v1_20261104T195244Z/RESTORE_DIAGNOSIS.json",
+  "failure_reason": "Exact state SHA rejected three native quaternion serialization differences, maximum 5.421010862427522e-20. No other state difference; CPU audit established source image binding exactly matches stored checkpoint. U not started.",
+  "next_step": "Separate v2 protocol applies existing explicit <=1e-12 quaternion roundtrip guard and logs every difference; no model re-sampling."
+}

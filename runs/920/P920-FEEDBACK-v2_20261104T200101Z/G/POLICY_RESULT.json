@@ -1,0 +1,1562 @@
+{
+  "phase": "rollout",
+  "arm": "G",
+  "status": "policy_attempt_completed_pending_independent_audit",
+  "started_at": "2026-11-04T20:04:15.662025+00:00",
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-04T20:04:27.838845+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "f544d2d33be1df0f0432b01a1cccf0ebb9737ef19d5745d051d4fd6db1b44539",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z/rollout/house/room_geneva_development/rollout_furniture/step_015.topdown.png",
+              "sha256": "711c2141b254cd8739c2443ad4f2c97a6679138d9d9f089c2a9698923432212d",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z/rollout/house/room_geneva_development/rollout_furniture/step_015.south.png",
+              "sha256": "351b81d2010fd743d2fd8686cc636ac90863e83220b14888d32699e0855428ee",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z/rollout/house/room_geneva_development/rollout_furniture/step_015.east.png",
+              "sha256": "93ccb3124bb78cbb15bc39d504400d0ee7685e870e32667a3225ee8763a84d50",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z/rollout/house/room_geneva_development/rollout_furniture/step_015.west.png",
+              "sha256": "e4692e8142525b5bac0b297e7827fae21f33bfb67d9194d0f4af55d853823c16",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v2_20261104T191710Z/rollout/house/room_geneva_development/rollout_furniture/step_015.north.png",
+              "sha256": "000d548bce07238d4ed12b4b967b52460701d4fb7c4f64dafdf645434dda992f",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10908,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10908
+            ],
+            "attention_mask": [
+              1,
+              10908
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "ac5006c2f305a193dff8e30d6621a82f2ebc802b6c041d74a2aaf3ede3459ffe",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.9889786199782975,
+        "generation_seconds": 5.244338181044441,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "5baeb58ad8c59b0968f957c9be84b095daa8d685809f84349fc273f59d279202",
+        "peak_allocated_bytes": 20352094720,
+        "peak_reserved_bytes": 21114126336,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:04:41.560495+00:00",
+        "elapsed_seconds": 13.72166841296712
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "cooker_0",
+            "x": 0.0,
+            "y": -1.45,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "d3322ec64362c62fca3f5f32eb743e1370171dadeb0ed89c6c019fd43699cba0",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved cooker to new position and rotation",
+              "object_id": "cooker_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_000/checkpoint",
+        "manifest_sha256": "dee25906d6c065d324ac1f7581577d9270c7160fa9b6d3f20702405f0a0aa453",
+        "state_sha256": "87580bbed95274449dcf188ac5f4fc48c45bc8bdb0fc946949f567e76ab4ddb0",
+        "step_idx": 16
+      },
+      "after_sha256": "b4135f0b596910f9373509fbf8afb0569be2e69e09656407216c493810f2ec02"
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-04T20:05:23.832094+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "ab58f0f9655fe3f76edfd880dbdccbe4ea5ea10a1160a36baa4d684262102c70",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_016.topdown.png",
+              "sha256": "6a06f76b6199f986e02653b124db0223cfbe88fdf314b5b831c7e52f44584639",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_016.south.png",
+              "sha256": "45508e7f040ecd86cc6786ef86af856247428fbb24376ba0c2f9f134b695059b",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_016.east.png",
+              "sha256": "94b00739711ae890e35c7cfd47b3f262119692a9263bccfd3354c32ed839d0b8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_016.west.png",
+              "sha256": "62845ce92044a1f682e7a3cd3255ddc702f7f5a3252a6fcf0efd67daf6d0096d",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_016.north.png",
+              "sha256": "67a0c8c297a59b69a130048c30b466655c37c6a85c26ba371b780e2957faa835",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10730,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10730
+            ],
+            "attention_mask": [
+              1,
+              10730
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "70ec5a2a75719dafcb4f4fcba5d6d09ccb0dbd70982eccf59212c387f5005bab",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.9783449890092015,
+        "generation_seconds": 4.475076725997496,
+        "output_tokens": 24,
+        "ended_with_eos": false,
+        "raw_output_sha256": "764d7b147519be21a90aa13a9d7a007ae552e64b3f16fe317e02335135db517c",
+        "peak_allocated_bytes": 20307988992,
+        "peak_reserved_bytes": 21231566848,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:05:36.856117+00:00",
+        "elapsed_seconds": 13.024043638957664
+      },
+      "calls": [
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "bookshelf_0"
+          }
+        }
+      ],
+      "before_sha256": "b4135f0b596910f9373509fbf8afb0569be2e69e09656407216c493810f2ec02",
+      "reply": {
+        "results": [
+          {
+            "name": "remove_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully removed bookshelf from scene",
+              "object_id": "bookshelf_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_001/checkpoint",
+        "manifest_sha256": "a50075eeb1481a348e97eadbfbcae498543d36ef7ea99eb0c97c434093cf8b2b",
+        "state_sha256": "6e157eff0dffb9ccd300742a9f3403926abf8c2f4ec8f0d3816a7ca0e86092e7",
+        "step_idx": 17
+      },
+      "after_sha256": "ce66ca6b41312a9d930a512097563cc46240f66532337f17668dd1bd44fa3dc4"
+    },
+    {
+      "turn": 2,
+      "model": {
+        "started_at": "2026-11-04T20:06:17.950495+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "5dff2e9d7037789421a584c2091c1122472474b28b648ae40b3f87249af5a263",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_017.topdown.png",
+              "sha256": "85300c1a126a15df14d8c033540a270a61497417483c88c22905affe8f545935",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_017.south.png",
+              "sha256": "f957ca796c794a8c94894adfa3651366b962cd8c41310313d16ffe6e36584a00",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_017.east.png",
+              "sha256": "11527b40d0ad98264c4a6b50b476ad2d91cadd0efcfeffd8505e432a2418b7a9",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_017.west.png",
+              "sha256": "33f919cf3095405c331b80ded0e466e570894c6c67f2ae22fbe7a963e7d1c116",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_017.north.png",
+              "sha256": "3a3b179e07748de9f78e97b1ffb152c6d1cc5be6de5e465213ed1127590795cf",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10215,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10215
+            ],
+            "attention_mask": [
+              1,
+              10215
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "5dfba84c61cfbf46abde118f28be9a84bd107267b5945cd656915e7cb33d51c3",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.978934987972025,
+        "generation_seconds": 5.639687995018903,
+        "output_tokens": 65,
+        "ended_with_eos": false,
+        "raw_output_sha256": "1e9bfb8f1bfc2f7b715325beacb9173ac0ed4393dd98a9ddf1a6aaa1477a23b3",
+        "peak_allocated_bytes": 20177867264,
+        "peak_reserved_bytes": 21061697536,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:06:31.970019+00:00",
+        "elapsed_seconds": 14.019542043970432
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "additionalProperties": false,
+            "properties": {
+              "bboxOnly": {
+                "description": "Only return bounding box geometry.",
+                "type": "boolean"
+              }
+            },
+            "required": [],
+            "title": "get_current_scene_state_args",
+            "type": "object"
+          }
+        }
+      ],
+      "before_sha256": "ce66ca6b41312a9d930a512097563cc46240f66532337f17668dd1bd44fa3dc4",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 11,
+              "objects": [
+                {
+                  "object_id": "shell_north",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": 0.0,
+                  "position_y": 2.388888888888889,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.583333333333333,
+                    "depth": 0.05,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_south",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": 0.0,
+                  "position_y": -2.388888888888889,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.583333333333333,
+                    "depth": 0.05,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": 3.7916666666666665,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 4.777777777777778,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": -3.7916666666666665,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 4.777777777777778,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_door",
+                  "description": "Assumed vertical size; no operability or daylight validation",
+                  "position_x": 3.7916666666666665,
+                  "position_y": -1.1111111111111112,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8888888888888888,
+                    "height": 2.0
+                  }
+                },
+                {
+                  "object_id": "shell_window",
+                  "description": "Assumed vertical size; no operability or daylight validation",
+                  "position_x": -3.7916666666666665,
+                  "position_y": 0.0277777777777779,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 4.611111111111111,
+                    "height": 1.4999999999999998
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0007290018032470627,
+                  "position_y": 0.9996028232225618,
+                  "rotation_degrees": -0.038199692637648996,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "shower_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -1.4969451119333756,
+                  "position_y": -0.9984585452221424,
+                  "rotation_degrees": 89.86101603610354,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "toilet_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": 1.4013487057049439,
+                  "position_y": -1.0012355253146632,
+                  "rotation_degrees": 0.12069183257814642,
+                  "dimensions": {
+                    "width": 0.4053383618593216,
+                    "depth": 0.6758959889411926,
+                    "height": 0.8003312349319458
+                  }
+                },
+                {
+                  "object_id": "screen_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": 0.0024821482507729905,
+                  "position_y": -1.799844247843118,
+                  "rotation_degrees": -0.021472177106661414,
+                  "dimensions": {
+                    "width": 1.8217556476593018,
+                    "depth": 0.9225849807262421,
+                    "height": 1.8500003041509956
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -0.0006409043847576321,
+                  "position_y": -1.4513771666964281,
+                  "rotation_degrees": -0.09864268981648044,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_002/checkpoint",
+        "manifest_sha256": "bbe30ae8aa131b362ed30faee8a7e42a53d9a09a1ca4671318db3ab926ead21f",
+        "state_sha256": "6e157eff0dffb9ccd300742a9f3403926abf8c2f4ec8f0d3816a7ca0e86092e7",
+        "step_idx": 18
+      },
+      "after_sha256": "ce66ca6b41312a9d930a512097563cc46240f66532337f17668dd1bd44fa3dc4"
+    },
+    {
+      "turn": 3,
+      "model": {
+        "started_at": "2026-11-04T20:07:09.603002+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "06f8a4bd41c55ccdf2033a9bb3d2a2a7a491934c80ac068f911760f6b91cc52e",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_018.topdown.png",
+              "sha256": "85300c1a126a15df14d8c033540a270a61497417483c88c22905affe8f545935",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_018.south.png",
+              "sha256": "640299c4ec94541746404013b01c86d097ee2e24490ec89774f758f5592da997",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_018.east.png",
+              "sha256": "bbca3b8cdd2d8bfa603e378179365aba58933356c3832c0086cb88024bc2c858",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_018.west.png",
+              "sha256": "72547d3c17614b2e9d49166efbe3ce060079f634813b1c8253e241152cce87c3",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_018.north.png",
+              "sha256": "e14f2aa5ad59ac9546efaf87ccbb51b9cfda9901fbb7a49ca7bf542acd7f5722",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10282,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10282
+            ],
+            "attention_mask": [
+              1,
+              10282
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "2bd22bacf90d4f14c164a91b939bd4e3567dc581cf1fab3613edaafa13f6be9f",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.157622866972815,
+        "generation_seconds": 7.043863462982699,
+        "output_tokens": 81,
+        "ended_with_eos": false,
+        "raw_output_sha256": "757ee3c5efcfa08fa27eaa936c0738417587df41caa4338ea561ff44fdafba49",
+        "peak_allocated_bytes": 20188401664,
+        "peak_reserved_bytes": 20841496576,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:07:24.253363+00:00",
+        "elapsed_seconds": 14.65038182202261
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_19b181ef136dd9cbbea4505899f9015c58dca260",
+            "x": 0.0,
+            "y": 1.8,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "ce66ca6b41312a9d930a512097563cc46240f66532337f17668dd1bd44fa3dc4",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'refrigerator' as object 'refrigerator_0'. Use object_id 'refrigerator_0' for remove/move operations.",
+              "asset_id": "catalog_19b181ef136dd9cbbea4505899f9015c58dca260",
+              "object_id": "refrigerator_0",
+              "position": {
+                "x": 0.0004008701716447202,
+                "y": 1.8026432308052187,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.04568149811385265
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_003/checkpoint",
+        "manifest_sha256": "6b5dfa5b10f4023a5f3fa7fe8aae81e7c4d275ddaf9e53e8a6fd2148d97d49f7",
+        "state_sha256": "228e8b2d8cb754b6fd0ec0431c54db604adb20843bb5ea888bfe521250cbd42f",
+        "step_idx": 19
+      },
+      "after_sha256": "c53f10912bb4dd6ec59a69e2befc34bf48703050bf55695fc87f42ef90b6eadb"
+    },
+    {
+      "turn": 4,
+      "model": {
+        "started_at": "2026-11-04T20:08:05.940030+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "e0c3defd955c7af218a99ce47691558a5055166573cada97f41ba6e60cd99417",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_019.topdown.png",
+              "sha256": "f6c06de7dc028e941e6585165ea4517704e0316928501c027bbc827083161b7f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_019.south.png",
+              "sha256": "6fb958eee189ba38563ca68470f688600aa782c498b75a1b6a8e2915baf03465",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_019.east.png",
+              "sha256": "244979d0904a967498b4712e993f4a0ae91eb8000b3f5647560064f8009e7424",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_019.west.png",
+              "sha256": "67ac2e588356da8ceba0bda9d5e0e13957fbd5093de0ef692a0da5239ced6892",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_019.north.png",
+              "sha256": "4f1d150f2fa89e35bd5ecbeccb7cc77c322511ea46a77e3aff2860da25fe1d09",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10650,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10650
+            ],
+            "attention_mask": [
+              1,
+              10650
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "efeb5f0da823dd92aef7fb852fec15d1ff11bf92bc4d707332c30439e25c9b49",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.084029646997806,
+        "generation_seconds": 5.7272541940328665,
+        "output_tokens": 48,
+        "ended_with_eos": false,
+        "raw_output_sha256": "c4b82fa6bc1e74080e2717b6c6a6fe95895b41ba279ab1e29c6586b052bb9c3a",
+        "peak_allocated_bytes": 20287337472,
+        "peak_reserved_bytes": 21032337408,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:08:19.222690+00:00",
+        "elapsed_seconds": 13.282679171010386
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "refrigerator_0",
+            "x": 0.0,
+            "y": 1.45,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "c53f10912bb4dd6ec59a69e2befc34bf48703050bf55695fc87f42ef90b6eadb",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved refrigerator to new position and rotation",
+              "object_id": "refrigerator_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_004/checkpoint",
+        "manifest_sha256": "8fa3bcc144c93e9b043502c16a5280ffbb872478b99ae91c1b0932ada9327714",
+        "state_sha256": "66e10a4d7f4e313295a8e086affd6627356f9f3f74da5aa7e052e10098b4bf0c",
+        "step_idx": 20
+      },
+      "after_sha256": "20b927393c2399ab34a2247eccf3a1d4fd2e5c69d532898fc8ef92ffceb44bdb"
+    },
+    {
+      "turn": 5,
+      "model": {
+        "started_at": "2026-11-04T20:09:00.210378+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "4ab4981164ad755eafd21be08bfcbc108b7f9469b9df6a3f75585bef201b0a4a",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_020.topdown.png",
+              "sha256": "a60dea323473f87feb51d200a58554ade4ee372b24a570e85b732506ba80db8f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_020.south.png",
+              "sha256": "31b13c7f89a2ae3bfe95f64c0c38bf5c50ebb084bb86cb0ddd495054a23aa0a0",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_020.east.png",
+              "sha256": "66378c553a004f6386048fc70fa6f90dac7cb7ea56de94e895fa0bf7378f1a3d",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_020.west.png",
+              "sha256": "59cc4b443c3fe56df359a1ef6203bb1098872d480a7dad206a8b3a292cd19219",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_020.north.png",
+              "sha256": "f3c866ffa53eac4eec995e8c5d63f0872574affaf33cae863550d8b21aaf3b09",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10652,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10652
+            ],
+            "attention_mask": [
+              1,
+              10652
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "e37256013575ce360bb2b057b5ababdc57e1f16216a3dbbab004befead1e7309",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.096866448002402,
+        "generation_seconds": 5.553358554956503,
+        "output_tokens": 41,
+        "ended_with_eos": false,
+        "raw_output_sha256": "c74ff2ea601fbe71d0470c5ba73ff6b617a397523f9d038c72887bc70e9a63be",
+        "peak_allocated_bytes": 20287411712,
+        "peak_reserved_bytes": 21032337408,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:09:13.363882+00:00",
+        "elapsed_seconds": 13.153524737048429
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "shower_0",
+            "object_b_id": "screen_0",
+            "direction": "away"
+          }
+        }
+      ],
+      "before_sha256": "20b927393c2399ab34a2247eccf3a1d4fd2e5c69d532898fc8ef92ffceb44bdb",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "shower_0",
+              "object_b_id": "screen_0",
+              "is_facing": false,
+              "optimal_rotation_degrees": 61.87722508997648,
+              "current_rotation_degrees": 89.86101603610354,
+              "message": "⚠️ shower is NOT facing away from screen. To align perfectly, use move_furniture_tool('shower_0', rotation_yaw=61.9). Consider if this alignment is functionally desirable for this furniture type."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_005/checkpoint",
+        "manifest_sha256": "5f2390cf11841f85324026df21a954f005f6b77eeaac41a960dce3d3f0e4bfda",
+        "state_sha256": "66e10a4d7f4e313295a8e086affd6627356f9f3f74da5aa7e052e10098b4bf0c",
+        "step_idx": 21
+      },
+      "after_sha256": "20b927393c2399ab34a2247eccf3a1d4fd2e5c69d532898fc8ef92ffceb44bdb"
+    },
+    {
+      "turn": 6,
+      "model": {
+        "started_at": "2026-11-04T20:09:51.150527+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "da5c10007e462a1a6ae6b5a61e341f0d9ae4fe35c6252ae952dced448fed9627",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_021.topdown.png",
+              "sha256": "a60dea323473f87feb51d200a58554ade4ee372b24a570e85b732506ba80db8f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_021.south.png",
+              "sha256": "5041af44ded7275185d7382c5fdf3259dc6fbe8867d6ea86c05134f8a290e39a",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_021.east.png",
+              "sha256": "d11b830b572f5a10490051254057372d7ca2076984175081f7ae94c3356aa1ae",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_021.west.png",
+              "sha256": "2ccd3e76634aae8996eefa7c89d0e2bd87044bc92b7d19078a555e921c9fd5ad",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_021.north.png",
+              "sha256": "bd1f687bd21a49f4d81452733cc088c1a6e3208ed8d084a2ef46e346e8941cb4",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10734,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10734
+            ],
+            "attention_mask": [
+              1,
+              10734
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "2b8b9940b9724b3a65ca10978a38a9469400efd15be1935e600c8481c27ef30b",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.075283991987817,
+        "generation_seconds": 5.726349889009725,
+        "output_tokens": 47,
+        "ended_with_eos": false,
+        "raw_output_sha256": "a0ce6e325b74b0cdeb049e80f6f18f8b2ecae0b7d9b2ccff972847569c93be6f",
+        "peak_allocated_bytes": 20307974144,
+        "peak_reserved_bytes": 21231566848,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:10:04.397682+00:00",
+        "elapsed_seconds": 13.24717635801062
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "shower_0",
+            "x": -1.3,
+            "y": -1.45,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "20b927393c2399ab34a2247eccf3a1d4fd2e5c69d532898fc8ef92ffceb44bdb",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved shower to new position and rotation",
+              "object_id": "shower_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_006/checkpoint",
+        "manifest_sha256": "bb41688090477868ef591de6e2c05fa6d83a938ea47c3780c1907a42d37b765a",
+        "state_sha256": "7a88680114fc40faf7072a97a9035f2f8459a2c4356a9387c9993ca4b8d83dd8",
+        "step_idx": 22
+      },
+      "after_sha256": "094778b5c5c25ba7e0790494035bfa6997b572ca8f3fce4828460f5bc8de3529"
+    },
+    {
+      "turn": 7,
+      "model": {
+        "started_at": "2026-11-04T20:10:45.338347+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "2ba7fc517a8b9ab6832e025dc5eef4e0e3b792f0d9ee4d518728c8128fc63236",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_022.topdown.png",
+              "sha256": "9f5230831c1aa1aa00a1f301c4c30fbecf5120ffccb57c6f4138f174cfc0a4f1",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_022.south.png",
+              "sha256": "430582b80bc6352556809885aaf834a6f2662096ad9a323e8ee51a1c404a66e8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_022.east.png",
+              "sha256": "ef8a552b53a2d60a6450acce25def86148df328c2a94468ef57ed18a703ac6dc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_022.west.png",
+              "sha256": "f99ba7fb4b9aea68f6cbcbfe092f9b884fc61e47ef6b71d6eb8c1a19a56ef26b",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_022.north.png",
+              "sha256": "a6f11a4561e0d50cf65aeab0a781907c3f5d823c8995dd0feb6dc432f3edc765",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10648,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10648
+            ],
+            "attention_mask": [
+              1,
+              10648
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "eb8d8902a11c88a8ff89788e23c9468005e4bd04a7a2eea50002a09502d38257",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.98039050999796,
+        "generation_seconds": 6.215994879021309,
+        "output_tokens": 77,
+        "ended_with_eos": false,
+        "raw_output_sha256": "6d99a68692c384b2709089a0eb08f7b42f1ea0c3821b4071192afe610e753171",
+        "peak_allocated_bytes": 20287263232,
+        "peak_reserved_bytes": 21032337408,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:10:59.992681+00:00",
+        "elapsed_seconds": 14.65435097599402
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "additionalProperties": false,
+            "properties": {
+              "bboxOnly": {
+                "description": "Only return bounding box bounds, not full object state.",
+                "title": "Bbox Only",
+                "type": "boolean"
+              }
+            },
+            "required": [],
+            "title": "get_current_scene_state_args",
+            "type": "object"
+          }
+        }
+      ],
+      "before_sha256": "094778b5c5c25ba7e0790494035bfa6997b572ca8f3fce4828460f5bc8de3529",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 12,
+              "objects": [
+                {
+                  "object_id": "shell_north",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": 0.0,
+                  "position_y": 2.388888888888889,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.583333333333333,
+                    "depth": 0.05,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_south",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": 0.0,
+                  "position_y": -2.388888888888889,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.583333333333333,
+                    "depth": 0.05,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": 3.7916666666666665,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 4.777777777777778,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Source-informed shell with explicit vertical assumptions",
+                  "position_x": -3.7916666666666665,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 4.777777777777778,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "shell_door",
+                  "description": "Assumed vertical size; no operability or daylight validation",
+                  "position_x": 3.7916666666666665,
+                  "position_y": -1.1111111111111112,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8888888888888888,
+                    "height": 2.0
+                  }
+                },
+                {
+                  "object_id": "shell_window",
+                  "description": "Assumed vertical size; no operability or daylight validation",
+                  "position_x": -3.7916666666666665,
+                  "position_y": 0.0277777777777779,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 4.611111111111111,
+                    "height": 1.4999999999999998
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0007290018032470627,
+                  "position_y": 0.9996028232225618,
+                  "rotation_degrees": -0.038199692637648996,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "shower_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -1.2994640382293807,
+                  "position_y": -1.4484936588942317,
+                  "rotation_degrees": -0.13838079977524972,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "toilet_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": 1.4013487057049439,
+                  "position_y": -1.0012355253146632,
+                  "rotation_degrees": 0.12069183257814642,
+                  "dimensions": {
+                    "width": 0.4053383618593216,
+                    "depth": 0.6758959889411926,
+                    "height": 0.8003312349319458
+                  }
+                },
+                {
+                  "object_id": "screen_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": 0.0024821482507729905,
+                  "position_y": -1.799844247843118,
+                  "rotation_degrees": -0.021472177106661414,
+                  "dimensions": {
+                    "width": 1.8217556476593018,
+                    "depth": 0.9225849807262421,
+                    "height": 1.8500003041509956
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -0.0006409043847576321,
+                  "position_y": -1.4513771666964281,
+                  "rotation_degrees": -0.09864268981648044,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                },
+                {
+                  "object_id": "refrigerator_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": -0.0010444975895256598,
+                  "position_y": 1.4525885306833062,
+                  "rotation_degrees": -0.0720941566113446,
+                  "dimensions": {
+                    "width": 0.5936102271080017,
+                    "depth": 0.7534396648406982,
+                    "height": 1.7884897945914418
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_007/checkpoint",
+        "manifest_sha256": "bb538e329aada8b47b7d2cf47b27b67a27656cb16fba5bcf37b1fe3fd4367bbf",
+        "state_sha256": "7a88680114fc40faf7072a97a9035f2f8459a2c4356a9387c9993ca4b8d83dd8",
+        "step_idx": 23
+      },
+      "after_sha256": "094778b5c5c25ba7e0790494035bfa6997b572ca8f3fce4828460f5bc8de3529"
+    },
+    {
+      "turn": 8,
+      "model": {
+        "started_at": "2026-11-04T20:11:37.962773+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "854e738d57d808140a29f1e0dcd1e86ddb1b91f392d2aa87b02aa26b61bd7aa6",
+        "plan_sha256": "652541bb48f3108d52a80e8d67143f0875b023601c1199bdafdfc59a6dfb6536",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_023.topdown.png",
+              "sha256": "9f5230831c1aa1aa00a1f301c4c30fbecf5120ffccb57c6f4138f174cfc0a4f1",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_023.south.png",
+              "sha256": "8ba1c37319453760f71cedb8543e351d03e13acdc47f0d5259c8e3c36c5c2ca9",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_023.east.png",
+              "sha256": "fa6d9c5fce639527b06a8db3d52df36ce047b1a338537c8b255ae49c523a9f4b",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_023.west.png",
+              "sha256": "837a50f8d4fd2f394c206f8ad4599a354ff3996c8a6abe840a49b8b2c5b90dce",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_023.north.png",
+              "sha256": "1b6e09c17770b9717ef2842361f529b7400e7b283c071d7f9563aece8af9fb4e",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10588,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10588
+            ],
+            "attention_mask": [
+              1,
+              10588
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "6d61eada75eabd626f3315eca42290f1594a621decef36bba8daaebe50498cc1",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.974367511982564,
+        "generation_seconds": 6.433604997000657,
+        "output_tokens": 85,
+        "ended_with_eos": false,
+        "raw_output_sha256": "2907e41244d685983881ded10359f27674d9c5a4168d6be0f5317305a2ee3af9",
+        "peak_allocated_bytes": 20268058624,
+        "peak_reserved_bytes": 20940062720,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-04T20:11:52.830009+00:00",
+        "elapsed_seconds": 14.86725315899821
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "cooker_0",
+            "x": -0.0006409043847576321,
+            "y": 0.95,
+            "yaw": -0.0008608197538477297
+          }
+        }
+      ],
+      "before_sha256": "094778b5c5c25ba7e0790494035bfa6997b572ca8f3fce4828460f5bc8de3529",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved cooker to new position and rotation",
+              "object_id": "cooker_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_008/checkpoint",
+        "manifest_sha256": "4efdbe6a32331eff381e8277286487b94de94216a234e8b79e71b24ca7814a8a",
+        "state_sha256": "2535b22463cf97b1f0a6c6abb446cb4a086aa8a25053dea358d32b611601821b",
+        "step_idx": 24
+      },
+      "after_sha256": "d7ebd5e3c32da1f0bd60779899db107002bc5c02bf89e71ce6a960bfcf28c444"
+    }
+  ],
+  "tool_calls": 9,
+  "model_calls": 9,
+  "training_updates": 0,
+  "whole_room_success": "not_evaluated",
+  "initial_gpu": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121,
+    "required_free_bytes": 23792148960
+  },
+  "rollout_restoration_differences": [
+    {
+      "path": [
+        "objects",
+        "screen_0",
+        "transform",
+        "rotation_wxyz",
+        3
+      ],
+      "before": -0.0001873800929447692,
+      "after": -0.00018738009294476922
+    },
+    {
+      "path": [
+        "objects",
+        "bookshelf_0",
+        "transform",
+        "rotation_wxyz",
+        3
+      ],
+      "before": -0.00039864626410641946,
+      "after": -0.0003986462641064195
+    },
+    {
+      "path": [
+        "objects",
+        "cooker_0",
+        "transform",
+        "rotation_wxyz",
+        3
+      ],
+      "before": -0.0001873800929447692,
+      "after": -0.00018738009294476922
+    }
+  ],
+  "initial_request_sha256": "f544d2d33be1df0f0432b01a1cccf0ebb9737ef19d5745d051d4fd6db1b44539",
+  "stop_reason": "budget_exhausted",
+  "checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/final_checkpoint",
+    "manifest_sha256": "4efdbe6a32331eff381e8277286487b94de94216a234e8b79e71b24ca7814a8a",
+    "state_sha256": "2535b22463cf97b1f0a6c6abb446cb4a086aa8a25053dea358d32b611601821b",
+    "step_idx": 24
+  },
+  "ended_at": "2026-11-04T20:12:33.487594+00:00",
+  "prior_lineage_tool_calls": 15,
+  "cumulative_lineage_tool_calls": 24
+}

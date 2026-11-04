@@ -29,6 +29,7 @@ def main():
     schemas={x['name']:x['parameters'] for x in schemas}
     mismatches=[];tools=[]
     for row in rollout['rounds']:
+        if 'reply' not in row:continue
         for call in row['calls']:
             tools.append(call['name'])
             errors=list(jsonschema.Draft202012Validator(schemas[call['name']]).iter_errors(call.get('arguments',{})))
@@ -42,10 +43,12 @@ def main():
         'output_tokens':sum(x.get('output_tokens',0) for x in forwards),
         'generation_seconds':sum(x.get('generation_seconds',0) for x in forwards),
         'model_loading_seconds':sum(x.get('load_seconds',0) for x in forwards),
-        'peak_allocated_bytes':max(x.get('peak_allocated_bytes',0) for x in forwards),
-        'successful_input_token_range':[min(x['encoding']['input_tokens'] for x in forwards),max(x['encoding']['input_tokens'] for x in forwards)],
+        'peak_allocated_bytes':max((x.get('peak_allocated_bytes',0) for x in forwards),default=0),
+        'successful_input_token_range':[min(x['encoding']['input_tokens'] for x in forwards),max(x['encoding']['input_tokens'] for x in forwards)] if forwards else None,
         'failure_reasons':[x.get('error') for x in models if x['status']=='failed'],
-        'last_completed_checkpoint':rollout['rounds'][-1]['checkpoint'],
+        'last_completed_checkpoint':rollout.get('checkpoint') or next((x['checkpoint'] for x in reversed(rollout['rounds']) if 'checkpoint' in x),json.loads((root/'prepare/RESULT.json').read_text())['checkpoint']),
+        'arm':rollout.get('arm'),'prior_lineage_tool_calls':rollout.get('prior_lineage_tool_calls',0),
+        'cumulative_lineage_tool_calls':rollout.get('cumulative_lineage_tool_calls',rollout['tool_calls']),
         'furniture_count':len(audit['inventory']),'actual_furniture':[x['object_id'] for x in audit['inventory']],
         'intersection_pairs':[x['objects'] for x in audit['positive_aabb_pairs'] if x['triangle_surface_intersection_detected']],
         'outside_room_count':sum(x['outside_nominal_room_xy'] for x in audit['bounds']),
@@ -58,7 +61,7 @@ def main():
         'post_hoc_schema_review':{'mismatches':mismatches,'jsonschema_version':importlib.metadata.version('jsonschema'),
             'scope':'Validate recorded arguments against advertised schemas; no replay, new scoring thresholds or model change.'},
         'whole_room_accepted':False,'professional_review':False,'training_updates':0,
-        'interpretation':'Partial baseline only: visible mesh intersections, missing functional inventory and unknown privacy/installation. Empty area or native tool success cannot establish usable dwelling or learned design improvement.',
+        'interpretation':'Development baseline only; inspect measured contacts and functional inventory below. Privacy/installation and professional review remain unknown. Empty area or native tool success cannot establish usable dwelling or learned design improvement.',
         'sources':{str(p.relative_to(root)):sha(p) for p in [root/'rollout/RESULT.json',root/'FINAL_AUDIT.json',root/'prepare/observation.json']},
         'report_script_sha256':sha(Path(__file__))}
     with a.out.open('x') as f:json.dump(result,f,indent=2);f.write('\n')

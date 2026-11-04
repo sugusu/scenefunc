@@ -1,0 +1,655 @@
+[
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/export_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/EXPORT_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/geometry_export"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/final_audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/audit_catalog_room.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/final_checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/FINAL_AUDIT.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/prepare/encode_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/prepare/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/prepare/encode",
+      "--mode",
+      "encode"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/prepare_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/run_catalog_policy.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--phase",
+      "prepare",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/prepare"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/report_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/report_catalog_policy.py",
+      "--runtime",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/SUMMARY.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_000/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_000/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_000/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_000/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_000/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_000/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_001/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_001/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_001/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_001/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_001/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_001/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_002/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_002/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_002/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_003/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_003/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_003/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_003/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_003/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_003/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_004/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_004/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_004/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_004/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_004/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_004/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_005/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_005/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_005/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_006/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_006/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_006/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_006/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_006/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_006/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_007/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_007/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_007/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_008/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_008/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_008/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_008/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_008/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/round_008/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/run_catalog_policy.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+      "--phase",
+      "rollout",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/export_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/EXPORT_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/geometry_export"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/final_audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/audit_catalog_room.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/final_checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/FINAL_AUDIT.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/prepare/encode_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/prepare/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/prepare/encode",
+      "--mode",
+      "encode"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/prepare_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/run_catalog_policy.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--phase",
+      "prepare",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/prepare"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/report_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/report_catalog_policy.py",
+      "--runtime",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/SUMMARY.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_000/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_000/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_000/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_000/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_000/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_000/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_001/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_001/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_001/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_002/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_002/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_002/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_002/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_002/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_002/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_003/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_003/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_003/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_004/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_004/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_004/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_004/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_004/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_004/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_005/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_005/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_005/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_005/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_005/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_005/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_006/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_006/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_006/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_006/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_006/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_006/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_007/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_007/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_007/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_008/audit_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_catalog_room.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/AUDIT_PLAN.json",
+      "--bundle",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_008/checkpoint",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_008/feedback_audit.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_008/model_execution/receipt.json",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_model_step.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--request",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_008/request.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/round_008/model",
+      "--mode",
+      "generate"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/run_catalog_policy.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+      "--phase",
+      "rollout",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/terminal_restore_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/verify_catalog_terminal_restore.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/RESTORE_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/terminal_restore"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/terminal_restore_execution/receipt.json",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/verify_catalog_terminal_restore.py",
+      "--plan",
+      "runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/RESTORE_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/terminal_restore"
+    ],
+    "exit_code": 0
+  },
+  {
+    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FEEDBACK-v2_20261104T200101Z/batch_validation_execution/receipt.json",
+    "command": [
+      "python3",
+      "scripts/920/validate_feedback_batch.py",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/FEEDBACK_BATCH_VALIDATION.json"
+    ],
+    "exit_code": 0
+  }
+]

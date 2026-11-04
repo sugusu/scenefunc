@@ -1,0 +1,133 @@
+{
+  "recorded_at": "2026-11-04T20:14:12.830961+00:00",
+  "run_id": "G",
+  "rollout_status": "policy_attempt_completed_pending_independent_audit",
+  "actual_model_calls": 9,
+  "failed_pre_generation_attempts": 0,
+  "actual_tool_calls": 9,
+  "tool_counts": {
+    "move_furniture_tool": 4,
+    "remove_furniture_tool": 1,
+    "get_current_scene_state": 2,
+    "add_furniture_to_scene_tool": 1,
+    "check_facing_tool": 1
+  },
+  "output_tokens": 514,
+  "generation_seconds": 52.0595288790646,
+  "model_loading_seconds": 41.31481957290089,
+  "peak_allocated_bytes": 20352094720,
+  "successful_input_token_range": [
+    10215,
+    10908
+  ],
+  "failure_reasons": [],
+  "last_completed_checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/final_checkpoint",
+    "manifest_sha256": "4efdbe6a32331eff381e8277286487b94de94216a234e8b79e71b24ca7814a8a",
+    "state_sha256": "2535b22463cf97b1f0a6c6abb446cb4a086aa8a25053dea358d32b611601821b",
+    "step_idx": 24
+  },
+  "arm": "G",
+  "prior_lineage_tool_calls": 15,
+  "cumulative_lineage_tool_calls": 24,
+  "furniture_count": 6,
+  "actual_furniture": [
+    "queen_bed_0",
+    "shower_0",
+    "toilet_0",
+    "screen_0",
+    "cooker_0",
+    "refrigerator_0"
+  ],
+  "intersection_pairs": [
+    [
+      "cooker_0",
+      "queen_bed_0"
+    ],
+    [
+      "cooker_0",
+      "refrigerator_0"
+    ],
+    [
+      "queen_bed_0",
+      "refrigerator_0"
+    ],
+    [
+      "screen_0",
+      "shower_0"
+    ]
+  ],
+  "outside_room_count": 0,
+  "immutable_structure_unchanged": true,
+  "largest_empty_rectangle_m2": 10.165895061728394,
+  "conditional_access": [
+    {
+      "square_body_width_m": 0.4,
+      "reachable_of_hypothetical_approach_points": [
+        5,
+        7
+      ],
+      "unreachable": [
+        "cooker_0:front",
+        "refrigerator_0:front"
+      ]
+    },
+    {
+      "square_body_width_m": 0.5,
+      "reachable_of_hypothetical_approach_points": [
+        5,
+        7
+      ],
+      "unreachable": [
+        "cooker_0:front",
+        "refrigerator_0:front"
+      ]
+    },
+    {
+      "square_body_width_m": 0.6,
+      "reachable_of_hypothetical_approach_points": [
+        2,
+        7
+      ],
+      "unreachable": [
+        "queen_bed_0:left_side",
+        "shower_0:front",
+        "screen_0:front",
+        "cooker_0:front",
+        "refrigerator_0:front"
+      ]
+    }
+  ],
+  "post_hoc_schema_review": {
+    "mismatches": [
+      {
+        "turn": 2,
+        "tool": "get_current_scene_state",
+        "errors": [
+          "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+        ],
+        "native_success": true
+      },
+      {
+        "turn": 7,
+        "tool": "get_current_scene_state",
+        "errors": [
+          "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+        ],
+        "native_success": true
+      }
+    ],
+    "jsonschema_version": "4.26.0",
+    "scope": "Validate recorded arguments against advertised schemas; no replay, new scoring thresholds or model change."
+  },
+  "whole_room_accepted": false,
+  "professional_review": false,
+  "training_updates": 0,
+  "interpretation": "Development baseline only; inspect measured contacts and functional inventory below. Privacy/installation and professional review remain unknown. Empty area or native tool success cannot establish usable dwelling or learned design improvement.",
+  "sources": {
+    "rollout/RESULT.json": "a2c60fb375b4d54d84132bd1d9e9dc4d35cb351bdbaf4a72ce35648656f7414f",
+    "FINAL_AUDIT.json": "76c85d604840e1267e3c0821dc9359344e757ef0afdb85b371c5a0ab2b51ec9b",
+    "prepare/observation.json": "cc2bcfddc5604a6e01fa42f29e872e4258b79d70ab5985e5eb4c96d5cbb7a472"
+  },
+  "report_script_sha256": "d99e5a8aeb897de0507146c0c95c32f5954c2cc12bbe96abb1718e374111d484"
+}

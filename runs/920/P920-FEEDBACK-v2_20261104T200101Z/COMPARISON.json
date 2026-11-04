@@ -1,0 +1,2001 @@
+{
+  "run_id": "P920-FEEDBACK-v2_20261104T200101Z",
+  "recorded_at": "2026-11-04T20:24:07.088385+00:00",
+  "question": "Ordinary G versus G+U feedback on the same partial development room within the nine remaining actions.",
+  "arms": {
+    "G": {
+      "summary": {
+        "recorded_at": "2026-11-04T20:14:12.830961+00:00",
+        "run_id": "G",
+        "rollout_status": "policy_attempt_completed_pending_independent_audit",
+        "actual_model_calls": 9,
+        "failed_pre_generation_attempts": 0,
+        "actual_tool_calls": 9,
+        "tool_counts": {
+          "move_furniture_tool": 4,
+          "remove_furniture_tool": 1,
+          "get_current_scene_state": 2,
+          "add_furniture_to_scene_tool": 1,
+          "check_facing_tool": 1
+        },
+        "output_tokens": 514,
+        "generation_seconds": 52.0595288790646,
+        "model_loading_seconds": 41.31481957290089,
+        "peak_allocated_bytes": 20352094720,
+        "successful_input_token_range": [
+          10215,
+          10908
+        ],
+        "failure_reasons": [],
+        "last_completed_checkpoint": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/final_checkpoint",
+          "manifest_sha256": "4efdbe6a32331eff381e8277286487b94de94216a234e8b79e71b24ca7814a8a",
+          "state_sha256": "2535b22463cf97b1f0a6c6abb446cb4a086aa8a25053dea358d32b611601821b",
+          "step_idx": 24
+        },
+        "arm": "G",
+        "prior_lineage_tool_calls": 15,
+        "cumulative_lineage_tool_calls": 24,
+        "furniture_count": 6,
+        "actual_furniture": [
+          "queen_bed_0",
+          "shower_0",
+          "toilet_0",
+          "screen_0",
+          "cooker_0",
+          "refrigerator_0"
+        ],
+        "intersection_pairs": [
+          [
+            "cooker_0",
+            "queen_bed_0"
+          ],
+          [
+            "cooker_0",
+            "refrigerator_0"
+          ],
+          [
+            "queen_bed_0",
+            "refrigerator_0"
+          ],
+          [
+            "screen_0",
+            "shower_0"
+          ]
+        ],
+        "outside_room_count": 0,
+        "immutable_structure_unchanged": true,
+        "largest_empty_rectangle_m2": 10.165895061728394,
+        "conditional_access": [
+          {
+            "square_body_width_m": 0.4,
+            "reachable_of_hypothetical_approach_points": [
+              5,
+              7
+            ],
+            "unreachable": [
+              "cooker_0:front",
+              "refrigerator_0:front"
+            ]
+          },
+          {
+            "square_body_width_m": 0.5,
+            "reachable_of_hypothetical_approach_points": [
+              5,
+              7
+            ],
+            "unreachable": [
+              "cooker_0:front",
+              "refrigerator_0:front"
+            ]
+          },
+          {
+            "square_body_width_m": 0.6,
+            "reachable_of_hypothetical_approach_points": [
+              2,
+              7
+            ],
+            "unreachable": [
+              "queen_bed_0:left_side",
+              "shower_0:front",
+              "screen_0:front",
+              "cooker_0:front",
+              "refrigerator_0:front"
+            ]
+          }
+        ],
+        "post_hoc_schema_review": {
+          "mismatches": [
+            {
+              "turn": 2,
+              "tool": "get_current_scene_state",
+              "errors": [
+                "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+              ],
+              "native_success": true
+            },
+            {
+              "turn": 7,
+              "tool": "get_current_scene_state",
+              "errors": [
+                "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+              ],
+              "native_success": true
+            }
+          ],
+          "jsonschema_version": "4.26.0",
+          "scope": "Validate recorded arguments against advertised schemas; no replay, new scoring thresholds or model change."
+        },
+        "whole_room_accepted": false,
+        "professional_review": false,
+        "training_updates": 0,
+        "interpretation": "Development baseline only; inspect measured contacts and functional inventory below. Privacy/installation and professional review remain unknown. Empty area or native tool success cannot establish usable dwelling or learned design improvement.",
+        "sources": {
+          "rollout/RESULT.json": "a2c60fb375b4d54d84132bd1d9e9dc4d35cb351bdbaf4a72ce35648656f7414f",
+          "FINAL_AUDIT.json": "76c85d604840e1267e3c0821dc9359344e757ef0afdb85b371c5a0ab2b51ec9b",
+          "prepare/observation.json": "cc2bcfddc5604a6e01fa42f29e872e4258b79d70ab5985e5eb4c96d5cbb7a472"
+        },
+        "report_script_sha256": "d99e5a8aeb897de0507146c0c95c32f5954c2cc12bbe96abb1718e374111d484"
+      },
+      "role_coverage": {
+        "living_seating": false,
+        "sleeping": true,
+        "cooking_appliance": true,
+        "food_preparation_surface": false,
+        "kitchen_sink": false,
+        "cold_food_storage": true,
+        "bathing": true,
+        "toileting": true,
+        "washbasin": false,
+        "storage": false
+      },
+      "trajectory": [
+        {
+          "turn": 0,
+          "calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "cooker_0",
+                "x": 0.0,
+                "y": -1.45,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 1,
+          "calls": [
+            {
+              "name": "remove_furniture_tool",
+              "arguments": {
+                "object_id": "bookshelf_0"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 0,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        },
+        {
+          "turn": 2,
+          "calls": [
+            {
+              "name": "get_current_scene_state",
+              "arguments": {
+                "additionalProperties": false,
+                "properties": {
+                  "bboxOnly": {
+                    "description": "Only return bounding box geometry.",
+                    "type": "boolean"
+                  }
+                },
+                "required": [],
+                "title": "get_current_scene_state_args",
+                "type": "object"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 0,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        },
+        {
+          "turn": 3,
+          "calls": [
+            {
+              "name": "add_furniture_to_scene_tool",
+              "arguments": {
+                "asset_id": "catalog_19b181ef136dd9cbbea4505899f9015c58dca260",
+                "x": 0.0,
+                "y": 1.8,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": true,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        },
+        {
+          "turn": 4,
+          "calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "refrigerator_0",
+                "x": 0.0,
+                "y": 1.45,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": true,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        },
+        {
+          "turn": 5,
+          "calls": [
+            {
+              "name": "check_facing_tool",
+              "arguments": {
+                "object_a_id": "shower_0",
+                "object_b_id": "screen_0",
+                "direction": "away"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": true,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        },
+        {
+          "turn": 6,
+          "calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "shower_0",
+                "x": -1.3,
+                "y": -1.45,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 2,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": true,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        },
+        {
+          "turn": 7,
+          "calls": [
+            {
+              "name": "get_current_scene_state",
+              "arguments": {
+                "additionalProperties": false,
+                "properties": {
+                  "bboxOnly": {
+                    "description": "Only return bounding box bounds, not full object state.",
+                    "title": "Bbox Only",
+                    "type": "boolean"
+                  }
+                },
+                "required": [],
+                "title": "get_current_scene_state_args",
+                "type": "object"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 2,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": true,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        },
+        {
+          "turn": 8,
+          "calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "cooker_0",
+                "x": -0.0006409043847576321,
+                "y": 0.95,
+                "yaw": -0.0008608197538477297
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 4,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": true,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": false
+          }
+        }
+      ],
+      "execution": {
+        "started_at": "2026-11-04T20:04:15.588238+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/run_catalog_policy.py",
+          "--plan",
+          "runs/920/P920-FEEDBACK-v2_20261104T200101Z/G/POLICY_PLAN.json",
+          "--phase",
+          "rollout",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout"
+        ],
+        "timeout_seconds": 1200,
+        "pid": 1152359,
+        "start_ticks": "48050417",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout_execution/stage.log",
+        "ended_at": "2026-11-04T20:12:36.041160+00:00",
+        "elapsed_seconds": 500.4529367100331,
+        "exit_code": 0,
+        "first_log": "2026-11-04T20:04:15.662194+00:00 begin whole-room rollout"
+      },
+      "final_view_binding": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_024.state_binding.json",
+      "final_view_hashes": [
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_024.topdown.png",
+          "sha256": "720c5d1f6579ee6810b39eaf435344f73ae62b28e63d0b49aa6b3559409209c0"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_024.south.png",
+          "sha256": "236800acd7e76f0b5ec442c95e6ce250e1ae57009e641de2a65c14359e67d49f"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_024.east.png",
+          "sha256": "2a37b820fde0956628694d19b278cee254a7cffc2836c1d32ed9c11ca86bd164"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_024.west.png",
+          "sha256": "aaf5009d0de61795708a94c9f6782a92a947632dcff9fca5f5a9bf9e2e31b05c"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/G/rollout/house/room_geneva_development/rollout_furniture/step_024.north.png",
+          "sha256": "9f5198962e6d585f95be82651a83e575c0ab7abd7f5b87221a5cc548e5572ed7"
+        }
+      ]
+    },
+    "U": {
+      "summary": {
+        "recorded_at": "2026-11-04T20:23:47.186492+00:00",
+        "run_id": "U",
+        "rollout_status": "policy_attempt_completed_pending_independent_audit",
+        "actual_model_calls": 9,
+        "failed_pre_generation_attempts": 0,
+        "actual_tool_calls": 9,
+        "tool_counts": {
+          "move_furniture_tool": 2,
+          "get_current_scene_state": 2,
+          "remove_furniture_tool": 2,
+          "check_facing_tool": 1,
+          "add_furniture_to_scene_tool": 2
+        },
+        "output_tokens": 682,
+        "generation_seconds": 63.02258727699518,
+        "model_loading_seconds": 42.349792092922144,
+        "peak_allocated_bytes": 20460496384,
+        "successful_input_token_range": [
+          10553,
+          11340
+        ],
+        "failure_reasons": [],
+        "last_completed_checkpoint": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/final_checkpoint",
+          "manifest_sha256": "93244ad16b3945a25f804ad28d539794eefdc1d3ee1fea44496a9d4a8b761967",
+          "state_sha256": "f8812293d321eaaad83253a9c5465285247896feb4ef9811b4c9945734122200",
+          "step_idx": 24
+        },
+        "arm": "U",
+        "prior_lineage_tool_calls": 15,
+        "cumulative_lineage_tool_calls": 24,
+        "furniture_count": 6,
+        "actual_furniture": [
+          "queen_bed_0",
+          "shower_0",
+          "toilet_0",
+          "bookshelf_0",
+          "cooker_0",
+          "screen_2"
+        ],
+        "intersection_pairs": [],
+        "outside_room_count": 0,
+        "immutable_structure_unchanged": true,
+        "largest_empty_rectangle_m2": 8.539351851851851,
+        "conditional_access": [
+          {
+            "square_body_width_m": 0.4,
+            "reachable_of_hypothetical_approach_points": [
+              6,
+              7
+            ],
+            "unreachable": [
+              "screen_2:front"
+            ]
+          },
+          {
+            "square_body_width_m": 0.5,
+            "reachable_of_hypothetical_approach_points": [
+              6,
+              7
+            ],
+            "unreachable": [
+              "screen_2:front"
+            ]
+          },
+          {
+            "square_body_width_m": 0.6,
+            "reachable_of_hypothetical_approach_points": [
+              2,
+              7
+            ],
+            "unreachable": [
+              "queen_bed_0:left_side",
+              "shower_0:front",
+              "bookshelf_0:front",
+              "cooker_0:front",
+              "screen_2:front"
+            ]
+          }
+        ],
+        "post_hoc_schema_review": {
+          "mismatches": [
+            {
+              "turn": 1,
+              "tool": "get_current_scene_state",
+              "errors": [
+                "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+              ],
+              "native_success": true
+            },
+            {
+              "turn": 7,
+              "tool": "get_current_scene_state",
+              "errors": [
+                "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'title', 'type' were unexpected)"
+              ],
+              "native_success": true
+            }
+          ],
+          "jsonschema_version": "4.26.0",
+          "scope": "Validate recorded arguments against advertised schemas; no replay, new scoring thresholds or model change."
+        },
+        "whole_room_accepted": false,
+        "professional_review": false,
+        "training_updates": 0,
+        "interpretation": "Development baseline only; inspect measured contacts and functional inventory below. Privacy/installation and professional review remain unknown. Empty area or native tool success cannot establish usable dwelling or learned design improvement.",
+        "sources": {
+          "rollout/RESULT.json": "975278a36316444143aea6698d209ad0eabd52aadeeabf126b033aedaba3882f",
+          "FINAL_AUDIT.json": "ee65c61117b7a6d0fef923d219569ca2210e444b997725fadcf8468947141c89",
+          "prepare/observation.json": "cc2bcfddc5604a6e01fa42f29e872e4258b79d70ab5985e5eb4c96d5cbb7a472"
+        },
+        "report_script_sha256": "d99e5a8aeb897de0507146c0c95c32f5954c2cc12bbe96abb1718e374111d484"
+      },
+      "role_coverage": {
+        "living_seating": false,
+        "sleeping": true,
+        "cooking_appliance": true,
+        "food_preparation_surface": false,
+        "kitchen_sink": false,
+        "cold_food_storage": false,
+        "bathing": true,
+        "toileting": true,
+        "washbasin": false,
+        "storage": true
+      },
+      "trajectory": [
+        {
+          "turn": 0,
+          "calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "cooker_0",
+                "x": 0.0,
+                "y": -1.4,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 1,
+          "calls": [
+            {
+              "name": "get_current_scene_state",
+              "arguments": {
+                "additionalProperties": false,
+                "properties": {
+                  "bbox": {
+                    "additionalItems": false,
+                    "items": {
+                      "type": "number"
+                    },
+                    "type": "array",
+                    "minItems": 6,
+                    "maxItems": 6
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "position": {
+                    "type": "object"
+                  },
+                  "rotation": {
+                    "type": "object"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "type",
+                  "position",
+                  "rotation",
+                  "bbox"
+                ],
+                "title": "object",
+                "type": "array"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 2,
+          "calls": [
+            {
+              "name": "remove_furniture_tool",
+              "arguments": {
+                "object_id": "screen_0"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 3,
+          "calls": [
+            {
+              "name": "check_facing_tool",
+              "arguments": {
+                "object_a_id": "shower_0",
+                "object_b_id": "toilet_0",
+                "direction": "away"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 4,
+          "calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "bookshelf_0",
+                "x": -2.2,
+                "y": 0.85,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 0,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 5,
+          "calls": [
+            {
+              "name": "add_furniture_to_scene_tool",
+              "arguments": {
+                "asset_id": "catalog_3d780643626fa80329154d35920d87d0df72d2fc",
+                "x": 1.45,
+                "y": 1.05,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 1,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 6,
+          "calls": [
+            {
+              "name": "remove_furniture_tool",
+              "arguments": {
+                "object_id": "screen_1"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 0,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 7,
+          "calls": [
+            {
+              "name": "get_current_scene_state",
+              "arguments": {
+                "additionalProperties": false,
+                "properties": {
+                  "bbox": {
+                    "description": "The bounding box of the object in world coordinates.",
+                    "type": "array"
+                  },
+                  "collisions": {
+                    "description": "A list of collision objects found during the check.",
+                    "type": "array"
+                  },
+                  "dimensions": {
+                    "description": "The width, depth, and height of the object in meters.",
+                    "type": "array"
+                  },
+                  "id": {
+                    "description": "The object ID.",
+                    "type": "string"
+                  },
+                  "position": {
+                    "description": "The position of the object in world coordinates.",
+                    "type": "array"
+                  },
+                  "rotation": {
+                    "description": "The rotation of the object in world coordinates.",
+                    "type": "array"
+                  },
+                  "type": {
+                    "description": "The type of the object.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "position",
+                  "rotation",
+                  "type"
+                ],
+                "title": "SceneState",
+                "type": "array"
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 0,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        },
+        {
+          "turn": 8,
+          "calls": [
+            {
+              "name": "add_furniture_to_scene_tool",
+              "arguments": {
+                "asset_id": "catalog_3d780643626fa80329154d35920d87d0df72d2fc",
+                "x": 1.2,
+                "y": -1.3,
+                "yaw": 0
+              }
+            }
+          ],
+          "executed": true,
+          "intersections_after": 0,
+          "roles_after": {
+            "living_seating": false,
+            "sleeping": true,
+            "cooking_appliance": true,
+            "food_preparation_surface": false,
+            "kitchen_sink": false,
+            "cold_food_storage": false,
+            "bathing": true,
+            "toileting": true,
+            "washbasin": false,
+            "storage": true
+          }
+        }
+      ],
+      "execution": {
+        "started_at": "2026-11-04T20:13:58.374571+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/run_catalog_policy.py",
+          "--plan",
+          "runs/920/P920-FEEDBACK-v2_20261104T200101Z/U/POLICY_PLAN.json",
+          "--phase",
+          "rollout",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout"
+        ],
+        "timeout_seconds": 1200,
+        "pid": 1157083,
+        "start_ticks": "48108696",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout_execution/stage.log",
+        "ended_at": "2026-11-04T20:22:32.965171+00:00",
+        "elapsed_seconds": 514.5906083129812,
+        "exit_code": 0,
+        "first_log": "2026-11-04T20:13:58.446613+00:00 begin whole-room rollout"
+      },
+      "final_view_binding": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/house/room_geneva_development/rollout_furniture/step_024.state_binding.json",
+      "final_view_hashes": [
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/house/room_geneva_development/rollout_furniture/step_024.topdown.png",
+          "sha256": "221434026825e46a97ff0536aab3a4b31e61a9c7341f09f4ed6ef1cfcf3ac13d"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/house/room_geneva_development/rollout_furniture/step_024.south.png",
+          "sha256": "5fb8a87e3b05df64d0af12bc06340919509726137cede35a15b785bc02b0e372"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/house/room_geneva_development/rollout_furniture/step_024.east.png",
+          "sha256": "7fa29fcfdea9632717c6c991612d27d145aeb1b2aeceb5a9059db84ba2343aa5"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/house/room_geneva_development/rollout_furniture/step_024.west.png",
+          "sha256": "c4b8353609149b7ac275e65c21620eb5c39d804920b20db705cb1a0ca34719f4"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FEEDBACK-v2_20261104T200101Z/U/rollout/house/room_geneva_development/rollout_furniture/step_024.north.png",
+          "sha256": "c2c3633adc407ddcfe2f0e20c4f276d0e99edd032e3d789a2f3a797fb8c93118"
+        }
+      ]
+    }
+  },
+  "actual_initial_pairing": {
+    "first_actual_common_messages_identical": true,
+    "same_first_actual_geometry_feedback": true,
+    "actual_first_request_hashes": {
+      "G": "f544d2d33be1df0f0432b01a1cccf0ebb9737ef19d5745d051d4fd6db1b44539",
+      "U": "5cc4f470719e29f3462c44a99b2fded3125ff2b8e78496cd7dd4f4953973f2f8"
+    }
+  },
+  "shared_prior_model_calls": 15,
+  "shared_prior_tool_calls": 15,
+  "initial": {
+    "audit": {
+      "status": "whole_room_diagnostics_completed",
+      "evaluated_at": "2026-11-04T19:33:12.379907+00:00",
+      "audit_plan_sha256": "8028cb9010960f925adf6cfccfe0860707b2e265dc1c00e076a10e9a13a8040b",
+      "input_manifest_sha256": "67fbfafb41e4ecd641422ff625987517b432f152741dd79c080d3b14b6073bb2",
+      "inventory": [
+        {
+          "object_id": "queen_bed_0",
+          "name": "queen_bed",
+          "asset_id": "02e22ed56270338bef5f8436e82023c36cd29104",
+          "present": true,
+          "functional_use": "unverified"
+        },
+        {
+          "object_id": "shower_0",
+          "name": "shower",
+          "asset_id": "dfc33bed23e9440507bca1a1409763942a913cd5",
+          "present": true,
+          "functional_use": "unverified"
+        },
+        {
+          "object_id": "toilet_0",
+          "name": "toilet",
+          "asset_id": "f983ff568379c97ee9dfa7095b02a7688fbf60a4",
+          "present": true,
+          "functional_use": "unverified"
+        },
+        {
+          "object_id": "screen_0",
+          "name": "screen",
+          "asset_id": "3d780643626fa80329154d35920d87d0df72d2fc",
+          "present": true,
+          "functional_use": "unverified"
+        },
+        {
+          "object_id": "bookshelf_0",
+          "name": "bookshelf",
+          "asset_id": "a73ab435a592f804b7caa9c3a79f03122c536476",
+          "present": true,
+          "functional_use": "unverified"
+        },
+        {
+          "object_id": "cooker_0",
+          "name": "cooker",
+          "asset_id": "50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+          "present": true,
+          "functional_use": "unverified"
+        }
+      ],
+      "immutable_records_unchanged": {
+        "shell_north": true,
+        "shell_south": true,
+        "shell_east": true,
+        "shell_west": true,
+        "shell_door": true,
+        "shell_window": true
+      },
+      "bounds": [
+        {
+          "object_id": "queen_bed_0",
+          "actual_visual_bounds_m": [
+            [
+              -0.9267880942921891,
+              -0.0777655323728823,
+              7.563203928806451e-29
+            ],
+            [
+              0.9280934575139562,
+              2.076885241884929,
+              0.8448971509933474
+            ]
+          ],
+          "outside_nominal_room_xy": false,
+          "bottom_z_m": 7.563203928806451e-29,
+          "top_z_m": 0.8448971509933474,
+          "watertight": false
+        },
+        {
+          "object_id": "shower_0",
+          "actual_visual_bounds_m": [
+            [
+              -1.8965529173824867,
+              -1.413739845062127,
+              -3.546425306200085e-16
+            ],
+            [
+              -1.097263060609121,
+              -0.5829298793745148,
+              1.9441249408992003
+            ]
+          ],
+          "outside_nominal_room_xy": false,
+          "bottom_z_m": -3.546425306200085e-16,
+          "top_z_m": 1.9441249408992003,
+          "watertight": false
+        },
+        {
+          "object_id": "toilet_0",
+          "actual_visual_bounds_m": [
+            [
+              1.1986197724973044,
+              -1.3395517612776313,
+              -1.7453547528014886e-29
+            ],
+            [
+              1.6046813558126507,
+              -0.6632882805181788,
+              0.8003312349319458
+            ]
+          ],
+          "outside_nominal_room_xy": false,
+          "bottom_z_m": -1.7453547528014886e-29,
+          "top_z_m": 0.8003312349319458,
+          "watertight": false
+        },
+        {
+          "object_id": "screen_0",
+          "actual_visual_bounds_m": [
+            [
+              -0.9082299828656818,
+              -2.2614723902692333,
+              -2.8770003449084345e-19
+            ],
+            [
+              0.9131965658506773,
+              -1.3382188304962317,
+              1.8500003041509956
+            ]
+          ],
+          "outside_nominal_room_xy": false,
+          "bottom_z_m": -2.8770003449084345e-19,
+          "top_z_m": 1.8500003041509956,
+          "watertight": false
+        },
+        {
+          "object_id": "bookshelf_0",
+          "actual_visual_bounds_m": [
+            [
+              -0.30456212346342443,
+              1.5991722979434018,
+              3.739650462127736e-18
+            ],
+            [
+              0.30536386413937017,
+              2.0061141636195132,
+              1.930157034736112
+            ]
+          ],
+          "outside_nominal_room_xy": false,
+          "bottom_z_m": 3.739650462127736e-18,
+          "top_z_m": 1.930157034736112,
+          "watertight": false
+        },
+        {
+          "object_id": "cooker_0",
+          "actual_visual_bounds_m": [
+            [
+              -0.2986266732538306,
+              -2.1009567305260384,
+              4.769526988676102e-29
+            ],
+            [
+              0.30357367524364537,
+              -1.498764320085445,
+              0.8999996781349182
+            ]
+          ],
+          "outside_nominal_room_xy": false,
+          "bottom_z_m": 4.769526988676102e-29,
+          "top_z_m": 0.8999996781349182,
+          "watertight": false
+        }
+      ],
+      "positive_aabb_pairs": [
+        {
+          "objects": [
+            "bookshelf_0",
+            "queen_bed_0"
+          ],
+          "triangle_surface_intersection_detected": true,
+          "aabb_overlap_extents_m": [
+            0.6099259876027946,
+            0.40694186567611146,
+            0.8448971509933474
+          ],
+          "contact_samples": [
+            {
+              "position_m": [
+                -0.304562025556059,
+                1.600962814301209,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                67,
+                59761
+              ]
+            },
+            {
+              "position_m": [
+                -0.3032630553502456,
+                1.5996617711236576,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                499,
+                59761
+              ]
+            },
+            {
+              "position_m": [
+                -0.28086307071909006,
+                1.5996439117790218,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                65,
+                59761
+              ]
+            },
+            {
+              "position_m": [
+                -0.27956202754153864,
+                1.6009428819848353,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                497,
+                59761
+              ]
+            },
+            {
+              "position_m": [
+                -0.27954416819690286,
+                1.6233428666159908,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                63,
+                59761
+              ]
+            },
+            {
+              "position_m": [
+                -0.2808431384027163,
+                1.6246439097935421,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                495,
+                59761
+              ]
+            },
+            {
+              "position_m": [
+                -0.30324312303387185,
+                1.624661769138178,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                61,
+                59761
+              ]
+            },
+            {
+              "position_m": [
+                -0.3045441662114232,
+                1.6233627989323645,
+                0.36302629027886724
+              ],
+              "triangle_ids": [
+                493,
+                59761
+              ]
+            }
+          ],
+          "solid_containment_assessed": false
+        },
+        {
+          "objects": [
+            "cooker_0",
+            "screen_0"
+          ],
+          "triangle_surface_intersection_detected": true,
+          "aabb_overlap_extents_m": [
+            0.602200348497476,
+            0.6021924104405934,
+            0.8999996781349182
+          ],
+          "contact_samples": [
+            {
+              "position_m": [
+                0.2472519138431644,
+                -1.8950438006492465,
+                0.11915058361333308
+              ],
+              "triangle_ids": [
+                28931,
+                1858
+              ]
+            },
+            {
+              "position_m": [
+                -0.29789201437907525,
+                -1.5553252602863206,
+                4.769526988676102e-29
+              ],
+              "triangle_ids": [
+                28931,
+                448
+              ]
+            },
+            {
+              "position_m": [
+                -0.29789201437907525,
+                -1.5553252602863206,
+                4.769526988676102e-29
+              ],
+              "triangle_ids": [
+                28931,
+                432
+              ]
+            },
+            {
+              "position_m": [
+                -0.29809641086797,
+                -2.100731325120642,
+                0.8744698762893677
+              ],
+              "triangle_ids": [
+                28931,
+                463
+              ]
+            },
+            {
+              "position_m": [
+                0.24685788452848412,
+                -1.8790936426358893,
+                0.09415115879815517
+              ],
+              "triangle_ids": [
+                28931,
+                430
+              ]
+            },
+            {
+              "position_m": [
+                -0.29789201437907525,
+                -1.5553252602863206,
+                4.769526988676102e-29
+              ],
+              "triangle_ids": [
+                28931,
+                429
+              ]
+            },
+            {
+              "position_m": [
+                -0.29809641086797,
+                -2.100731325120642,
+                1.211044826941721e-16
+              ],
+              "triangle_ids": [
+                28931,
+                429
+              ]
+            },
+            {
+              "position_m": [
+                0.2468580344323012,
+                -1.878693643343471,
+                0.09455115811866222
+              ],
+              "triangle_ids": [
+                28931,
+                458
+              ]
+            }
+          ],
+          "solid_containment_assessed": false
+        }
+      ],
+      "surface_intersection_pairs": 2,
+      "access": {
+        "settings": {
+          "grid_m": 0.013888888888888888,
+          "assumed_body_height_m": 1.8,
+          "square_body_widths_m": [
+            0.4,
+            0.5,
+            0.6
+          ],
+          "entry_center_xy_m": [
+            3.7916666666666665,
+            -1.1111111111111112
+          ],
+          "entry_inward_normal_xy": [
+            -1,
+            0
+          ],
+          "approach_points_xy_m": {
+            "queen_bed_0:left_side": [
+              -1.2766130397546522,
+              1.000454440584696
+            ],
+            "queen_bed_0:right_side": [
+              1.2780710433611464,
+              0.9987512058604274
+            ],
+            "shower_0:front": [
+              -2.245623894230789,
+              -0.9966424507414621
+            ],
+            "toilet_0:front": [
+              1.399899565061893,
+              -0.3132890571301742
+            ],
+            "screen_0:front": [
+              0.0027861883699346383,
+              -0.9885518144510639
+            ],
+            "bookshelf_0:front": [
+              0.000841955498684031,
+              2.3558720725239004
+            ],
+            "cooker_0:front": [
+              0.0027261170154594117,
+              -1.148844592534907
+            ]
+          }
+        },
+        "obstacle_count": 16,
+        "scenarios": [
+          {
+            "square_body_width_m": 0.4,
+            "entry_grid_point_m": [
+              3.5624999999999996,
+              -1.1180555555555556
+            ],
+            "entry_cell_clear": true,
+            "reachable_floor_center_area_m2": 20.535108024691354,
+            "targets": {
+              "queen_bed_0:left_side": {
+                "requested_point_m": [
+                  -1.2766130397546522,
+                  1.000454440584696
+                ],
+                "sampled_grid_point_m": [
+                  -1.2708333333333335,
+                  1.0069444444444442
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 6.958333333333333
+              },
+              "queen_bed_0:right_side": {
+                "requested_point_m": [
+                  1.2780710433611464,
+                  0.9987512058604274
+                ],
+                "sampled_grid_point_m": [
+                  1.2847222222222219,
+                  0.9930555555555554
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 4.388888888888888
+              },
+              "shower_0:front": {
+                "requested_point_m": [
+                  -2.245623894230789,
+                  -0.9966424507414621
+                ],
+                "sampled_grid_point_m": [
+                  -2.2430555555555554,
+                  -0.9930555555555556
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 7.180555555555555
+              },
+              "toilet_0:front": {
+                "requested_point_m": [
+                  1.399899565061893,
+                  -0.3132890571301742
+                ],
+                "sampled_grid_point_m": [
+                  1.3958333333333335,
+                  -0.3125
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 2.972222222222222
+              },
+              "screen_0:front": {
+                "requested_point_m": [
+                  0.0027861883699346383,
+                  -0.9885518144510639
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  -0.9930555555555556
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 4.763888888888888
+              },
+              "bookshelf_0:front": {
+                "requested_point_m": [
+                  0.000841955498684031,
+                  2.3558720725239004
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  2.3541666666666665
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "cooker_0:front": {
+                "requested_point_m": [
+                  0.0027261170154594117,
+                  -1.148844592534907
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  -1.1458333333333333
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              }
+            }
+          },
+          {
+            "square_body_width_m": 0.5,
+            "entry_grid_point_m": [
+              3.506944444444444,
+              -1.1180555555555556
+            ],
+            "entry_cell_clear": true,
+            "reachable_floor_center_area_m2": 10.41628086419753,
+            "targets": {
+              "queen_bed_0:left_side": {
+                "requested_point_m": [
+                  -1.2766130397546522,
+                  1.000454440584696
+                ],
+                "sampled_grid_point_m": [
+                  -1.2708333333333335,
+                  1.0069444444444442
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "queen_bed_0:right_side": {
+                "requested_point_m": [
+                  1.2780710433611464,
+                  0.9987512058604274
+                ],
+                "sampled_grid_point_m": [
+                  1.2847222222222219,
+                  0.9930555555555554
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 4.333333333333333
+              },
+              "shower_0:front": {
+                "requested_point_m": [
+                  -2.245623894230789,
+                  -0.9966424507414621
+                ],
+                "sampled_grid_point_m": [
+                  -2.2430555555555554,
+                  -0.9930555555555556
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "toilet_0:front": {
+                "requested_point_m": [
+                  1.399899565061893,
+                  -0.3132890571301742
+                ],
+                "sampled_grid_point_m": [
+                  1.3958333333333335,
+                  -0.3125
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 2.9166666666666665
+              },
+              "screen_0:front": {
+                "requested_point_m": [
+                  0.0027861883699346383,
+                  -0.9885518144510639
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  -0.9930555555555556
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 4.819444444444444
+              },
+              "bookshelf_0:front": {
+                "requested_point_m": [
+                  0.000841955498684031,
+                  2.3558720725239004
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  2.3541666666666665
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "cooker_0:front": {
+                "requested_point_m": [
+                  0.0027261170154594117,
+                  -1.148844592534907
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  -1.1458333333333333
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              }
+            }
+          },
+          {
+            "square_body_width_m": 0.6,
+            "entry_grid_point_m": [
+              3.4652777777777772,
+              -1.1180555555555556
+            ],
+            "entry_cell_clear": true,
+            "reachable_floor_center_area_m2": 8.270061728395062,
+            "targets": {
+              "queen_bed_0:left_side": {
+                "requested_point_m": [
+                  -1.2766130397546522,
+                  1.000454440584696
+                ],
+                "sampled_grid_point_m": [
+                  -1.2708333333333335,
+                  1.0069444444444442
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "queen_bed_0:right_side": {
+                "requested_point_m": [
+                  1.2780710433611464,
+                  0.9987512058604274
+                ],
+                "sampled_grid_point_m": [
+                  1.2847222222222219,
+                  0.9930555555555554
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 4.291666666666666
+              },
+              "shower_0:front": {
+                "requested_point_m": [
+                  -2.245623894230789,
+                  -0.9966424507414621
+                ],
+                "sampled_grid_point_m": [
+                  -2.2430555555555554,
+                  -0.9930555555555556
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "toilet_0:front": {
+                "requested_point_m": [
+                  1.399899565061893,
+                  -0.3132890571301742
+                ],
+                "sampled_grid_point_m": [
+                  1.3958333333333335,
+                  -0.3125
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 2.875
+              },
+              "screen_0:front": {
+                "requested_point_m": [
+                  0.0027861883699346383,
+                  -0.9885518144510639
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  -0.9930555555555556
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "bookshelf_0:front": {
+                "requested_point_m": [
+                  0.000841955498684031,
+                  2.3558720725239004
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  2.3541666666666665
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              },
+              "cooker_0:front": {
+                "requested_point_m": [
+                  0.0027261170154594117,
+                  -1.148844592534907
+                ],
+                "sampled_grid_point_m": [
+                  0.006944444444444198,
+                  -1.1458333333333333
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null
+              }
+            }
+          }
+        ],
+        "door_assumption": "Single east doorway assumed fully open without leaf geometry; no hinge or sweep acceptance.",
+        "limits": [
+          "Full-height AABB footprints are conservative, including gaps within furniture.",
+          "Grid 1/72 m and square body scenarios; not a human model or accessibility standard.",
+          "A failed conservative route is a warning, not proof no human route exists.",
+          "A successful route does not verify sitting, opening storage, reaching, turning or comfort."
+        ]
+      },
+      "free_floor": {
+        "largest_grid_empty_rectangle_m2": 10.165895061728394,
+        "bounds_xyxy_m": [
+          1.6111111111111112,
+          -2.361111111111111,
+          3.763888888888889,
+          2.361111111111111
+        ],
+        "width_depth_m": [
+          2.1527777777777777,
+          4.722222222222222
+        ],
+        "scope": "Empty axis-aligned floor rectangle under conservative AABBs and assumed clear height, anywhere in room; not an activity pass or reachable human area."
+      },
+      "whole_room_success": "unknown_not_accepted",
+      "professional_review": false,
+      "scene_edits": 0,
+      "model_calls": 0,
+      "limits": [
+        "Presence does not establish use; static doors/lids/folds/services not simulated.",
+        "Surface intersection is not penetration depth; absence does not rule out containment or instability.",
+        "Conservative AABB routes may block gaps; endpoints are deterministic hypotheses, not measured resident needs.",
+        "Sanitary enclosure, privacy, installation, comfort and aesthetics remain unknown.",
+        "Development source-informed shell, no held-out generalization or learning result."
+      ]
+    },
+    "role_coverage": {
+      "living_seating": false,
+      "sleeping": true,
+      "cooking_appliance": true,
+      "food_preparation_surface": false,
+      "kitchen_sink": false,
+      "cold_food_storage": false,
+      "bathing": true,
+      "toileting": true,
+      "washbasin": false,
+      "storage": true
+    }
+  },
+  "conditional_target_lifecycle": [
+    {
+      "square_body_width_m": 0.4,
+      "target": "bookshelf_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "absent_object_no_approach_point",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "cooker_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "unreachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "queen_bed_0:left_side",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "queen_bed_0:right_side",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "refrigerator_0:front",
+      "states": {
+        "initial": "absent_object_no_approach_point",
+        "G": "unreachable_under_assumptions",
+        "U": "absent_object_no_approach_point"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "screen_0:front",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "absent_object_no_approach_point"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "screen_2:front",
+      "states": {
+        "initial": "absent_object_no_approach_point",
+        "G": "absent_object_no_approach_point",
+        "U": "unreachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "shower_0:front",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.4,
+      "target": "toilet_0:front",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "bookshelf_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "absent_object_no_approach_point",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "cooker_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "unreachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "queen_bed_0:left_side",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "queen_bed_0:right_side",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "refrigerator_0:front",
+      "states": {
+        "initial": "absent_object_no_approach_point",
+        "G": "unreachable_under_assumptions",
+        "U": "absent_object_no_approach_point"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "screen_0:front",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "absent_object_no_approach_point"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "screen_2:front",
+      "states": {
+        "initial": "absent_object_no_approach_point",
+        "G": "absent_object_no_approach_point",
+        "U": "unreachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "shower_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.5,
+      "target": "toilet_0:front",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "bookshelf_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "absent_object_no_approach_point",
+        "U": "unreachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "cooker_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "unreachable_under_assumptions",
+        "U": "unreachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "queen_bed_0:left_side",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "unreachable_under_assumptions",
+        "U": "unreachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "queen_bed_0:right_side",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "refrigerator_0:front",
+      "states": {
+        "initial": "absent_object_no_approach_point",
+        "G": "unreachable_under_assumptions",
+        "U": "absent_object_no_approach_point"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "screen_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "unreachable_under_assumptions",
+        "U": "absent_object_no_approach_point"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "screen_2:front",
+      "states": {
+        "initial": "absent_object_no_approach_point",
+        "G": "absent_object_no_approach_point",
+        "U": "unreachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "shower_0:front",
+      "states": {
+        "initial": "unreachable_under_assumptions",
+        "G": "unreachable_under_assumptions",
+        "U": "unreachable_under_assumptions"
+      }
+    },
+    {
+      "square_body_width_m": 0.6,
+      "target": "toilet_0:front",
+      "states": {
+        "initial": "reachable_under_assumptions",
+        "G": "reachable_under_assumptions",
+        "U": "reachable_under_assumptions"
+      }
+    }
+  ],
+  "new_model_calls": 18,
+  "new_tool_calls": 18,
+  "training_updates": 0,
+  "qualified_professional_decisions_added": 0,
+  "independent_designer_review": false,
+  "whole_room_accepted": false,
+  "limits": [
+    "One development family and one deterministic continuation per condition, no independent sample replication.",
+    "U adds information/input tokens and cost; no equal-FLOP claim. Both arms use the same compact representation.",
+    "Program feedback is not professional preference. Conditional routes, inventory and empty area are separate measures.",
+    "Privacy, installation, articulation, comfort and complete usable dwelling remain unverified. Ordinary feedback gains are not training or generalization gains."
+  ],
+  "package_script_sha256": "074d05f78018db9660dc8f907757a7a32edc862eb2260eb48aec81fee9d72830"
+}

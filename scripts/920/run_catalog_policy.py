@@ -1,7 +1,7 @@
 """A finite whole-room policy attempt over actual native catalog tools.
 
-Prepare renders and encodes the empty room without a model call. Rollout resumes
-that checkpoint, uses the exact prepared request, then observes each real edit.
+Prepare restores and encodes the declared room without a model call. Rollout
+resumes that checkpoint, uses the prepared request, then observes each real edit.
 """
 import argparse
 from datetime import datetime, timezone
@@ -14,6 +14,7 @@ import sys
 
 from catalog_project_session import create_app, canonical_hash
 from native_project import sha256, validate_bundle
+from native_checkpoint import rotation_roundtrip_differences
 
 
 def write(path,value):
@@ -22,15 +23,19 @@ def write(path,value):
     temp.write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n');temp.replace(path)
 
 
-def request_messages(session,observation,remaining):
+def request_messages(session,observation,remaining,plan=None,audit=None):
     from Designer.agent_rollout import build_messages
     context=session.current_context()
-    # Preserve exact numeric values and identities; omit renderer resource paths,
-    # empty support metadata and repeated historical receipts from the prompt.
-    context['objects']={oid:{key:obj[key] for key in
-        ('object_id','object_type','name','transform','bbox_min','bbox_max','immutable')}
-        for oid,obj in context['objects'].items()}
-    receipts=context.pop('prior_tool_receipts')
+    compact=plan is not None and plan.get('prompt_representation')=='compact_catalog_context_v1'
+    if compact:
+        from compact_catalog_context import pack_context,geometry_feedback,use_feedback
+        context,memory_data=pack_context(context)
+    else:
+        context['objects']={oid:{key:obj[key] for key in
+            ('object_id','object_type','name','transform','bbox_min','bbox_max','immutable')}
+            for oid,obj in context['objects'].items()}
+        receipts=context.pop('prior_tool_receipts')
+        memory_data={'recent_actual_batches':receipts,'history_policy':'Complete current object table plus latest four batches; full history retained in checkpoint.'}
     contract=('\nEmit exactly ONE executable action per turn as <tool_call>{"name": "...", "arguments": {...}}</tool_call>. '
         'You will receive the actual result and five updated views before your next turn. '
         'If finished or unable to proceed, output <done> with a concise account of unmet or unknown requirements and no tool call. '
@@ -39,7 +44,13 @@ def request_messages(session,observation,remaining):
         'Treat fixture operation, stability and sanitation as unverified. '
         f'Remaining action calls including rejections: {remaining}.')
     brief=session.project.task['design_request']+'\nCURRENT NATIVE STATE:\n'+json.dumps(context,ensure_ascii=False,separators=(',',':'))
-    memory=json.dumps({'recent_actual_batches':receipts,'history_policy':'Complete current object table plus latest four batches; full history retained in checkpoint.'},ensure_ascii=False,separators=(',',':'))
+    memory=json.dumps(memory_data,ensure_ascii=False,separators=(',',':'))
+    if compact:
+        if audit is None:raise ValueError('Frozen feedback plan requires an actual state audit')
+        feedback={'geometry':geometry_feedback(audit)}
+        if plan['feedback_arm']=='U':feedback['use']=use_feedback(audit)
+        elif plan['feedback_arm']!='G':raise ValueError('Unknown feedback arm')
+        memory+='\n\n## Independent current-state feedback\n'+json.dumps(feedback,ensure_ascii=False,separators=(',',':'))
     return build_messages(observation['system']+contract,brief,memory,observation['image_paths'])
 
 
@@ -61,13 +72,13 @@ def main():
         TOKENIZERS_PARALLELISM='false',PYTHONNOUSERSITE='1',PYTHONDONTWRITEBYTECODE='1')
     os.sched_setaffinity(0,sorted(os.sched_getaffinity(0))[:4])
     now=lambda:datetime.now(timezone.utc).isoformat()
-    result={'phase':a.phase,'status':'running','started_at':now(),'rounds':[],
+    result={'phase':a.phase,'arm':plan.get('feedback_arm'),'status':'running','started_at':now(),'rounds':[],
         'tool_calls':0,'model_calls':0,'training_updates':0,'whole_room_success':'not_evaluated'}
     public=Path(plan['public_directory']);runtime=Path(plan['runtime_directory'])
     def progress():
         write(a.out/'RESULT.json',result)
         status={'run_id':plan['run_id'],'updated_at':now(),'question':plan['question'],
-            'stage':a.phase,'status':result['status'],'run_directory':str(runtime),
+            'stage':a.phase,'arm':plan.get('feedback_arm'),'status':result['status'],'run_directory':str(runtime),
             'completed_planned':{'tool_calls':{'completed':result['tool_calls'],'planned':plan['budget']['tool_calls']},
                 'model_calls':{'completed':result['model_calls'],'planned':plan['budget']['model_calls']}},
             'configuration_hashes':{'plan':sha256(a.plan),'input_manifest':plan['manifest_sha256']},
@@ -75,9 +86,10 @@ def main():
             'started_at':result['started_at'],'ended_at':result.get('ended_at'),
             'next_step':'Prepare CPU input and execute exactly one frozen whole-room attempt, then independently audit final state.'}
         write(public/'STATUS.json',status)
-        write(public.parent/'latest.json',{'run_id':plan['run_id'],'stage':a.phase,'status':result['status'],
+        write(Path(plan.get('latest_file',public.parent/'latest.json')),{'run_id':plan['run_id'],'stage':str(plan.get('feedback_arm',''))+'_'+a.phase,'status':result['status'],
             'updated_at':now(),'run_directory':str(runtime),'status_path':str(public/'STATUS.json')})
     print(now(),'begin whole-room',a.phase,flush=True);progress();client=None;locks=[]
+    feedback=None
     def child(request,out,mode):
         env=dict(os.environ,CUDA_VISIBLE_DEVICES=plan['gpu_uuid'] if mode=='generate' else '')
         command=[sys.executable,str(Path(__file__).with_name('run_stage.py')),'--receipt-dir',str(out.parent/(out.name+'_execution')),
@@ -99,6 +111,13 @@ def main():
         if host_available<17534247392*2+8*1024**3:raise RuntimeError('Insufficient host model-loading headroom')
         return {'uuid':gpu[0].strip(),'used_mib':int(gpu[1]),'free_mib':int(gpu[2]),'required_free_bytes':required}
     try:
+        if plan.get('audit_plan') and sha256(Path(plan['audit_plan']))!=plan['audit_plan_sha256']:
+            raise ValueError('Frozen feedback audit plan changed')
+        if plan.get('feedback_source'):
+            item=plan['feedback_source']
+            if sha256(Path(item['path']))!=item['sha256']:raise ValueError('Initial feedback changed')
+            feedback=json.loads(Path(item['path']).read_text())
+            if feedback['input_manifest_sha256']!=plan['manifest_sha256']:raise ValueError('Feedback/input manifest mismatch')
         if a.phase=='prepare':
             for item in plan['model_weight_files']:
                 path=Path(plan['model_directory'])/item['path']
@@ -126,16 +145,44 @@ def main():
         session=server._state.session
         post('/session/stage',{'stage':'furniture','stub_assets':False,'skip_render':False})
         if a.phase=='prepare':
-            obs=post('/session/observation');write(a.out/'observation.json',obs)
-            write(a.out/'request.json',request_messages(session,obs,plan['budget']['tool_calls']))
+            if plan.get('source_observation'):
+                item=plan['source_observation']
+                if sha256(Path(item['path']))!=item['sha256']:raise ValueError('Source observation changed')
+                obs=json.loads(Path(item['path']).read_text())
+                if sha256(Path(obs['state_binding']))!=item['state_binding_sha256']:raise ValueError('Frozen view binding changed')
+                binding=json.loads(Path(obs['state_binding']).read_text())
+                if canonical_hash(binding['native_state'])!=binding['state_sha256']:raise ValueError('View binding is internally inconsistent')
+                current=session.scene.to_state_dict()
+                differences=rotation_roundtrip_differences(binding['native_state'],current)
+                if differences and plan.get('view_reuse_equivalence')!='native_quaternion_roundtrip_1e-12':
+                    raise ValueError('Reused views describe another exact state')
+                result['view_reuse_equivalence']={'source_state_sha256':binding['state_sha256'],
+                    'current_state_sha256':canonical_hash(current),'differences':differences,
+                    'rule':'Only the existing native checkpoint quaternion roundtrip allowance (<=1e-12); every other field exact. No pose edit or new render claimed.'}
+                if len(binding['images'])!=5 or obs['image_paths']!=[x['path'] for x in binding['images']]:raise ValueError('Five-view record mismatch')
+                for image in binding['images']:
+                    if sha256(Path(image['path']))!=image['sha256']:raise ValueError('Source view changed')
+                result['reused_observation']=item
+            else:obs=post('/session/observation')
+            write(a.out/'observation.json',obs)
+            write(a.out/'request.json',request_messages(session,obs,plan['budget']['tool_calls'],plan,feedback))
             result['encoding']=child(a.out/'request.json',a.out/'encode','encode')['encoding']
             result['checkpoint']=post('/session/checkpoint',{'output_directory':str(a.out/'checkpoint')})
             result['state_sha256']=canonical_hash(session.scene.to_state_dict())
             result['request_sha256']=sha256(a.out/'request.json');result['status']='prepared_without_model'
         else:
-            if canonical_hash(session.scene.to_state_dict())!=prepared['state_sha256']:raise ValueError('Resumed state changed')
+            stored=json.loads((runtime/'prepare/checkpoint/house_state.json').read_text())['rooms'][session.scene.room_id]
+            if canonical_hash(stored)!=prepared['state_sha256']:raise ValueError('Prepared state record changed')
+            differences=rotation_roundtrip_differences(stored,session.scene.to_state_dict())
+            if differences and plan.get('view_reuse_equivalence')!='native_quaternion_roundtrip_1e-12':
+                raise ValueError('Resumed exact state changed')
             if sha256(runtime/'prepare/request.json')!=prepared['request_sha256']:raise ValueError('Prepared request changed')
             request=runtime/'prepare/request.json';obs=json.loads((runtime/'prepare/observation.json').read_text())
+            if differences:
+                result['rollout_restoration_differences']=differences
+                request=a.out/'initial_request.json'
+                write(request,request_messages(session,obs,plan['budget']['tool_calls'],plan,feedback))
+            result['initial_request_sha256']=sha256(request)
             from Designer.agent_rollout import parse_assistant_text
             result['stop_reason']='budget_exhausted'
             for turn in range(plan['budget']['model_calls']):
@@ -156,7 +203,15 @@ def main():
                 row['checkpoint']=post('/session/checkpoint',{'output_directory':str(rounddir/'checkpoint')})
                 obs=post('/session/observation');write(rounddir/'observation.json',obs)
                 row['after_sha256']=canonical_hash(session.scene.to_state_dict())
-                write(rounddir/'next_request.json',request_messages(session,obs,plan['budget']['tool_calls']-result['tool_calls']))
+                if feedback is not None and row['after_sha256']!=state_before:
+                    command=[sys.executable,str(Path(__file__).with_name('run_stage.py')),'--receipt-dir',str(rounddir/'audit_execution'),
+                        '--timeout','120','--',sys.executable,str(Path(__file__).with_name('audit_catalog_room.py')),
+                        '--plan',plan['audit_plan'],'--bundle',str(rounddir/'checkpoint'),'--out',str(rounddir/'feedback_audit.json')]
+                    if subprocess.call(command):raise RuntimeError('Actual changed-state feedback audit failed; no inference on stale feedback')
+                    feedback=json.loads((rounddir/'feedback_audit.json').read_text())
+                if feedback is not None:write(rounddir/'feedback_binding.json',{'state_sha256':row['after_sha256'],
+                    'audit':feedback,'recomputed_after_state_change':row['after_sha256']!=state_before})
+                write(rounddir/'next_request.json',request_messages(session,obs,plan['budget']['tool_calls']-result['tool_calls'],plan,feedback))
                 request=rounddir/'next_request.json'
                 progress();print(now(),'finished round',turn,'tool_calls',result['tool_calls'],flush=True)
                 if sum(p.stat().st_size for p in runtime.rglob('*') if p.is_file())>plan['budget']['output_max_bytes']:
@@ -167,7 +222,10 @@ def main():
     except Exception as exc:
         result.update(status='failed',stop_reason='execution_error',error_type=type(exc).__name__,error=str(exc));raise
     finally:
-        result['ended_at']=now();progress()
+        result['ended_at']=now()
+        result['prior_lineage_tool_calls']=plan.get('prior_tool_calls',0)
+        result['cumulative_lineage_tool_calls']=result['prior_lineage_tool_calls']+result['tool_calls']
+        progress()
         if client is not None:
             try:client.post('/session/close',json={})
             finally:client.close()
