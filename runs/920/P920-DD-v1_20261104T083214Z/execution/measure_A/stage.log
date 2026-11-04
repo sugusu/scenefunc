@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/measure_scene.py", line 27, in <module>
+    main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/measure_scene.py", line 19, in main
+    result = module.measure(a.checkpoint)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DD-v1_20261104T083214Z/work/joint_use_witness_20261104/measure_joint_use.py", line 140, in measure
+    region, uncertain = section_region(mesh, z+1e-4)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DD-v1_20261104T083214Z/work/joint_use_witness_20261104/measure_joint_use.py", line 42, in section_region
+    for ring in section.discrete:
+                ^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/caching.py", line 139, in get_cached
+    value = function(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/path/path.py", line 669, in discrete
+    for path in self.paths
+                ^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/caching.py", line 139, in get_cached
+    value = function(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/path/path.py", line 241, in paths
+    paths = traversal.closed_paths(self.entities, self.vertices)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/path/traversal.py", line 178, in closed_paths
+    graph, closed = vertex_graph(entities)
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/path/traversal.py", line 36, in vertex_graph
+    graph = nx.Graph()
+            ^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/exceptions.py", line 30, in __getattribute__
+    raise super().__getattribute__("exception")
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/lib/python3.11/site-packages/trimesh/path/traversal.py", line 10, in <module>
+    import networkx as nx
+ModuleNotFoundError: No module named 'networkx'
