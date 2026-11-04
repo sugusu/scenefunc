@@ -1,0 +1,118 @@
+{
+  "handoff_id": "P920-DD-v1",
+  "status": "protocol_recorded_execution_not_started",
+  "model": {
+    "id": "XuanyuLiu/Scene-Builder-Qwen3-VL-8B-Instruct",
+    "revision": "63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+    "precision": "float16",
+    "batch_size": 1,
+    "attention_candidate": "sdpa",
+    "use_cache": true,
+    "quantization": false,
+    "model_replacement": false,
+    "multi_gpu_sharding": false
+  },
+  "seed": 0,
+  "max_new_tokens": 2048,
+  "first_round_wall_timeout_seconds": 1200,
+  "draft_budget": {
+    "A": {
+      "retrieval_proposal": 1,
+      "placement": 1
+    },
+    "B": {
+      "retrieval_proposal": 1,
+      "placement": 1
+    }
+  },
+  "revision_budget": {
+    "branches": [
+      "A_G",
+      "A_U",
+      "B_G",
+      "B_U"
+    ],
+    "rounds_per_branch": 1,
+    "tool_calls_per_branch_max": 12,
+    "rejected_calls_count_towards_cap": true,
+    "same_draft_clone_per_arm": true
+  },
+  "maximum_normal_model_rounds": 8,
+  "engineering_and_failures_counted_separately": true,
+  "feedback": {
+    "G": "out-of-bounds, intersecting objects, executable actions",
+    "U": "same G feedback plus measured functional workspace/dining surface/obstruction/seating/path known-or-unknown; no target coordinates or expert fixes"
+  },
+  "frozen_inputs": {
+    "payload_sha256": "75ea3aec583afedec41d782e3463040280cd167b78bae8a4981545a661be2b63",
+    "files": {
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/巴黎开间双条件/输入A.json": "0c621411daeea088a0a5b98ae438878892fa1114fe36016d1413263d68b7c754",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/巴黎开间双条件/输入B.json": "18e2de501a95a29f1dba8b9bf71cacdc996ffcc1d9fbe7d0d7a06d985d4aee25",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/同项目原柜实验/冻结开发输入/19_remote_studio/initial.json": "54b98aa6070a14f82c91e88e51f6f84b5df4b192f179dba206e515ba156d2b5f",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/inputs_v1/同项目原柜实验/冻结开发输入/19_remote_studio/需求卡.svg": "70cf3c649fd3e7db81e3459a80d5bebab7495821725e853e1576812b6f66532e"
+    }
+  },
+  "shared_png": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/shared_requirement_card_v2.png",
+    "sha256": "90ce5c520039d8a084a9067a0189bd82233b58a1369ac821cb115286c7398209",
+    "native_size": [
+      760,
+      388
+    ],
+    "identical_to_autodl": false
+  },
+  "formal_image_processor_budget": null,
+  "formal_image_processor_budget_reason": "Must be verified against actual processor and tool observation contract; no silent context/image reduction",
+  "formal_execution_config_frozen": false,
+  "draft_asset_manifest": null,
+  "tool_schema_sha256": null,
+  "draft_generation_started": false,
+  "evaluation": {
+    "cross_score_all_six_scenes_against": [
+      "A",
+      "B"
+    ],
+    "scene_labels": [
+      "A_draft",
+      "B_draft",
+      "A_G",
+      "B_G",
+      "A_U",
+      "B_U"
+    ],
+    "work_rectangle_m": [
+      0.8,
+      0.5
+    ],
+    "meal_rectangle_m": [
+      0.6,
+      0.4
+    ],
+    "A_allows_materials_left_in_place": true,
+    "B_requires_same_place_unmoved_materials": true,
+    "two_tables_allowed": true,
+    "finite_search_not_found_is_not_global_infeasibility": true,
+    "unverified_measurements": "unknown",
+    "geometry_from": "actual final asset meshes and same-height obstacles",
+    "additional_checks": [
+      "seating",
+      "chair_pullout",
+      "access_paths",
+      "sleeping",
+      "doors_and_windows",
+      "storage",
+      "activity_space",
+      "harm_to_other_functions"
+    ],
+    "independent_scoring_required": true,
+    "human_clearance_assumptions": null
+  },
+  "no_training_authorized": true,
+  "no_paid_services_authorized": true,
+  "repository_baseline_sha": "bdabc219772112ff2aee0b4a14ffd86809f48cb1",
+  "shared_image": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/paris/config/static/paris_A_inference_20261104/common_input_card.png",
+    "sha256": "7dfc6789ce8c225b179020104ece86393d8e7942dc1821a37acbe4c9fdddcf0c",
+    "decision": "Use verified original AutoDL card for all forthcoming engineering and formal calls; earlier local rasterization was processor-only and no model generation occurred."
+  }
+}

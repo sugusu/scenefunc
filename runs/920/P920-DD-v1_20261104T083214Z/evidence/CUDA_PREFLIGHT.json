@@ -1,0 +1,32 @@
+{
+  "kind": "engineering_cuda_only",
+  "started_at": "2026-11-04T08:36:07.656343+00:00",
+  "pid": 1057058,
+  "pid_start_ticks": "43921619",
+  "boot_id": "460b0afe-463d-4722-b0fa-a2b266f87bd1",
+  "authorized_uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+  "physical_gpu": 0,
+  "legacy_guard_sha256": "580f375d0a5d968d9cdc36693c9faa163038ad32479ef10e942ece58175197d2",
+  "driver_selection": "system libraries; legacy private driver not injected",
+  "model_forward_performed": false,
+  "formal_capacity_validated": false,
+  "status": "pass",
+  "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/cuda_preflight.log",
+  "gpu_before": {
+    "index": "0",
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121,
+    "total_mib": 24576,
+    "driver": "580.178.04"
+  },
+  "command": [
+    "/data/wyh/conda/envs/c15_genrec/bin/python",
+    "-c",
+    "\nimport json, sys, torch\nfrom torch.nn import functional as F\nassert torch.cuda.device_count() == 1\ntorch.cuda.set_device(0)\nx=torch.ones((64,64),device='cuda',dtype=torch.float16)\ny=x@x\nassert bool(torch.all(y==64).item())\nq=torch.ones((1,2,16,32),device='cuda',dtype=torch.float16)\nz=F.scaled_dot_product_attention(q,q,q,is_causal=True)\nassert bool(torch.isfinite(z).all().item())\ntorch.cuda.synchronize()\nprint(json.dumps({'python':sys.version,'torch':torch.__version__,'torch_cuda':torch.version.cuda,'gpu':torch.cuda.get_device_name(0),'fp16_matmul':'pass','sdpa_tiny_tensor':'pass','max_memory_allocated_bytes':torch.cuda.max_memory_allocated(),'max_memory_reserved_bytes':torch.cuda.max_memory_reserved(),'model_forward':False,'capacity_for_8b': 'not_tested'},indent=2))\n"
+  ],
+  "child_pid": 1057064,
+  "child_start_ticks": "43921641",
+  "exit_code": 0,
+  "ended_at": "2026-11-04T08:36:28.342947+00:00"
+}
