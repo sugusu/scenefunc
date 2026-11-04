@@ -1,0 +1,196 @@
+{
+  "source_run_id": "P920-DD-v1_20261104T083214Z",
+  "audit_kind": "static_prompt_dispatch_and_saved_response_audit",
+  "model_calls": 0,
+  "tool_executions": 0,
+  "dispatcher_sha256": "abba849f8a31aa75f219b3ea6ce52eebcc1e4f27962bed4c9ec3c7244a8b5eb3",
+  "dispatched_tools": [
+    "add_furniture_to_scene_tool",
+    "generate_assets",
+    "move_furniture_tool",
+    "remove_furniture_tool"
+  ],
+  "records": [
+    {
+      "label": "A_G",
+      "request_sha256": "5fc575a555999222fe1facc566bc248627b1a3a0ef2e55d9ef9c1e6e8ae98b3e",
+      "system_prompt_sha256": "e15889604041c460cdc1fd4c7bab6bb0fd11c85251b3ea54d45ca4be39a8860d",
+      "advertised_tools": [
+        "add_furniture_to_scene_tool",
+        "check_physics",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "late_guard_tools": [
+        "add_furniture_to_scene_tool",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool"
+      ],
+      "advertised_but_unavailable": [
+        "check_physics",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "parsed_calls_sha256": "b8e9a478a884b5f2dfdbfbc347b6eb1c91baeec3f1f3342b2f31ed5451d4c353",
+      "tool_responses_sha256": "d66f496883818ad78bf1ccca90e27b7f33afeab287ddcfafe3c8590bdc2ac6a0",
+      "total_calls": 1,
+      "unsupported_calls": [
+        {
+          "index": 0,
+          "name": "check_physics",
+          "response": {
+            "success": false,
+            "error": "This bounded first-turn bridge has not implemented check_physics",
+            "not_a_quality_failure": true
+          }
+        }
+      ],
+      "other_failures": []
+    },
+    {
+      "label": "A_U",
+      "request_sha256": "09de64e383f5e4862fa91d7164c2c2f420d031a2c6d10532ecdf1fa2a8b1f3a2",
+      "system_prompt_sha256": "e15889604041c460cdc1fd4c7bab6bb0fd11c85251b3ea54d45ca4be39a8860d",
+      "advertised_tools": [
+        "add_furniture_to_scene_tool",
+        "check_physics",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "late_guard_tools": [
+        "add_furniture_to_scene_tool",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool"
+      ],
+      "advertised_but_unavailable": [
+        "check_physics",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "parsed_calls_sha256": "b8e9a478a884b5f2dfdbfbc347b6eb1c91baeec3f1f3342b2f31ed5451d4c353",
+      "tool_responses_sha256": "d66f496883818ad78bf1ccca90e27b7f33afeab287ddcfafe3c8590bdc2ac6a0",
+      "total_calls": 1,
+      "unsupported_calls": [
+        {
+          "index": 0,
+          "name": "check_physics",
+          "response": {
+            "success": false,
+            "error": "This bounded first-turn bridge has not implemented check_physics",
+            "not_a_quality_failure": true
+          }
+        }
+      ],
+      "other_failures": []
+    },
+    {
+      "label": "B_G",
+      "request_sha256": "dd46199e7666118d9ce8fdb6063b9fe9d11bc3e9ac8e4a10167977f9e4939754",
+      "system_prompt_sha256": "c32e7ffd771485648d3f53df3d5f8d1cdefee010c369524a7917d93effecfe06",
+      "advertised_tools": [
+        "add_furniture_to_scene_tool",
+        "check_physics",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "late_guard_tools": [
+        "add_furniture_to_scene_tool",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool"
+      ],
+      "advertised_but_unavailable": [
+        "check_physics",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "parsed_calls_sha256": "c799dfa8db4995c3f34fccac4fcf993304252d1a2a6545190bdfa5a626c7e8e6",
+      "tool_responses_sha256": "4ba14058250504453ae1c8f6e8f631288310b110a195395a2708fa2ebb3054c3",
+      "total_calls": 6,
+      "unsupported_calls": [],
+      "other_failures": [
+        {
+          "index": 5,
+          "call": {
+            "name": "remove_furniture_tool",
+            "arguments": {
+              "object_id": "bookcase_0"
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "Object with ID 'bookcase_0' not found in scene.\n\nCauses:\n1. Missing ID postfix - IDs have random postfixes like 'bookcase_a1b2c3'\n2. Object already removed\n3. Typo in object_id\n\nCall get_current_scene_state() to see current object IDs with postfixes. Find objects whose names start with 'bookcase'.",
+            "object_id": "bookcase_0",
+            "error_type": "object_not_found",
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": "Call get_current_scene_state() to verify object IDs"
+          }
+        }
+      ]
+    },
+    {
+      "label": "B_U",
+      "request_sha256": "e5642ee1b8f107d6c615b3d60acb7d75dfc41c9da2d84e7b5e96e29c48355509",
+      "system_prompt_sha256": "c32e7ffd771485648d3f53df3d5f8d1cdefee010c369524a7917d93effecfe06",
+      "advertised_tools": [
+        "add_furniture_to_scene_tool",
+        "check_physics",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "late_guard_tools": [
+        "add_furniture_to_scene_tool",
+        "generate_assets",
+        "move_furniture_tool",
+        "remove_furniture_tool"
+      ],
+      "advertised_but_unavailable": [
+        "check_physics",
+        "rescale_furniture_tool",
+        "snap_to_object_tool"
+      ],
+      "parsed_calls_sha256": "b8e9a478a884b5f2dfdbfbc347b6eb1c91baeec3f1f3342b2f31ed5451d4c353",
+      "tool_responses_sha256": "d66f496883818ad78bf1ccca90e27b7f33afeab287ddcfafe3c8590bdc2ac6a0",
+      "total_calls": 1,
+      "unsupported_calls": [
+        {
+          "index": 0,
+          "name": "check_physics",
+          "response": {
+            "success": false,
+            "error": "This bounded first-turn bridge has not implemented check_physics",
+            "not_a_quality_failure": true
+          }
+        }
+      ],
+      "other_failures": []
+    }
+  ],
+  "affected_arms": [
+    "A_G",
+    "A_U",
+    "B_U"
+  ],
+  "unsupported_calls": 3,
+  "total_calls": 9,
+  "finding": "The inherited system prompt advertises tools that a later paragraph disallows and the dispatcher does not implement.",
+  "inference_limit": "This is a verified engineering confound, not proof that correcting it improves design or functional use.",
+  "next_step": "Freeze a new development protocol with one consistent executable tool contract shared by G/U; preserve v1 unchanged."
+}

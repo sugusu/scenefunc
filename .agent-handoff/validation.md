@@ -1,0 +1,12 @@
+# 验证记录
+
+| 日期 | 验证 | 结果与边界 |
+| --- | --- | --- |
+| 2026-11-04 | get_goal | objective 已创建，status active；不代表研究已完成 |
+| 2026-11-04 | 原始提示/dispatcher/parsed_calls/tool_responses 静态审计 | 通过对齐和哈希检查；3 个回合各一项 check_physics 未实现，四种已接入工具与末尾 guard 一致，但早期清单声明额外工具 |
+| 2026-11-04 | git push origin runs/920 | 失败，publickey；此前的两提交未被重写 |
+| 2026-11-04 | 新模型、几何回放、训练 | 未运行；先完成新协议准备，历史 v1 验收见其 FINAL_ACCEPTANCE.json |
+
+审计输出 research/920/tool_contract_audit_v1.json 保留源文件哈希，静态程序不加载模型或执行工具。后续改动需要新的检查；不能把 v1 验收沿用为新方法验证。
+
+2026-11-04 收尾检查：重读全部新建交接/研究文件，清理初始化占位符；审计统计与保存回执一致（3/9，A-G/A-U/B-U）；Python AST 解析通过；相对 v1 最终提交的 paris/ 和历史结果树没有差异。仅验证新增静态审计和文档，未额外运行模型。
