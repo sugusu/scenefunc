@@ -1,0 +1,320 @@
+{
+  "status": "running",
+  "phase": "rollout",
+  "case": "hosting_with_knowledge",
+  "started_at": "2026-11-05T08:37:22.490187+00:00",
+  "plan_sha256": "166d7fee1a9c2eaca86c0f1ec873c2313a7720638cc1702162badcfc24d91874",
+  "model_calls": 2,
+  "tool_calls": 2,
+  "training_updates": 0,
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-05T08:37:35.016593+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "e6d378646e5938d8052adae1dc1ddeb4f02012fb2090f1a10a29433cfeded18f",
+        "plan_sha256": "166d7fee1a9c2eaca86c0f1ec873c2313a7720638cc1702162badcfc24d91874",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.topdown.png",
+              "sha256": "be319516f770b6a05b8b3774c74a769302e2d851410863bf7ff59bf40d52e3e6",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.south.png",
+              "sha256": "4e21c506b5b3df86ad51f25d8daa2c0b5c800ea4de516d7ef0a13f291972b9e8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.east.png",
+              "sha256": "06cfef303a9f02b2eea7c1036fba49a63947a110f9a5f71a8c1d6ccd23049192",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.west.png",
+              "sha256": "e985571237726249f7a08f1d78f6e86db14eed364aa8a97b9bced8b4fd3bef21",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.north.png",
+              "sha256": "fcc1ddcc204921ea8c3306599e979389d43bce1cbddc9f1b1e5d53d334755a9e",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 6990,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              6990
+            ],
+            "attention_mask": [
+              1,
+              6990
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "572d9889ade7b61153692fd153d5588bb6298e3ade25b3ad5c22d0b8ccc3151e",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.059504391043447,
+        "generation_seconds": 4.437312175985426,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "24e5aeab70fd332c832694a682631c3495c5facf522ed692814784cf1b1db544",
+        "peak_allocated_bytes": 19353374208,
+        "peak_reserved_bytes": 19876806656,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:37:47.006350+00:00",
+        "elapsed_seconds": 11.989777705050074
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.7,
+            "y": 0.5,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "5fc1deeaa14657764b0ca21ffb9dbf116f70a3dd9491b1810d7f3cb474536e98",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "09096d63a46f62491cd100392e5c5b968fcd9a53e9dd6dc4151f3bafba04bb27",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [],
+        "yaw_change_degrees": 0.08065823279668112,
+        "rotation_bound_margin_m": 0.0004899278142803179,
+        "clear_under_declared_sweep_model": true,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/round_000/checkpoint",
+        "manifest_sha256": "793cfa9344b07a4435f9945339014ce759d175a5bab70b50d9b3e7f18003c5e5",
+        "state_sha256": "04c50f6989d9231bcebfb7b7028c39485bad025feddf9d710ee3a0c671de0688",
+        "step_idx": 1
+      },
+      "new_observation": true,
+      "condition_pass": false
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-05T08:38:29.564805+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "7851d2ef79e468bf25e4772cb41746801fe820acf1f69a357b1127ff8749e71a",
+        "plan_sha256": "166d7fee1a9c2eaca86c0f1ec873c2313a7720638cc1702162badcfc24d91874",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.topdown.png",
+              "sha256": "a734b7702848475639c0c14ebed1f537cfc61c7b262f98affc47df9ffa5db211",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.south.png",
+              "sha256": "1b43fe94fa5da7a659098d405c0efe6ce4ced31cce3891c2285541a08404daaa",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.east.png",
+              "sha256": "ec73537d9dd02c7a02dd08fd912dac68e880dea2a776836cba501f0a443bcd93",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.west.png",
+              "sha256": "e6ca285a35545b80d4d32fab0198458ea4db643f751b642665489ae00aff0feb",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.north.png",
+              "sha256": "877677653fb8c5a4d8d87ec9853f1aee0bd508f377959602eee247ce2dad9a57",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7336,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7336
+            ],
+            "attention_mask": [
+              1,
+              7336
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "77de2fdc383f90bd49ca5eb178ee20221d9151a6ea2f16100403f54d52be5d20",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.9816685520345345,
+        "generation_seconds": 4.033334092004225,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "fadd382535a201650a34caf654a711a9dfe097fe3b8ea1ff741ead7d2b905215",
+        "peak_allocated_bytes": 19441138176,
+        "peak_reserved_bytes": 19803406336,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:38:42.016499+00:00",
+        "elapsed_seconds": 12.451711111003533
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.7,
+            "y": 0.0,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "09096d63a46f62491cd100392e5c5b968fcd9a53e9dd6dc4151f3bafba04bb27",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "c3f2758960e97a1bb8331bd708244f5d9087607644ebce3bd132e1c143417252",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [
+          {
+            "obstacle_id": "recon_chair_a_0",
+            "planar_overlap_m2": 0.050680907039584056
+          }
+        ],
+        "yaw_change_degrees": -0.055204240124870206,
+        "rotation_bound_margin_m": 0.0003356327774288804,
+        "clear_under_declared_sweep_model": false,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/round_001/checkpoint",
+        "manifest_sha256": "102befdd43adcdcc212f8ac35878be400cab3fde90498aa95ee02c06be5da4f5",
+        "state_sha256": "288d3567d97574a757b68871e2949118f551956c2c87bc51bdf94132d1df3fbe",
+        "step_idx": 2
+      },
+      "new_observation": true,
+      "condition_pass": false
+    }
+  ],
+  "initial_gpu": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121,
+    "required_bytes": 23792148960
+  },
+  "restoration_differences": [],
+  "stop_reason": "budget_exhausted",
+  "observations_new": 2,
+  "question": "Does a frozen base choose activity-appropriate edits in a preserved furnished room, and what changes when the same sourced principle is provided?",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/RESULT.json",
+  "planned_model_calls": 6,
+  "updated_at": "2026-11-05T08:39:24.074458+00:00"
+}

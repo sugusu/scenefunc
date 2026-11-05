@@ -1,0 +1,48 @@
+{
+  "working_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "prepare": {
+    "started_at": "2026-11-05T08:29:50.656171+00:00",
+    "status": "completed",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/run_mode_policy.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/PLAN.json",
+      "--phase",
+      "prepare",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare"
+    ],
+    "timeout_seconds": 360,
+    "pid": 1242936,
+    "start_ticks": "52523924",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare_execution/stage.log",
+    "ended_at": "2026-11-05T08:31:43.755209+00:00",
+    "elapsed_seconds": 113.09905698592775,
+    "exit_code": 0,
+    "first_log": "2026-11-05T08:29:51.022189+00:00 begin prepare None"
+  },
+  "batch": {
+    "started_at": "2026-11-05T08:33:37.268593+00:00",
+    "status": "running",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/run_mode_batch.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/PLAN.json",
+      "--freeze",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/INPUT_FREEZE.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/batch"
+    ],
+    "timeout_seconds": 7300,
+    "pid": 1243991,
+    "start_ticks": "52546585",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/batch_execution/stage.log"
+  },
+  "notes": [
+    "Evaluator checks executed on existing source states plus declared synthetic counterexamples before inference (EVALUATOR_CHECKS).",
+    "Input creation used a Python script in shell; exact final portable metadata, parent bundle and restoration changes preserved in INPUT_RECONSTRUCTION and input/.",
+    "Full checkpoints/weights/meshes remain on server. Do not restart frozen cases on network/publishing failure."
+  ]
+}

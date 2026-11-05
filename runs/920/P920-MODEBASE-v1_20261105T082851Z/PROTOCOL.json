@@ -1,0 +1,40 @@
+{
+  "run_id": "P920-MODEBASE-v1_20261105T082851Z",
+  "frozen_at": "2026-11-05T08:28:51.818070+00:00",
+  "question": "Does a frozen base choose activity-appropriate edits in a preserved furnished room, and what changes when the same sourced principle is provided?",
+  "design": "2 activities x 2 knowledge conditions, same initial scene and five views, same tools and objective feedback. One greedy attempt each. No wrong knowledge or deliberately corrupted control.",
+  "cases": [
+    "work_no_knowledge",
+    "hosting_with_knowledge",
+    "hosting_no_knowledge",
+    "work_with_knowledge"
+  ],
+  "selection": "Both conditions frozen before model outputs; order interleaves conditions, no adaptation after results.",
+  "scope": "Within one exposed researcher reconstruction; source family and geometry are not independent sealed tests. No training or cross-project inference. A task-specific existing-room edit baseline, not complete-room generation performance.",
+  "knowledge_source": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/SOURCE_RECORD.json",
+    "sha256": "cdb9cdb0b8c51538c10f75dbe67c9dfd7c89f78949bd03835fd0be6603e1bacb",
+    "url": "https://www.nevertoosmall.com/post/waterloo-street-singapore",
+    "text": "A published Waterloo Street project report by Joel Beath (Never Too Small, 2022), attributing the furniture choice to Dess Chew, describes selecting two wheeled tables that can be separated or joined to support flexible configurations. This is a sourced design principle, not a prescribed layout or the original designer's software trajectory. Its usefulness depends on the present activity and available space."
+  },
+  "budget": {
+    "model_calls_per_case": 6,
+    "tool_calls_per_case": 6,
+    "max_total_model_calls": 24,
+    "max_total_tool_calls": 24,
+    "retries": 0,
+    "training_updates": 0,
+    "paid_api_calls": 0
+  },
+  "primary_outcomes": [
+    "Final declared activity, geometry, retained identities and all fixed approaches pass together",
+    "Report unchanged initial pass and initial-to-final change separately",
+    "Actual model/tool calls, token counts, failures, intermediate access loss and conservative sweep warnings"
+  ],
+  "fairness": "Knowledge/no-knowledge deliberately changes available information and input tokens. Common model, image tensors, task, feedback and ceilings; no claim of matched FLOPs or training pairing benefit.",
+  "termination": "EOS no action or single complete tool block; retain invalid and truncated output. Stop a failed case and continue remaining frozen cases. No retry or manual repair.",
+  "controls_note": "This is a strong frozen-base prompt/feedback comparator for later pairing work; separated-vs-paired training is not run here.",
+  "assumptions": "This is an 8x7m researcher reconstruction, not the measured Waterloo apartment. Keep all 27 object instances and existing asset sizes. Only the two tables and four stools are movable; retain bed, living, kitchen, bathroom, storage and window access. All four stools must remain even when only two are in use. Do not add, remove, replace, scale or change fixtures. Tables are generated rectangular wheeled meshes, 1.2x0.7m and 0.74m high; stools are 0.44m square and 0.45m high. These wheels are not articulated. All coordinates are local metres. For this task the separated-table condition means at least 0.6m between table footprints, with recon_chair_a_0 and recon_chair_b_0 each serving a different table. The hosting condition means parallel, same-height tables joined end-to-end with at most 0.05m gap and at most 0.03m offset across their widths; one stool at each long edge of each table provides four nonoverlapping 0.4x0.25m tabletop places, with stool-to-table edge gaps 0.05 to 0.4m. Either table may move, and stool/table assignment is not fixed. No target coordinates are provided. Use the supplied actual geometry/access feedback to preserve all seven approach points at 0.4/0.5/0.6m square-body widths; grid 0.02m, height1.8m, doors assumed open. These dimensions and mode tests are researcher task criteria, not ergonomic standards. Seated comfort, load, brakes, human handling and full facility operation remain unknown. The original resident brief is unavailable; the following request is researcher constructed. Stop when the current request is satisfied; unnecessary edits also consume budget.",
+  "input_manifest_sha256": "3c255353cdd000603b98effdc03f62e7658639c2d8429539dbe7408f53a5afc2",
+  "previous_goal_turn": "progress: Waterloo demonstration and remote publication verified"
+}
