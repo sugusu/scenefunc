@@ -1,0 +1,104 @@
+{
+  "working_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "stages": {
+    "approach": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/measure_object_approaches.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/APPROACH_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/APPROACHES.json"
+    ],
+    "asset": [
+      "../envs/scene_designer311_native/bin/python",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/fetch_asset_bundle.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/ASSET_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/assets"
+    ],
+    "build": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/build_reference_room.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/BUILD_PLAN.json",
+      "--scenesmith",
+      "../resources/full_runtime_20261104/scenesmith",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/build"
+    ],
+    "export_after": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/EXPORT_AFTER_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/export_after"
+    ],
+    "export_initial": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/EXPORT_INITIAL_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/export_initial"
+    ],
+    "preflight": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/preflight_sourced_trajectory.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/PREFLIGHT_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/PREFLIGHT.json"
+    ],
+    "preview": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "LIBGL_ALWAYS_SOFTWARE=1",
+      "EGL_PLATFORM=surfaceless",
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/render_asset_previews.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/ASSET_PREVIEW_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/preview"
+    ],
+    "replay": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "HF_HUB_OFFLINE=1",
+      "TRANSFORMERS_OFFLINE=1",
+      "LIBGL_ALWAYS_SOFTWARE=1",
+      "EGL_PLATFORM=surfaceless",
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/replay_sourced_decision.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/REPLAY_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/replay"
+    ],
+    "review": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "HF_HUB_OFFLINE=1",
+      "TRANSFORMERS_OFFLINE=1",
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/audit_native_review.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v2_20261105T025100Z/REVIEW_PLAN.json",
+      "--out",
+      "../runtime/P920-BUKIT-v2_20261105T025100Z/review"
+    ]
+  },
+  "review_record_preparation": [
+    "python3",
+    "scripts/920/prepare_bukit_review.py",
+    "--root",
+    "..",
+    "--run",
+    "P920-BUKIT-v2_20261105T025100Z",
+    "--out",
+    "runs/920/P920-BUKIT-v2_20261105T025100Z/OBJECTIVE_REVIEW.json"
+  ],
+  "rerun_rule": "Receipts and outputs are write-once. Recovery uses saved checkpoints; a deliberate replication uses a fresh directory/run ID and preserves all historical outputs."
+}

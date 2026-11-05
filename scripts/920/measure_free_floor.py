@@ -64,3 +64,37 @@ def sweep_diagnostic(before,after,oid,room,root):
     return {'within_room':bool(inside),'obstacle_overlaps':hits,'yaw_change_degrees':math.degrees(delta),
             'rotation_bound_margin_m':margin,'clear_under_declared_sweep_model':bool(inside and not hits),
             'scope':'Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified.'}
+
+
+def rigid_sweep_diagnostic(before, after, oid, room, root):
+    """Conservative arbitrary-yaw sweep, preserving the old translation metric."""
+    first, last = before['objects'][oid], after['objects'][oid]
+    matrices = [world_transform(x) for x in (first, last)]
+    angles = [math.atan2(x[1, 0], x[0, 0]) for x in matrices]
+    delta = (angles[1]-angles[0]+math.pi) % (2*math.pi)-math.pi
+    if abs(delta) <= math.radians(1):
+        return sweep_diagnostic(before, after, oid, room, root)
+    from shapely.geometry import Point
+    radius = max(math.hypot(x, y) for x, y in itertools.product(
+        *zip(first['bbox_min'][:2], first['bbox_max'][:2])))
+    centers = [Point(m[0, 3], m[1, 3]) for m in matrices]
+    # Circumscribed polygon covers the complete disk at every linearly
+    # interpolated center. This can reject valid motions but never uses a
+    # sampled orientation as proof that the entire rotation was clear.
+    swept = centers[0].union(centers[1]).convex_hull.buffer(
+        (radius+1e-6)/math.cos(math.pi/128), resolution=32)
+    upper = max(o['bbox_max'][2]+o['transform']['translation'][2] for o in (first, last))
+    hits = []
+    for obstacle in obstacles(before, room, root, upper):
+        if obstacle['id'] == oid:
+            continue
+        lo, hi = obstacle['lo'], obstacle['hi']
+        area = swept.intersection(box(lo[0], lo[1], hi[0], hi[1])).area
+        if area > 1e-9:
+            hits.append({'obstacle_id':obstacle['id'], 'planar_overlap_m2':area})
+    g = before['room_geometry']
+    inside = box(-g['length']/2, -g['width']/2, g['length']/2, g['width']/2).covers(swept)
+    return {'within_room':bool(inside), 'obstacle_overlaps':hits,
+        'yaw_change_degrees':math.degrees(delta), 'rotation_radius_m':radius,
+        'clear_under_declared_sweep_model':bool(inside and not hits),
+        'scope':'Full circumscribed rotating-footprint disk along linear center path; conservative geometry only. Tools teleport; mass, handling and human movement unverified.'}

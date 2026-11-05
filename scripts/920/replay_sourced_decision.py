@@ -10,7 +10,7 @@ import time
 from existing_project_session import canonical_hash, create_app
 from native_project import sha256
 from measure_room_access import measure, obstacles
-from measure_free_floor import largest_floor_rectangle, sweep_diagnostic
+from measure_free_floor import largest_floor_rectangle, rigid_sweep_diagnostic
 from shapely.geometry import box
 from shapely.ops import unary_union
 
@@ -38,7 +38,7 @@ def reserved_area(state, room, root, bounds):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--plan',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     a=p.parse_args();plan=json.loads(a.plan.read_text());a.out.mkdir(parents=True,exist_ok=False)
-    print(datetime.now(timezone.utc).isoformat(),'begin one source-guided native move',flush=True)
+    print(datetime.now(timezone.utc).isoformat(),'begin frozen source-guided native edits',flush=True)
     bundle=Path(plan['bundle'])
     if sha256(bundle/'manifest.json')!=plan['manifest_sha256']:raise ValueError('Input changed')
     for name,expected in plan['scripts'].items():
@@ -88,22 +88,30 @@ def main():
             print(json.dumps({'state':label,'reserved_floor':m['reserved_floor'],'rectangle':m['floor_rectangle']}),flush=True)
             return state
         capture('initial')
-        command=plan['tool_call'];args=command['arguments'];proposed=copy.deepcopy(initial);yaw=math.radians(args['yaw'])
-        proposed['objects'][oid]['transform']={'translation':[args['x'],args['y'],0], 'rotation_wxyz':[math.cos(yaw/2),0,0,math.sin(yaw/2)]}
-        step={'command':command,'planned_sweep':sweep_diagnostic(initial,proposed,oid,room,root),'before_sha256':canonical_hash(initial)}
-        dump(a.out/'STEP.json',step)
-        result['tool_calls']+=1
-        reply=post('/session/step',{'tool_calls':[command]});after=scene.to_state_dict()
-        step.update(reply=reply,after_sha256=canonical_hash(after),actual_transform=after['objects'][oid]['transform'])
-        dump(a.out/'STEP.json',step)
-        step['checkpoint']=post('/session/checkpoint',{'output_directory':str((a.out/'checkpoint_1').resolve())})
-        step['actual_sweep']=sweep_diagnostic(initial,after,oid,room,root);dump(a.out/'STEP.json',step)
+        commands=plan.get('tool_calls') or [plan['tool_call']]
+        check('frozen_tool_budget',0 < len(commands) <= plan['budget']['tool_calls'])
+        steps=[]
+        for index,command in enumerate(commands,1):
+            args=command['arguments'];oid=args['object_id'];before=scene.to_state_dict()
+            proposed=copy.deepcopy(before);yaw=math.radians(args['yaw'])
+            proposed['objects'][oid]['transform']={'translation':[args['x'],args['y'],0], 'rotation_wxyz':[math.cos(yaw/2),0,0,math.sin(yaw/2)]}
+            step={'index':index,'command':command,'planned_sweep':rigid_sweep_diagnostic(before,proposed,oid,room,root),'before_sha256':canonical_hash(before)}
+            steps.append(step);dump(a.out/'STEPS.json',steps)
+            check('planned_sweep_clear_'+str(index),step['planned_sweep']['clear_under_declared_sweep_model'])
+            result['tool_calls']+=1
+            reply=post('/session/step',{'tool_calls':[command]});after=scene.to_state_dict()
+            step.update(reply=reply,after_sha256=canonical_hash(after),actual_transform=after['objects'][oid]['transform'])
+            dump(a.out/'STEPS.json',steps)
+            step['checkpoint']=post('/session/checkpoint',{'output_directory':str((a.out/('checkpoint_'+str(index))).resolve())})
+            step['actual_sweep']=rigid_sweep_diagnostic(before,after,oid,room,root);dump(a.out/'STEPS.json',steps)
+            check('identities_and_non_target_objects_unchanged_'+str(index),set(before['objects'])==set(after['objects']) and
+                  all(before['objects'][key]==after['objects'][key] for key in before['objects'] if key!=oid))
+            check('native_tool_accepted_'+str(index),reply['results'][0]['output']['success'] is True)
+            check('actual_sweep_clear_'+str(index),step['actual_sweep']['clear_under_declared_sweep_model'])
         capture('after')
-        check('identities_and_non_target_objects_unchanged',set(initial['objects'])==set(after['objects']) and
-              all(initial['objects'][key]==after['objects'][key] for key in initial['objects'] if key!=oid))
-        accepted=reply['results'][0]['output']['success'] is True
-        result.update(status='native_move_completed' if accepted else 'native_move_rejected',tool_accepted=accepted,
-            checkpoint=step['checkpoint'],sweep=step['actual_sweep'],positive_professional_demonstration=False,
+        if len(steps)==1:dump(a.out/'STEP.json',steps[0])
+        result.update(status='native_move_completed' if len(steps)==1 else 'native_sequence_completed',tool_accepted=True,
+            checkpoint=steps[-1]['checkpoint'],sweep=steps[-1]['actual_sweep'],positive_professional_demonstration=False,
             whole_room_usability='unknown',historical_trajectory=False)
     except BaseException as e:
         result.update(status='failed',failure=type(e).__name__+': '+str(e));raise

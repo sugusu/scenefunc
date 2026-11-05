@@ -1,14 +1,15 @@
 {
   "schema": "scenefunc-sourced-decision-maturity-v2",
-  "updated_at": "2026-11-05T02:34:18.772096+00:00",
+  "updated_at": "2026-11-05T03:21:24.862270+00:00",
   "purpose": "Separate supported professional knowledge from executable episode readiness without lowering evidence requirements.",
   "counts": {
-    "records_reviewed_here": 4,
-    "source_supported_knowledge": 4,
+    "records_reviewed_here": 6,
+    "source_supported_knowledge": 6,
     "partially_tool_expressible_candidates": 3,
-    "source_grounded_replayed_episodes": 1,
+    "source_grounded_replayed_episodes": 2,
     "professional_evaluations_of_our_reconstructions": 0,
-    "training_eligible": 0
+    "training_eligible": 0,
+    "unique_source_decisions_with_replay": 1
   },
   "records": [
     {
@@ -154,10 +155,20 @@
         "initial_proxy_ids": [
           "recon_sofa_0"
         ],
-        "geometry_provenance": "Declared 5.2 x 3.0 x 2.6 m main-room reconstruction; not survey. Known static-proxy wall overlap and asset substitutions.",
+        "geometry_provenance": "Declared 5.2 x 3.0 x 2.6 m main room, not survey. V1 wall-overlap defect retained in history; V2 repairs three west proxies by +0.02m before replay. Both use unscaled substitute meshes and static proxies.",
         "reconstructed_action_sequence": "runs/920/P920-BUKIT-v1_20261105T022427Z/STEP.json",
         "historical_action_sequence": null,
-        "decision_packet": "runs/920/P920-BUKIT-v1_20261105T022427Z/DECISION_PACKET.json"
+        "decision_packet": "runs/920/P920-BUKIT-v1_20261105T022427Z/DECISION_PACKET.json",
+        "reconstruction_variants": [
+          {
+            "run_id": "P920-BUKIT-v1_20261105T022427Z",
+            "packet": "runs/920/P920-BUKIT-v1_20261105T022427Z/DECISION_PACKET.json"
+          },
+          {
+            "run_id": "P920-BUKIT-v2_20261105T025100Z",
+            "packet": "runs/920/P920-BUKIT-v2_20261105T025100Z/DECISION_PACKET.json"
+          }
+        ]
       },
       "verification_needed": [
         "Retain all known living/sleep/work/storage functions in the complete scene; mark any unrepresented mechanism explicitly.",
@@ -171,10 +182,11 @@
         "whole_room_consequences_reviewed": true,
         "independent_professional_preference_label": false,
         "paired_episode_ready": false,
-        "consequences_scope": "Objective main-room checks only, not independent professional or complete-dwelling review."
+        "consequences_scope": "Objective main-room checks only, not independent professional or complete-dwelling review.",
+        "objective_review_loader_audited": true
       },
       "training_eligible": false,
-      "next_action": "Use conditional failure/cost record for review. A future separately frozen revision must address west-cabinet wall overlap and displaced access; do not silently relabel this candidate as positive.",
+      "next_action": "Preserve mixed versions and objective review; move to another expressible professional decision without claiming overall preference or training readiness.",
       "legacy_local_id": "bukit_move_retained_seating_for_activity_change",
       "readiness_by_layer": {
         "professional_knowledge": {
@@ -186,12 +198,14 @@
         },
         "scene_action": {
           "executed": true,
-          "tool_calls": 1
+          "tool_calls": 10,
+          "reconstruction_variants": 2,
+          "scope": "One v1 action plus nine v2 actions of the same decision; not ten independent decisions."
         },
         "professional_decision_pair": {
           "executed": true,
           "positive_demonstration": false,
-          "outcome": "mixed_with_reconstruction_defects",
+          "outcome": "mixed; v1 input wall defect repaired in v2, approach losses and unknown functions remain",
           "evidence_chain_recorded": true,
           "core_training_ready": false
         }
@@ -326,6 +340,162 @@
       "training_eligible": false,
       "training_eligible_scope": "Core paired training only; no training authorized.",
       "next_action": "Keep as attributed knowledge; bind only a tool-expressible subdecision when its prerequisites are available."
+    },
+    {
+      "decision_id": "batipin_white_living_surfaces_wood_contrast",
+      "family_id": "milan_batipin_studiowok_2015",
+      "allocation": "development_source_review",
+      "knowledge_category": "materials_lighting_atmosphere",
+      "professional_evidence": {
+        "evidence_kind": "architect_project_statement",
+        "primary_crosscheck": {
+          "url": "https://www.studiowok.com/project/batipin-flat-4/",
+          "attribution": "studio wok; architect-owned project page",
+          "locator": "Final descriptive paragraph before Technical drawings",
+          "checked_at": "2026-11-05T02:52:07.344078+00:00"
+        },
+        "corroborating_project_index": {
+          "doi": "10.3390/buildings11120654",
+          "source_case_id": "M.S.8",
+          "fragment": {
+            "pdf_page": 17,
+            "char_start_in_sorted_page_text": 945,
+            "char_end_in_sorted_page_text": 1684,
+            "source_references": [
+              40
+            ],
+            "local_fragment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CORPUS-v2_20261104T180559Z/index/source_fragments/M_S_8.txt",
+            "sha256": "4a10c3cbe0764d1448d9866dea7706bbeaec390e9c66b7b02df723eea6219cfe",
+            "role": "Published final-design description. NOT raw brief, tool trajectory or SFT target."
+          },
+          "scope": "CC BY4.0 scholarly project context; primary designer-specific material/rationale statements are separately cited above."
+        },
+        "raw_resident_brief_available": false,
+        "reuse_scope": "Brief attributed paraphrase recorded; original project text/images training reuse not established."
+      },
+      "condition_summary": "紧凑住宅的主生活空间同时具有木质功能墙。",
+      "condition_origin": "retrospective project statement",
+      "rationale_summary": "设计师说明白色用于增强明亮感并凸显木墙材质。",
+      "rationale_origin": "researcher paraphrase of attributed designer statement",
+      "decision_scope": {
+        "source_decision": "主空间采用白色表面，厨房和浴室用单色蓝色区分。",
+        "unsupported_part": "Brightness/perception and material contrast have not been measured; current static proxies/rendering do not reproduce finishes or lighting."
+      },
+      "tool_expression": {
+        "level": "not_fully_expressible",
+        "executable_subdecision": null,
+        "full_source_decision_supported": false
+      },
+      "source_to_scene": {
+        "initial_proxy_ids": null,
+        "historical_action_sequence": null,
+        "reconstructed_action_sequence": null
+      },
+      "maturity": {
+        "source_supported_knowledge": true,
+        "source_to_native_objects_bound": false,
+        "source_grounded_action_replayed": false,
+        "whole_room_consequences_reviewed": false,
+        "independent_professional_preference_label": false,
+        "paired_episode_ready": false
+      },
+      "readiness_by_layer": {
+        "professional_knowledge": {
+          "supported": true,
+          "use": "Knowledge/retrieval candidate; source support is separate from reuse permission."
+        },
+        "professional_evaluation": {
+          "available": false
+        },
+        "scene_action": {
+          "executed": false
+        },
+        "professional_decision_pair": {
+          "executed": false,
+          "positive_demonstration": false
+        }
+      },
+      "training_eligible": false,
+      "training_eligible_scope": "Core paired training only; this flag does not erase knowledge.",
+      "next_action": "Retain in knowledge layer; do not fabricate unsupported material, hinge or light simulations to obtain an action pair."
+    },
+    {
+      "decision_id": "biombombastic_translucent_reconfigurable_partition",
+      "family_id": "madrid_biombombastic_elii_2015",
+      "allocation": "development_source_review",
+      "knowledge_category": "sightlines_and_daylight",
+      "professional_evidence": {
+        "evidence_kind": "architect_project_statement",
+        "primary_crosscheck": {
+          "url": "https://elii.es/portfolio/biombombastic/",
+          "attribution": "elii: Uriel Fogué, Eva Gil, Carlos Palacios",
+          "locator": "MEMORIA and PROYECTO item 4: Abierto o cerrado, pero continuo",
+          "checked_at": "2026-11-05T02:52:07.344078+00:00"
+        },
+        "corroborating_project_index": {
+          "doi": "10.3390/buildings11120654",
+          "source_case_id": "M.XS.1",
+          "fragment": {
+            "pdf_page": 18,
+            "char_start_in_sorted_page_text": 273,
+            "char_end_in_sorted_page_text": 1372,
+            "source_references": [
+              43
+            ],
+            "local_fragment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CORPUS-v2_20261104T180559Z/index/source_fragments/M_XS_1.txt",
+            "sha256": "39416255966087a693295b7f1321a1001c3207d0380d37137662d0d2b6cc595b",
+            "role": "Published final-design description. NOT raw brief, tool trajectory or SFT target."
+          },
+          "scope": "CC BY4.0 scholarly project context; primary designer-specific material/rationale statements are separately cited above."
+        },
+        "raw_resident_brief_available": false,
+        "reuse_scope": "Brief attributed paraphrase recorded; original project text/images training reuse not established."
+      },
+      "condition_summary": "旧公寓需随日常用途改变分隔。",
+      "condition_origin": "retrospective project statement",
+      "rationale_summary": "物理分隔的同时保留光线连续性。",
+      "rationale_origin": "researcher paraphrase of attributed designer statement",
+      "decision_scope": {
+        "source_decision": "用可展开屏风调整分隔，并结合部分透光材料。",
+        "unsupported_part": "Hinges/tracks, folding clearance, light transmission and privacy have not been implemented or validated. Static screen placement is not equivalent."
+      },
+      "tool_expression": {
+        "level": "not_fully_expressible",
+        "executable_subdecision": null,
+        "full_source_decision_supported": false
+      },
+      "source_to_scene": {
+        "initial_proxy_ids": null,
+        "historical_action_sequence": null,
+        "reconstructed_action_sequence": null
+      },
+      "maturity": {
+        "source_supported_knowledge": true,
+        "source_to_native_objects_bound": false,
+        "source_grounded_action_replayed": false,
+        "whole_room_consequences_reviewed": false,
+        "independent_professional_preference_label": false,
+        "paired_episode_ready": false
+      },
+      "readiness_by_layer": {
+        "professional_knowledge": {
+          "supported": true,
+          "use": "Knowledge/retrieval candidate; source support is separate from reuse permission."
+        },
+        "professional_evaluation": {
+          "available": false
+        },
+        "scene_action": {
+          "executed": false
+        },
+        "professional_decision_pair": {
+          "executed": false,
+          "positive_demonstration": false
+        }
+      },
+      "training_eligible": false,
+      "training_eligible_scope": "Core paired training only; this flag does not erase knowledge.",
+      "next_action": "Retain in knowledge layer; do not fabricate unsupported material, hinge or light simulations to obtain an action pair."
     }
   ],
   "count_scope": "This packet only; not a total of all repository sources or independent train/test projects. Three partial candidates are not validated complete demonstrations."

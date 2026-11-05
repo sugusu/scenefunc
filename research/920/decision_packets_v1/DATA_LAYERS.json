@@ -1,17 +1,20 @@
 {
   "schema": "scenefunc-data-layers-v1",
-  "updated_at": "2026-11-05T02:34:18.772096+00:00",
+  "updated_at": "2026-11-05T03:21:24.862270+00:00",
   "scope": "Current decision packet, not all indexed corpus entries. Counts are independent; unavailable pair supervision does not erase other layers.",
   "knowledge_records": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
   "counts": {
-    "professional_knowledge_records": 4,
+    "professional_knowledge_records": 6,
     "partially_tool_expressible_knowledge_records": 3,
     "executed_professional_decision_pairs": 1,
-    "existing_objective_replay_episodes": 2,
-    "existing_objective_replay_actions": 5,
+    "existing_objective_replay_episodes": 3,
+    "existing_objective_replay_actions": 14,
     "professional_reviews_of_our_candidates": 0,
     "independent_acceptances_of_our_pairs": 0,
-    "core_training_admitted": 0
+    "core_training_admitted": 0,
+    "executed_reconstruction_variants": 2,
+    "objective_QA_review_records": 1,
+    "positive_professional_demonstrations": 0
   },
   "objective_action_records": [
     {
@@ -79,7 +82,34 @@
       "kind": "source_grounded_reconstructed_demonstration_with_mixed_outcome",
       "positive_professional_recommendation": false,
       "independent_review": false,
-      "core_training_ready": false
+      "core_training_ready": false,
+      "variants": [
+        {
+          "run_id": "P920-BUKIT-v1_20261105T022427Z",
+          "evidence": "runs/920/P920-BUKIT-v1_20261105T022427Z/DECISION_PACKET.json",
+          "positive_professional_recommendation": false
+        },
+        {
+          "run_id": "P920-BUKIT-v2_20261105T025100Z",
+          "evidence": "runs/920/P920-BUKIT-v2_20261105T025100Z/DECISION_PACKET.json",
+          "positive_professional_recommendation": false
+        }
+      ]
+    }
+  ],
+  "counting_notes": [
+    "Six knowledge records are not six action pairs.",
+    "Bukit v1 and v2 are two variants of one sourced decision, not independent projects or expert recommendations.",
+    "One objective QA review has two display-order variants; professional reviews remain zero."
+  ],
+  "objective_review_records": [
+    {
+      "id": "P920-BUKIT-v2_20261105T025100Z_objective_consequences",
+      "evidence": "runs/920/P920-BUKIT-v2_20261105T025100Z/OBJECTIVE_REVIEW.json",
+      "loader_evidence": "runs/920/P920-BUKIT-v2_20261105T025100Z/REVIEW_LOADER_RESULT.json",
+      "kind": "objective_geometric_tool_review",
+      "professional_review": false,
+      "training_authorized": false
     }
   ]
 }

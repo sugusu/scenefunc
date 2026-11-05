@@ -1,0 +1,168 @@
+{
+  "status": "native_review_official_QA_loader_audited",
+  "ended_at": "2026-11-05T03:16:08.971179+00:00",
+  "plan_sha256": "2199c9663a488f8ef3bcc92f2228402a8e068293d4c60c8e5ddcab1fa89a6864",
+  "unique_objective_reviews": 1,
+  "presentation_variants": 2,
+  "professional_reviews": 0,
+  "training_eligible": false,
+  "model_calls": 0,
+  "training_updates": 0,
+  "checks": {
+    "native_state_context_and_ten_image_hashes": true,
+    "swapped_state_rejected": true,
+    "all_prompt_and_image_tokens_masked": true,
+    "assistant_target_round_trip": true,
+    "reversal_changes_actual_pixels": true,
+    "unknown_does_not_become_preference": true
+  },
+  "variants": [
+    {
+      "variant": "forward",
+      "images": 10,
+      "masked_input_tokens": 4869,
+      "supervised_tokens": 562,
+      "total_tokens": 5431,
+      "decoded_answer": {
+        "claims": [
+          {
+            "activity": "为后续活动预留地面",
+            "assessment": "在声明的包围盒模型下，预留区未占面积由 1.389230 增至 2.730000 平方米，增加 1.340770 平方米。没有实际展开床，不能据此判断睡眠可用。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "initial_measurement",
+              "after_measurement"
+            ],
+            "object_ids": [
+              "recon_sofa_0",
+              "recon_folded_bed_cabinet_0"
+            ]
+          },
+          {
+            "activity": "接近桌边与沙发声明正面",
+            "assessment": "三种方形身体宽度下，桌边可达采样位置均由 8/32 增至 16/32；按声明的局部 +Y 正面，沙发前方仍为 8/8。这些是路径代理量，不是可用座位数、舒适度或经实测确认的家具正面。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "approaches"
+            ],
+            "object_ids": [
+              "recon_table_0",
+              "recon_sofa_0"
+            ]
+          },
+          {
+            "activity": "接近书架和窗前",
+            "assessment": "书架在 0.4/0.5 米宽度下由 2/8、1/8 降至 0/8，0.6 米原本也是 0/8；右窗由 8/8、8/8、6/8 降至全部 0/8。左窗仍为 8/8。不能将这些局部损失写成所有窗户不可达，也不能把右窗损失略去。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "approaches"
+            ],
+            "object_ids": [
+              "recon_bookcase_0",
+              "recon_north_window_left",
+              "recon_north_window_right",
+              "recon_sofa_0"
+            ]
+          },
+          {
+            "activity": "按原固定诊断点检查通行",
+            "assessment": "原先冻结的八个固定点可达数从 6/5/3 变为 4/3/3；这些坐标不随家具移动。新区域指标必须与其并列，不能覆盖旧指标后宣称整体功能改善。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "initial_measurement",
+              "after_measurement"
+            ],
+            "object_ids": [
+              "recon_sofa_0",
+              "recon_bookcase_0",
+              "recon_table_0"
+            ]
+          }
+        ],
+        "ranking_groups": [],
+        "unknowns": [
+          "无独立专业人员对本候选的整体评价。",
+          "没有实测原房尺寸、床展开与搬运验证，不能确认完整日常活动可用。",
+          "局部空间增加伴随接近损失，现有工具数据不能决定住户对这些取舍的偏好。"
+        ],
+        "verdict": "insufficient_evidence"
+      },
+      "episode_sha256": "0cf2dbf20967ada02e4418c8ccff19cc48a0d5c07b9fc668480fa38e957e9ee9",
+      "labels_sha256": "1e830065b75ef00793f3558d703c1e4d8919727c8724ace11e1f5044e46d62fc"
+    },
+    {
+      "variant": "reversed",
+      "images": 10,
+      "masked_input_tokens": 4869,
+      "supervised_tokens": 562,
+      "total_tokens": 5431,
+      "decoded_answer": {
+        "claims": [
+          {
+            "activity": "为后续活动预留地面",
+            "assessment": "在声明的包围盒模型下，预留区未占面积由 1.389230 增至 2.730000 平方米，增加 1.340770 平方米。没有实际展开床，不能据此判断睡眠可用。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "initial_measurement",
+              "after_measurement"
+            ],
+            "object_ids": [
+              "recon_sofa_0",
+              "recon_folded_bed_cabinet_0"
+            ]
+          },
+          {
+            "activity": "接近桌边与沙发声明正面",
+            "assessment": "三种方形身体宽度下，桌边可达采样位置均由 8/32 增至 16/32；按声明的局部 +Y 正面，沙发前方仍为 8/8。这些是路径代理量，不是可用座位数、舒适度或经实测确认的家具正面。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "approaches"
+            ],
+            "object_ids": [
+              "recon_table_0",
+              "recon_sofa_0"
+            ]
+          },
+          {
+            "activity": "接近书架和窗前",
+            "assessment": "书架在 0.4/0.5 米宽度下由 2/8、1/8 降至 0/8，0.6 米原本也是 0/8；右窗由 8/8、8/8、6/8 降至全部 0/8。左窗仍为 8/8。不能将这些局部损失写成所有窗户不可达，也不能把右窗损失略去。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "approaches"
+            ],
+            "object_ids": [
+              "recon_bookcase_0",
+              "recon_north_window_left",
+              "recon_north_window_right",
+              "recon_sofa_0"
+            ]
+          },
+          {
+            "activity": "按原固定诊断点检查通行",
+            "assessment": "原先冻结的八个固定点可达数从 6/5/3 变为 4/3/3；这些坐标不随家具移动。新区域指标必须与其并列，不能覆盖旧指标后宣称整体功能改善。",
+            "candidate_id": "after",
+            "evidence_ids": [
+              "initial_measurement",
+              "after_measurement"
+            ],
+            "object_ids": [
+              "recon_sofa_0",
+              "recon_bookcase_0",
+              "recon_table_0"
+            ]
+          }
+        ],
+        "ranking_groups": [],
+        "unknowns": [
+          "无独立专业人员对本候选的整体评价。",
+          "没有实测原房尺寸、床展开与搬运验证，不能确认完整日常活动可用。",
+          "局部空间增加伴随接近损失，现有工具数据不能决定住户对这些取舍的偏好。"
+        ],
+        "verdict": "insufficient_evidence"
+      },
+      "episode_sha256": "3b70cc568e598a3fcec105da945efa9585956098fea1602b5196900d81b07c65",
+      "labels_sha256": "1e830065b75ef00793f3558d703c1e4d8919727c8724ace11e1f5044e46d62fc"
+    }
+  ],
+  "limit": "Data-loading and objective-label audit; no learned critic performance or professional preference evidence."
+}

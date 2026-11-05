@@ -1,0 +1,326 @@
+{
+  "run_id": "P920-BUKIT-v2_20261105T025100Z",
+  "frozen_at": "2026-11-05T02:59:17.140467+00:00",
+  "question": "Can a recorded sofa-and-stool activity transition free the same declared floor area after repairing wall overlap, and what access costs remain?",
+  "room_id": "bukit_mainroom_reconstruction",
+  "room_description": "Declared reconstruction of Bukit living/dining/studio room only, not the complete 38 m² dwelling.",
+  "project": {
+    "project_id": "bukit_mainroom_v2",
+    "family_id": "singapore_bukit_batok_interim_spaces",
+    "provenance": "researcher_reconstruction_from_sourced_professional_decision_not_historical_trajectory"
+  },
+  "initial_reference": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-BUKIT-v2_20261105T025100Z/INITIAL_REFERENCE.json",
+    "sha256": "96a383ae364974437d7bd11be3dda57c657bd1dab38458c36d41824748b20b83"
+  },
+  "assets": {
+    "4979cfe2e691ac484078b909543db3f21b80462f": {
+      "asset_id": "4979cfe2e691ac484078b909543db3f21b80462f",
+      "name": "FRANK 3 SEATER",
+      "source_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/scenefunc/hssd-models/objects/4/4979cfe2e691ac484078b909543db3f21b80462f.glb",
+      "sha256": "522d045103c9b76918fc052bb94877a69ca6fac6631cb871d469fba844ebc7d3",
+      "repository": "hssd/hssd-models",
+      "revision": "208ea6bc22d863bbc1cbaef1829b3e646600dfb6",
+      "source_to_native_rotation": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "rotation_basis": "Explicit researcher review; standard glTF up, corrected semantic front where visible; shelf uses recorded nonstandard up."
+    },
+    "5d70cc76c99acee4513ec5f7fad497d2baebca9e": {
+      "asset_id": "5d70cc76c99acee4513ec5f7fad497d2baebca9e",
+      "name": "Dark Oak",
+      "source_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/scenefunc/hssd-models/objects/5/5d70cc76c99acee4513ec5f7fad497d2baebca9e.glb",
+      "sha256": "a2ef2a8cfa79a01d279a4ad83894369e785fa339e8c335b59545c3c2884520a1",
+      "repository": "hssd/hssd-models",
+      "revision": "208ea6bc22d863bbc1cbaef1829b3e646600dfb6",
+      "source_to_native_rotation": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "rotation_basis": "Explicit researcher review; standard glTF up, corrected semantic front where visible; shelf uses recorded nonstandard up."
+    }
+  },
+  "objects": {
+    "sofa": {
+      "kind": "mesh",
+      "object_type": "furniture",
+      "immutable": false,
+      "note": "Unscaled HSSD FRANK 3 SEATER substitutes for source lightweight two-seat sofa. Similar bounding size does not establish equal seating, weight or handling.",
+      "asset_id": "4979cfe2e691ac484078b909543db3f21b80462f"
+    },
+    "table": {
+      "kind": "mesh",
+      "object_type": "furniture",
+      "immutable": true,
+      "note": "Static HSSD table substitutes for source wheeled table; wheels, expansion and five-person capacity are not represented.",
+      "asset_id": "5d70cc76c99acee4513ec5f7fad497d2baebca9e"
+    },
+    "wardrobe_south": {
+      "kind": "procedural_proxy",
+      "object_type": "furniture",
+      "immutable": true,
+      "note": "Declared static proxy; capacity, construction and operation unknown."
+    },
+    "folded_bed_cabinet": {
+      "kind": "procedural_proxy",
+      "object_type": "furniture",
+      "immutable": true,
+      "note": "Closed cabinet proxy for source folding bed. No hinge, bed unfolding or sleeping surface executed; reserved planar footprint checked separately."
+    },
+    "wardrobe_north": {
+      "kind": "procedural_proxy",
+      "object_type": "furniture",
+      "immutable": true,
+      "note": "Declared static proxy; capacity, construction and operation unknown."
+    },
+    "tv_storage": {
+      "kind": "procedural_proxy",
+      "object_type": "furniture",
+      "immutable": true,
+      "note": "Declared static proxy; capacity, construction and operation unknown."
+    },
+    "bookcase": {
+      "kind": "procedural_proxy",
+      "object_type": "furniture",
+      "immutable": true,
+      "note": "Declared static proxy; capacity, construction and operation unknown."
+    },
+    "tv": {
+      "kind": "procedural_proxy",
+      "object_type": "wall_mounted",
+      "immutable": true,
+      "note": "Declared static proxy; capacity, construction and operation unknown.",
+      "mount": "wall"
+    },
+    "stool_1": {
+      "kind": "procedural_proxy",
+      "object_type": "furniture",
+      "immutable": false,
+      "note": "One static stool proxy; sitting and stackability unverified. V2 allows native translation; source movability does not validate stackability or physical handling."
+    },
+    "stool_2": {
+      "kind": "procedural_proxy",
+      "object_type": "furniture",
+      "immutable": false,
+      "note": "One parked static stool proxy; total source stool inventory unknown. V2 allows native translation; source movability does not validate stackability or physical handling."
+    }
+  },
+  "task": {
+    "design_request": "研究重建任务：在同一主房间临时释放西侧预留地面，允许移动沙发及两张凳子，保留所有实例和其他家具。记录桌边、储物、窗前和坐具接近的收益与代价；临时移动不等于各活动同时可用。折叠床、真实搬运和住户活动需求仍须标未知。",
+    "original_request": null,
+    "request_provenance": "adapted",
+    "unknowns": [
+      "Metric dimensions and initial state are researcher assumptions, not survey or historical states.",
+      "Only main living/dining/studio room is modelled; kitchen, bath, shelter and outside hall are outside scope.",
+      "Source sofa is lightweight two-seater; substitute asset is labelled three-seater, unscaled, weight unknown.",
+      "Bed mechanism, table wheels, stool stackability, cabinet access/capacity and physical human activities are unverified."
+    ]
+  },
+  "source_record": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
+  "source_record_sha256": "e6d2e0bac6a0498aed047d29a05e2a4d860b7877cd8f7bca184cc3436cecbd6c",
+  "decision_id": "bukit_move_lightweight_seating_for_activity_change",
+  "assumptions": {
+    "main_room_m": [
+      5.2,
+      3.0,
+      2.6
+    ],
+    "not_measured": true,
+    "source_whole_dwelling_area_m2": 38,
+    "source_area_is_not_main_room_area": true,
+    "qualitative_topology": "west storage/folding bed, east storage/TV, north windows, south entry",
+    "reserved_floor_envelope_xyxy_m": [
+      -1.95,
+      -0.8,
+      0,
+      0.6
+    ],
+    "reserved_envelope_role": "researcher-assumed 1.95 by 1.4 m bed-space proxy, not validated sleeping or folding clearance",
+    "identity_constraint_origin": "researcher replay implementation, not owner old-furniture requirement"
+  },
+  "budget": {
+    "build_seconds": 180,
+    "replay_seconds": 480,
+    "tool_calls": 12,
+    "model_calls": 0,
+    "training_updates": 0,
+    "observations": 2,
+    "images": 10,
+    "server_output_bytes": 1073741824
+  },
+  "planned_tool_calls": [
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_sofa_0",
+        "x": -0.6,
+        "y": -0.3,
+        "yaw": 180
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_stool_1_0",
+        "x": 0.6,
+        "y": 0,
+        "yaw": 0
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_stool_1_0",
+        "x": 0.6,
+        "y": -1.15,
+        "yaw": 0
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_stool_1_0",
+        "x": -1.1,
+        "y": -1.15,
+        "yaw": 0
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_stool_2_0",
+        "x": 0.6,
+        "y": 0,
+        "yaw": 0
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_stool_2_0",
+        "x": 0.6,
+        "y": -1.15,
+        "yaw": 0
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_stool_2_0",
+        "x": -0.45,
+        "y": -1.15,
+        "yaw": 0
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_sofa_0",
+        "x": -0.6,
+        "y": 1.0,
+        "yaw": 180
+      }
+    },
+    {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "recon_sofa_0",
+        "x": 0.95,
+        "y": 1.0,
+        "yaw": 180
+      }
+    }
+  ],
+  "access_settings": {
+    "grid_m": 0.02,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "entry_center_xy_m": [
+      0.6,
+      -1.5
+    ],
+    "entry_inward_normal_xy": [
+      0,
+      1
+    ],
+    "approach_points_xy_m": {
+      "bed_foot": [
+        0.2,
+        -0.1
+      ],
+      "north_wardrobe": [
+        -1.65,
+        1.05
+      ],
+      "south_wardrobe": [
+        -1.65,
+        -1.1
+      ],
+      "window_center": [
+        0,
+        1.2
+      ],
+      "table_approach": [
+        1.5,
+        -0.25
+      ],
+      "tv_storage": [
+        1.75,
+        -0.7
+      ],
+      "sofa_front": [
+        1.2,
+        0.45
+      ],
+      "bookcase": [
+        1.75,
+        1.15
+      ]
+    }
+  },
+  "sensitivity": {
+    "role": "Previous v1 dimension study retained; no new native dimension variants in v2."
+  },
+  "training_authorized": false,
+  "code_sha256": {
+    "build_reference_room.py": "18ae517c85b1c3dffce41e269c83d9062142f2b56da0b96f005f0273f3278146",
+    "replay_sourced_decision.py": "2ffc2109ec534489e7a20094c8255b261b23dea49cd6196544bc3ec5c561c371",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a",
+    "measure_room_access.py": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d",
+    "measure_free_floor.py": "61acc43cdf0598bca0aa58edc54cc3fea93d42d144d7aef63ec4aa88da445ead",
+    "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1"
+  }
+}

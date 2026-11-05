@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-11-05T03:19:36.503142+00:00",
+  "command": [
+    "../envs/scene_designer311_native/bin/python",
+    "../preflight/close_bukit_v2.py"
+  ],
+  "exit_code": 1,
+  "failure": "Assertion equated room-state digest with checkpoint whole-house-state digest.",
+  "diagnosis": "Saved room hash exactly matches action after_sha256; saved complete house hash exactly matches checkpoint state_sha256. Scope mismatch in new closeout check, not changed scene bytes.",
+  "correction": "Check the room and complete house separately against their respective recorded hashes; preserve both hashes and failed check.",
+  "native_actions_rerun": 0,
+  "first_attempt_start_time": "not captured; no fabricated timestamp"
+}
