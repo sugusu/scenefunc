@@ -1,0 +1,29 @@
+{
+  "reviewed_at": "2026-11-05T13:10:49.296844+00:00",
+  "reviewer": "assistant_visual_review_not_independent_designer",
+  "view_paths": [
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.topdown.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.south.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.east.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.west.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.north.png"
+  ],
+  "views_all_inspected": true,
+  "observations": [
+    "Seven furniture instances: one bed, shower, bookshelf, refrigerator and three cookers.",
+    "At least one cooker is visibly embedded in the bed; triangle diagnostics separately detect cooker_0/bed and cooker_1/bed intersections.",
+    "Shower is visibly outside the fixed southeast washroom enclosure.",
+    "No dining table/chair, toilet, washbasin, kitchen sink or preparation counter is present in final inventory.",
+    "North oblique view is largely occluded by a wall; other views and the bound native state supply complementary evidence."
+  ],
+  "measured_fixed_proxy_failures": [
+    "bath_inside_approach is unreachable for all predeclared square-body widths 0.4/0.5/0.6m; no real-human impossibility claim."
+  ],
+  "observed_passes_limited_scope": [
+    "All original immutable records and complete room geometry unchanged.",
+    "All furniture within nominal interior bounds.",
+    "Terrace indoor approach reachable under all three fixed width scenarios."
+  ],
+  "interpretation": "Whole-room design is not accepted: required furnishings are missing and two triangle intersections are detected. This does not establish that more training, paired learning or expert knowledge would fix it.",
+  "not_a_repair": true
+}

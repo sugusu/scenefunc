@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-05T12:45:44.039373+00:00",
+  "updated_at": "2026-11-05T13:58:15.567838+00:00",
   "goal_status": "active",
   "goal_objective_sync": "synchronized_active",
   "research_complete": false,
   "objective": "Learn real-project interior-design decisions in Scene-Designer to generate complete editable usable rooms.",
-  "phase": "three_arm_inference_running",
+  "phase": "three_arm_whole_room_pilot_evidence_completed",
   "acceptance_criteria": "research/920/RESEARCH_GOAL.md",
   "requested_goal_text": "research/920/GOAL_TEXT.txt",
   "goal_sync_evidence": "research/920/GOAL_SYNC.json",
@@ -17,19 +17,13 @@
   ],
   "training_authorized": false,
   "training_requires_separate_approval": true,
-  "latest_completed_experiment": "P920-OFFLOAD-v1_20261105T102528Z",
+  "latest_completed_experiment": "P920-CASA-COMP-v1_20261105T123924Z",
   "current_run_id": "P920-CASA-COMP-v1_20261105T123924Z",
-  "current_run_role": "independent_source_inspired_whole_room_inference_comparison",
+  "current_run_role": "completed descriptive inference comparison",
   "new_model_calls_this_turn": "Live per-arm RESULT.json is authoritative; first completed call archived.",
-  "running_model_process": {
-    "outer_session_id": 68372,
-    "pid": 1275191,
-    "start_ticks": "54035440",
-    "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/batch_execution/receipt.json",
-    "note": "Batch active; child model loads/exits per step. Poll same handle; no restart."
-  },
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/first_output/REVIEW.json",
-  "next_step": "Continue same active batch; retain base/separate/paired complete rooms and independent per-requirement evidence. No further training.",
+  "running_model_process": null,
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/COMPARISON.json",
+  "next_step": "Construct shared complete-room action demonstrations and establish task feasibility; retain sourced decision pairing and independent evaluation. Any new training requires separate approval.",
   "publication": "Final four-update acceptance and independent native-input record ready for milestone push.",
   "scheduled_automation_created": false,
   "continuation_mechanism": "active thread Goal and repository handoff",
@@ -117,8 +111,8 @@
     "one_objective_native_review_passed_official_QA_loader_with_unknown_verdict",
     "ono_four_actual_actions_linked_to_sourced_storage_decision_and_conditional_sightline_access_consequences"
   ],
-  "pending_user_input": "Requested via async: approve or defer the exact PLAN_V2 two-arm/four-update mechanism pilot. No answer received, no authorization file or training started.",
-  "last_verified_remote_head": "ed9eafac5f7264c4fbadd0855212235d2fc2e456",
+  "pending_user_input": null,
+  "last_verified_remote_head": "23c4a9263d5abecd0d1269232c68d196bc4bb72b",
   "state_interface_engineering_check": "passed_on_four_saved_batches",
   "recovered_public_reference": {
     "final_rooms": 30,
@@ -128,7 +122,7 @@
     "source_snapshots": 336,
     "windows_byte_identity_verified": false
   },
-  "last_goal_turn_classification": "progress",
+  "last_goal_turn_classification": "progress: completed original three-arm run and evidence review; no new training",
   "review_interface_engineering_check": "18_checks_passed_CPU_no_model_or_training",
   "training_manifest_check": "current_engineering_sample_rejected_no_training_directory_created",
   "source_relation_audit": "research/920/source_recovery_v1/SOURCE_RELATIONS.json",
@@ -523,7 +517,7 @@
   },
   "active_cpu_audit": null,
   "research_priority_review": "research/920/method_v1/DATA_PRIORITY_REVIEW.json",
-  "last_remote_verified_at": "2026-11-05T09:50:29.593456+00:00",
+  "last_remote_verified_at": "2026-11-05T12:47:19.420034+00:00",
   "source_supported_decision_packet": {
     "path": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
     "source_supported_knowledge": 14,
@@ -908,9 +902,69 @@
     "micro_backwards": 80,
     "adapters": 2,
     "same_process_save_reload_exact": true,
-    "final_adapter_quality_evaluated": false,
-    "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json"
+    "final_adapter_quality_evaluated": true,
+    "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
+    "quality_evaluation_scope": "One exposed research room; explicit deficits in both adapters, no formal professional or generalization evaluation."
   },
   "actual_adapter_training_sources": 3,
-  "actual_adapter_training_related_steps": 10
+  "actual_adapter_training_related_steps": 10,
+  "independent_room_inference_progress": {
+    "run_id": "P920-CASA-COMP-v1_20261105T123924Z",
+    "terminal_arms": [
+      "base",
+      "separate",
+      "paired"
+    ],
+    "base_whole_room_accepted": false,
+    "base_furniture_count": 7,
+    "base_schema_mismatch_calls": 6,
+    "base_triangle_contacts": [
+      [
+        "cooker_0",
+        "queen_bed_0"
+      ],
+      [
+        "cooker_1",
+        "queen_bed_0"
+      ]
+    ],
+    "live_arm": null,
+    "pending_arm": null,
+    "new_training_updates": 0,
+    "base_cold_native_restore": {
+      "status": "terminal_native_session_restored_without_edits",
+      "receipt_count": 24,
+      "max_quaternion_roundtrip_error": 1.1102230246251565e-16,
+      "actual_edit_dispatch_tested": false,
+      "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/base/cold_restore/RESULT.json"
+    },
+    "separate_whole_room_accepted": false,
+    "separate_furniture_count": 6,
+    "separate_schema_mismatch_calls": 7,
+    "separate_triangle_contacts": [
+      [
+        "cooker_0",
+        "queen_bed_0"
+      ],
+      [
+        "cooker_0",
+        "storage_bin_0"
+      ]
+    ],
+    "training_task_coverage": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/TRAINING_TASK_COVERAGE.json",
+    "paired_whole_room_accepted": false,
+    "paired_furniture_count": 6,
+    "paired_schema_mismatch_calls": 7,
+    "paired_triangle_contacts": [
+      [
+        "cooker_0",
+        "queen_bed_0"
+      ],
+      [
+        "shower_0",
+        "storage_bin_0"
+      ]
+    ],
+    "comparison": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/COMPARISON.json"
+  }
 }

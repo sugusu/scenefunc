@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-11-05T13:57:27.687600+00:00",
+  "script": "scripts/920/summarize_transfer_comparison.py",
+  "sha256": "58348faf87df0c5e02f3b6a202403e8142c61cb02e4ea65e031826bb5c4e248b",
+  "prerequisites": "All three terminal reports, schema reviews, native restores, five-view reviews and completed outer receipts.",
+  "budget": {
+    "seconds": 60,
+    "model_calls": 0,
+    "training_updates": 0,
+    "scene_edits": 0
+  },
+  "outputs": [
+    "COMPARISON.json",
+    "COMPARISON.csv",
+    "COMPARISON.md"
+  ],
+  "scope": "Read-only aggregation of existing measured evidence; no new score, feedback or rollout.",
+  "revision_reason": "Base uses views_all_inspected, later reviews use all_five_views_inspected. Accept both explicit true fields and require five paths. Original summary failed before output; no policy rerun."
+}

@@ -1,0 +1,4501 @@
+{
+  "phase": "rollout",
+  "arm": "base",
+  "status": "policy_attempt_completed_pending_independent_audit",
+  "started_at": "2026-11-05T12:41:45.984967+00:00",
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-05T12:41:58.125948+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "e5661fa4a7bb7cee6fa8156273cf2a02ed3489cac52ef052b54c45cc82842022",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-OBS-v1_20261105T123507Z/observation/house/room_whole_room_transfer_01/rollout_furniture/step_000.topdown.png",
+              "sha256": "6bbee8293dcafe828d59033ebd6d3f014a0495776a0ef899515e46d560e34fea",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-OBS-v1_20261105T123507Z/observation/house/room_whole_room_transfer_01/rollout_furniture/step_000.south.png",
+              "sha256": "94c4a2bedf0412c07506bf76dcaa3e77beaef20a860f1b7eadf11d98cf47c9a2",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-OBS-v1_20261105T123507Z/observation/house/room_whole_room_transfer_01/rollout_furniture/step_000.east.png",
+              "sha256": "775f41ca9c34b5eb00bf4d89e39a4b538eb8a76601e8062ed7d2a1a0a0d42f12",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-OBS-v1_20261105T123507Z/observation/house/room_whole_room_transfer_01/rollout_furniture/step_000.west.png",
+              "sha256": "f53e91b77c36bc5f87a92ebc57af0f9139908046acb9bf3dd024ea5f2b098377",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-OBS-v1_20261105T123507Z/observation/house/room_whole_room_transfer_01/rollout_furniture/step_000.north.png",
+              "sha256": "15c154ceed266a4b2decbf9a5f2b7daa08b2f47c79fbf38d74676a6991b9ce5e",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 8981,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              8981
+            ],
+            "attention_mask": [
+              1,
+              8981
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "fe143f70273ed14aa99490fc7b59ed836323c2fc4ef274bd214be26245abb554",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.245766413048841,
+        "generation_seconds": 6.670058613992296,
+        "output_tokens": 82,
+        "ended_with_eos": false,
+        "raw_output_sha256": "492bbbb0c62b91a0f15f4466ecfd9c702660ba732b153f5414b2bdb37d40ec08",
+        "peak_allocated_bytes": 19858875904,
+        "peak_reserved_bytes": 20554186752,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:42:12.493970+00:00",
+        "elapsed_seconds": 14.368041695910506
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_02e22ed56270338bef5f8436e82023c36cd29104",
+            "x": 0.0,
+            "y": -1.0,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "11a688c0faf0b15c31d313584702f5885292ff6982410b772dacb0ef0b1904ea",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'queen_bed' as object 'queen_bed_0'. Use object_id 'queen_bed_0' for remove/move operations.",
+              "asset_id": "catalog_02e22ed56270338bef5f8436e82023c36cd29104",
+              "object_id": "queen_bed_0",
+              "position": {
+                "x": 0.0011969167191589998,
+                "y": -0.9996761544664697,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.019307346237110345
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_000/checkpoint",
+        "manifest_sha256": "93110b26824c7198b7bd349979117486d796f59b1267e846fa401fde66ad063b",
+        "state_sha256": "1b51f0653254ddd8b9bae689b323162fe612ac5bc8ccddc86231124cab535cd7",
+        "step_idx": 1
+      },
+      "after_sha256": "cf9764dd2eb46ce57638327a9f65fcdf2e03ccb7059bb1bbad3f143ba0ca03d2"
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-05T12:42:55.181401+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "6bc2b1b552aa70ad93b9560ba8fa0f4879439fd6aff1238892785c3a59a4e6b0",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_001.topdown.png",
+              "sha256": "014606e27374fe9b90b80b1b14566ac9fb6e09046ccaabac528063ed03bf5ae8",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_001.south.png",
+              "sha256": "960493bf02dbba893c03d4c15b8ffef1f1f2059c388cdb1b4e32edfc1b469820",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_001.east.png",
+              "sha256": "8c091626bcc377ecac310b2458c7458c81d8ee00fa91ab2bd39414c37a833ecb",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_001.west.png",
+              "sha256": "66ffcc356eb7bf778252758a7f1e569cbc12d096c2eed089f2632d6b7af674b2",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_001.north.png",
+              "sha256": "eced0b95a4351160d02d4958195ab942ee58ce8fd3c4ff5f2742e8a2a8bfc18f",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9617,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9617
+            ],
+            "attention_mask": [
+              1,
+              9617
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "7897f55d540bbdf3b69e979e2d3c91751a819c47bbb8ac38cebf305d13e74017",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.935526295099407,
+        "generation_seconds": 3.8691280940547585,
+        "output_tokens": 19,
+        "ended_with_eos": false,
+        "raw_output_sha256": "04e1a7862b51a2e7097ed30345a4eb72b3f71d51ffd9c43f3cec59bcdcf8c3d1",
+        "peak_allocated_bytes": 20026650624,
+        "peak_reserved_bytes": 20505952256,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:43:07.636360+00:00",
+        "elapsed_seconds": 12.454974340973422
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "": "ignored"
+          }
+        }
+      ],
+      "before_sha256": "cf9764dd2eb46ce57638327a9f65fcdf2e03ccb7059bb1bbad3f143ba0ca03d2",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 14,
+              "objects": [
+                {
+                  "object_id": "shell_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.0999999999999996,
+                  "position_y": -0.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.9,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 1.175,
+                  "position_y": -1.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 4.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "opening_entry",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -2.3499999999999996,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.8999999999999999,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -1.7,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_terrace_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.25,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9000000000000001,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bath_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 1.175,
+                  "position_y": -1.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8999999999999999,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0011969167191589998,
+                  "position_y": -0.9996761544664697,
+                  "rotation_degrees": -0.019307346237110345,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_001/checkpoint",
+        "manifest_sha256": "a7a4bb7c1cfcd341e951cca0385035346e4d73337744e02b4310adb3a3b6b056",
+        "state_sha256": "1b51f0653254ddd8b9bae689b323162fe612ac5bc8ccddc86231124cab535cd7",
+        "step_idx": 2
+      },
+      "after_sha256": "cf9764dd2eb46ce57638327a9f65fcdf2e03ccb7059bb1bbad3f143ba0ca03d2"
+    },
+    {
+      "turn": 2,
+      "model": {
+        "started_at": "2026-11-05T12:43:51.936739+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "de7beecfcfae8c0cdfcd1821cd96d5f67fe1fc2c8dfdcbc727bd33b2c89ccbb8",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_002.topdown.png",
+              "sha256": "014606e27374fe9b90b80b1b14566ac9fb6e09046ccaabac528063ed03bf5ae8",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_002.south.png",
+              "sha256": "204822954d79cfdde41caa334c6450b7f8f1e2bd1bab8d33f2783c1cbfd690dd",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_002.east.png",
+              "sha256": "cacb6512e264c50bbff23440fb3b18cf1e427fa4cbc9b024baa90246640d307c",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_002.west.png",
+              "sha256": "3fb602bc98c393b61e90faa5151a6afdc7f3c6cb07be3270505a3b592081c846",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_002.north.png",
+              "sha256": "61a10abe03f1d6a8df208569e46feb0372c6798087ed06241ab34a8e470fa491",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9814,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9814
+            ],
+            "attention_mask": [
+              1,
+              9814
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "aae5452138e4139cb802be1719e211c4d1de1771076f6b09587534eb10a9fabc",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.9353786300634965,
+        "generation_seconds": 5.970477940980345,
+        "output_tokens": 80,
+        "ended_with_eos": false,
+        "raw_output_sha256": "d9404bbd7f1c28c5d460abd83fd44cde881e97e47806bc1a63d5b94951fdaebc",
+        "peak_allocated_bytes": 20072435712,
+        "peak_reserved_bytes": 20820525056,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:44:06.414721+00:00",
+        "elapsed_seconds": 14.478002424002625
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_dfc33bed23e9440507bca1a1409763942a913cd5",
+            "x": 0.0,
+            "y": 1.0,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "cf9764dd2eb46ce57638327a9f65fcdf2e03ccb7059bb1bbad3f143ba0ca03d2",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'shower' as object 'shower_0'. Use object_id 'shower_0' for remove/move operations.",
+              "asset_id": "catalog_dfc33bed23e9440507bca1a1409763942a913cd5",
+              "object_id": "shower_0",
+              "position": {
+                "x": 0.0007290018032470627,
+                "y": 0.9996028232225618,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.038199692637648996
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_002/checkpoint",
+        "manifest_sha256": "57f55759d45d6237befd3bf1925f15cc93aade031aac32dbd575fee72f4f7688",
+        "state_sha256": "841e7498118df015c800dc3622150dbbd419a0be0fb878a8cf4bd246b57ac18d",
+        "step_idx": 3
+      },
+      "after_sha256": "06cb7c2a14c51be7310795daf1c541b15450a02339c6a8f002b522f6e923dcb3"
+    },
+    {
+      "turn": 3,
+      "model": {
+        "started_at": "2026-11-05T12:44:50.599066+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "3877242d451c4f1272ab890223e48fa5a296d399fe455e06d39f43c5fc756e65",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_003.topdown.png",
+              "sha256": "5c228090bf8eae6d03cf271a1b026bb5a55542796dcc0a30609c2c3354f59733",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_003.south.png",
+              "sha256": "b1638e28ca82675bacbd0cfc412284b1961cd2c3301c1cf7d5c294402c7b7991",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_003.east.png",
+              "sha256": "3d6fce41e667d8646efd9cb6a18a6ac72977250b485a76b977650310f454bae9",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_003.west.png",
+              "sha256": "704fc94d9dcff8d5d971787ee0db540601a49c1e81b5334cdcf0daf905c5ada7",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_003.north.png",
+              "sha256": "0315c86e791cd95dd71c41a95343d394a8b213362bd492a338c4680c32651a95",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10442,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10442
+            ],
+            "attention_mask": [
+              1,
+              10442
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "03d4e7b08faff253105add9b7f6fe7478e0ef5694db06eb61ba735e8e6c74b4f",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.940474521019496,
+        "generation_seconds": 6.180319737992249,
+        "output_tokens": 81,
+        "ended_with_eos": false,
+        "raw_output_sha256": "9ed3d895106f689b454ada34ff635aeca69943b451c9fac82e363c7e33fe2537",
+        "peak_allocated_bytes": 20231843328,
+        "peak_reserved_bytes": 21181235200,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:45:05.180226+00:00",
+        "elapsed_seconds": 14.58117649902124
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+            "x": -1.0,
+            "y": 0.0,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "06cb7c2a14c51be7310795daf1c541b15450a02339c6a8f002b522f6e923dcb3",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'cooker' as object 'cooker_0'. Use object_id 'cooker_0' for remove/move operations.",
+              "asset_id": "catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+              "object_id": "cooker_0",
+              "position": {
+                "x": -0.9993401028251828,
+                "y": -0.0008553083694981909,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.026523111568989174
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_003/checkpoint",
+        "manifest_sha256": "402603ea3c4d5f5f1b749a84034fdb96d372932cc5c4bfb5a3331c6e13048b6b",
+        "state_sha256": "f6606cd4ebcf0d3880f47f6027cae665ebad4a161189e21157723a3e3a0c691d",
+        "step_idx": 4
+      },
+      "after_sha256": "8ea8587f968e1130d26696b818dbaeaa2ff6fd5d63be901849eaaa2f417d9a49"
+    },
+    {
+      "turn": 4,
+      "model": {
+        "started_at": "2026-11-05T12:45:50.156567+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "6f3e2cdeeeb76c3a92d9f9a8d36041432e4d4180aa8fa6c60650813d92adc913",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_004.topdown.png",
+              "sha256": "38a06cdab7964c55f8118ed9b0fa16505b5ab2d9cd06dae992a3fb14e1d110fc",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_004.south.png",
+              "sha256": "8eb61d3810c0a99c4f281a972dc2237589d379c10b0db87af2fe5c7e6faa0396",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_004.east.png",
+              "sha256": "09e020844ed2d0a3faec61c51837bdfb6ea9d1cea93579e1193bf294ef625d74",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_004.west.png",
+              "sha256": "85119d4ae8e8a09d9b08f6dcede2a827eb377249d98a8cdf58178497e22a8447",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_004.north.png",
+              "sha256": "d95dbd9702f02f4adea637ea3be11e22c2f0184c323d8fbd29345459fb4f22c9",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11072,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11072
+            ],
+            "attention_mask": [
+              1,
+              11072
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "c09b6e9ee8c895aeb3b0222ffa5e9df3ccc9132f24d88dc10c9488076f65bb75",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.940693674958311,
+        "generation_seconds": 4.328874991973862,
+        "output_tokens": 18,
+        "ended_with_eos": false,
+        "raw_output_sha256": "554871d11daab1a437b559141a44057070c4f4fac0ec6d142ee8db80e7decc58",
+        "peak_allocated_bytes": 20396651520,
+        "peak_reserved_bytes": 21109932032,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:46:02.945057+00:00",
+        "elapsed_seconds": 12.788506698911078
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "": "ignored"
+          }
+        }
+      ],
+      "before_sha256": "8ea8587f968e1130d26696b818dbaeaa2ff6fd5d63be901849eaaa2f417d9a49",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 16,
+              "objects": [
+                {
+                  "object_id": "shell_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.0999999999999996,
+                  "position_y": -0.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.9,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 1.175,
+                  "position_y": -1.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 4.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "opening_entry",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -2.3499999999999996,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.8999999999999999,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -1.7,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_terrace_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.25,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9000000000000001,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bath_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 1.175,
+                  "position_y": -1.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8999999999999999,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0011969167191589998,
+                  "position_y": -0.9996761544664697,
+                  "rotation_degrees": -0.019307346237110345,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "shower_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": 0.0007290018032470627,
+                  "position_y": 0.9996028232225618,
+                  "rotation_degrees": -0.038199692637648996,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -0.9993401028251828,
+                  "position_y": -0.0008553083694981909,
+                  "rotation_degrees": 0.026523111568989174,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_004/checkpoint",
+        "manifest_sha256": "cdf4fbcb59a344011cf854dfcd39e583f42a500506ed4def01d83dfcb8a7a74c",
+        "state_sha256": "f6606cd4ebcf0d3880f47f6027cae665ebad4a161189e21157723a3e3a0c691d",
+        "step_idx": 5
+      },
+      "after_sha256": "8ea8587f968e1130d26696b818dbaeaa2ff6fd5d63be901849eaaa2f417d9a49"
+    },
+    {
+      "turn": 5,
+      "model": {
+        "started_at": "2026-11-05T12:46:48.330263+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "176ecda5863687824ff03a326730da9103eb200da62735f2cf59a571854bd3ca",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_005.topdown.png",
+              "sha256": "38a06cdab7964c55f8118ed9b0fa16505b5ab2d9cd06dae992a3fb14e1d110fc",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_005.south.png",
+              "sha256": "933cca7ca655b45ddef010b2f5604cce3a10a0053da8b19068e8a1070367aea7",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_005.east.png",
+              "sha256": "2b633734011fba070c736b16024e788b89e31045b7288d80cd8b12d1b64f6677",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_005.west.png",
+              "sha256": "d910c2cee525b297112e172c254f281cc027c0ae82a970b2425188e2907f4225",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_005.north.png",
+              "sha256": "3626f0b6e4155fc4a41f2623e5e873881a72377491bd9ad3571b82c22a53f00f",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10989,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10989
+            ],
+            "attention_mask": [
+              1,
+              10989
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "9a63f1bf1a0351ed2027dcc885a71d20159848b4f4978d4d83a5e5920968d7bb",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.930199970025569,
+        "generation_seconds": 5.213244465994649,
+        "output_tokens": 42,
+        "ended_with_eos": false,
+        "raw_output_sha256": "ce831dbc68b69a230aef806ca03bdbe53b6936dcb9390eaa6e0508c1a55f835a",
+        "peak_allocated_bytes": 20373841408,
+        "peak_reserved_bytes": 21351104512,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:47:01.983259+00:00",
+        "elapsed_seconds": 13.653010942041874
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "cooker_0",
+            "object_b_id": "queen_bed_0",
+            "direction": "away"
+          }
+        }
+      ],
+      "before_sha256": "8ea8587f968e1130d26696b818dbaeaa2ff6fd5d63be901849eaaa2f417d9a49",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "cooker_0",
+              "object_b_id": "queen_bed_0",
+              "is_facing": false,
+              "optimal_rotation_degrees": 45.04918052590148,
+              "current_rotation_degrees": 0.026523111568989174,
+              "message": "⚠️ cooker is NOT facing away from queen_bed. To align perfectly, use move_furniture_tool('cooker_0', rotation_yaw=45.0). Consider if this alignment is functionally desirable for this furniture type."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_005/checkpoint",
+        "manifest_sha256": "5f4b05e850fc722779cd356c10843086176cac3bf69bba19889141b0e64e30e4",
+        "state_sha256": "f6606cd4ebcf0d3880f47f6027cae665ebad4a161189e21157723a3e3a0c691d",
+        "step_idx": 6
+      },
+      "after_sha256": "8ea8587f968e1130d26696b818dbaeaa2ff6fd5d63be901849eaaa2f417d9a49"
+    },
+    {
+      "turn": 6,
+      "model": {
+        "started_at": "2026-11-05T12:47:46.664397+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "8ae34db4dab1f6b7b41372f696644c6721659b1c5738801d96860e98bfe1862c",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_006.topdown.png",
+              "sha256": "38a06cdab7964c55f8118ed9b0fa16505b5ab2d9cd06dae992a3fb14e1d110fc",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_006.south.png",
+              "sha256": "5af83058d4b1fe677473ef971d5f2a6561737bb31aa0f24b0043bf2404b26907",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_006.east.png",
+              "sha256": "3f29683476f97c13ca7a5b60915424ce22f3209932999ca8aa53f6076762ea6e",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_006.west.png",
+              "sha256": "ba4bb21068d678a2b23bc2c7518776b14591a6221c9f96e056fedde1ce0e60fa",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_006.north.png",
+              "sha256": "0b24643b7fe2b3d2411093c97141b9cdc61dfbbf95508bc51beda96435dcfd9b",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10973,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10973
+            ],
+            "attention_mask": [
+              1,
+              10973
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "d7d5b27d0874574ceddf25f41f1cdf5cf26cacc733603a01c4a4f6a035c28812",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.926350862020627,
+        "generation_seconds": 5.364220617921092,
+        "output_tokens": 49,
+        "ended_with_eos": false,
+        "raw_output_sha256": "b4ebf1419111c2be3c4f34b9006d9a622c36194ba187cd2ce490fd8212aca907",
+        "peak_allocated_bytes": 20373840896,
+        "peak_reserved_bytes": 21351104512,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:48:00.429431+00:00",
+        "elapsed_seconds": 13.76505430706311
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "cooker_0",
+            "x": -1.0,
+            "y": -0.0,
+            "yaw": 45.0
+          }
+        }
+      ],
+      "before_sha256": "8ea8587f968e1130d26696b818dbaeaa2ff6fd5d63be901849eaaa2f417d9a49",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved cooker to new position and rotation",
+              "object_id": "cooker_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_006/checkpoint",
+        "manifest_sha256": "8a7cb054a16330d24e61e2fe3416b2137a1034c514bd3237fb1239dc7f0cd27e",
+        "state_sha256": "5c744103b0df3c64994742fdbb4e71900e614385d25479103c3fe9cb8c7b0e2a",
+        "step_idx": 7
+      },
+      "after_sha256": "9ead3d15dec3ecca2fe9b199a8b9a0a9252e61a778a14f84a63d55aa19fe65cf"
+    },
+    {
+      "turn": 7,
+      "model": {
+        "started_at": "2026-11-05T12:48:46.220632+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "8dd7d7209e83da9b93e2fac3ed13c0656f6cd78c4c9802175c7d7c6979278b8f",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_007.topdown.png",
+              "sha256": "115721f4cf65b889cf0e5fd1ebe82fbdc2d39aa650250ea6a7112cf003d95fff",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_007.south.png",
+              "sha256": "98b05a13fc8ba8a94d04399909e39eb5941aca57236e2e895369121807515306",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_007.east.png",
+              "sha256": "8041d35ef7a9781c85652e7b0d4c5482f63b619660f5e7594f2d32400f26e835",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_007.west.png",
+              "sha256": "13e475989bf82b445728678b2b49a6c96374cd658f70850986946bc6bedb3172",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_007.north.png",
+              "sha256": "9564833a2532c4ea0576025be44dee94746591731041d45a29590df6b92198a0",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 10801,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              10801
+            ],
+            "attention_mask": [
+              1,
+              10801
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "b63b24ad3399efea80b06d9e421aa8e09e0b28f8b94e35df47366d5d1c32c64a",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.928626307984814,
+        "generation_seconds": 6.397799124009907,
+        "output_tokens": 82,
+        "ended_with_eos": false,
+        "raw_output_sha256": "5d888c705576765cacc3e55f522dc74602be988df38f7ab63a6d3e860997feec",
+        "peak_allocated_bytes": 20327513088,
+        "peak_reserved_bytes": 21032337408,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:49:01.014911+00:00",
+        "elapsed_seconds": 14.794297537999228
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_a73ab435a592f804b7caa9c3a79f03122c536476",
+            "x": 1.4,
+            "y": 0.9,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "9ead3d15dec3ecca2fe9b199a8b9a0a9252e61a778a14f84a63d55aa19fe65cf",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'bookshelf' as object 'bookshelf_0'. Use object_id 'bookshelf_0' for remove/move operations.",
+              "asset_id": "catalog_a73ab435a592f804b7caa9c3a79f03122c536476",
+              "object_id": "bookshelf_0",
+              "position": {
+                "x": 1.3999487501656203,
+                "y": 0.900880792985719,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.08813703848868554
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_007/checkpoint",
+        "manifest_sha256": "51874c4fca07ff56e02f1227a0deb51947e5244f8ac3fe09db182d2672b10d1b",
+        "state_sha256": "ca1e9556b9ee8c54c946e4805eb2b613616c898fdf8c629cbe2255aeffeb974e",
+        "step_idx": 8
+      },
+      "after_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d"
+    },
+    {
+      "turn": 8,
+      "model": {
+        "started_at": "2026-11-05T12:49:47.675766+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "3479b66bf2d992a995d66511d95217ebf3daef5920967c227a8cf03c1d792d1a",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_008.topdown.png",
+              "sha256": "a42064c7d893c9af4b532bb6b89380b1eda2b80ad8ac0f09e7e7233fdf7675a5",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_008.south.png",
+              "sha256": "3d56e52daddd1503a135b0f2c0a8ef414d63ba146a28e1cadcdfb23612c94179",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_008.east.png",
+              "sha256": "7a5f35414b41b287e163f5d78b493db3f0c736871acf5bb61137a878b4795c49",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_008.west.png",
+              "sha256": "ec838b55e868941d7abf1620fd624462bd6479cbf3bba77bbee14bd393dcae06",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_008.north.png",
+              "sha256": "1fc17e98701f51491726a60b5f48af1116b88ceaee0a4ff3915e4b7a927761d5",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11142,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11142
+            ],
+            "attention_mask": [
+              1,
+              11142
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "1409c773bdc948f5c5176a1c13c931a4bf6dbd0a838a94f316bfd7917f2fa7ee",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.0764048650162295,
+        "generation_seconds": 4.606922062113881,
+        "output_tokens": 18,
+        "ended_with_eos": false,
+        "raw_output_sha256": "554871d11daab1a437b559141a44057070c4f4fac0ec6d142ee8db80e7decc58",
+        "peak_allocated_bytes": 20417588224,
+        "peak_reserved_bytes": 21227372544,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:49:59.853045+00:00",
+        "elapsed_seconds": 12.177299616043456
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "": "ignored"
+          }
+        }
+      ],
+      "before_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 17,
+              "objects": [
+                {
+                  "object_id": "shell_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.0999999999999996,
+                  "position_y": -0.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.9,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 1.175,
+                  "position_y": -1.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 4.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "opening_entry",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -2.3499999999999996,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.8999999999999999,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -1.7,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_terrace_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.25,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9000000000000001,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bath_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 1.175,
+                  "position_y": -1.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8999999999999999,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0011969167191589998,
+                  "position_y": -0.9996761544664697,
+                  "rotation_degrees": -0.019307346237110345,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "shower_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": 0.0007290018032470627,
+                  "position_y": 0.9996028232225618,
+                  "rotation_degrees": -0.038199692637648996,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -1.000409171786317,
+                  "position_y": 0.0015282966939017418,
+                  "rotation_degrees": 44.85797710714575,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                },
+                {
+                  "object_id": "bookshelf_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 1.3999487501656203,
+                  "position_y": 0.900880792985719,
+                  "rotation_degrees": -0.08813703848868554,
+                  "dimensions": {
+                    "width": 0.6096042394638062,
+                    "depth": 0.4064580351114273,
+                    "height": 1.930157034736112
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_008/checkpoint",
+        "manifest_sha256": "02528cb2d35a3f381db70fca7412948e66ad12ab5e31143282a9bcf2b06dd8a4",
+        "state_sha256": "ca1e9556b9ee8c54c946e4805eb2b613616c898fdf8c629cbe2255aeffeb974e",
+        "step_idx": 9
+      },
+      "after_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d"
+    },
+    {
+      "turn": 9,
+      "model": {
+        "started_at": "2026-11-05T12:50:46.196071+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "cd95bb0a5d8a2cba14a4c8801b2b8f7b2b1ec9aeebb190626d63045877ceff2d",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_009.topdown.png",
+              "sha256": "a42064c7d893c9af4b532bb6b89380b1eda2b80ad8ac0f09e7e7233fdf7675a5",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_009.south.png",
+              "sha256": "bb325fd6a7fabb74527db6710afe822c98704de401877c33cdb7a73972721128",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_009.east.png",
+              "sha256": "b25fde833722c18695889d0896068b5b8d55a5417c1c667ad8d5c8473e0af423",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_009.west.png",
+              "sha256": "0f9e3c9adf67d993bc49ba6fb1f7d70c78f050e3cb4037f5e2f9b128652991ab",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_009.north.png",
+              "sha256": "e1dd845e6b38a7b8539e75f6d200e6b457db675a0c262bcade3e7b1dadc9a72c",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11150,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11150
+            ],
+            "attention_mask": [
+              1,
+              11150
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "508e7aeaec7b4dba8ff2597dd5aa7b1559e13f61a6fd2d06ff5f2679de765f5a",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.016595633001998,
+        "generation_seconds": 5.6330104660009965,
+        "output_tokens": 42,
+        "ended_with_eos": false,
+        "raw_output_sha256": "0c21978a301db3a2212c633dd7a9ddbcd6d01dfb90428d91248b0f18591fdd21",
+        "peak_allocated_bytes": 20417883136,
+        "peak_reserved_bytes": 21227372544,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:50:59.381522+00:00",
+        "elapsed_seconds": 13.185469273012131
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "shower_0",
+            "object_b_id": "queen_bed_0",
+            "direction": "away"
+          }
+        }
+      ],
+      "before_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "shower_0",
+              "object_b_id": "queen_bed_0",
+              "is_facing": true,
+              "optimal_rotation_degrees": 0.013409608995345934,
+              "current_rotation_degrees": -0.038199692637648996,
+              "message": "✓ shower is facing away from queen_bed. Current alignment is acceptable."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_009/checkpoint",
+        "manifest_sha256": "5c2c73ce91d9eeedfe48b03f39d152218690756ecae5e6fd80be2f96ce700f2b",
+        "state_sha256": "ca1e9556b9ee8c54c946e4805eb2b613616c898fdf8c629cbe2255aeffeb974e",
+        "step_idx": 10
+      },
+      "after_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d"
+    },
+    {
+      "turn": 10,
+      "model": {
+        "started_at": "2026-11-05T12:51:46.305509+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "56a4804944f18b4154788027d691df391a7b0a0d002c16a7a1b2d5c5cdfc9885",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_010.topdown.png",
+              "sha256": "a42064c7d893c9af4b532bb6b89380b1eda2b80ad8ac0f09e7e7233fdf7675a5",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_010.south.png",
+              "sha256": "6d0cab1416a5f63690f24d2abe49b9db0a4adf458b27b63d86b2524d6a44857f",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_010.east.png",
+              "sha256": "149e6f71a1ee2c0a2deb3a3de6a38ea93c1bcc22fab155132991be8276c7b29b",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_010.west.png",
+              "sha256": "585946540525a804db4a5a46620083babab070e0ca6f5ad3bc42366071c7557b",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_010.north.png",
+              "sha256": "c3187f7aa02ac985d415c64599916ff5a639d40f71bacbf78a310764aa3e3267",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11122,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11122
+            ],
+            "attention_mask": [
+              1,
+              11122
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "88567a245ba23a027e8df8f07f37a1b526122f227f9b592de6417efdb32d0744",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.053617876954377,
+        "generation_seconds": 5.571867574006319,
+        "output_tokens": 42,
+        "ended_with_eos": false,
+        "raw_output_sha256": "2576bd9ac635b2835d2bf088483d32516b8d43b8ac9f0c674b148b76b2ba695b",
+        "peak_allocated_bytes": 20403839488,
+        "peak_reserved_bytes": 21130903552,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:51:59.459192+00:00",
+        "elapsed_seconds": 13.15370445291046
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "shower_0",
+            "object_b_id": "cooker_0",
+            "direction": "away"
+          }
+        }
+      ],
+      "before_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "shower_0",
+              "object_b_id": "cooker_0",
+              "is_facing": false,
+              "optimal_rotation_degrees": -45.152922564840196,
+              "current_rotation_degrees": -0.038199692637648996,
+              "message": "⚠️ shower is NOT facing away from cooker. To align perfectly, use move_furniture_tool('shower_0', rotation_yaw=-45.2). Consider if this alignment is functionally desirable for this furniture type."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_010/checkpoint",
+        "manifest_sha256": "dacee381d04e661204e9f2da75fbb8ee894aad1d5ff2b525258171d36ccbb086",
+        "state_sha256": "ca1e9556b9ee8c54c946e4805eb2b613616c898fdf8c629cbe2255aeffeb974e",
+        "step_idx": 11
+      },
+      "after_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d"
+    },
+    {
+      "turn": 11,
+      "model": {
+        "started_at": "2026-11-05T12:52:45.470387+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "4a8f0b8ec4069252643b89f4d736c0d81b59c242895ce780a298e24630de584c",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_011.topdown.png",
+              "sha256": "a42064c7d893c9af4b532bb6b89380b1eda2b80ad8ac0f09e7e7233fdf7675a5",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_011.south.png",
+              "sha256": "ade9ed405b83fb8dde817a1db5ed6afbbb939ae1c8d7c08408281676e5848c61",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_011.east.png",
+              "sha256": "5ce9f14156fc18b2f10c26ecb36e2fefaa810379a95f35e6997ca192a6f2dbb2",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_011.west.png",
+              "sha256": "acf5d15a04b15311a6565f07477ec227c9700089363b95b9623535c0a0d17320",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_011.north.png",
+              "sha256": "9362b716fd915d25a1a17a3fe04946fe0cd0864135a2eba993d18e5202c48513",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11190,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11190
+            ],
+            "attention_mask": [
+              1,
+              11190
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "c05ee9a6364cd540b72c4fa72859b7e34903e1b48394c3af89538b57805a88b0",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.938491042004898,
+        "generation_seconds": 5.4471263060113415,
+        "output_tokens": 49,
+        "ended_with_eos": false,
+        "raw_output_sha256": "d26fb3437f6d73afcdb5af5ae8dfa6ee5f93a4bb7d4686b1a5f0c0bbf78f59f0",
+        "peak_allocated_bytes": 20421586944,
+        "peak_reserved_bytes": 21156069376,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:52:59.369063+00:00",
+        "elapsed_seconds": 13.898694057017565
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "shower_0",
+            "x": 0.0,
+            "y": 0.5,
+            "yaw": -45.2
+          }
+        }
+      ],
+      "before_sha256": "c70b6e4ee584a026670b42bb93bfdad71e618b708b313c030d4bb7a7d69f098d",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved shower to new position and rotation",
+              "object_id": "shower_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_011/checkpoint",
+        "manifest_sha256": "cd946a123a8630f7032d33dfbbb91a16e5f684a8574977362971188b655a4c74",
+        "state_sha256": "c570629dc3c3c28044962004ebf1bcf1b18909ef5d4aeb2e5243898099f6b353",
+        "step_idx": 12
+      },
+      "after_sha256": "0c1ab19bb3e0b483b22abde016a0a6f561b9c344f7e112e194d1733bb0b3af42"
+    },
+    {
+      "turn": 12,
+      "model": {
+        "started_at": "2026-11-05T12:53:45.560114+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "5930bdaa17c1a3bb69e23d4b2f1a81685d8cb8b357144aab906e26eae05d232f",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_012.topdown.png",
+              "sha256": "38e35001e6e3ee8db8183597e0f5d42d56d53554fafd2a5330992180fc08526f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_012.south.png",
+              "sha256": "4508e00c2e43f6c0d04d978bc9c12042c958ae50cfb5087df7c5f3ae0d6a746f",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_012.east.png",
+              "sha256": "d37aa7fe36e522482553a333608d144762954f848c6b6afc77341f466049e2da",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_012.west.png",
+              "sha256": "ef33d10de420b4c74bbf90cac858738a1e42547832f11c081c7f7c8813cc34c3",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_012.north.png",
+              "sha256": "cb247316b21210510ca067cab00b102a7ffa8a3c5ebca4cc82243bd86c127ad5",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11023,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11023
+            ],
+            "attention_mask": [
+              1,
+              11023
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "397a5f814dd6ae9d0359c4ccafd214272d78972f1d2a9fae064fa21f3d09a4a8",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.067491627065465,
+        "generation_seconds": 4.556430253083818,
+        "output_tokens": 18,
+        "ended_with_eos": false,
+        "raw_output_sha256": "554871d11daab1a437b559141a44057070c4f4fac0ec6d142ee8db80e7decc58",
+        "peak_allocated_bytes": 20378640384,
+        "peak_reserved_bytes": 21109932032,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:53:57.658079+00:00",
+        "elapsed_seconds": 12.097984867054038
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "": "ignored"
+          }
+        }
+      ],
+      "before_sha256": "0c1ab19bb3e0b483b22abde016a0a6f561b9c344f7e112e194d1733bb0b3af42",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 17,
+              "objects": [
+                {
+                  "object_id": "shell_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.0999999999999996,
+                  "position_y": -0.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.9,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 1.175,
+                  "position_y": -1.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 4.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "opening_entry",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -2.3499999999999996,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.8999999999999999,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -1.7,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_terrace_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.25,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9000000000000001,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bath_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 1.175,
+                  "position_y": -1.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8999999999999999,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0011969167191589998,
+                  "position_y": -0.9996761544664697,
+                  "rotation_degrees": -0.019307346237110345,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "shower_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -0.0014970273878916862,
+                  "position_y": 0.49902095965246435,
+                  "rotation_degrees": -45.11735146005551,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -1.000409171786317,
+                  "position_y": 0.0015282966939017418,
+                  "rotation_degrees": 44.85797710714575,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                },
+                {
+                  "object_id": "bookshelf_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 1.3999487501656203,
+                  "position_y": 0.900880792985719,
+                  "rotation_degrees": -0.08813703848868554,
+                  "dimensions": {
+                    "width": 0.6096042394638062,
+                    "depth": 0.4064580351114273,
+                    "height": 1.930157034736112
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_012/checkpoint",
+        "manifest_sha256": "9c1dd0bcf6813d0e8f8563a1e847356a68a4570bef697c4da289697f32399181",
+        "state_sha256": "c570629dc3c3c28044962004ebf1bcf1b18909ef5d4aeb2e5243898099f6b353",
+        "step_idx": 13
+      },
+      "after_sha256": "0c1ab19bb3e0b483b22abde016a0a6f561b9c344f7e112e194d1733bb0b3af42"
+    },
+    {
+      "turn": 13,
+      "model": {
+        "started_at": "2026-11-05T12:54:43.407910+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "cf656bcdae18d58f3461582f12538fa7426ac03035b8e3b832e5e93dc2ad6503",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_013.topdown.png",
+              "sha256": "38e35001e6e3ee8db8183597e0f5d42d56d53554fafd2a5330992180fc08526f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_013.south.png",
+              "sha256": "ad95935302011d6f1046b19e07dd203db552d2604ec68edf164fc06244788628",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_013.east.png",
+              "sha256": "11bf30ecd7f5f4037e1b777c835e0a9440b979525f43a721a40a58b57fbda205",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_013.west.png",
+              "sha256": "185d102f37c5b4defee3fad7e6b0e4b732f99392f5b7a91be03fec0196f92228",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_013.north.png",
+              "sha256": "8753d78b882781e7b47f5ba904ebb9a36f58eb685328a0290a483d657a067a31",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11023,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11023
+            ],
+            "attention_mask": [
+              1,
+              11023
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "9985a034e5e23f51227bb7ac373032a851e06d83f75080a0b9f2a9f3eb54f69a",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.030464636976831,
+        "generation_seconds": 7.25554216990713,
+        "output_tokens": 81,
+        "ended_with_eos": false,
+        "raw_output_sha256": "34956780e29af16a15a897b0965dc39f100b8422a201a5ba8fd0dd912b3c2afc",
+        "peak_allocated_bytes": 20378640384,
+        "peak_reserved_bytes": 21109932032,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:54:58.179072+00:00",
+        "elapsed_seconds": 14.771182197961025
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_19b181ef136dd9cbbea4505899f9015c58dca260",
+            "x": -1.0,
+            "y": 1.0,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "0c1ab19bb3e0b483b22abde016a0a6f561b9c344f7e112e194d1733bb0b3af42",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'refrigerator' as object 'refrigerator_0'. Use object_id 'refrigerator_0' for remove/move operations.",
+              "asset_id": "catalog_19b181ef136dd9cbbea4505899f9015c58dca260",
+              "object_id": "refrigerator_0",
+              "position": {
+                "x": -1.0001097918045874,
+                "y": 1.0007016835094444,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.13569608367798863
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_013/checkpoint",
+        "manifest_sha256": "798be0de49998808c9619a5a05c02c1bd8caec757a9189ce192ae9f962545c52",
+        "state_sha256": "65715d600b41af3067f4177ad8c1f1553dd82532b2fc1f5bd8dc564c5030f574",
+        "step_idx": 14
+      },
+      "after_sha256": "a6e4036d1c5a003fac2734326cc6b95c4b3306f24c3493fc0a4fd38c60f570b2"
+    },
+    {
+      "turn": 14,
+      "model": {
+        "started_at": "2026-11-05T12:55:44.257082+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "660e30afe73e0ca99eb09c8eef62e4852c34c8b4eaf9ad85a9194cfd9535cbe6",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_014.topdown.png",
+              "sha256": "cdca57f0b2aa3bc95af419b76ed11bb174a21007b977e832eca9b2ecbcecff33",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_014.south.png",
+              "sha256": "7cf7a95ba80ed0628e30a26ee12d7b6faf589d42e80f1ead3f85bfde171c5c07",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_014.east.png",
+              "sha256": "81d1b8434fd0ce43bae8147db582b3d1ea9593145430d13cb73ff8593c8bea4c",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_014.west.png",
+              "sha256": "dbe0fbeaeff5ed6398c3c3c9f5373c7b9fa2cf1d0d3ab87324ac974fcfbc02f0",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_014.north.png",
+              "sha256": "e6a535ba4feb33190240e92e008d1f147e2ec32531ba4024d4ed594fb55a3f42",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11502,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11502
+            ],
+            "attention_mask": [
+              1,
+              11502
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "74bf793fe7dc7e8583ebe76814cdc14d6a1f8ea957b2928937b3d60216732876",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.962549900985323,
+        "generation_seconds": 5.731034595984966,
+        "output_tokens": 43,
+        "ended_with_eos": false,
+        "raw_output_sha256": "bb8e36f6a767645d212187be0beccab8811dc1c74c41c8901b92a569674cbbc9",
+        "peak_allocated_bytes": 20503894528,
+        "peak_reserved_bytes": 21520973824,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:55:58.423990+00:00",
+        "elapsed_seconds": 14.166926497942768
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "shower_0",
+            "object_b_id": "refrigerator_0",
+            "direction": "away"
+          }
+        }
+      ],
+      "before_sha256": "a6e4036d1c5a003fac2734326cc6b95c4b3306f24c3493fc0a4fd38c60f570b2",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "shower_0",
+              "object_b_id": "refrigerator_0",
+              "is_facing": false,
+              "optimal_rotation_degrees": -100.05299429241813,
+              "current_rotation_degrees": -45.11735146005551,
+              "message": "⚠️ shower is NOT facing away from refrigerator. To align perfectly, use move_furniture_tool('shower_0', rotation_yaw=-100.1). Consider if this alignment is functionally desirable for this furniture type."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_014/checkpoint",
+        "manifest_sha256": "97057bdf820b5b45bd6e15438822ac8c7b1bcbde3af30aed56917c3f9d66a109",
+        "state_sha256": "65715d600b41af3067f4177ad8c1f1553dd82532b2fc1f5bd8dc564c5030f574",
+        "step_idx": 15
+      },
+      "after_sha256": "a6e4036d1c5a003fac2734326cc6b95c4b3306f24c3493fc0a4fd38c60f570b2"
+    },
+    {
+      "turn": 15,
+      "model": {
+        "started_at": "2026-11-05T12:56:43.962127+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "0b2277d95232f1f8596f21cb8998570c5f84082c387cace216cd98dbad0803b6",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_015.topdown.png",
+              "sha256": "cdca57f0b2aa3bc95af419b76ed11bb174a21007b977e832eca9b2ecbcecff33",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_015.south.png",
+              "sha256": "28cddf7628ebc5e1f979a4f3b3d280c383ec32182d01490d74002e5910f1dffb",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_015.east.png",
+              "sha256": "3e021609eac28f941ba82e7261a8fab26c32f2aa32324d3b350da8993083d588",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_015.west.png",
+              "sha256": "15d605c05b6af9622b199712daa6a5cc6641b61fe4a55ab65824fdd8ad351451",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_015.north.png",
+              "sha256": "f73f795bed6bfa8e813bfa3c3d0e278d303b721e50683c23e86d1d55fdf5f324",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11501,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11501
+            ],
+            "attention_mask": [
+              1,
+              11501
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "2fedc1e9243cf514c756b91b4d6b0563d96b5deeeb916fb4869ee2b187e95e60",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.965049796039239,
+        "generation_seconds": 7.411800332949497,
+        "output_tokens": 82,
+        "ended_with_eos": false,
+        "raw_output_sha256": "c967e178eb13695093ae7c16f3a3b1497b0cb295cbcc19bb0f4b343c674f6aab",
+        "peak_allocated_bytes": 20503894528,
+        "peak_reserved_bytes": 21520973824,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:56:59.795738+00:00",
+        "elapsed_seconds": 15.833628044929355
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "shower_0",
+            "x": -0.0011451207139105953,
+            "y": 0.500114512071391,
+            "yaw": -100.1
+          }
+        }
+      ],
+      "before_sha256": "a6e4036d1c5a003fac2734326cc6b95c4b3306f24c3493fc0a4fd38c60f570b2",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved shower to new position and rotation",
+              "object_id": "shower_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_015/checkpoint",
+        "manifest_sha256": "4101ba221e44b8882088660ce82a24535d93885ce94d9307df4fb49bfc06b2b5",
+        "state_sha256": "d43b854cfec06fdcf841dbac2f66e907b1ad538c3a4cffe236fafd2c735736e0",
+        "step_idx": 16
+      },
+      "after_sha256": "ce87614858ada9bf812317f88184f239b45c683e6cde415041ca1309552f15db"
+    },
+    {
+      "turn": 16,
+      "model": {
+        "started_at": "2026-11-05T12:57:46.131936+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "86be9a8eb6e23e5693673471071af163cbe1f42d49b534fa21400d96dd122b06",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_016.topdown.png",
+              "sha256": "68e0f117289cca7283006719a7edc276929897ea4e27edb2e14c4de105e62271",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_016.south.png",
+              "sha256": "6d972970deabd5b6eca66580c370558d7f3ac139fa7d3b54514883031d59f289",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_016.east.png",
+              "sha256": "085d932a5e5d3dd23d8501d61237a0906325bfd9321cb27148c59956c75d98c1",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_016.west.png",
+              "sha256": "2c6090e7a8335ebfdbf59c37fc03af8916452824ea4b156748c940766b1f26ac",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_016.north.png",
+              "sha256": "15473ff2ef31375610c70e711bbf5b8f51e3f5d29f6e42e2663b0db5b8ace97d",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11533,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11533
+            ],
+            "attention_mask": [
+              1,
+              11533
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "ddf03c042a44f963d5e6100bb4359433c7d76bc052bc4939a6e0b11b145b5770",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.068218749016523,
+        "generation_seconds": 4.7232507560402155,
+        "output_tokens": 18,
+        "ended_with_eos": false,
+        "raw_output_sha256": "554871d11daab1a437b559141a44057070c4f4fac0ec6d142ee8db80e7decc58",
+        "peak_allocated_bytes": 20508193792,
+        "peak_reserved_bytes": 21267218432,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:57:58.393758+00:00",
+        "elapsed_seconds": 12.261841504019685
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "": "ignored"
+          }
+        }
+      ],
+      "before_sha256": "ce87614858ada9bf812317f88184f239b45c683e6cde415041ca1309552f15db",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 18,
+              "objects": [
+                {
+                  "object_id": "shell_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.0999999999999996,
+                  "position_y": -0.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.9,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 1.175,
+                  "position_y": -1.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 4.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "opening_entry",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -2.3499999999999996,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.8999999999999999,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -1.7,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_terrace_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.25,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9000000000000001,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bath_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 1.175,
+                  "position_y": -1.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8999999999999999,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0011969167191589998,
+                  "position_y": -0.9996761544664697,
+                  "rotation_degrees": -0.019307346237110345,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "shower_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -0.0008260042273859119,
+                  "position_y": 0.5005737688177477,
+                  "rotation_degrees": -100.24481672446223,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -1.000409171786317,
+                  "position_y": 0.0015282966939017418,
+                  "rotation_degrees": 44.85797710714575,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                },
+                {
+                  "object_id": "bookshelf_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 1.3999487501656203,
+                  "position_y": 0.900880792985719,
+                  "rotation_degrees": -0.08813703848868554,
+                  "dimensions": {
+                    "width": 0.6096042394638062,
+                    "depth": 0.4064580351114273,
+                    "height": 1.930157034736112
+                  }
+                },
+                {
+                  "object_id": "refrigerator_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": -1.0001097918045874,
+                  "position_y": 1.0007016835094444,
+                  "rotation_degrees": -0.13569608367798863,
+                  "dimensions": {
+                    "width": 0.5936102271080017,
+                    "depth": 0.7534396648406982,
+                    "height": 1.7884897945914418
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_016/checkpoint",
+        "manifest_sha256": "b60525651cf62a5744f1f88cf4b4709b1a775005a91415560088add9f5bb9d59",
+        "state_sha256": "d43b854cfec06fdcf841dbac2f66e907b1ad538c3a4cffe236fafd2c735736e0",
+        "step_idx": 17
+      },
+      "after_sha256": "ce87614858ada9bf812317f88184f239b45c683e6cde415041ca1309552f15db"
+    },
+    {
+      "turn": 17,
+      "model": {
+        "started_at": "2026-11-05T12:58:44.034612+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "76ab817974bccf9ab5a009981ad1a096b04e242dc0bd47c3b82bb7774e66f2cc",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_017.topdown.png",
+              "sha256": "68e0f117289cca7283006719a7edc276929897ea4e27edb2e14c4de105e62271",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_017.south.png",
+              "sha256": "8e1e715dae074691d43800d06223bbf1324a1da1e07de0ab50f41f9a616c43fc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_017.east.png",
+              "sha256": "e6f89189139f5190728bd105b38c5345d6adeffb692a9ac950dfeb450feee0e4",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_017.west.png",
+              "sha256": "ace3fb39cce8ef10b65caf8b9a93cb0f1261ab09a7f88c2f5c53efce8cd57d98",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_017.north.png",
+              "sha256": "94f25aa16890997b3ebca7a09775d5a76858860027fb07ae02b65dcecacfcbb2",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11544,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11544
+            ],
+            "attention_mask": [
+              1,
+              11544
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "4b69d3b0f84fefe8d66267beed039113d9aea75682f4e0caad99542089ce4e52",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.929829105036333,
+        "generation_seconds": 6.640636418946087,
+        "output_tokens": 81,
+        "ended_with_eos": false,
+        "raw_output_sha256": "3466973ac1433e8431842e92a46b0d7f1e59b8319942a23347228eeb5c4df6d9",
+        "peak_allocated_bytes": 20510942720,
+        "peak_reserved_bytes": 21267218432,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:58:59.052854+00:00",
+        "elapsed_seconds": 15.018258698051795
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+            "x": 0.0,
+            "y": -1.2,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "ce87614858ada9bf812317f88184f239b45c683e6cde415041ca1309552f15db",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'cooker' as object 'cooker_1'. Use object_id 'cooker_1' for remove/move operations.",
+              "asset_id": "catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+              "object_id": "cooker_1",
+              "position": {
+                "x": -0.001552846359735248,
+                "y": -1.1995874261688426,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.0015090219046796857
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_017/checkpoint",
+        "manifest_sha256": "9b443bdc304b2151934d1cbbcd3a5c7570f6446d9950d4364bb202b834cfc885",
+        "state_sha256": "f96fb3ab30b3b8b867c4f8793437f9bb684a98029becb43ee011dc28b82a4c49",
+        "step_idx": 18
+      },
+      "after_sha256": "5251860f497e35f8074c82055b416ba682953901d2e995507d59c896d31edb7c"
+    },
+    {
+      "turn": 18,
+      "model": {
+        "started_at": "2026-11-05T12:59:45.179126+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "3ea5af18915de337af397ade0fbfc5ce8a709231186730cd96244842c9751533",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_018.topdown.png",
+              "sha256": "3781f4afa702d844f145043fba311f9f86e6c08b91fc19199027ef923f153114",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_018.south.png",
+              "sha256": "15ef8dd675d971ed92a583736ca5f5d925276980cd29de30e7bc5803a7981f61",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_018.east.png",
+              "sha256": "54fe1f609ce4d8a7937e3c8ea16a269732483c9ece178f42ad66b5c479a272dc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_018.west.png",
+              "sha256": "88a5b7569a5969c9b34a9b63824d6b2d4a0d1d3030cb33392f4d971efeefb587",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_018.north.png",
+              "sha256": "46f3adeb9e855265e03db2c221227e7263c5f08217b920847a6b4bda7ab0d77d",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11890,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11890
+            ],
+            "attention_mask": [
+              1,
+              11890
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "54f9a73bb7e48a85fb2cacb3cf261461d4f71023b4f39c4914b3b369396cd175",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.064057606039569,
+        "generation_seconds": 5.87292575801257,
+        "output_tokens": 42,
+        "ended_with_eos": false,
+        "raw_output_sha256": "4d0270da6dc1ceab63c2330aa459f803f6b7fa6919bab5511937fcb6a8e7f79a",
+        "peak_allocated_bytes": 20598338048,
+        "peak_reserved_bytes": 21367881728,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T12:59:58.613478+00:00",
+        "elapsed_seconds": 13.434373833006248
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "shower_0",
+            "object_b_id": "cooker_1",
+            "direction": "away"
+          }
+        }
+      ],
+      "before_sha256": "5251860f497e35f8074c82055b416ba682953901d2e995507d59c896d31edb7c",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "shower_0",
+              "object_b_id": "cooker_1",
+              "is_facing": false,
+              "optimal_rotation_degrees": 0.0,
+              "current_rotation_degrees": -100.24481672446223,
+              "message": "⚠️ shower is NOT facing away from cooker. To align perfectly, use move_furniture_tool('shower_0', rotation_yaw=0.0). Consider if this alignment is functionally desirable for this furniture type."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_018/checkpoint",
+        "manifest_sha256": "3b64109f0f5ff0ca378ad3c33aafac6aef9bd66e531b05ab0452b89aa7ff51e6",
+        "state_sha256": "f96fb3ab30b3b8b867c4f8793437f9bb684a98029becb43ee011dc28b82a4c49",
+        "step_idx": 19
+      },
+      "after_sha256": "5251860f497e35f8074c82055b416ba682953901d2e995507d59c896d31edb7c"
+    },
+    {
+      "turn": 19,
+      "model": {
+        "started_at": "2026-11-05T13:00:44.251703+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "cb9e932b4202040d12984d4d0698521637745373faaa273f99889714975123b0",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_019.topdown.png",
+              "sha256": "3781f4afa702d844f145043fba311f9f86e6c08b91fc19199027ef923f153114",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_019.south.png",
+              "sha256": "01dfb2f2e0424a71618227e0a5a0c91b7b52b3b675f2230080dc9deb61ec03c8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_019.east.png",
+              "sha256": "9363be25a20ec2be268e5046dff39076cc041786de58ebbd5dffb42235308e0e",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_019.west.png",
+              "sha256": "c3f200758e2fbb75861e77d7494d76fa137c820d5e6d363438038a34f0cba76f",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_019.north.png",
+              "sha256": "6587dfe788052cb173e43e7917b396d338af941dad67a0afa18d003e6b3d6a56",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11872,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11872
+            ],
+            "attention_mask": [
+              1,
+              11872
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "46a525b508f79d609079f16aa38ab1f88dfb26e7f9c820d08bbdef6b0b388a7d",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.027444756007753,
+        "generation_seconds": 7.517861924949102,
+        "output_tokens": 80,
+        "ended_with_eos": false,
+        "raw_output_sha256": "fa9e9214f404cb6362dc56c5fcc6e860716a41a62657f57c9a1d932349f2edb7",
+        "peak_allocated_bytes": 20594356224,
+        "peak_reserved_bytes": 21367881728,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T13:00:59.285735+00:00",
+        "elapsed_seconds": 15.034049530047923
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "shower_0",
+            "x": -0.001279197954278867,
+            "y": 0.4997120130077778,
+            "yaw": 0.0
+          }
+        }
+      ],
+      "before_sha256": "5251860f497e35f8074c82055b416ba682953901d2e995507d59c896d31edb7c",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved shower to new position and rotation",
+              "object_id": "shower_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_019/checkpoint",
+        "manifest_sha256": "e1dc51beaf04e4ee13c470df4e90596f082c3d198c7c0f3407181821187257da",
+        "state_sha256": "3fad3611edfa9349164e90342de3b8f28bb99a48880a71050d2bbe684070cea1",
+        "step_idx": 20
+      },
+      "after_sha256": "3642d474c04b8044699072b1e3879d43348c01f2b248cffa6787a9dd928566af"
+    },
+    {
+      "turn": 20,
+      "model": {
+        "started_at": "2026-11-05T13:01:45.868513+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "9b29215963a6911fd5921ca5bfeaf6d7a8ae254d808d66d8e7d792e61e3ab60c",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_020.topdown.png",
+              "sha256": "358625f8f92250b2b71e9f2651593bc68b1965f729a35efe0194a94b6cb02992",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_020.south.png",
+              "sha256": "9441dd62388e73dbc83870a157079c709d119ec43d869b3fc9d54654b6802bd6",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_020.east.png",
+              "sha256": "fc41a0c802849730b3f7e8a32add3084233714764ad36c74875310746b346ceb",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_020.west.png",
+              "sha256": "0671801d8f6870571894aa837e8a596145f9ab6efaef40cd6debd25387c84515",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_020.north.png",
+              "sha256": "ec5a80782a4ede76c945e5ac60a6df1c4b76a6fb1ff6b79e2081a4dc7b3f3900",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11873,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11873
+            ],
+            "attention_mask": [
+              1,
+              11873
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "31782a8ef74799b4a49cefece98a49042309f509ca3f87f9ce698b86118e813b",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.0214018860133365,
+        "generation_seconds": 4.853821406024508,
+        "output_tokens": 18,
+        "ended_with_eos": false,
+        "raw_output_sha256": "554871d11daab1a437b559141a44057070c4f4fac0ec6d142ee8db80e7decc58",
+        "peak_allocated_bytes": 20594577408,
+        "peak_reserved_bytes": 21367881728,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T13:01:58.238103+00:00",
+        "elapsed_seconds": 12.369610536959954
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "": "ignored"
+          }
+        }
+      ],
+      "before_sha256": "3642d474c04b8044699072b1e3879d43348c01f2b248cffa6787a9dd928566af",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 19,
+              "objects": [
+                {
+                  "object_id": "shell_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 5.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.0999999999999996,
+                  "position_y": -0.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.9,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 1.175,
+                  "position_y": -1.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 4.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 6.1,
+                    "depth": 0.05,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "shell_terrace_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 3.025,
+                  "position_y": 3.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0,
+                    "height": 1.0
+                  }
+                },
+                {
+                  "object_id": "opening_entry",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -2.3499999999999996,
+                  "position_y": -2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.8999999999999999,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -1.7,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_terrace_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.25,
+                  "position_y": 2.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9000000000000001,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bath_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 1.175,
+                  "position_y": -1.55,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 0.8999999999999999,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "queen_bed_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 0.0011969167191589998,
+                  "position_y": -0.9996761544664697,
+                  "rotation_degrees": -0.019307346237110345,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "shower_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -0.0020314040597876957,
+                  "position_y": 0.5000321843912967,
+                  "rotation_degrees": -0.08620928309208477,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -1.000409171786317,
+                  "position_y": 0.0015282966939017418,
+                  "rotation_degrees": 44.85797710714575,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                },
+                {
+                  "object_id": "bookshelf_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": 1.3999487501656203,
+                  "position_y": 0.900880792985719,
+                  "rotation_degrees": -0.08813703848868554,
+                  "dimensions": {
+                    "width": 0.6096042394638062,
+                    "depth": 0.4064580351114273,
+                    "height": 1.930157034736112
+                  }
+                },
+                {
+                  "object_id": "refrigerator_0",
+                  "description": "Fixed unscaled HSSD geometry; floor placement only; suitability not accepted.",
+                  "position_x": -1.0001097918045874,
+                  "position_y": 1.0007016835094444,
+                  "rotation_degrees": -0.13569608367798863,
+                  "dimensions": {
+                    "width": 0.5936102271080017,
+                    "depth": 0.7534396648406982,
+                    "height": 1.7884897945914418
+                  }
+                },
+                {
+                  "object_id": "cooker_1",
+                  "description": "Fixed actual fixture geometry; static candidate, functionality unknown.",
+                  "position_x": -0.001552846359735248,
+                  "position_y": -1.1995874261688426,
+                  "rotation_degrees": -0.0015090219046796857,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_020/checkpoint",
+        "manifest_sha256": "8d8f10e5bc4c19c855386ef4f02334d527b971e70810c068ce9a28ab1ec3ed74",
+        "state_sha256": "3fad3611edfa9349164e90342de3b8f28bb99a48880a71050d2bbe684070cea1",
+        "step_idx": 21
+      },
+      "after_sha256": "3642d474c04b8044699072b1e3879d43348c01f2b248cffa6787a9dd928566af"
+    },
+    {
+      "turn": 21,
+      "model": {
+        "started_at": "2026-11-05T13:02:45.198830+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "5d32d6088c0186f96dc6d233bea2295ad65c5fc6fa654aea85f17ad9eac5ebc0",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_021.topdown.png",
+              "sha256": "358625f8f92250b2b71e9f2651593bc68b1965f729a35efe0194a94b6cb02992",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_021.south.png",
+              "sha256": "28e727e1ee68771c6cb378bc88b170f424251bab3b3d08a561feece7c0ca7a6e",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_021.east.png",
+              "sha256": "aa1611f2bbf334b79b02f8bfb38621e62699a0efa756154894932e2a331b5684",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_021.west.png",
+              "sha256": "2df03d634428864e47fb4b098e4290a983e117deecdb4638717e020ec9259cb4",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_021.north.png",
+              "sha256": "fdc8722a241aef021bcb5461f640ee37946ddb173b64deca90ed1cbd892317be",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 11872,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              11872
+            ],
+            "attention_mask": [
+              1,
+              11872
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "190e7bb32f90118ba3c78b87e14536a9fec2a65dd4e07dacfeaf35162c0a0449",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.021540294983424,
+        "generation_seconds": 7.554718279046938,
+        "output_tokens": 81,
+        "ended_with_eos": false,
+        "raw_output_sha256": "2b841452eb3518761903973b37309cf63c433074a4cc9deb8601856fcea12ad8",
+        "peak_allocated_bytes": 20594356224,
+        "peak_reserved_bytes": 21367881728,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T13:03:00.239599+00:00",
+        "elapsed_seconds": 15.04078740091063
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+            "x": 0.0,
+            "y": 1.2,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "3642d474c04b8044699072b1e3879d43348c01f2b248cffa6787a9dd928566af",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'cooker' as object 'cooker_2'. Use object_id 'cooker_2' for remove/move operations.",
+              "asset_id": "catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+              "object_id": "cooker_2",
+              "position": {
+                "x": -0.000652771585034842,
+                "y": 1.2018596852558312,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.10044429575264886
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_021/checkpoint",
+        "manifest_sha256": "5d3eecde33c7c0637c91bd8a854fb4d47c61349ac7c5bab609dcba268bd2d32c",
+        "state_sha256": "dd94496d39dc83270f64d573f600e754b2d7da747f40f9c7a98bca4d1dcaad5c",
+        "step_idx": 22
+      },
+      "after_sha256": "9030af94cca48621e6b5947defde4ecd5eae3f3f3df6b79e21f5ce6e4429d5da"
+    },
+    {
+      "turn": 22,
+      "model": {
+        "started_at": "2026-11-05T13:03:46.627434+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "820da7def3c11e9243c2caa36a0fa23052bf4c9ba436857d7b0cc605d0895dfe",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_022.topdown.png",
+              "sha256": "37d602dce5387b40cf2a1549413f9f3b15006f2cc7f1a08c538a9b226c00ac3f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_022.south.png",
+              "sha256": "098129e9fa3a46cebd1adee46587a81c9ba5e0da6e5783d98f73aef8009e03e6",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_022.east.png",
+              "sha256": "0969bbfe3461ae8ea7fd1f5abbc556b3967c1ff6641b603f0220b8d6e811e236",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_022.west.png",
+              "sha256": "99419ac47e069e483cb1643df86d37d728ad42b2b0cb7bc9025aa69138b2f5da",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_022.north.png",
+              "sha256": "a6facc4a0f1873f3fbaa0627baeadfa9a5480716d1ed3052293c340aa40fa7b3",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 12215,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              12215
+            ],
+            "attention_mask": [
+              1,
+              12215
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "ba04f50946b9c709560a3657a2dce07d25d042253a59e798727a4af5521832fb",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.02558420796413,
+        "generation_seconds": 5.981519433087669,
+        "output_tokens": 42,
+        "ended_with_eos": false,
+        "raw_output_sha256": "f276ffaaf3d8d04a1e5a9f5c810171322f2a871fd29a93c4ca88eff811f19b1c",
+        "peak_allocated_bytes": 20681961472,
+        "peak_reserved_bytes": 21470642176,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T13:04:00.125455+00:00",
+        "elapsed_seconds": 13.498041288927197
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "shower_0",
+            "object_b_id": "cooker_2",
+            "direction": "away"
+          }
+        }
+      ],
+      "before_sha256": "9030af94cca48621e6b5947defde4ecd5eae3f3f3df6b79e21f5ce6e4429d5da",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "shower_0",
+              "object_b_id": "cooker_2",
+              "is_facing": false,
+              "optimal_rotation_degrees": 180.0,
+              "current_rotation_degrees": -0.08620928309208477,
+              "message": "⚠️ shower is NOT facing away from cooker. To align perfectly, use move_furniture_tool('shower_0', rotation_yaw=180.0). Consider if this alignment is functionally desirable for this furniture type."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_022/checkpoint",
+        "manifest_sha256": "ee227422e9a34249d52f2ce944c3411133d8d1f5db10cc38fe617693c124e691",
+        "state_sha256": "dd94496d39dc83270f64d573f600e754b2d7da747f40f9c7a98bca4d1dcaad5c",
+        "step_idx": 23
+      },
+      "after_sha256": "9030af94cca48621e6b5947defde4ecd5eae3f3f3df6b79e21f5ce6e4429d5da"
+    },
+    {
+      "turn": 23,
+      "model": {
+        "started_at": "2026-11-05T13:04:46.883365+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "1cdbcbf96e69d6f75dd0463850015add9cb31b8a88bd8bb1f0d7594f3d4e00a1",
+        "plan_sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_023.topdown.png",
+              "sha256": "37d602dce5387b40cf2a1549413f9f3b15006f2cc7f1a08c538a9b226c00ac3f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_023.south.png",
+              "sha256": "cfb4ba70d82ffeb466e2f5a8c9cffe3dcc4716524c8f47d6fc2b2f4de38867eb",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_023.east.png",
+              "sha256": "4d54cd9032769f9f7acd5d3118ac2c2fb1b8d3e1652bfa859cf5571d4dc42269",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_023.west.png",
+              "sha256": "f4906c15dd3251fe2ca603e098368766d83a6a4b3ed160c602a482a90d1e937c",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_023.north.png",
+              "sha256": "a7e774ff7748d53ce4090f4b2d9c33e3f7f4afc3e1d650dd37334692b9803a1e",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 12220,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              12220
+            ],
+            "attention_mask": [
+              1,
+              12220
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "545b535c7ee66b3d6a4679f881b9f1a4ef4566a07aa3c9eee64d29cdef09138b",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "adapter": null,
+        "load_seconds": 4.934845395968296,
+        "generation_seconds": 6.860591826029122,
+        "output_tokens": 80,
+        "ended_with_eos": false,
+        "raw_output_sha256": "fa453331c2c19bdc37bf53abfa6c7d85eacc65cadbd472100b18901bd56a55af",
+        "peak_allocated_bytes": 20683129856,
+        "peak_reserved_bytes": 21470642176,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T13:05:02.137569+00:00",
+        "elapsed_seconds": 15.254221806069836
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "shower_0",
+            "x": -0.001279197954278867,
+            "y": 0.4997120130077778,
+            "yaw": 180
+          }
+        }
+      ],
+      "before_sha256": "9030af94cca48621e6b5947defde4ecd5eae3f3f3df6b79e21f5ce6e4429d5da",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved shower to new position and rotation",
+              "object_id": "shower_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/round_023/checkpoint",
+        "manifest_sha256": "47768db780ef87e1b655b9b7050decd2d441dbe013d013b39642025877468709",
+        "state_sha256": "c1e58689d9895f8719718257a3a29d14f3bdfe2f3ea715722ab32b140c16110e",
+        "step_idx": 24
+      },
+      "after_sha256": "54838ab0645f7e563db9b9ca604dfe82288db3a3034826a756e02bbfc3a91d37"
+    }
+  ],
+  "tool_calls": 24,
+  "model_calls": 24,
+  "training_updates": 0,
+  "whole_room_success": "not_evaluated",
+  "initial_gpu": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121,
+    "required_free_bytes": 23792148960
+  },
+  "initial_request_sha256": "e5661fa4a7bb7cee6fa8156273cf2a02ed3489cac52ef052b54c45cc82842022",
+  "stop_reason": "budget_exhausted",
+  "checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/base/rollout/final_checkpoint",
+    "manifest_sha256": "47768db780ef87e1b655b9b7050decd2d441dbe013d013b39642025877468709",
+    "state_sha256": "c1e58689d9895f8719718257a3a29d14f3bdfe2f3ea715722ab32b140c16110e",
+    "step_idx": 24
+  },
+  "ended_at": "2026-11-05T13:05:48.527133+00:00",
+  "prior_lineage_tool_calls": 0,
+  "cumulative_lineage_tool_calls": 24
+}

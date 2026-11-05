@@ -1,0 +1,28 @@
+{
+  "reviewed_at": "2026-11-05T13:56:28.617807+00:00",
+  "reviewer": "assistant_visual_review_not_independent_designer",
+  "all_five_views_inspected": true,
+  "view_paths": [
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/paired/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.topdown.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/paired/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.south.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/paired/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.east.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/paired/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.west.png",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/paired/rollout/house/room_whole_room_transfer_01/rollout_furniture/step_024.north.png"
+  ],
+  "observations": [
+    "Six furniture instances: bed, shower, cooker, bookshelf, storage bin and floor lamp.",
+    "Cooker contacts the bed corner; storage bin placed behind shower. Triangle audit identifies cooker/bed and shower/bin intersections.",
+    "Shower is outside the fixed southeast washroom; washroom contains no sanitary fixtures.",
+    "No dining table/chair, toilet, washbasin, kitchen sink, counter or refrigerator in final inventory.",
+    "North view is strongly wall-occluded; other views and native state retained."
+  ],
+  "fixed_proxy_failures": [
+    "Bath inside, bed right side, cooker front, shower front and storage bin front unreachable at all three widths.",
+    "Terrace inside and bookshelf front unreachable for 0.5/0.6m square-body scenarios; reachable at 0.4m."
+  ],
+  "limited_passes": [
+    "Immutable structures/openings unchanged; no furniture outside nominal interior.",
+    "Native fresh-process loading preserves IDs, asset bindings and all 24 receipts."
+  ],
+  "interpretation": "Necessary room functions are missing and measured intersections remain. No accepted whole room, professional preference or paired-learning benefit is established. Conditional proxy failure is not a proof about every possible human path."
+}
