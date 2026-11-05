@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-11-05T01:34:33.550287+00:00",
+  "status": "deferred_not_allocated_or_extracted",
+  "source": "Swiss Dwellings3.0.0",
+  "site_id": "127",
+  "reason": "Already-exposed source documentation site; use only for native import development.",
+  "rule": "After FAMILY-v2 completes, retain all sites in the geometry component containing site127 together as development. Among accepted representative-floor units in site127 choose numerically smallest building_id,plan_id,floor_id,unit_id. Other sites stay quarantined; no sealed test/training allocation.",
+  "required_before_extraction": [
+    "Completed successful FAMILY-v2 result and hashed group proposals",
+    "Explicit development allocation record with split_fixed_at preceding derivation",
+    "Exact full selected unit key present in locked fingerprint index"
+  ],
+  "future_output": "Original unit rows plus full-floor context, preserving source coordinates and unknowns; no model prompt/native scene/render/professional label.",
+  "extractor_sha256": "66574fb587858b69d48acf4152681b0e79dddb8c53648e1d50fcd883128dc280",
+  "source_debugging_sites_development_restricted": [
+    "278"
+  ],
+  "reason_for_debugging_restriction": "Source geometry from site278 was used to develop the MRR numerical correction; keep this site and any linked geometry family out of future sealed evaluation.",
+  "deferred_at": "2026-11-05T01:50:24.508925+00:00",
+  "reason_for_deferral": "User questioned value; complete corpus grouping is not a prerequisite for using established furnished-scene/instruction datasets. No source extraction or new audit launch."
+}

@@ -1,0 +1,69 @@
+{
+  "recorded_at": "2026-11-05T01:50:24.508925+00:00",
+  "trigger": "User asks what 20-minute cap does, whether top conferences already provide useful data, and whether this detour advances experiments.",
+  "observed_execution": {
+    "run_id": "P920-FAMILY-v2_20261105T012206Z",
+    "purpose": "cross-site source geometry leakage screening, not training or model inference",
+    "budget_seconds": 1200,
+    "budget_origin": "executor-selected finite CPU stage budget, not a paper requirement",
+    "actual_seconds": 1201.9598383349949,
+    "exit_code": 1,
+    "new_professional_decisions": 0,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "assessment": "Initial runtime and loader work provided necessary capabilities. Continuing Swiss whole-corpus deduplication before established-scene baselines has low immediate value for the paired professional-reason/action hypothesis and is deferred.",
+  "verified_sources": [
+    {
+      "name": "3D-FRONT",
+      "venue": "ICCV 2021",
+      "primary_url": "https://openaccess.thecvf.com/content/ICCV2021/papers/Fu_3D-FRONT_3D_Furnished_Rooms_With_layOuts_and_semaNTics_ICCV_2021_paper.pdf",
+      "abstract_url": "https://arxiv.org/abs/2011.09127",
+      "evidence": "18,968 furnished rooms; professionally sourced layouts with curated style-compatible assets.",
+      "role": "furnished-scene/action/layout baseline",
+      "limit": "No verified original occupant brief or per-decision designer rationale. Original project data and model licenses/download routes still require checking; no new files downloaded this turn."
+    },
+    {
+      "name": "InstructScene",
+      "venue": "ICLR 2024 Spotlight",
+      "primary_url": "https://chenguolin.github.io/projects/InstructScene/",
+      "dataset_url": "https://huggingface.co/datasets/chenguolin/InstructScene_dataset",
+      "evidence": "3D-FRONT scene-instruction pairs; spatial rules, BLIP captions and ChatGPT refinement.",
+      "role": "instruction-to-layout baseline and explicitly synthetic supervision",
+      "limit": "Instructions derived from scene relations are not original real-project reasons. Same source family as 3D-FRONT, not an independent corpus. Dataset card CC-BY-NC-SA-4.0; inherited asset conditions must remain visible."
+    },
+    {
+      "name": "HSSD",
+      "venue": "CVPR 2024",
+      "primary_url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Khanna_Habitat_Synthetic_Scenes_Dataset_HSSD-200_An_Analysis_of_3D_Scene_CVPR_2024_paper.pdf",
+      "project_url": "https://3dlg-hcvc.github.io/hssd/",
+      "evidence": "211 human-authored 3D scenes,18,656 object models; project page states CC-BY-NC4.0.",
+      "role": "first check for reusable furnished-room geometry using existing authorized asset path",
+      "limit": "Existing asset access does not establish full scenes locally imported or independent from base-model training. No original resident reasons or our-output expert approval established."
+    },
+    {
+      "name": "Scene-Designer",
+      "venue": "2026 preprint; conference acceptance not verified",
+      "primary_url": "https://github.com/ZJU-OmniAI/Scene-Designer",
+      "evidence": "Public resource table lists Scene-Builder SFT and Scene-OTC-Bench (94 pair comparisons,55 four-scene rankings). OTA35K/OTC15K are described; README release table alone is not evidence of downloadable full training data.",
+      "role": "existing tool/action format and separate critic evaluation",
+      "limit": "Official held-out benchmark must not enter training; critic evaluation does not replace whole-room construction evaluation."
+    },
+    {
+      "name": "RenoLayout",
+      "venue": "2026 preprint; conference acceptance not verified",
+      "primary_url": "https://arxiv.org/html/2610.21366v1",
+      "evidence": "Appendix A states proprietary training data cannot be released;200-case benchmark planned via OpenReview. Design points are inferred from before/after differences with VLM verification.",
+      "role": "closest before/after residential design method/reference; access remains unverified",
+      "limit": "Not an already downloaded public professional-decision training corpus; inferred design points are not original designer rationale."
+    }
+  ],
+  "decisions": [
+    "Defer Swiss full-corpus grouping and source extraction. Preserve v1/v2 failure and completed artifacts; no v3.",
+    "Prioritize actual availability of established furnished scenes and instruction data, then a fixed cross-room generation baseline with frozen project split and budget. Do not redownload assets already present.",
+    "Separate usable scene/action/instruction evidence from the extra same-project professional rationale needed to test the core hypothesis; missing the latter must not block every baseline.",
+    "Existing protocol allows sourced author explanations and explicitly reconstructed actions. Independent professional review is required for aesthetic/comfort/preference claims and final whole-room human evaluation, not automatically for every factual source record or engineering baseline.",
+    "Keep core paired-versus-separated professional-data hypothesis. Synthetic reasons may support a separately labelled baseline but cannot silently replace professional evidence. Training still needs separate authorization."
+  ],
+  "next_deliverable": "A directly loadable established-data room/scene manifest and a cross-room baseline protocol, plus explicit source-backed decision gaps; not another whole-corpus duplicate audit."
+}

@@ -91,19 +91,29 @@ def frame(areas):
         if not np.isfinite(shapely.get_coordinates(poly)).all() or poly.area <= 0:
             raise ValueError('Nonfinite or zero-area geometry')
     union = shapely.union_all([poly for _, poly in areas])
-    rectangle = union.minimum_rotated_rectangle
-    if rectangle.geom_type != 'Polygon' or not union.is_valid or union.area <= 0:
+    if not union.is_valid or union.area <= 0:
+        raise ValueError('Invalid unit union')
+    origin = (union.centroid.x, union.centroid.y)
+    centered = [(label, affinity.translate(poly, -origin[0], -origin[1]))
+                for label, poly in areas]
+    centered_union = affinity.translate(union, -origin[0], -origin[1])
+    # GEOS 3.13.1 returned a nearly collapsed, non-enclosing rectangle for one
+    # valid source unit in v1. Center before the operation, then verify the result.
+    rectangle = centered_union.minimum_rotated_rectangle
+    if (rectangle.geom_type != 'Polygon' or not rectangle.is_valid or rectangle.area <= 0
+            or not rectangle.buffer(1e-6).covers(centered_union)):
         raise ValueError('Invalid unit union or bounding rectangle')
     points = list(rectangle.exterior.coords)
+    if len(points) != 5:
+        raise ValueError('Unexpected bounding rectangle vertices')
+    edges = [math.dist(points[i], points[i+1]) for i in range(4)]
+    if any(not math.isfinite(edge) or edge <= 0 for edge in edges):
+        raise ValueError('Nonpositive or nonfinite bounding rectangle edge')
     dx, dy = points[1][0]-points[0][0], points[1][1]-points[0][1]
     angle = -math.degrees(math.atan2(dy, dx))
-    origin = (union.centroid.x, union.centroid.y)
-    normalized = []
-    for label, poly in areas:
-        rotated = affinity.rotate(poly, angle, origin=origin)
-        normalized.append((label, affinity.translate(rotated, -origin[0], -origin[1])))
+    normalized = [(label, affinity.rotate(poly, angle, origin=(0, 0)))
+                  for label, poly in centered]
     normalized_union = shapely.union_all([p for _, p in normalized])
-    edges = [math.dist(points[i], points[i+1]) for i in range(4)]
     return normalized, normalized_union, sorted(edges)[:1] + sorted(edges)[-1:]
 
 

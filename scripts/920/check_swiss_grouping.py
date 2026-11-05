@@ -1,9 +1,11 @@
 """Geometric falsification cases for leakage grouping; no corpus or model access."""
 import json
+import hashlib
 from pathlib import Path
 import sys
 
 from shapely import affinity
+import shapely
 from shapely.geometry import Polygon, box
 
 from group_swiss_geometry import compare_units, fingerprints, frame
@@ -69,9 +71,30 @@ def main():
         else:
             raise AssertionError('Invalid geometry accepted')
         checks.append(name+'_rejected')
+    source_case = None
+    if len(sys.argv) > 2:
+        case_path = Path(sys.argv[2])
+        case = json.loads(case_path.read_text())
+        actual = [(row['entity_subtype'], shapely.from_wkt(row['geometry']))
+                  for row in case['area_rows']]
+        source_union = shapely.union_all([poly for _, poly in actual])
+        normalized = feature(actual)
+        assert all(value > 0 for value in normalized['extents'])
+        assert abs(normalized['union'].area-source_union.area) < 1e-8
+        assert normalized['extents'][0]*normalized['extents'][1] >= source_union.area
+        translated = [(label, affinity.translate(poly, 231.25, -132.75)) for label, poly in actual]
+        moved = feature(translated)
+        assert fingerprints(normalized['areas'], .001) == fingerprints(moved['areas'], .001)
+        assert compare_units(normalized, moved, CRITERIA) is not None
+        checks.extend(['real_source_positive_extent_and_area_preserved',
+                       'real_source_translation_invariance'])
+        source_case = {'path': str(case_path),
+                       'sha256': hashlib.sha256(case_path.read_bytes()).hexdigest(),
+                       'unit_key': case['unit_key']}
     report = {'status': 'passed', 'checks': checks, 'count': len(checks),
               'criteria': CRITERIA, 'model_calls': 0, 'training_updates': 0,
-              'limits': 'Synthetic geometry checks; no corpus recall or physical-project identity established.'}
+              'source_case': source_case,
+              'limits': 'Synthetic geometry and optional source regression checks; no corpus recall or physical-project identity established.'}
     if len(sys.argv) > 1:
         with Path(sys.argv[1]).open('x') as stream:
             stream.write(json.dumps(report, indent=2)+'\n')
