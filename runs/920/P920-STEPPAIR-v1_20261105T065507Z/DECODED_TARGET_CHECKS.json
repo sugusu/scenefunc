@@ -1,0 +1,155 @@
+{
+  "checked_at": "2026-11-05T07:05:08.421630+00:00",
+  "checks": [
+    {
+      "arm": "paired",
+      "step": 1,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 1,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 2,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 2,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 3,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 3,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 4,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 4,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 5,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "paired",
+      "step": 5,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 1,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 1,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 2,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 2,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 3,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 3,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 4,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 4,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 5,
+      "component": "reason",
+      "decoded_target_matches_only_declared_component": true
+    },
+    {
+      "arm": "separate",
+      "step": 5,
+      "component": "action",
+      "decoded_target_matches_only_declared_component": true
+    }
+  ],
+  "targets": {
+    "paired": [
+      "<think>\n建筑师在小面积住宅中把储物与技术需求集中到长墙。本迁移只表达沿房间一侧集中保留柜体，为连续起居活动留出位置；先移动第一件柜体，实际通路和柜前接近仍须逐步检查。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_a_0\", \"x\": -2.7, \"y\": -1.85, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n将第二件柜体先移到过渡位置，随后再沿空出的路径移向同一侧。这是研究者构造的操作次序，不能保证搬运或人体操作可行。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -1.65, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n沿已声明的路径调整第二件柜体；保持其身份、尺寸和其他家具，下一步再完成侧边集中。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n将第二件柜体移入侧边排列位置，保留其原实例；完成后仍要核查柜前空间和其他活动路径。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.7, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n把第三件柜体放到同一侧，完成本次集中方案。不能预先断言整屋改善，须核实际空地、全部接近点、容量及尚未知的功能。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_c_0\", \"x\": -2.7, \"y\": -0.05, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    ],
+    "separate": [
+      "<think>\n建筑师在小面积住宅中把储物与技术需求集中到长墙。本迁移只表达沿房间一侧集中保留柜体，为连续起居活动留出位置；先移动第一件柜体，实际通路和柜前接近仍须逐步检查。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_a_0\", \"x\": -2.7, \"y\": -1.85, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n将第二件柜体先移到过渡位置，随后再沿空出的路径移向同一侧。这是研究者构造的操作次序，不能保证搬运或人体操作可行。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -1.65, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n沿已声明的路径调整第二件柜体；保持其身份、尺寸和其他家具，下一步再完成侧边集中。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n将第二件柜体移入侧边排列位置，保留其原实例；完成后仍要核查柜前空间和其他活动路径。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.7, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n",
+      "<think>\n把第三件柜体放到同一侧，完成本次集中方案。不能预先断言整屋改善，须核实际空地、全部接近点、容量及尚未知的功能。\n</think>",
+      "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_c_0\", \"x\": -2.7, \"y\": -0.05, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    ]
+  },
+  "all20_components_exact": true,
+  "input_or_tool_receipt_supervision_detected": false,
+  "step_components_are_not_independent_samples": true,
+  "method": "Decode actual target_ids emitted by official CLI. For explanations remove only think delimiters and whitespace; require exact supplied explanation. For actions parse exact tool_call followed only by assistant ending; require actual recorded command."
+}

@@ -62,6 +62,10 @@ def inspect_decision_batch(args, dataset, collator, processor):
         text = processor.tokenizer.decode(ids[attention.bool()], skip_special_tokens=False)
         rows.append({'decision_id': d['id'], 'component': 'reason' if index % 2 == 0 else 'action',
                      'input_tokens': int(attention.sum()), 'supervised_tokens': len(target),
+                     'active_input_sha256': _tensor_hash(ids[attention.bool()]),
+                     'attention_sha256': _tensor_hash(attention),
+                     'first_supervised_position': int(positions[0]),
+                     'last_supervised_position': int(positions[-1]),
                      'causal_shifted_targets': int((labels[1:] != -100).sum()),
                      'target_ids': target.tolist(), 'target_sha256': _tensor_hash(target),
                      'labels_sha256': _tensor_hash(labels),

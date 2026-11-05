@@ -1,0 +1,41 @@
+{
+  "run_id": "P920-STEPPAIR-v1_20261105T065507Z",
+  "frozen_at": "2026-11-05T06:55:07.114450+00:00",
+  "previous_goal_turn": "progress: STORAGE-v2 actual five-step conditional demonstration published 24a074787a3c03f95e98969b6c27638a8bda1e6d",
+  "question": "Do all five actual step states/views/previous receipts survive the official loader, and do identical truthful reason/action targets yield only reason-before-action conditioning differences?",
+  "budget": {
+    "total_cpu_seconds": 300,
+    "entry_seconds_each": 120,
+    "entry_invocations": 2,
+    "source_decisions": 1,
+    "dependent_steps": 5,
+    "examples_per_arm": 10,
+    "sequence_tokens": 16384,
+    "image_max_pixels": 65536,
+    "image_instances_per_arm": 50,
+    "unique_images": 25,
+    "model_calls": 0,
+    "training_updates": 0,
+    "new_native_actions": 0,
+    "downloads": 0
+  },
+  "source_role": "One prospectively allocated train-source candidate, audit only; no core training admission.",
+  "comparison": "For each step, both arms receive one identical observed state→reason example and one observed state→action example. Only paired action sequence contains the masked teacher-forced reason before the action. No wrong reasons.",
+  "input_handling": "Keep original OTA candidates immutable. Remove explicit source_principle input field from all derived components symmetrically; retain factual source-scope caveats and all current object/measurement/receipt inputs. This does not remove all source knowledge from separate action inputs.",
+  "attribution": "Step1 includes attributed source principle plus researcher translation; steps2–5 are researcher execution plans. Five dependent steps are one sourced decision, not five professional examples.",
+  "acceptance": [
+    "five exact current state/context/view bindings, actual call and previous receipt verified",
+    "all ten targets identical across arms; reasons supervised once each",
+    "five common reason inputs identical; five action inputs differ only by reason content",
+    "equal image tensors/order, target count, causal target count and padded shapes",
+    "no future evaluation metadata in inputs; no model/optimizer/Trainer/CUDA",
+    "actual patched official entry selects all five units in a ten-example batch"
+  ],
+  "limitations": [
+    "No action choice, new replay, training, model loss or independent test.",
+    "Equal padded tensor shapes do not prove FLOP/compute equality; report actual unpadded token differences.",
+    "State→reason is shared; this is a within-sequence reasoning/action link contrast, not all possible definitions of pairing.",
+    "One source family and fixed room, current geometry remains assumption-dependent."
+  ],
+  "stop": "Run each arm once. Preserve failures and all original inputs; do not silently enlarge sequence or runtime limits."
+}
