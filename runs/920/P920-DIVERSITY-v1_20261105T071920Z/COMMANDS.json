@@ -1,0 +1,29 @@
+{
+  "reproduce_scope_audit": [
+    "python3",
+    "scripts/920/audit_knowledge_scope.py",
+    "--plan",
+    "runs/920/P920-DIVERSITY-v1_20261105T071920Z/AUDIT_PLAN.json",
+    "--out",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DIVERSITY-v1_20261105T071920Z/audit"
+  ],
+  "working_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "supervisor": [
+    "python3",
+    "scripts/920/run_stage.py",
+    "--receipt-dir",
+    "<new-directory>",
+    "--timeout",
+    "30",
+    "--",
+    "python3",
+    "scripts/920/audit_knowledge_scope.py",
+    "--plan",
+    "runs/920/P920-DIVERSITY-v1_20261105T071920Z/AUDIT_PLAN.json",
+    "--out",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-DIVERSITY-v1_20261105T071920Z/audit"
+  ],
+  "restoration": "Use pinned full_runtime checkout already recorded by earlier environment run. Verify AUDIT_PLAN file hashes. Choose a fresh output and receipt directory; no weights or native engine initialization required.",
+  "source_review": "Primary URLs and readable locators in PRIMARY_SOURCE_AUDIT and NEW_KNOWLEDGE; raw web pages not archived or hashed.",
+  "candidate_export_scope": "Text-only knowledge explanation candidates; no actual loader test or training."
+}

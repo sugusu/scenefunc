@@ -1,17 +1,17 @@
 {
   "schema": "scenefunc-sourced-decision-maturity-v2",
-  "updated_at": "2026-11-05T07:06:21.804110+00:00",
+  "updated_at": "2026-11-05T07:33:49.430650+00:00",
   "purpose": "Separate supported professional knowledge from executable episode readiness without lowering evidence requirements.",
   "counts": {
-    "records_reviewed_here": 9,
-    "source_supported_knowledge": 9,
+    "records_reviewed_here": 11,
+    "source_supported_knowledge": 11,
     "partially_tool_expressible_candidates": 5,
-    "source_grounded_replayed_episodes": 6,
+    "source_grounded_replayed_episodes": 7,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
     "unique_source_decisions_with_replay": 4,
-    "conditional_objective_benefit_demonstrations": 2,
-    "prospectively_train_allocated_knowledge_records": 3
+    "conditional_objective_benefit_demonstrations": 3,
+    "prospectively_train_allocated_knowledge_records": 5
   },
   "records": [
     {
@@ -782,7 +782,195 @@
       "training_authorized": false,
       "training_eligible_scope": "Core training admission is distinct from knowledge usefulness and prospective family allocation.",
       "next_action": "Stop AIR pose search. Review candidate qualification, source reuse scope and cross-project evaluation separately; no automatic training admission."
+    },
+    {
+      "decision_id": "29sqm_allocate_vertical_clearance_by_activity",
+      "family_id": "wroclaw_29sqm_czerny_2012",
+      "allocation": "train_source_candidate",
+      "knowledge_category": "zoning",
+      "professional_evidence": {
+        "evidence_kind": "architect_supplied_project_statement",
+        "primary_crosscheck": {
+          "url": "https://www.archdaily.com/387467/29sqm-3xa",
+          "attribution": "Ewa Czerny; ArchDaily explicitly attributes the project description to the architects.",
+          "published_at": "2013-06-17",
+          "locator": "Architect-supplied project description: first paragraph and paragraph immediately before First Floor Plan; web extraction lines22,26.",
+          "checked_at": "2026-11-05T07:31:45.021253+00:00",
+          "full_page_cached": false,
+          "raw_page_sha256": null
+        },
+        "corroborating_project_index": {
+          "doi": "10.3390/buildings11120654",
+          "source_case_id": "M.S.7",
+          "fragment": {
+            "pdf_page": 17,
+            "char_start_in_sorted_page_text": 209,
+            "char_end_in_sorted_page_text": 945,
+            "source_references": [
+              39
+            ],
+            "local_fragment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CORPUS-v2_20261104T180559Z/index/source_fragments/M_S_7.txt",
+            "sha256": "6ea485dbd3e413ddc4069c56cde22a4981b502d8ef1674f5c2394b175019c3f5",
+            "role": "Published design description; not raw brief or action truth."
+          },
+          "scope": "Authored article CC BY4.0; third-party source text/images have separate rights."
+        },
+        "identity_caveat": "主来源报道29m²，既有论文索引28.8m²；不据此推断精确几何。当前标题作者Ewa Czerny，URL含3xa；保留别名，不登记成新项目。",
+        "raw_resident_brief_available": false,
+        "reuse_scope": "Brief attributed researcher paraphrase and provenance review; no original images copied. This does not establish permission for all downstream training/image reuse."
+      },
+      "condition_summary": "约29平方米住宅，希望增加可用空间并设置独立寝区；建筑师认为3.7米层高不足以安排两个等同楼层。",
+      "condition_origin": "retrospective architect account, not a raw resident brief",
+      "rationale_summary": "通过局部夹层与按活动分配净高，容纳寝区并保留下面的空间。",
+      "rationale_origin": "researcher paraphrase of cited architect explanation",
+      "decision_scope": {
+        "source_decision": "浴室和门厅上方设置半夹层床区，报道高度1.35米；衣柜上方通道报道高度1.85米。",
+        "unsupported_part": "这是建筑师对该项目的说明。高度不是通用安全或舒适标准；平面移动家具不等于复现夹层。"
+      },
+      "unknowns": [
+        "原始住户任务书、实测平面及历史初态未取得。",
+        "楼梯、承重、护栏、逃生及人体姿态未验证。",
+        "各层净高、构造厚度及尺寸扰动下的适用性未重建核验。"
+      ],
+      "tool_expression": {
+        "level": "knowledge_only_current_mechanism_unverified",
+        "full_source_decision_supported": false,
+        "executable_subdecision": null,
+        "qualification": "Current public furniture move fixes z=0. Planar access assumes one floor and a constant-height body. A wall-height setter does not establish a mezzanine, vertical route or posture-specific clearance.",
+        "audit": "runs/920/P920-DIVERSITY-v1_20261105T071920Z/TOOL_SCOPE_AUDIT.json"
+      },
+      "source_to_scene": {
+        "historical_action_sequence": null,
+        "reconstructed_action_sequence": null,
+        "initial_proxy_ids": [],
+        "decision_packet": null
+      },
+      "maturity": {
+        "source_supported_knowledge": true,
+        "source_to_native_objects_bound": false,
+        "source_grounded_action_replayed": false,
+        "whole_room_consequences_reviewed": false,
+        "independent_professional_preference_label": false,
+        "paired_episode_ready": false
+      },
+      "readiness_by_layer": {
+        "professional_knowledge": {
+          "supported": true,
+          "use": "Attributed knowledge/QA/retrieval candidate, no second-designer confirmation needed to recognize this statement."
+        },
+        "professional_evaluation": {
+          "available": false
+        },
+        "scene_action": {
+          "executed": false,
+          "tool_calls": 0
+        },
+        "professional_decision_pair": {
+          "executed": false,
+          "positive_demonstration": false
+        }
+      },
+      "split_fixed_at": "2026-11-05T07:19:20.055809+00:00",
+      "derived_knowledge_at": "2026-11-05T07:31:45.021253+00:00",
+      "training_eligible": false,
+      "training_authorized": false,
+      "training_eligible_scope": "Knowledge candidate is not core training admission; no actual loader or model run for this intake.",
+      "next_action": "只有当垂直支承面、楼梯/梯道与姿态净高能明确建模并验收，才选择可执行子决定。暂作带条件的知识解释或检索候选。"
+    },
+    {
+      "decision_id": "spectral_organize_lighting_by_activity_color_needs",
+      "family_id": "paris_appartement_spectral_betillon_dorval_bory_2013",
+      "allocation": "train_source_candidate",
+      "knowledge_category": "materials_lighting_atmosphere",
+      "professional_evidence": {
+        "evidence_kind": "architect_supplied_project_statement",
+        "primary_crosscheck": {
+          "url": "https://www.archdaily.com/369075/appartement-spectral-betillon-dorval-nil-bory",
+          "attribution": "BETILLON / DORVAL-BORY; ArchDaily explicitly attributes the project description to the architects.",
+          "published_at": "2013-05-07",
+          "locator": "Architect-supplied opening paragraph and final program-classification/light-divider paragraphs; web extraction lines20,43,45–46.",
+          "checked_at": "2026-11-05T07:31:45.021253+00:00",
+          "full_page_cached": false,
+          "raw_page_sha256": null
+        },
+        "corroborating_project_index": {
+          "doi": "10.3390/buildings11120654",
+          "source_case_id": "M.XS.5",
+          "fragment": {
+            "pdf_page": 19,
+            "char_start_in_sorted_page_text": 209,
+            "char_end_in_sorted_page_text": 1293,
+            "source_references": [
+              48
+            ],
+            "local_fragment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CORPUS-v2_20261104T180559Z/index/source_fragments/M_XS_5.txt",
+            "sha256": "a76ef5325785fd6af1a3c38a862794ada115de1b57774153ac48d16d73d57c52",
+            "role": "Published design description; not raw brief or action truth."
+          },
+          "scope": "Authored article CC BY4.0; third-party source text/images have separate rights."
+        },
+        "identity_caveat": "名称、设计者、巴黎、2013及20m²与既有索引相符；论文中的色温概述不能替代原作者的显色分类说明。",
+        "raw_resident_brief_available": false,
+        "reuse_scope": "Brief attributed researcher paraphrase and provenance review; no original images copied. This does not establish permission for all downstream training/image reuse."
+      },
+      "condition_summary": "约20平方米的巴黎住宅自然光不足，客户请建筑师重点处理人工照明。",
+      "condition_origin": "retrospective architect account, not a raw resident brief",
+      "rationale_summary": "建筑师按活动的辨色需求区分用途，再依据光分布组织空间。",
+      "rationale_origin": "researcher paraphrase of cited architect explanation",
+      "decision_scope": {
+        "source_decision": "厨房和起居侧采用高显色光源；床和淋浴侧采用单色光源；两米高分隔承载两组可独立开关的光源。",
+        "unsupported_part": "床和淋浴适合单色光是作者在本项目中的判断，不是普适建议。改变RGB颜色或色温不能充当显色/光谱机制的实证。"
+      },
+      "unknowns": [
+        "缺少本研究的光谱、照度、眩光和人体体验量测。",
+        "没有核实床或淋浴区在所有实际活动下都不需辨色。",
+        "原文关于瞳孔、夜视与大脑适应的广泛科学解释未核实，不作为科学真值监督。"
+      ],
+      "tool_expression": {
+        "level": "knowledge_only_current_mechanism_unverified",
+        "full_source_decision_supported": false,
+        "executable_subdecision": null,
+        "qualification": "Pinned public ceiling schemas place geometric assets without explicit SPD/CRI control. Existing room access is geometric. No accepted spectral/light-distribution outcome validation exists for this record; this is not an exhaustive claim that Blender or the whole framework can never express it.",
+        "audit": "runs/920/P920-DIVERSITY-v1_20261105T071920Z/TOOL_SCOPE_AUDIT.json"
+      },
+      "source_to_scene": {
+        "historical_action_sequence": null,
+        "reconstructed_action_sequence": null,
+        "initial_proxy_ids": [],
+        "decision_packet": null
+      },
+      "maturity": {
+        "source_supported_knowledge": true,
+        "source_to_native_objects_bound": false,
+        "source_grounded_action_replayed": false,
+        "whole_room_consequences_reviewed": false,
+        "independent_professional_preference_label": false,
+        "paired_episode_ready": false
+      },
+      "readiness_by_layer": {
+        "professional_knowledge": {
+          "supported": true,
+          "use": "Attributed knowledge/QA/retrieval candidate, no second-designer confirmation needed to recognize this statement."
+        },
+        "professional_evaluation": {
+          "available": false
+        },
+        "scene_action": {
+          "executed": false,
+          "tool_calls": 0
+        },
+        "professional_decision_pair": {
+          "executed": false,
+          "positive_demonstration": false
+        }
+      },
+      "split_fixed_at": "2026-11-05T07:19:20.055809+00:00",
+      "derived_knowledge_at": "2026-11-05T07:31:45.021253+00:00",
+      "training_eligible": false,
+      "training_authorized": false,
+      "training_eligible_scope": "Knowledge candidate is not core training admission; no actual loader or model run for this intake.",
+      "next_action": "先用于有归属的知识解释/检索；若进入动作层，须另行建立实际光源参数与辨色/空间分布的可复核验证，不能用柜子或橙色渲染代替。"
     }
   ],
-  "count_scope": "Nine knowledge records: six development and three prospective train-source records; no claim of nine qualified action pairs."
+  "count_scope": "Eleven knowledge records: six development and five prospective training-source records. Four source decisions have seven executed reconstruction variants. Multiple steps, QA formulations and revisions do not create independent professional decisions."
 }

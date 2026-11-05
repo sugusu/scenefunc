@@ -1,0 +1,204 @@
+{
+  "checked_at": "2026-11-05T07:31:45.126599+00:00",
+  "inputs": {
+    "knowledge": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DIVERSITY-v1_20261105T071920Z/NEW_KNOWLEDGE.json",
+      "sha256": "f15ae549555fcf1e63ce6e84282617ec4c6c9120d6340ae1a2561a03777fa6da"
+    },
+    "schemas": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/stage_schemas.py",
+      "sha256": "658516c442c70f8f9b26a0c3714ddc323893c7f55ee29ad4179db47524276ce1"
+    },
+    "furniture_tools": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/furniture_agents/tools/furniture_tools.py",
+      "sha256": "7f0c18655247048bb666f8ba91c9ddac81d7730f6b05c2883f90b1e809b4a7b7"
+    },
+    "planar_measurement": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/measure_room_access.py",
+      "sha256": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d"
+    },
+    "audit_script": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_knowledge_scope.py",
+      "sha256": "8a6034704ba51ee7a9f98bd334dc672bb75b0b3283b2576dc9c86d45d20a5345"
+    }
+  },
+  "parameters": {
+    "floor_plan": {
+      "generate_room_specs": [
+        "room_specs_json"
+      ],
+      "resize_room": [
+        "depth",
+        "room_id",
+        "width"
+      ],
+      "add_adjacency": [
+        "room_a",
+        "room_b"
+      ],
+      "remove_adjacency": [
+        "room_a",
+        "room_b"
+      ],
+      "add_open_connection": [
+        "room_a",
+        "room_b"
+      ],
+      "remove_open_connection": [
+        "room_a",
+        "room_b"
+      ],
+      "set_wall_height": [
+        "height_meters"
+      ],
+      "add_door": [
+        "height",
+        "position",
+        "wall_id",
+        "width"
+      ],
+      "remove_door": [
+        "door_id"
+      ],
+      "add_window": [
+        "height",
+        "position",
+        "sill_height",
+        "wall_id",
+        "width"
+      ],
+      "remove_window": [
+        "window_id"
+      ],
+      "get_material": [
+        "description"
+      ],
+      "set_room_materials": [
+        "floor_material_id",
+        "room_id",
+        "wall_material_id"
+      ],
+      "set_exterior_material": [
+        "material_id"
+      ],
+      "check_physics": []
+    },
+    "furniture": {
+      "generate_assets": [
+        "desired_dimensions",
+        "object_descriptions",
+        "short_names",
+        "style_context"
+      ],
+      "add_furniture_to_scene_tool": [
+        "asset_id",
+        "x",
+        "y",
+        "yaw"
+      ],
+      "snap_to_object_tool": [
+        "object_id",
+        "orientation",
+        "target_id"
+      ],
+      "move_furniture_tool": [
+        "object_id",
+        "x",
+        "y",
+        "yaw"
+      ],
+      "remove_furniture_tool": [
+        "object_id"
+      ],
+      "rescale_furniture_tool": [
+        "object_id",
+        "scale_factor"
+      ],
+      "check_physics": []
+    },
+    "wall": {
+      "generate_wall_assets": [
+        "desired_dimensions",
+        "object_descriptions",
+        "short_names",
+        "style_context"
+      ],
+      "place_wall_object": [
+        "asset_id",
+        "position_x",
+        "position_z",
+        "rotation_degrees",
+        "wall_surface_id"
+      ],
+      "move_wall_object": [
+        "object_id",
+        "position_x",
+        "position_z",
+        "rotation_degrees",
+        "wall_surface_id"
+      ],
+      "remove_wall_object": [
+        "object_id"
+      ],
+      "rescale_wall_object": [
+        "object_id",
+        "scale_factor"
+      ],
+      "check_physics": []
+    },
+    "ceiling": {
+      "generate_ceiling_assets": [
+        "desired_dimensions",
+        "object_descriptions",
+        "short_names",
+        "style_context"
+      ],
+      "place_ceiling_object": [
+        "asset_id",
+        "position_x",
+        "position_y",
+        "rotation_degrees"
+      ],
+      "move_ceiling_object": [
+        "object_id",
+        "position_x",
+        "position_y",
+        "rotation_degrees"
+      ],
+      "remove_ceiling_object": [
+        "object_id"
+      ],
+      "rescale_ceiling_object": [
+        "object_id",
+        "scale_factor"
+      ],
+      "check_physics": []
+    }
+  },
+  "move_wrapper": {
+    "line": 314,
+    "z_values": [
+      0.0
+    ]
+  },
+  "checks": {
+    "two_unique_source_decisions": true,
+    "two_unique_source_families": true,
+    "furniture_move_has_no_public_z": true,
+    "native_move_wrapper_forces_floor_z": true,
+    "no_explicit_spectral_parameters_in_inspected_schemas": true,
+    "sources_not_promoted_to_executed_pairs": true,
+    "training_remains_unadmitted": true,
+    "families_allocated_before_derivation": true
+  },
+  "scope": "Pinned public schemas and move wrapper only; no exhaustive engine capability claim.",
+  "manual_measurement_review": {
+    "file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/measure_room_access.py",
+    "function": "measure",
+    "basis": "2D X/Y meshgrid, four-neighbour BFS, approach_points_xy_m, constant assumed_body_height_m; elevated walking surfaces and posture transitions not modeled.",
+    "scope": "Source inspection only, no new numerical scene measurement."
+  },
+  "new_scene_actions": 0,
+  "model_calls": 0,
+  "training_updates": 0
+}

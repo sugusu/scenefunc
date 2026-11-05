@@ -209,3 +209,7 @@ Bukit交付追加：前后GLB各5,259,000B，34节点/10对象视觉全部回读
 2026-11-05T07:09:26.693296+00:00：实际CPU18.130885s/0，两CLI7.990832s/0与8.293124s/0；30源文件、6脚本、processor8文件及上游4源SHA验证；逐步state/context/五图/当前量测/上一回执逐项核。CLI完整批5units/10examples、472target ids相同；输入哈希/图像张量/因果目标数/填充mask与future sentinel通过。20实际target IDs解码精确匹配解释或记录调用。读取实际patched entry132–136在加载模型149之前return；无forward/Trainer/优化。未验真实loss、FLOP、MM位置模型兼容或学习效果。
 
 2026-11-05T07:11:55.918792+00:00：STEPPAIR发布前42文件/689080B、31JSON/6AST，30原输入/25图/6脚本/8processor/4上游文件SHA、33服务器文件682,994B、15派生episode副本、14实际CLI检查、20监督组件解码与凭据扫描通过；原STORAGE候选不变，无新增训练或模型调用。
+
+2026-11-05T07:14:11.614318+00:00：STEPPAIR发布32c6f93f38d76309dac1fb1134737e935f7c9c67，57提交blob920,827B核对；push4.081s/0、ls-remote2.978s/0完整SHA一致。归档patch六个空行context前缀触发git diff --check，逐行确认均为单个空格且执行SHA精确，保持原patch；排除该单一归档后其余提交diff检查0。未改实验/force；下一普通小时最早2026-11-05T08:12:31+00:00，发布后记账留本地。
+
+2026-11-05T07:37:04.292139+00:00：DIVERSITY两建筑师供稿页已实际读取；4不同primary URL/6open calls（含2复读）、2搜索，预算内；两论文片段SHA精确匹配。实际静态审计8/8、exit0。最终数据完整性首次14/15，AIR-v2当前账漏条件标志；按原SUMMARY的conditional_objective_pass补标且保留原专业偏好unknown，复核15/15。未运行native、model、loader或训练。
