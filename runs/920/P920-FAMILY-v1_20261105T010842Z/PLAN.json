@@ -1,0 +1,53 @@
+{
+  "run_id": "P920-FAMILY-v1_20261105T010842Z",
+  "frozen_at": "2026-11-05T01:08:42.699712+00:00",
+  "question": "Which Swiss residential sites contain equivalent or tightly matched room-area arrangements and should be kept together before deriving scenes or assigning splits?",
+  "archive": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/swiss_dwellings_3_0_0/swiss-dwellings-v3.0.0.zip",
+    "bytes": 931868205,
+    "sha256": "382e528fae3220b7747f4e6bc7d79261fee1b5d4d7902f18c548c0e6f22ef80a"
+  },
+  "plan_floor_index": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SINDEX-v2_20261105T003949Z/index/plan_floor_index.csv",
+    "bytes": 236544,
+    "sha256": "5014ce2f5138fc18a47b197ef754c46ef28577fc76c9318d565144616efe3202"
+  },
+  "geometry_member": "swiss-dwellings-v3.0.0/geometries.csv",
+  "script_sha256": "26b11f865f2696be873bec455bb5c00a06004da0e94b566c569a444af9b08a4a",
+  "geometry_checks": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FAMILY-v1_20261105T010842Z/GEOMETRY_CHECKS.json",
+    "bytes": 844,
+    "sha256": "b55063acb1414785146357e0e7ba81fd6c47ba8ef7c26ab5dd50417577cb5e04"
+  },
+  "selection": "All RESIDENTIAL unit area polygons on the numerically smallest floor_id of each source site/building/plan. Every site remains unallocated. No rendering, native room creation, source simulation values or inferred professional labels.",
+  "minimum_area_polygons": 2,
+  "fingerprint_grid_m": 0.001,
+  "near_criteria": {
+    "descriptor_log_radius": 0.04879016416943205,
+    "union_iou_min": 0.995,
+    "union_hausdorff_max_m": 0.02,
+    "matched_room_iou_min": 0.98,
+    "matched_room_hausdorff_max_m": 0.05
+  },
+  "budget": {
+    "seconds": 1200,
+    "max_rows": 4000000,
+    "max_units": 70000,
+    "max_uncompressed_bytes": 1288490188,
+    "max_candidate_pairs": 2000000,
+    "max_output_bytes": 104857600,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "limitations": [
+    "Only area polygon arrangements, not doors/windows/fixtures or vertical dimensions.",
+    "Geometric similarity proposes conservative leakage grouping; not physical-project identity or proof of statistical independence.",
+    "Nominal source plan IDs choose one floor; within-plan geometry variation on unselected floors not audited.",
+    "Near retrieval requires equal area-polygon count and four size descriptors within five percent; different subdivisions and larger edits can be missed.",
+    "Rotated bounding rectangle alignment can be unstable under some perturbations; no exhaustive near-duplicate recall guarantee.",
+    "Invalid/degenerate/single-area units are excluded from shape matching and remain unresolved.",
+    "Mirror and rotation matches concern split leakage; original north/daylight orientation must remain intact for later scene inputs.",
+    "Transitive geometry groups may overgroup unrelated projects; do not treat their size as number of original design families.",
+    "No automatic train/dev/test allocation; source example site127 stays development-restricted."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-11-05T01:18:02.655920+00:00",
+  "ended_at": "2026-11-05T01:18:28.167514+00:00",
+  "elapsed_seconds": 25.511615427967627,
+  "exit_code": 0,
+  "rows_scanned": 3255905,
+  "unit_key": [
+    "278",
+    "508",
+    "1344",
+    "2015",
+    "8071"
+  ],
+  "shapely": "2.1.2",
+  "geos": "3.13.1",
+  "all_area_polygons_valid": true,
+  "union_valid": true,
+  "union_area_m2": 32.67162919295141,
+  "raw_rectangle": {
+    "wkt": "POLYGON ((1.6565837958037117 -2.338038978372029, 3.3309220314801156 -2.771052288277364, 3.3309220314801156 -2.771052288277364, 1.6565837958037122 -2.3380389783720283, 1.6565837958037117 -2.338038978372029))",
+    "area": 4.847263279440151e-16,
+    "valid": true,
+    "covers_union_with_1um_tolerance": false
+  },
+  "centered_rectangle": {
+    "wkt": "POLYGON ((3.5750666173776016 -2.95975824805862, -4.694701364506477 -0.8210508294000689, -3.7121667114762222 2.978128779663796, 4.557601270407856 0.8394213610052448, 3.5750666173776016 -2.95975824805862))",
+    "area": 33.519688039988125,
+    "valid": true,
+    "covers_union_with_1um_tolerance": true
+  },
+  "source_unit_record": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FAMILY-v1_20261105T010842Z/MRR_FAILURE_DIAGNOSIS.json",
+    "sha256": "9570c034ad0d5f4a19792d6cec23663725980b99ac5250048ff8ad0ca8d4eecd"
+  },
+  "interpretation": "Observed in this fixed Shapely/GEOS runtime: original valid positive-area union yielded a non-enclosing, nearly collapsed oriented rectangle. Translating the same union to its centroid before the call yields a covering rectangle. This is not proof of an invalid source apartment.",
+  "grouping_complete": false,
+  "next": "New v2 should center before computing the rectangle, verify coverage/positive extents, and preserve v1. Do not discard the apartment as invalid solely because of the library result."
+}

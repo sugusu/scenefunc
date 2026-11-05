@@ -1,0 +1,88 @@
+{
+  "recorded_at": "2026-11-05T01:12:45.175452+00:00",
+  "status": "implementation_contract_not_completed_import",
+  "source": "Swiss Dwellings 3.0.0",
+  "source_metadata_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/swiss_dwellings_3_0_0/zenodo_metadata.json",
+  "source_metadata_sha256": "ec09cdcbdb59d81f0ab3f0ef3e8cc2944f2ff1278477c534ac67f02cba5469fd",
+  "source_units": "metres, site-local +Y north/+X east; object elevation relative to building terrain baseline",
+  "source_identity": "Use site/building/plan/floor/unit/area and source row identity. apartment_id is only site-unique; a repeated bare ID is not physical project identity.",
+  "split_prerequisite": "Keep all current sites quarantined. Review FAMILY proposals and unresolved coverage; fix any development selection and all linked sites before deriving scenes or views. No sealed split is automatically created.",
+  "runtime_source_evidence": [
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/agent_utils/house.py",
+      "sha256": "b092c37920feb072a728559564dab25afeac62c6bde60c691eb3ccd920318725"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith/scenesmith/furniture_agents/tools/furniture_tools.py",
+      "sha256": "7f0c18655247048bb666f8ba91c9ddac81d7730f6b05c2883f90b1e809b4a7b7"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_project_session.py",
+      "sha256": "1cc129ad95718460d9f919989f0fee4722c289c004e3bdfa06dbc229a50fdcbf"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/native_project.py",
+      "sha256": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19"
+    }
+  ],
+  "native_capabilities_observed": [
+    {
+      "source": "scenesmith/agent_utils/house.py:617",
+      "fact": "RoomGeometry holds arbitrary wall SceneObject list, optional floor object and SDF tree; dimensions also present."
+    },
+    {
+      "source": "scenesmith/agent_utils/house.py:490",
+      "fact": "PlacedRoom documentation assumes four cardinal walls and rectangular width/depth; RoomSpec is rectangular metadata."
+    },
+    {
+      "source": "scenesmith/furniture_agents/tools/furniture_tools.py:121",
+      "fact": "_check_floor_bounds tests only object center against [-length/2,length/2] x [-width/2,width/2]; it does not inspect a source floor polygon or furniture footprint."
+    },
+    {
+      "source": "scripts/920/catalog_project_session.py:52",
+      "fact": "Existing summary enumerates actual wall IDs/bounds and openings; it does not infer enclosure, but does not expose a floor polygon."
+    }
+  ],
+  "mapping_requirements": [
+    {
+      "source_entity": "area",
+      "destination": "Immutable native floor geometry plus exact source area partition metadata",
+      "required_checks": "Preserve holes, disconnected pieces and area boundaries. Round-trip projected union/area/coordinates against original source; do not replace geometry by a rectangle. Declare elevation and default-height provenance."
+    },
+    {
+      "source_entity": "separator",
+      "destination": "Immutable source-bound wall/column/railing meshes and SDF references",
+      "required_checks": "Retain polygon footprint, source elevation/height and type. Do not infer missing construction details or treat railing as full-height wall."
+    },
+    {
+      "source_entity": "opening",
+      "destination": "Source-bound door/window/opening geometry and explicit clearance metadata",
+      "required_checks": "Preserve placement, width, height and elevation; clip wall volumes correctly. Door swing, handing and actuation remain unknown unless sourced; axis-aligned enums must not silently rotate slanted openings."
+    },
+    {
+      "source_entity": "feature",
+      "destination": "Named source-bound fixed feature or explicitly marked visual proxy",
+      "required_checks": "Keep asset/category correspondence and dimensions distinct. A sink or kitchen footprint is not evidence of plumbing, operability or capacity."
+    },
+    {
+      "source_entity": "coordinate_frame",
+      "destination": "Explicit invertible source-to-native rigid transform",
+      "required_checks": "Keep source north/east and original scale. Geometry-fingerprint rotation/mirroring is for grouping only and must never overwrite scene orientation."
+    },
+    {
+      "source_entity": "task",
+      "destination": "Original request=null when absent; researcher-authored assumptions and activities listed separately",
+      "required_checks": "Do not call synthesized occupant requirements source facts. No designer after-the-fact explanation or solution coordinates in runtime demand card."
+    }
+  ],
+  "before_model_inference": [
+    "Validate full object footprint containment against allowed floor polygons and holes; rectangular center-point acceptance is insufficient.",
+    "Validate source wall/opening geometry, immutable identities and truthful summary; preserve unsupported constructs as unknown or refuse import.",
+    "Verify actual native serialization/cold restore and five-view visibility for slanted/concave walls; previous rectangular render checks do not cover these shapes.",
+    "Freeze a fresh finite run and input versions; do not reuse completed Geneva/Paris budgets."
+  ],
+  "original_resident_brief_available": false,
+  "professional_decision_labels_available": false,
+  "native_import_completed": false,
+  "training_authorized": false
+}
