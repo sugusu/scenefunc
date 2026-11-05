@@ -1,0 +1,68 @@
+{
+  "recorded_at": "2026-11-05T05:08:56.373003+00:00",
+  "status": "released_professional_review_samples_inspected",
+  "source_commit": "c5ddb661623601653b85476a0457abc1f792e35d",
+  "archive": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ARCHI-v1_20261105T050506Z/ArchiMetricsNet-Mini.zip",
+    "bytes": 459208,
+    "sha256": "446bb63cab092b076080c25d7c68520987e283a3b1edec899ee41d1842479c44",
+    "git_blob_sha1": "53c73fee6916a8d722100bdaecd3561ebe44e8f4"
+  },
+  "zip_entries": 662,
+  "payload_files": 496,
+  "uncompressed_bytes": 405649,
+  "complete_image_score_text_triples": 165,
+  "categories": 165,
+  "unique_image_hashes": 165,
+  "unique_record_ids": 165,
+  "unique_analysis_hashes": 165,
+  "image_shapes": {
+    "[256, 256] RGBA": 165
+  },
+  "score_ranges": {
+    "Flow": {
+      "minimum": 1.0,
+      "maximum": 8.0,
+      "distinct": 8
+    },
+    "Functionality": {
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "distinct": 9
+    },
+    "Overall": {
+      "minimum": 1.0,
+      "maximum": 8.0,
+      "distinct": 8
+    }
+  },
+  "filename_exceptions": [
+    {
+      "csv": "ArchiMetricsNet/1_living_room_4_bedroom_1_kitchen/10733_analysis.csv",
+      "image": "10733.png",
+      "text": "10733.txt",
+      "rule": "Explicit common numeric ID within same category; filenames retained."
+    }
+  ],
+  "score_normalization_discrepancy": "Released CSV stores raw values on 1..10; paper Appendix A mentions normalization to 0..1. Preserve raw values and declare any later transform.",
+  "paper_report": {
+    "section": "3.1 and Appendix A",
+    "unaugmented_ratings_and_analyses": 24000,
+    "augmented_rating_pairs": 120000,
+    "annotators": 25,
+    "quality_checkers": 4,
+    "ratings_per_image": 5,
+    "source": "https://aclanthology.org/2025.acl-long.331.pdf",
+    "scope": "Author-reported full-dataset method; do not equate this Mini with the entire dataset or individually verified annotation history."
+  },
+  "available_supervision": "Published-plan review: functionality, flow, overall scores and short analyses. No same-project 3D edit targets or critiques of our generated rooms.",
+  "permission_scope": "No license found in complete fixed repository tree or archive member names; no public payload redistribution or training admission in this intake.",
+  "counts_not_conflated": {
+    "our_candidates_professionally_reviewed": 0,
+    "independent_source_projects_verified": 0,
+    "native_scene_action_pairs": 0,
+    "training_admitted": 0
+  },
+  "server_record_index": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ARCHI-v1_20261105T050506Z/RECORD_INDEX.json",
+  "next_step": "Build a bounded source-review calibration set with original category/provenance and inspect case-to-critique alignment. Keep this entire Mini in development; no training or sealed-test claim."
+}

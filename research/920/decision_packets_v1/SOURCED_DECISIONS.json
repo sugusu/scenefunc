@@ -1,16 +1,16 @@
 {
   "schema": "scenefunc-sourced-decision-maturity-v2",
-  "updated_at": "2026-11-05T04:42:30.460562+00:00",
+  "updated_at": "2026-11-05T05:06:31.474031+00:00",
   "purpose": "Separate supported professional knowledge from executable episode readiness without lowering evidence requirements.",
   "counts": {
     "records_reviewed_here": 9,
     "source_supported_knowledge": 9,
     "partially_tool_expressible_candidates": 4,
-    "source_grounded_replayed_episodes": 4,
+    "source_grounded_replayed_episodes": 5,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
     "unique_source_decisions_with_replay": 3,
-    "conditional_objective_benefit_demonstrations": 1,
+    "conditional_objective_benefit_demonstrations": 2,
     "prospectively_train_allocated_knowledge_records": 3
   },
   "records": [
@@ -722,7 +722,9 @@
           "open_clothes_rail_0"
         ],
         "decision_packet": "runs/920/P920-AIR-v1_20261105T042212Z/DECISION_PACKET.json",
-        "geometry_provenance": "6x5x2.6m counterfactual with 14 fixture/furniture visuals, two mesh assets, twelve static proxies, bathroom partitions, declared openings. Not source surveyed plan or historical before-state."
+        "geometry_provenance": "6x5x2.6m counterfactual with 14 fixture/furniture visuals, two mesh assets, twelve static proxies, bathroom partitions, declared openings. Not source surveyed plan or historical before-state.",
+        "revision_action": "runs/920/P920-AIR-v2_20261105T045637Z/STEP.json",
+        "revision_decision_packet": "runs/920/P920-AIR-v2_20261105T045637Z/DECISION_PACKET.json"
       },
       "maturity": {
         "source_supported_knowledge": true,
@@ -731,7 +733,7 @@
         "whole_room_consequences_reviewed": true,
         "independent_professional_preference_label": false,
         "paired_episode_ready": false,
-        "consequences_scope": "Declared whole-room geometric access only; mixed outcome, no professional preference.",
+        "consequences_scope": "V1 mixed loss preserved. V2 one conditional correction restores all seven fixed points at three widths, retains one rail side, loses opposite-side access. No professional preference.",
         "objective_review_exported": true
       },
       "readiness_by_layer": {
@@ -744,13 +746,15 @@
         },
         "scene_action": {
           "executed": true,
-          "tool_calls": 1
+          "tool_calls": 2
         },
         "professional_decision_pair": {
           "executed": true,
           "positive_demonstration": false,
-          "outcome": "mixed: hanging substitute present, dining route losses remain",
-          "core_training_ready": false
+          "outcome": "v1 mixed; v2 conditional objective repair with side-access tradeoff",
+          "core_training_ready": false,
+          "conditional_objective_benefit": true,
+          "corrective_OTA_candidate": "runs/920/P920-AIR-v2_20261105T045637Z/OTA_CORRECTION_CANDIDATE.json"
         }
       },
       "split_fixed_at": "2026-11-05T04:00:13.748299+00:00",
@@ -758,7 +762,7 @@
       "training_eligible": false,
       "training_authorized": false,
       "training_eligible_scope": "Core training admission is distinct from knowledge usefulness and prospective family allocation.",
-      "next_action": "Use source-fixed geometric diagnosis for at most one separately frozen corrective task; preserve this failure and do not claim repeated reconstruction is an independent project or controlled method gain."
+      "next_action": "Stop AIR pose search. Review candidate qualification, source reuse scope and cross-project evaluation separately; no automatic training admission."
     }
   ],
   "count_scope": "Nine knowledge records: six development and three prospective train-source records; no claim of nine qualified action pairs."
