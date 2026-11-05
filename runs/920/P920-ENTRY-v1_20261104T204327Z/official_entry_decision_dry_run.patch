@@ -1,0 +1,54 @@
+--- a/src/train_sft.py
++++ b/src/train_sft.py
+@@ -93,11 +93,18 @@
+     ap.add_argument("--use-cpu", action="store_true")
+     ap.add_argument("--dataloader-workers", type=int, default=2)
+     ap.add_argument("--report-to", default="none", choices=["none", "tensorboard"])
++    ap.add_argument("--decision-manifest", default=None,
++                    help="Locked audit-only paired/separate decision manifest")
++    ap.add_argument("--decision-arm", choices=["paired", "separate"], default=None)
++    ap.add_argument("--decision-audit-report", default=None)
+     return ap.parse_args()
+ 
+ 
+ def main() -> None:
+     args = parse_args()
++    # Validate before creating output directories or loading the processor/model.
++    from decision_entry_audit import validate_decision_args
++    validate_decision_args(args)
+ 
+     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
+ 
+@@ -107,17 +114,26 @@
+     configure_image_budget(processor, args.max_pixels)
+ 
+     print(f"[init] discovering samples under {args.sft_root}")
+-    dataset = StepwiseSFTDataset(
+-        sft_root=Path(args.sft_root),
+-        repo_root=Path(args.repo_root),
+-        processor=processor,
+-        max_length=args.max_length,
+-    )
++    if args.decision_manifest:
++        import sft_dataset as upstream
++        from decision_entry_audit import build_decision_data
++        dataset, decision_collator = build_decision_data(args, processor, upstream)
++    else:
++        dataset = StepwiseSFTDataset(
++            sft_root=Path(args.sft_root),
++            repo_root=Path(args.repo_root),
++            processor=processor,
++            max_length=args.max_length,
++        )
+     print(f"[init] {len(dataset)} step samples loaded")
+     if len(dataset) == 0:
+         sys.exit("no samples — check --sft-root")
+ 
+     if args.dry_run:
++        if args.decision_manifest:
++            from decision_entry_audit import inspect_decision_batch
++            inspect_decision_batch(args, dataset, decision_collator, processor)
++            return
+         print("\n[dry-run] inspecting one example...")
+         ex = dataset[0]
+         for k, v in ex.items():

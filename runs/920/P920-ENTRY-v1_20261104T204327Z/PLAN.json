@@ -1,0 +1,83 @@
+{
+  "run_id": "P920-ENTRY-v1_20261104T204327Z",
+  "frozen_at": "2026-11-04T20:43:27.773008+00:00",
+  "question": "Does the patched pinned official SFT CLI select and collate matched paired/separate decision units while refusing audit-only training before loading any model?",
+  "repo": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "input_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920",
+  "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+  "source_revision": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "source_sha256": {
+    "src/train_sft.py": "e78178d624d430ea492934f3579329f22451f30dc357d3638b85512db018f32d",
+    "src/sft_dataset.py": "9e4d18f67e746af16f830d7e8d0da714964a43bfa320ef091a0092b3e9bb2569",
+    "src/memory.py": "553ec3c6624659bee3b2dfc77d3aa9f20cc92de7740a3e7eaedee3ceccb03d36",
+    "src/scene_observation.py": "1a27dd84bdf25ba771c64f59eacc165fd3e5b8365bc5ba08c1c2856cd51734f3"
+  },
+  "patch": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENTRY-v1_20261104T204327Z/official_entry_decision_dry_run.patch",
+  "patch_sha256": "0d282aee32bc5a46854625eb3abac5c5b24463f4d4d44a94606ec5b3e7426aaa",
+  "patched_entry_sha256": "f45d825a1d781688739cbe49123f903af19401ef6b16bc74c8d8109e591fadd1",
+  "code_sha256": {
+    "decision_pairing.py": "f6481d14371b6e94161bcca4e22ba9b15afae775106ea5485f5ab57cd286b734",
+    "decision_entry_audit.py": "7705f0fd4a63b9074d6db76cccec2c1fda4cb34009e77bbef9aece0a5722fb36",
+    "audit_official_decision_entry.py": "10852648fd573b08673967b11a09f98d70ac227e375213448dd9954f32b37103",
+    "run_stage.py": "d3bb72feb8a7040c16e269d4de7187cabedc64e5d7ee750e796eabdb5fdb5d65"
+  },
+  "manifest": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PAIR-v1_20261104T174408Z/audit/MANIFEST.json",
+  "manifest_sha256": "78ff43d7320e84764b9e76646f379984dd23998e2c18554057b62130ad1f2bd9",
+  "legacy_fixture_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PAIR-v1_20261104T174408Z/audit/fixtures/paired",
+  "model": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "model_revision": "63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "processor_files": [
+    {
+      "path": "chat_template.json",
+      "sha256": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce"
+    },
+    {
+      "path": "config.json",
+      "sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661"
+    },
+    {
+      "path": "generation_config.json",
+      "sha256": "8469742d1fce0de951c8909b26a2c0c0d8490837ce476efb114da9e0cefc4d44"
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "sha256": "dd08ff0fbf2bed6ef1827ef909e3e9057d6d75c4be0fac1273abb880d456b9ab"
+    },
+    {
+      "path": "preprocessor_config.json",
+      "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+    },
+    {
+      "path": "tokenizer.json",
+      "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "sha256": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399"
+    },
+    {
+      "path": "video_preprocessor_config.json",
+      "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+    }
+  ],
+  "python": "/data/wyh/conda/envs/c15_genrec/bin/python",
+  "budget": {
+    "wall_seconds": 600,
+    "stages": 5,
+    "child_seconds": 120,
+    "cpu_cores": 4,
+    "model_weight_loads": 0,
+    "model_calls": 0,
+    "optimizer_updates": 0,
+    "gpu_seconds": 0,
+    "output_max_bytes": 20971520
+  },
+  "stages": [
+    "paired dry-run",
+    "separate dry-run",
+    "legacy dry-run",
+    "missing dry-run rejection",
+    "arm without manifest rejection"
+  ],
+  "scope": "Engineering fixture only, no new scene, model weights, training or professional sample. Validate CLI/dataset/collator; no Trainer/model loss/FLOP claim."
+}
