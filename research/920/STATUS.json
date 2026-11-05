@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T10:20:04.637951+00:00",
+  "updated_at": "2026-11-05T10:38:21.983478+00:00",
   "goal_status": "active",
   "goal_objective_sync": "synchronized_active",
   "research_complete": false,
@@ -15,16 +15,20 @@
     "independent_whole_room_evaluation",
     "paper_and_reproducibility_package"
   ],
-  "training_authorized": false,
+  "training_authorized": true,
   "training_requires_separate_approval": true,
   "latest_completed_experiment": "P920-PILOTPLAN-v1_20261105T094043Z",
-  "current_run_id": "P920-PILOTPLAN-v1_20261105T094043Z",
-  "current_run_role": "Authorized four-update pilot terminated on first CUDA OOM; zero optimizer updates.",
+  "current_run_id": "P920-OFFLOAD-v1_20261105T102528Z",
+  "current_run_role": "Explicitly authorized revised four-update mechanism pilot now running.",
   "new_model_calls_this_turn": 0,
-  "running_model_process": null,
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PILOTPLAN-v1_20261105T094043Z/TRAINING_RESULT.json",
-  "next_step": "Preserve failed attempt; inspect activation-memory options without changing frozen files or restarting training. Any new execution requires a concrete revised budget and separate authorization per the approved stop rule.",
-  "publication": "Blocking-error milestone ready for push; includes queued DLUGI knowledge and EVALTASK drafts.",
+  "running_model_process": {
+    "outer_pid": 1265279,
+    "session_id": 10407,
+    "started_at": "2026-11-05T10:35:23.143749+00:00"
+  },
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/FIRST_BACKWARD.json",
+  "next_step": "Finish same batch, inspect actual results; do not restart on observation timeout.",
+  "publication": "First real backward milestone ready for push; trial remains running.",
   "scheduled_automation_created": false,
   "continuation_mechanism": "active thread Goal and repository handoff",
   "supporting_tool_diagnostic": {
@@ -767,7 +771,7 @@
     "value": 12,
     "scope": "Historical source audit count; current allocations are in registered_family_allocations."
   },
-  "publication_evidence": "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/publication_ed9eafac5f7264c4fbadd0855212235d2fc2e456/PUBLICATION.json",
+  "publication_evidence": "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/publication_94dc3b585a8e47bc2b1a7dde4bd5f86ffd234998/PUBLICATION.json",
   "fixed_base_activity_knowledge_baseline": {
     "run_id": "P920-MODEBASE-v1_20261105T082851Z",
     "cases": 4,
@@ -835,7 +839,7 @@
     "native_scenes": 0,
     "ready_formal_tests": 0
   },
-  "training_authorization_scope": "Exact PLAN_V2 attempt was explicitly approved and is now terminated; no changed-plan retry or further updates authorized.",
+  "training_authorization_scope": "Exact OFFLOAD PLAN b76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835: four updates, first-error stop.",
   "decision_pilot_execution": {
     "run_id": "P920-PILOTPLAN-v1_20261105T094043Z",
     "status": "failed_oom_before_first_optimizer_update",
@@ -883,5 +887,20 @@
     "batch_counter_note": "BATCH.json completed_arms=1 counts one terminated attempt, not one successful arm.",
     "interpretation": "The authorized BF16/SDPA configuration reaches real backward but fails before an optimizer update on GPU0. No paired/separate learning comparison, saved adapter or design/generalization result exists.",
     "next_step": "Preserve failed attempt; inspect activation-memory options without changing frozen files or restarting training. Any new execution requires a concrete revised budget and separate authorization per the approved stop rule."
+  },
+  "checkpoint_input_offload_preparation": {
+    "run_id": "P920-OFFLOAD-v1_20261105T102528Z",
+    "plan_sha256": "b76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835",
+    "cpu_cases": 2,
+    "cpu_backwards": 4,
+    "optimizer_updates": 0,
+    "real_gpu_verified": false,
+    "approved": true
+  },
+  "checkpoint_input_offload_execution": {
+    "status": "running",
+    "first_backward_verified": true,
+    "first_snapshot": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/FIRST_BACKWARD.json",
+    "optimizer_updates_snapshot": 0
   }
 }

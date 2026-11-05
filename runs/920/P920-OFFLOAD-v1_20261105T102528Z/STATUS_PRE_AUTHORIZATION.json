@@ -1,0 +1,84 @@
+{
+  "run_id": "P920-OFFLOAD-v1_20261105T102528Z",
+  "question": "Can checkpoint-input CPU storage preserve the matched objective and permit a later authorized four-update pilot?",
+  "status": "prepared_for_separate_authorization",
+  "updated_at": "2026-11-05T10:33:26.070218+00:00",
+  "completed_planned": {
+    "cpu_backward_checks": 4,
+    "planned_cpu_backward_checks": 4,
+    "approval_gate_checks": 2,
+    "planned_gate_checks": 2,
+    "authorized_training_updates": 0
+  },
+  "configuration_hashes": {
+    "plan": "b76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835",
+    "cpu_protocol": "777640e3f9789426665af9cee3fb59bb53db5e1f1fd601afdb4d404f6fe06610",
+    "cpu_check": "3440df6e8d3948a3b96f2acb5e93e0e9714aa92caa695aa260ac80f6935690d6"
+  },
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/RESULT.json",
+  "actual_execution_receipts": {
+    "cpu_check": {
+      "started_at": "2026-11-05T10:25:48.149100+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/check_checkpoint_input_offload.py",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/CPU_CHECK.json"
+      ],
+      "timeout_seconds": 180,
+      "pid": 6,
+      "start_ticks": "53219673",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-OFFLOAD-v1_20261105T102528Z/cpu_check/stage.log",
+      "ended_at": "2026-11-05T10:25:53.483538+00:00",
+      "elapsed_seconds": 5.334461970021948,
+      "exit_code": 0,
+      "first_log": "2026-11-05T10:25:51.783509+00:00 CPU random-model offload equivalence; no optimizer"
+    },
+    "reject_old_approval": {
+      "started_at": "2026-11-05T10:28:17.529430+00:00",
+      "status": "failed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/run_decision_offload_batch.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/PLAN.json",
+        "--approval",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PILOTPLAN-v1_20261105T094043Z/USER_APPROVAL.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "53234611",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-OFFLOAD-v1_20261105T102528Z/reject_old_approval/stage.log",
+      "ended_at": "2026-11-05T10:28:22.110603+00:00",
+      "elapsed_seconds": 4.581191037083045,
+      "exit_code": 1,
+      "first_log": "Traceback (most recent call last):"
+    },
+    "reject_false_approval": {
+      "started_at": "2026-11-05T10:28:17.559733+00:00",
+      "status": "failed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/run_decision_offload_batch.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/PLAN.json",
+        "--approval",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/APPROVAL_TEMPLATE.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "53234614",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-OFFLOAD-v1_20261105T102528Z/reject_false_approval/stage.log",
+      "ended_at": "2026-11-05T10:28:22.040195+00:00",
+      "elapsed_seconds": 4.480485068052076,
+      "exit_code": 1,
+      "first_log": "Traceback (most recent call last):"
+    }
+  },
+  "failure_reason": null,
+  "unverified": "Real GPU transfer/memory fit/time and adapter checkpoint are not verified.",
+  "next_step": "Await explicit answer for exact PLAN.json; continue independent task work, no real model load or training while pending.",
+  "approval_request_submitted": true,
+  "approval_received": false
+}

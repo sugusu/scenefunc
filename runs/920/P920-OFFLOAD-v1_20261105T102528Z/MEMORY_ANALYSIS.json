@@ -1,0 +1,177 @@
+{
+  "scope": "Static checkpoint/config inspection and local implementation reading, not a new GPU profile.",
+  "source_plan_sha": "6443a3bf19b2a7ec07df0ee4b76f48fb8e30f262da8fa459bd19869ef9d1f2c2",
+  "weight_tensor_bytes_from_safetensors_headers": 17534247392,
+  "boundary_estimates": [
+    {
+      "tokens": 9092,
+      "one_bf16_hidden_bytes": 74481664,
+      "thirty_six_boundary_bytes": 2681339904
+    },
+    {
+      "tokens": 9101,
+      "one_bf16_hidden_bytes": 74555392,
+      "thirty_six_boundary_bytes": 2683994112
+    },
+    {
+      "tokens": 9154,
+      "one_bf16_hidden_bytes": 74989568,
+      "thirty_six_boundary_bytes": 2699624448
+    },
+    {
+      "tokens": 9295,
+      "one_bf16_hidden_bytes": 76144640,
+      "thirty_six_boundary_bytes": 2741207040
+    },
+    {
+      "tokens": 9305,
+      "one_bf16_hidden_bytes": 76226560,
+      "thirty_six_boundary_bytes": 2744156160
+    },
+    {
+      "tokens": 9346,
+      "one_bf16_hidden_bytes": 76562432,
+      "thirty_six_boundary_bytes": 2756247552
+    },
+    {
+      "tokens": 9390,
+      "one_bf16_hidden_bytes": 76922880,
+      "thirty_six_boundary_bytes": 2769223680
+    },
+    {
+      "tokens": 9405,
+      "one_bf16_hidden_bytes": 77045760,
+      "thirty_six_boundary_bytes": 2773647360
+    },
+    {
+      "tokens": 9422,
+      "one_bf16_hidden_bytes": 77185024,
+      "thirty_six_boundary_bytes": 2778660864
+    },
+    {
+      "tokens": 9442,
+      "one_bf16_hidden_bytes": 77348864,
+      "thirty_six_boundary_bytes": 2784559104
+    },
+    {
+      "tokens": 9472,
+      "one_bf16_hidden_bytes": 77594624,
+      "thirty_six_boundary_bytes": 2793406464
+    },
+    {
+      "tokens": 9704,
+      "one_bf16_hidden_bytes": 79495168,
+      "thirty_six_boundary_bytes": 2861826048
+    },
+    {
+      "tokens": 9708,
+      "one_bf16_hidden_bytes": 79527936,
+      "thirty_six_boundary_bytes": 2863005696
+    },
+    {
+      "tokens": 9763,
+      "one_bf16_hidden_bytes": 79978496,
+      "thirty_six_boundary_bytes": 2879225856
+    },
+    {
+      "tokens": 11535,
+      "one_bf16_hidden_bytes": 94494720,
+      "thirty_six_boundary_bytes": 3401809920
+    },
+    {
+      "tokens": 11539,
+      "one_bf16_hidden_bytes": 94527488,
+      "thirty_six_boundary_bytes": 3402989568
+    },
+    {
+      "tokens": 11592,
+      "one_bf16_hidden_bytes": 94961664,
+      "thirty_six_boundary_bytes": 3418619904
+    },
+    {
+      "tokens": 11808,
+      "one_bf16_hidden_bytes": 96731136,
+      "thirty_six_boundary_bytes": 3482320896
+    },
+    {
+      "tokens": 11823,
+      "one_bf16_hidden_bytes": 96854016,
+      "thirty_six_boundary_bytes": 3486744576
+    },
+    {
+      "tokens": 11861,
+      "one_bf16_hidden_bytes": 97165312,
+      "thirty_six_boundary_bytes": 3497951232
+    },
+    {
+      "tokens": 11874,
+      "one_bf16_hidden_bytes": 97271808,
+      "thirty_six_boundary_bytes": 3501785088
+    },
+    {
+      "tokens": 11901,
+      "one_bf16_hidden_bytes": 97492992,
+      "thirty_six_boundary_bytes": 3509747712
+    },
+    {
+      "tokens": 11920,
+      "one_bf16_hidden_bytes": 97648640,
+      "thirty_six_boundary_bytes": 3515351040
+    },
+    {
+      "tokens": 11927,
+      "one_bf16_hidden_bytes": 97705984,
+      "thirty_six_boundary_bytes": 3517415424
+    },
+    {
+      "tokens": 11945,
+      "one_bf16_hidden_bytes": 97853440,
+      "thirty_six_boundary_bytes": 3522723840
+    },
+    {
+      "tokens": 11973,
+      "one_bf16_hidden_bytes": 98082816,
+      "thirty_six_boundary_bytes": 3530981376
+    },
+    {
+      "tokens": 12016,
+      "one_bf16_hidden_bytes": 98435072,
+      "thirty_six_boundary_bytes": 3543662592
+    },
+    {
+      "tokens": 12031,
+      "one_bf16_hidden_bytes": 98557952,
+      "thirty_six_boundary_bytes": 3548086272
+    },
+    {
+      "tokens": 12069,
+      "one_bf16_hidden_bytes": 98869248,
+      "thirty_six_boundary_bytes": 3559292928
+    }
+  ],
+  "min_boundary_GiB": 2.4971923828125,
+  "max_boundary_GiB": 3.314849853515625,
+  "not_a_savings_guarantee": [
+    "Other graph/closure references can retain tensors.",
+    "Recomputed MLP/attention workspaces and allocator fragmentation remain.",
+    "Frozen vision/image features and shared rotary/mask kwargs remain unchanged."
+  ],
+  "selected_change": "Wrap only each language layer checkpoint entry in torch.autograd.graph.save_on_cpu(pin_memory=False). Inner non-reentrant checkpoint hook remains intact; no full-model saved-tensor wrapper copying persistent weights.",
+  "alternatives_not_executed": [
+    "Allocator expandable_segments hint does not establish sufficient live memory.",
+    "Quantization would change the frozen base representation.",
+    "Fewer views/shorter examples would change matched training inputs."
+  ],
+  "official_references": [
+    "https://docs.pytorch.org/docs/2.8/autograd.html#torch.autograd.graph.save_on_cpu",
+    "https://docs.pytorch.org/docs/2.8/checkpoint.html"
+  ],
+  "installed_source_hashes": {
+    "/data/wyh/conda/envs/c15_genrec/lib/python3.10/site-packages/transformers/trainer.py": "c3eac8fa28bda6330fd4dee131e7fe7d9bdc0fa35d9de944fce52cb97b379bab",
+    "/data/wyh/conda/envs/c15_genrec/lib/python3.10/site-packages/accelerate/accelerator.py": "d8d685282f6bee8a7d1b8ad3da4b6d17114f08fbe3fe01dea621b60c84c82fcb",
+    "/data/wyh/conda/envs/c15_genrec/lib/python3.10/site-packages/torch/autograd/graph.py": "ee04db40dc182b9e9f225dda52a14bf92ccdbcef8021137cb4409aec3d70d405",
+    "/data/wyh/conda/envs/c15_genrec/lib/python3.10/site-packages/torch/utils/checkpoint.py": "255ec2eccfa184eb3e13ef4791955d1f6f010d8ef1f59e7a8eccb9da26161314",
+    "/data/wyh/conda/envs/c15_genrec/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py": "dd63ed3b124232735b3dca1bfa28f9d6b0d3f7182afcb75dde8f3e724b2b22da",
+    "/data/wyh/conda/envs/c15_genrec/lib/python3.10/site-packages/transformers/modeling_layers.py": "bd262f364af26b99381db23583ca6e1a9741d8c3894bc3aa08f204fe6a7f68ee"
+  }
+}

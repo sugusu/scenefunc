@@ -1,12 +1,14 @@
 # 当前研究状态
 
-- 更新2026-11-05T10:20:04.637951+00:00；总体Goal active，论文目标未完成。无活跃作业；session14349已exit1。
-- 用户明确批准PILOTPLAN精确PLAN_V2四更新试运行，记录USER_APPROVAL.json；已实际执行并按首错停止，不再待本次答复。批准不覆盖换配置、自动重试或后续训练。
-- 当前run P920-PILOTPLAN-v1_20261105T094043Z；planSHA6443a3bf19b2a7ec07df0ee4b76f48fb8e30f262da8fa459bd19869ef9d1f2c2不变。实际批次112.355571s/1，分开组71.461052s/1；反向检查点重算的Qwen MLP分配272MiB失败，0/4优化更新，配对组未启动。
-- 首日志/真实开始退出/错误/批准均已归档；TRAINING_RESULT.json是当前结果，之前RESULT与CPU检查是准备证据。没有训练checkpoint/adapter、未验证保存重载；逐微例日志在失败时未保存，完成微例数未知。BATCH completed_arms=1表示一次尝试结束，成功组0。GPU0已恢复4MiB占用/24121MiB空闲。
-- 不修改本次冻结代码、输入、模型或计划，不重跑。下一步只读诊断反向激活显存与保持同知识/动作/监督token的可执行方案；另立具体可审核计划后再申请训练。独立数据与整屋任务工作继续，不能把失败推为设计或学习结论。
-- 待发布阻断错误节点将一并带上普通数据增量：DLUGI两知识（外屋顶保温/抬床窗景抽屉），0新动作；EVALTASK两家族先划测试候选再读源，2草案导出0.064759s/0，无场景/模型。Casa读主文、Moabit仅作者作品搜索片段/fullpage403；明确研究人数、矩形与门窗，缺原始brief/测绘/评价阈值。
-- 数据：14知识/13知识家族，22登记家族=12dev+8train_source+2test_candidate，0sealed/0正式评价ready。5执行来源决定/8版本、9回放34动作、6客观QA、3条件几何收益+1模式转换，Mini165；真人专业验收/正式核心训练准入仍0。测试候选禁止训练与其他项目检索，不加入已执行pilot。
-- 最新已推ed9eafac5f7264c4fbadd0855212235d2fc2e456（训练前验收），本次失败按关键节点立即提交推送并ls-remote核对。历史LOSS30前向动作NLL.283854/.437199仅条件提示效应；MODEBASE0/4只作开发失败。无需重跑这些检查。
-- 当前证据目录：runs/920/P920-PILOTPLAN-v1_20261105T094043Z、P920-DLUGI-KNOW-v1_20261105T095744Z、P920-EVALTASK-v1_20261105T100503Z；批准记录不是模板。大模型与runtime仅服务器，Git存小日志/哈希/恢复说明。
-- 不碰Swiss及未跟踪scripts/920/extract_swiss_development_input.py，不使用其他GPU、不外发联系或付费。Goal持续active，不缩成机制试验。
+- 更新2026-11-05T10:31:59.696056+00:00；总体Goal active。上一Goal轮是progress：获批真实反向OOM证据与数据/任务已推94dc3b585a8e47bc2b1a7dde4bd5f86ffd234998。当前也有实质代码与CPU检查进展。当前已启动获批OFFLOAD批次：session10407、outer pid1265279，真实启动10:35:23.143749UTC；先查该句柄/回执，不重启。
+- 当前run P920-OFFLOAD-v1_20261105T102528Z已获新明确批准并开始真实训练，首反向通过、整批仍运行；新PLAN.json SHAb76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835。仅语言36层检查点输入save_on_cpu(pin_memory=False)，不改原底座精度/五图/输入/目标/源权重/LoRA/预算。新代码独立decision_pilot_offload.py、run_decision_offload_batch.py、checkpoint_input_offload.py；原失败代码/计划均未改。
+- 新计划仍两组各2更新，共4；GPU0，语言q/v 3833856参数、BF16/SDPA/AdaFactor，20微例/982目标/每更新、3来源等权，1800s每组/3900s外层，首错停止。CPU临时副本最低可用主存16GiB；约2.7–3.3GiB边界尺寸只是估算，未实测节省。
+- CPU两随机tiny Qwen3-VL/五合成图/32与48token，共4反向0优化，输出/loss/全部16个LoRA梯度差0；5.334462s/0。float32 CPU不证明完整真实GPU/BF16/时间；装4语言层wrapper，每例4调用，所有参数未改，无CUDA。
+- 旧真批准与新false模板实际CLI门禁均拒绝（4.581191s/1、4.480485s/1），训练目录不存在。AST与输入/新代码哈希核验通过；目标函数/数据/采样完全不变。新代码在每微例前后写进度和OOM显存，弥补旧失败不存micro_log缺口。
+- 用户已明确回复“批准此修订方案的4次更新”，真批准USER_APPROVAL.json绑定新计划SHA，已运行PROPOSED_COMMAND对应批次；首错停止，无自动重试。普通准备留本地待关键节点/小时批，上一推送10:20:59UTC。
+- 原PILOTPLAN批次112.355571s/1，分开组71.461052s/1，反向检查点MLP OOM；0/4更新、配对未启、无checkpoint/adapter/重试。真实结束后GPU0 4MiB/24121MiB空闲。旧批准已消费，旧结果不可改写。
+- 数据：14知识/13知识家族；22登记=12dev+8train_source+2test_candidate，封存/正式评价ready0。5执行来源决定/8版本、9回放34动作、6QA、3条件几何收益+1模式转换，Mini165；真人专业验收/核心训练准入0。
+- 独立方向：EVALTASK两草案已先划测试候选且不入训练/检索，Casa主文核对，Moabit仅作者搜索片段；人数/矩形/开口是研究设定，不是真实brief或测绘。下一应落实一个实际初态与完整用途表，不再空增资料。DLUGI两知识不可由平移床/缩放物体冒充复现。
+- 不碰Swiss及未跟踪extract_swiss_development_input.py，不用其他GPU、不对外联系/付费。正式研究、独立整屋生成与论文证据仍未完成，Goal保持active。
+
+- 2026-11-05T10:38:21.983478+00:00 首真实反向已核，FIRST_BACKWARD含第一微例loss与进度快照；完整4更新/保存未验收，勿仅因当前成功而终止观察。先检查session10407或authorized_training/BATCH。准备首输出节点提交。

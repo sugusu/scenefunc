@@ -1,0 +1,27 @@
+{
+  "run_id": "P920-OFFLOAD-v1_20261105T102528Z",
+  "frozen_at": "2026-11-05T10:25:28.319125+00:00",
+  "purpose": "CPU correctness check and concrete revised pilot preparation after preserved OOM; not permission to resume training.",
+  "budget": {
+    "small_random_cpu_models": 2,
+    "cpu_forward_backward_comparisons": 2,
+    "total_cpu_backwards": 4,
+    "optimizer_updates": 0,
+    "pretrained_model_loads": 0,
+    "gpu_calls": 0,
+    "cpu_seconds": 180
+  },
+  "cases": [
+    "five_image_short_context",
+    "five_image_longer_context"
+  ],
+  "checks": [
+    "same initialized random Qwen3-VL and language LoRA",
+    "same logits, scalar loss and every adapter gradient before/after saved-input offload",
+    "frozen base and vision have no gradients",
+    "only language checkpoint entrypoints wrapped",
+    "all model parameters byte-equal to initialization; no optimizer",
+    "no CUDA initialization"
+  ],
+  "scope_limit": "CPU fixture can check hook/gradient correctness but cannot prove GPU transfer, real-model memory fit, runtime or saved adapter."
+}

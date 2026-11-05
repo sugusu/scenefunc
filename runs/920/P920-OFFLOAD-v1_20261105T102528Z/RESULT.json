@@ -1,0 +1,128 @@
+{
+  "run_id": "P920-OFFLOAD-v1_20261105T102528Z",
+  "status": "prepared_for_separate_authorization",
+  "prepared_at": "2026-11-05T10:31:59.696056+00:00",
+  "plan_sha256": "b76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835",
+  "cpu_check": {
+    "status": "passed",
+    "cases": [
+      {
+        "input_tokens": 32,
+        "images": 5,
+        "logits_max_error": 0.0,
+        "loss_error": 0.0,
+        "gradient_max_error": 0.0,
+        "gradient_tensors": 16,
+        "stats": {
+          "installed_layers": 4,
+          "checkpoint_forward_calls": 4,
+          "input_bytes_seen": 32768,
+          "pin_memory": false,
+          "input_bytes_are_not_measured_memory_savings": true
+        }
+      },
+      {
+        "input_tokens": 48,
+        "images": 5,
+        "logits_max_error": 0.0,
+        "loss_error": 0.0,
+        "gradient_max_error": 0.0,
+        "gradient_tensors": 16,
+        "stats": {
+          "installed_layers": 4,
+          "checkpoint_forward_calls": 4,
+          "input_bytes_seen": 49152,
+          "pin_memory": false,
+          "input_bytes_are_not_measured_memory_savings": true
+        }
+      }
+    ],
+    "cpu_backwards": 4,
+    "optimizer_updates": 0,
+    "real_model_loaded": false,
+    "cuda_initialized": false,
+    "gpu_transfer_verified": false,
+    "real_model_memory_fit_verified": false,
+    "scope": "Tiny random float32 Qwen3-VL/LoRA with five synthetic images, actual installed checkpoint implementation."
+  },
+  "integrity": {
+    "unchanged_objective_functions": [
+      "TensorDecisions",
+      "single",
+      "compute_loss",
+      "normalization_check",
+      "_get_train_sampler"
+    ],
+    "unchanged_plan_fields": [
+      "arm_order",
+      "attention",
+      "batch_seconds",
+      "dependent_steps",
+      "dtype",
+      "encoding",
+      "gpu_lock_paths",
+      "gpu_uuid",
+      "gradient_checkpointing",
+      "learning_rate",
+      "lora",
+      "loss",
+      "micro_examples_per_update",
+      "model_configuration_sha256",
+      "model_directory",
+      "model_python",
+      "model_revision",
+      "model_weight_files",
+      "normalization",
+      "optimizer",
+      "professional_training_admission",
+      "purpose",
+      "retries",
+      "scope",
+      "seconds_per_arm",
+      "seed",
+      "source_decisions",
+      "stopping",
+      "targets_per_arm_per_update",
+      "total_micro_forward_backward_budget",
+      "training_authorized",
+      "training_input_tokens_per_arm_per_update",
+      "updates_per_arm",
+      "upstream_hashes",
+      "upstream_source"
+    ],
+    "changed_plan_fields": [
+      "acceptance",
+      "checkpoint_input_storage",
+      "code_files",
+      "limitations",
+      "minimum_host_available_bytes",
+      "official_overlay_entry",
+      "prepared_at",
+      "previous_failed_plan",
+      "public_directory",
+      "question",
+      "revision",
+      "revision_reason",
+      "run_id",
+      "runtime_directory",
+      "training_output_root"
+    ],
+    "all_new_code_hashes_match": true,
+    "previous_plan_hash_unchanged": true,
+    "encoding_and_measured_loss_hashes_match": true,
+    "training_output_directory_exists": false,
+    "model_weight_hashes_repeated_this_check": false,
+    "weight_verification_policy": "Already checked during original actual run; runtime validate will check all files before any newly authorized model load."
+  },
+  "approval_gates": {
+    "previous_plan_approval_rejected": true,
+    "false_template_rejected": true
+  },
+  "real_model_loads_this_run": 0,
+  "gpu_calls_this_run": 0,
+  "optimizer_updates_this_run": 0,
+  "training_authorized": false,
+  "planned_updates": 4,
+  "purpose": "Only mechanism and save/reload validation; no professional design/generalization claim.",
+  "next_step": "Present exact revised plan; wait for explicit authorization before creating a true approval record or executing PROPOSED_COMMAND. Continue independent task preparation while pending."
+}
