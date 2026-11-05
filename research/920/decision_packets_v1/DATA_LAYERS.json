@@ -1,26 +1,28 @@
 {
   "schema": "scenefunc-data-layers-v1",
-  "updated_at": "2026-11-05T06:08:58.415522+00:00",
+  "updated_at": "2026-11-05T06:43:26.044117+00:00",
   "scope": "Current decision packet, not all indexed corpus entries. Counts are independent; unavailable pair supervision does not erase other layers.",
   "knowledge_records": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
   "counts": {
     "professional_knowledge_records": 9,
     "partially_tool_expressible_knowledge_records": 5,
     "executed_professional_decision_pairs": 4,
-    "existing_objective_replay_episodes": 7,
-    "existing_objective_replay_actions": 25,
+    "existing_objective_replay_episodes": 8,
+    "existing_objective_replay_actions": 30,
     "professional_reviews_of_our_candidates": 0,
     "independent_acceptances_of_our_pairs": 0,
     "core_training_admitted": 0,
-    "executed_reconstruction_variants": 6,
-    "objective_QA_review_records": 4,
+    "executed_reconstruction_variants": 7,
+    "objective_QA_review_records": 5,
     "positive_professional_demonstrations": 0,
-    "conditional_objective_benefit_demonstrations": 2,
+    "conditional_objective_benefit_demonstrations": 3,
     "prospectively_train_allocated_knowledge_records": 3,
     "conditional_corrective_OTA_candidates": 1,
     "published_professional_review_records_paper_attributed": 165,
     "local_floor_gain_with_failed_access_records": 1,
-    "unadmitted_storage_mechanical_OTA_step_candidates": 5
+    "unadmitted_storage_mechanical_OTA_step_candidates": 5,
+    "conditional_storage_OTA_step_candidates": 5,
+    "conditional_source_guided_storage_decision_candidates": 1
   },
   "objective_action_records": [
     {
@@ -146,28 +148,36 @@
     },
     {
       "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
-      "evidence": "runs/920/P920-STORAGE-v1_20261105T055238Z/DECISION_PACKET.json",
-      "kind": "source_guided_transfer_with_local_floor_gain_and_failed_baseline_access",
+      "evidence": "runs/920/P920-STORAGE-v2_20261105T062810Z/DECISION_PACKET.json",
+      "kind": "source_guided_transfer_with_conditional_geometric_benefit",
       "positive_professional_recommendation": false,
       "independent_review": false,
       "core_training_ready": false,
-      "qualification": "runs/920/P920-STORAGE-v1_20261105T055238Z/SUPERVISION_QUALIFICATION.json",
+      "qualification": "runs/920/P920-STORAGE-v2_20261105T062810Z/SUPERVISION_QUALIFICATION.json",
       "variants": [
         {
           "run_id": "P920-STORAGE-v1_20261105T055238Z",
           "evidence": "runs/920/P920-STORAGE-v1_20261105T055238Z/DECISION_PACKET.json",
           "positive_professional_recommendation": false
+        },
+        {
+          "run_id": "P920-STORAGE-v2_20261105T062810Z",
+          "evidence": "runs/920/P920-STORAGE-v2_20261105T062810Z/DECISION_PACKET.json",
+          "positive_professional_recommendation": false,
+          "conditional_objective_benefit": true,
+          "input_repair_not_method_control": true
         }
-      ]
+      ],
+      "conditional_objective_benefit": true
     }
   ],
   "counting_notes": [
     "Nine professional knowledge records and four source-linked decisions are separate counts. AIR is one prospective train-source family with two reconstructed variants; no training admission.",
-    "Seven objective replay episodes contain25 actual tool calls; six variants belong to four sourced decisions. Dancer is the remaining objective diagnostic episode.",
-    "Four objective QA records are not human evaluations. Bukit display-order variants do not add examples.",
+    "Eight objective replay episodes contain30 actual tool calls; seven reconstructed variants belong to four sourced decisions. Dancer is the remaining diagnostic episode.",
+    "Five objective QA records are not human evaluations. Display order and repeated variants do not create independent professional reviews.",
     "165 official Mini plan/score/text triples are attributed to the professional-data method described in the paper. They are not 165 independent verified projects, our-candidate reviews, or 3D actions.",
-    "Two conditional geometric benefit records (Ono and AIR-v2) retain costs and unknowns; no professional preference, training or generalization benefit is established.",
-    "STORAGE supplies one sourced transfer decision and five mechanical action candidates, not five independent examples. No positive design label: baseline/final proxy access all zero. Shared AIR structural template cannot support independent test evidence."
+    "Three conditional geometric benefit records (Ono, AIR-v2, STORAGE-v2) retain assumptions and costs; none establishes professional preference, training or generalization benefit.",
+    "STORAGE remains one sourced decision, now two input versions. V1 has five mechanical candidates and failed all-zero access; v2 has five conditionally useful action candidates with strict coverage passed. They are not10 independent decisions or a method-control experiment. Shared AIR geometry template is not independent test evidence."
   ],
   "objective_review_records": [
     {
@@ -200,6 +210,15 @@
       "evidence": "runs/920/P920-STORAGE-v1_20261105T055238Z/OBJECTIVE_REVIEW.json",
       "export_evidence": "runs/920/P920-STORAGE-v1_20261105T055238Z/EXPORT_CHECKS.json",
       "kind": "objective_geometric_diagnostic_of_source_guided_transfer",
+      "professional_review": false,
+      "new_actual_loader_audit": false,
+      "training_authorized": false
+    },
+    {
+      "id": "P920-STORAGE-v2_20261105T062810Z_objective_consequences",
+      "evidence": "runs/920/P920-STORAGE-v2_20261105T062810Z/OBJECTIVE_REVIEW.json",
+      "export_evidence": "runs/920/P920-STORAGE-v2_20261105T062810Z/EXPORT_CHECKS.json",
+      "kind": "objective_geometric_review_of_source_guided_transfer",
       "professional_review": false,
       "new_actual_loader_audit": false,
       "training_authorized": false
