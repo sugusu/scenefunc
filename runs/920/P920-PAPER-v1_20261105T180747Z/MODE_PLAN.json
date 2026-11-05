@@ -1,0 +1,112 @@
+{
+  "run_id": "P920-PAPER-v1_20261105T180747Z",
+  "frozen_at": "2026-11-05T18:09:22.208165+00:00",
+  "source_decision_id": "paper_table_mobility_for_overnight_guest",
+  "source_reason": "同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。",
+  "researcher_actions_are_not_source_reason": true,
+  "guest_reserve_xy_m": [
+    -2.6,
+    -0.55,
+    -1.0,
+    0.75
+  ],
+  "reserve_is_actual_bed": false,
+  "movable_source_ids": [
+    "recon_sofa_0",
+    "recon_low_fridge_0",
+    "recon_pantry_0",
+    "recon_chair_left_0",
+    "recon_chair_right_0",
+    "recon_mobile_table_0"
+  ],
+  "mode_checkpoints": {
+    "step_06": "everyday_dining",
+    "step_08": "guest_reserve_clear",
+    "step_10": "everyday_dining_restored"
+  },
+  "moves": [
+    {
+      "object_id": "chair_right_0",
+      "x": 1.75,
+      "y": -1.55,
+      "yaw": 0
+    },
+    {
+      "object_id": "mobile_table_0",
+      "x": 0.75,
+      "y": -1.55,
+      "yaw": 0
+    },
+    {
+      "object_id": "mobile_table_0",
+      "x": -1.8,
+      "y": 0,
+      "yaw": 0
+    },
+    {
+      "object_id": "chair_right_0",
+      "x": -0.75,
+      "y": 0,
+      "yaw": 0
+    }
+  ],
+  "reference_measurement": {
+    "grid_m": 0.02,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "entry_center_xy_m": [
+      -3.2,
+      -1.5
+    ],
+    "entry_inward_normal_xy": [
+      1,
+      0
+    ],
+    "approach_points_xy_m": {
+      "kitchen_front": [
+        1.6,
+        1.0
+      ],
+      "fridge_side": [
+        2.15,
+        0.85
+      ],
+      "pantry_side": [
+        2.1,
+        -0.55
+      ],
+      "living_east": [
+        0,
+        1.3
+      ],
+      "window_front": [
+        2.65,
+        -1.5
+      ],
+      "entrance_inside": [
+        -2.65,
+        -1.5
+      ]
+    }
+  },
+  "budget": {
+    "native_calls": 10,
+    "observations": 11,
+    "native_seconds": 1200,
+    "candidate_sequences": 1,
+    "model_calls": 0,
+    "training_updates": 0,
+    "first_error_stop": true
+  },
+  "unknowns": [
+    "Only the reported shared living/dining/kitchen activity area is represented; permanent bedroom, bathroom and corridor are outside this selected room. The full45m²home is not reconstructed.",
+    "The source supports a movable co-designed table and a convertible sofa. This static sofa has no conversion; a declared guest floor reserve is not evidence that anyone can sleep there.",
+    "All room/furniture dimensions, entrance/window positions and candidate movements are researcher assumptions. Source geometry/coordinates are unavailable.",
+    "Generated table wheels are visual meshes only; moving tools teleport poses. No physical pushing, swept articulation, braking or load claim.",
+    "Capacity, comfort, seating, kitchen services, privacy and professional quality remain unknown."
+  ]
+}

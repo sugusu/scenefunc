@@ -6,13 +6,13 @@
     "records_reviewed_here": 21,
     "source_supported_knowledge": 21,
     "partially_tool_expressible_candidates": 8,
-    "source_grounded_replayed_episodes": 8,
+    "source_grounded_replayed_episodes": 11,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
-    "unique_source_decisions_with_replay": 5,
+    "unique_source_decisions_with_replay": 6,
     "conditional_objective_benefit_demonstrations": 3,
     "prospectively_train_allocated_knowledge_records": 15,
-    "conditional_mode_transition_demonstrations": 1
+    "conditional_mode_transition_demonstrations": 2
   },
   "records": [
     {
@@ -1735,24 +1735,39 @@
         "沙发床展开、停放与真实睡眠/餐位未验证。"
       ],
       "tool_expression": {
-        "level": "partial_candidate",
+        "level": "conditional_native_subdecision",
         "full_source_decision_supported": false,
-        "executable_subdecision": "可在声明重建中移动同一桌实例并测几何后果；现有静态沙发不能冒充展开后的沙发床。",
+        "executable_subdecision": "Six additions plus four table/stool moves under declared selected-room conditions; step8 releases guest reserve, return restores poses. No sofa-bed deployment or real sleep acceptance.",
         "qualification": "可在声明重建中移动同一桌实例并测几何后果；现有静态沙发不能冒充展开后的沙发床。"
       },
       "source_to_scene": {
         "historical_action_sequence": null,
-        "reconstructed_action_sequence": null,
+        "reconstructed_action_sequence": "runs/920/P920-PAPER-v2_20261105T182424Z/native/STEPS.json",
         "initial_proxy_ids": [],
-        "decision_packet": null
+        "decision_packet": "runs/920/P920-PAPER-v2_20261105T182424Z/DECISION_PACKET.json",
+        "geometry_provenance": "6.4x4.4m selected shared living/kitchen, west entry/east window; researcher assumptions, not original45m²survey.",
+        "reconstruction_variants": [
+          {
+            "run_id": "P920-PAPER-v1_20261105T180747Z",
+            "native_executed": false,
+            "reason": "Window access lost in preflight."
+          },
+          {
+            "run_id": "P920-PAPER-v2_20261105T182424Z",
+            "native_executed": true,
+            "packet": "runs/920/P920-PAPER-v2_20261105T182424Z/DECISION_PACKET.json"
+          }
+        ]
       },
       "maturity": {
         "source_supported_knowledge": true,
-        "source_to_native_objects_bound": false,
-        "source_grounded_action_replayed": false,
-        "whole_room_consequences_reviewed": false,
+        "source_to_native_objects_bound": true,
+        "source_grounded_action_replayed": true,
+        "whole_room_consequences_reviewed": true,
         "independent_professional_preference_label": false,
-        "paired_episode_ready": false
+        "paired_episode_ready": true,
+        "paired_episode_ready_scope": "Candidate records with actual observations/actions; mixed tokenizer/Trainer and training admission not established.",
+        "consequences_scope": "Selected living/kitchen only; six declared fixed access points pass across three widths, guest reserve cleared and original objects/poses restored; generic probes and mechanical/sleeping unknowns retained."
       },
       "readiness_by_layer": {
         "professional_knowledge": {
@@ -1763,11 +1778,11 @@
           "available": false
         },
         "scene_action": {
-          "executed": false,
-          "tool_calls": 0
+          "executed": true,
+          "tool_calls": 10
         },
         "professional_decision_pair": {
-          "executed": false,
+          "executed": true,
           "positive_demonstration": false,
           "core_training_ready": false
         }
@@ -1776,8 +1791,10 @@
       "derived_knowledge_at": "2026-11-05T15:42:21.378162+00:00",
       "training_eligible": false,
       "training_authorized": false,
-      "knowledge_record": "runs/920/P920-FAMILYDATA-v1_20261105T154221Z/NEW_KNOWLEDGE.json"
+      "knowledge_record": "runs/920/P920-FAMILYDATA-v1_20261105T154221Z/NEW_KNOWLEDGE.json",
+      "next_action": "Use scoped candidate for data review; preserve reconstruction geometry uncertainty, motion and sleeping unknowns. New training remains separately reviewed."
     }
   ],
-  "count_scope": "Twelve knowledge records: six development and six prospective training-source records. Five source decisions have eight executed reconstruction variants. Three conditional geometric benefit demonstrations and one conditional activity-mode transition are distinct outcome types; four dependent Waterloo steps are one sourced decision."
+  "count_scope": "Twelve knowledge records: six development and six prospective training-source records. Five source decisions have eight executed reconstruction variants. Three conditional geometric benefit demonstrations and one conditional activity-mode transition are distinct outcome types; four dependent Waterloo steps are one sourced decision.",
+  "native_episode_count_basis": "research/920/data_readiness_v1/NATIVE_SOURCE_EPISODES.json"
 }

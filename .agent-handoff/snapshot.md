@@ -1,28 +1,30 @@
 # 当前研究状态
 
-更新 2026-11-05T17:15:13.983203+00:00。总体 Goal active，论文/专业学习/独立泛化未完成；此前获批 OFFLOAD 四更新已全部消耗，本轮0新训练。上一轮 KBASE 完整发布属于 progress；本轮新增实际建设与来源理由候选，继续 progress。
+更新 2026-11-05T19:02:49.932386+00:00。总体 Goal active，论文/专业学习/独立泛化未完成；原OFFLOAD4更新全部消耗，0新增训练授权。上一轮ABUILD真实建设发布属于progress；本轮Paper Paper新来源原生对应与条件模式验证也是progress。
 
-## 最新完成
+## 本轮已完成
 
-- P920-ABUILD-v1_20261105T165434Z：从6件固定厨卫设施开始，原生添加7件家具，8组五图/40图，347.457527秒/0；真实起止2026-11-05T16:55:35.905648→17:01:23.363154 UTC。native session56445已退出0，无活跃作业。
-- 终态13件、0三角接触/越界、固定记录不变；.4/.5/.6宽下7固定活动点全可达；挂杆-Y每侧5点可达、+Y0。每宽9个通用目标仍失败，含床左/冰箱/挂杆正面等。静态代理、容量、人体使用、安装和隐私均未知，不称整屋专业通过。
-- 终态5视图+第6步俯视实际审阅；40图hash/decode和状态绑定核验。冷恢复8.494589秒/0、7回执与资产身份通过，未做恢复后编辑。GLB 5,404,280B，SHA edc97cf1bbfb80af3343a64daccf789afeef38996ec942d2ac439fdbf798aa2d，留runtime。
-- archive_execution因c15缺jsonschema退出1；保留代码和日志，改用既有native环境与显式失败记账后archive_v2通过。原生构建未重跑。summary已通过。
-- 新两案来源理由候选：本次7动作+旧SBUILD9动作重新包装，每组16动作/2来源理由，14普通动作。只把来源原则放入理由目标，坐标/顺序另存。旧SBUILD/四更新材料不改。新混合token/Trainer预算未核、不训练，两案几何同模板相关，不是独立泛化数据。
-- 入口 research/920/data_readiness_v1/CONSTRUCTION_CANDIDATES.json；运行SUMMARY、SOURCE_ONLY_DATASET_INDEX、DATASET_SCOPE、RECOVERY为权威。知识仍21条/25家族，没有新增独立知识或人评。
+- P920-PAPER-v2_20261105T182424Z：6添加+4移动，11五图观察/55图；实际18:39:13.638373→18:45:58.740641 UTC，405.102292秒/0。native session9842已终态；没有活跃实验。
+- 输入是3固定厨具+6待添加家具，终态9件。来源45m²全屋未重建；所选6.4×4.4m餐厨起居区域、开口、替代家具/预留区/停椅坐标全部研究假设。永久卧室/卫浴在区域外，不假称本例完成全套住宅。
+- 十步每步6固定活动点×.4/.5/.6宽全部可达；step8来客预留清空、日常餐位暂时失效，step10恢复两处声明凳桌对齐条件及全部原位/ID。终态0三角接触/越界；通用探针失败分别2/4/6个，保留。
+- v1 P920-PAPER-v1_20261105T180747Z仅预检，0原生动作；第7–9步.6m窗前点失败。v2另冻结只改停椅(1.75,-1.55)→(.75,.8)，其他条件同。不是训练或独立比较收益。
+- 保守扫掠包络step7/10提示sofa，固定朝向直线平移interval预检排除误报；实际椅/桌落位角差约.135/.025度，运动过程没记录，实际搬运/扫掠未知。静态沙发没展开，预留区非睡眠通过。
+- 11张关键视图实际审阅（step6俯视+step8/10各5图）；55图hash/decode/绑定通过，10调用schema无错。冷恢复8.243491秒/0、10回执和资产保留；未做恢复后编辑。GLB3,537,436B SHA65b0c3453fa99d80b0ec773b1ee6c40036bc1a8398fa15e9d27a81848bdde071留runtime。
+- Git保存最终5图+step6/8俯视共7图，全部55原图留服务器并有bindings哈希，减少推送体积。各SUMMARY/DECISION_PACKET/CORRECTION_COMPARISON/RECOVERY是真实边界。
 
-## 前序证据与发布
+## 数据、论文与发布
 
-- KBASE fac920c63a28327def249953ca75e8d115809cc1 已推送并ls-remote核对；回执 ../preflight/publication_kbase_complete_20261105/PUBLICATION.json。strong24次查询0家具；knowledge仅床/淋浴2件，不完整，不能证知识质量或训练必要。
-- 原OFFLOAD两组各2更新通过保存/重载，loss两组略升；Casa三组7/6/6家具各2接触，必要用途缺失。SBUILD九步已发布3a85da9。论文仍工作稿、主假设未证明。
-- 本轮发布回执 ../preflight/publication_abuild_20261105/PUBLICATION.json；文件存在且remote_verified真才算已推送。本地代码和小日志、视图已准备，完整checkpoint/GLB留服务器。
+- construction候选三案，每组26动作/3纯来源理由、23普通动作。活动模式在共同输入显式给出，恢复阶段可见已发生的日常桌椅位姿，非未来真值。只第8步配来源理由。新的混合token/Trainer预算未核，无训练。
+- 来源知识仍21/25家族；6条来源决定有原生证据，11次执行（8修订回放+3建设/模式），不是11独立项目。NATIVE_SOURCE_EPISODES列11个实际产物及哈希；SOURCE_ONLY_DATASET_INDEX纳入新案。独立人评/训练准入仍0。
+- 上一ABUILD提交684e69442c63dab8962b7b7c37e9a57fab01cae7已推并核远端；首推300s超时，重推同提交819.953s成功，未重跑，回执publication_abuild_20261105。此前KBASE强提示0家具/知识2家具、OFFLOAD两组loss略升、Casa不完整等负结果保留。
+- 本轮关键发布回执 ../preflight/publication_paper_20261105/PUBLICATION.json。不存在即未完成推送；存在且remote_verified真才算完成。
 
 ## 下一步
 
-1. 完成本轮关键节点正常commit/push及ls-remote；保留失败日志，不重跑七步构建。
-2. 专业决定对应已有进展，下一优先增加真实条件/空间和动作覆盖，避免相同矩形模板和来源的重复包装冒充数据规模。Paper Paper或F-House的可表达子决定需落实场景条件，知识层不因完整动作欠缺归零。
-3. 模型整屋任务覆盖和工具行为仍有缺口；同任务几何/用途反馈对照尚未补齐。新训练须具体数据/预算方案另审；当前可继续数据和独立任务准备，不重复tiny/加载器检查。
+1. 本轮v1失败与v2完整记录共同commit/push，核对远端。不要重跑10步或恢复。
+2. 继续建立有来源决定的空间/任务覆盖，现有3个建设来源/2种声明模板远不足以证明专业学习。需要独立整屋任务、强基线和专业评价；数据可分层继续，不因无全3D把知识归零。
+3. 若准备新训练，先核混合监督和项目预算并给具体方案另审；禁止擅自扩展旧4更新或反复做tiny加载器检查。不要用同一模板动作数替代项目多样性。
 
 ## 工作区
 
-runs/920；专用SSH repo-local，保护main/AutoDL、不force。保留未跟踪 scripts/920/extract_swiss_development_input.py。新增scoped construction脚本冻结到本轮code；旧SBUILD脚本/计划未改。
+runs/920；专用SSH仅repo-local，保护main/AutoDL、不force。保留未跟踪 scripts/920/extract_swiss_development_input.py。本轮新增8脚本见当前git状态，旧原生/训练脚本未改；archive_mode仅在执行后清理空白，逻辑不变。

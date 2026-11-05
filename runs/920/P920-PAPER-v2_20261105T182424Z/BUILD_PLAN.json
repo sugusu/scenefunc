@@ -1,0 +1,55 @@
+{
+  "run_id": "P920-PAPER-v1_20261105T180747Z",
+  "family_id": "milan_paper_paper_associates",
+  "inputs": {
+    "base_manifest": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-PAPER-v1_20261105T180747Z/reference/bundle/manifest.json",
+      "sha256": "cf76fc20aea404100f36fd4548c4913558b77777fd5afd4786def745ca37c5c7"
+    },
+    "target_state": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PAPER-v1_20261105T180747Z/REFERENCE_TARGET_STATE.json",
+      "sha256": "daefe9e3c8b39f45e67774f0a4e17df0f4d60f5b7a83c6e1411680ac9ddf2255"
+    },
+    "registry": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/data_readiness_v1/PROJECT_REGISTRY.json",
+      "sha256": "68cfe7e4e6613f78cf16ef1f3de0e02d1b51139e876887c8c41eea4e92d0a172"
+    },
+    "source": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PAPER-v1_20261105T180747Z/SOURCE_RECORD.json",
+      "sha256": "263bf6fcefd325915c489166ba303d8c90e0d13c73eb56526d0dee0b34bf19bb"
+    },
+    "qualified_packet": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PAPER-v1_20261105T180747Z/MODE_PLAN.json",
+      "sha256": "80051292d9a8c7fbf51e1508876124e164b7514782fa74f6aec21482e3565c8f"
+    }
+  },
+  "movable_source_ids": [
+    "recon_sofa_0",
+    "recon_low_fridge_0",
+    "recon_pantry_0",
+    "recon_chair_left_0",
+    "recon_chair_right_0",
+    "recon_mobile_table_0"
+  ],
+  "initial_fixed_fixtures": 3,
+  "target_pose_overrides": {},
+  "design_request": "研究者重建任务：为两位住户布置共享餐厨起居区，满足日常做饭、用餐、起居和食品收纳；偶尔来客留宿时需要移开桌子，保留其他家具、入口、厨房、储物和窗前的接近，之后恢复日常用餐。房间6.4米×4.4米、位置和家具均为声明的替代条件。研究只检查家具与声明来客预留区的占用，静态沙发不具有已验证的展开或睡眠功能。卧室与卫浴在所选活动区域之外，不作为本房间生成目标。",
+  "unknowns": [
+    "Only the reported shared living/dining/kitchen activity area is represented; permanent bedroom, bathroom and corridor are outside this selected room. The full45m²home is not reconstructed.",
+    "The source supports a movable co-designed table and a convertible sofa. This static sofa has no conversion; a declared guest floor reserve is not evidence that anyone can sleep there.",
+    "All room/furniture dimensions, entrance/window positions and candidate movements are researcher assumptions. Source geometry/coordinates are unavailable.",
+    "Generated table wheels are visual meshes only; moving tools teleport poses. No physical pushing, swept articulation, braking or load claim.",
+    "Capacity, comfort, seating, kitchen services, privacy and professional quality remain unknown."
+  ],
+  "code_sha256": {
+    "prepare_scoped_construction.py": "25cdf011ddc6f325afa16e077d55a144a5f0acadcf7ec6192d59b451dbb33af7",
+    "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19"
+  },
+  "budget": {
+    "native_tool_calls": 6,
+    "build_seconds": 120,
+    "model_calls": 0,
+    "training_updates": 0
+  }
+}
