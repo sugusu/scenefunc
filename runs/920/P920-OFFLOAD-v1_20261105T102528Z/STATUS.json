@@ -1,20 +1,22 @@
 {
   "run_id": "P920-OFFLOAD-v1_20261105T102528Z",
   "question": "Can checkpoint-input CPU storage preserve the matched objective and permit a later authorized four-update pilot?",
-  "status": "authorized_batch_running",
-  "updated_at": "2026-11-05T10:38:21.983478+00:00",
+  "status": "four_update_mechanism_pilot_completed",
+  "updated_at": "2026-11-05T12:28:42.222737+00:00",
   "completed_planned": {
-    "optimizer_updates": 0,
+    "optimizer_updates": 4,
     "planned_optimizer_updates": 4,
-    "micro_backwards_in_first_arm": 6,
-    "planned_micro_backwards_total": 80
+    "micro_backwards": 80,
+    "planned_micro_backwards": 80,
+    "successful_arms": 2,
+    "planned_arms": 2
   },
   "configuration_hashes": {
     "plan": "b76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835",
     "cpu_protocol": "777640e3f9789426665af9cee3fb59bb53db5e1f1fd601afdb4d404f6fe06610",
     "cpu_check": "3440df6e8d3948a3b96f2acb5e93e0e9714aa92caa695aa260ac80f6935690d6"
   },
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/FIRST_BACKWARD.json",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
   "actual_execution_receipts": {
     "cpu_check": {
       "started_at": "2026-11-05T10:25:48.149100+00:00",
@@ -77,11 +79,13 @@
   },
   "failure_reason": null,
   "unverified": "Real GPU transfer/memory fit/time and adapter checkpoint are not verified.",
-  "next_step": "Observe same authorized batch; stop on first error; preserve real update counts and checkpoints.",
+  "next_step": "Validate independent whole-room input/views/evaluator, then compare frozen base and saved adapters under shared inference conditions. No further training authorized by this consumed pilot approval.",
   "approval_request_submitted": true,
   "approval_received": true,
   "training_authorized": true,
   "authorization_record": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/USER_APPROVAL.json",
   "actual_start": "2026-11-05T10:35:23.143749+00:00",
-  "actual_exit": null
+  "actual_exit": 0,
+  "actual_end": "2026-11-05T10:56:51.940223+00:00",
+  "authorization_consumed": true
 }

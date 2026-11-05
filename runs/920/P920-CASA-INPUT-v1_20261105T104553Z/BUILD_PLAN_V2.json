@@ -1,0 +1,52 @@
+{
+  "run_id": "P920-CASA-INPUT-v1_20261105T104553Z",
+  "frozen_at": "2026-11-05T10:45:53.225801+00:00",
+  "question": "Can one held-out candidate be represented as an explicit initial native shell/catalog while preserving source/reconstruction boundaries and all whole-room requirements?",
+  "project": {
+    "project_id": "casa_source_transfer_initial_v1",
+    "family_id": "lisbon_casa_da_porteira_af_arquitectos_2015",
+    "provenance": "source_inspired_research_transfer_not_original_survey"
+  },
+  "inputs": {
+    "task": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-INPUT-v1_20261105T104553Z/TASK_INPUT.json",
+      "sha256": "8afb28ed0db339eb31f5dd2050769d184401de5ad07a4314cf371f6ed1eeacd3"
+    },
+    "previous_task_draft": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALTASK-v1_20261105T100503Z/builder_inputs/whole_room_transfer_01.json",
+      "sha256": "5c933e833a11b6b2a425a9639e1021a4c4335efec8a7e9a714869f36cc744d8a"
+    },
+    "catalog_manifest": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WHOLE-v1_20261104T191014Z/build/bundle/manifest.json",
+      "sha256": "02d1089280cf469a6533c917d581029adb10a90b1dc7232b8551717e43930b46"
+    }
+  },
+  "scenesmith": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+  "native_python": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+  "budget": {
+    "native_builds": 1,
+    "same_process_native_restores": 1,
+    "renders": 0,
+    "model_calls": 0,
+    "training_updates": 0,
+    "seconds": 180,
+    "bundle_max_bytes": 500000000,
+    "prior_failed_attempts": 1
+  },
+  "code_hashes": {
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/build_reference_room.py": "18ae517c85b1c3dffce41e269c83d9062142f2b56da0b96f005f0273f3278146",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/build_heldout_task_input_v2.py": "8531b2ced2a54c45e3cea0d3e48e0e54b0df4ffaf41667751a512541b8c1391a"
+  },
+  "training_eligible": false,
+  "retrieval_eligible": false,
+  "formal_evaluation_ready": false,
+  "construction_scope": "Initial shell and geometry-only catalog; no furniture placement, source action, model generation or whole-room success.",
+  "new_assumptions": [
+    "Fixed southeast washroom enclosure chosen before any policy output; not original project evidence.",
+    "5cm walls outside nominal clear interiors, unverified open door apertures, 1m terrace boundary."
+  ],
+  "next_after_build": "Validate dimensions/apertures and render views under a future separate bounded preparation stage before model use.",
+  "revision": 2,
+  "revision_reason": "Correct native task provenance enum to adapted; retain detailed authorship separately. No geometry, task or catalog changes."
+}

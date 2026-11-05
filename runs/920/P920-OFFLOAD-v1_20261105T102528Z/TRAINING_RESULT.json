@@ -1,0 +1,108 @@
+{
+  "run_id": "P920-OFFLOAD-v1_20261105T102528Z",
+  "status": "four_update_mechanism_pilot_completed",
+  "verified_at": "2026-11-05T12:23:57.156943+00:00",
+  "plan_sha256": "b76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835",
+  "total_optimizer_updates": 4,
+  "total_micro_backwards": 80,
+  "arms": {
+    "separate": {
+      "updates": 2,
+      "micro_backwards": 40,
+      "cycles": [
+        {
+          "updates_before_cycle": 0,
+          "source_balanced_objective": 2.500305758756323,
+          "logged_loss": 2.5003,
+          "grad_norm": 1.0835766792297363,
+          "target_tokens": 982
+        },
+        {
+          "updates_before_cycle": 1,
+          "source_balanced_objective": 2.503363070253763,
+          "logged_loss": 2.5034,
+          "grad_norm": 1.0968189239501953,
+          "target_tokens": 982
+        }
+      ],
+      "process_seconds": 621.2100525230635,
+      "trainer_seconds": 574.3855,
+      "peak_allocated_bytes": 20805623296,
+      "peak_allocated_GiB": 19.376746654510498,
+      "changed_adapter_tensors_from_initial": 144,
+      "checkpoint_checks": [
+        {
+          "step": 1,
+          "adapter_tensors": 144,
+          "finite_optimizer_states": 144,
+          "changed_since_previous_checkpoint": null
+        },
+        {
+          "step": 2,
+          "adapter_tensors": 144,
+          "finite_optimizer_states": 144,
+          "changed_since_previous_checkpoint": 144
+        }
+      ],
+      "final_equals_checkpoint_2": true,
+      "same_process_save_zero_reload_exact": true,
+      "cold_optimizer_resume_tested": false
+    },
+    "paired": {
+      "updates": 2,
+      "micro_backwards": 40,
+      "cycles": [
+        {
+          "updates_before_cycle": 0,
+          "source_balanced_objective": 2.428457503498569,
+          "logged_loss": 2.4285,
+          "grad_norm": 0.658380389213562,
+          "target_tokens": 982
+        },
+        {
+          "updates_before_cycle": 1,
+          "source_balanced_objective": 2.431532675785877,
+          "logged_loss": 2.4315,
+          "grad_norm": 0.6677743792533875,
+          "target_tokens": 982
+        }
+      ],
+      "process_seconds": 626.677042708965,
+      "trainer_seconds": 579.926,
+      "peak_allocated_bytes": 20815178752,
+      "peak_allocated_GiB": 19.385645866394043,
+      "changed_adapter_tensors_from_initial": 144,
+      "checkpoint_checks": [
+        {
+          "step": 1,
+          "adapter_tensors": 144,
+          "finite_optimizer_states": 144,
+          "changed_since_previous_checkpoint": null
+        },
+        {
+          "step": 2,
+          "adapter_tensors": 144,
+          "finite_optimizer_states": 144,
+          "changed_since_previous_checkpoint": 144
+        }
+      ],
+      "final_equals_checkpoint_2": true,
+      "same_process_save_zero_reload_exact": true,
+      "cold_optimizer_resume_tested": false
+    }
+  },
+  "batch_started_at": "2026-11-05T10:35:23.143749+00:00",
+  "batch_ended_at": "2026-11-05T10:56:51.940223+00:00",
+  "batch_elapsed_seconds": 1288.7964964120183,
+  "batch_exit_code": 0,
+  "different_adapter_tensors_between_arms": 144,
+  "final_adapter_quality_evaluated": false,
+  "design_or_generalization_claim": false,
+  "interpretation": "Matched four-update training and same-process save/reload completed. Both second-cycle losses rose slightly; these are training-context objectives before updates, not final-adapter evaluation or proof of pairing benefit.",
+  "limitations": [
+    "Three source decisions and ten dependent reconstructed steps, including researcher action explanations.",
+    "Paired/separate contexts already differ before learning; their loss gap is not a learning benefit.",
+    "No cold optimizer resume, independent-room generation or human review performed.",
+    "Two brief unrelated CPU input-build attempts ran during training (1.520266s/1 and 1.921717s/0); runtime is observational, not an isolated throughput benchmark."
+  ]
+}

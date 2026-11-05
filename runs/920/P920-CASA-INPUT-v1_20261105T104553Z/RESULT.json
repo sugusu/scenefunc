@@ -1,0 +1,210 @@
+{
+  "run_id": "P920-CASA-INPUT-v1_20261105T104553Z",
+  "status": "initial_native_input_ready_for_visual_and_task_review",
+  "recorded_at": "2026-11-05T12:28:42.222737+00:00",
+  "build_result": {
+    "status": "initial_shell_catalog_built_and_restored",
+    "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/build_v2/bundle",
+    "manifest_sha256": "4a815107e83114eced4878bcae78bf5a3c21bbca97164844cf8d67b53eb2faee",
+    "bundle_bytes": 72571463,
+    "walls": 9,
+    "openings": 4,
+    "catalog_entries": 16,
+    "furniture_instances": 0,
+    "model_calls": 0,
+    "training_updates": 0,
+    "renders": 0,
+    "formal_evaluation_ready": false,
+    "limits": [
+      "Door mechanics, privacy, installation and real functions unknown.",
+      "No furnished result, source recreation, human validation or model score.",
+      "Render acceptance and independent geometry checks pending."
+    ]
+  },
+  "geometry_check": {
+    "status": "declared_input_geometry_checks_passed",
+    "outer_clear_dimensions_m": [
+      6,
+      5
+    ],
+    "bath_clear_dimensions_m": [
+      1.8,
+      2
+    ],
+    "aperture_probes": [
+      {
+        "name": "entry",
+        "open_center": [
+          -2.35,
+          -2.525,
+          1.0
+        ],
+        "solid_frame_probe": [
+          -2.35,
+          -2.525,
+          2.2
+        ],
+        "solid_hits": [
+          "south_1_1"
+        ]
+      },
+      {
+        "name": "terrace_access",
+        "open_center": [
+          2.25,
+          2.525,
+          1.0
+        ],
+        "solid_frame_probe": [
+          2.25,
+          2.525,
+          2.2
+        ],
+        "solid_hits": [
+          "north_3_2",
+          "north_3_3"
+        ]
+      },
+      {
+        "name": "bath_access",
+        "open_center": [
+          1.175,
+          -1.55,
+          1.0
+        ],
+        "solid_frame_probe": [
+          1.175,
+          -1.55,
+          2.2
+        ],
+        "solid_hits": [
+          "bath_west_1_1"
+        ]
+      },
+      {
+        "name": "window",
+        "open_center": [
+          -1.7,
+          2.525,
+          1.55
+        ],
+        "solid_frame_probe": [
+          -1.7,
+          2.525,
+          0.8
+        ],
+        "solid_hits": [
+          "north_1_0"
+        ]
+      }
+    ],
+    "catalog_entries": 16,
+    "not_verified": [
+      "render appearance",
+      "door mechanics",
+      "whole-room feasibility",
+      "fixture use",
+      "structural safety",
+      "model generation"
+    ],
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "actual_execution_receipts": {
+    "build_execution": {
+      "started_at": "2026-11-05T10:46:09.430353+00:00",
+      "status": "failed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/build_heldout_task_input.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-INPUT-v1_20261105T104553Z/BUILD_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/build"
+      ],
+      "timeout_seconds": 180,
+      "pid": 6,
+      "start_ticks": "53341801",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/build_execution/stage.log",
+      "ended_at": "2026-11-05T10:46:10.950598+00:00",
+      "elapsed_seconds": 1.5202661780640483,
+      "exit_code": 1,
+      "first_log": "2026-11-05T10:46:09.840544+00:00 build declared held-out input, no model or rendering"
+    },
+    "build_v2_execution": {
+      "started_at": "2026-11-05T10:48:33.805535+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/build_heldout_task_input_v2.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-INPUT-v1_20261105T104553Z/BUILD_PLAN_V2.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/build_v2"
+      ],
+      "timeout_seconds": 180,
+      "pid": 7,
+      "start_ticks": "53356239",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/build_v2_execution/stage.log",
+      "ended_at": "2026-11-05T10:48:35.727228+00:00",
+      "elapsed_seconds": 1.9217172309290618,
+      "exit_code": 0,
+      "first_log": "2026-11-05T10:48:34.209205+00:00 build declared held-out input, no model or rendering"
+    },
+    "geometry_check_execution": {
+      "started_at": "2026-11-05T10:50:39.342192+00:00",
+      "status": "failed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/check_heldout_input_geometry.py",
+        "--task",
+        "runs/920/P920-CASA-INPUT-v1_20261105T104553Z/TASK_INPUT.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/build_v2/bundle",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-INPUT-v1_20261105T104553Z/GEOMETRY_CHECK.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "53368792",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/geometry_check_execution/stage.log",
+      "ended_at": "2026-11-05T10:50:39.507371+00:00",
+      "elapsed_seconds": 0.16519736405462027,
+      "exit_code": 1,
+      "first_log": "2026-11-05T10:50:39.448097+00:00 inspect actual SDF against task assumptions"
+    },
+    "geometry_check_v2_execution": {
+      "started_at": "2026-11-05T12:20:55.423104+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/check_heldout_input_geometry.py",
+        "--task",
+        "runs/920/P920-CASA-INPUT-v1_20261105T104553Z/TASK_INPUT.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/build_v2/bundle",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-INPUT-v1_20261105T104553Z/GEOMETRY_CHECK.json"
+      ],
+      "timeout_seconds": 30,
+      "pid": 7,
+      "start_ticks": "53910400",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-INPUT-v1_20261105T104553Z/geometry_check_v2_execution/stage.log",
+      "ended_at": "2026-11-05T12:20:55.588424+00:00",
+      "elapsed_seconds": 0.1653384940000251,
+      "exit_code": 0,
+      "first_log": "2026-11-05T12:20:55.528580+00:00 inspect actual SDF against task assumptions"
+    }
+  },
+  "native_build_attempts": 2,
+  "successful_native_builds": 1,
+  "successful_same_process_restores": 1,
+  "model_calls": 0,
+  "renders": 0,
+  "training_updates": 0,
+  "evaluation_ready": false,
+  "task_family": "lisbon_casa_da_porteira_af_arquitectos_2015",
+  "all_dimensions_and_service_core_are_research_assumptions": true,
+  "source_final_layout_used": false,
+  "next_step": "Render fixed five views and review initial task/asset feasibility before freezing any independent generation comparison."
+}

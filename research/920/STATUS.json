@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T10:38:21.983478+00:00",
+  "updated_at": "2026-11-05T12:28:42.222737+00:00",
   "goal_status": "active",
   "goal_objective_sync": "synchronized_active",
   "research_complete": false,
@@ -15,20 +15,16 @@
     "independent_whole_room_evaluation",
     "paper_and_reproducibility_package"
   ],
-  "training_authorized": true,
+  "training_authorized": false,
   "training_requires_separate_approval": true,
-  "latest_completed_experiment": "P920-PILOTPLAN-v1_20261105T094043Z",
+  "latest_completed_experiment": "P920-OFFLOAD-v1_20261105T102528Z",
   "current_run_id": "P920-OFFLOAD-v1_20261105T102528Z",
-  "current_run_role": "Explicitly authorized revised four-update mechanism pilot now running.",
+  "current_run_role": "First actual matched four-update LoRA mechanism pilot completed and disk artifacts verified.",
   "new_model_calls_this_turn": 0,
-  "running_model_process": {
-    "outer_pid": 1265279,
-    "session_id": 10407,
-    "started_at": "2026-11-05T10:35:23.143749+00:00"
-  },
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/FIRST_BACKWARD.json",
-  "next_step": "Finish same batch, inspect actual results; do not restart on observation timeout.",
-  "publication": "First real backward milestone ready for push; trial remains running.",
+  "running_model_process": null,
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
+  "next_step": "Validate/render independent initial input and freeze common-condition inference evaluation for base and adapters; no extra optimization.",
+  "publication": "Final four-update acceptance and independent native-input record ready for milestone push.",
   "scheduled_automation_created": false,
   "continuation_mechanism": "active thread Goal and repository handoff",
   "supporting_tool_diagnostic": {
@@ -836,10 +832,11 @@
     "run_id": "P920-EVALTASK-v1_20261105T100503Z",
     "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALTASK-v1_20261105T100503Z/RESULT.json",
     "drafts": 2,
-    "native_scenes": 0,
-    "ready_formal_tests": 0
+    "native_scenes": 1,
+    "ready_formal_tests": 0,
+    "latest_native_input": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-INPUT-v1_20261105T104553Z/RESULT.json"
   },
-  "training_authorization_scope": "Exact OFFLOAD PLAN b76074bad354fb243a095d98d9312738b2b53e8cd2d328b701c226419cf59835: four updates, first-error stop.",
+  "training_authorization_scope": "Approved OFFLOAD four updates completed; no remaining or expanded training authorization.",
   "decision_pilot_execution": {
     "run_id": "P920-PILOTPLAN-v1_20261105T094043Z",
     "status": "failed_oom_before_first_optimizer_update",
@@ -898,9 +895,14 @@
     "approved": true
   },
   "checkpoint_input_offload_execution": {
-    "status": "running",
-    "first_backward_verified": true,
-    "first_snapshot": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/FIRST_BACKWARD.json",
-    "optimizer_updates_snapshot": 0
-  }
+    "status": "four_update_mechanism_pilot_completed",
+    "optimizer_updates": 4,
+    "micro_backwards": 80,
+    "adapters": 2,
+    "same_process_save_reload_exact": true,
+    "final_adapter_quality_evaluated": false,
+    "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json"
+  },
+  "actual_adapter_training_sources": 3,
+  "actual_adapter_training_related_steps": 10
 }
