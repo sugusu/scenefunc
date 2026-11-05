@@ -1,0 +1,558 @@
+{
+  "model_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "model_python": "/data/wyh/conda/envs/c15_genrec/bin/python",
+  "model_revision": "63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "model_weight_files": [
+    {
+      "path": "model-00001-of-00004.safetensors",
+      "bytes": 4905357176,
+      "url": "https://huggingface.co/XuanyuLiu/Scene-Builder-Qwen3-VL-8B-Instruct/resolve/63e235a0c0d6e5bc2f8f3485214df4457fd2e672/model-00001-of-00004.safetensors",
+      "sha256": "d41a84e77f2624ef316514e665a1184cc8e546792661ae351b3e4fcec998b3c1",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "model-00002-of-00004.safetensors",
+      "bytes": 4915962456,
+      "url": "https://huggingface.co/XuanyuLiu/Scene-Builder-Qwen3-VL-8B-Instruct/resolve/63e235a0c0d6e5bc2f8f3485214df4457fd2e672/model-00002-of-00004.safetensors",
+      "sha256": "055ad7f7df031c037c3727ab599a412f9ba058a26ef7c89610427115e4cb9d4b",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "model-00003-of-00004.safetensors",
+      "bytes": 4974674312,
+      "url": "https://huggingface.co/XuanyuLiu/Scene-Builder-Qwen3-VL-8B-Instruct/resolve/63e235a0c0d6e5bc2f8f3485214df4457fd2e672/model-00003-of-00004.safetensors",
+      "sha256": "6fa43288b597a1c53fd69fef9db4807f91e691cbe3c568b7021592b6a9faeb7e",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "model-00004-of-00004.safetensors",
+      "bytes": 2738345504,
+      "url": "https://huggingface.co/XuanyuLiu/Scene-Builder-Qwen3-VL-8B-Instruct/resolve/63e235a0c0d6e5bc2f8f3485214df4457fd2e672/model-00004-of-00004.safetensors",
+      "sha256": "b28aba69d3e8962cc4eec5811c7b9a07dea53e5d6a6c6bda1c075f3f1a5bcca9",
+      "git_blob_sha1": null
+    }
+  ],
+  "model_configuration_sha256": {
+    "chat_template.json": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce",
+    "config.json": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+    "generation_config.json": "8469742d1fce0de951c8909b26a2c0c0d8490837ce476efb114da9e0cefc4d44",
+    "model.safetensors.index.json": "dd08ff0fbf2bed6ef1827ef909e3e9057d6d75c4be0fac1273abb880d456b9ab",
+    "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+    "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+    "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+    "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+  },
+  "gpu_uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+  "gpu_lock_paths": [
+    "/data/wyh/scene_cvpr_20261020/work/gpu0.lock",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/gpu0.lock"
+  ],
+  "run_id": "P920-LOSS-v1_20261105T092125Z",
+  "frozen_at": "2026-11-05T09:21:25.394159+00:00",
+  "question": "With identical sourced/reconstructed targets, what are actual frozen-model conditional losses and compute proxies, and what confounds remain before a paired/separate training comparison?",
+  "input_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920",
+  "public_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-LOSS-v1_20261105T092125Z",
+  "runtime_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-LOSS-v1_20261105T092125Z",
+  "official_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+  "budget": {
+    "max_sequence_tokens": 16384,
+    "max_pixels": 65536,
+    "unique_source_forwards": 30,
+    "verification_forwards": 2,
+    "prepare_seconds": 600,
+    "forward_seconds": 1800,
+    "training_updates": 0,
+    "retries": 0
+  },
+  "scope": "Observed teacher-forced frozen loss only; not professional design ability, learned pairing, training admission or independent test.",
+  "selection": "All ten steps of the three already qualified conditional geometry/mode reconstructions, one source decision each; not ten independent professional decisions. No source acquisition or generated scenes in this run.",
+  "sources": [
+    {
+      "id": "air",
+      "run_id": "P920-AIR-v2_20261105T045637Z",
+      "family_id": "budapest_airbnp_position_collective_2015",
+      "units": [
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/OTA_CORRECTION_CANDIDATE.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/initial_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/initial_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/STEP.json",
+          "restored_state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/actual_restored_state.json"
+        }
+      ],
+      "locked_files": [
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_001.east.png",
+          "sha256": "aedb7bcb4b7d8e222b8ce8a631870514f19c96ac89ce56d1acd6e28b0ba678b1"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_001.north.png",
+          "sha256": "5daa6e5da3b59a7f9949bb45ecd9f3465db5c7379bd3f07af80df35809caf101"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_001.south.png",
+          "sha256": "c8181fba84677497f52dddeff168f7a8a96edb6ee03ffe8e235a8b66b88d69d8"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_001.state_binding.json",
+          "sha256": "f2eb7f6ab2f8f2180813ed8bc573e23a26ec29b70e35bccf9a674b3f49b27acb"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_001.topdown.png",
+          "sha256": "4c8da3aabc9ee267497458d50f1af2a142b6ea00b44fa3fd7dd09881964462fb"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_001.west.png",
+          "sha256": "df72953375b6b205affb61783f5d025b51cdcbb5a90b5aa4322383f119bac22f"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/OTA_CORRECTION_CANDIDATE.json",
+          "sha256": "0b934b8f51c19a306ee2bea19ae178c6c4a1c8f49a6cf8a5e78f372bad5e645f"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/STEP.json",
+          "sha256": "790e5623516750190250c2a8712572bc64c2efa019a5b7a2d61c4d68f227a3a2"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/actual_restored_state.json",
+          "sha256": "96aff7dc5c8456fb66438a143350e12addb3e2f9c40ad3f13e4a2052500f4d03"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/initial_observation.json",
+          "sha256": "dab2a3165b92942af13be4007bb3e0fdee1a4e232e6ae6bf0b490a2edcefd2c1"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v2_20261105T045637Z/initial_state.json",
+          "sha256": "dc5b5595ba5ef9fb6de54aa15745c9b0d3f47403e518f9291e2570f6f335f30f"
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "run_id": "P920-STORAGE-v2_20261105T062810Z",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "units": [
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_01.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/initial_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/initial_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/STEPS.json",
+          "step_array_index": 0
+        },
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_02.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_1_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_1_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/STEPS.json",
+          "step_array_index": 1
+        },
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_03.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_2_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_2_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/STEPS.json",
+          "step_array_index": 2
+        },
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_04.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_3_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_3_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/STEPS.json",
+          "step_array_index": 3
+        },
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_05.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_4_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_4_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/STEPS.json",
+          "step_array_index": 4
+        }
+      ],
+      "locked_files": [
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_000.east.png",
+          "sha256": "c0f6dd9bf8096e986db3de2baa45f3929a7b017b174dafa04b2b844897067caa"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_000.north.png",
+          "sha256": "695e1cd6418f3c6268062385de77c83af214e6f486261c65e89b41a075fbcbe7"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_000.south.png",
+          "sha256": "3987155eb5819d53624b3ef7c99cdd62ff211857f8a203e0321eb49baf70eebb"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_000.state_binding.json",
+          "sha256": "d2ff85422f7fb0ded1c90c66642049e6ac436e26548781ab0733c2c9791b4497"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_000.topdown.png",
+          "sha256": "19be3db0557763197dc9bb4710438c641a047cc38b6c159823eccfdb6bf1ac1f"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_000.west.png",
+          "sha256": "988cc95ef84566cadb19bcd97a0a427dfba52bfaa5bba35085a6e269ff3b18fb"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_001.east.png",
+          "sha256": "97582ac47198eacd3abd572571cd51099bd95f9896e974621987771aa6f7add8"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_001.north.png",
+          "sha256": "f51e4ae44be78f6b0eaa33c63adcbd6fb5e3bbe7f0461b795d17a33047da6aca"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_001.south.png",
+          "sha256": "f0945c5d754c2145ecf1e897c06e4b218088810eb9c9084b4894cf7bd1927dd8"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_001.state_binding.json",
+          "sha256": "c3b3b81709900dd8287044c96f117506aa0c04485a000cf168ab13243f179d4d"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_001.topdown.png",
+          "sha256": "a2f5795870b9b99bfe84d3b349aa55702336d9f6b87143f69ccd8fb07beb7369"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_001.west.png",
+          "sha256": "515efef50159eb0191bded150eefc75bcce105cae22ea20892d29a8f9e3165f4"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_002.east.png",
+          "sha256": "1c6671393eeab394e5eb3169ed8f316a9d4a4e7ffba777f91cee8dd953738682"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_002.north.png",
+          "sha256": "4189d3606a110f8a325e553724e5080c3a46b9540bd11c1f1db7003b98c8cfde"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_002.south.png",
+          "sha256": "f75c124c594ef963817d72d505b1f382aede30e878cc1957c8df72dab74fa3b5"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_002.state_binding.json",
+          "sha256": "c11ffe3d6d3db6ea41de802d5d2f961b1ac251ea138afbd40505936e7e54c5dc"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_002.topdown.png",
+          "sha256": "1ec867e3c53e2d15ec1d55860dd7e2bdcccfdf2b3b2852ff32c73522d2388882"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_002.west.png",
+          "sha256": "15523dde36a159f09e35729c9add734bc97189903d089e66480c382ba58b565b"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_003.east.png",
+          "sha256": "964084b4f06265491a43b4ef715d4fba66dc9238cc74b885b707584778ba4b6a"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_003.north.png",
+          "sha256": "75fb4878bfe7272c06b757b3512e07a45087cd841ebf91d657a1927b9e747f6e"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_003.south.png",
+          "sha256": "baa95b703bb2360d420e39aa465eea17b8b0f7f8c784787143c7c6e82c50696a"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_003.state_binding.json",
+          "sha256": "9e6a3cbf90c0f2013a9cfc4a46fdca447d835afd047f625ae64182dbd944b778"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_003.topdown.png",
+          "sha256": "1c87216c92b152fe1b8828423665d76bdcab92604acd040d551b5271bd311064"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_003.west.png",
+          "sha256": "1f35d4813f9a0e8f7757fe44a8fa1ed7db69dde697b8014a93c1e54405025be9"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_004.east.png",
+          "sha256": "37a861864ac61500ede9dd0afcb4d40c07a81377ac5d9b32473dccc9e610b88f"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_004.north.png",
+          "sha256": "75bb54600d913daae16cf6c320c1c1c2205383791f5e99c95827f9b2109e106b"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_004.south.png",
+          "sha256": "6212c367861f5a9e458ab89bd4bb32ca6b3bd10cb3a836bb5495df082555d1aa"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_004.state_binding.json",
+          "sha256": "39bf0f3cc6d358605afb900bdaddbabd70cbe5faf11e861d0175b18bb68d5ba2"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_004.topdown.png",
+          "sha256": "1d82dbc170d7eae5f652c24d87a1b1ae9bf4a3dee274102df2a7159508adc18a"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/replay/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_004.west.png",
+          "sha256": "21673d06b1e49107ab86a96a24186066614c5ead51b31d6f16fd8c2ce5113789"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/STEPS.json",
+          "sha256": "e9db188b95393ca2e9b3cd98554693c7daec2f4de95ac26d03cecee35ba607e8"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/initial_observation.json",
+          "sha256": "241bf1fc9fcc1af1be8579e4645f424d050ec7a214b30ae2b3717b029a92b053"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/initial_state.json",
+          "sha256": "32a43a6a66c0dc00a77d810460d7222e0f67b42ca3847f8fab85a2f1d5c77011"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_01.json",
+          "sha256": "99e89a0353604b4d9d8e75e9d7aaf1f018b6cdac7603a95d38c46067b8dfec35"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_02.json",
+          "sha256": "46a16ab28359025375f1562e1a1d5ae463a935b537fca44380fbff279939bb63"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_03.json",
+          "sha256": "5cabe8da51065d69d6da7e31557aa06ca24bb92a8ea33ee9ab213f1c58249d32"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_04.json",
+          "sha256": "eba2ce3ceb27bf1d7c1c5bebc3f520acc7dc87d914105ebcddca8ab4cf1c1337"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/ota_candidates/step_05.json",
+          "sha256": "584deb13753e44da16e600e286b538f86e35c43b8a0ad37be23123903df0dfb6"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_1_observation.json",
+          "sha256": "582ac5077372e4095a054b210d0a5e62f735bd05007cfa975b89056e4dfd66d7"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_1_state.json",
+          "sha256": "a277e05cbacc142fa5d3c6aa63cde734893d3882c818469799ba4acbdcb16bdb"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_2_observation.json",
+          "sha256": "c4b7fc86b764a7055ed2b187a27a1bd52e2f4fc95749b66bcc3919224d01d5a7"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_2_state.json",
+          "sha256": "10990c4d4b4b33c7e6c8e2b94f5a609a2e3f839c46f2cb4043458077d40a3fd7"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_3_observation.json",
+          "sha256": "3b8928de48409c6053f13e7df1c5e9aa6dbf5632720232663e357b148b3f2ab6"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_3_state.json",
+          "sha256": "3227b4b4946ff687f92e1a8ad844ae882fb3cf6577568d8d40913f8e68e81120"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_4_observation.json",
+          "sha256": "2cf6d286093b033cad440af0be0c394e7253476424474eda6e7f4198c493ac30"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/step_4_state.json",
+          "sha256": "3843e78c0eb25b6ddce870c147d3cf915c82aacb11f877d7c290b603dca1419e"
+        }
+      ]
+    },
+    {
+      "id": "waterloo",
+      "run_id": "P920-WATERLOO-v1_20261105T074801Z",
+      "family_id": "singapore_waterloo_street_dess_chew",
+      "units": [
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_01.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/initial_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/initial_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/NATIVE_STEPS.json",
+          "step_array_index": 0
+        },
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_02.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_1_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_1_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/NATIVE_STEPS.json",
+          "step_array_index": 1
+        },
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_03.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_2_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_2_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/NATIVE_STEPS.json",
+          "step_array_index": 2
+        },
+        {
+          "episode": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_04.json",
+          "state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_3_state.json",
+          "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_3_observation.json",
+          "step_file": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/NATIVE_STEPS.json",
+          "step_array_index": 3
+        }
+      ],
+      "locked_files": [
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.east.png",
+          "sha256": "b4693a2929868850c3cdbc6336a52a6181ea2253655e272fed676ee9c4b42193"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.north.png",
+          "sha256": "d6332e36ebab721210b666db131e1d46800b935f9d60d1919eca7533be62f44c"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.south.png",
+          "sha256": "d5c95f3d1c5df0df321e9bbd49bbbddf8ae7bc573110d6fc1b4a57fb2b6cd979"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.state_binding.json",
+          "sha256": "ec50d32de75166f0fac39de627e8eecd5a4626ebe83c821750bb962805595dde"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.topdown.png",
+          "sha256": "be319516f770b6a05b8b3774c74a769302e2d851410863bf7ff59bf40d52e3e6"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.west.png",
+          "sha256": "4e5b4e0cde5b7ffc5be1a2462a965b57df5cb8b79518716a7eb6563831ff340b"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_001.east.png",
+          "sha256": "981548b4560a9a8eaaf44b37d5ec39163ac0f7b2bcb0b8eb1deee6b186589bc9"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_001.north.png",
+          "sha256": "21e5b0680321bf26f81ca0af8dd2f51ace863de74c5227d82b78117b4d0091aa"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_001.south.png",
+          "sha256": "fad616b2ac417f0c9f4fe3130a9c78f36895228ec6d1adb89180f0b563fb7edd"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_001.state_binding.json",
+          "sha256": "9efad4064898b82040118c27f2e82484dd8bc6a52c37a75933ee6526c2b0180a"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_001.topdown.png",
+          "sha256": "f02fdecef41a3954bd984a077fba11eece0e39eab0fd0708e0321da1f3015dd4"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_001.west.png",
+          "sha256": "89807baf2102f7ebdbb8a717c6dfd67f6437382c47f27a33c8b03b8362da0287"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_002.east.png",
+          "sha256": "397054e3f9a036bf981057c0d7458279557703039ed629bbdc8410f2afa0d470"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_002.north.png",
+          "sha256": "1172d58431f6017af99b3321b202d2cdd7f0715792c960bf55791b00aec3f73a"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_002.south.png",
+          "sha256": "915bd2561733d5cc58bd7943678404f00c3b1151cc6f44f011bc96ca8fd5fffa"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_002.state_binding.json",
+          "sha256": "e97fdecf5e3e849471b8d1f7f52f90a54690dfa3236d7b23cf6299828e30f77d"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_002.topdown.png",
+          "sha256": "fc33cda7a9d6171ee43e8a784bbd92388a403a2e43b4263a5bfdbca0c8b4f917"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_002.west.png",
+          "sha256": "60ecf71b8fa4dddef13c1bf2f2f57e70090bf5741b741b78f7a98650e111bb29"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_003.east.png",
+          "sha256": "066d028b4ddfb61323184f3149020de025697deab0491aae919699dd81d2f96d"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_003.north.png",
+          "sha256": "f353d14159007846d758813e1c4d41682fc7608dee433c5a59c45b31602b2487"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_003.south.png",
+          "sha256": "d9d69e0ae7f4ffb255aabd02e8429e27c05448504c703a3387a3b973bca4f76c"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_003.state_binding.json",
+          "sha256": "ad8f31a527af46efc8c4703f2fe09c00da005a3f253dd782a869e3f2e7b94879"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_003.topdown.png",
+          "sha256": "5bb74e658542d33fd149f371e1644007a76a3b74c3c13bc606d63eb70c614a59"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_003.west.png",
+          "sha256": "962241540f0ce0687d117c0d8f18efc43b44aec53e44a111fa7fe1f3fe9f9ccd"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/NATIVE_STEPS.json",
+          "sha256": "c034971ae549abe0b7d030c9329098f5b0ef73fad6776c67a61dd0ef63efb337"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/initial_observation.json",
+          "sha256": "8e89fa2fd9c6d7334196091b49bf0ddd6789503cd1b2b1c14a83fcd142943773"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/initial_state.json",
+          "sha256": "8dc8e3d6626d74b50e67774fc65fdfdf31f8a81cf5500947cdd0aa207df8abad"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_01.json",
+          "sha256": "31e9cb2a9e4d91c74de49cdc24cfeb7f8e4ffb2e7a8dfe635bfd5d1a09bbb122"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_02.json",
+          "sha256": "a9b5e5cb5b9dee19008977a9deb4f98153313a27c48c741c7ee06839225c724b"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_03.json",
+          "sha256": "e4b83794804ac265a9564208f2ac2d84add81eea1c4f501af75e409eab75112c"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/ota_candidates/step_04.json",
+          "sha256": "d70db461f906247b89e85054efc7ac17a31e7bfbcad249693e6d89d4010b4708"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_1_observation.json",
+          "sha256": "cbc5052b60e8954b7ae1901d46dfa1ec847268abdac3d9ce7c71e6947665ff13"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_1_state.json",
+          "sha256": "eeaae9d44257a12eba049ca09ea2e758ce2f29d190e4eda8ded1b5fa79e5af7d"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_2_observation.json",
+          "sha256": "5830b77230673269e85257b76a8d79c921d28b936ada102b23af3f555c7760d5"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_2_state.json",
+          "sha256": "9ba5bb2c8822568c19a99a8e26a5d93fec530db12788397fd0603f060c3d3f0f"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_3_observation.json",
+          "sha256": "3ce18867b5d066be509a0e86cad6790223ef25f752e56c83d4fb433a9ec76047"
+        },
+        {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/step_3_state.json",
+          "sha256": "cfdfd77bbca4f3d2cfe0624f5a0b308a481f0b4fa3ae90aa5cfb189a6842822a"
+        }
+      ]
+    }
+  ],
+  "scripts": {
+    "prepare_decision_loss.py": "2ddb7cfa3e9c36824d629110fe3e5482fb67f3d40459dd7d40901820219b1cdc",
+    "run_decision_loss.py": "8274fb19f8122d7ec4b4f4c8047af9d2dcdceceff4576c6453c0d52040461573",
+    "decision_pairing.py": "f6481d14371b6e94161bcca4e22ba9b15afae775106ea5485f5ab57cd286b734",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "run_stage.py": "d3bb72feb8a7040c16e269d4de7187cabedc64e5d7ee750e796eabdb5fdb5d65"
+  },
+  "official_source_hashes": {
+    "src/train_sft.py": "e78178d624d430ea492934f3579329f22451f30dc357d3638b85512db018f32d",
+    "src/sft_dataset.py": "9e4d18f67e746af16f830d7e8d0da714964a43bfa320ef091a0092b3e9bb2569",
+    "src/memory.py": "553ec3c6624659bee3b2dfc77d3aa9f20cc92de7740a3e7eaedee3ceccb03d36",
+    "src/scene_observation.py": "1a27dd84bdf25ba771c64f59eacc165fd3e5b8365bc5ba08c1c2856cd51734f3"
+  }
+}
