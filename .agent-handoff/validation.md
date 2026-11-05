@@ -289,3 +289,9 @@ Bukit交付追加：前后GLB各5,259,000B，34节点/10对象视觉全部回读
 2026-11-05T19:46:09.403458+00:00 FCHOICE v2两native84.017473/84.569075s均0、两restore8.243177/8.494925s均0，mesh/export/测量/归档均0；20图hash/decode/4状态绑定，终态10图实际查看，2schema合法。v1原生均0但视觉不合格；归档self-running检查失败退出1保留，修归档后0不重跑。四ray解析例通过。通用探针2/3/3失败仍保留。
 
 2026-11-05T20:21:01.393371+00:00 FPOLICY原始batch/各rollout/evaluation/audit/export/restore均exit0；归档.566988秒、汇总.064826秒均0。50图实例hash/decode、10状态绑定、10终态图实际查看；1解析失败和3schema外查询保留，两个合法move效果核对。初态几何与终态房壳相同，8家具身份/尺寸保留。MIXAUDIT11、FCHOICE-v1 136、v2 132 manifest条目复核通过；FPOLICY215条14,433,384字节。0新增训练。
+
+2026-11-05T20:54:30.051941+00:00 四run共494项manifest从已提交Git blob校验一致；push和ls-remote均0，远端SHA与本地一致。
+
+2026-11-05T21:34:35.857087+00:00 CURATE生成.817875秒/0；编码v1因旧future path dict导致TypeError，14.566749秒/1；保留失败code/plan/log，v2只修读路径18.781477秒/0。两组41样本/205图实例、目标2166同序列/同像素，输入360470/360598、最大12031；旧计划/操作指令/未来字段隔离。46公开episode==runtime hashes，原冻结inputs未变，75manifest 3,114,505字节。git diff --check通过。
+
+2026-11-05T21:47:19.137464+00:00 MOABIT batch54.360973秒/0，构建1.821110/1.770880/1.871100秒、几何.114872/.115366/.165655秒、名义五图48.033254秒，归档.717555秒均0；session86047终态。3完整native manifests哈希，名义5图hash/decode/绑定/视觉；相同目录/非干预任务字段；0家具+9结构开口。CURATE75及MOABIT88小产物hash已核；源码语法和diff检查通过。

@@ -1,0 +1,55 @@
+{
+  "run_id": "P920-MOABIT-INPUT-v1_20261105T213853Z",
+  "frozen_at": "2026-11-05T21:38:53.295080+00:00",
+  "question": "Can the second prospectively held-out family be made into verifiable native whole-room inputs without leaking its solution?",
+  "variants": {
+    "nominal": {
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MOABIT-INPUT-v1_20261105T213853Z/nominal/BUILD_PLAN.json",
+        "sha256": "1cd497f78c8e851f6e02b7ab80e18349107bc010ca866fa2962b6a0b603bfd59"
+      },
+      "out": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MOABIT-INPUT-v1_20261105T213853Z/nominal/build"
+    },
+    "narrower": {
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MOABIT-INPUT-v1_20261105T213853Z/narrower/BUILD_PLAN.json",
+        "sha256": "623a154735ad687227ca8ad1d3c6ffa5436185092657f3b22492f0778063efdd"
+      },
+      "out": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MOABIT-INPUT-v1_20261105T213853Z/narrower/build"
+    },
+    "wider": {
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MOABIT-INPUT-v1_20261105T213853Z/wider/BUILD_PLAN.json",
+        "sha256": "12eaa6be9355f725ce45060d411c1dd2241cfb9448c4bbaad70685a6fe221582"
+      },
+      "out": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MOABIT-INPUT-v1_20261105T213853Z/wider/build"
+    }
+  },
+  "budget": {
+    "native_builds": 3,
+    "native_same_process_restores": 3,
+    "observation_batches": 1,
+    "observation_views": 5,
+    "model_calls": 0,
+    "training_updates": 0,
+    "native_actions": 0,
+    "total_stage_seconds": 900
+  },
+  "scope": "Three shape variants of one researcher-defined transfer, not three independent projects. Only nominal five views now; no candidate layouts or policy inference.",
+  "stop": "One construction per variant; stop on construction failure, preserve all outputs. No model inference in this batch.",
+  "source_review": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MOABIT-INPUT-v1_20261105T213853Z/SOURCE_REVIEW.json",
+    "sha256": "08703017b4a139c34ec1657572efa550e4157cd02bf0d82d4a26f86610a0c37b"
+  },
+  "code_sha256": {
+    "build_moabit_input.py": "7d5188916beb200031e17451bf4016349de30ee43f0e7cda35b10832f20dba78",
+    "check_moabit_input.py": "073fe451fa914c48b91959237048be01a1b19c52fab4ed69d12b991c36c46e1d",
+    "observe_heldout_input.py": "9c220020720dbc9db3fa940c39ace6692d38cc1f0f0c794759609152ff35f930",
+    "run_moabit_input_batch.py": "716e46c2bf7e9c096cf38475a7d336e6e4818a317324348ba69cf3c0eae75cde",
+    "build_reference_room.py": "18ae517c85b1c3dffce41e269c83d9062142f2b56da0b96f005f0273f3278146",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "catalog_project_session.py": "1cc129ad95718460d9f919989f0fee4722c289c004e3bdfa06dbc229a50fdcbf",
+    "run_stage.py": "d3bb72feb8a7040c16e269d4de7187cabedc64e5d7ee750e796eabdb5fdb5d65"
+  }
+}

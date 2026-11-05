@@ -1,0 +1,190 @@
+{
+  "design_request": "研究者整理的迁移任务：在给定小住宅房壳中完成一名常住者的起居、睡眠、厨房、洗浴与储物，厨房需包含食材冷藏、烹饪、洗涤和操作位置，浴室需有淋浴、洗面盆和厕所；保留固定结构和开口。原设计委托还要求新艺术风格元素，请明确目录和工具能够表达的部分及未知项，不得把未经验证的设施使用、容量或风格达成算作成功。研究追加条件：日常一人办公与吃饭可以分时共用，来访时两人需同时就座用餐；保持睡眠、卫生及入口通行，不规定家具数量或摆位。精确几何、人数、来客活动、固定卫生间围护和替代资产均为研究假设，并非原住户原话或原项目测绘。",
+  "original_request": null,
+  "request_provenance": "adapted",
+  "request_authorship": "researcher_transfer_assumptions",
+  "structured_requirements": [
+    {
+      "id": "sleep",
+      "requirement": "一名常住者有可进入、可实际使用的睡眠位置。",
+      "states": [
+        "daily",
+        "guest"
+      ],
+      "evidence_needed": [
+        "实际床面与接近空间",
+        "门窗/通行影响"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "cook",
+      "requirement": "保留做饭、洗涤、取放食材和必要操作台，不得以删除厨房扩大起居。",
+      "states": [
+        "daily",
+        "guest"
+      ],
+      "evidence_needed": [
+        "真实设施和使用位置",
+        "操作/开门空间",
+        "水电安装资料"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "hygiene",
+      "requirement": "提供卫生和洗浴功能、进入路径及隐私。",
+      "states": [
+        "daily",
+        "guest"
+      ],
+      "evidence_needed": [
+        "设施/遮挡/门扇",
+        "使用与通行空间",
+        "安装资料"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "storage",
+      "requirement": "提供衣物与日常用品的可使用收纳。",
+      "states": [
+        "daily",
+        "guest"
+      ],
+      "evidence_needed": [
+        "内部容量需求待定",
+        "取放方式/开合空间"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "daily_work_meal",
+      "requirement": "日常一人办公、吃饭可以分时使用同一处；不规定桌子的数目和位置。",
+      "states": [
+        "daily"
+      ],
+      "evidence_needed": [
+        "桌面/坐席和接近空间",
+        "收整或切换成本"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "guest_meal",
+      "requirement": "一名来访者与常住者能同时就座吃饭；活动后仍保留睡眠和卫生功能。",
+      "states": [
+        "guest"
+      ],
+      "evidence_needed": [
+        "两个同时可用餐位/坐席",
+        "其他必需功能损失",
+        "活动切换及停放位置"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "access",
+      "requirement": "入口和必需功能之间保持可通行，不能用对象删除改变要求分母。",
+      "states": [
+        "daily",
+        "guest"
+      ],
+      "evidence_needed": [
+        "实际障碍和门扇",
+        "人体包络/净宽阈值待预定",
+        "路径连通"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "editable_complete",
+      "requirement": "保存对象身份、资产、位姿与可恢复的整屋状态，并提交三维结果和未解决项。",
+      "states": [
+        "daily",
+        "guest"
+      ],
+      "evidence_needed": [
+        "原生恢复",
+        "资产引用闭包",
+        "最终三维与状态一致性"
+      ],
+      "missing_evidence_result": "unknown"
+    },
+    {
+      "id": "source_style_preference",
+      "requirement": "保留来源所述新艺术风格元素偏好，明确资产/材料表达及专业评价缺口。",
+      "states": [
+        "daily",
+        "guest"
+      ],
+      "evidence_needed": [
+        "可核材料/资产表达",
+        "风格判断依据与专业评价"
+      ],
+      "missing_evidence_result": "unknown"
+    }
+  ],
+  "geometry_assumptions": {
+    "provenance": "Research-authored transfer shell; not a surveyed or inferred original plan.",
+    "units": "m",
+    "axes": "x east, y north, z up; southwest interior floor corner is origin",
+    "interior_rectangle": [
+      0,
+      0,
+      3.325,
+      6.315789473684211
+    ],
+    "height": 3.1,
+    "entrance": {
+      "wall": "south",
+      "interval_m": [
+        0.2,
+        1.1
+      ],
+      "height_m": 2.1,
+      "door_motion": "Open aperture only; door leaf and swing unverified"
+    },
+    "window": {
+      "wall": "north",
+      "interval_m": [
+        0.6,
+        2.0
+      ],
+      "sill_m": 0.9,
+      "height_m": 1.3
+    },
+    "terrace": null,
+    "fixed_service_core": {
+      "rectangle": [
+        1.8250000000000002,
+        0,
+        3.325,
+        1.8
+      ],
+      "door_interval_y_m": [
+        0.45,
+        1.35
+      ],
+      "provenance": "Research fixed enclosure; not source final bathroom; no original plumbing inference"
+    },
+    "initial_furniture": [],
+    "structural_installation_constraints": "Unknown; no assertion that demolition/plumbing relocation is possible in original dwelling.",
+    "sensitivity": {
+      "variant": "narrower",
+      "area_m2": 21,
+      "aspect_ratio_intervention": "±5% east-west span; north-south span adjusted to keep area21",
+      "fixed_core_m": [
+        1.5,
+        1.8
+      ],
+      "not_independent_project": true
+    }
+  },
+  "unknowns": [
+    "Source brief, original geometry and actual household preferences unavailable.",
+    "Fixture function, storage capacity, construction, door operations and activity thresholds need evidence.",
+    "Shell shape, height, opening positions and terrace size are research assumptions; sensitivity must be set before formal evaluation.",
+    "3.5×6m及±5%等面积壳、1.5×1.8m固定卫生间为预定研究条件；源竖向叠合不作为建设指令，当前楼层工具不能据此验证完整源住宅。"
+  ]
+}

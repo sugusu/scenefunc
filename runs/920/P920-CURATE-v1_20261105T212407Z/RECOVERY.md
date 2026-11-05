@@ -1,0 +1,5 @@
+# 候选语料恢复
+
+DATASET.json的root指向920的design_decisions_920目录。每个row.documents引用服务器runtime下的episode；同样内容逐字保存在本目录dataset/<row.id>_<kind>.json，sha256一致。若服务器文件丢失，可按每条ref.path创建目录并复制对应JSON，再按ref.sha256核验。文件内五图绝对路径对应旧执行目录，逐张来源与哈希见row.images；这些原图未复制进Git。迁移机器时须记录根目录映射并显式生成新版本，不改冻结manifest或假称哈希相同。
+
+本批未生成checkpoint、网格或adapter。恢复实际场景请使用row.source_episode和row.consequences指向的原运行恢复记录，不能从这批监督JSON推断已有新场景执行。官方加载器/processor版本与文件哈希见ENCODING_PLAN_V2.json。命令、真实启动/退出、初次失败在execution；旧失败代码在code/audit_curated_corpus_failed_v1.py。使用者必须区分本批重写的任务标签与原实验中执行时的任务。
