@@ -1,0 +1,73 @@
+{
+  "schema": "scenefunc-sourced-decision-packet-v1",
+  "run_id": "P920-AIR-v1_20261105T042212Z",
+  "created_at": "2026-11-05T04:42:30.460562+00:00",
+  "decision_id": "airbnp_open_clothing_access_for_short_stays",
+  "family_id": "budapest_airbnp_position_collective_2015",
+  "split": "train_source_candidate",
+  "split_fixed_at": "2026-11-05T04:00:13.748299+00:00",
+  "source": {
+    "record": "SOURCE_RECORD.json",
+    "record_sha256": "d260a656fec155864cd04060a76b21affe1c71b57ffce7042f98f0e414961672",
+    "supported_scope": "Open clothing access for two short-stay travellers; not our geometry, asset, mounting or coordinates."
+  },
+  "conditions": {
+    "source_conditions": "Small apartment for two short-stay visitors; frequently used clothes should be easy to access.",
+    "researcher_conditions": "6x5x2.6m counterfactual with 14 fixture/furniture visuals, two mesh assets, twelve static proxies, bathroom partitions, declared openings. Not source surveyed plan or historical before-state.",
+    "original_resident_quote": null
+  },
+  "objects": {
+    "added": "open_clothes_rail_0",
+    "source_asset_id": "6e1d4474a96889ac9c789787421c8db16e85214d",
+    "unscaled_dimensions_m": [
+      0.8996918201446533,
+      0.4400927424430847,
+      1.7311038114115966
+    ],
+    "all_23_initial_objects_preserved": true,
+    "catalog_choices": [
+      "bookshelf",
+      "storage_bin",
+      "open_clothes_rail"
+    ],
+    "source_fixture_equivalence": false
+  },
+  "action": {
+    "actual": "STEP.json",
+    "frozen": "FROZEN_PROGRAM.json",
+    "tool_calls": 1,
+    "origin": "researcher-reconstructed design operation executed by native tool; no model or historical trace"
+  },
+  "states": {
+    "initial": {
+      "path": "initial_state.json",
+      "sha256": "4ba3efda800751038745f47e3e9e80f6135045e4313d6da77a628b0196aa0b81",
+      "views": "INITIAL_VIEWS.json"
+    },
+    "after": {
+      "path": "after_state.json",
+      "sha256": "dc5b5595ba5ef9fb6de54aa15745c9b0d3f47403e518f9291e2570f6f335f30f",
+      "views": "AFTER_VIEWS.json"
+    }
+  },
+  "outcome": {
+    "classification": "mixed_source_guided_reconstruction",
+    "verified": "Open-rail substitute added without changing originals; side-approach geometry measured.",
+    "cost": "Additional floor AABB 0.395947840481071m²; dining_east route lost at 0.5m and 0.6m square body scenarios although target cells remain clear.",
+    "positive_placement_demonstration": false,
+    "whole_dwelling_function_verified": false,
+    "independent_professional_review": false,
+    "training_admitted": false
+  },
+  "scope_for_supervision": {
+    "sourced_knowledge": true,
+    "executed_action_record": true,
+    "objective_consequence_QA_candidate": true,
+    "positive_placement_action_target": false,
+    "professional_preference_label": false
+  },
+  "review_candidate": "QA_EPISODE_CANDIDATE.json",
+  "rights": "Source brief factual paraphrase; original third-party text/images not copied as targets. HSSD mesh stays on server with source/version/hash. Training reuse/admission and user training authorization remain separate.",
+  "training_authorized": false,
+  "next_step": "Use source-fixed geometric diagnosis for at most one separately frozen corrective task; preserve this failure and do not claim repeated reconstruction is an independent project or controlled method gain."
+}

@@ -1,0 +1,199 @@
+{
+  "execution": {
+    "asset_download": {
+      "started_at": "2026-11-05T04:24:48.359822+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/fetch_asset_bundle.py",
+        "--plan",
+        "runs/920/P920-AIR-v1_20261105T042212Z/ASSET_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/download"
+      ],
+      "timeout_seconds": 180,
+      "pid": 1208409,
+      "start_ticks": "51053694",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/asset_download/stage.log",
+      "ended_at": "2026-11-05T04:25:08.506787+00:00",
+      "elapsed_seconds": 20.146978957985993,
+      "exit_code": 0,
+      "first_log": "'(MaxRetryError(\"HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/hssd/hssd-models/resolve/208ea6bc22d863bbc1cbaef1829b3e646600dfb6/objects/6/6e1d4474a96889ac9c789787421c8db16e85214d.glb (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))\"), '(Request ID: 9f0f5a67-7383-473f-9258-cbd48e6cf766)')' thrown while requesting HEAD https://huggingface.co/datasets/hssd/hssd-models/resolve/208ea6bc22d863bbc1cbaef1829b3e646600dfb6/objects/6/6e1d4474a96889ac9c789787421c8db16e85214d.glb"
+    },
+    "asset_inspect": {
+      "started_at": "2026-11-05T04:25:30.295829+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/inspect_decision_assets.py",
+        "--download",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/download/DOWNLOAD.json",
+        "--out",
+        "runs/920/P920-AIR-v1_20261105T042212Z/ASSET_INSPECTION.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "51057888",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/asset_inspect/stage.log",
+      "ended_at": "2026-11-05T04:25:30.813423+00:00",
+      "elapsed_seconds": 0.5176066990243271,
+      "exit_code": 0,
+      "first_log": "2026-11-05T04:25:30.693466+00:00 begin candidate mesh inspection"
+    },
+    "asset_preview": {
+      "started_at": "2026-11-05T04:25:58.000997+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-AIR-v1_20261105T042212Z/PREVIEW_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/asset_preview"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "51060658",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/asset_preview/stage.log",
+      "ended_at": "2026-11-05T04:25:58.970232+00:00",
+      "elapsed_seconds": 0.9692480470403098,
+      "exit_code": 0,
+      "first_log": "2026-11-05T04:25:58.430475+00:00 begin fixed candidate visual inspection"
+    },
+    "asset_resolve": {
+      "started_at": "2026-11-05T04:23:05.906503+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "runs/920/P920-AIR-v1_20261105T042212Z/code/resolve_asset.py"
+      ],
+      "timeout_seconds": 90,
+      "pid": 1208259,
+      "start_ticks": "51043449",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/asset_resolve/stage.log",
+      "ended_at": "2026-11-05T04:23:08.080287+00:00",
+      "elapsed_seconds": 2.1737938699661754,
+      "exit_code": 0,
+      "first_log": "2026-11-05T04:23:06.080926+00:00 resolve four frozen metadata paths"
+    },
+    "build": {
+      "started_at": "2026-11-05T04:30:31.010164+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/build_reference_room.py",
+        "--plan",
+        "runs/920/P920-AIR-v1_20261105T042212Z/BUILD_PLAN.json",
+        "--scenesmith",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/build"
+      ],
+      "timeout_seconds": 180,
+      "pid": 6,
+      "start_ticks": "51087959",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/build/stage.log",
+      "ended_at": "2026-11-05T04:30:36.745347+00:00",
+      "elapsed_seconds": 5.735199365008157,
+      "exit_code": 0,
+      "first_log": "2026-11-05T04:30:31.422506+00:00 begin labelled native whole-room reconstruction"
+    },
+    "catalog": {
+      "started_at": "2026-11-05T04:31:26.235638+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/attach_source_catalog.py",
+        "--plan",
+        "runs/920/P920-AIR-v1_20261105T042212Z/CATALOG_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/catalog"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "51093482",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/catalog/stage.log",
+      "ended_at": "2026-11-05T04:31:27.505877+00:00",
+      "elapsed_seconds": 1.2702501980238594,
+      "exit_code": 0,
+      "first_log": "begin source-specific catalog attachment; no scene edits"
+    },
+    "export_after": {
+      "started_at": "2026-11-05T04:40:08.840749+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "runs/920/P920-AIR-v1_20261105T042212Z/EXPORT_AFTER_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/export_after"
+      ],
+      "timeout_seconds": 90,
+      "pid": 6,
+      "start_ticks": "51145742",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/export_after/stage.log",
+      "ended_at": "2026-11-05T04:40:11.716998+00:00",
+      "elapsed_seconds": 2.87626031198306,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 40, \"maximum_roundtrip_bound_error_m\": 1.1444091807533141e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/export_after/room_geometry.glb\", \"bytes\": 5405720, \"sha256\": \"12fc2d329f4c4489f816163fee4c495c7bb60314ec3369800f23bff419c8a33a\"}}"
+    },
+    "export_initial": {
+      "started_at": "2026-11-05T04:40:08.821372+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "runs/920/P920-AIR-v1_20261105T042212Z/EXPORT_INITIAL_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/export_initial"
+      ],
+      "timeout_seconds": 90,
+      "pid": 6,
+      "start_ticks": "51145740",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/export_initial/stage.log",
+      "ended_at": "2026-11-05T04:40:11.748034+00:00",
+      "elapsed_seconds": 2.92667277995497,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 39, \"maximum_roundtrip_bound_error_m\": 1.1444091807533141e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/export_initial/room_geometry.glb\", \"bytes\": 5261828, \"sha256\": \"cc053f589568dd9655180f841aac56ed307c288e5286470492b224c542f1ecc0\"}}"
+    },
+    "native": {
+      "started_at": "2026-11-05T04:33:13.686625+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-B",
+        "scripts/920/replay_source_addition.py",
+        "--plan",
+        "runs/920/P920-AIR-v1_20261105T042212Z/REPLAY_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-AIR-v1_20261105T042212Z/replay"
+      ],
+      "timeout_seconds": 480,
+      "pid": 1209519,
+      "start_ticks": "51104227",
+      "log": "runs/920/P920-AIR-v1_20261105T042212Z/execution/native/stage.log",
+      "ended_at": "2026-11-05T04:34:52.053920+00:00",
+      "elapsed_seconds": 98.36730781500228,
+      "exit_code": 0,
+      "first_log": "2026-11-05T04:33:14.046776+00:00 begin one frozen source-guided native addition"
+    }
+  },
+  "review_export_command": [
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+    "-B",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-AIR-v1_20261105T042212Z/code/prepare_review.py"
+  ],
+  "review_export_exit_code": 0,
+  "training_updates": 0,
+  "model_calls": 0
+}

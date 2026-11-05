@@ -1,0 +1,1177 @@
+{
+  "review_id": "P920-AIR-v1_20261105T042212Z_objective_consequences",
+  "created_at": "2026-11-05T04:41:00.972573+00:00",
+  "provenance": {
+    "kind": "objective_geometric_review_of_source_guided_reconstruction",
+    "project_id": "budapest_airbnp_position_collective_2015",
+    "family_id": "budapest_airbnp_position_collective_2015",
+    "allocation": "train_source_candidate",
+    "unique_review_unit": 1,
+    "professional_review": false,
+    "training_eligible": false,
+    "training_authorized": false,
+    "qualification": "Objective QA candidate; not admitted training data."
+  },
+  "brief": "研究重建：两位旅客短期居住，需要让常用衣物便于取放；保留当前睡眠、起居、用餐、厨房和卫浴的对象与接近条件。根据现有目录补充一件合适的家具，位置自行决定。房间、尺寸、初态与对象约束由研究者设定。",
+  "source_context": {
+    "url": "https://position-concept.com/portfolio/airbnp-2/",
+    "supported": "短住时将常用衣物放在开放挂杆以便取用；其余物品可入床下储物。原文未提供本重建尺寸、初态、落地替代物或坐标。"
+  },
+  "question": "根据前后五视图、对象和量测，指出新增供给、受损活动和未知项。能否给出整体专业偏好？使用initial/after稳定ID。",
+  "assumptions": [
+    "6x5x2.6m rectangular shell, internal bath, openings and placements are research assumptions; only approximately 30m² and two short-stay visitors are source context.",
+    "Freestanding double-rail substitutes for original metal pipe, adding floor footprint and not reproducing original mounting.",
+    "Sleeping/cooking/bathroom/under-bed storage represented by unvalidated proxies; no capacity, services, physical reach, load or comfort claim.",
+    "Door leaves hypothetically open for route measurements; square body sizes/grid/clearance are declared proxies, not standards.",
+    "目标格为空与路径存在不同；两种判断都来自给定工具结果。采样点不是人、座位或独立实验。"
+  ],
+  "candidates": [
+    {
+      "candidate_id": "initial",
+      "state": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/initial_state.json",
+        "sha256": "4ba3efda800751038745f47e3e9e80f6135045e4313d6da77a628b0196aa0b81"
+      },
+      "observation": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/initial_observation.json",
+        "sha256": "72f10692f8492f2b271198c124484dedf190b29e5c5c0a02ed011ccb65a46540"
+      },
+      "context": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/initial_context.json",
+        "sha256": "f7156e2244f170bd1b0df0ba8d9ce1a383f32e922a672eb2829cf649e68fc788"
+      },
+      "binding": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_000.state_binding.json",
+        "sha256": "01177a6ae78cc776c601dfefe1e690cb478486bc54d2a8664b14d1d3ba42024d"
+      }
+    },
+    {
+      "candidate_id": "after",
+      "state": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/after_state.json",
+        "sha256": "dc5b5595ba5ef9fb6de54aa15745c9b0d3f47403e518f9291e2570f6f335f30f"
+      },
+      "observation": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/after_observation.json",
+        "sha256": "dab2a3165b92942af13be4007bb3e0fdee1a4e232e6ae6bf0b490a2edcefd2c1"
+      },
+      "context": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/after_context.json",
+        "sha256": "a62948ba7aa1a3d7f57fed41e796108dc135752f207b192d0e8036655bed004b"
+      },
+      "binding": {
+        "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/house/room_airbnp_shortstay_reconstruction/rollout_furniture/step_001.state_binding.json",
+        "sha256": "f2eb7f6ab2f8f2180813ed8bc573e23a26ec29b70e35bccf9a674b3f49b27acb"
+      }
+    }
+  ],
+  "measurement_input": {
+    "initial": [
+      {
+        "body_width_m": 0.4,
+        "targets": {
+          "bed_side": {
+            "requested_point_m": [
+              -0.7,
+              -1.2
+            ],
+            "sampled_grid_point_m": [
+              -0.71,
+              -1.21
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 4.28
+          },
+          "living_front": {
+            "requested_point_m": [
+              0.35,
+              -0.55
+            ],
+            "sampled_grid_point_m": [
+              0.3500000000000001,
+              -0.55
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 4.68
+          },
+          "dining_west": {
+            "requested_point_m": [
+              0.65,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              0.6499999999999999,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.38
+          },
+          "dining_east": {
+            "requested_point_m": [
+              2.55,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              2.55,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.76
+          },
+          "kitchen_prep": {
+            "requested_point_m": [
+              1.8,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              1.79,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.7600000000000002
+          },
+          "bath_center": {
+            "requested_point_m": [
+              -1.65,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              -1.65,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.6
+          },
+          "window_front": {
+            "requested_point_m": [
+              0,
+              -2.1
+            ],
+            "sampled_grid_point_m": [
+              -0.009999999999999787,
+              -2.11
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.88
+          }
+        },
+        "reachable_floor_center_area_m2": 10.1136
+      },
+      {
+        "body_width_m": 0.5,
+        "targets": {
+          "bed_side": {
+            "requested_point_m": [
+              -0.7,
+              -1.2
+            ],
+            "sampled_grid_point_m": [
+              -0.71,
+              -1.21
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.2
+          },
+          "living_front": {
+            "requested_point_m": [
+              0.35,
+              -0.55
+            ],
+            "sampled_grid_point_m": [
+              0.3500000000000001,
+              -0.55
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.48
+          },
+          "dining_west": {
+            "requested_point_m": [
+              0.65,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              0.6499999999999999,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.58
+          },
+          "dining_east": {
+            "requested_point_m": [
+              2.55,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              2.55,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.72
+          },
+          "kitchen_prep": {
+            "requested_point_m": [
+              1.8,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              1.79,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.72
+          },
+          "bath_center": {
+            "requested_point_m": [
+              -1.65,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              -1.65,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.56
+          },
+          "window_front": {
+            "requested_point_m": [
+              0,
+              -2.1
+            ],
+            "sampled_grid_point_m": [
+              -0.009999999999999787,
+              -2.11
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.4
+          }
+        },
+        "reachable_floor_center_area_m2": 7.07
+      },
+      {
+        "body_width_m": 0.6,
+        "targets": {
+          "bed_side": {
+            "requested_point_m": [
+              -0.7,
+              -1.2
+            ],
+            "sampled_grid_point_m": [
+              -0.71,
+              -1.21
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.22
+          },
+          "living_front": {
+            "requested_point_m": [
+              0.35,
+              -0.55
+            ],
+            "sampled_grid_point_m": [
+              0.3500000000000001,
+              -0.55
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.5
+          },
+          "dining_west": {
+            "requested_point_m": [
+              0.65,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              0.6499999999999999,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.6000000000000005
+          },
+          "dining_east": {
+            "requested_point_m": [
+              2.55,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              2.55,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.66
+          },
+          "kitchen_prep": {
+            "requested_point_m": [
+              1.8,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              1.79,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.66
+          },
+          "bath_center": {
+            "requested_point_m": [
+              -1.65,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              -1.65,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.5
+          },
+          "window_front": {
+            "requested_point_m": [
+              0,
+              -2.1
+            ],
+            "sampled_grid_point_m": [
+              -0.009999999999999787,
+              -2.11
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.42
+          }
+        },
+        "reachable_floor_center_area_m2": 5.968000000000001
+      }
+    ],
+    "after": [
+      {
+        "body_width_m": 0.4,
+        "targets": {
+          "bed_side": {
+            "requested_point_m": [
+              -0.7,
+              -1.2
+            ],
+            "sampled_grid_point_m": [
+              -0.71,
+              -1.21
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 4.28
+          },
+          "living_front": {
+            "requested_point_m": [
+              0.35,
+              -0.55
+            ],
+            "sampled_grid_point_m": [
+              0.3500000000000001,
+              -0.55
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 4.68
+          },
+          "dining_west": {
+            "requested_point_m": [
+              0.65,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              0.6499999999999999,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.38
+          },
+          "dining_east": {
+            "requested_point_m": [
+              2.55,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              2.55,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.76
+          },
+          "kitchen_prep": {
+            "requested_point_m": [
+              1.8,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              1.79,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.7600000000000002
+          },
+          "bath_center": {
+            "requested_point_m": [
+              -1.65,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              -1.65,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.6
+          },
+          "window_front": {
+            "requested_point_m": [
+              0,
+              -2.1
+            ],
+            "sampled_grid_point_m": [
+              -0.009999999999999787,
+              -2.11
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.88
+          }
+        },
+        "reachable_floor_center_area_m2": 9.2536
+      },
+      {
+        "body_width_m": 0.5,
+        "targets": {
+          "bed_side": {
+            "requested_point_m": [
+              -0.7,
+              -1.2
+            ],
+            "sampled_grid_point_m": [
+              -0.71,
+              -1.21
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.2
+          },
+          "living_front": {
+            "requested_point_m": [
+              0.35,
+              -0.55
+            ],
+            "sampled_grid_point_m": [
+              0.3500000000000001,
+              -0.55
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.48
+          },
+          "dining_west": {
+            "requested_point_m": [
+              0.65,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              0.6499999999999999,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.58
+          },
+          "dining_east": {
+            "requested_point_m": [
+              2.55,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              2.55,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": false,
+            "grid_route_length_m": null
+          },
+          "kitchen_prep": {
+            "requested_point_m": [
+              1.8,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              1.79,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.72
+          },
+          "bath_center": {
+            "requested_point_m": [
+              -1.65,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              -1.65,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.56
+          },
+          "window_front": {
+            "requested_point_m": [
+              0,
+              -2.1
+            ],
+            "sampled_grid_point_m": [
+              -0.009999999999999787,
+              -2.11
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.4
+          }
+        },
+        "reachable_floor_center_area_m2": 6.0576
+      },
+      {
+        "body_width_m": 0.6,
+        "targets": {
+          "bed_side": {
+            "requested_point_m": [
+              -0.7,
+              -1.2
+            ],
+            "sampled_grid_point_m": [
+              -0.71,
+              -1.21
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.22
+          },
+          "living_front": {
+            "requested_point_m": [
+              0.35,
+              -0.55
+            ],
+            "sampled_grid_point_m": [
+              0.3500000000000001,
+              -0.55
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.5
+          },
+          "dining_west": {
+            "requested_point_m": [
+              0.65,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              0.6499999999999999,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 5.6000000000000005
+          },
+          "dining_east": {
+            "requested_point_m": [
+              2.55,
+              -0.95
+            ],
+            "sampled_grid_point_m": [
+              2.55,
+              -0.95
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": false,
+            "grid_route_length_m": null
+          },
+          "kitchen_prep": {
+            "requested_point_m": [
+              1.8,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              1.79,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.66
+          },
+          "bath_center": {
+            "requested_point_m": [
+              -1.65,
+              1.3
+            ],
+            "sampled_grid_point_m": [
+              -1.65,
+              1.29
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 2.5
+          },
+          "window_front": {
+            "requested_point_m": [
+              0,
+              -2.1
+            ],
+            "sampled_grid_point_m": [
+              -0.009999999999999787,
+              -2.11
+            ],
+            "target_cell_clear": true,
+            "reachable_from_entry": true,
+            "grid_route_length_m": 7.42
+          }
+        },
+        "reachable_floor_center_area_m2": 4.95
+      }
+    ],
+    "added_asset": {
+      "object_id": "open_clothes_rail_0",
+      "dimensions_m": [
+        0.8996918201446533,
+        0.4400927424430847,
+        1.7311038114115966
+      ],
+      "floor_AABB_m2": 0.395947840481071,
+      "rail_approaches": [
+        {
+          "square_body_width_m": 0.4,
+          "entry_grid_point_m": [
+            -0.009999999999999787,
+            2.25
+          ],
+          "entry_cell_clear": true,
+          "reachable_floor_center_area_m2": 9.2536,
+          "targets": {
+            "+Y_0": {
+              "requested_point_m": [
+                2.199637152778627,
+                0.11929547655158733
+              ],
+              "sampled_grid_point_m": [
+                2.1900000000000004,
+                0.10999999999999988
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.34
+            },
+            "+Y_1": {
+              "requested_point_m": [
+                2.32456006118603,
+                0.11940341173123147
+              ],
+              "sampled_grid_point_m": [
+                2.33,
+                0.10999999999999988
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.48
+            },
+            "+Y_2": {
+              "requested_point_m": [
+                2.4494829695934324,
+                0.11951134691087562
+              ],
+              "sampled_grid_point_m": [
+                2.45,
+                0.10999999999999988
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.6000000000000005
+            },
+            "+Y_3": {
+              "requested_point_m": [
+                2.5744058780008348,
+                0.11961928209051977
+              ],
+              "sampled_grid_point_m": [
+                2.5700000000000003,
+                0.10999999999999988
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.72
+            },
+            "+Y_4": {
+              "requested_point_m": [
+                2.6993287864082376,
+                0.1197272172701639
+              ],
+              "sampled_grid_point_m": [
+                2.6900000000000004,
+                0.10999999999999988
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.84
+            },
+            "-Y_0": {
+              "requested_point_m": [
+                2.2004494060511215,
+                -0.8207969149923402
+              ],
+              "sampled_grid_point_m": [
+                2.21,
+                -0.8300000000000001
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 5.3
+            },
+            "-Y_1": {
+              "requested_point_m": [
+                2.3253723144585243,
+                -0.8206889798126961
+              ],
+              "sampled_grid_point_m": [
+                2.33,
+                -0.8300000000000001
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 5.42
+            },
+            "-Y_2": {
+              "requested_point_m": [
+                2.4502952228659267,
+                -0.8205810446330519
+              ],
+              "sampled_grid_point_m": [
+                2.45,
+                -0.8300000000000001
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 5.54
+            },
+            "-Y_3": {
+              "requested_point_m": [
+                2.575218131273329,
+                -0.8204731094534078
+              ],
+              "sampled_grid_point_m": [
+                2.5700000000000003,
+                -0.8300000000000001
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 5.66
+            },
+            "-Y_4": {
+              "requested_point_m": [
+                2.700141039680732,
+                -0.8203651742737637
+              ],
+              "sampled_grid_point_m": [
+                2.71,
+                -0.8300000000000001
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 5.8
+            }
+          }
+        },
+        {
+          "square_body_width_m": 0.5,
+          "entry_grid_point_m": [
+            -0.009999999999999787,
+            2.21
+          ],
+          "entry_cell_clear": true,
+          "reachable_floor_center_area_m2": 6.0576,
+          "targets": {
+            "+Y_0": {
+              "requested_point_m": [
+                2.249593933416592,
+                0.16933865858760797
+              ],
+              "sampled_grid_point_m": [
+                2.25,
+                0.16999999999999993
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.3
+            },
+            "+Y_1": {
+              "requested_point_m": [
+                2.3495168511554985,
+                0.16942499341773812
+              ],
+              "sampled_grid_point_m": [
+                2.3500000000000005,
+                0.16999999999999993
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.4
+            },
+            "+Y_2": {
+              "requested_point_m": [
+                2.4494397688944045,
+                0.16951132824786824
+              ],
+              "sampled_grid_point_m": [
+                2.45,
+                0.16999999999999993
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.5
+            },
+            "+Y_3": {
+              "requested_point_m": [
+                2.5493626866333106,
+                0.16959766307799837
+              ],
+              "sampled_grid_point_m": [
+                2.55,
+                0.16999999999999993
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.6000000000000005
+            },
+            "+Y_4": {
+              "requested_point_m": [
+                2.649285604372217,
+                0.16968399790812852
+              ],
+              "sampled_grid_point_m": [
+                2.6500000000000004,
+                0.16999999999999993
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.7
+            },
+            "-Y_0": {
+              "requested_point_m": [
+                2.250492588087142,
+                -0.8707536956303049
+              ],
+              "sampled_grid_point_m": [
+                2.25,
+                -0.8699999999999999
+              ],
+              "target_cell_clear": false,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_1": {
+              "requested_point_m": [
+                2.3504155058260485,
+                -0.8706673608001747
+              ],
+              "sampled_grid_point_m": [
+                2.3500000000000005,
+                -0.8699999999999999
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_2": {
+              "requested_point_m": [
+                2.4503384235649546,
+                -0.8705810259700446
+              ],
+              "sampled_grid_point_m": [
+                2.45,
+                -0.8699999999999999
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_3": {
+              "requested_point_m": [
+                2.5502613413038606,
+                -0.8704946911399145
+              ],
+              "sampled_grid_point_m": [
+                2.55,
+                -0.8699999999999999
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_4": {
+              "requested_point_m": [
+                2.650184259042767,
+                -0.8704083563097843
+              ],
+              "sampled_grid_point_m": [
+                2.6500000000000004,
+                -0.8699999999999999
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            }
+          }
+        },
+        {
+          "square_body_width_m": 0.6,
+          "entry_grid_point_m": [
+            -0.009999999999999787,
+            2.1500000000000004
+          ],
+          "entry_cell_clear": true,
+          "reachable_floor_center_area_m2": 4.95,
+          "targets": {
+            "+Y_0": {
+              "requested_point_m": [
+                2.299550714054557,
+                0.21938184062362856
+              ],
+              "sampled_grid_point_m": [
+                2.29,
+                0.20999999999999996
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.24
+            },
+            "+Y_1": {
+              "requested_point_m": [
+                2.3744736411249665,
+                0.21944657510424467
+              ],
+              "sampled_grid_point_m": [
+                2.37,
+                0.20999999999999996
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.32
+            },
+            "+Y_2": {
+              "requested_point_m": [
+                2.4493965681953767,
+                0.21951130958486081
+              ],
+              "sampled_grid_point_m": [
+                2.45,
+                0.20999999999999996
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.4
+            },
+            "+Y_3": {
+              "requested_point_m": [
+                2.524319495265787,
+                0.21957604406547696
+              ],
+              "sampled_grid_point_m": [
+                2.5300000000000002,
+                0.20999999999999996
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.48
+            },
+            "+Y_4": {
+              "requested_point_m": [
+                2.5992424223361965,
+                0.21964077854609307
+              ],
+              "sampled_grid_point_m": [
+                2.59,
+                0.20999999999999996
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": true,
+              "grid_route_length_m": 4.54
+            },
+            "-Y_0": {
+              "requested_point_m": [
+                2.3005357701231626,
+                -0.9207104762682693
+              ],
+              "sampled_grid_point_m": [
+                2.3100000000000005,
+                -0.9299999999999999
+              ],
+              "target_cell_clear": false,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_1": {
+              "requested_point_m": [
+                2.3754586971935723,
+                -0.9206457417876532
+              ],
+              "sampled_grid_point_m": [
+                2.37,
+                -0.9299999999999999
+              ],
+              "target_cell_clear": false,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_2": {
+              "requested_point_m": [
+                2.4503816242639824,
+                -0.9205810073070371
+              ],
+              "sampled_grid_point_m": [
+                2.45,
+                -0.9299999999999999
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_3": {
+              "requested_point_m": [
+                2.5253045513343926,
+                -0.9205162728264209
+              ],
+              "sampled_grid_point_m": [
+                2.5300000000000002,
+                -0.9299999999999999
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            },
+            "-Y_4": {
+              "requested_point_m": [
+                2.6002274784048023,
+                -0.9204515383458048
+              ],
+              "sampled_grid_point_m": [
+                2.6100000000000003,
+                -0.9299999999999999
+              ],
+              "target_cell_clear": true,
+              "reachable_from_entry": false,
+              "grid_route_length_m": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  "judgment": {
+    "verdict": "insufficient_evidence",
+    "ranking_groups": [],
+    "claims": [
+      {
+        "candidate_id": "after",
+        "object_ids": [
+          "open_clothes_rail_0"
+        ],
+        "activity": "接近新增的开放挂衣构件",
+        "assessment": "新增未缩放开放双杆衣架。0.4米方形代理的两侧10/10采样点可达；0.5和0.6米均只有局部+Y侧5/10可达。可达位置不证明拿取速度、挂衣容量、承重或舒适。",
+        "evidence_ids": [
+          "actual_action",
+          "asset_visual",
+          "rail_approach"
+        ]
+      },
+      {
+        "candidate_id": "after",
+        "object_ids": [
+          "open_clothes_rail_0",
+          "recon_chair_east_0",
+          "recon_table_0"
+        ],
+        "activity": "从入口接近东侧餐位",
+        "assessment": "七个固定点可达数在0.4米下保持7/7，在0.5和0.6米下由7/7降至6/7，失去的都是dining_east。该目标格本身仍为空，但从入口没有代理路径。不能把无家具重叠当作通行已保留。",
+        "evidence_ids": [
+          "initial_access",
+          "after_access"
+        ]
+      },
+      {
+        "candidate_id": "after",
+        "object_ids": [
+          "open_clothes_rail_0"
+        ],
+        "activity": "安排衣物存放并保留其他用途",
+        "assessment": "原23个对象均保留。落地替代物增加约0.396平方米包围盒占地；它与原项目挂杆的安装方式不同。当前摆位具有局部供给和接近损失，不能标作整体正向建设示范。",
+        "evidence_ids": [
+          "actual_action",
+          "rail_approach"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "initial_access",
+        "artifact": {
+          "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/initial_measurement.json",
+          "sha256": "ca9d24842c28cf8f9fa31d571c4722005d954494e164d0402397b8d1a2ed2cd6"
+        }
+      },
+      {
+        "evidence_id": "after_access",
+        "artifact": {
+          "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/after_measurement.json",
+          "sha256": "dc19d5acc304af2a77485443dee3c1bfaf81f7861e214ad7f650d17553ba41ce"
+        }
+      },
+      {
+        "evidence_id": "rail_approach",
+        "artifact": {
+          "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/SUMMARY.json",
+          "sha256": "f6af3dc6e47a4a42a5152910ab5c3a50ad3e4db9df181a324f85d10a677a5da5"
+        }
+      },
+      {
+        "evidence_id": "actual_action",
+        "artifact": {
+          "path": "runtime/P920-AIR-v1_20261105T042212Z/replay/STEP.json",
+          "sha256": "0f30a6f33b2b4b639b2fb4995f691a4cecd86234ece18d3b25c9b930e253393f"
+        }
+      },
+      {
+        "evidence_id": "asset_visual",
+        "artifact": {
+          "path": "scenefunc/runs/920/P920-AIR-v1_20261105T042212Z/ASSET_VISUAL_REVIEW.json",
+          "sha256": "8b2312e5da9a87c1dc920080c1b0c9603dcdd6cc5a93c40bc83f8ad2f3340945"
+        }
+      }
+    ],
+    "unknowns": [
+      "无独立专业人员对本重建的评价。",
+      "方形身体和包围盒不能确证真实人体可达、拿取或舒适。",
+      "尺寸为假设，原项目安装方式、床内容量和完整住宅设施工作未验证。"
+    ]
+  }
+}
