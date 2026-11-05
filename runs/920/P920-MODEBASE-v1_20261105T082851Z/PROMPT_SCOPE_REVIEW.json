@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-11-05T08:51:02.757203+00:00",
+  "timing": "Post-output source inspection; no prompt, budget or evaluation changes to frozen batch.",
+  "files": [
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/prompts/furniture_system_prompt",
+      "sha256": "da1a3a0089c344f30ae44d9a0ae8d807547c2cfa94e4162bba7167fd85cb568d"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/prompts/furniture_tool",
+      "sha256": "efc74fd8e5e93e441b7ef518fecaa369c6647d5f29eab72a2f8a4e01407550d2"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/Designer/agent_rollout.py",
+      "sha256": "2c681e8278cafc518fae6ad258a541a379571c67393d558b46ebe145434ee91c"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/agent_rollout_decoupled.py",
+      "sha256": "4dfcaa1f3f91aa72762a8b89d7c3ebc411358b8ef65971ade444610d81dcbc91"
+    }
+  ],
+  "findings": [
+    "Official native rollout ends when model returns no tool call; no separate finish tool is required. This batch also stops on no tool call and separately records whether done marker appears.",
+    "The original furniture system prompt starts with generating assets and constructing a room. This batch uses an existing-object revision system with actual available tools and shared objective feedback; official message/image layout is retained, but exact SFT system prompt is not.",
+    "All current observed tool outputs use valid native move calls; format acceptance does not establish task understanding, stopping skill or professional judgment."
+  ],
+  "interpretation": "Results characterize this frozen scoped prompt/tool interface. Failure cannot isolate missing professional knowledge from action planning, prompt/domain shift or feedback use. It does not establish that training is required.",
+  "additional_observation": {
+    "case": "work_no_knowledge",
+    "round": 0,
+    "native_reply": "no_movement; suggested_action asks to try a different position or rotation",
+    "evidence": "first_model_output/reply.json",
+    "interpretation": "Possible influence on unnecessary edits; not experimentally isolated. Initial already-passing task and original reply retained. No change or rerun."
+  }
+}

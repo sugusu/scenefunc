@@ -1,22 +1,29 @@
 {
   "run_id": "P920-MODEBASE-v1_20261105T082851Z",
-  "status": "running",
-  "phase": "rollout",
-  "case": "hosting_with_knowledge",
   "question": "Does a frozen base choose activity-appropriate edits in a preserved furnished room, and what changes when the same sourced principle is provided?",
-  "updated_at": "2026-11-05T08:39:24.075015+00:00",
-  "started_at": "2026-11-05T08:37:22.490187+00:00",
-  "ended_at": null,
-  "actual_exit_code": null,
-  "completed_planned": {
-    "model_calls_case": 2,
-    "planned_case": 6
-  },
+  "status": "completed",
+  "phase": "final_evaluation",
+  "updated_at": "2026-11-05T08:53:37.110589+00:00",
+  "started_at": "2026-11-05T08:33:37.268593+00:00",
+  "ended_at": "2026-11-05T08:52:24.596962+00:00",
+  "actual_batch_exit": 0,
+  "completed": 4,
+  "planned": 4,
+  "model_calls": 24,
+  "tool_calls": 24,
   "configuration_hashes": {
-    "plan": "166d7fee1a9c2eaca86c0f1ec873c2313a7720638cc1702162badcfc24d91874",
-    "bundle": "3c255353cdd000603b98effdc03f62e7658639c2d8429539dbe7408f53a5afc2"
+    "plan": "39f21f59f75b0d19413ab1397cae3588bd82117f00bbe04633ab2330ab626fd2",
+    "inputs": "ee02571da3dec919c50e583afb84891720bac75050bdbfc53d0491d1c634c1ad"
   },
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_with_knowledge/RESULT.json",
-  "failure_reason": null,
-  "next_step": "Complete frozen cases without retries, then compare actual room outcomes."
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/RESULT.json",
+  "failure_reason": [
+    "work_no_knowledge: previously passing work mode lost; table/guest stool AABB overlap and four fixed targets unreachable for0.5/0.6m proxies.",
+    "hosting_with_knowledge: tables not joined; tableA/work-stoolA AABB overlap.",
+    "hosting_no_knowledge: tables not joined; tableA/work-stoolA AABB overlap.",
+    "work_with_knowledge: deleted two mandatory guest stools; missing objects cannot count as success."
+  ],
+  "next_step": "Keep this frozen negative development baseline. Prepare multi-source conditional demonstrations, actual forward loss/budget and separately reviewable training proposal; do not retune/rerun these cases.",
+  "execution_errors": [],
+  "task_successes": 0,
+  "planned_tasks": 4
 }

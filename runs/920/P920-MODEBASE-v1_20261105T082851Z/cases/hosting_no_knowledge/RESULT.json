@@ -1,0 +1,925 @@
+{
+  "status": "completed",
+  "phase": "rollout",
+  "case": "hosting_no_knowledge",
+  "started_at": "2026-11-05T08:42:28.632767+00:00",
+  "plan_sha256": "180798a1ca3f8b1a95cdfa55d63727031c568ccafe3bc4760a5b08d365b234fc",
+  "model_calls": 6,
+  "tool_calls": 6,
+  "training_updates": 0,
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-05T08:42:41.106317+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "fbea62c1531e86083ee8d989e2cb1e0adb2e10e5ff409570410d2e9a5cc5d979",
+        "plan_sha256": "180798a1ca3f8b1a95cdfa55d63727031c568ccafe3bc4760a5b08d365b234fc",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.topdown.png",
+              "sha256": "be319516f770b6a05b8b3774c74a769302e2d851410863bf7ff59bf40d52e3e6",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.south.png",
+              "sha256": "4e21c506b5b3df86ad51f25d8daa2c0b5c800ea4de516d7ef0a13f291972b9e8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.east.png",
+              "sha256": "06cfef303a9f02b2eea7c1036fba49a63947a110f9a5f71a8c1d6ccd23049192",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.west.png",
+              "sha256": "e985571237726249f7a08f1d78f6e86db14eed364aa8a97b9bced8b4fd3bef21",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/prepare/house/room_waterloo_table_transfer/rollout_furniture/step_000.north.png",
+              "sha256": "fcc1ddcc204921ea8c3306599e979389d43bce1cbddc9f1b1e5d53d334755a9e",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 6905,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              6905
+            ],
+            "attention_mask": [
+              1,
+              6905
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "99ea39faaf5ccbefe221d8abc5101f899135e2e2ba409b3d1fbef74a4f92c1ab",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.06014968897216,
+        "generation_seconds": 4.485770397004671,
+        "output_tokens": 48,
+        "ended_with_eos": false,
+        "raw_output_sha256": "106e2f114c95f7978d8cad66d0bd0e9e38879bbba971130414167a9b7b7a898a",
+        "peak_allocated_bytes": 19330004480,
+        "peak_reserved_bytes": 19675480064,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:42:53.137423+00:00",
+        "elapsed_seconds": 12.03112620394677
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.7,
+            "y": 0.5,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "5fc1deeaa14657764b0ca21ffb9dbf116f70a3dd9491b1810d7f3cb474536e98",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "09096d63a46f62491cd100392e5c5b968fcd9a53e9dd6dc4151f3bafba04bb27",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [],
+        "yaw_change_degrees": 0.08065823279668112,
+        "rotation_bound_margin_m": 0.0004899278142803179,
+        "clear_under_declared_sweep_model": true,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/round_000/checkpoint",
+        "manifest_sha256": "793cfa9344b07a4435f9945339014ce759d175a5bab70b50d9b3e7f18003c5e5",
+        "state_sha256": "04c50f6989d9231bcebfb7b7028c39485bad025feddf9d710ee3a0c671de0688",
+        "step_idx": 1
+      },
+      "new_observation": true,
+      "condition_pass": false
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-05T08:43:35.604342+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "dbea9f36fbf37b017a96c19fce89aa72d7de148e74ddd488412ae54fbc6e5c68",
+        "plan_sha256": "180798a1ca3f8b1a95cdfa55d63727031c568ccafe3bc4760a5b08d365b234fc",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.topdown.png",
+              "sha256": "a734b7702848475639c0c14ebed1f537cfc61c7b262f98affc47df9ffa5db211",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.south.png",
+              "sha256": "36e263923c539b7aea40829932300e1f9c086b0534ab01bf321b7d9f67d26b2e",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.east.png",
+              "sha256": "c2202a29437bf19b49fe92c7844cf74cb17d8c46d95d70f4136791f5648a7d5e",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.west.png",
+              "sha256": "1c306eee0638b4927cd95eaced175f8f64dde08a121aa2a991a4063dafabdfde",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_001.north.png",
+              "sha256": "0b66a4c3bae0716cd6159cd919eda20de6cffb556057979f268d6241b75085f6",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7251,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7251
+            ],
+            "attention_mask": [
+              1,
+              7251
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "c9750a5496ec18b05cc6ca4c68850294a0654b03c12a3df23014184396dac328",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.9512633219128475,
+        "generation_seconds": 4.0270884139463305,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "0f0049421cbc28b86afe00613b3d0138e2e3690b381c6fc1891fdcedc5da5012",
+        "peak_allocated_bytes": 19417999872,
+        "peak_reserved_bytes": 19958595584,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:43:48.071893+00:00",
+        "elapsed_seconds": 12.46756888506934
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.7,
+            "y": 0.1,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "09096d63a46f62491cd100392e5c5b968fcd9a53e9dd6dc4151f3bafba04bb27",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "83081d431ed6f27fde11cefbb843a246f2a569dba9049e404511dc7fe8f18da0",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [
+          {
+            "obstacle_id": "recon_chair_a_0",
+            "planar_overlap_m2": 0.008663477921901403
+          }
+        ],
+        "yaw_change_degrees": -0.010050083942566675,
+        "rotation_bound_margin_m": 6.192081868145062e-05,
+        "clear_under_declared_sweep_model": false,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/round_001/checkpoint",
+        "manifest_sha256": "a3ccd5ebf515ef60cc6d169bc7e68cd426ec54a0e05aae05c04eb7d8e899870b",
+        "state_sha256": "3785f3d94cb514faef1b64fc3510d83b732005460a85d06789c48c11f0e63a24",
+        "step_idx": 2
+      },
+      "new_observation": true,
+      "condition_pass": false
+    },
+    {
+      "turn": 2,
+      "model": {
+        "started_at": "2026-11-05T08:44:30.341425+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "6732c21a90ed18b1ca1c12baf068522a53fe1254ddbc63fd52634e41cd97ab03",
+        "plan_sha256": "180798a1ca3f8b1a95cdfa55d63727031c568ccafe3bc4760a5b08d365b234fc",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_002.topdown.png",
+              "sha256": "4e4a626ff3dc3769e2a0c2095c2a045c597a4bb35025218f02244a1c3d2c1f30",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_002.south.png",
+              "sha256": "9d0c372149224086a90ff2aa97bf461887c8d780744bb7513476ed492526fbe8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_002.east.png",
+              "sha256": "8e77d48b513f093a812537f93fe221fa99d3c07a7cb9d2cec43925557a681bdc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_002.west.png",
+              "sha256": "e7dd8aaa707bf9d080d197b8f4ee131a11bab2528478dfb3311c01c32fb03c81",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_002.north.png",
+              "sha256": "77411617a998a4ac3d66db152d822073aa08e54b869c50169f7808cc6b0ba18e",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7574,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7574
+            ],
+            "attention_mask": [
+              1,
+              7574
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "e96b19605e30b9a3c9e91a3430d0b16bc6d99a2d0ca3cba01c624a92ece4383c",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.0934961719904095,
+        "generation_seconds": 4.605311871971935,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "b446757d0d30d9e3b5c83ca9241a1a3e4ae9c01f69e85ffcd58c66bfcf04c766",
+        "peak_allocated_bytes": 19504632320,
+        "peak_reserved_bytes": 19876806656,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:44:42.542774+00:00",
+        "elapsed_seconds": 12.201369132031687
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.7,
+            "y": -0.2,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "83081d431ed6f27fde11cefbb843a246f2a569dba9049e404511dc7fe8f18da0",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "0b60b360f53720022788e17d95afec24a5b21d9851eb5ef505529ba6bf631734",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [
+          {
+            "obstacle_id": "recon_chair_a_0",
+            "planar_overlap_m2": 0.1352036817513293
+          }
+        ],
+        "yaw_change_degrees": -0.053052918172936066,
+        "rotation_bound_margin_m": 0.00032259206102211446,
+        "clear_under_declared_sweep_model": false,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/round_002/checkpoint",
+        "manifest_sha256": "0f6ffb78c1a7211580d106d557aa8b7a64ac59768a112ea75b7e1a82131134ab",
+        "state_sha256": "e81bc8680f035b99db9ea047aa2822520858e55de71682922ad06ec188e932bc",
+        "step_idx": 3
+      },
+      "new_observation": true,
+      "condition_pass": false
+    },
+    {
+      "turn": 3,
+      "model": {
+        "started_at": "2026-11-05T08:45:24.473978+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "986fc2ddb5a66834fab752f19da02c0f1781299fe8413b33d53f2d6664b04c8a",
+        "plan_sha256": "180798a1ca3f8b1a95cdfa55d63727031c568ccafe3bc4760a5b08d365b234fc",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_003.topdown.png",
+              "sha256": "4e69191d4dcedd7ffec74114f1933df577f2467cddd8d109691ddcf4d3eace39",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_003.south.png",
+              "sha256": "7af85003951b77d0f7c936413ceebfa514630597e5497648b8b89c36dfba4db0",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_003.east.png",
+              "sha256": "a108c25d890d4ca734119c6d553c30347355ecea97d0e30ed13c3e8644d8bd51",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_003.west.png",
+              "sha256": "c8cafea02696b989a7666a6bd0c2f61ebb825971351d7410396485b435f715bb",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_003.north.png",
+              "sha256": "79f14d2df6b549f28b88eddda06fca10ff04deea10d75c58957fccf110bb8b4a",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7575,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7575
+            ],
+            "attention_mask": [
+              1,
+              7575
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "f344ad23ac69a9062211b78accc46ada763ef0210314bc5e9c0648d3d389943b",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.971453523030505,
+        "generation_seconds": 4.124977448023856,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "e886708d92796f1368d713998c31b3f26e1653b0deaa828a1b2a357dbd021379",
+        "peak_allocated_bytes": 19504693760,
+        "peak_reserved_bytes": 19876806656,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:45:37.059276+00:00",
+        "elapsed_seconds": 12.585316415992565
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.8,
+            "y": 0.1,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "0b60b360f53720022788e17d95afec24a5b21d9851eb5ef505529ba6bf631734",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "ccf84a8c59997ca6742d5e54bed14aa201a224223ac640578dddc66a84ba4c3b",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [
+          {
+            "obstacle_id": "recon_chair_a_0",
+            "planar_overlap_m2": 0.1408638300151149
+          }
+        ],
+        "yaw_change_degrees": 0.10068539877538124,
+        "rotation_bound_margin_m": 0.0006113269343537483,
+        "clear_under_declared_sweep_model": false,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/round_003/checkpoint",
+        "manifest_sha256": "9e9b3d3e8f9f1483604cafcc2237fd97b822d26ca698e1eb5baddee8caaf54ba",
+        "state_sha256": "06ab1ceaf894efe7369dd5cdde705539a1f2e54409559031d24c6c7f87be2e11",
+        "step_idx": 4
+      },
+      "new_observation": true,
+      "condition_pass": false
+    },
+    {
+      "turn": 4,
+      "model": {
+        "started_at": "2026-11-05T08:46:20.010957+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "ead48ce195859ac15e77d15ec74d9193ff6e7b93151ff0209b682939715236b1",
+        "plan_sha256": "180798a1ca3f8b1a95cdfa55d63727031c568ccafe3bc4760a5b08d365b234fc",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_004.topdown.png",
+              "sha256": "05433c2f47e71144fcfe1c8ea6ea63cea8c30048dafad910ed7d2207ed37d0e2",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_004.south.png",
+              "sha256": "a846a1aaa451658ad7e86675f36c5deeecb6ab4e3400bcb517e99352ca5e54c9",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_004.east.png",
+              "sha256": "08edc2254b0b22722533881a4f3abd7de6ff78356f00ad9ca9ca726b89e2b8cf",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_004.west.png",
+              "sha256": "3f12e5faa585c44fee98e10908ce077a65cb8795b324deae78c6a72e6687992f",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_004.north.png",
+              "sha256": "255107baa476c2ebba441b950901a0d1365dbff162ff3074829c35c529e8a845",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7577,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7577
+            ],
+            "attention_mask": [
+              1,
+              7577
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "40f48790769615149c551d830da61faa790ef057beb2333a28f6a0873af22640",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.12580513197463,
+        "generation_seconds": 4.583979430957697,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "e824f100896cafba2b7eaa90c414f66f3fadd550911f0936764d3babe9a8252c",
+        "peak_allocated_bytes": 19504816640,
+        "peak_reserved_bytes": 19876806656,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:46:32.228806+00:00",
+        "elapsed_seconds": 12.217869451036677
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.3,
+            "y": 0.1,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "ccf84a8c59997ca6742d5e54bed14aa201a224223ac640578dddc66a84ba4c3b",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "3b99c272b3b68c55259d457d19feb1d302568c3ca136c416917590c144f057bb",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [
+          {
+            "obstacle_id": "recon_chair_a_0",
+            "planar_overlap_m2": 0.009316528170968095
+          }
+        ],
+        "yaw_change_degrees": -0.07360995325207534,
+        "rotation_bound_margin_m": 0.0004472031004762414,
+        "clear_under_declared_sweep_model": false,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/round_004/checkpoint",
+        "manifest_sha256": "1c8ed969602d300bfff413e898792bbcf1f8abd3b8e2c8a84171b306421f0125",
+        "state_sha256": "b9c80a3779da339b1dc943ccaed1664e056e5477489041139d19a4da5e6e4f52",
+        "step_idx": 5
+      },
+      "new_observation": true,
+      "condition_pass": false
+    },
+    {
+      "turn": 5,
+      "model": {
+        "started_at": "2026-11-05T08:47:14.643725+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "393fb37d8e529595db7ba7ac0f5410a1c5155bba531dc583dc0335d35eba6101",
+        "plan_sha256": "180798a1ca3f8b1a95cdfa55d63727031c568ccafe3bc4760a5b08d365b234fc",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "float16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_005.topdown.png",
+              "sha256": "1e11f64700db376563c0bac369f766d88e38436fb319f6101c6e97d72eb2aae6",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_005.south.png",
+              "sha256": "c3e5e791a1a65322a8573e6c8649f2291b4d22d91328068e938b9c71080fea36",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_005.east.png",
+              "sha256": "0466b5ed5a31f8ce5fb70d078d87a4465a3e418076a86207a036e0b250c9d401",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_005.west.png",
+              "sha256": "690599c228a5014b644a27d2ae2c99b0388b0cb315ae03db0ef4d0a547d872cc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/house/room_waterloo_table_transfer/rollout_furniture/step_005.north.png",
+              "sha256": "8a41792be2250750fe3209c3bd1067516cbc77316bb130e8079475db3b16bb14",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7587,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7587
+            ],
+            "attention_mask": [
+              1,
+              7587
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "cf0c18c47b2a5321d5c063640aeef3c64292cf1dc9ea6185c87f549a98f29201",
+          "max_pixels": 65536,
+          "max_input_tokens": 12288
+        },
+        "load_seconds": 4.966857759980485,
+        "generation_seconds": 4.109182646032423,
+        "output_tokens": 46,
+        "ended_with_eos": false,
+        "raw_output_sha256": "e824f100896cafba2b7eaa90c414f66f3fadd550911f0936764d3babe9a8252c",
+        "peak_allocated_bytes": 19506381312,
+        "peak_reserved_bytes": 19876806656,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T08:47:27.204470+00:00",
+        "elapsed_seconds": 12.560760881053284
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": -0.3,
+            "y": 0.1,
+            "yaw": 0
+          }
+        }
+      ],
+      "before_sha256": "3b99c272b3b68c55259d457d19feb1d302568c3ca136c416917590c144f057bb",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved table_a to new position and rotation",
+              "object_id": "recon_table_a_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "after_sha256": "3b99c272b3b68c55259d457d19feb1d302568c3ca136c416917590c144f057bb",
+      "actual_sweep": {
+        "within_room": true,
+        "obstacle_overlaps": [
+          {
+            "obstacle_id": "recon_chair_a_0",
+            "planar_overlap_m2": 0.000363154181191382
+          }
+        ],
+        "yaw_change_degrees": 0.0,
+        "rotation_bound_margin_m": 1e-06,
+        "clear_under_declared_sweep_model": false,
+        "scope": "Conservative box-footprint straight translation with small yaw interpolation and hypothetically open door leaves; tools teleport, handling effort/mass/friction/support dynamics and person movement unverified."
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/round_005/checkpoint",
+        "manifest_sha256": "b6753473536301d76bcc1b4716a67cba678f4a3546162ec6c1e14d2a88a791a7",
+        "state_sha256": "b9c80a3779da339b1dc943ccaed1664e056e5477489041139d19a4da5e6e4f52",
+        "step_idx": 6
+      },
+      "new_observation": false,
+      "condition_pass": false
+    }
+  ],
+  "initial_gpu": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121,
+    "required_bytes": 23792148960
+  },
+  "restoration_differences": [],
+  "stop_reason": "budget_exhausted",
+  "observations_new": 5,
+  "checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/rollouts/hosting_no_knowledge/final_checkpoint",
+    "manifest_sha256": "b6753473536301d76bcc1b4716a67cba678f4a3546162ec6c1e14d2a88a791a7",
+    "state_sha256": "b9c80a3779da339b1dc943ccaed1664e056e5477489041139d19a4da5e6e4f52",
+    "step_idx": 6
+  },
+  "final_condition_pass": false,
+  "actual_exit_code": 0,
+  "ended_at": "2026-11-05T08:47:30.817868+00:00"
+}

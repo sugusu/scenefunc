@@ -24,7 +24,7 @@
   },
   "batch": {
     "started_at": "2026-11-05T08:33:37.268593+00:00",
-    "status": "running",
+    "status": "completed",
     "command": [
       "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
       "scripts/920/run_mode_batch.py",
@@ -38,11 +38,135 @@
     "timeout_seconds": 7300,
     "pid": 1243991,
     "start_ticks": "52546585",
-    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/batch_execution/stage.log"
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/batch_execution/stage.log",
+    "ended_at": "2026-11-05T08:52:24.596962+00:00",
+    "elapsed_seconds": 1127.3283878760412,
+    "exit_code": 0,
+    "first_log": "2026-11-05T08:33:37.641424+00:00 begin frozen case work_no_knowledge"
   },
   "notes": [
     "Evaluator checks executed on existing source states plus declared synthetic counterexamples before inference (EVALUATOR_CHECKS).",
     "Input creation used a Python script in shell; exact final portable metadata, parent bundle and restoration changes preserved in INPUT_RECONSTRUCTION and input/.",
     "Full checkpoints/weights/meshes remain on server. Do not restart frozen cases on network/publishing failure."
+  ],
+  "report": {
+    "started_at": "2026-11-05T08:53:33.518721+00:00",
+    "status": "completed",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/report_mode_policy.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/PLAN.json"
+    ],
+    "timeout_seconds": 120,
+    "pid": 6,
+    "start_ticks": "52666210",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/report_execution/stage.log",
+    "ended_at": "2026-11-05T08:53:37.195748+00:00",
+    "elapsed_seconds": 3.6770469549810514,
+    "exit_code": 0,
+    "first_log": "{\"cases\": 4, \"model_calls\": 24, \"tool_calls\": 24, \"outcomes\": {\"work_no_knowledge\": false, \"hosting_with_knowledge\": false, \"hosting_no_knowledge\": false, \"work_with_knowledge\": false}}"
+  },
+  "restore_input_check": {
+    "started_at": "2026-11-05T08:41:58.972528+00:00",
+    "status": "completed",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/restore_mode_input.py",
+      "--run",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/recovery_check"
+    ],
+    "timeout_seconds": 60,
+    "pid": 6,
+    "start_ticks": "52596755",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/recovery_check_execution/stage.log",
+    "ended_at": "2026-11-05T08:41:59.138011+00:00",
+    "elapsed_seconds": 0.16549871396273375,
+    "exit_code": 0,
+    "first_log": "{\"status\": \"restored_and_verified\", \"files\": 33, \"manifest_sha256\": \"3c255353cdd000603b98effdc03f62e7658639c2d8429539dbe7408f53a5afc2\", \"output\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/recovery_check\"}"
+  },
+  "exports": [
+    {
+      "started_at": "2026-11-05T08:43:40.558677+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/cases/work_no_knowledge/EXPORT_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_work_no_knowledge"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "52606914",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_work_no_knowledge_execution/stage.log",
+      "ended_at": "2026-11-05T08:43:42.680755+00:00",
+      "elapsed_seconds": 2.1221016769995913,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 43, \"maximum_roundtrip_bound_error_m\": 2.2888183615066282e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_work_no_knowledge/room_geometry.glb\", \"bytes\": 3555568, \"sha256\": \"bba1414ca10e9f0a1c0fcb7ae4a1b14cd109c2e0cf0df2398f94c1ca6c1370c7\"}}"
+    },
+    {
+      "started_at": "2026-11-05T08:43:40.558360+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/cases/hosting_with_knowledge/EXPORT_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_hosting_with_knowledge"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "52606914",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_hosting_with_knowledge_execution/stage.log",
+      "ended_at": "2026-11-05T08:43:42.730505+00:00",
+      "elapsed_seconds": 2.1721609820378944,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 43, \"maximum_roundtrip_bound_error_m\": 2.2888183615066282e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_hosting_with_knowledge/room_geometry.glb\", \"bytes\": 3555568, \"sha256\": \"fa7cc47e171f4c9e32a6f4dc27d0b61c200da6bd26cc51cb23873386436b0311\"}}"
+    },
+    {
+      "started_at": "2026-11-05T08:49:05.480816+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/cases/hosting_no_knowledge/EXPORT_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_hosting_no_knowledge"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "52639406",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_hosting_no_knowledge_execution/stage.log",
+      "ended_at": "2026-11-05T08:49:07.803550+00:00",
+      "elapsed_seconds": 2.322756810928695,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 43, \"maximum_roundtrip_bound_error_m\": 2.2888183615066282e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_hosting_no_knowledge/room_geometry.glb\", \"bytes\": 3555568, \"sha256\": \"f1f9ebe569de0d0ef864f22f68bbda5fa2d1d12e8bb1b50fd8b99859601c2195\"}}"
+    },
+    {
+      "started_at": "2026-11-05T08:53:17.161992+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MODEBASE-v1_20261105T082851Z/cases/work_with_knowledge/EXPORT_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_work_with_knowledge"
+      ],
+      "timeout_seconds": 30,
+      "pid": 6,
+      "start_ticks": "52664574",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_work_with_knowledge_execution/stage.log",
+      "ended_at": "2026-11-05T08:53:19.234040+00:00",
+      "elapsed_seconds": 2.0720687930006534,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 41, \"maximum_roundtrip_bound_error_m\": 2.2888183615066282e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MODEBASE-v1_20261105T082851Z/export_work_with_knowledge/room_geometry.glb\", \"bytes\": 3548140, \"sha256\": \"a10775c858bfb584cc016e27783bfebfed779dd3502ab61b6fa499a02ab82aa2\"}}"
+    }
   ]
 }
