@@ -1,0 +1,312 @@
+{
+  "run_id": "P920-KBASE-v1_20261105T151743Z",
+  "summarized_at": "2026-11-05T16:26:36.195257+00:00",
+  "status": "two_development_baselines_completed_and_reviewed",
+  "arms": [
+    {
+      "arm": "strong",
+      "actual_started_at": "2026-11-05T15:21:19.802090+00:00",
+      "actual_ended_at": "2026-11-05T15:43:13.202731+00:00",
+      "actual_exit_code": 0,
+      "actual_seconds": 1313.4006580290152,
+      "model_calls": 24,
+      "tool_calls": 24,
+      "stop_reason": "budget_exhausted",
+      "inventory_counts": {},
+      "furniture_count": 0,
+      "triangle_contacts": [],
+      "outside_nominal_interior": [],
+      "generation_seconds": 97.93236951390281,
+      "output_tokens": 433,
+      "input_token_range": [
+        9250,
+        10026
+      ],
+      "peak_allocated_bytes": 20125604352,
+      "failed_actions": [],
+      "whole_room_accepted": false,
+      "glb": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/strong/export/room_geometry.glb",
+        "bytes": 20868,
+        "sha256": "f5875c139f863a5b788b5a4f78db92441d67baaeff2e25aa2c4ba20268d8e678"
+      },
+      "schema_mismatch_calls": 24,
+      "action_counts": {
+        "get_current_scene_state": 24
+      },
+      "unchanged_immutable_records": true,
+      "native_restore_passed": true,
+      "absent_catalog_roles_by_requirement": {
+        "sleep": [
+          "queen_bed"
+        ],
+        "cook": [
+          "cooker",
+          "kitchen_counter",
+          "kitchen_sink",
+          "refrigerator"
+        ],
+        "hygiene": [
+          "shower",
+          "toilet",
+          "washroom_vanity"
+        ],
+        "storage": [
+          "bookshelf",
+          "storage_bin"
+        ],
+        "daily_work_meal": [
+          "dining_chair_1",
+          "dining_table"
+        ],
+        "guest_meal": [
+          "dining_chair_1",
+          "dining_table"
+        ],
+        "access": [],
+        "editable_complete": [],
+        "terrace_access": []
+      },
+      "access_warnings": {
+        "access": [
+          {
+            "square_body_width_m": 0.4,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          },
+          {
+            "square_body_width_m": 0.5,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          },
+          {
+            "square_body_width_m": 0.6,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          }
+        ],
+        "terrace_access": [
+          {
+            "square_body_width_m": 0.4,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          },
+          {
+            "square_body_width_m": 0.5,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          },
+          {
+            "square_body_width_m": 0.6,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          }
+        ]
+      },
+      "requirement_statuses": {
+        "sleep": "unknown_not_accepted",
+        "cook": "unknown_not_accepted",
+        "hygiene": "unknown_not_accepted",
+        "storage": "unknown_not_accepted",
+        "daily_work_meal": "unknown_not_accepted",
+        "guest_meal": "unknown_not_accepted",
+        "access": "unknown_not_accepted",
+        "editable_complete": "unknown_not_accepted",
+        "terrace_access": "unknown_not_accepted"
+      }
+    },
+    {
+      "arm": "knowledge",
+      "actual_started_at": "2026-11-05T15:43:29.684033+00:00",
+      "actual_ended_at": "2026-11-05T16:06:51.517454+00:00",
+      "actual_exit_code": 0,
+      "actual_seconds": 1401.83344119892,
+      "model_calls": 24,
+      "tool_calls": 24,
+      "stop_reason": "budget_exhausted",
+      "inventory_counts": {
+        "queen_bed": 1,
+        "shower": 1
+      },
+      "furniture_count": 2,
+      "triangle_contacts": [],
+      "outside_nominal_interior": [],
+      "generation_seconds": 126.73223427927587,
+      "output_tokens": 830,
+      "input_token_range": [
+        9998,
+        11895
+      ],
+      "peak_allocated_bytes": 20599443968,
+      "failed_actions": [
+        {
+          "turn": "round_023",
+          "requested": {
+            "name": "add_furniture_to_scene_tool",
+            "arguments": {
+              "asset_id": "cooker",
+              "x": 0.0,
+              "y": -1.55,
+              "yaw": 0
+            }
+          },
+          "actual_reply": {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": false,
+              "message": "Asset cooker not found in registry. Available: ['catalog_19b181ef136dd9cbbea4505899f9015c58dca260', 'catalog_ee06a781bc8796d23c0f27564110f677cff7779d', 'catalog_9bc019d4d9b1041bb10f625cfb6d45214f1e7122', 'catalog_02e22ed56270338bef5f8436e82023c36cd29104', 'catalog_a73ab435a592f804b7caa9c3a79f03122c536476', 'catalog_31db4fd468ce40de28ea3bf907b1569ef27c9852', 'catalog_5d70cc76c99acee4513ec5f7fad497d2baebca9e', 'catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02', 'catalog_4979cfe2e691ac484078b909543db3f21b80462f', 'catalog_039f04552895e9d932d6a6eb3fcf7c4f77b7ddab', 'catalog_4d46ffe6a7d88704ba605d7dd6f41c1114d88631', 'catalog_43fa24cb165eb3bfde976d070bfd615f41c78028', 'catalog_dfc33bed23e9440507bca1a1409763942a913cd5', 'catalog_f983ff568379c97ee9dfa7095b02a7688fbf60a4', 'catalog_3d780643626fa80329154d35920d87d0df72d2fc', 'catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a']",
+              "asset_id": "cooker",
+              "object_id": "",
+              "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0
+              },
+              "has_geometry": false,
+              "error_type": "asset_not_found",
+              "suggested_action": null
+            }
+          },
+          "native_success": false,
+          "checkpoint_manifest_sha256": "1b842354d25f81a0ff5b279727d92fe80dc5d32d57c7003c71ce56a362be84e9",
+          "after_state_sha256": "ebf98d4f9ce4befd2fb1411872440dcb8172cc8deb04f348686231ee493f820f"
+        }
+      ],
+      "whole_room_accepted": false,
+      "glb": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/export/room_geometry.glb",
+        "bytes": 4972308,
+        "sha256": "08fd07b42f8e8cf5516c49a6f1a87f06ad7ceaaef1bee0dc1ec556cae0703c0c"
+      },
+      "schema_mismatch_calls": 13,
+      "action_counts": {
+        "get_current_scene_state": 13,
+        "add_furniture_to_scene_tool": 5,
+        "check_facing_tool": 3,
+        "move_furniture_tool": 1,
+        "remove_furniture_tool": 2
+      },
+      "unchanged_immutable_records": true,
+      "native_restore_passed": true,
+      "absent_catalog_roles_by_requirement": {
+        "sleep": [],
+        "cook": [
+          "cooker",
+          "kitchen_counter",
+          "kitchen_sink",
+          "refrigerator"
+        ],
+        "hygiene": [
+          "toilet",
+          "washroom_vanity"
+        ],
+        "storage": [
+          "bookshelf",
+          "storage_bin"
+        ],
+        "daily_work_meal": [
+          "dining_chair_1",
+          "dining_table"
+        ],
+        "guest_meal": [
+          "dining_chair_1",
+          "dining_table"
+        ],
+        "access": [],
+        "editable_complete": [],
+        "terrace_access": []
+      },
+      "access_warnings": {
+        "access": [
+          {
+            "square_body_width_m": 0.4,
+            "all_declared_targets_reachable": false,
+            "unreachable_targets": [
+              "queen_bed_0:right_side",
+              "shower_0:front"
+            ]
+          },
+          {
+            "square_body_width_m": 0.5,
+            "all_declared_targets_reachable": false,
+            "unreachable_targets": [
+              "queen_bed_0:right_side",
+              "shower_0:front",
+              "bath_inside_approach"
+            ]
+          },
+          {
+            "square_body_width_m": 0.6,
+            "all_declared_targets_reachable": false,
+            "unreachable_targets": [
+              "queen_bed_0:right_side",
+              "shower_0:front",
+              "bath_inside_approach"
+            ]
+          }
+        ],
+        "terrace_access": [
+          {
+            "square_body_width_m": 0.4,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          },
+          {
+            "square_body_width_m": 0.5,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          },
+          {
+            "square_body_width_m": 0.6,
+            "all_declared_targets_reachable": true,
+            "unreachable_targets": []
+          }
+        ]
+      },
+      "requirement_statuses": {
+        "sleep": "unknown_not_accepted",
+        "cook": "unknown_not_accepted",
+        "hygiene": "unknown_not_accepted",
+        "storage": "unknown_not_accepted",
+        "daily_work_meal": "unknown_not_accepted",
+        "guest_meal": "unknown_not_accepted",
+        "access": "unknown_not_accepted",
+        "editable_complete": "unknown_not_accepted",
+        "terrace_access": "unknown_not_accepted"
+      }
+    }
+  ],
+  "batch_started_at": "2026-11-05T15:19:27.078519+00:00",
+  "batch_ended_at": "2026-11-05T16:07:12.404486+00:00",
+  "batch_exit_code": 0,
+  "batch_elapsed_seconds": 2865.3259761339286,
+  "new_model_calls": 48,
+  "new_tool_attempts": 48,
+  "new_training_updates": 0,
+  "source_sha256": {
+    "strong/REPORT.json": "fc6b6f09b4959a8848fb0c77b2e51aceddc2b51b0f47e5f61239d085278ec952",
+    "strong/ACTION_SCHEMA_REVIEW.json": "d48a6501eacc3fa0397f284cebdc1d8c7255c53768697d193f048968596a8b78",
+    "strong/RESTORE_RESULT.json": "b569eb226730a5e892dbab3b4d049f8b2a07fb9366011b26423b77302cedf1f4",
+    "strong/VISUAL_REVIEW.json": "1df77aac56c5df67596d96bc3062104753e0214545b207bb8bbbf40fd9509ec7",
+    "strong/INTERPRETATION.md": "6ccad525d987f26a2c27838855138defc922a200b2a39f82e9963644f2ade7fb",
+    "knowledge/REPORT.json": "1ed7a78f8f87e994ec74ad250248cb3e6ecca0df8d3075eda93630dbe8f962ed",
+    "knowledge/ACTION_SCHEMA_REVIEW.json": "b648657d7d095bd3f734e572791d6f0b730b8c449ad65f6875175118188acda1",
+    "knowledge/RESTORE_RESULT.json": "7ed976f1e11706600eb89c2f6377578ccf08150e6162f5e048cf248ee4616c7f",
+    "knowledge/VISUAL_REVIEW.json": "21a7cd459f5cd6f9beda1c47b090fe1e7b96fe225a460664b481eb281f76fce4",
+    "knowledge/INTERPRETATION.md": "f829119f19de1b6c535fe00d4183ec5b58ab9bd16a99fa3eca0b3ace5f888c29"
+  },
+  "preparation_review_sha256": "8181bc82c778f0fab1fc1ab6952e96c36b5bbd7ba9281647596579fb22638708",
+  "interpretation": "Fixed complete source memory changed the observed trajectory, but neither condition completed the dwelling. No professional quality improvement, training need, pairing benefit or generalization established.",
+  "limits": [
+    "One exposed development project, one deterministic attempt per condition; no statistical population claim.",
+    "Both new arms use input cap 16384; historical base/adapter arms used 12288 and different prompts.",
+    "Knowledge is all ten prior pilot reason texts, including researcher action descriptions; no retrieval/ranking algorithm.",
+    "A no-furniture scene has no furniture contacts; fewer contacts cannot offset missing required functions.",
+    "Directions/facing are not privacy, articulation, installation or real activity validation."
+  ]
+}

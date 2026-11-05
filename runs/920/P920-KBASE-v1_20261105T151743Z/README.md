@@ -5,3 +5,5 @@ Casa 已为 development；本轮不能作为未见测试。strong 使用完整�
 两组同底座/空壳/目录/五图/greedy，每组24模型和24工具调用，1024输出token。输入上限共同16384，以容纳知识；旧三组为12288，仅作描述性背景，不宣称所有输入计算相等。全部9用途/原几何审计保持，unknown不算通过。0训练；首执行错误停止，不重启。
 
 计划和提示在 PLAN.json、COMMON_GUIDANCE.txt、各组PROMPT_SUPPLEMENT.txt；知识逐段来源哈希在 KNOWLEDGE_CORPUS.json。完整结束后交实际状态、回执、用途缺项、成本和五视图。
+
+已结束：两组24/24调用，末态0/2家具，均未完成整屋。完整结果见 [COMPARISON.md](COMPARISON.md)，实际退出、失败动作、三维恢复与证据见各组目录。

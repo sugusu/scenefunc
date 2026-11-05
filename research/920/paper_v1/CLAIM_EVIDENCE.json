@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-05T15:24:43.615085+00:00",
+  "created_at": "2026-11-05T16:47:24.681925+00:00",
   "status": "working_paper_evidence_not_submission",
   "sources": {
     "training": {
@@ -25,6 +25,10 @@
     "trainer": {
       "path": "scripts/920/decision_pilot_offload.py",
       "sha256": "06d020880eeff35cf4c1fa23c7ab46a2a9687a5ce7a08f0388e1f04df3e18eb9"
+    },
+    "knowledge_baseline": {
+      "path": "runs/920/P920-KBASE-v1_20261105T151743Z/COMPARISON.json",
+      "sha256": "72f46ce89d277d1842d2aee7963549a77b2018eb78ead43239cd75bdaf2a87db"
     }
   },
   "claims": [
@@ -87,6 +91,15 @@
         "Sealed independent project evaluation",
         "Independent professional whole-room judgments and uncertainty analysis"
       ]
+    },
+    {
+      "id": "R2",
+      "claim": "On the exposed Casa development task, strong guidance yielded an empty room; the same guidance plus all ten pilot reason texts yielded only a bed and shower.",
+      "status": "supported_single_project_negative_outcomes",
+      "evidence": [
+        "knowledge_baseline"
+      ],
+      "not_supported": "A professional quality gain from knowledge, necessity of training, population generalization or pairing benefit."
     }
   ],
   "new_model_calls": 0,
