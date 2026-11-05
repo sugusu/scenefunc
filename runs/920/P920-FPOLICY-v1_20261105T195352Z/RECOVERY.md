@@ -1,0 +1,6 @@
+# 运行恢复与产物
+
+- shared_visual_contact: checkpoint `/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/rollout/final_checkpoint`, manifest SHA256 `3e699a6133c7f312dca84bbb1672ef5b5bd5a8746a46df031a65888b1cf27608`; GLB `/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/export/room_geometry.glb`, SHA256 `4e0a0940ba4468ea8bf21adadff5992886e052e8bfb8121a117f7994ac40f138`。
+- reduced_visual_distraction: checkpoint `/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/final_checkpoint`, manifest SHA256 `027898e3d3e9f90406fd165231f7d0d911af4466396435960071677dcec21cba`; GLB `/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/export/room_geometry.glb`, SHA256 `35abac61962dbac629368912cb3a23530759ae72e9bf98fe3f328b8c0afe023d`。
+
+两终态均经独立原生进程加载，保留资产绑定、实例ID、目录和4条回执；没有恢复后编辑。各组 RESTORE_PLAN.json 与 execution/restore_execution/receipt.json 给出实际命令。GLB只含家具几何，不替代可编辑原生状态。模型固定版本/本地文件哈希在各组 PLAN.json，运行命令及小日志在 execution。源资产的来源、维度、生成/代理标记由输入清单和检查点元数据记录。不要因网络失败重跑本批。

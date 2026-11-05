@@ -1,0 +1,1583 @@
+{
+  "recorded_at": "2026-11-05T19:37:46.368596+00:00",
+  "native_actions": 2,
+  "actual_observations": 4,
+  "image_hash_and_decode_checks": 20,
+  "actual_schema_valid_calls": 2,
+  "public_views": 11,
+  "visual_review_file": "VISUAL_REVIEW.json",
+  "stages": [
+    {
+      "stage": "build_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:26:23.217049+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/build_reference_room.py",
+          "--plan",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z/REFERENCE_BUILD_PLAN.json",
+          "--scenesmith",
+          "../resources/full_runtime_20261104/scenesmith",
+          "--out",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z/reference"
+        ],
+        "timeout_seconds": 120,
+        "pid": 1369347,
+        "start_ticks": "56463180",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/build_stage/stage.log",
+        "ended_at": "2026-11-05T19:26:27.497018+00:00",
+        "elapsed_seconds": 4.2799933480564505,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:26:23.567909+00:00 begin labelled native whole-room reconstruction"
+      }
+    },
+    {
+      "stage": "archive_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:37:02.894210+00:00",
+        "status": "failed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/archive_family_choice.py",
+          "--run",
+          "P920-FCHOICE-v1_20261105T192554Z"
+        ],
+        "timeout_seconds": 90,
+        "pid": 6,
+        "start_ticks": "56527148",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/archive_stage/stage.log",
+        "ended_at": "2026-11-05T19:37:03.310617+00:00",
+        "elapsed_seconds": 0.41642907611094415,
+        "exit_code": 1,
+        "first_log": "Traceback (most recent call last):"
+      }
+    },
+    {
+      "stage": "measurement_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:32:28.851852+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/geometry311/bin/python",
+          "scripts/920/measure_family_choice.py",
+          "--run",
+          "P920-FCHOICE-v1_20261105T192554Z"
+        ],
+        "timeout_seconds": 60,
+        "pid": 6,
+        "start_ticks": "56499743",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/measurement_stage/stage.log",
+        "ended_at": "2026-11-05T19:32:29.318568+00:00",
+        "elapsed_seconds": 0.4667357759317383,
+        "exit_code": 0,
+        "first_log": "{\"perimeter\": {\"clear_rays\": 15, \"failed_access\": {\"0.4\": [], \"0.5\": [], \"0.6\": []}}, \"divider\": {\"clear_rays\": 0, \"failed_access\": {\"0.4\": [], \"0.5\": [], \"0.6\": []}}}"
+      }
+    },
+    {
+      "stage": "divider/native_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:30:31.577928+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/construct_and_switch_room.py",
+          "--plan",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z/divider_PLAN.json",
+          "--phase",
+          "execute",
+          "--out",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native"
+        ],
+        "timeout_seconds": 360,
+        "pid": 1370947,
+        "start_ticks": "56488016",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native_stage/stage.log",
+        "ended_at": "2026-11-05T19:31:57.100502+00:00",
+        "elapsed_seconds": 85.52259537100326,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:30:31.969347+00:00 begin researcher reference execute"
+      }
+    },
+    {
+      "stage": "divider/preflight_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:27:59.790013+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/geometry311/bin/python",
+          "scripts/920/construct_and_switch_room.py",
+          "--plan",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z/divider_PLAN.json",
+          "--phase",
+          "preflight",
+          "--out",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/preflight"
+        ],
+        "timeout_seconds": 60,
+        "pid": 6,
+        "start_ticks": "56472837",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/preflight_stage/stage.log",
+        "ended_at": "2026-11-05T19:28:00.507517+00:00",
+        "elapsed_seconds": 0.7175269210711122,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:28:00.172899+00:00 begin researcher reference preflight"
+      }
+    },
+    {
+      "stage": "divider/export_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:32:28.996020+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+          "scripts/920/export_catalog_geometry.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/divider/EXPORT_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1372170,
+        "start_ticks": "56499758",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export_stage/stage.log",
+        "ended_at": "2026-11-05T19:32:30.917611+00:00",
+        "elapsed_seconds": 1.9216137150069699,
+        "exit_code": 0,
+        "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 26, \"maximum_roundtrip_bound_error_m\": 1.1444091807533141e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export/room_geometry.glb\", \"bytes\": 3531128, \"sha256\": \"f99ac3a9e245ebc6a52e836cbc2adce5b20b9f59148b7f1a30112ab33e3a4303\"}}"
+      }
+    },
+    {
+      "stage": "divider/audit_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:32:27.616864+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+          "scripts/920/audit_family_choice_geometry.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/AUDIT_PLAN.json",
+          "--bundle",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/FINAL_AUDIT.json"
+        ],
+        "timeout_seconds": 60,
+        "pid": 1372155,
+        "start_ticks": "56499620",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/audit_stage/stage.log",
+        "ended_at": "2026-11-05T19:32:28.936752+00:00",
+        "elapsed_seconds": 1.3199100060155615,
+        "exit_code": 0,
+        "first_log": "{\"furniture\": 8, \"surface_intersection_pairs\": 0, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+      }
+    },
+    {
+      "stage": "divider/restore_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:32:30.975619+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/restore_terminal_catalog.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/divider/RESTORE_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/cold_restore"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1372199,
+        "start_ticks": "56499956",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/restore_stage/stage.log",
+        "ended_at": "2026-11-05T19:32:39.219416+00:00",
+        "elapsed_seconds": 8.243819269002415,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:32:31.044941+00:00 begin terminal native cold restore"
+      }
+    },
+    {
+      "stage": "perimeter/native_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:28:25.733253+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/construct_and_switch_room.py",
+          "--plan",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter_PLAN.json",
+          "--phase",
+          "execute",
+          "--out",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native"
+        ],
+        "timeout_seconds": 360,
+        "pid": 1369649,
+        "start_ticks": "56475431",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native_stage/stage.log",
+        "ended_at": "2026-11-05T19:29:50.503577+00:00",
+        "elapsed_seconds": 84.77034600498155,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:28:26.116691+00:00 begin researcher reference execute"
+      }
+    },
+    {
+      "stage": "perimeter/preflight_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:27:58.851230+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/geometry311/bin/python",
+          "scripts/920/construct_and_switch_room.py",
+          "--plan",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter_PLAN.json",
+          "--phase",
+          "preflight",
+          "--out",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/preflight"
+        ],
+        "timeout_seconds": 60,
+        "pid": 6,
+        "start_ticks": "56472743",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/preflight_stage/stage.log",
+        "ended_at": "2026-11-05T19:27:59.568673+00:00",
+        "elapsed_seconds": 0.7174647690262645,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:27:59.224330+00:00 begin researcher reference preflight"
+      }
+    },
+    {
+      "stage": "perimeter/export_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:31:56.959630+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+          "scripts/920/export_catalog_geometry.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter/EXPORT_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1372001,
+        "start_ticks": "56496554",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export_stage/stage.log",
+        "ended_at": "2026-11-05T19:31:58.831259+00:00",
+        "elapsed_seconds": 1.8716545009519905,
+        "exit_code": 0,
+        "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 26, \"maximum_roundtrip_bound_error_m\": 1.1444091807533141e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export/room_geometry.glb\", \"bytes\": 3531128, \"sha256\": \"b0dccd4a1d3115d7c0000773adb68673d539aa2f3bf365fd48e0bd88984bc75a\"}}"
+      }
+    },
+    {
+      "stage": "perimeter/audit_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:31:55.633987+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+          "scripts/920/audit_family_choice_geometry.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/AUDIT_PLAN.json",
+          "--bundle",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/FINAL_AUDIT.json"
+        ],
+        "timeout_seconds": 60,
+        "pid": 1371993,
+        "start_ticks": "56496421",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/audit_stage/stage.log",
+        "ended_at": "2026-11-05T19:31:56.903259+00:00",
+        "elapsed_seconds": 1.2692959799896926,
+        "exit_code": 0,
+        "first_log": "{\"furniture\": 8, \"surface_intersection_pairs\": 0, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+      }
+    },
+    {
+      "stage": "perimeter/restore_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:31:58.909698+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/restore_terminal_catalog.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter/RESTORE_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/cold_restore"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1372009,
+        "start_ticks": "56496749",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/restore_stage/stage.log",
+        "ended_at": "2026-11-05T19:32:07.253808+00:00",
+        "elapsed_seconds": 8.344135008053854,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:31:58.979455+00:00 begin terminal native cold restore"
+      }
+    },
+    {
+      "stage": "configure_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:27:43.994165+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/geometry311/bin/python",
+          "scripts/920/configure_family_choice.py",
+          "--run",
+          "P920-FCHOICE-v1_20261105T192554Z"
+        ],
+        "timeout_seconds": 60,
+        "pid": 6,
+        "start_ticks": "56471258",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/configure_stage/stage.log",
+        "ended_at": "2026-11-05T19:27:44.510657+00:00",
+        "elapsed_seconds": 0.5165131399407983,
+        "exit_code": 0,
+        "first_log": "Prepared two independent candidates from one eight-object initial state; no native edits."
+      }
+    },
+    {
+      "stage": "prepare_stage",
+      "receipt": {
+        "started_at": "2026-11-05T19:26:04.322997+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/geometry311/bin/python",
+          "scripts/920/prepare_family_choice.py",
+          "--public",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z",
+          "--runtime",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z"
+        ],
+        "timeout_seconds": 60,
+        "pid": 6,
+        "start_ticks": "56461290",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/prepare_stage/stage.log",
+        "ended_at": "2026-11-05T19:26:04.789953+00:00",
+        "elapsed_seconds": 0.46697538695298135,
+        "exit_code": 0,
+        "first_log": "{\"family\": \"osaka_f_house_coilkma\", \"furniture\": 8, \"candidates\": 2, \"task_conditions\": 2, \"training_updates\": 0}"
+      }
+    }
+  ],
+  "copies": [
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.state_binding.json",
+      "path": "perimeter/bindings/step_000.state_binding.json",
+      "sha256": "bfd3c181f0ce1908259c69e38378c7ef6b234a029a6968fa3ec2419e3ba07ef5"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.topdown.png",
+      "path": "perimeter/views/step_000.topdown.png",
+      "sha256": "288df683b92b35924ad0566c33cf6c0a923a7e181f717f5d100781bafa0ae9ed"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.state_binding.json",
+      "path": "perimeter/bindings/step_001.state_binding.json",
+      "sha256": "23997c48ba87e1b30fa5ca6cd615174609191e9c6c0fefbc2a51b14c9b51a103"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.topdown.png",
+      "path": "perimeter/views/step_001.topdown.png",
+      "sha256": "e159ccf0e0f5c1983eebf0e892360a1fff7c729f9a90526ea4fececa0a8b83ae"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.south.png",
+      "path": "perimeter/views/step_001.south.png",
+      "sha256": "33b3c2cfef92b1abbaa3b3ff56e9b75245f459cf4664b60b6032849cba390024"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.east.png",
+      "path": "perimeter/views/step_001.east.png",
+      "sha256": "d59f96919c7e7baf3d14c9234e1b26b48d13e0ee2a6513e8e3442ab84b7f131b"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.west.png",
+      "path": "perimeter/views/step_001.west.png",
+      "sha256": "f33318705b2d4e0547bcd1b0791e17c6bc0dbfd6c3dc6476f0db735da6383d60"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.north.png",
+      "path": "perimeter/views/step_001.north.png",
+      "sha256": "b6a1cc3a16932e70fb0015271d2ec26e42311b8302a707e2fb2129a144fc9c3b"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/FINAL_CONTEXT.json",
+      "path": "perimeter/native/FINAL_CONTEXT.json",
+      "sha256": "e1991ae022c3fea43a88acea31e7cf2b8d934740fd2b396c06fb58b1f1ee67ac"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/initial_state.json",
+      "path": "perimeter/native/initial_state.json",
+      "sha256": "7d0ebe596a11aa0c9ea33d05e309608c2ee47d01c96e74655e13601b62fa4949"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/step_01_after.json",
+      "path": "perimeter/native/step_01_after.json",
+      "sha256": "f4208eaf5fa8ecc2b567c047692cb5e6fef570af8eee46160d4190c0f88b5fe5"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/initial_observation.json",
+      "path": "perimeter/native/initial_observation.json",
+      "sha256": "ad0038184961565e56db83fd7e5691f97b4202b351f8a06e0cb3815065bc72ca"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/final_state.json",
+      "path": "perimeter/native/final_state.json",
+      "sha256": "f4208eaf5fa8ecc2b567c047692cb5e6fef570af8eee46160d4190c0f88b5fe5"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/step_01_before.json",
+      "path": "perimeter/native/step_01_before.json",
+      "sha256": "7d0ebe596a11aa0c9ea33d05e309608c2ee47d01c96e74655e13601b62fa4949"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/RESULT.json",
+      "path": "perimeter/native/RESULT.json",
+      "sha256": "79dd24ca1621050b78d79a99c6351b6eefc00441214682a70ad0c526845aa4f2"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/CONDITIONAL_ACCESS.json",
+      "path": "perimeter/native/CONDITIONAL_ACCESS.json",
+      "sha256": "3b0b8d9c54497006fb68c6b6d6b101782240439930200268d1684c88cfc23b9c"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/step_01_observation.json",
+      "path": "perimeter/native/step_01_observation.json",
+      "sha256": "ec99376a7b66d3ed843fe56ad41e340a4947f3ba8f0c68ea0efc8e2fa15dcccf"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/final_observation.json",
+      "path": "perimeter/native/final_observation.json",
+      "sha256": "ec99376a7b66d3ed843fe56ad41e340a4947f3ba8f0c68ea0efc8e2fa15dcccf"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/HTTP_REQUESTS.json",
+      "path": "perimeter/native/HTTP_REQUESTS.json",
+      "sha256": "7c88765b0e5609ad91ab4692728a1ce6369cc06241007bf0bdba1a15393805ac"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/step_01_state.json",
+      "path": "perimeter/native/step_01_state.json",
+      "sha256": "f4208eaf5fa8ecc2b567c047692cb5e6fef570af8eee46160d4190c0f88b5fe5"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/STEPS.json",
+      "path": "perimeter/native/STEPS.json",
+      "sha256": "0755e212ae38f2fe618780c8d9b05b1b569078e3a2e89451d5937d6b1ccbd6b9"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/preflight/RESULT.json",
+      "path": "perimeter/preflight/RESULT.json",
+      "sha256": "04d75711e8509e36ea0f079ee479f9996a52b82d1e6d686707a67fd7bb852b8c"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export/RESULT.json",
+      "path": "perimeter/export/RESULT.json",
+      "sha256": "5cf13b215db98a52c6c4bc234b9971486e891e9dac54eab1f508870e7a49cd8f"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/cold_restore/RESULT.json",
+      "path": "perimeter/cold_restore/RESULT.json",
+      "sha256": "84b97d203402a5e7af19dbb5506248882e279a09a5930efdea3fc96f24af4e36"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/FINAL_AUDIT.json",
+      "path": "perimeter/FINAL_AUDIT.json",
+      "sha256": "cc6c487b94cc7c43231ee4062c64f96f7d8c6d70d0581f8398d78aec0d60155c"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint/manifest.json",
+      "path": "perimeter/checkpoint_metadata/manifest.json",
+      "sha256": "4162e6f14916108fe460a12fd7ddb7a63e8a828d662baea1d730bf2c5dc13ec8"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint/house_state.json",
+      "path": "perimeter/checkpoint_metadata/house_state.json",
+      "sha256": "ef8f5c9f44f7b40cc0549b35d09b1d8deb79a279f9b6f6540f90be224f4bbfd2"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint/runtime.json",
+      "path": "perimeter/checkpoint_metadata/runtime.json",
+      "sha256": "7850a8db5fcb4764551964d971a6e10e0ec3cd915cfb5c3662b015b7c67d2838"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint/task.json",
+      "path": "perimeter/checkpoint_metadata/task.json",
+      "sha256": "55cee56df5f267ab4dca23b7a52ccfdc1f7d8080eb73230ee27f21d5ae4473fc"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint/catalog.json",
+      "path": "perimeter/checkpoint_metadata/catalog.json",
+      "sha256": "fc62427e7b5ea111411dbf3a296cda264432cebe666cb532586c0fa3c49ecc11"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint/session_checkpoint.json",
+      "path": "perimeter/checkpoint_metadata/session_checkpoint.json",
+      "sha256": "6ff6871cc121f7e96a56eeea9a5ae0efec33ed4dc7a01cd7c692ba295309c9b9"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.state_binding.json",
+      "path": "divider/bindings/step_000.state_binding.json",
+      "sha256": "8968807b5838725ad55d9917b916220e087de820e1cda8355e6c993f386b436c"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.state_binding.json",
+      "path": "divider/bindings/step_001.state_binding.json",
+      "sha256": "c55e4f4ccd226c5801fa3428a9d34ce8309409b0fb7bc940574f8fd92093811a"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.topdown.png",
+      "path": "divider/views/step_001.topdown.png",
+      "sha256": "73dec896e4b4b2a31927963b5c0e1ee57b5af0d1dbba9a3617c8f2c8752b1488"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.south.png",
+      "path": "divider/views/step_001.south.png",
+      "sha256": "9fca37e0107277b65ed04eb582e850b5ed8a15d3e3d31005149b7022e1a53b7d"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.east.png",
+      "path": "divider/views/step_001.east.png",
+      "sha256": "70ccf54c6201a118d567b5cc3ac369258797caf2f81617e6def4091da8a45026"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.west.png",
+      "path": "divider/views/step_001.west.png",
+      "sha256": "cf0a5e241011ce6adae5c5f8fcd2534c3bc8c103919351bc616caf60fc76a5ea"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.north.png",
+      "path": "divider/views/step_001.north.png",
+      "sha256": "97aea175391e53de490ad2ac9e8bb78b0ae4e56f079368b13c45887c23629806"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/FINAL_CONTEXT.json",
+      "path": "divider/native/FINAL_CONTEXT.json",
+      "sha256": "bed5ab1b9857191b0a53d329515eb806386bd0e8b7b29955d4635ce6ba4cef04"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/initial_state.json",
+      "path": "divider/native/initial_state.json",
+      "sha256": "7d0ebe596a11aa0c9ea33d05e309608c2ee47d01c96e74655e13601b62fa4949"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/step_01_after.json",
+      "path": "divider/native/step_01_after.json",
+      "sha256": "06a5fa6971f82a5a5f633053edee4c6064694ff3a601df41c247a4d7e34d1404"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/initial_observation.json",
+      "path": "divider/native/initial_observation.json",
+      "sha256": "96626d7290b652cf16218e1bcf8cd77f3b2d04a945fe2d5a7e777be1cacb42b3"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/final_state.json",
+      "path": "divider/native/final_state.json",
+      "sha256": "06a5fa6971f82a5a5f633053edee4c6064694ff3a601df41c247a4d7e34d1404"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/step_01_before.json",
+      "path": "divider/native/step_01_before.json",
+      "sha256": "7d0ebe596a11aa0c9ea33d05e309608c2ee47d01c96e74655e13601b62fa4949"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/RESULT.json",
+      "path": "divider/native/RESULT.json",
+      "sha256": "4b89296d1a5f26467aac6ff38c890c374e81257614365b2d9c1b6a686c28d37a"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/CONDITIONAL_ACCESS.json",
+      "path": "divider/native/CONDITIONAL_ACCESS.json",
+      "sha256": "d3dc8a1cf5f72eab0e421bf0d118e198baddb5b73c6ec627630ccbec1686fbed"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/step_01_observation.json",
+      "path": "divider/native/step_01_observation.json",
+      "sha256": "6085b93d876b85280a2a3120597c34216b384dc4599f22726fcc078f43ab7e11"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/final_observation.json",
+      "path": "divider/native/final_observation.json",
+      "sha256": "6085b93d876b85280a2a3120597c34216b384dc4599f22726fcc078f43ab7e11"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/HTTP_REQUESTS.json",
+      "path": "divider/native/HTTP_REQUESTS.json",
+      "sha256": "d2fe9079a71ee9076b9830120e7d544d05e570b1ccc4a9c207e1539f1eb6212b"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/step_01_state.json",
+      "path": "divider/native/step_01_state.json",
+      "sha256": "06a5fa6971f82a5a5f633053edee4c6064694ff3a601df41c247a4d7e34d1404"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/STEPS.json",
+      "path": "divider/native/STEPS.json",
+      "sha256": "3a70a21c80460ef3145c253eecfef1dd4dde66854fc1355b3c74c723a14a0398"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/preflight/RESULT.json",
+      "path": "divider/preflight/RESULT.json",
+      "sha256": "06dc62b4c3487f88f7645cbfc7b66d57b28f7e9b45689ee5ce5d1d5176d2d827"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export/RESULT.json",
+      "path": "divider/export/RESULT.json",
+      "sha256": "c49189d01ede3d0ee9aca358ccaad9d75854049660da92b7bf5b8476e10ac0ce"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/cold_restore/RESULT.json",
+      "path": "divider/cold_restore/RESULT.json",
+      "sha256": "12f09bc79f286d310765779e02971db9e13c97b35b832d1c14a0dafd36f6960a"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/FINAL_AUDIT.json",
+      "path": "divider/FINAL_AUDIT.json",
+      "sha256": "fa7fbecff77b5b0fec6c7ba9571f80f166feadcabf8475ad8f48fbe7fef32ec6"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint/manifest.json",
+      "path": "divider/checkpoint_metadata/manifest.json",
+      "sha256": "9bae515cc2b9e8db4c606c2d5520181ef9e96be1878bcdd496af61ff692e1156"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint/house_state.json",
+      "path": "divider/checkpoint_metadata/house_state.json",
+      "sha256": "f92eb3fb0d5df6d995ec1d0760526738fe5e19787f81b48ad825ccf876ac1d08"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint/runtime.json",
+      "path": "divider/checkpoint_metadata/runtime.json",
+      "sha256": "7850a8db5fcb4764551964d971a6e10e0ec3cd915cfb5c3662b015b7c67d2838"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint/task.json",
+      "path": "divider/checkpoint_metadata/task.json",
+      "sha256": "55cee56df5f267ab4dca23b7a52ccfdc1f7d8080eb73230ee27f21d5ae4473fc"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint/catalog.json",
+      "path": "divider/checkpoint_metadata/catalog.json",
+      "sha256": "fc62427e7b5ea111411dbf3a296cda264432cebe666cb532586c0fa3c49ecc11"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint/session_checkpoint.json",
+      "path": "divider/checkpoint_metadata/session_checkpoint.json",
+      "sha256": "ed7f487a95f9345130602c6386251c9a50c419ceb63e2c3b9467576e68f1649b"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/build_stage/receipt.json",
+      "path": "execution/build_stage/receipt.json",
+      "sha256": "13d5c97b503bf47ec4025d50a4e5c6058a67d2c356aea386ea35c60462460edc"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/build_stage/stage.log",
+      "path": "execution/build_stage/stage.log",
+      "sha256": "ff1f09c6183f425cc82899b03346d48ba3b11fe65978d11bbc2460c0c601a9df"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/archive_stage/receipt.json",
+      "path": "execution/archive_stage/receipt.json",
+      "sha256": "d6884254b0da2ac90665fd4f3cd16982274b368e818a77c42342489ee28cd691"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/archive_stage/stage.log",
+      "path": "execution/archive_stage/stage.log",
+      "sha256": "a11522c95ef6d2bdf9efc6df0cad74412d6228cbc1641b2c76bce0c554d86212"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/measurement_stage/receipt.json",
+      "path": "execution/measurement_stage/receipt.json",
+      "sha256": "83ee0dc5cb6d73ffcc71791edda589ff8bad66541328389e314214437e7e2153"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/measurement_stage/stage.log",
+      "path": "execution/measurement_stage/stage.log",
+      "sha256": "d9a80c25127ea40af10a390acb4eef97fcbf8f86e40bc487e9a6476fa0a8b464"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native_stage/receipt.json",
+      "path": "execution/divider/native_stage/receipt.json",
+      "sha256": "0a294157799aaf2582a5f550110b3abf118dd1dfe0b6f71717c6a44914ee7677"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native_stage/stage.log",
+      "path": "execution/divider/native_stage/stage.log",
+      "sha256": "967b4ced74a04b4ce3b18b269b0b7f32c9e5275ae35ec8e1161fa0721f72a56b"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/preflight_stage/receipt.json",
+      "path": "execution/divider/preflight_stage/receipt.json",
+      "sha256": "fd5bab9e6a8d07dd74de4c2280987cf93222cb7ea1cfd0d989a4f5d93bc5828a"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/preflight_stage/stage.log",
+      "path": "execution/divider/preflight_stage/stage.log",
+      "sha256": "379b804d8811c5b8a5bf8c7cf0d6abcb616ae5c46c390d1d27d9577eec685f25"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export_stage/receipt.json",
+      "path": "execution/divider/export_stage/receipt.json",
+      "sha256": "57a801c712a9fadd422d7d7f49ce1e10df46d30ebf241b3d6f720fe577913e0a"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export_stage/stage.log",
+      "path": "execution/divider/export_stage/stage.log",
+      "sha256": "18967cad35518e42e3188bef5bb2f6a6a18c9818a8398671a1cc9e3e6ba3d62d"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/audit_stage/receipt.json",
+      "path": "execution/divider/audit_stage/receipt.json",
+      "sha256": "113a4ad5c4bbeb12dc5ad9c53a6364cca23cee2313450ebfc260b4910ef5a7a2"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/audit_stage/stage.log",
+      "path": "execution/divider/audit_stage/stage.log",
+      "sha256": "7c771e76129f9d5aa4183f9b61b15d89c523358bb274b58a777fd0d1c4489237"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/restore_stage/receipt.json",
+      "path": "execution/divider/restore_stage/receipt.json",
+      "sha256": "fc2a78ef91abba4160fd7e54c8903e25f996e7b33199ebcb8e80056a769f3d6d"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/restore_stage/stage.log",
+      "path": "execution/divider/restore_stage/stage.log",
+      "sha256": "3f5263631c91051791af0e2faeeaf0599aec52f78b1cb508cffe5a0d6ef77abd"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native_stage/receipt.json",
+      "path": "execution/perimeter/native_stage/receipt.json",
+      "sha256": "8cdf1206c6971acbae0c54eaa2eab1d1356ce52c914d70cf69d72238c8d9a98f"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native_stage/stage.log",
+      "path": "execution/perimeter/native_stage/stage.log",
+      "sha256": "693d36babfeedf8f4d0f8cc68f7c66b3cda133c95e27afb3724c9dd336c2a867"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/preflight_stage/receipt.json",
+      "path": "execution/perimeter/preflight_stage/receipt.json",
+      "sha256": "15c724a2c1e660fc8fc12221e1f8eeeb9d1c97ca26cd18f0506e8a674f617062"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/preflight_stage/stage.log",
+      "path": "execution/perimeter/preflight_stage/stage.log",
+      "sha256": "c4dab1829e325db7c3a40471ae6ebe476b62adbad32cf2faa291c9bf25381469"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export_stage/receipt.json",
+      "path": "execution/perimeter/export_stage/receipt.json",
+      "sha256": "7701a0a63e627c0b32161c97c3178741d1ae95f4a2d6a486cfbf25d769870f58"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export_stage/stage.log",
+      "path": "execution/perimeter/export_stage/stage.log",
+      "sha256": "7d2b331d50d497cafb33e14466c388c53a81e3221e5572e47427c5b2bb6a96c2"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/audit_stage/receipt.json",
+      "path": "execution/perimeter/audit_stage/receipt.json",
+      "sha256": "01602c2bacc41dec5d53d73add34708859d91d88af5a1e8fd7012085e4163080"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/audit_stage/stage.log",
+      "path": "execution/perimeter/audit_stage/stage.log",
+      "sha256": "7c771e76129f9d5aa4183f9b61b15d89c523358bb274b58a777fd0d1c4489237"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/restore_stage/receipt.json",
+      "path": "execution/perimeter/restore_stage/receipt.json",
+      "sha256": "5ebe5f33526f097956cc39bc028f29fb03fc3790485787b136ff0dd44a905271"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/restore_stage/stage.log",
+      "path": "execution/perimeter/restore_stage/stage.log",
+      "sha256": "4100db1c098c20d75f4ce29193590bafae710e1b1fd3ef1adf6dbca2c5342508"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/configure_stage/receipt.json",
+      "path": "execution/configure_stage/receipt.json",
+      "sha256": "375c269a4f79c0f454d510fea8f7dc5a96303463eda7617ca4154fa1163f8b10"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/configure_stage/stage.log",
+      "path": "execution/configure_stage/stage.log",
+      "sha256": "5446e4db82185fb0db122b06922c58600cc4a61973d97e085b131cadefee7579"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/prepare_stage/receipt.json",
+      "path": "execution/prepare_stage/receipt.json",
+      "sha256": "414e19d09a6aad76290350ac79292091c04280fb90bb0a907003d61b1481e9e8"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/prepare_stage/stage.log",
+      "path": "execution/prepare_stage/stage.log",
+      "sha256": "990b796e24af1e9816b0f61a232330f369711cd3636538f7591d9fa7c657698b"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/prepare_family_choice.py",
+      "path": "code/prepare_family_choice.py",
+      "sha256": "2988489ba52368b178def717c0b4de14a421225cc375edda0897a7f49e4e651e"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/revise_family_choice_orientation.py",
+      "path": "code/revise_family_choice_orientation.py",
+      "sha256": "b3a02c870d4ecaf82ef30221a25f9d4ecddac150572cd9d460bcbb2c410e2ec6"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/configure_family_choice.py",
+      "path": "code/configure_family_choice.py",
+      "sha256": "daa7631f904599bb0a4813f2b9d3608c32cf2d7776c879e152db71acc82cc44b"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_family_choice_batch.py",
+      "path": "code/run_family_choice_batch.py",
+      "sha256": "5a111b2c51bedc3f68c380fb44e78b2e8d59451ba306f369f6dfb41a68bd1359"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/construct_and_switch_room.py",
+      "path": "code/construct_and_switch_room.py",
+      "sha256": "ffe2fbdaea5666b911becb1d080bed68682cf463dbb2ec96f7512814832a8510"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/measure_family_choice.py",
+      "path": "code/measure_family_choice.py",
+      "sha256": "b402c2c5c83a448d6e498c6321f52c26c41ebb29bcd0097fb1426786aa741430"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_family_choice_geometry.py",
+      "path": "code/audit_family_choice_geometry.py",
+      "sha256": "33b4f843e17d1cfa8047081ffd6fc515b3f6cdceb39e69da03c0dbf981b01304"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/postprocess_family_choice.py",
+      "path": "code/postprocess_family_choice.py",
+      "sha256": "ae7a5e3b7525fc157503440b9153c954bafb46c310571636ef41441eff4ad6ff"
+    },
+    {
+      "source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/archive_family_choice.py",
+      "path": "code/archive_family_choice.py",
+      "sha256": "ac995b779524d94f501a3dcdbf8f5f7147f4f2e4d8c348a8ac8759c800b350f7"
+    }
+  ],
+  "failed_postprocessing": [
+    "archive_stage"
+  ],
+  "currently_excluded_own_receipt": [],
+  "summaries": {
+    "perimeter": {
+      "native_receipt": {
+        "started_at": "2026-11-05T19:28:25.733253+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/construct_and_switch_room.py",
+          "--plan",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter_PLAN.json",
+          "--phase",
+          "execute",
+          "--out",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native"
+        ],
+        "timeout_seconds": 360,
+        "pid": 1369649,
+        "start_ticks": "56475431",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native_stage/stage.log",
+        "ended_at": "2026-11-05T19:29:50.503577+00:00",
+        "elapsed_seconds": 84.77034600498155,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:28:26.116691+00:00 begin researcher reference execute"
+      },
+      "measured": {
+        "initial_state_sha256": "b762f9cda929a3b89302ae3ecc35c68bcb73ceb2b4951557eca2e5ab19556fd2",
+        "final_state_sha256": "19902bc781f253069cbb0f7c54208ecdcae8156c8fbb72408ebdb26d8c9c665c",
+        "clear_rays": 15,
+        "total_rays": 15,
+        "rays": [
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              -0.6,
+              1.05
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              -0.3,
+              1.05
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              0.0,
+              1.05
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              0.3,
+              1.05
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              0.6,
+              1.05
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              -0.6,
+              1.15
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              -0.3,
+              1.15
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              0.0,
+              1.15
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              0.3,
+              1.15
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              0.6,
+              1.15
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              -0.6,
+              1.25
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              -0.3,
+              1.25
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              0.0,
+              1.25
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              0.3,
+              1.25
+            ],
+            "blockers": [],
+            "clear": true
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              0.6,
+              1.25
+            ],
+            "blockers": [],
+            "clear": true
+          }
+        ],
+        "failed_access_targets_by_width": {
+          "0.4": [],
+          "0.5": [],
+          "0.6": []
+        },
+        "all_declared_access": true,
+        "all_ids_preserved": true,
+        "all_dimensions_preserved": true,
+        "other_objects_exact": true,
+        "furniture_count": 8,
+        "actual_storage_transform": {
+          "translation": [
+            -1.6010330337956142,
+            1.9505832761732023,
+            0.0
+          ],
+          "rotation_wxyz": [
+            0.9999993912866948,
+            0.0,
+            0.0,
+            0.0011033704002030736
+          ]
+        }
+      },
+      "triangle_contact_pairs": 0,
+      "outside_room": 0,
+      "generic_failed_approaches": {
+        "0.4": [
+          "recon_sofa_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front",
+          "recon_tall_storage_0:front"
+        ],
+        "0.5": [
+          "recon_sofa_0:front",
+          "recon_dining_table_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front",
+          "recon_tall_storage_0:front"
+        ],
+        "0.6": [
+          "recon_sofa_0:front",
+          "recon_dining_table_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front",
+          "recon_tall_storage_0:front"
+        ]
+      },
+      "export": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export/room_geometry.glb",
+        "bytes": 3531128,
+        "sha256": "b0dccd4a1d3115d7c0000773adb68673d539aa2f3bf365fd48e0bd88984bc75a"
+      },
+      "checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint",
+      "checkpoint_manifest_sha256": "4162e6f14916108fe460a12fd7ddb7a63e8a828d662baea1d730bf2c5dc13ec8",
+      "restore_receipt": {
+        "started_at": "2026-11-05T19:31:58.909698+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/restore_terminal_catalog.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter/RESTORE_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/cold_restore"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1372009,
+        "start_ticks": "56496749",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/restore_stage/stage.log",
+        "ended_at": "2026-11-05T19:32:07.253808+00:00",
+        "elapsed_seconds": 8.344135008053854,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:31:58.979455+00:00 begin terminal native cold restore"
+      }
+    },
+    "divider": {
+      "native_receipt": {
+        "started_at": "2026-11-05T19:30:31.577928+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/construct_and_switch_room.py",
+          "--plan",
+          "runs/920/P920-FCHOICE-v1_20261105T192554Z/divider_PLAN.json",
+          "--phase",
+          "execute",
+          "--out",
+          "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native"
+        ],
+        "timeout_seconds": 360,
+        "pid": 1370947,
+        "start_ticks": "56488016",
+        "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native_stage/stage.log",
+        "ended_at": "2026-11-05T19:31:57.100502+00:00",
+        "elapsed_seconds": 85.52259537100326,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:30:31.969347+00:00 begin researcher reference execute"
+      },
+      "measured": {
+        "initial_state_sha256": "b762f9cda929a3b89302ae3ecc35c68bcb73ceb2b4951557eca2e5ab19556fd2",
+        "final_state_sha256": "f3ec69c1d5a15cbe602fa340005918455503f73d6dc4a2304b5d95dc0dbc4e50",
+        "clear_rays": 0,
+        "total_rays": 15,
+        "rays": [
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              -0.6,
+              1.05
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              -0.3,
+              1.05
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              0.0,
+              1.05
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              0.3,
+              1.05
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.05,
+            "origin": [
+              -1.15,
+              0.8,
+              1.05
+            ],
+            "target": [
+              2.5,
+              0.6,
+              1.05
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              -0.6,
+              1.15
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              -0.3,
+              1.15
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              0.0,
+              1.15
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              0.3,
+              1.15
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.15,
+            "origin": [
+              -1.15,
+              0.8,
+              1.15
+            ],
+            "target": [
+              2.5,
+              0.6,
+              1.15
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              -0.6,
+              1.25
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              -0.3,
+              1.25
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              0.0,
+              1.25
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              0.3,
+              1.25
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          },
+          {
+            "height_m": 1.25,
+            "origin": [
+              -1.15,
+              0.8,
+              1.25
+            ],
+            "target": [
+              2.5,
+              0.6,
+              1.25
+            ],
+            "blockers": [
+              "recon_tall_storage_0"
+            ],
+            "clear": false
+          }
+        ],
+        "failed_access_targets_by_width": {
+          "0.4": [],
+          "0.5": [],
+          "0.6": []
+        },
+        "all_declared_access": true,
+        "all_ids_preserved": true,
+        "all_dimensions_preserved": true,
+        "other_objects_exact": true,
+        "furniture_count": 8,
+        "actual_storage_transform": {
+          "translation": [
+            0.39832155178666395,
+            0.000977730585348869,
+            0.0
+          ],
+          "rotation_wxyz": [
+            0.7064988085889818,
+            0.0,
+            0.0,
+            0.7077142314962651
+          ]
+        }
+      },
+      "triangle_contact_pairs": 0,
+      "outside_room": 0,
+      "generic_failed_approaches": {
+        "0.4": [
+          "recon_sofa_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ],
+        "0.5": [
+          "recon_sofa_0:front",
+          "recon_dining_table_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ],
+        "0.6": [
+          "recon_sofa_0:front",
+          "recon_dining_table_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ]
+      },
+      "export": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export/room_geometry.glb",
+        "bytes": 3531128,
+        "sha256": "f99ac3a9e245ebc6a52e836cbc2adce5b20b9f59148b7f1a30112ab33e3a4303"
+      },
+      "checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint",
+      "checkpoint_manifest_sha256": "9bae515cc2b9e8db4c606c2d5520181ef9e96be1878bcdd496af61ff692e1156",
+      "restore_receipt": {
+        "started_at": "2026-11-05T19:32:30.975619+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/restore_terminal_catalog.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/divider/RESTORE_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/cold_restore"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1372199,
+        "start_ticks": "56499956",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/restore_stage/stage.log",
+        "ended_at": "2026-11-05T19:32:39.219416+00:00",
+        "elapsed_seconds": 8.243819269002415,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:32:31.044941+00:00 begin terminal native cold restore"
+      }
+    }
+  },
+  "model_calls": 0,
+  "training_updates": 0,
+  "completed_archive_receipt": {
+    "started_at": "2026-11-05T19:37:46.254122+00:00",
+    "status": "completed",
+    "command": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/archive_family_choice.py",
+      "--run",
+      "P920-FCHOICE-v1_20261105T192554Z",
+      "--allowed-failed-stage",
+      "archive_stage"
+    ],
+    "timeout_seconds": 90,
+    "pid": 6,
+    "start_ticks": "56531483",
+    "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/archive_v2_stage/stage.log",
+    "ended_at": "2026-11-05T19:37:46.720521+00:00",
+    "elapsed_seconds": 0.46642313711345196,
+    "exit_code": 0,
+    "first_log": "{\"run\": \"P920-FCHOICE-v1_20261105T192554Z\", \"copied_files\": 100, \"actions\": 2, \"views_checked\": 20, \"review_candidates\": 2}"
+  }
+}

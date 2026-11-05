@@ -1,0 +1,186 @@
+{
+  "created_at": "2026-11-05T19:19:19.302998+00:00",
+  "cases": [
+    {
+      "case": "clothing",
+      "episode": {
+        "path": "dataset/episodes/step_07/paired/episode.json",
+        "sha256": "24daefce9c03b0a256dc731ed15735a4c4f3f4f96867aa5219e1150baaacc3f8",
+        "supervised_role": "action"
+      },
+      "input_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ABUILD-v1_20261105T165434Z",
+      "source_action_step": 7,
+      "original_request": null,
+      "adapted_design_request": "研究者重建任务：为两位短住旅客完成6米×5米房间的家具布置。已有固定厨房操作台、灶台、水槽和三件卫浴设施；保留房壳、开口和这些设施。使用目录补齐睡眠、起居、两人吃饭、冷藏及便于取放衣物所需的家具，保持入口、餐位、厨卫与窗前可接近。不得删除必需角色或缩放资产。人数与短住用途来自项目说明；矩形房壳、精确尺寸、设施、替代家具及具体要求整理为研究者重建，不是原住户任务书。",
+      "catalogue": [
+        {
+          "asset_id": "catalog_construct_bed",
+          "name": "bed"
+        },
+        {
+          "asset_id": "catalog_construct_sofa",
+          "name": "sofa"
+        },
+        {
+          "asset_id": "catalog_construct_table",
+          "name": "table"
+        },
+        {
+          "asset_id": "catalog_construct_chair_west",
+          "name": "chair_west"
+        },
+        {
+          "asset_id": "catalog_construct_chair_east",
+          "name": "chair_east"
+        },
+        {
+          "asset_id": "catalog_construct_low_fridge",
+          "name": "low_fridge"
+        },
+        {
+          "asset_id": "catalog_construct_open_clothes_rail",
+          "name": "open_clothes_rail"
+        }
+      ],
+      "activity_context": null,
+      "reason_target": "在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。",
+      "actual_action": {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_construct_open_clothes_rail",
+          "x": 2.4490002368452943,
+          "y": -0.0006494827931256097,
+          "yaw": 0.03140364494624525
+        }
+      },
+      "assessment": "The seven-entry catalogue has an open clothes rail and no closed clothes cabinet. This sample does not compare open versus closed storage under different needs.",
+      "assessment_origin": "Researcher inspection of the locked input; not a professional preference label."
+    },
+    {
+      "case": "storage",
+      "episode": {
+        "path": "P920-ABUILD-v1_20261105T165434Z/storage_dataset/episodes/step_07/paired/episode.json",
+        "sha256": "534102a5dad89aee7ddd5650e2c12abfac02ab19d0aabeef928fa380d17ad7d9",
+        "supervised_role": "action"
+      },
+      "input_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime",
+      "source_action_step": 7,
+      "original_request": null,
+      "adapted_design_request": "研究者重建任务：两人居住的6米×5米房间已有固定厨卫设施。保留房壳、开口、操作台及其上的灶台和水槽、三件卫浴设施，使用所给目录完成床、沙发、桌子、两把椅子、小冰箱和三件柜体的家具布置。需要睡眠、起居、两人吃饭、厨房与卫生间接近、窗前接近和可取放收纳，并尽量保有连续起居空间。不得删掉必需角色或缩放资产；未测功能请保留未知。这里的尺寸、人数、设施与目录均为研究者设定，不是住户原始任务或原项目精确平面。",
+      "catalogue": [
+        {
+          "asset_id": "catalog_construct_bed",
+          "name": "bed"
+        },
+        {
+          "asset_id": "catalog_construct_sofa",
+          "name": "sofa"
+        },
+        {
+          "asset_id": "catalog_construct_table",
+          "name": "table"
+        },
+        {
+          "asset_id": "catalog_construct_chair_west",
+          "name": "chair_west"
+        },
+        {
+          "asset_id": "catalog_construct_chair_east",
+          "name": "chair_east"
+        },
+        {
+          "asset_id": "catalog_construct_low_fridge",
+          "name": "low_fridge"
+        },
+        {
+          "asset_id": "catalog_construct_storage_a",
+          "name": "storage_a"
+        },
+        {
+          "asset_id": "catalog_construct_storage_b",
+          "name": "storage_b"
+        },
+        {
+          "asset_id": "catalog_construct_storage_c",
+          "name": "storage_c"
+        }
+      ],
+      "activity_context": null,
+      "reason_target": "在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。",
+      "actual_action": {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_construct_storage_a",
+          "x": -2.7,
+          "y": -1.85,
+          "yaw": 270
+        }
+      },
+      "assessment": "The brief explicitly requires three cabinets and continuous living space. It leaves placement choices open, but the recorded source pairing covers only the first cabinet addition and one declared layout.",
+      "assessment_origin": "Researcher inspection of the locked input; not a professional preference label."
+    },
+    {
+      "case": "paper_table_modes",
+      "episode": {
+        "path": "dataset/episodes/step_08/paired/episode.json",
+        "sha256": "a49bdfd717cd4cf5bb978a0419968459bdcc5171ddf9ebdaa7a6734cfda40da8",
+        "supervised_role": "action"
+      },
+      "input_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-PAPER-v2_20261105T182424Z",
+      "source_action_step": 8,
+      "original_request": null,
+      "adapted_design_request": "研究者重建任务：为两位住户布置共享餐厨起居区，满足日常做饭、用餐、起居和食品收纳；偶尔来客留宿时需要移开桌子，保留其他家具、入口、厨房、储物和窗前的接近，之后恢复日常用餐。房间6.4米×4.4米、位置和家具均为声明的替代条件。研究只检查家具与声明来客预留区的占用，静态沙发不具有已验证的展开或睡眠功能。卧室与卫浴在所选活动区域之外，不作为本房间生成目标。",
+      "catalogue": [
+        {
+          "asset_id": "catalog_construct_sofa",
+          "name": "sofa"
+        },
+        {
+          "asset_id": "catalog_construct_low_fridge",
+          "name": "low_fridge"
+        },
+        {
+          "asset_id": "catalog_construct_pantry",
+          "name": "pantry"
+        },
+        {
+          "asset_id": "catalog_construct_chair_left",
+          "name": "chair_left"
+        },
+        {
+          "asset_id": "catalog_construct_chair_right",
+          "name": "chair_right"
+        },
+        {
+          "asset_id": "catalog_construct_mobile_table",
+          "name": "mobile_table"
+        }
+      ],
+      "activity_context": {
+        "guest_floor_reserve_xy_m": [
+          -2.6,
+          -0.55,
+          -1.0,
+          0.75
+        ],
+        "phase": "prepare_guest_reserve",
+        "reserve_provenance": "Researcher task requirement, not original surveyed dimensions or a furniture target pose.",
+        "sleeping_use_verified": false
+      },
+      "reason_target": "同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。",
+      "actual_action": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "mobile_table_0",
+          "x": 0.75,
+          "y": -1.55,
+          "yaw": 0
+        }
+      },
+      "assessment": "The brief explicitly asks to move the table for guests and restore dining afterwards. The phase and reserve are supplied; this is execution of a specified activity change, not a test of discovering when a movable table is appropriate.",
+      "assessment_origin": "Researcher inspection of the locked input; not a professional preference label."
+    }
+  ],
+  "independent_applicability_counterfactuals": 0,
+  "limitations": "No alternative catalogue or requirement intervention executed in this audit."
+}

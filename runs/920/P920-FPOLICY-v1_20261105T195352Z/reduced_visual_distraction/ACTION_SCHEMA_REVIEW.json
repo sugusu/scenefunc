@@ -1,0 +1,41 @@
+{
+  "budgeted_tool_attempts": 4,
+  "schema_errors": [
+    {
+      "round": "round_000",
+      "call": {
+        "name": "get_current_scene_state",
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "description": "The action to perform.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "type": "object"
+        }
+      },
+      "errors": [
+        "Additional properties are not allowed ('additionalProperties', 'properties', 'required', 'type' were unexpected)\n\nFailed validating 'additionalProperties' in schema:\n    {'additionalProperties': False,\n     'properties': {},\n     'required': [],\n     'title': 'get_current_scene_state_args',\n     'type': 'object'}\n\nOn instance:\n    {'additionalProperties': False,\n     'properties': {'action': {'description': 'The action to perform.',\n                               'type': 'string'}},\n     'required': ['action'],\n     'type': 'object'}"
+      ]
+    },
+    {
+      "round": "round_001",
+      "call": {
+        "name": "get_current_scene_state",
+        "arguments": {
+          "action": "Check the current state of the room to see exact positions, rotations, and bounding boxes of all furniture."
+        }
+      },
+      "errors": [
+        "Additional properties are not allowed ('action' was unexpected)\n\nFailed validating 'additionalProperties' in schema:\n    {'additionalProperties': False,\n     'properties': {},\n     'required': [],\n     'title': 'get_current_scene_state_args',\n     'type': 'object'}\n\nOn instance:\n    {'action': 'Check the current state of the room to see exact '\n               'positions, rotations, and bounding boxes of all furniture.'}"
+      ]
+    }
+  ],
+  "parse_errors": [],
+  "note": "Native acceptance and schema validity are separate; invalid arguments are retained even if ignored by the engine."
+}

@@ -1,18 +1,19 @@
 {
   "schema": "scenefunc-sourced-decision-maturity-v2",
-  "updated_at": "2026-11-05T15:42:21.378162+00:00",
+  "updated_at": "2026-11-05T19:42:58.577265+00:00",
   "purpose": "Separate supported professional knowledge from executable episode readiness without lowering evidence requirements.",
   "counts": {
     "records_reviewed_here": 21,
     "source_supported_knowledge": 21,
     "partially_tool_expressible_candidates": 8,
-    "source_grounded_replayed_episodes": 11,
+    "source_grounded_replayed_episodes": 13,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
-    "unique_source_decisions_with_replay": 6,
+    "unique_source_decisions_with_replay": 7,
     "conditional_objective_benefit_demonstrations": 3,
     "prospectively_train_allocated_knowledge_records": 15,
-    "conditional_mode_transition_demonstrations": 2
+    "conditional_mode_transition_demonstrations": 2,
+    "total_native_reconstruction_episodes_including_constructed_contrasts": 15
   },
   "records": [
     {
@@ -1265,24 +1266,29 @@
         "三层建筑组织未由当前单层家具工具复现。"
       ],
       "tool_expression": {
-        "level": "partial_candidate",
+        "level": "conditional_native_subdecision",
         "full_source_decision_supported": false,
-        "executable_subdecision": "若重建任务另行给出既有对象表，可检验保留实例并安排共同活动；不能推断原项目具体家具ID。",
+        "executable_subdecision": "Retained storage placement in one declared shared-living transfer room, with two activity-conditioned objective comparisons.",
         "qualification": "若重建任务另行给出既有对象表，可检验保留实例并安排共同活动；不能推断原项目具体家具ID。"
       },
       "source_to_scene": {
         "historical_action_sequence": null,
-        "reconstructed_action_sequence": null,
-        "initial_proxy_ids": [],
-        "decision_packet": null
+        "reconstructed_action_sequence": "runs/920/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/STEPS.json",
+        "initial_proxy_ids": [
+          "recon_tall_storage_0"
+        ],
+        "decision_packet": "runs/920/P920-FCHOICE-v2_20261105T193428Z/DECISION_PACKET.json",
+        "geometry_provenance": "Declared7x4.8x2.7m transfer room and retained research furniture; not surveyed F-House or original instances.",
+        "contrast_candidate": "runs/920/P920-FCHOICE-v2_20261105T193428Z/divider/native/STEPS.json"
       },
       "maturity": {
         "source_supported_knowledge": true,
-        "source_to_native_objects_bound": false,
-        "source_grounded_action_replayed": false,
-        "whole_room_consequences_reviewed": false,
+        "source_to_native_objects_bound": true,
+        "source_grounded_action_replayed": true,
+        "whole_room_consequences_reviewed": true,
         "independent_professional_preference_label": false,
-        "paired_episode_ready": false
+        "paired_episode_ready": false,
+        "conditional_choice_comparison_available": true
       },
       "readiness_by_layer": {
         "professional_knowledge": {
@@ -1293,13 +1299,16 @@
           "available": false
         },
         "scene_action": {
-          "executed": false,
-          "tool_calls": 0
+          "executed": true,
+          "tool_calls": 4,
+          "scope": "Two candidates in two versions; v1 rejected for orientation. Same source family."
         },
         "professional_decision_pair": {
-          "executed": false,
+          "executed": true,
           "positive_demonstration": false,
-          "core_training_ready": false
+          "conditional_objective_choice_record": true,
+          "core_training_ready": false,
+          "limitation": "Programmatic visual/access indicators only; contrast request is researcher-authored, no independent professional preference."
         }
       },
       "split_fixed_at": "2026-11-05T15:35:26.856055+00:00",
@@ -1796,5 +1805,5 @@
     }
   ],
   "count_scope": "Twelve knowledge records: six development and six prospective training-source records. Five source decisions have eight executed reconstruction variants. Three conditional geometric benefit demonstrations and one conditional activity-mode transition are distinct outcome types; four dependent Waterloo steps are one sourced decision.",
-  "native_episode_count_basis": "research/920/data_readiness_v1/NATIVE_SOURCE_EPISODES.json"
+  "native_episode_count_basis": "NATIVE_SOURCE_EPISODES lists15executions:13 source-linked episodes plus2 researcher contrast candidates; versions and candidates are not independent projects."
 }

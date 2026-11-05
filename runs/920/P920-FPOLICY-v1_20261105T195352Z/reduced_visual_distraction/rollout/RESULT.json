@@ -1,0 +1,902 @@
+{
+  "phase": "rollout",
+  "arm": "reduced_visual_distraction",
+  "status": "policy_attempt_completed_pending_independent_audit",
+  "started_at": "2026-11-05T20:01:27.459219+00:00",
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-05T20:01:39.042030+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "0f699da8f1c5314bd544eeaab41950cb15133ad57cb7edcba281ec25d90e0433",
+        "plan_sha256": "504a9b65906e2bf4e077a6f8f8223f35f5002ebc6a59a0c67b99d6a06870d6e7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.topdown.png",
+              "sha256": "6f95477c5f1561d36919ee230a79928677cf69ef996f4b62fa6047d23045a42d",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.south.png",
+              "sha256": "3e6c0422e1d2d200f493b65ef9615b5e00c1816f549e8a70a99d7f0a338c6c28",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.east.png",
+              "sha256": "6f18cdd6b8a5b3fecee1bbd642aba975754d74ac7712b608b07d427f769cdaf8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.west.png",
+              "sha256": "0468570491db393be132d769aca131cf906130fdfa5a5a7d9f6162125ea254ec",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.north.png",
+              "sha256": "da6efecce9dd0eb8c4ded31d82b5d732bc3361d8eba3e21b7148e581ec4536e6",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 6621,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              6621
+            ],
+            "attention_mask": [
+              1,
+              6621
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "0e10d9fa335c71340b9316e72b0e432e6eeb41de8431e299949b51dbd5291e4c",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.9487021419918165,
+        "generation_seconds": 4.042320898966864,
+        "output_tokens": 54,
+        "ended_with_eos": false,
+        "raw_output_sha256": "e97059fe706a830c9e9eb4ab0fe312cf8fe96614b8f255a4c8a60c8ae057ae97",
+        "peak_allocated_bytes": 19265391616,
+        "peak_reserved_bytes": 19797114880,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T20:01:51.523413+00:00",
+        "elapsed_seconds": 12.48140169295948
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "description": "The action to perform.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          }
+        }
+      ],
+      "before_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 14,
+              "objects": [
+                {
+                  "object_id": "recon_north_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 0.0,
+                  "position_y": 2.4,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.0,
+                    "depth": 0.02,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_south_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 0.0,
+                  "position_y": -2.4,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.0,
+                    "depth": 0.02,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_west_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": -3.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 4.8,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_east_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 3.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 4.8,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_entry_door",
+                  "description": "Generated proxy opening; hinge and operability unknown",
+                  "position_x": -3.5,
+                  "position_y": -1.6,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 1.0,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "recon_east_window",
+                  "description": "Generated proxy opening; hinge and operability unknown",
+                  "position_x": 3.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.01,
+                    "depth": 1.6,
+                    "height": 1.4
+                  }
+                },
+                {
+                  "object_id": "recon_sofa_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": 2.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 90.00000000000001,
+                  "dimensions": {
+                    "width": 1.8015152215957642,
+                    "depth": 0.9576927125453949,
+                    "height": 0.9072695106367306
+                  }
+                },
+                {
+                  "object_id": "recon_dining_table_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -1.6,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.600000023841858,
+                    "depth": 0.8500000238418579,
+                    "height": 0.7400000095367432
+                  }
+                },
+                {
+                  "object_id": "recon_seat_nw_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -2.05,
+                  "position_y": 0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_seat_ne_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -1.15,
+                  "position_y": 0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_seat_sw_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -2.05,
+                  "position_y": -0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_seat_se_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -1.15,
+                  "position_y": -0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_sideboard_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 2.6,
+                  "position_y": -1.9,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.4,
+                    "height": 0.7
+                  }
+                },
+                {
+                  "object_id": "recon_tall_storage_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 1.3,
+                  "position_y": 1.95,
+                  "rotation_degrees": -180.0,
+                  "dimensions": {
+                    "width": 1.8,
+                    "depth": 0.35,
+                    "height": 1.8
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/round_000/checkpoint",
+        "manifest_sha256": "35ab8f83f7bf00f3f4f291ac8e3cf07e0b823dde76a97f409eb75f46eb5b574a",
+        "state_sha256": "7051fa18a80a86c432ad842e8e37e688005746d1fba0aef0a023badea9a6afdd",
+        "step_idx": 1
+      },
+      "after_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d"
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-05T20:02:29.832725+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "54f100a7be0445071ef630454e51787545382dfe7ceb1df9a5359d8b27d5b796",
+        "plan_sha256": "504a9b65906e2bf4e077a6f8f8223f35f5002ebc6a59a0c67b99d6a06870d6e7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.topdown.png",
+              "sha256": "6f95477c5f1561d36919ee230a79928677cf69ef996f4b62fa6047d23045a42d",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.south.png",
+              "sha256": "0fe9c5cb0ef0826137d6fd919cc5cfa1759fa860dd0155f7162eafcdb0fb0efd",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.east.png",
+              "sha256": "30031a5bb4cac94610464a6256aef1dc2fe30b6ba2aacbe47dbac113e4181414",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.west.png",
+              "sha256": "85aee574b680401e7998e1c391dbf3892840d693e7bd0708a8a1b04f607db050",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_001.north.png",
+              "sha256": "f89fa483def3dc728de39382e57bd33da27b84a59eb0e59045ff44105c9e08dd",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 6868,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              6868
+            ],
+            "attention_mask": [
+              1,
+              6868
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "cf5390be57679e44e4cf5e6c4b9dc4a792d98b2373257a8ef927ba781ba81d3f",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.944753343006596,
+        "generation_seconds": 3.6435207199538127,
+        "output_tokens": 40,
+        "ended_with_eos": false,
+        "raw_output_sha256": "ec33dad71bc4a736a4c1d6969730c3c73d57ee2307248b4b435c174874fbf5ce",
+        "peak_allocated_bytes": 19321820672,
+        "peak_reserved_bytes": 19878903808,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T20:02:41.846577+00:00",
+        "elapsed_seconds": 12.013870239024982
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "action": "Check the current state of the room to see exact positions, rotations, and bounding boxes of all furniture."
+          }
+        }
+      ],
+      "before_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 14,
+              "objects": [
+                {
+                  "object_id": "recon_north_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 0.0,
+                  "position_y": 2.4,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.0,
+                    "depth": 0.02,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_south_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 0.0,
+                  "position_y": -2.4,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 7.0,
+                    "depth": 0.02,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_west_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": -3.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 4.8,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_east_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 3.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 4.8,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "recon_entry_door",
+                  "description": "Generated proxy opening; hinge and operability unknown",
+                  "position_x": -3.5,
+                  "position_y": -1.6,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 1.0,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "recon_east_window",
+                  "description": "Generated proxy opening; hinge and operability unknown",
+                  "position_x": 3.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.01,
+                    "depth": 1.6,
+                    "height": 1.4
+                  }
+                },
+                {
+                  "object_id": "recon_sofa_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": 2.5,
+                  "position_y": 0.0,
+                  "rotation_degrees": 90.00000000000001,
+                  "dimensions": {
+                    "width": 1.8015152215957642,
+                    "depth": 0.9576927125453949,
+                    "height": 0.9072695106367306
+                  }
+                },
+                {
+                  "object_id": "recon_dining_table_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -1.6,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.600000023841858,
+                    "depth": 0.8500000238418579,
+                    "height": 0.7400000095367432
+                  }
+                },
+                {
+                  "object_id": "recon_seat_nw_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -2.05,
+                  "position_y": 0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_seat_ne_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -1.15,
+                  "position_y": 0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_seat_sw_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -2.05,
+                  "position_y": -0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_seat_se_0",
+                  "description": "Labelled reconstruction: mesh",
+                  "position_x": -1.15,
+                  "position_y": -0.8,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4399999976158142,
+                    "depth": 0.4399999976158142,
+                    "height": 0.44999998807907104
+                  }
+                },
+                {
+                  "object_id": "recon_sideboard_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 2.6,
+                  "position_y": -1.9,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.4,
+                    "depth": 0.4,
+                    "height": 0.7
+                  }
+                },
+                {
+                  "object_id": "recon_tall_storage_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 1.3,
+                  "position_y": 1.95,
+                  "rotation_degrees": -180.0,
+                  "dimensions": {
+                    "width": 1.8,
+                    "depth": 0.35,
+                    "height": 1.8
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/round_001/checkpoint",
+        "manifest_sha256": "ad909273710d929fad3ef0f77708c4a83e65bdc8e0c9fcad6eb2912629a7e1d2",
+        "state_sha256": "7051fa18a80a86c432ad842e8e37e688005746d1fba0aef0a023badea9a6afdd",
+        "step_idx": 2
+      },
+      "after_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d"
+    },
+    {
+      "turn": 2,
+      "model": {
+        "started_at": "2026-11-05T20:03:19.525781+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "6364e86a742f6c37b188c491e34e2d64a5df9b7cfdddce86993aaca50709b5cb",
+        "plan_sha256": "504a9b65906e2bf4e077a6f8f8223f35f5002ebc6a59a0c67b99d6a06870d6e7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_002.topdown.png",
+              "sha256": "6f95477c5f1561d36919ee230a79928677cf69ef996f4b62fa6047d23045a42d",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_002.south.png",
+              "sha256": "7d7d70da21024f5f1f321f5697ebb723bcb61fbc7ad3b8a1a20932d46ac77490",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_002.east.png",
+              "sha256": "2ff031f509ae7345867b8db230713825147ad545289251165220c66cb2e45e14",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_002.west.png",
+              "sha256": "3527f13264cc5db2f4498b3449da1505d40ccd556d3990523e9cba3b42fb0487",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_002.north.png",
+              "sha256": "4a99242c3ee9c14dc6699d8a452cb71845bb775bf0844e5807f75aedd7bf380e",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7111,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7111
+            ],
+            "attention_mask": [
+              1,
+              7111
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "a4cd062aaa02edbd90d1e4cdc97956876995a345b2961ddd01f296dea97be29c",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.088855199981481,
+        "generation_seconds": 4.490109969978221,
+        "output_tokens": 48,
+        "ended_with_eos": false,
+        "raw_output_sha256": "39552602ebb9e4b74a56fe9c7f2ab39638efd8f536697f64949a101e1ce52a6a",
+        "peak_allocated_bytes": 19384476160,
+        "peak_reserved_bytes": 19958595584,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T20:03:31.585033+00:00",
+        "elapsed_seconds": 12.05927382200025
+      },
+      "calls": [
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "recon_seat_ne_0",
+            "object_b_id": "recon_sofa_0",
+            "direction": "toward"
+          }
+        }
+      ],
+      "before_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d",
+      "reply": {
+        "results": [
+          {
+            "name": "check_facing_tool",
+            "output": {
+              "success": true,
+              "object_a_id": "recon_seat_ne_0",
+              "object_b_id": "recon_sofa_0",
+              "is_facing": false,
+              "optimal_rotation_degrees": -90.0,
+              "current_rotation_degrees": 0.0,
+              "message": "⚠️ seat_ne is NOT facing toward sofa. To align perfectly, use move_furniture_tool('recon_seat_ne_0', rotation_yaw=-90.0). Consider if this alignment is functionally desirable for this furniture type."
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/round_002/checkpoint",
+        "manifest_sha256": "03d6581cb1ac78a043081fc4836ad8becd053d8cd29623ccb6078958fb35f066",
+        "state_sha256": "7051fa18a80a86c432ad842e8e37e688005746d1fba0aef0a023badea9a6afdd",
+        "step_idx": 3
+      },
+      "after_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d"
+    },
+    {
+      "turn": 3,
+      "model": {
+        "started_at": "2026-11-05T20:04:09.233691+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "8f547c3d1609313cfee5a42f403ed8c81a87660477dd4895c30becd53da4923a",
+        "plan_sha256": "504a9b65906e2bf4e077a6f8f8223f35f5002ebc6a59a0c67b99d6a06870d6e7",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_003.topdown.png",
+              "sha256": "6f95477c5f1561d36919ee230a79928677cf69ef996f4b62fa6047d23045a42d",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_003.south.png",
+              "sha256": "92345e49e8cfd22832f9b07565985caa584b2a1cc179b872f56711d2a1b9df17",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_003.east.png",
+              "sha256": "1eadd626dbae9a034bc124b238e09b0ce7973383964b3f7ae8287f74495670db",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_003.west.png",
+              "sha256": "4683ed2b84f01d94fd52669a84ff12746534c4addc168c41470a28fe34196f3a",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/house/room_fhouse_shared_living_transfer/rollout_furniture/step_003.north.png",
+              "sha256": "f2d2d396a6aea76a1009a19489319cbc5a91da476a69be8dd24ae45401fc1819",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 7274,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              7274
+            ],
+            "attention_mask": [
+              1,
+              7274
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "5493fb0d5733caab2b3ce12d6cf7dcaa6a2d87e76ae308e61315ecbaaffd445c",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.956529263989069,
+        "generation_seconds": 4.118358644889668,
+        "output_tokens": 50,
+        "ended_with_eos": false,
+        "raw_output_sha256": "4e04d71e2d37b0f41466a370b9f71b41cb43400593c79c70760ac0dbf48008c8",
+        "peak_allocated_bytes": 19423946240,
+        "peak_reserved_bytes": 20013121536,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T20:04:21.777770+00:00",
+        "elapsed_seconds": 12.544097398058511
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_seat_ne_0",
+            "x": -1.15,
+            "y": 0.0,
+            "yaw": -90
+          }
+        }
+      ],
+      "before_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved seat_ne to new position and rotation",
+              "object_id": "recon_seat_ne_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/round_003/checkpoint",
+        "manifest_sha256": "027898e3d3e9f90406fd165231f7d0d911af4466396435960071677dcec21cba",
+        "state_sha256": "f44a6a225517c91e537fbfba4d295e4efb888fe47c9820fd10265dfce1499ebd",
+        "step_idx": 4
+      },
+      "after_sha256": "005e5a240bb52143160258bc3e50c1d798aaf527bd99ed0a4a928449f0e0b90f"
+    }
+  ],
+  "tool_calls": 4,
+  "model_calls": 4,
+  "training_updates": 0,
+  "whole_room_success": "not_evaluated",
+  "initial_gpu": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121,
+    "required_free_bytes": 24396128736
+  },
+  "initial_request_sha256": "0f699da8f1c5314bd544eeaab41950cb15133ad57cb7edcba281ec25d90e0433",
+  "stop_reason": "budget_exhausted",
+  "checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/final_checkpoint",
+    "manifest_sha256": "027898e3d3e9f90406fd165231f7d0d911af4466396435960071677dcec21cba",
+    "state_sha256": "f44a6a225517c91e537fbfba4d295e4efb888fe47c9820fd10265dfce1499ebd",
+    "step_idx": 4
+  },
+  "ended_at": "2026-11-05T20:04:58.869933+00:00",
+  "prior_lineage_tool_calls": 0,
+  "cumulative_lineage_tool_calls": 4
+}

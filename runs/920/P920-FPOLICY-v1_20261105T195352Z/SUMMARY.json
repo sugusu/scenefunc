@@ -1,0 +1,264 @@
+{
+  "status": "completed_development_behavior_comparison",
+  "recorded_at": "2026-11-05T20:06:37.058866+00:00",
+  "arms": {
+    "shared_visual_contact": {
+      "model_calls": 4,
+      "tool_calls": 4,
+      "stop_reason": "budget_exhausted",
+      "schema_mismatch_calls": 1,
+      "parse_error_attempts": 1,
+      "commands": [
+        {
+          "_parse_error": true,
+          "_raw": "{\"name\": \"get_current_scene_state\", \"arguments\": {\"additionalProperties\": false, \"properties\": {\"action\": {\"description\": \"The action to perform.\", \"type\": \"string\"}}, \"required\": [\"action\"], \"type\": \"object\"}"
+        },
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "action": "get current scene state"
+          }
+        },
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "recon_seat_ne_0",
+            "object_b_id": "recon_sofa_0",
+            "direction": "toward"
+          }
+        },
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_seat_ne_0",
+            "x": -1.15,
+            "y": 0.75,
+            "yaw": -90
+          }
+        }
+      ],
+      "initial_clear_rays": 15,
+      "final_clear_rays": 15,
+      "initial_proxy_pass": true,
+      "final_proxy_pass": true,
+      "identity_dimensions_preserved": true,
+      "four_declared_places": true,
+      "role_access": true,
+      "missing_ids": [],
+      "triangle_contacts": 0,
+      "outside_furniture": [],
+      "generic_failed_targets": {
+        "0.4": [
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ],
+        "0.5": [
+          "recon_dining_table_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ],
+        "0.6": [
+          "recon_dining_table_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ]
+      },
+      "rollout_receipt": {
+        "started_at": "2026-11-05T19:57:39.742343+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/../envs/scene_designer311_native/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_knowledge_policy.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/PLAN.json",
+          "--phase",
+          "rollout",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/rollout"
+        ],
+        "timeout_seconds": 900,
+        "pid": 1377509,
+        "start_ticks": "56650832",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/rollout_execution/stage.log",
+        "ended_at": "2026-11-05T20:01:14.852007+00:00",
+        "elapsed_seconds": 215.1096856960794,
+        "exit_code": 0,
+        "first_log": "2026-11-05T19:57:39.813220+00:00 begin whole-room rollout"
+      },
+      "export": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/export/room_geometry.glb",
+        "bytes": 3536456,
+        "sha256": "4e0a0940ba4468ea8bf21adadff5992886e052e8bfb8121a117f7994ac40f138"
+      },
+      "checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/rollout/final_checkpoint",
+      "checkpoint_manifest_sha256": "3e699a6133c7f312dca84bbb1672ef5b5bd5a8746a46df031a65888b1cf27608",
+      "restore_receipt": {
+        "started_at": "2026-11-05T20:01:18.970711+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/../envs/scene_designer311_native/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/restore_terminal_catalog.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/RESTORE_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/cold_restore"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1379507,
+        "start_ticks": "56672755",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/restore_execution/stage.log",
+        "ended_at": "2026-11-05T20:01:27.313418+00:00",
+        "elapsed_seconds": 8.342726698028855,
+        "exit_code": 0,
+        "first_log": "2026-11-05T20:01:19.041204+00:00 begin terminal native cold restore"
+      },
+      "changed_transform_ids": [
+        "recon_seat_ne_0"
+      ],
+      "room_geometry_unchanged": true,
+      "objective_improved_from_initial": false,
+      "peak_allocated_bytes": 19379635712
+    },
+    "reduced_visual_distraction": {
+      "model_calls": 4,
+      "tool_calls": 4,
+      "stop_reason": "budget_exhausted",
+      "schema_mismatch_calls": 2,
+      "parse_error_attempts": 0,
+      "commands": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "description": "The action to perform.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "action": "Check the current state of the room to see exact positions, rotations, and bounding boxes of all furniture."
+          }
+        },
+        {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "recon_seat_ne_0",
+            "object_b_id": "recon_sofa_0",
+            "direction": "toward"
+          }
+        },
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_seat_ne_0",
+            "x": -1.15,
+            "y": 0.0,
+            "yaw": -90
+          }
+        }
+      ],
+      "initial_clear_rays": 15,
+      "final_clear_rays": 15,
+      "initial_proxy_pass": false,
+      "final_proxy_pass": false,
+      "identity_dimensions_preserved": true,
+      "four_declared_places": false,
+      "role_access": false,
+      "missing_ids": [],
+      "triangle_contacts": 0,
+      "outside_furniture": [],
+      "generic_failed_targets": {
+        "0.4": [
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ],
+        "0.5": [
+          "recon_dining_table_0:front",
+          "recon_seat_ne_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ],
+        "0.6": [
+          "recon_dining_table_0:front",
+          "recon_seat_ne_0:front",
+          "recon_seat_sw_0:front",
+          "recon_seat_se_0:front"
+        ]
+      },
+      "rollout_receipt": {
+        "started_at": "2026-11-05T20:01:27.388209+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/../envs/scene_designer311_native/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_knowledge_policy.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/PLAN.json",
+          "--phase",
+          "rollout",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout"
+        ],
+        "timeout_seconds": 900,
+        "pid": 1379636,
+        "start_ticks": "56673597",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout_execution/stage.log",
+        "ended_at": "2026-11-05T20:05:01.398322+00:00",
+        "elapsed_seconds": 214.01013555401005,
+        "exit_code": 0,
+        "first_log": "2026-11-05T20:01:27.459412+00:00 begin whole-room rollout"
+      },
+      "export": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/export/room_geometry.glb",
+        "bytes": 3531112,
+        "sha256": "35abac61962dbac629368912cb3a23530759ae72e9bf98fe3f328b8c0afe023d"
+      },
+      "checkpoint": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/rollout/final_checkpoint",
+      "checkpoint_manifest_sha256": "027898e3d3e9f90406fd165231f7d0d911af4466396435960071677dcec21cba",
+      "restore_receipt": {
+        "started_at": "2026-11-05T20:05:05.490034+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/../envs/scene_designer311_native/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/restore_terminal_catalog.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/RESTORE_PLAN.json",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/cold_restore"
+        ],
+        "timeout_seconds": 90,
+        "pid": 1381848,
+        "start_ticks": "56695407",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/reduced_visual_distraction/restore_execution/stage.log",
+        "ended_at": "2026-11-05T20:05:13.732788+00:00",
+        "elapsed_seconds": 8.242772893980145,
+        "exit_code": 0,
+        "first_log": "2026-11-05T20:05:05.561274+00:00 begin terminal native cold restore"
+      },
+      "changed_transform_ids": [
+        "recon_seat_ne_0"
+      ],
+      "room_geometry_unchanged": true,
+      "objective_improved_from_initial": false,
+      "peak_allocated_bytes": 19423946240
+    }
+  },
+  "same_commands_both_conditions": false,
+  "model_calls": 8,
+  "tool_calls": 8,
+  "training_updates": 0,
+  "sealed_test": false,
+  "professional_evaluation": false,
+  "interpretation": "Already-satisfied condition retention and improvement of the other condition must be distinguished. No training benefit claim.",
+  "run_id": "P920-FPOLICY-v1_20261105T195352Z",
+  "updated_at": "2026-11-05T20:12:03.370308+00:00",
+  "final_visual_inspection": "ten_final_views_inspected_development_outcomes_retained"
+}

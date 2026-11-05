@@ -1,0 +1,359 @@
+{
+  "cwd": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "actual_stage_commands": [
+    {
+      "stage": "archive_stage",
+      "started_at": "2026-11-05T19:37:02.894210+00:00",
+      "status": "failed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/archive_family_choice.py",
+        "--run",
+        "P920-FCHOICE-v1_20261105T192554Z"
+      ],
+      "timeout_seconds": 90,
+      "pid": 6,
+      "start_ticks": "56527148",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/archive_stage/stage.log",
+      "ended_at": "2026-11-05T19:37:03.310617+00:00",
+      "elapsed_seconds": 0.41642907611094415,
+      "exit_code": 1,
+      "first_log": "Traceback (most recent call last):"
+    },
+    {
+      "stage": "archive_v2_stage",
+      "started_at": "2026-11-05T19:37:46.254122+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/archive_family_choice.py",
+        "--run",
+        "P920-FCHOICE-v1_20261105T192554Z",
+        "--allowed-failed-stage",
+        "archive_stage"
+      ],
+      "timeout_seconds": 90,
+      "pid": 6,
+      "start_ticks": "56531483",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/archive_v2_stage/stage.log",
+      "ended_at": "2026-11-05T19:37:46.720521+00:00",
+      "elapsed_seconds": 0.46642313711345196,
+      "exit_code": 0,
+      "first_log": "{\"run\": \"P920-FCHOICE-v1_20261105T192554Z\", \"copied_files\": 100, \"actions\": 2, \"views_checked\": 20, \"review_candidates\": 2}"
+    },
+    {
+      "stage": "build_stage",
+      "started_at": "2026-11-05T19:26:23.217049+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/build_reference_room.py",
+        "--plan",
+        "runs/920/P920-FCHOICE-v1_20261105T192554Z/REFERENCE_BUILD_PLAN.json",
+        "--scenesmith",
+        "../resources/full_runtime_20261104/scenesmith",
+        "--out",
+        "../runtime/P920-FCHOICE-v1_20261105T192554Z/reference"
+      ],
+      "timeout_seconds": 120,
+      "pid": 1369347,
+      "start_ticks": "56463180",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/build_stage/stage.log",
+      "ended_at": "2026-11-05T19:26:27.497018+00:00",
+      "elapsed_seconds": 4.2799933480564505,
+      "exit_code": 0,
+      "first_log": "2026-11-05T19:26:23.567909+00:00 begin labelled native whole-room reconstruction"
+    },
+    {
+      "stage": "configure_stage",
+      "started_at": "2026-11-05T19:27:43.994165+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/geometry311/bin/python",
+        "scripts/920/configure_family_choice.py",
+        "--run",
+        "P920-FCHOICE-v1_20261105T192554Z"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "56471258",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/configure_stage/stage.log",
+      "ended_at": "2026-11-05T19:27:44.510657+00:00",
+      "elapsed_seconds": 0.5165131399407983,
+      "exit_code": 0,
+      "first_log": "Prepared two independent candidates from one eight-object initial state; no native edits."
+    },
+    {
+      "stage": "divider/audit_stage",
+      "started_at": "2026-11-05T19:32:27.616864+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/audit_family_choice_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/AUDIT_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native/checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/FINAL_AUDIT.json"
+      ],
+      "timeout_seconds": 60,
+      "pid": 1372155,
+      "start_ticks": "56499620",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/audit_stage/stage.log",
+      "ended_at": "2026-11-05T19:32:28.936752+00:00",
+      "elapsed_seconds": 1.3199100060155615,
+      "exit_code": 0,
+      "first_log": "{\"furniture\": 8, \"surface_intersection_pairs\": 0, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+    },
+    {
+      "stage": "divider/export_stage",
+      "started_at": "2026-11-05T19:32:28.996020+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/divider/EXPORT_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export"
+      ],
+      "timeout_seconds": 90,
+      "pid": 1372170,
+      "start_ticks": "56499758",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export_stage/stage.log",
+      "ended_at": "2026-11-05T19:32:30.917611+00:00",
+      "elapsed_seconds": 1.9216137150069699,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 26, \"maximum_roundtrip_bound_error_m\": 1.1444091807533141e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/export/room_geometry.glb\", \"bytes\": 3531128, \"sha256\": \"f99ac3a9e245ebc6a52e836cbc2adce5b20b9f59148b7f1a30112ab33e3a4303\"}}"
+    },
+    {
+      "stage": "divider/native_stage",
+      "started_at": "2026-11-05T19:30:31.577928+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/construct_and_switch_room.py",
+        "--plan",
+        "runs/920/P920-FCHOICE-v1_20261105T192554Z/divider_PLAN.json",
+        "--phase",
+        "execute",
+        "--out",
+        "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native"
+      ],
+      "timeout_seconds": 360,
+      "pid": 1370947,
+      "start_ticks": "56488016",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/native_stage/stage.log",
+      "ended_at": "2026-11-05T19:31:57.100502+00:00",
+      "elapsed_seconds": 85.52259537100326,
+      "exit_code": 0,
+      "first_log": "2026-11-05T19:30:31.969347+00:00 begin researcher reference execute"
+    },
+    {
+      "stage": "divider/preflight_stage",
+      "started_at": "2026-11-05T19:27:59.790013+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/geometry311/bin/python",
+        "scripts/920/construct_and_switch_room.py",
+        "--plan",
+        "runs/920/P920-FCHOICE-v1_20261105T192554Z/divider_PLAN.json",
+        "--phase",
+        "preflight",
+        "--out",
+        "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/preflight"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "56472837",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/divider/preflight_stage/stage.log",
+      "ended_at": "2026-11-05T19:28:00.507517+00:00",
+      "elapsed_seconds": 0.7175269210711122,
+      "exit_code": 0,
+      "first_log": "2026-11-05T19:28:00.172899+00:00 begin researcher reference preflight"
+    },
+    {
+      "stage": "divider/restore_stage",
+      "started_at": "2026-11-05T19:32:30.975619+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/restore_terminal_catalog.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/divider/RESTORE_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/cold_restore"
+      ],
+      "timeout_seconds": 90,
+      "pid": 1372199,
+      "start_ticks": "56499956",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/divider/restore_stage/stage.log",
+      "ended_at": "2026-11-05T19:32:39.219416+00:00",
+      "elapsed_seconds": 8.243819269002415,
+      "exit_code": 0,
+      "first_log": "2026-11-05T19:32:31.044941+00:00 begin terminal native cold restore"
+    },
+    {
+      "stage": "measurement_stage",
+      "started_at": "2026-11-05T19:32:28.851852+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/geometry311/bin/python",
+        "scripts/920/measure_family_choice.py",
+        "--run",
+        "P920-FCHOICE-v1_20261105T192554Z"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "56499743",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/measurement_stage/stage.log",
+      "ended_at": "2026-11-05T19:32:29.318568+00:00",
+      "elapsed_seconds": 0.4667357759317383,
+      "exit_code": 0,
+      "first_log": "{\"perimeter\": {\"clear_rays\": 15, \"failed_access\": {\"0.4\": [], \"0.5\": [], \"0.6\": []}}, \"divider\": {\"clear_rays\": 0, \"failed_access\": {\"0.4\": [], \"0.5\": [], \"0.6\": []}}}"
+    },
+    {
+      "stage": "perimeter/audit_stage",
+      "started_at": "2026-11-05T19:31:55.633987+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/audit_family_choice_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/AUDIT_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native/checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/FINAL_AUDIT.json"
+      ],
+      "timeout_seconds": 60,
+      "pid": 1371993,
+      "start_ticks": "56496421",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/audit_stage/stage.log",
+      "ended_at": "2026-11-05T19:31:56.903259+00:00",
+      "elapsed_seconds": 1.2692959799896926,
+      "exit_code": 0,
+      "first_log": "{\"furniture\": 8, \"surface_intersection_pairs\": 0, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+    },
+    {
+      "stage": "perimeter/export_stage",
+      "started_at": "2026-11-05T19:31:56.959630+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter/EXPORT_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export"
+      ],
+      "timeout_seconds": 90,
+      "pid": 1372001,
+      "start_ticks": "56496554",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export_stage/stage.log",
+      "ended_at": "2026-11-05T19:31:58.831259+00:00",
+      "elapsed_seconds": 1.8716545009519905,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 26, \"maximum_roundtrip_bound_error_m\": 1.1444091807533141e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/export/room_geometry.glb\", \"bytes\": 3531128, \"sha256\": \"b0dccd4a1d3115d7c0000773adb68673d539aa2f3bf365fd48e0bd88984bc75a\"}}"
+    },
+    {
+      "stage": "perimeter/native_stage",
+      "started_at": "2026-11-05T19:28:25.733253+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/construct_and_switch_room.py",
+        "--plan",
+        "runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter_PLAN.json",
+        "--phase",
+        "execute",
+        "--out",
+        "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native"
+      ],
+      "timeout_seconds": 360,
+      "pid": 1369649,
+      "start_ticks": "56475431",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/native_stage/stage.log",
+      "ended_at": "2026-11-05T19:29:50.503577+00:00",
+      "elapsed_seconds": 84.77034600498155,
+      "exit_code": 0,
+      "first_log": "2026-11-05T19:28:26.116691+00:00 begin researcher reference execute"
+    },
+    {
+      "stage": "perimeter/preflight_stage",
+      "started_at": "2026-11-05T19:27:58.851230+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/geometry311/bin/python",
+        "scripts/920/construct_and_switch_room.py",
+        "--plan",
+        "runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter_PLAN.json",
+        "--phase",
+        "preflight",
+        "--out",
+        "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/preflight"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "56472743",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/preflight_stage/stage.log",
+      "ended_at": "2026-11-05T19:27:59.568673+00:00",
+      "elapsed_seconds": 0.7174647690262645,
+      "exit_code": 0,
+      "first_log": "2026-11-05T19:27:59.224330+00:00 begin researcher reference preflight"
+    },
+    {
+      "stage": "perimeter/restore_stage",
+      "started_at": "2026-11-05T19:31:58.909698+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/restore_terminal_catalog.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FCHOICE-v1_20261105T192554Z/perimeter/RESTORE_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/cold_restore"
+      ],
+      "timeout_seconds": 90,
+      "pid": 1372009,
+      "start_ticks": "56496749",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v1_20261105T192554Z/perimeter/restore_stage/stage.log",
+      "ended_at": "2026-11-05T19:32:07.253808+00:00",
+      "elapsed_seconds": 8.344135008053854,
+      "exit_code": 0,
+      "first_log": "2026-11-05T19:31:58.979455+00:00 begin terminal native cold restore"
+    },
+    {
+      "stage": "prepare_stage",
+      "started_at": "2026-11-05T19:26:04.322997+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/geometry311/bin/python",
+        "scripts/920/prepare_family_choice.py",
+        "--public",
+        "runs/920/P920-FCHOICE-v1_20261105T192554Z",
+        "--runtime",
+        "../runtime/P920-FCHOICE-v1_20261105T192554Z"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "56461290",
+      "log": "../runtime/P920-FCHOICE-v1_20261105T192554Z/prepare_stage/stage.log",
+      "ended_at": "2026-11-05T19:26:04.789953+00:00",
+      "elapsed_seconds": 0.46697538695298135,
+      "exit_code": 0,
+      "first_log": "{\"family\": \"osaka_f_house_coilkma\", \"furniture\": 8, \"candidates\": 2, \"task_conditions\": 2, \"training_updates\": 0}"
+    }
+  ],
+  "revision_command": null,
+  "summary_command": [
+    "../envs/geometry311/bin/python",
+    "scripts/920/summarize_family_choice.py",
+    "--previous",
+    "P920-FCHOICE-v1_20261105T192554Z",
+    "--current",
+    "P920-FCHOICE-v2_20261105T193428Z"
+  ],
+  "repeat_policy": "Original receipt/output directories are immutable; do not rerun completed native trajectories."
+}
