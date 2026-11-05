@@ -5,11 +5,11 @@
   "counts": {
     "records_reviewed_here": 9,
     "source_supported_knowledge": 9,
-    "partially_tool_expressible_candidates": 4,
-    "source_grounded_replayed_episodes": 5,
+    "partially_tool_expressible_candidates": 5,
+    "source_grounded_replayed_episodes": 6,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
-    "unique_source_decisions_with_replay": 3,
+    "unique_source_decisions_with_replay": 4,
     "conditional_objective_benefit_demonstrations": 2,
     "prospectively_train_allocated_knowledge_records": 3
   },
@@ -629,22 +629,30 @@
         "unsupported_part": "原文涉及完整改造；家具集中摆放只能表达局部。论文表面积31.7平方米、项目正文30平方米分别保留；不把有窗等同于实测采光。"
       },
       "tool_expression": {
-        "level": "knowledge_only_pending_subdecision_qualification",
-        "executable_subdecision": null,
+        "level": "partial",
+        "executable_subdecision": "Concentrate three existing external storage envelopes on one side of a declared transfer room, preserving identities and dimensions.",
         "full_source_decision_supported": false
       },
       "source_to_scene": {
-        "initial_proxy_ids": null,
+        "initial_proxy_ids": [
+          "recon_storage_a_0",
+          "recon_storage_b_0",
+          "recon_storage_c_0"
+        ],
         "historical_action_sequence": null,
-        "reconstructed_action_sequence": null
+        "reconstructed_action_sequence": "runs/920/P920-STORAGE-v1_20261105T055238Z/STEPS.json",
+        "decision_packet": "runs/920/P920-STORAGE-v1_20261105T055238Z/DECISION_PACKET.json",
+        "geometry_provenance": "Researcher transfer task, shared rectangular AIR template; not surveyed source geometry or an independent test."
       },
       "maturity": {
         "source_supported_knowledge": true,
-        "source_to_native_objects_bound": false,
-        "source_grounded_action_replayed": false,
-        "whole_room_consequences_reviewed": false,
+        "source_to_native_objects_bound": true,
+        "source_grounded_action_replayed": true,
+        "whole_room_consequences_reviewed": true,
         "independent_professional_preference_label": false,
-        "paired_episode_ready": false
+        "paired_episode_ready": false,
+        "source_linked_reconstruction_record_complete": true,
+        "consequences_scope": "Local floor gain0.88m², all baseline/final access0/7 and0/15; weak non-degradation criterion vacuous, positive design supervision rejected."
       },
       "readiness_by_layer": {
         "professional_knowledge": {
@@ -655,11 +663,16 @@
           "available": false
         },
         "scene_action": {
-          "executed": false
+          "executed": true,
+          "tool_calls": 5,
+          "legal_action_candidates": 5
         },
         "professional_decision_pair": {
-          "executed": false,
-          "positive_demonstration": false
+          "executed": true,
+          "positive_demonstration": false,
+          "core_training_ready": false,
+          "outcome": "local_floor_gain_with_preexisting_proxy_access_failure",
+          "evidence": "runs/920/P920-STORAGE-v1_20261105T055238Z/SUPERVISION_QUALIFICATION.json"
         }
       },
       "split_fixed_at": "2026-11-05T04:00:13.748299+00:00",
@@ -667,7 +680,7 @@
       "training_eligible": false,
       "training_authorized": false,
       "training_eligible_scope": "Core training admission is distinct from knowledge usefulness and prospective family allocation.",
-      "next_action": "Qualify a concrete representable subdecision and its verification before deriving an action target; retain knowledge regardless of missing full 3D."
+      "next_action": "Preserve source knowledge and objective diagnostic QA; no positive design admission. A future repaired input must have meaningful initial access before a separately frozen trial."
     },
     {
       "decision_id": "airbnp_open_clothing_access_for_short_stays",
