@@ -1,20 +1,21 @@
 {
   "schema": "scenefunc-data-layers-v1",
-  "updated_at": "2026-11-05T03:21:24.862270+00:00",
+  "updated_at": "2026-11-05T03:51:37.380023+00:00",
   "scope": "Current decision packet, not all indexed corpus entries. Counts are independent; unavailable pair supervision does not erase other layers.",
   "knowledge_records": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
   "counts": {
     "professional_knowledge_records": 6,
     "partially_tool_expressible_knowledge_records": 3,
-    "executed_professional_decision_pairs": 1,
-    "existing_objective_replay_episodes": 3,
-    "existing_objective_replay_actions": 14,
+    "executed_professional_decision_pairs": 2,
+    "existing_objective_replay_episodes": 4,
+    "existing_objective_replay_actions": 18,
     "professional_reviews_of_our_candidates": 0,
     "independent_acceptances_of_our_pairs": 0,
     "core_training_admitted": 0,
-    "executed_reconstruction_variants": 2,
+    "executed_reconstruction_variants": 3,
     "objective_QA_review_records": 1,
-    "positive_professional_demonstrations": 0
+    "positive_professional_demonstrations": 0,
+    "conditional_objective_benefit_demonstrations": 1
   },
   "objective_action_records": [
     {
@@ -95,12 +96,22 @@
           "positive_professional_recommendation": false
         }
       ]
+    },
+    {
+      "decision_id": "ono_low_furniture_entry_storage",
+      "evidence": "runs/920/P920-ONO-v1_20261105T033650Z/DECISION_PACKET.json",
+      "kind": "source_guided_reconstruction_with_local_geometric_benefit_and_incomplete_screening",
+      "positive_professional_recommendation": false,
+      "conditional_objective_benefit": true,
+      "independent_review": false,
+      "core_training_ready": false
     }
   ],
   "counting_notes": [
     "Six knowledge records are not six action pairs.",
     "Bukit v1 and v2 are two variants of one sourced decision, not independent projects or expert recommendations.",
-    "One objective QA review has two display-order variants; professional reviews remain zero."
+    "One objective QA review has two display-order variants; professional reviews remain zero.",
+    "Ono has one verified local geometric benefit record; it is not full source implementation, human preference or an independent held-out test."
   ],
   "objective_review_records": [
     {

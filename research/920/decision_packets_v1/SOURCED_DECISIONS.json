@@ -1,15 +1,16 @@
 {
   "schema": "scenefunc-sourced-decision-maturity-v2",
-  "updated_at": "2026-11-05T03:21:24.862270+00:00",
+  "updated_at": "2026-11-05T03:51:37.380023+00:00",
   "purpose": "Separate supported professional knowledge from executable episode readiness without lowering evidence requirements.",
   "counts": {
     "records_reviewed_here": 6,
     "source_supported_knowledge": 6,
     "partially_tool_expressible_candidates": 3,
-    "source_grounded_replayed_episodes": 2,
+    "source_grounded_replayed_episodes": 3,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
-    "unique_source_decisions_with_replay": 1
+    "unique_source_decisions_with_replay": 2,
+    "conditional_objective_benefit_demonstrations": 1
   },
   "records": [
     {
@@ -247,17 +248,22 @@
         "full_source_decision_supported": false
       },
       "source_to_scene": {
-        "initial_proxy_ids": null,
+        "initial_proxy_ids": [
+          "recon_high_storage_0"
+        ],
         "historical_action_sequence": null,
-        "reconstructed_action_sequence": null
+        "reconstructed_action_sequence": "runs/920/P920-ONO-v1_20261105T033650Z/STEPS.json",
+        "decision_packet": "runs/920/P920-ONO-v1_20261105T033650Z/DECISION_PACKET.json",
+        "geometry_provenance": "Researcher-made counterfactual with 16 fixture/furniture visuals; not the recovered generated layout or a historical before-state."
       },
       "maturity": {
         "source_supported_knowledge": true,
-        "source_to_native_objects_bound": false,
-        "source_grounded_action_replayed": false,
-        "whole_room_consequences_reviewed": false,
+        "source_to_native_objects_bound": true,
+        "source_grounded_action_replayed": true,
+        "whole_room_consequences_reviewed": true,
         "independent_professional_preference_label": false,
-        "paired_episode_ready": false
+        "paired_episode_ready": false,
+        "consequences_scope": "Declared geometric aperture rays, storage approach and fixed use points; whole dwelling functions unknown."
       },
       "readiness_by_layer": {
         "professional_knowledge": {
@@ -268,16 +274,19 @@
           "available": false
         },
         "scene_action": {
-          "executed": false
+          "executed": true,
+          "tool_calls": 4
         },
         "professional_decision_pair": {
-          "executed": false,
-          "positive_demonstration": false
+          "executed": true,
+          "positive_demonstration": false,
+          "conditional_objective_benefit": true,
+          "full_source_implementation": false
         }
       },
       "training_eligible": false,
       "training_eligible_scope": "Core paired training only; no training authorized.",
-      "next_action": "Keep as attributed knowledge; bind only a tool-expressible subdecision when its prerequisites are available."
+      "next_action": "Include sourced condition, actual program and partial-consequence labels in a development data batch; no further candidate tuning or training assumed."
     },
     {
       "decision_id": "flinders_dual_access_storage_partition",

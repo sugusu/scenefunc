@@ -1,0 +1,75 @@
+{
+  "cwd": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "commands": {
+    "build": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/build_reference_room.py",
+      "--plan",
+      "runs/920/P920-ONO-v1_20261105T033650Z/BUILD_PLAN.json",
+      "--scenesmith",
+      "../resources/full_runtime_20261104/scenesmith",
+      "--out",
+      "../runtime/P920-ONO-v1_20261105T033650Z/build"
+    ],
+    "export_after": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-ONO-v1_20261105T033650Z/EXPORT_AFTER_PLAN.json",
+      "--out",
+      "../runtime/P920-ONO-v1_20261105T033650Z/export_after"
+    ],
+    "export_initial": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-ONO-v1_20261105T033650Z/EXPORT_INITIAL_PLAN.json",
+      "--out",
+      "../runtime/P920-ONO-v1_20261105T033650Z/export_initial"
+    ],
+    "measure": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/measure_storage_sightlines.py",
+      "--plan",
+      "runs/920/P920-ONO-v1_20261105T033650Z/MEASURE_PLAN.json",
+      "--out",
+      "../runtime/P920-ONO-v1_20261105T033650Z/MEASUREMENTS.json"
+    ],
+    "preflight": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/preflight_sourced_trajectory.py",
+      "--plan",
+      "runs/920/P920-ONO-v1_20261105T033650Z/PREFLIGHT_PLAN.json",
+      "--out",
+      "../runtime/P920-ONO-v1_20261105T033650Z/PREFLIGHT.json"
+    ],
+    "preflight_repaired": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/preflight_sourced_trajectory.py",
+      "--plan",
+      "runs/920/P920-ONO-v1_20261105T033650Z/PREFLIGHT_REPAIRED_PLAN.json",
+      "--out",
+      "../runtime/P920-ONO-v1_20261105T033650Z/PREFLIGHT_REPAIRED.json"
+    ],
+    "repair": [
+      "../envs/scene_designer311_native/bin/python",
+      "../preflight/repair_ono_provenance.py"
+    ],
+    "replay": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "HF_HUB_OFFLINE=1",
+      "TRANSFORMERS_OFFLINE=1",
+      "LIBGL_ALWAYS_SOFTWARE=1",
+      "EGL_PLATFORM=surfaceless",
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/replay_sourced_decision.py",
+      "--plan",
+      "runs/920/P920-ONO-v1_20261105T033650Z/REPLAY_PLAN.json",
+      "--out",
+      "../runtime/P920-ONO-v1_20261105T033650Z/replay"
+    ]
+  },
+  "repair": "Only task enum normalized in a copied rejected bundle; original failures retained.",
+  "reproduction": "Use frozen plans/code and fresh output paths; do not overwrite this run or repeat completed actions on the final checkpoint."
+}

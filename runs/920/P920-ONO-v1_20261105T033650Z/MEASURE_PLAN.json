@@ -1,0 +1,123 @@
+{
+  "created_at": "2026-11-05T03:45:13.148481+00:00",
+  "definition": {
+    "frozen_at": "2026-11-05T03:36:50.244739+00:00",
+    "observers": {
+      "living_standing": [
+        -0.4,
+        -0.4,
+        1.6
+      ],
+      "dining_seated": [
+        1.65,
+        -0.15,
+        1.2
+      ]
+    },
+    "window": {
+      "object_id": "recon_south_window",
+      "center": [
+        0,
+        -2.65,
+        1.6
+      ],
+      "width_m": 1.8,
+      "height_m": 1.4,
+      "samples_x": 7,
+      "samples_z": 5
+    },
+    "storage_object_id": "recon_high_storage_0",
+    "storage_front_local": "+Y",
+    "storage_front_samples_x": 5,
+    "storage_front_samples_z": 5,
+    "screen_object_id": "recon_entry_screen_0",
+    "body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "grid_m": 0.02,
+    "eye_height_sensitivity_m": [
+      1.2,
+      1.6
+    ],
+    "screen_height_sensitivity_m": [
+      1.8,
+      2.1,
+      2.4
+    ],
+    "counterfactuals": "Analytic saved-state checks only; no extra executions or independent sample counts.",
+    "criteria": "Report all sightlines, obstruction IDs, unchanged storage envelope and access without aggregate professional preference.",
+    "limits": [
+      "Opaque oriented bounding boxes, not daylight/reflectance/perception/photometry.",
+      "Sample fractions are not people, significance or whole-window quality.",
+      "Screen heights are counterfactual assumptions, not modified actual scene."
+    ]
+  },
+  "scripts": {
+    "measure_storage_sightlines.py": "ca644632fb3f290813a6db659d11163ce2724704805e6467586dfb3c48712ecc",
+    "measure_room_access.py": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d",
+    "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19"
+  },
+  "access_settings": {
+    "grid_m": 0.02,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "entry_center_xy_m": [
+      0.6,
+      2.65
+    ],
+    "entry_inward_normal_xy": [
+      0,
+      -1
+    ],
+    "approach_points_xy_m": {
+      "bed_side": [
+        -0.8,
+        -1.6
+      ],
+      "living_edge": [
+        -0.4,
+        0
+      ],
+      "table_north": [
+        1.65,
+        0.3
+      ],
+      "kitchen_prep": [
+        1.5,
+        -1.6
+      ],
+      "bath_center": [
+        -1.5,
+        1.2
+      ],
+      "entry_storage_zone": [
+        1.45,
+        1.7
+      ]
+    }
+  },
+  "states": {
+    "initial": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ONO-v1_20261105T033650Z/replay/initial_state.json",
+      "sha256": "d4c7b526a6ceef6c9b00787f285096de4e42d6c44ecd3626ddfb6860e5a5060f",
+      "root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ONO-v1_20261105T033650Z/replay/house",
+      "room": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ONO-v1_20261105T033650Z/replay/house/room_ono_conditional_storage"
+    },
+    "after": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ONO-v1_20261105T033650Z/replay/after_state.json",
+      "sha256": "f83379401a093e8020d3e708e877f06a2d24fec0563415bdfe234f391279f9b1",
+      "root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ONO-v1_20261105T033650Z/replay/house",
+      "room": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ONO-v1_20261105T033650Z/replay/house/room_ono_conditional_storage"
+    }
+  },
+  "budget": {
+    "timeout_seconds": 120
+  }
+}
