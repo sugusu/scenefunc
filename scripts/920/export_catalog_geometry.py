@@ -35,11 +35,12 @@ def main():
         scene.add_geometry(actual,node_name=node,geom_name=node)
         records[node]={'bounds_y_up_m':actual.bounds.tolist(),'triangles':len(actual.faces),**metadata}
     bindings=runtime['rooms'][rid]['asset_bindings']
+    included_types=set(plan.get('include_object_types',['furniture']))
     for oid,obj in native['objects'].items():
-        if obj['object_type']!='furniture':continue
+        if obj['object_type'] not in included_types or obj['sdf_path'] is None:continue
         for index,(visual,mesh) in enumerate(sdf_visuals(room/obj['sdf_path'],root,cache)):
             add(oid+'::'+str(index),mesh,world_transform(obj),{'object_id':oid,'asset_id':bindings[oid]['asset_id'],
-                'kind':'furniture','source_visual':visual,'immutable':obj['immutable']})
+                'kind':obj['object_type'],'source_visual':visual,'immutable':obj['immutable']})
     for index,(name,mesh) in enumerate(sdf_visuals(room/native['room_geometry']['sdf_path'],root,cache)):
         add('structure::'+name+'::'+str(index),mesh,np.eye(4),{'kind':'structure','source_visual':name})
     scene.metadata.update(source_manifest_sha256=plan['manifest_sha256'],units='metre',up_axis='+Y',
@@ -57,10 +58,15 @@ def main():
     actual_ids={v['object_id'] for v in records.values() if v['kind']=='furniture'}
     expected_ids={k for k,v in native['objects'].items() if v['object_type']=='furniture'}
     if actual_ids!=expected_ids:raise ValueError('Incomplete furniture export')
+    visual_ids={v['object_id'] for v in records.values() if 'object_id' in v}
+    expected_visual_ids={k for k,v in native['objects'].items()
+                         if v['object_type'] in included_types and v['sdf_path'] is not None}
+    if visual_ids!=expected_visual_ids:raise ValueError('Incomplete selected object export')
     result={'status':'geometry_export_roundtrip_checked','recorded_at':datetime.now(timezone.utc).isoformat(),
         'plan_sha256':sha256(a.plan),'input_manifest_sha256':plan['manifest_sha256'],
         'glb':{'path':str(output),'bytes':output.stat().st_size,'sha256':sha256(output)},
         'furniture_object_ids':sorted(actual_ids),'geometry_nodes':len(records),'nodes':records,
+        'all_visual_object_ids':sorted(visual_ids),'included_object_types':sorted(included_types),
         'maximum_roundtrip_bound_error_m':max(errors.values(),default=0),'native_scene_edits':0,'model_calls':0,
         'limits':['Geometry preview only; no new texture/material fidelity, articulation or physical-use acceptance.',
             'Whole shell visuals include ceiling; a 3D viewer may need to hide ceiling/wall nodes to inspect interior.',

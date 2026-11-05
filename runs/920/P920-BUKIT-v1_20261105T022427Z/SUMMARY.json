@@ -1,0 +1,197 @@
+{
+  "run_id": "P920-BUKIT-v1_20261105T022427Z",
+  "status": "scoped_reconstructed_decision_record_complete_mixed_outcome",
+  "updated_at": "2026-11-05T02:38:58.285468+00:00",
+  "knowledge_source_supported": true,
+  "historical_trajectory": false,
+  "native_tool_calls": 1,
+  "model_calls": 0,
+  "training_updates": 0,
+  "furniture_and_proxy_count": 10,
+  "mesh_backed_count": 2,
+  "static_proxy_count": 8,
+  "native_object_count": 17,
+  "all_instance_ids_and_non_target_objects_preserved": true,
+  "scope": "Declared living/dining/studio main room only; kitchen/bath/shelter/hall outside scope.",
+  "reserved_floor_before_unoccupied_m2": 1.3892302024364471,
+  "reserved_floor_after_unoccupied_m2": 2.73,
+  "reserved_floor_unoccupied_gain_m2": 1.3407697975635529,
+  "largest_empty_rectangle_before_m2": 3.3744,
+  "largest_empty_rectangle_after_m2": 5.92,
+  "conditional_access_changes": [
+    {
+      "square_body_width_m": 0.4,
+      "initial_reachable": 6,
+      "after_reachable": 2,
+      "fixed_target_count": 8,
+      "gained": [],
+      "lost": [
+        "bed_foot",
+        "bookcase",
+        "sofa_front",
+        "window_center"
+      ],
+      "both_failed": [
+        "table_approach",
+        "tv_storage"
+      ]
+    },
+    {
+      "square_body_width_m": 0.5,
+      "initial_reachable": 5,
+      "after_reachable": 2,
+      "fixed_target_count": 8,
+      "gained": [],
+      "lost": [
+        "bed_foot",
+        "bookcase",
+        "window_center"
+      ],
+      "both_failed": [
+        "sofa_front",
+        "table_approach",
+        "tv_storage"
+      ]
+    },
+    {
+      "square_body_width_m": 0.6,
+      "initial_reachable": 3,
+      "after_reachable": 2,
+      "fixed_target_count": 8,
+      "gained": [],
+      "lost": [
+        "bed_foot"
+      ],
+      "both_failed": [
+        "bookcase",
+        "sofa_front",
+        "table_approach",
+        "tv_storage",
+        "window_center"
+      ]
+    }
+  ],
+  "straight_sweep_clear_under_declared_AABB_model": true,
+  "sensitivity": {
+    "cases": 9,
+    "native_executions": 1,
+    "analytic_only": 8,
+    "area_gain_cases": 9,
+    "reserved_clear_after_cases": 6,
+    "counterexamples": "Length 4.8 m retains reserved-area overlap at all three widths; width 2.8 m introduces furniture AABB overlaps.",
+    "preexisting_structure_defect": "All cases retain 0.01 m west-cabinet penetration beyond the declared wall inner face; not collision-free initial geometry."
+  },
+  "positive_professional_demonstration": false,
+  "core_training_admitted": false,
+  "independent_professional_review": false,
+  "whole_room_usability": "not_established",
+  "images": 10,
+  "checks_passed": 4,
+  "actual_stage_receipts": {
+    "build": {
+      "started_at": "2026-11-05T02:25:38.548309+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/build_reference_room.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/BUILD_PLAN.json",
+        "--scenesmith",
+        "../resources/full_runtime_20261104/scenesmith",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/build"
+      ],
+      "timeout_seconds": 180,
+      "pid": 6,
+      "start_ticks": "50338713",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/build_execution/stage.log",
+      "ended_at": "2026-11-05T02:25:44.284083+00:00",
+      "elapsed_seconds": 5.735786309989635,
+      "exit_code": 0,
+      "first_log": "2026-11-05T02:25:38.962397+00:00 begin labelled native whole-room reconstruction"
+    },
+    "initialization_failed": {
+      "started_at": "2026-11-05T02:26:39.862840+00:00",
+      "status": "failed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/replay_sourced_decision.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/REPLAY_PLAN.json",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/replay"
+      ],
+      "timeout_seconds": 300,
+      "pid": 7,
+      "start_ticks": "50344844",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/replay_execution/stage.log",
+      "ended_at": "2026-11-05T02:30:11.789742+00:00",
+      "elapsed_seconds": 211.92691474303138,
+      "exit_code": -15,
+      "first_log": "2026-11-05T02:26:40.275564+00:00 begin one source-guided native move"
+    },
+    "replay": {
+      "started_at": "2026-11-05T02:30:40.106291+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/replay_sourced_decision.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/REPLAY_PLAN.json",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/host_replay"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1192826,
+      "start_ticks": "50368869",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/host_replay_execution/stage.log",
+      "ended_at": "2026-11-05T02:32:04.945738+00:00",
+      "elapsed_seconds": 84.83946143195499,
+      "exit_code": 0,
+      "first_log": "2026-11-05T02:30:40.475445+00:00 begin one source-guided native move"
+    },
+    "sensitivity": {
+      "started_at": "2026-11-05T02:31:51.935340+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/measure_bukit_sensitivity.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/SENSITIVITY_PLAN.json",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/SENSITIVITY.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 7,
+      "start_ticks": "50376052",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/sensitivity_execution/stage.log",
+      "ended_at": "2026-11-05T02:31:52.552964+00:00",
+      "elapsed_seconds": 0.6176412990316749,
+      "exit_code": 0,
+      "first_log": "2026-11-05T02:31:52.350445+00:00 begin fixed nine-case AABB sensitivity"
+    }
+  },
+  "interpretation": "A sourced strategy was mapped to one real native edit with conditional floor gain and displaced access costs. This is neither evidence against the original design nor evidence of learned professional judgment.",
+  "total_stage_seconds_including_initialization_failure": 303.1198037840077,
+  "geometry_exports": {
+    "initial": {
+      "bytes": 5259000,
+      "sha256": "6446c69403e671b1a47f1cee396037db5a18f908546805d65d91c7f2c7a515ec",
+      "exported_objects": 10,
+      "roundtrip_error_m": 1.0490417468034252e-07
+    },
+    "after": {
+      "bytes": 5259000,
+      "sha256": "e285d23c8b533e63e63a81edfa3bf134c79e3b61b489c76dbca31d574ae880e7",
+      "exported_objects": 10,
+      "roundtrip_error_m": 1.0490417468034252e-07
+    }
+  },
+  "delivery_export_seconds_sum": 5.651178515981883
+}

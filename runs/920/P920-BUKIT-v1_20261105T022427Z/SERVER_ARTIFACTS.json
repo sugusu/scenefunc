@@ -1,0 +1,118 @@
+{
+  "checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/host_replay/checkpoint_1",
+    "manifest_sha256": "f4032787046e01e230f8ed97076a13c0394aa90136e161392694fd3d41981d83",
+    "state_sha256": "312ad4a131b66b899da1d5db6a018dcc9c1c1737dfbd0414894d6b8a3b262c3e",
+    "step_idx": 1
+  },
+  "manifest_files_verified": 27,
+  "files": [
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/host_replay/checkpoint_1/manifest.json",
+      "bytes": 5401,
+      "sha256": "f4032787046e01e230f8ed97076a13c0394aa90136e161392694fd3d41981d83"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/host_replay/checkpoint_1/house_state.json",
+      "bytes": 37338,
+      "sha256": "26c3716e0d8aee1d86f475a0c7debf9c27852b56a0c3ef67be304859f2684f54"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/build/bundle/manifest.json",
+      "bytes": 4533,
+      "sha256": "89f8c695699c625454d5fe77fe32ff94f11a2c64df1090bc1bb17ab36110a215"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/build/bundle/provenance.json",
+      "bytes": 9092,
+      "sha256": "8298cc0bbb5aa723452d0e733739665f9098aada43117c31332c06ea0663fdd9"
+    }
+  ],
+  "all_server_bytes": 96021402,
+  "restore": "Use scripts/920/native_project.py import_project(checkpoint, new_destination) in the fixed native Python environment; all manifest-listed geometry/resources remain at the checkpoint path. Existing-session continuation requires the recorded native_checkpoint runtime fingerprint. No additional tool action is authorized within this finished one-action run.",
+  "rebuild": "Initial input: build_reference_room.py with archived BUILD_PLAN.json and original HSSD assets at locked revision/hashes. Exact edited state: use stored checkpoint, because native placement has small pose noise.",
+  "source_packet_at_freeze": "SOURCE_PACKET_AT_FREEZE.json",
+  "source_packet_sha256": "017010cc106df05095265c20ddb0a1b5d383b903ae3c886b6066950819b57690",
+  "geometry_exports": {
+    "initial": {
+      "glb": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/export_initial/room_geometry.glb",
+        "bytes": 5259000,
+        "sha256": "6446c69403e671b1a47f1cee396037db5a18f908546805d65d91c7f2c7a515ec"
+      },
+      "all_visual_object_ids": [
+        "recon_bookcase_0",
+        "recon_folded_bed_cabinet_0",
+        "recon_sofa_0",
+        "recon_stool_1_0",
+        "recon_stool_2_0",
+        "recon_table_0",
+        "recon_tv_0",
+        "recon_tv_storage_0",
+        "recon_wardrobe_north_0",
+        "recon_wardrobe_south_0"
+      ],
+      "roundtrip_max_error_m": 1.0490417468034252e-07,
+      "receipt": {
+        "started_at": "2026-11-05T02:38:05.847748+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/export_catalog_geometry.py",
+          "--plan",
+          "runs/920/P920-BUKIT-v1_20261105T022427Z/EXPORT_INITIAL_PLAN.json",
+          "--out",
+          "../runtime/P920-BUKIT-v1_20261105T022427Z/export_initial"
+        ],
+        "timeout_seconds": 90,
+        "pid": 6,
+        "start_ticks": "50413443",
+        "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/export_initial_execution/stage.log",
+        "ended_at": "2026-11-05T02:38:08.673520+00:00",
+        "elapsed_seconds": 2.825785440974869,
+        "exit_code": 0,
+        "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 34, \"maximum_roundtrip_bound_error_m\": 1.0490417468034252e-07, \"glb\": {\"path\": \"../runtime/P920-BUKIT-v1_20261105T022427Z/export_initial/room_geometry.glb\", \"bytes\": 5259000, \"sha256\": \"6446c69403e671b1a47f1cee396037db5a18f908546805d65d91c7f2c7a515ec\"}}"
+      }
+    },
+    "after": {
+      "glb": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/export_after/room_geometry.glb",
+        "bytes": 5259000,
+        "sha256": "e285d23c8b533e63e63a81edfa3bf134c79e3b61b489c76dbca31d574ae880e7"
+      },
+      "all_visual_object_ids": [
+        "recon_bookcase_0",
+        "recon_folded_bed_cabinet_0",
+        "recon_sofa_0",
+        "recon_stool_1_0",
+        "recon_stool_2_0",
+        "recon_table_0",
+        "recon_tv_0",
+        "recon_tv_storage_0",
+        "recon_wardrobe_north_0",
+        "recon_wardrobe_south_0"
+      ],
+      "roundtrip_max_error_m": 1.0490417468034252e-07,
+      "receipt": {
+        "started_at": "2026-11-05T02:38:05.863742+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/export_catalog_geometry.py",
+          "--plan",
+          "runs/920/P920-BUKIT-v1_20261105T022427Z/EXPORT_AFTER_PLAN.json",
+          "--out",
+          "../runtime/P920-BUKIT-v1_20261105T022427Z/export_after"
+        ],
+        "timeout_seconds": 90,
+        "pid": 6,
+        "start_ticks": "50413444",
+        "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/export_after_execution/stage.log",
+        "ended_at": "2026-11-05T02:38:08.689123+00:00",
+        "elapsed_seconds": 2.825393075007014,
+        "exit_code": 0,
+        "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 34, \"maximum_roundtrip_bound_error_m\": 1.0490417468034252e-07, \"glb\": {\"path\": \"../runtime/P920-BUKIT-v1_20261105T022427Z/export_after/room_geometry.glb\", \"bytes\": 5259000, \"sha256\": \"e285d23c8b533e63e63a81edfa3bf134c79e3b61b489c76dbca31d574ae880e7\"}}"
+      }
+    }
+  }
+}

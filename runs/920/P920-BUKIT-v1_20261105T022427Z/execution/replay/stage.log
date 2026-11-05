@@ -1,0 +1,23 @@
+2026-11-05T02:30:40.475445+00:00 begin one source-guided native move
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - Logging to file: /data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/host_replay/house/room_bukit_mainroom_reconstruction/room.log
+[ConvexDecomp Server] INFO - OMP_NUM_THREADS set to 4
+[ConvexDecomp Server] INFO - Convex decomposition server initialized
+[ConvexDecomp Server] INFO - Starting convex decomposition server on 127.0.0.1:18134
+ * Serving Flask app 'convex_decomposition_server'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:18134
+[ConvexDecomp Server] INFO - [33mPress CTRL+C to quit[0m
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [05/Nov/2026 10:30:50] "GET /health HTTP/1.1" 200 -
+[furniture] agent ready (13 tools)
+{"state": "initial", "reserved_floor": {"bounds_xyxy_m": [-1.95, -0.8, 0, 0.6], "area_m2": 2.73, "occupied_AABB_m2": 1.3407697975635529, "unoccupied_AABB_m2": 1.3892302024364471, "overlaps": [{"object_id": "recon_sofa_0", "area_m2": 1.3407697975635529}], "clear_under_declared_envelope": false, "scope": "Declared bed-space footprint only. No unfolded bed, hinge sweep or sleeping-use validation."}, "rectangle": {"largest_grid_empty_rectangle_m2": 3.3744, "bounds_xyxy_m": [-0.1200000000000001, -1.48, 1.02, 1.48], "width_depth_m": [1.1400000000000001, 2.96], "scope": "Empty axis-aligned floor rectangle under conservative AABBs and assumed clear height, anywhere in room; not an activity pass or reachable human area."}}
+{"state": "after", "reserved_floor": {"bounds_xyxy_m": [-1.95, -0.8, 0, 0.6], "area_m2": 2.73, "occupied_AABB_m2": 0.0, "unoccupied_AABB_m2": 2.73, "overlaps": [], "clear_under_declared_envelope": true, "scope": "Declared bed-space footprint only. No unfolded bed, hinge sweep or sleeping-use validation."}, "rectangle": {"largest_grid_empty_rectangle_m2": 5.92, "bounds_xyxy_m": [-1.98, -1.48, 0.020000000000000018, 1.48], "width_depth_m": [2.0, 2.96], "scope": "Empty axis-aligned floor rectangle under conservative AABBs and assumed clear height, anywhere in room; not an activity pass or reachable human area."}}
+{"status": "native_move_completed", "tool_calls": 1, "observations": 2}

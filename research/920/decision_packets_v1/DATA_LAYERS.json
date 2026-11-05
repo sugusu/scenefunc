@@ -1,0 +1,85 @@
+{
+  "schema": "scenefunc-data-layers-v1",
+  "updated_at": "2026-11-05T02:34:18.772096+00:00",
+  "scope": "Current decision packet, not all indexed corpus entries. Counts are independent; unavailable pair supervision does not erase other layers.",
+  "knowledge_records": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
+  "counts": {
+    "professional_knowledge_records": 4,
+    "partially_tool_expressible_knowledge_records": 3,
+    "executed_professional_decision_pairs": 1,
+    "existing_objective_replay_episodes": 2,
+    "existing_objective_replay_actions": 5,
+    "professional_reviews_of_our_candidates": 0,
+    "independent_acceptances_of_our_pairs": 0,
+    "core_training_admitted": 0
+  },
+  "objective_action_records": [
+    {
+      "id": "dancer_park_and_return",
+      "family_id": "nyc_chan_dancer_studio",
+      "evidence": "runs/920/P920-ACTIVITY-v1_20261104T170002Z/SUMMARY.json",
+      "evidence_sha256": "e06c3e3741ca83f640f5d38a83dc944167e94d48f4cf37b6400128f8416e032e",
+      "kind": "researcher_constructed_native_replay",
+      "tool_calls": 4,
+      "facts": {
+        "initial_empty_rectangle_m2": 3.9008,
+        "parked_empty_rectangle_m2": 3.234,
+        "gain": "0.4/0.5 m hypothetical square-body living target becomes reachable while parked.",
+        "loss": "0.4 m mirror-front target becomes unreachable while parked.",
+        "preexisting_limit": "All six diagnostic targets remain unreachable from entry for 0.6 m square body."
+      },
+      "eligible_supervision_tasks": [
+        "conditional_geometric_problem_identification",
+        "state_difference_description",
+        "action_replay_engineering"
+      ],
+      "not_eligible_as": [
+        "professional_positive_recommendation",
+        "independent_human_preference"
+      ],
+      "assumptions": [
+        "0.02 m grid",
+        "square bodies 0.4/0.5/0.6 m, height 1.8 m",
+        "door leaves hypothetically open",
+        "AABB obstacle approximation"
+      ],
+      "training_permission": false
+    }
+  ],
+  "external_professional_evaluation_sources": [
+    {
+      "name": "FLOORA",
+      "paper": "https://arxiv.org/html/2609.36064v1#S6.SS1",
+      "data_card": "https://github.com/AutodeskAILab/floora/blob/main/DATA_CARD.md",
+      "checked_at": "2026-11-05T02:22:00.920785+00:00",
+      "verified_method": "Architects rate, rank with ties and edit candidate layouts.",
+      "public_card_configs": [
+        "osm",
+        "synthetic",
+        "synthetic_rotation_augmented"
+      ],
+      "professional_feedback_download_verified": false,
+      "scope": "Multifamily floor-plan generation; not interior furniture action pairs. No local feedback samples acquired."
+    },
+    {
+      "name": "FloorPlan-LLaMa / ArchiMetricsNet",
+      "paper": "https://aclanthology.org/2025.acl-long.331/",
+      "checked_at": "2026-11-05T02:22:00.920785+00:00",
+      "verified_paper_claim": "Functionality, flow and overall scores with textual analyses; architectural evaluation resource.",
+      "local_samples_acquired": 0,
+      "release_and_annotation_provenance_audit": "pending; paper abstract does not verify each annotation author or download availability",
+      "scope": "Review-layer candidate, not same-project 3D action supervision."
+    }
+  ],
+  "training_authorized": false,
+  "executed_decision_pairs": [
+    {
+      "decision_id": "bukit_move_lightweight_seating_for_activity_change",
+      "evidence": "runs/920/P920-BUKIT-v1_20261105T022427Z/DECISION_PACKET.json",
+      "kind": "source_grounded_reconstructed_demonstration_with_mixed_outcome",
+      "positive_professional_recommendation": false,
+      "independent_review": false,
+      "core_training_ready": false
+    }
+  ]
+}

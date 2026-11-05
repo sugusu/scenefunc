@@ -133,7 +133,9 @@ def main():
     a.out.mkdir(parents=True, exist_ok=False)
     bundle = a.out / 'bundle'
     bundle.mkdir()
-    rid = 'dancer_reconstruction'
+    rid = plan.get('room_id', 'dancer_reconstruction')
+    if not rid or any(c not in 'abcdefghijklmnopqrstuvwxyz0123456789_' for c in rid):
+        raise ValueError('Invalid room ID')
     directory = bundle / ('room_' + rid)
     directory.mkdir()
     structure = {r['name']: r for r in initial['room_structure']}
@@ -214,7 +216,7 @@ def main():
     geometry = RoomGeometry(ET.parse(shell), shell, walls=walls, floor=floor, wall_normals=normals,
         width=width, length=length, wall_height=height, wall_thickness=0.02, openings=openings)
     room = RoomScene(geometry, directory, room_id=rid, room_type='studio',
-        text_description='Researcher reconstruction from a generated development reference; not a surveyed or historical room.')
+        text_description=plan.get('room_description', 'Researcher reconstruction from a generated development reference; not a surveyed or historical room.'))
     for obj in walls+structural_objects:
         room.add_object(obj)
     assets = {}
@@ -313,8 +315,8 @@ def main():
              for p in sorted(bundle.rglob('*')) if p.is_file()}
     write(bundle/'manifest.json',{'schema':SCHEMA,
         'coordinates':{'units':'metres','up':'+Z','frame':'native_room_local'},
-        'project':{'project_id':'nyc_chan_dancer_studio_reconstruction_v1','family_id':'nyc_chan_dancer_studio',
-                   'provenance':'researcher_reconstruction_from_generated_development_reference_not_historical'},
+        'project':plan.get('project', {'project_id':'nyc_chan_dancer_studio_reconstruction_v1','family_id':'nyc_chan_dancer_studio',
+                   'provenance':'researcher_reconstruction_from_generated_development_reference_not_historical'}),
         'selected_room_id':rid,'inputs':{'native_state':'house_state.json','runtime_metadata':'runtime.json','task':'task.json'},'files':files})
     validate_bundle(bundle)
     restored = import_project(bundle, a.out/'restored')

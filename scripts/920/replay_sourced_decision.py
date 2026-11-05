@@ -1,0 +1,127 @@
+"""Execute one declared source-guided reconstruction; no historical/model claim."""
+import argparse
+import copy
+from datetime import datetime, timezone
+import json
+import math
+import os
+from pathlib import Path
+import time
+from existing_project_session import canonical_hash, create_app
+from native_project import sha256
+from measure_room_access import measure, obstacles
+from measure_free_floor import largest_floor_rectangle, sweep_diagnostic
+from shapely.geometry import box
+from shapely.ops import unary_union
+
+
+def dump(path, value):
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False)+'\n')
+
+
+def reserved_area(state, room, root, bounds):
+    region = box(*bounds)
+    hits = []
+    for obstacle in obstacles(state, room, root, 1.8):
+        lo, hi = obstacle['lo'], obstacle['hi']
+        shape = region.intersection(box(lo[0], lo[1], hi[0], hi[1]))
+        if shape.area > 1e-9:
+            hits.append((obstacle['id'], shape))
+    occupied = unary_union([shape for _, shape in hits]).area
+    return {'bounds_xyxy_m':bounds, 'area_m2':region.area,
+            'occupied_AABB_m2':occupied, 'unoccupied_AABB_m2':region.area-occupied,
+            'overlaps':[{'object_id':oid, 'area_m2':shape.area} for oid,shape in hits],
+            'clear_under_declared_envelope':occupied < 1e-9,
+            'scope':'Declared bed-space footprint only. No unfolded bed, hinge sweep or sleeping-use validation.'}
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--plan',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
+    a=p.parse_args();plan=json.loads(a.plan.read_text());a.out.mkdir(parents=True,exist_ok=False)
+    print(datetime.now(timezone.utc).isoformat(),'begin one source-guided native move',flush=True)
+    bundle=Path(plan['bundle'])
+    if sha256(bundle/'manifest.json')!=plan['manifest_sha256']:raise ValueError('Input changed')
+    for name,expected in plan['scripts'].items():
+        if sha256(Path(__file__).parent/name)!=expected:raise ValueError('Frozen script changed: '+name)
+    for name in ('SCENESMITH_LLM_BASE_URL','SCENESMITH_LLM_API_KEY','OPENAI_API_KEY','GOOGLE_API_KEY',
+                 'HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','http_proxy','https_proxy','all_proxy'):
+        os.environ.pop(name,None)
+    os.environ.update(OPENAI_API_KEY='disabled-local-validation',OPENAI_BASE_URL='http://127.0.0.1:9/v1',
+        OPENAI_AGENTS_DISABLE_TRACING='1',CUDA_VISIBLE_DEVICES='',HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',
+        NO_PROXY='127.0.0.1,localhost',SCENE_RENDER_THREADS='4',SCENE_RENDER_SAMPLES='8',OPENSCENEAGENT_STUB_ASSETS='0')
+    os.sched_setaffinity(0,sorted(os.sched_getaffinity(0))[:4])
+    result={'status':'running','model_calls':0,'training_updates':0,'tool_calls':0,'observations':0,
+            'provenance':'researcher_reconstruction_based_on_sourced_professional_decision','checks':[],'states':{}}
+    requests=[];server=client=None
+    def check(name,condition):
+        result['checks'].append({'name':name,'passed':bool(condition)})
+        if not condition:raise ValueError(name)
+    try:
+        from fastapi.testclient import TestClient
+        from PIL import Image
+        app,server=create_app(Path(plan['designer']),Path(plan['scenesmith']));client=TestClient(app)
+        def post(route,payload=None):
+            t=time.monotonic();response=client.post(route,json=payload or {});data=response.json()
+            requests.append({'route':route,'payload':payload,'status_code':response.status_code,
+                             'elapsed_seconds':time.monotonic()-t,'response':data})
+            dump(a.out/'HTTP_REQUESTS.json',requests)
+            if response.status_code!=200:raise RuntimeError('HTTP failure: '+route)
+            return data
+        post('/session/existing',{'bundle_directory':str(bundle),'output_directory':str((a.out/'house').resolve())})
+        session=server._state.session;scene=session.scene
+        post('/session/stage',{'stage':'furniture','stub_assets':False,'skip_render':False})
+        root=session.project.directory;room=scene.scene_dir;initial=scene.to_state_dict();oid=plan['target_object_id']
+        check('expected_inventory',len(initial['objects'])==plan['expected_objects'] and oid in initial['objects'])
+        def capture(label):
+            state=scene.to_state_dict();dump(a.out/(label+'_state.json'),state)
+            dump(a.out/(label+'_context.json'),session.current_context())
+            obs=post('/session/observation');result['observations']+=1
+            check(label+'_five_state_bound_views',len(obs['image_paths'])==5 and
+                  canonical_hash(json.loads(Path(obs['state_binding']).read_text())['native_state'])==canonical_hash(state))
+            for path in obs['image_paths']:
+                with Image.open(path) as image:image.verify()
+            m=measure(state,room,root,plan['access_settings'])
+            m['floor_rectangle']=largest_floor_rectangle(state,room,root,plan['access_settings'])
+            m['reserved_floor']=reserved_area(state,room,root,plan['reserved_floor_envelope_xyxy_m'])
+            dump(a.out/(label+'_measurement.json'),m);dump(a.out/(label+'_observation.json'),obs)
+            result['states'][label]={'native_state_sha256':canonical_hash(state),'measurement':m,'image_paths':obs['image_paths']}
+            print(json.dumps({'state':label,'reserved_floor':m['reserved_floor'],'rectangle':m['floor_rectangle']}),flush=True)
+            return state
+        capture('initial')
+        command=plan['tool_call'];args=command['arguments'];proposed=copy.deepcopy(initial);yaw=math.radians(args['yaw'])
+        proposed['objects'][oid]['transform']={'translation':[args['x'],args['y'],0], 'rotation_wxyz':[math.cos(yaw/2),0,0,math.sin(yaw/2)]}
+        step={'command':command,'planned_sweep':sweep_diagnostic(initial,proposed,oid,room,root),'before_sha256':canonical_hash(initial)}
+        dump(a.out/'STEP.json',step)
+        result['tool_calls']+=1
+        reply=post('/session/step',{'tool_calls':[command]});after=scene.to_state_dict()
+        step.update(reply=reply,after_sha256=canonical_hash(after),actual_transform=after['objects'][oid]['transform'])
+        dump(a.out/'STEP.json',step)
+        step['checkpoint']=post('/session/checkpoint',{'output_directory':str((a.out/'checkpoint_1').resolve())})
+        step['actual_sweep']=sweep_diagnostic(initial,after,oid,room,root);dump(a.out/'STEP.json',step)
+        capture('after')
+        check('identities_and_non_target_objects_unchanged',set(initial['objects'])==set(after['objects']) and
+              all(initial['objects'][key]==after['objects'][key] for key in initial['objects'] if key!=oid))
+        accepted=reply['results'][0]['output']['success'] is True
+        result.update(status='native_move_completed' if accepted else 'native_move_rejected',tool_accepted=accepted,
+            checkpoint=step['checkpoint'],sweep=step['actual_sweep'],positive_professional_demonstration=False,
+            whole_room_usability='unknown',historical_trajectory=False)
+    except BaseException as e:
+        result.update(status='failed',failure=type(e).__name__+': '+str(e));raise
+    finally:
+        if server is not None:server._close_all()
+        if client is not None:client.close()
+        import psutil
+        children=[]
+        for proc in psutil.Process().children(recursive=True):
+            try:
+                if os.getpgid(proc.pid)==os.getpgrp():children.append(proc);proc.terminate()
+            except (ProcessLookupError,psutil.Error):pass
+        _,alive=psutil.wait_procs(children,timeout=5)
+        for proc in alive:
+            try:proc.kill()
+            except psutil.Error:pass
+        result['ended_at']=datetime.now(timezone.utc).isoformat();dump(a.out/'RESULT.json',result)
+        print(json.dumps({k:result[k] for k in ('status','tool_calls','observations')}),flush=True)
+
+
+if __name__=='__main__':main()

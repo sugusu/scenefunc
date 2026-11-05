@@ -1,0 +1,823 @@
+{
+  "project_id": "bukit_mainroom_v1",
+  "room_id": "bukit_mainroom_reconstruction",
+  "design_request": "依据公开项目的可移动家具策略，检验移动沙发是否能释放西侧活动／折叠床预留空间，并保留起居、桌面、储物和窗前等其他用途的副作用。实例ID保持是本回放的实现约束。",
+  "request_provenance": "adapted",
+  "original_request": null,
+  "unknowns": [
+    "Metric dimensions and initial state are researcher assumptions, not survey or historical states.",
+    "Only main living/dining/studio room is modelled; kitchen, bath, shelter and outside hall are outside scope.",
+    "Source sofa is lightweight two-seater; substitute asset is labelled three-seater, unscaled, weight unknown.",
+    "Bed mechanism, table wheels, stool stackability, cabinet access/capacity and physical human activities are unverified."
+  ],
+  "objects": {
+    "recon_north_wall": {
+      "object_id": "recon_north_wall",
+      "object_type": "wall",
+      "name": "north_wall",
+      "description": "Generated-reference structural proxy",
+      "transform": {
+        "translation": [
+          0.0,
+          1.5,
+          1.3
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": null,
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {},
+      "bbox_min": [
+        -2.6,
+        -0.01,
+        -1.3
+      ],
+      "bbox_max": [
+        2.6,
+        0.01,
+        1.3
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_south_wall": {
+      "object_id": "recon_south_wall",
+      "object_type": "wall",
+      "name": "south_wall",
+      "description": "Generated-reference structural proxy",
+      "transform": {
+        "translation": [
+          0.0,
+          -1.5,
+          1.3
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": null,
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {},
+      "bbox_min": [
+        -2.6,
+        -0.01,
+        -1.3
+      ],
+      "bbox_max": [
+        2.6,
+        0.01,
+        1.3
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_west_wall": {
+      "object_id": "recon_west_wall",
+      "object_type": "wall",
+      "name": "west_wall",
+      "description": "Generated-reference structural proxy",
+      "transform": {
+        "translation": [
+          -2.6,
+          0.0,
+          1.3
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": null,
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {},
+      "bbox_min": [
+        -0.01,
+        -1.5,
+        -1.3
+      ],
+      "bbox_max": [
+        0.01,
+        1.5,
+        1.3
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_east_wall": {
+      "object_id": "recon_east_wall",
+      "object_type": "wall",
+      "name": "east_wall",
+      "description": "Generated-reference structural proxy",
+      "transform": {
+        "translation": [
+          2.6,
+          0.0,
+          1.3
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": null,
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {},
+      "bbox_min": [
+        -0.01,
+        -1.5,
+        -1.3
+      ],
+      "bbox_max": [
+        0.01,
+        1.5,
+        1.3
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_entry_door": {
+      "object_id": "recon_entry_door",
+      "object_type": "wall_mounted",
+      "name": "entry_door",
+      "description": "Generated proxy opening; hinge and operability unknown",
+      "transform": {
+        "translation": [
+          0.6,
+          -1.5,
+          1.05
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": null,
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "structural_role": "opening"
+      },
+      "bbox_min": [
+        -0.5,
+        -0.01,
+        -1.05
+      ],
+      "bbox_max": [
+        0.5,
+        0.01,
+        1.05
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_north_window_left": {
+      "object_id": "recon_north_window_left",
+      "object_type": "wall_mounted",
+      "name": "north_window_left",
+      "description": "Generated proxy opening; hinge and operability unknown",
+      "transform": {
+        "translation": [
+          -0.95,
+          1.5,
+          1.5
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": null,
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "structural_role": "opening"
+      },
+      "bbox_min": [
+        -0.85,
+        -0.01,
+        -0.7
+      ],
+      "bbox_max": [
+        0.85,
+        0.01,
+        0.7
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_north_window_right": {
+      "object_id": "recon_north_window_right",
+      "object_type": "wall_mounted",
+      "name": "north_window_right",
+      "description": "Generated proxy opening; hinge and operability unknown",
+      "transform": {
+        "translation": [
+          0.95,
+          1.5,
+          1.5
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": null,
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "structural_role": "opening"
+      },
+      "bbox_min": [
+        -0.85,
+        -0.01,
+        -0.7
+      ],
+      "bbox_max": [
+        0.85,
+        0.01,
+        0.7
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_sofa_0": {
+      "object_id": "recon_sofa_0",
+      "object_type": "furniture",
+      "name": "sofa",
+      "description": "Labelled reconstruction: mesh",
+      "transform": {
+        "translation": [
+          -0.6,
+          -0.3,
+          0.0
+        ],
+        "rotation_wxyz": [
+          0.7071067811865475,
+          0.0,
+          0.0,
+          -0.7071067811865475
+        ]
+      },
+      "geometry_path": "assets/4979cfe2e691ac484078b909543db3f21b80462f/canonical.glb",
+      "sdf_path": "objects/sofa/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "mesh",
+        "source_reference_name": "sofa",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.9007576107978821,
+        -0.47884635627269745,
+        0.0
+      ],
+      "bbox_max": [
+        0.9007576107978821,
+        0.47884635627269745,
+        0.9072695106367306
+      ],
+      "immutable": false,
+      "scale_factor": 1.0
+    },
+    "recon_table_0": {
+      "object_id": "recon_table_0",
+      "object_type": "furniture",
+      "name": "table",
+      "description": "Labelled reconstruction: mesh",
+      "transform": {
+        "translation": [
+          1.5,
+          -0.95,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": "assets/5d70cc76c99acee4513ec5f7fad497d2baebca9e/canonical.glb",
+      "sdf_path": "objects/table/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "mesh",
+        "source_reference_name": "table",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.4750000089406967,
+        -0.47239792346954346,
+        0.0
+      ],
+      "bbox_max": [
+        0.4750000089406967,
+        0.47239792346954346,
+        0.7107922434806825
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_wardrobe_south_0": {
+      "object_id": "recon_wardrobe_south_0",
+      "object_type": "furniture",
+      "name": "wardrobe_south",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          -2.3,
+          -1.15,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/wardrobe_south/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "wardrobe_south",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.3,
+        -0.3,
+        0.0
+      ],
+      "bbox_max": [
+        0.3,
+        0.3,
+        2.3
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_folded_bed_cabinet_0": {
+      "object_id": "recon_folded_bed_cabinet_0",
+      "object_type": "furniture",
+      "name": "folded_bed_cabinet",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          -2.3,
+          -0.1,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/folded_bed_cabinet/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "folded_bed_cabinet",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.3,
+        -0.7,
+        0.0
+      ],
+      "bbox_max": [
+        0.3,
+        0.7,
+        2.3
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_wardrobe_north_0": {
+      "object_id": "recon_wardrobe_north_0",
+      "object_type": "furniture",
+      "name": "wardrobe_north",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          -2.3,
+          1.05,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/wardrobe_north/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "wardrobe_north",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.3,
+        -0.4,
+        0.0
+      ],
+      "bbox_max": [
+        0.3,
+        0.4,
+        2.3
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_tv_storage_0": {
+      "object_id": "recon_tv_storage_0",
+      "object_type": "furniture",
+      "name": "tv_storage",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          2.35,
+          -0.65,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/tv_storage/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "tv_storage",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.225,
+        -0.8,
+        0.0
+      ],
+      "bbox_max": [
+        0.225,
+        0.8,
+        0.6
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_bookcase_0": {
+      "object_id": "recon_bookcase_0",
+      "object_type": "furniture",
+      "name": "bookcase",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          2.35,
+          0.85,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/bookcase/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "bookcase",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.225,
+        -0.575,
+        0.0
+      ],
+      "bbox_max": [
+        0.225,
+        0.575,
+        2.0
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_tv_0": {
+      "object_id": "recon_tv_0",
+      "object_type": "wall_mounted",
+      "name": "tv",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          2.55,
+          -0.55,
+          0.925
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/tv/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "tv",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "wall"
+      },
+      "bbox_min": [
+        -0.025,
+        -0.5,
+        0.0
+      ],
+      "bbox_max": [
+        0.025,
+        0.5,
+        0.65
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_stool_1_0": {
+      "object_id": "recon_stool_1_0",
+      "object_type": "furniture",
+      "name": "stool_1",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          1.55,
+          0.0,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/stool_1/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "stool_1",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.2,
+        -0.2,
+        0.0
+      ],
+      "bbox_max": [
+        0.2,
+        0.2,
+        0.45
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    },
+    "recon_stool_2_0": {
+      "object_id": "recon_stool_2_0",
+      "object_type": "furniture",
+      "name": "stool_2",
+      "description": "Labelled reconstruction: procedural_proxy",
+      "transform": {
+        "translation": [
+          1.8,
+          0.65,
+          0.0
+        ],
+        "rotation_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "geometry_path": null,
+      "sdf_path": "objects/stool_2/object.sdf",
+      "image_path": null,
+      "support_surfaces": [],
+      "placement_info": null,
+      "metadata": {
+        "asset_source": "procedural_proxy",
+        "source_reference_name": "stool_2",
+        "source_geometry_is_generated": true,
+        "semantic_front_status": "not_applicable_or_unknown",
+        "collision_representation": "declared_AABB_envelope_not_mesh_validation",
+        "physical_mass_known": false,
+        "historical_instance_identity": false,
+        "support_parent": "floor"
+      },
+      "bbox_min": [
+        -0.2,
+        -0.2,
+        0.0
+      ],
+      "bbox_max": [
+        0.2,
+        0.2,
+        0.45
+      ],
+      "immutable": true,
+      "scale_factor": 1.0
+    }
+  },
+  "asset_bindings": {
+    "recon_north_wall": {
+      "asset_id": "procedural_structure:north_wall",
+      "identity_provenance": "researcher_reconstruction_not_historical"
+    },
+    "recon_south_wall": {
+      "asset_id": "procedural_structure:south_wall",
+      "identity_provenance": "researcher_reconstruction_not_historical"
+    },
+    "recon_west_wall": {
+      "asset_id": "procedural_structure:west_wall",
+      "identity_provenance": "researcher_reconstruction_not_historical"
+    },
+    "recon_east_wall": {
+      "asset_id": "procedural_structure:east_wall",
+      "identity_provenance": "researcher_reconstruction_not_historical"
+    },
+    "recon_entry_door": {
+      "asset_id": "procedural_opening:entry_door",
+      "identity_provenance": "researcher_reconstruction_not_historical"
+    },
+    "recon_north_window_left": {
+      "asset_id": "procedural_opening:north_window_left",
+      "identity_provenance": "researcher_reconstruction_not_historical"
+    },
+    "recon_north_window_right": {
+      "asset_id": "procedural_opening:north_window_right",
+      "identity_provenance": "researcher_reconstruction_not_historical"
+    },
+    "recon_sofa_0": {
+      "asset_id": "4979cfe2e691ac484078b909543db3f21b80462f",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "mesh"
+    },
+    "recon_table_0": {
+      "asset_id": "5d70cc76c99acee4513ec5f7fad497d2baebca9e",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "mesh"
+    },
+    "recon_wardrobe_south_0": {
+      "asset_id": "procedural_reference:wardrobe_south",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    },
+    "recon_folded_bed_cabinet_0": {
+      "asset_id": "procedural_reference:folded_bed_cabinet",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    },
+    "recon_wardrobe_north_0": {
+      "asset_id": "procedural_reference:wardrobe_north",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    },
+    "recon_tv_storage_0": {
+      "asset_id": "procedural_reference:tv_storage",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    },
+    "recon_bookcase_0": {
+      "asset_id": "procedural_reference:bookcase",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    },
+    "recon_tv_0": {
+      "asset_id": "procedural_reference:tv",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    },
+    "recon_stool_1_0": {
+      "asset_id": "procedural_reference:stool_1",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    },
+    "recon_stool_2_0": {
+      "asset_id": "procedural_reference:stool_2",
+      "identity_provenance": "researcher_reconstruction_not_historical",
+      "representation": "procedural_proxy"
+    }
+  },
+  "prior_tool_receipts": [],
+  "history_status": "no_prior_tool_batches",
+  "total_tool_batches": 0
+}

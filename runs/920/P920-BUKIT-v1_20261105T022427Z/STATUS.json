@@ -1,0 +1,225 @@
+{
+  "run_id": "P920-BUKIT-v1_20261105T022427Z",
+  "question": "Does a source-guided native sofa translation free a declared floor envelope, and which room uses or assumptions suffer?",
+  "status": "scoped_reconstructed_decision_record_complete_mixed_outcome",
+  "updated_at": "2026-11-05T02:38:58.285468+00:00",
+  "completed": 3,
+  "planned": 3,
+  "phases": [
+    "native_build_restore",
+    "one_native_move_and_two_observations",
+    "fixed_nine_case_geometry_sensitivity"
+  ],
+  "config_sha256": "b19b184cf5abdbfdd319f438ebdfdd07dc3ede5437a567d7648fbe19af403d31",
+  "input_sha256": "15e6ee72cbe82ab0de9464e72cb9e07edad7f39e2a4665abf1db70daaca758d3",
+  "run_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-BUKIT-v1_20261105T022427Z/DECISION_PACKET.json",
+  "failure_reason": null,
+  "next_step": "Publish first complete scoped evidence chain; continue condition-aware data extraction and review before any positive training admission.",
+  "actual_build": {
+    "started_at": "2026-11-05T02:25:38.548309+00:00",
+    "status": "completed",
+    "command": [
+      "../envs/scene_designer311_native/bin/python",
+      "scripts/920/build_reference_room.py",
+      "--plan",
+      "runs/920/P920-BUKIT-v1_20261105T022427Z/BUILD_PLAN.json",
+      "--scenesmith",
+      "../resources/full_runtime_20261104/scenesmith",
+      "--out",
+      "../runtime/P920-BUKIT-v1_20261105T022427Z/build"
+    ],
+    "timeout_seconds": 180,
+    "pid": 6,
+    "start_ticks": "50338713",
+    "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/build_execution/stage.log",
+    "ended_at": "2026-11-05T02:25:44.284083+00:00",
+    "elapsed_seconds": 5.735786309989635,
+    "exit_code": 0,
+    "first_log": "2026-11-05T02:25:38.962397+00:00 begin labelled native whole-room reconstruction"
+  },
+  "config_hashes": {
+    "build": "b19b184cf5abdbfdd319f438ebdfdd07dc3ede5437a567d7648fbe19af403d31",
+    "replay": "cebaf97c39f1346b7e8b77f75fa5bba12eb5b9798d3614ea62f3d1e993a3fb26"
+  },
+  "actual_attempts": {
+    "build": {
+      "started_at": "2026-11-05T02:25:38.548309+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/build_reference_room.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/BUILD_PLAN.json",
+        "--scenesmith",
+        "../resources/full_runtime_20261104/scenesmith",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/build"
+      ],
+      "timeout_seconds": 180,
+      "pid": 6,
+      "start_ticks": "50338713",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/build_execution/stage.log",
+      "ended_at": "2026-11-05T02:25:44.284083+00:00",
+      "elapsed_seconds": 5.735786309989635,
+      "exit_code": 0,
+      "first_log": "2026-11-05T02:25:38.962397+00:00 begin labelled native whole-room reconstruction"
+    },
+    "initialization_failed": {
+      "started_at": "2026-11-05T02:26:39.862840+00:00",
+      "status": "failed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/replay_sourced_decision.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/REPLAY_PLAN.json",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/replay"
+      ],
+      "timeout_seconds": 300,
+      "pid": 7,
+      "start_ticks": "50344844",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/replay_execution/stage.log",
+      "ended_at": "2026-11-05T02:30:11.789742+00:00",
+      "elapsed_seconds": 211.92691474303138,
+      "exit_code": -15,
+      "first_log": "2026-11-05T02:26:40.275564+00:00 begin one source-guided native move"
+    },
+    "replay": {
+      "started_at": "2026-11-05T02:30:40.106291+00:00",
+      "status": "completed",
+      "command": [
+        "env",
+        "CUDA_VISIBLE_DEVICES=",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "EGL_PLATFORM=surfaceless",
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/replay_sourced_decision.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/REPLAY_PLAN.json",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/host_replay"
+      ],
+      "timeout_seconds": 300,
+      "pid": 1192826,
+      "start_ticks": "50368869",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/host_replay_execution/stage.log",
+      "ended_at": "2026-11-05T02:32:04.945738+00:00",
+      "elapsed_seconds": 84.83946143195499,
+      "exit_code": 0,
+      "first_log": "2026-11-05T02:30:40.475445+00:00 begin one source-guided native move"
+    },
+    "sensitivity": {
+      "started_at": "2026-11-05T02:31:51.935340+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/measure_bukit_sensitivity.py",
+        "--plan",
+        "runs/920/P920-BUKIT-v1_20261105T022427Z/SENSITIVITY_PLAN.json",
+        "--out",
+        "../runtime/P920-BUKIT-v1_20261105T022427Z/SENSITIVITY.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 7,
+      "start_ticks": "50376052",
+      "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/sensitivity_execution/stage.log",
+      "ended_at": "2026-11-05T02:31:52.552964+00:00",
+      "elapsed_seconds": 0.6176412990316749,
+      "exit_code": 0,
+      "first_log": "2026-11-05T02:31:52.350445+00:00 begin fixed nine-case AABB sensitivity"
+    }
+  },
+  "actual_start": "2026-11-05T02:25:38.548309+00:00",
+  "actual_end": "2026-11-05T02:32:04.945738+00:00",
+  "actual_final_replay_exit_code": 0,
+  "retained_failures": [
+    "Initialization attempt terminated before session/actions, exit -15.",
+    "Mixed outcome and pre-existing proxy wall penetration; no positive sample admission."
+  ],
+  "delivery_exports": {
+    "initial": {
+      "glb": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/export_initial/room_geometry.glb",
+        "bytes": 5259000,
+        "sha256": "6446c69403e671b1a47f1cee396037db5a18f908546805d65d91c7f2c7a515ec"
+      },
+      "all_visual_object_ids": [
+        "recon_bookcase_0",
+        "recon_folded_bed_cabinet_0",
+        "recon_sofa_0",
+        "recon_stool_1_0",
+        "recon_stool_2_0",
+        "recon_table_0",
+        "recon_tv_0",
+        "recon_tv_storage_0",
+        "recon_wardrobe_north_0",
+        "recon_wardrobe_south_0"
+      ],
+      "roundtrip_max_error_m": 1.0490417468034252e-07,
+      "receipt": {
+        "started_at": "2026-11-05T02:38:05.847748+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/export_catalog_geometry.py",
+          "--plan",
+          "runs/920/P920-BUKIT-v1_20261105T022427Z/EXPORT_INITIAL_PLAN.json",
+          "--out",
+          "../runtime/P920-BUKIT-v1_20261105T022427Z/export_initial"
+        ],
+        "timeout_seconds": 90,
+        "pid": 6,
+        "start_ticks": "50413443",
+        "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/export_initial_execution/stage.log",
+        "ended_at": "2026-11-05T02:38:08.673520+00:00",
+        "elapsed_seconds": 2.825785440974869,
+        "exit_code": 0,
+        "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 34, \"maximum_roundtrip_bound_error_m\": 1.0490417468034252e-07, \"glb\": {\"path\": \"../runtime/P920-BUKIT-v1_20261105T022427Z/export_initial/room_geometry.glb\", \"bytes\": 5259000, \"sha256\": \"6446c69403e671b1a47f1cee396037db5a18f908546805d65d91c7f2c7a515ec\"}}"
+      }
+    },
+    "after": {
+      "glb": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-BUKIT-v1_20261105T022427Z/export_after/room_geometry.glb",
+        "bytes": 5259000,
+        "sha256": "e285d23c8b533e63e63a81edfa3bf134c79e3b61b489c76dbca31d574ae880e7"
+      },
+      "all_visual_object_ids": [
+        "recon_bookcase_0",
+        "recon_folded_bed_cabinet_0",
+        "recon_sofa_0",
+        "recon_stool_1_0",
+        "recon_stool_2_0",
+        "recon_table_0",
+        "recon_tv_0",
+        "recon_tv_storage_0",
+        "recon_wardrobe_north_0",
+        "recon_wardrobe_south_0"
+      ],
+      "roundtrip_max_error_m": 1.0490417468034252e-07,
+      "receipt": {
+        "started_at": "2026-11-05T02:38:05.863742+00:00",
+        "status": "completed",
+        "command": [
+          "../envs/scene_designer311_native/bin/python",
+          "scripts/920/export_catalog_geometry.py",
+          "--plan",
+          "runs/920/P920-BUKIT-v1_20261105T022427Z/EXPORT_AFTER_PLAN.json",
+          "--out",
+          "../runtime/P920-BUKIT-v1_20261105T022427Z/export_after"
+        ],
+        "timeout_seconds": 90,
+        "pid": 6,
+        "start_ticks": "50413444",
+        "log": "../runtime/P920-BUKIT-v1_20261105T022427Z/export_after_execution/stage.log",
+        "ended_at": "2026-11-05T02:38:08.689123+00:00",
+        "elapsed_seconds": 2.825393075007014,
+        "exit_code": 0,
+        "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 34, \"maximum_roundtrip_bound_error_m\": 1.0490417468034252e-07, \"glb\": {\"path\": \"../runtime/P920-BUKIT-v1_20261105T022427Z/export_after/room_geometry.glb\", \"bytes\": 5259000, \"sha256\": \"e285d23c8b533e63e63a81edfa3bf134c79e3b61b489c76dbca31d574ae880e7\"}}"
+      }
+    }
+  },
+  "actual_delivery_end": "2026-11-05T02:38:08.689123+00:00"
+}
