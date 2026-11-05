@@ -1,0 +1,21 @@
+--- a/src/train_sft.py
++++ b/src/train_sft.py
+@@ -93,11 +93,18 @@
+     ap.add_argument("--use-cpu", action="store_true")
+     ap.add_argument("--dataloader-workers", type=int, default=2)
+     ap.add_argument("--report-to", default="none", choices=["none", "tensorboard"])
++    ap.add_argument("--decision-pilot-plan", default=None)
++    ap.add_argument("--decision-arm", choices=["paired", "separate"], default=None)
++    ap.add_argument("--decision-approval", default=None)
++    ap.add_argument("--decision-inspection-report", default=None)
+     return ap.parse_args()
+ 
+ 
+ def main() -> None:
+     args = parse_args()
++    if args.decision_pilot_plan:
++        from decision_pilot import pilot_entry
++        return pilot_entry(args, sys.modules[__name__])
+ 
+     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
+ 

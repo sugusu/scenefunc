@@ -1,12 +1,13 @@
 # 当前研究状态
 
-- 更新：2026-11-05T09:30:09.118692+00:00；总体Goal active，论文与训练收益未完成；无活跃作业，训练仍未授权。
-- 当前run：P920-LOSS-v1_20261105T092125Z。三个已有来源决定/AIR-v2、STORAGE-v2、WATERLOO-v1的10相关步骤，实际冻结模型30来源前向+2公式核对，0更新。forward09:23:03.097145Z→09:25:35.185117Z，152.087993s/0；session99282已终态。
-- 两组各20概念样本、982目标token（446理由/536动作）、100图实例；共享10理由前向。输入212672/212256，多416；maxseq12069，BF16/SDPA。源混合解释3段/187token，研究者计划7段/259token；不能当10条专业决定。
-- 动作NLL paired0.283854 vs separate0.437199；三来源聚合方向一致，仅为冻结条件预测。总token平均2.456416/2.540115，与样本平均2.711517/2.788514不同；不证明学习、整屋生成或专业偏好。峰值18864718336B，前向不证明反向容量。
-- 实际前缀否定了初步“同前缀冲突目标”猜测：分开动作为masked空think，配对为完整解释。必须先规定共同推理条件，避免上下文分布差异冒充配对收益。ALGORITHM_AND_EVIDENCE已写公共解释/直接动作交叉与来源等权归一化候选，尚未实现训练入口、无授权。
-- 首CPU准备相对路径失败1.620601s/1；AMENDMENT_01事前允许同代码绝对新目录再准备15.372201s/0；未重试模型。报告4.832799s/0。全部实际回执与失败保留。
-- 本批不增加知识/动作/专家标签：仍12知识、5来源决定/8版本、9来源诊断回放34动作、6客观QA；3条件几何收益+1模式转换。MODEBASE另4会话24尝试0/4，Mini165单列。20家族=12dev+8prospective_train，0封存。
-- 下一主线：停止已完成的这三案加载器/摆位微审计；落实共同推理协议、来源等权loss和可审定训练机制预算，同时补独立来源/整屋用途任务。不能以缺独立专业偏好否定来源知识/条件示范，也不等用户不存在的资料。正式优化另行审定。
-- 本批证据入口runs/920/P920-LOSS-v1_20261105T092125Z/README.md、RESULT、SOURCE_RECORDS、SOURCE_ATTRIBUTION、PREFIX_DIAGNOSTIC、STATE_ACTION_BINDINGS、EXECUTION。最新远端仍8b7cbb170b40475d1730d25c34c826ae59dcbda2；当前最终节点准备commit/push核对。
-- 不碰未跟踪scripts/920/extract_swiss_development_input.py。保留前序全部失败；Paris/FEEDBACK预算已用尽，不重跑MODEBASE。
+- 更新2026-11-05T09:48:43.400698+00:00，总体Goal active；上一轮LOSS为progress，本轮也是具体代码/验收进展。无活跃作业，未获训练授权，不更新权重。
+- 当前run P920-PILOTPLAN-v1_20261105T094043Z，首次可执行训练机制方案已就绪，正式文件PLAN_V2.json，SHA6443a3bf19b2a7ec07df0ee4b76f48fb8e30f262da8fa459bd19869ef9d1f2c2。请在发布后向用户申请这个具体方案的单独授权，不把历史“允许”当新训练批准。
+- 新decision_pilot.py与run_decision_pilot_batch.py通过固定官方train_sft独立overlay入口，继承实际Trainer，使用LOSS既有锁定实际加载器张量。专业training_manifest与旧audit_only门禁未改；此为条件重建机制试运行，不自动计正式专业训练准入。
+- 拟议两组各2更新/全计4，20微例一完整来源宏批次，共80前向反向；各982目标token、来源分母AIR118/STORAGE472/WATERLOO392。3来源等权；单GPU0、BF16/SDPA、非重入检查点、AdaFactor2e-5、seed42；语言36层q/v共72投影/r8alpha16/dropout0，3833856可训练参数，视觉/底座冻结。每组1800s/外层3900s，首错即停，无自动重试或扩预算。
+- 训练分支写好有限loss/梯度检查、精确更新/微例计数、每步checkpoint、适配器变化及磁盘保存/同进程清零重载核对；未执行真实反向/优化，显存与cold optimizer resume不保证。两步不支持学习或泛化结论。
+- 实际v2两官方CLI CPU检查42.112976s/0、42.162716s/0；常量logits通过真实Trainer.training_step，拦截backward，误差3.22e-8/9.21e-9；不创建优化器、不初始化CUDA。首v1检查41.807914s/0保留，修订仅补有限值/预算断言及首日志，AMENDMENT_01事前记录。missing/false批准均exit1为预期门禁验证，训练目录不存在。sessions91629/5487/66717/41943/13289全部终态。
+- 方案入口README、RESULT、PLAN_V2、PROPOSED_COMMAND、LORA_MODULES、INSPECT_*、execution；APPROVAL_TEMPLATE=false，仅示意，不能运行。若用户批准，另记真实消息引用+精确planSHA，再通过run_stage执行batch；不要修改批准后的代码/计划哈希。网络失败只推提交不重训。
+- 发布：当前准备训练前验收节点commit/push。上一个远端2a7dbd6f5632fa67ca646f4d429f7859c3f3f0fa为LOSS已核。
+- 独立继续方向：专业来源/独立整屋任务覆盖；无需再跑三来源加载器/前向。总体数据仍12知识、5来源决定/8版本、9回放34动作、6客观QA，3条件几何收益+1模式转换；外部Mini165。MODEBASE4会话24尝试0/4单列。20家族=12dev+8train_source、0sealed；专业人评/正式训练准入0。
+- LOSS既有30来源前向+2公式检查，动作NLL0.283854/0.437199，无学习结论。空think/完整理由的训练与推理上下文须交叉报告，不是同前缀矛盾目标；公共解释不能读测试事后答案。源决定不等于动作步。
+- 不碰Swiss及未跟踪extract_swiss_development_input.py。训练待授权不等于整体研究堵塞；资料与独立任务工作继续。Goal不缩减或标完成。

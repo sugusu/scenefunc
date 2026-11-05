@@ -1,0 +1,11 @@
+2026-11-05T09:42:50.767841+00:00 official pilot entry paired authorization check before training
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/../runtime/P920-PILOTPLAN-v1_20261105T094043Z/official_overlay_v2/src/train_sft.py", line 258, in <module>
+    main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/../runtime/P920-PILOTPLAN-v1_20261105T094043Z/official_overlay_v2/src/train_sft.py", line 107, in main
+    return pilot_entry(args, sys.modules[__name__])
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-PILOTPLAN-v1_20261105T094043Z/official_overlay_v2/src/decision_pilot.py", line 124, in pilot_entry
+    cfg=validate(args.decision_pilot_plan,args.decision_arm,args.decision_approval,args.dry_run)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-PILOTPLAN-v1_20261105T094043Z/official_overlay_v2/src/decision_pilot.py", line 107, in validate
+    if not approval:raise PermissionError('Separate user authorization is required before any model load or training')
+PermissionError: Separate user authorization is required before any model load or training
