@@ -1,0 +1,78 @@
+{
+  "run_id": "P920-SBUILD-v1_20261105T143623Z",
+  "frozen_at": "2026-11-05T14:36:23.351242+00:00",
+  "family_id": "paris_30m2_richard_guilbault_2015",
+  "inputs": {
+    "base_manifest": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STORAGE-v2_20261105T062810Z/build/bundle/manifest.json",
+      "sha256": "dcfdab7f8a151608457bcf0036a68ea67456d8247fe95c1bea12a77e6da71f7d"
+    },
+    "target_state": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/after_state.json",
+      "sha256": "ec0b4d3f6dbc828d14967faaec761b2b9212d28fec838e9ed2c48dce6c213d29"
+    },
+    "registry": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/data_readiness_v1/PROJECT_REGISTRY.json",
+      "sha256": "3624a3306a20e165ec1002fa09d88bb69c81378603c687b5f19cd271da9d0915"
+    },
+    "source": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/SOURCE_RECORD.json",
+      "sha256": "aab920c06118d88eb6a1a06781d32d0e78be2b63af2d9cfe987a795f39d78021"
+    },
+    "qualified_packet": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGE-v2_20261105T062810Z/DECISION_PACKET.json",
+      "sha256": "6da226dea56a9d560512bbda3dff85a52eb130e02dfb4e6d7a6f432d6f8c08d9"
+    }
+  },
+  "movable_source_ids": [
+    "recon_bed_0",
+    "recon_sofa_0",
+    "recon_table_0",
+    "recon_chair_west_0",
+    "recon_chair_east_0",
+    "recon_low_fridge_0",
+    "recon_storage_a_0",
+    "recon_storage_b_0",
+    "recon_storage_c_0"
+  ],
+  "target_pose_overrides": {
+    "recon_storage_a_0": [
+      -2.7,
+      -1.85,
+      270
+    ],
+    "recon_storage_b_0": [
+      -2.7,
+      -0.95,
+      270
+    ],
+    "recon_storage_c_0": [
+      -2.7,
+      -0.05,
+      270
+    ]
+  },
+  "design_request": "研究者重建任务：两人居住的6米×5米房间已有固定厨卫设施。保留房壳、开口、操作台及其上的灶台和水槽、三件卫浴设施，使用所给目录完成床、沙发、桌子、两把椅子、小冰箱和三件柜体的家具布置。需要睡眠、起居、两人吃饭、厨房与卫生间接近、窗前接近和可取放收纳，并尽量保有连续起居空间。不得删掉必需角色或缩放资产；未测功能请保留未知。这里的尺寸、人数、设施与目录均为研究者设定，不是住户原始任务或原项目精确平面。",
+  "unknowns": [
+    "Six installed kitchen/bath fixture proxies are supplied, not produced by this construction episode. Raised cooker and sink cannot be added with the floor-only tool.",
+    "Nine movable furniture instances will be newly created; no original/historical identity-preservation claim.",
+    "Seven of the nine templates are procedural envelope proxies; sofa/table are cached mesh substitutes. Derived GLBs do not turn proxies into measured real furniture.",
+    "New task authored after prior storage replay; not an independent or sealed evaluation.",
+    "Only source-supported peripheral storage subdecision receives professional attribution; other additions are action-only reconstruction.",
+    "Training requires separate review; data preparation is not training authorization."
+  ],
+  "code_sha256": {
+    "prepare_source_construction.py": "7d1f6c9635d4bfec3e14944b9475322b29657a7f5cf8d1f0eccc627a93d8c37f",
+    "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19"
+  },
+  "budget": {
+    "build_seconds": 120,
+    "candidate_sequences": 1,
+    "native_tool_calls": 9,
+    "observations": 10,
+    "native_seconds": 1200,
+    "model_calls": 0,
+    "training_updates": 0
+  }
+}
