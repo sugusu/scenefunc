@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "started_at": "2026-11-05T22:04:37.747838+00:00",
+  "plan_sha256": "03c9f533177a2aa589d5e5f418c39a8c8c7c9d1ea805dd43b2d031c664ae3d39",
+  "rows": [],
+  "planned_forwards": 30,
+  "optimizer_updates": 0,
+  "backward_calls": 0,
+  "generation_calls": 0,
+  "scene_actions": 0,
+  "first_log": "2026-11-05T22:04:37.747924+00:00 begin frozen final-adapter common action evaluation",
+  "initial_gpu": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121
+  },
+  "actual_exit_code": 1,
+  "ended_at": "2026-11-05T22:05:24.480906+00:00",
+  "error": "AssertionError: ",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_final_pilot_actions.py\", line 61, in main\n    result['initial_adapter_checks']=check_adapters();progress()\n  File \"/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_final_pilot_actions.py\", line 58, in check_adapters\n    assert all(actual[k].dtype==expected[k].dtype and torch.equal(actual[k].detach().cpu(),expected[k]) for k in actual)\nAssertionError\n"
+}

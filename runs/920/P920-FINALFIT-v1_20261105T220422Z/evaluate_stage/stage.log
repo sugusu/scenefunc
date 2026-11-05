@@ -1,0 +1,11 @@
+2026-11-05T22:04:37.747924+00:00 begin frozen final-adapter common action evaluation
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.31s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.32s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.33s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.14s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.21s/it]
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_final_pilot_actions.py", line 88, in <module>
+    if __name__=='__main__':main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_final_pilot_actions.py", line 61, in main
+    result['initial_adapter_checks']=check_adapters();progress()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_final_pilot_actions.py", line 58, in check_adapters
+    assert all(actual[k].dtype==expected[k].dtype and torch.equal(actual[k].detach().cpu(),expected[k]) for k in actual)
+AssertionError

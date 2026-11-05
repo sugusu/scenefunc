@@ -1,0 +1,87 @@
+{
+  "run_id": "P920-MOABIT-REF-v1_20261105T215559Z",
+  "created_at": "2026-11-05T21:55:59.197128+00:00",
+  "question": "Can the fixed nominal shell and exact catalogue contain all declared living roles with conditional approach spaces?",
+  "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MOABIT-INPUT-v1_20261105T213853Z/nominal/build/bundle",
+  "manifest_sha256": "f608b7961f41142b99c6e9e48250a1b7aabf8848a0a15375dc4c5f33dca89f95",
+  "code_sha256": "fa1f4231cdb1ed630c8aa84e924a3f17a8b5cfa98f550d17d6be167ac49d083c",
+  "main_roles": [
+    "queen_bed",
+    "refrigerator",
+    "kitchen_counter",
+    "kitchen_sink",
+    "cooker",
+    "bookshelf",
+    "storage_bin",
+    "sofa",
+    "dining_assembly"
+  ],
+  "main_keepouts": [
+    {
+      "name": "bath_enclosure",
+      "rectangle": [
+        0.2,
+        -3,
+        1.75,
+        -1.15
+      ]
+    },
+    {
+      "name": "bath_door_outside",
+      "rectangle": [
+        -0.4,
+        -2.4,
+        0.2,
+        -1.8
+      ]
+    },
+    {
+      "name": "entry",
+      "rectangle": [
+        -1.55,
+        -3,
+        -0.65,
+        -2.4
+      ]
+    }
+  ],
+  "bathroom_placements": [
+    {
+      "role": "shower",
+      "x": 1.325,
+      "y": -1.61,
+      "yaw": 180
+    },
+    {
+      "role": "washroom_vanity",
+      "x": 1.34,
+      "y": -2.7596,
+      "yaw": 0
+    },
+    {
+      "role": "toilet",
+      "x": 0.47,
+      "y": -1.56,
+      "yaw": 180
+    }
+  ],
+  "budget": {
+    "solver_seconds": 180,
+    "nodes": 100000,
+    "candidate_searches": 1,
+    "native_candidate_sequences": 1,
+    "native_tool_calls": 14,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "assumptions": [
+    "Four cardinal rotations, unchanged actual asset bounds, 1cm outside/physical separation.",
+    "Main furniture has one 0.5m square approach, separated 2cm from footprint; dining seats use side approaches.",
+    "Two chairs at +/-0.77m from table center form one fixed assembly; other designs not ruled out.",
+    "Fixed hand-authored bath placement is unvalidated and must pass actual bounds/routes before native execution.",
+    "Route widths 0.4/0.5/0.6m and 2cm grid; no standards or anthropometric claims.",
+    "No retries or budget extension on no incumbent; no original-project infeasibility claim."
+  ],
+  "training_admitted": false,
+  "sealed_test": false
+}
