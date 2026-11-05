@@ -1,0 +1,94 @@
+{
+  "created_at": "2026-11-05T15:24:43.615085+00:00",
+  "status": "working_paper_evidence_not_submission",
+  "sources": {
+    "training": {
+      "path": "runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
+      "sha256": "027376793189fec580112fc865b0b057cb684d8453160162f4e2bee90251c49e"
+    },
+    "comparison": {
+      "path": "runs/920/P920-CASA-COMP-v1_20261105T123924Z/COMPARISON.json",
+      "sha256": "023efc5e1371d9282acc1a3451b02d187655baf29e82035f396cd628d70c2992"
+    },
+    "coverage": {
+      "path": "runs/920/P920-CASA-COMP-v1_20261105T123924Z/TRAINING_TASK_COVERAGE.json",
+      "sha256": "e7e1608997a39d6944e6f066570575ed6258d0695a5fd1d0d0b688070e8e3ba1"
+    },
+    "construction": {
+      "path": "runs/920/P920-SBUILD-v1_20261105T143623Z/SUMMARY.json",
+      "sha256": "7be4f2dfd9b369e73e2b22df666e21bb62178730e2206bb6652ad7fbc2f9f70c"
+    },
+    "mask": {
+      "path": "scripts/920/decision_pairing.py",
+      "sha256": "f6481d14371b6e94161bcca4e22ba9b15afae775106ea5485f5ab57cd286b734"
+    },
+    "trainer": {
+      "path": "scripts/920/decision_pilot_offload.py",
+      "sha256": "06d020880eeff35cf4c1fa23c7ab46a2a9687a5ce7a08f0388e1f04df3e18eb9"
+    }
+  },
+  "claims": [
+    {
+      "id": "M1",
+      "claim": "The matched four-update LoRA mechanism pilot completed with the frozen base/vision and source-balanced target loss.",
+      "status": "supported_mechanism_only",
+      "evidence": [
+        "training",
+        "trainer"
+      ],
+      "not_supported": "Convergence, final held-out loss reduction, design learning, cold optimizer resume."
+    },
+    {
+      "id": "M2",
+      "claim": "The action-context treatment supplies the teacher-forced reason prefix only in paired action examples; both arms supervise the same reason and action targets.",
+      "status": "supported_specific_operationalization",
+      "evidence": [
+        "mask",
+        "trainer"
+      ],
+      "not_supported": "A general proof that all forms of pairing outperform all forms of separate learning. Reason-only examples in both groups already see the scene."
+    },
+    {
+      "id": "R1",
+      "claim": "The Casa base/separate/paired development attempts produced 7/6/6 furniture instances and two detected contact pairs each.",
+      "status": "supported_single_exposed_development_project",
+      "evidence": [
+        "comparison"
+      ],
+      "not_supported": "Independent project population effect, calibrated professional quality, or a formal 0/3 binary success rate."
+    },
+    {
+      "id": "D1",
+      "claim": "All ten pilot demonstration actions were moves of already populated rooms; Casa evaluation began with no furniture and required construction.",
+      "status": "supported_post_hoc_task_coverage_diagnosis",
+      "evidence": [
+        "coverage"
+      ],
+      "not_supported": "That this mismatch caused the observed failures or that correcting it will produce learning gains."
+    },
+    {
+      "id": "D2",
+      "claim": "A separate untrained candidate now provides nine native additions with one reused source reason and fifty bound views.",
+      "status": "supported_new_data_candidate",
+      "evidence": [
+        "construction"
+      ],
+      "not_supported": "Nine independent professional decisions, source diversity growth, complete fixture installation, human-use acceptance or training improvement."
+    },
+    {
+      "id": "H1",
+      "claim": "Pairing professional reasons with editable scene decisions improves unseen whole-room design beyond same-material separate learning and strong non-training baselines.",
+      "status": "unproven_research_hypothesis",
+      "evidence": [],
+      "missing": [
+        "Adequate independent source families and construction coverage",
+        "Training beyond a mechanism smoke test with separate approval",
+        "Same-knowledge and strong feedback controls on matched tasks",
+        "Sealed independent project evaluation",
+        "Independent professional whole-room judgments and uncertainty analysis"
+      ]
+    }
+  ],
+  "new_model_calls": 0,
+  "new_training_updates": 0
+}

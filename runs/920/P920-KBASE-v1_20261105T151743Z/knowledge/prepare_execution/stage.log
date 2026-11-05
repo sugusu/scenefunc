@@ -1,0 +1,23 @@
+2026-11-05T15:20:23.255371+00:00 begin whole-room prepare
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - Logging to file: /data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/prepare/house/room_whole_room_transfer_01/room.log
+[ConvexDecomp Server] INFO - OMP_NUM_THREADS set to 4
+[ConvexDecomp Server] INFO - Convex decomposition server initialized
+[ConvexDecomp Server] INFO - Starting convex decomposition server on 127.0.0.1:18133
+ * Serving Flask app 'convex_decomposition_server'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:18133
+[ConvexDecomp Server] INFO - [33mPress CTRL+C to quit[0m
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [05/Nov/2026 23:21:10] "GET /health HTTP/1.1" 200 -
+[furniture] agent ready (13 tools)
+{"started_at": "2026-11-05T15:21:11.231089+00:00", "status": "running", "command": ["/data/wyh/conda/envs/c15_genrec/bin/python", "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_adapter_step.py", "--plan", "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-KBASE-v1_20261105T151743Z/knowledge/PLAN.json", "--request", "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/prepare/request.json", "--out", "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/prepare/encode", "--mode", "encode"], "timeout_seconds": 180, "pid": 1324538, "start_ticks": "54991981", "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/prepare/encode_execution/stage.log"}
+{"started_at": "2026-11-05T15:21:11.231089+00:00", "status": "completed", "command": ["/data/wyh/conda/envs/c15_genrec/bin/python", "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/catalog_adapter_step.py", "--plan", "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-KBASE-v1_20261105T151743Z/knowledge/PLAN.json", "--request", "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/prepare/request.json", "--out", "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/prepare/encode", "--mode", "encode"], "timeout_seconds": 180, "pid": 1324538, "start_ticks": "54991981", "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-KBASE-v1_20261105T151743Z/knowledge/prepare/encode_execution/stage.log", "ended_at": "2026-11-05T15:21:16.314069+00:00", "elapsed_seconds": 5.082997190998867, "exit_code": 0, "first_log": "2026-11-05T15:21:12.264792+00:00 begin encode"}
+2026-11-05T15:21:18.282333+00:00 prepared_without_model
