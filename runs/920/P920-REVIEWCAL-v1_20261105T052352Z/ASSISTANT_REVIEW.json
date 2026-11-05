@@ -1,0 +1,107 @@
+{
+  "reviewed_at": "2026-11-05T05:38:41.672542+00:00",
+  "scope": "Post-output qualitative diagnosis only, no target changes/answer repair or professional gold labels. Three specific color-absence errors were checked against actual original PNGs and category/palette metadata. Other notes rely on frozen inventory and declared unknowns.",
+  "input_defect": "Prompt says black outlines but actual PNG boundaries use colored lines. Retained and disclosed; not pure model-ability attribution.",
+  "records": [
+    {
+      "id": "c01_image_inferred_legend",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Source inventory and inspected PNG have no balcony; text invents an olive balcony. dining_room is outside the requested label set; no visible door is insufficient evidence that the real layout cannot be navigated.",
+      "model_output_excerpt": "an olive/light green balcony area is on the right side.",
+      "text_sha256": "5dd0fee82803fff100a44f369ffbc3348a3fb0585c2fc5e54fec3397205873e7",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c01_image_inferred_legend_inventory",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Explicit inventory says zero balconies, but missing_functions is empty. Bedroom overlap and work-surface consequences are not established by supplied evidence.",
+      "model_output_excerpt": "\\text{missing\\_functions} = \\{\\}",
+      "text_sha256": "d1c01079d9209dcd4446e3d816b549ffc389910a0aa48ed913eeadd699914dd7",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c02_image_inferred_legend_inventory",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Mentions missing balcony consistently with the source inventory; access/turning implications need door and metric evidence and should remain conditional.",
+      "model_output_excerpt": "\\text{balcony}",
+      "text_sha256": "27a7ae26b0a442b865d63ed201a2c09f37b06fe4a411e46d7ac92ed5e0d65996",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c02_image_inferred_legend",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Missing-function list omits the absent balcony. Narrow/central circulation claims cannot be accepted as measured access.",
+      "model_output_excerpt": "\"missing_functions\": []",
+      "text_sha256": "54027e56d8273e2e50be504f089a77d94fdd5d830f0e78962e185d14e191d979",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c03_image_inferred_legend",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "No bathroom appears in category or inferred palette; text invents one. The separate predeclared kitchen conflict in the source critique is not used against this answer.",
+      "model_output_excerpt": "a pale blue bathroom in the upper-left corner",
+      "text_sha256": "4327baf3eaf3eb9e7e7918f51646c7e755b8751269282d9125801825e2269296",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c03_image_inferred_legend_inventory",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Reports missing bathroom consistently with supplied inventory. Kitchen work-surface and congestion effects are not directly measured; one balcony-access issue is explicitly conditional.",
+      "model_output_excerpt": "\\text{bathroom}",
+      "text_sha256": "e79100a5e3122d66a59b6f0171d71dd3dece744a4464045643f49968d07ad298",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c04_image_inferred_legend_inventory",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "dining_area is outside the five requested labels; it is not a source/household requirement. Privacy and access consequences are not verified.",
+      "model_output_excerpt": "\\text{dining\\_area}",
+      "text_sha256": "241a083c872c8d61a746e53435186802d8614368e062e372adc1d2036c927425",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c04_image_inferred_legend",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Empty missing-function list is consistent with inventory. Output appropriately records access/daylight uncertainty but does not establish professional quality.",
+      "model_output_excerpt": "access and daylight for those zones are unclear",
+      "text_sha256": "e30f8c171b7063e68fe8c66da78b0289a012a112e0db2de28ec8eb32e2c0fd03",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c05_image_inferred_legend",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Null scores and unknown doors/windows/furniture are reasonable abstention under incomplete evidence; wrapper failure is not proof this content is wrong.",
+      "model_output_excerpt": "\"scores\": {\"Flow\": null, \"Functionality\": null, \"Overall\": null}",
+      "text_sha256": "47a4d0771e97ea5736dbba56bb9a36a74e3de7dbedae809b9e504ae543406b26",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c05_image_inferred_legend_inventory",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "dining_room is outside requested labels and not a supplied requirement. Acknowledges access uncertainty; no preference label can be inferred.",
+      "model_output_excerpt": "\\text{dining\\_room}",
+      "text_sha256": "34a35866c6d0e5c1fc56f3ad7ebe766cdaa872888d234e92b7e890c95eec79bf",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c06_image_inferred_legend_inventory",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "Reports missing kitchen consistently with the supplied inventory. Access/ventilation uncertainty is explicitly mentioned; possible obstruction is not measured.",
+      "model_output_excerpt": "\\text{kitchen}",
+      "text_sha256": "b30399860b39cddade9ef1ea3f36d3b5737d4848d10b571c2b1442dda12795b6",
+      "primary_metrics_changed": false
+    },
+    {
+      "id": "c06_image_inferred_legend",
+      "reviewer": "Codex assistant, not independent professional",
+      "note": "No kitchen in category or palette; text invents a pink kitchen and claims all functions present.",
+      "model_output_excerpt": "a pale pink kitchen on the right",
+      "text_sha256": "e396bcd20af8947b8e94c1a51ca811ab2b622160324ef66c406d645b654f8664",
+      "primary_metrics_changed": false
+    }
+  ],
+  "formal_protocol_valid": 0,
+  "formal_protocol_planned": 12,
+  "new_human_professional_reviews": 0,
+  "model_training_updates": 0
+}
