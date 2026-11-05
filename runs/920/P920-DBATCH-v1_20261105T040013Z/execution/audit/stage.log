@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_source_batch.py", line 223, in <module>
+    main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/audit_source_batch.py", line 45, in main
+    args = ap.parse_args(); plan = json.loads(args.plan.read_text())
+                                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'runs/920/P920-DBATCH-v1_20261105T040013Z/AUDIT_PLAN.json'

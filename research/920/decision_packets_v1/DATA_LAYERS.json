@@ -1,10 +1,10 @@
 {
   "schema": "scenefunc-data-layers-v1",
-  "updated_at": "2026-11-05T03:51:37.380023+00:00",
+  "updated_at": "2026-11-05T04:12:04.793956+00:00",
   "scope": "Current decision packet, not all indexed corpus entries. Counts are independent; unavailable pair supervision does not erase other layers.",
   "knowledge_records": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
   "counts": {
-    "professional_knowledge_records": 6,
+    "professional_knowledge_records": 9,
     "partially_tool_expressible_knowledge_records": 3,
     "executed_professional_decision_pairs": 2,
     "existing_objective_replay_episodes": 4,
@@ -15,7 +15,8 @@
     "executed_reconstruction_variants": 3,
     "objective_QA_review_records": 1,
     "positive_professional_demonstrations": 0,
-    "conditional_objective_benefit_demonstrations": 1
+    "conditional_objective_benefit_demonstrations": 1,
+    "prospectively_train_allocated_knowledge_records": 3
   },
   "objective_action_records": [
     {
@@ -108,7 +109,7 @@
     }
   ],
   "counting_notes": [
-    "Six knowledge records are not six action pairs.",
+    "Nine knowledge records are not nine action pairs. Three new source families received a prospective train role before extraction; no action episodes or training admission yet.",
     "Bukit v1 and v2 are two variants of one sourced decision, not independent projects or expert recommendations.",
     "One objective QA review has two display-order variants; professional reviews remain zero.",
     "Ono has one verified local geometric benefit record; it is not full source implementation, human preference or an independent held-out test."
@@ -122,5 +123,15 @@
       "professional_review": false,
       "training_authorized": false
     }
-  ]
+  ],
+  "development_batch_audit": {
+    "run_id": "P920-DBATCH-v1_20261105T040013Z",
+    "result": "runs/920/P920-DBATCH-v1_20261105T040013Z/LOADER_RESULT.json",
+    "examples_per_arm": 9,
+    "supervised_tokens_per_arm": 1522,
+    "image_instances_per_arm": 20,
+    "native_calls_reused": 4,
+    "new_native_calls": 0,
+    "training_updates": 0
+  }
 }

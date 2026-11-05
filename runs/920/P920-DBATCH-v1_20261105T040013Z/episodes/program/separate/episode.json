@@ -1,0 +1,82 @@
+{
+  "stage": "furniture",
+  "system": "Use the supplied reconstructed scene. Only move_furniture_tool(object_id, x, y, yaw) is available; x/y are metres and yaw is degrees. Only recon_high_storage_0 is editable. Retain all objects. Output the ordered program; do not assert unmeasured outcomes.",
+  "task_context": {
+    "scene_description": "{\"objects\":[{\"bbox_max\":[2.65,0.01,1.25],\"bbox_min\":[-2.65,-0.01,-1.25],\"immutable\":true,\"name\":\"north_wall\",\"object_id\":\"recon_north_wall\",\"object_type\":\"wall\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.0,2.65,1.25]}},{\"bbox_max\":[2.65,0.01,1.25],\"bbox_min\":[-2.65,-0.01,-1.25],\"immutable\":true,\"name\":\"south_wall\",\"object_id\":\"recon_south_wall\",\"object_type\":\"wall\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.0,-2.65,1.25]}},{\"bbox_max\":[0.01,2.65,1.25],\"bbox_min\":[-0.01,-2.65,-1.25],\"immutable\":true,\"name\":\"east_wall\",\"object_id\":\"recon_east_wall\",\"object_type\":\"wall\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[2.65,0.0,1.25]}},{\"bbox_max\":[0.01,2.65,1.25],\"bbox_min\":[-0.01,-2.65,-1.25],\"immutable\":true,\"name\":\"west_wall\",\"object_id\":\"recon_west_wall\",\"object_type\":\"wall\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-2.65,0.0,1.25]}},{\"bbox_max\":[1.0,0.01,1.25],\"bbox_min\":[-1.0,-0.01,-1.25],\"immutable\":true,\"name\":\"bathroom_south_wall\",\"object_id\":\"recon_bathroom_south_wall\",\"object_type\":\"wall\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-1.65,0.65,1.25]}},{\"bbox_max\":[0.01,1.0,1.25],\"bbox_min\":[-0.01,-1.0,-1.25],\"immutable\":true,\"name\":\"bathroom_east_wall\",\"object_id\":\"recon_bathroom_east_wall\",\"object_type\":\"wall\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-0.65,1.65,1.25]}},{\"bbox_max\":[0.45,0.02,1.05],\"bbox_min\":[-0.45,-0.02,-1.05],\"immutable\":true,\"name\":\"entry_door\",\"object_id\":\"recon_entry_door\",\"object_type\":\"wall_mounted\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.6,2.65,1.05]}},{\"bbox_max\":[0.02,0.35,1.05],\"bbox_min\":[-0.02,-0.35,-1.05],\"immutable\":true,\"name\":\"bathroom_door\",\"object_id\":\"recon_bathroom_door\",\"object_type\":\"wall_mounted\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-0.65,1.1,1.05]}},{\"bbox_max\":[0.9,0.01,0.7],\"bbox_min\":[-0.9,-0.01,-0.7],\"immutable\":true,\"name\":\"south_window\",\"object_id\":\"recon_south_window\",\"object_type\":\"wall_mounted\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.0,-2.65,1.6]}},{\"bbox_max\":[0.7,0.95,0.55],\"bbox_min\":[-0.7,-0.95,0.0],\"immutable\":true,\"name\":\"bed\",\"object_id\":\"recon_bed_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-1.85,-1.6,0.0]}},{\"bbox_max\":[0.9007576107978821,0.47884635627269745,0.9072695106367306],\"bbox_min\":[-0.9007576107978821,-0.47884635627269745,0.0],\"immutable\":true,\"name\":\"sofa\",\"object_id\":\"recon_sofa_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[6.123233995736766e-17,-0.0,-0.0,-1.0],\"translation\":[-1.6,0.0,0.0]}},{\"bbox_max\":[0.4750000089406967,0.47239792346954346,0.7107922434806825],\"bbox_min\":[-0.4750000089406967,-0.47239792346954346,0.0],\"immutable\":true,\"name\":\"table\",\"object_id\":\"recon_table_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[1.65,-0.95,0.0]}},{\"bbox_max\":[0.225,0.225,0.85],\"bbox_min\":[-0.225,-0.225,0.0],\"immutable\":true,\"name\":\"chair_north\",\"object_id\":\"recon_chair_north_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[6.123233995736766e-17,-0.0,-0.0,-1.0],\"translation\":[1.65,-0.15,0.0]}},{\"bbox_max\":[0.225,0.225,0.85],\"bbox_min\":[-0.225,-0.225,0.0],\"immutable\":true,\"name\":\"chair_east\",\"object_id\":\"recon_chair_east_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[0.7071067811865475,0.0,0.0,0.7071067811865476],\"translation\":[2.4,-0.95,0.0]}},{\"bbox_max\":[0.5,0.3,2.3],\"bbox_min\":[-0.5,-0.3,0.0],\"immutable\":false,\"name\":\"high_storage\",\"object_id\":\"recon_high_storage_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.3,-1.6,0.0]}},{\"bbox_max\":[0.9,0.3,0.9],\"bbox_min\":[-0.9,-0.3,0.0],\"immutable\":true,\"name\":\"kitchen_counter\",\"object_id\":\"recon_kitchen_counter_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[1.5,-2.3,0.0]}},{\"bbox_max\":[0.3,0.3,0.85],\"bbox_min\":[-0.3,-0.3,0.0],\"immutable\":true,\"name\":\"low_fridge\",\"object_id\":\"recon_low_fridge_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[2.3,0.35,0.0]}},{\"bbox_max\":[0.45,0.45,2.0],\"bbox_min\":[-0.45,-0.45,0.0],\"immutable\":true,\"name\":\"bath_shower\",\"object_id\":\"recon_bath_shower_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-2.1,2.1,0.0]}},{\"bbox_max\":[0.25,0.35,0.8],\"bbox_min\":[-0.25,-0.35,0.0],\"immutable\":true,\"name\":\"bath_toilet\",\"object_id\":\"recon_bath_toilet_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[6.123233995736766e-17,-0.0,-0.0,-1.0],\"translation\":[-1.05,2.2,0.0]}},{\"bbox_max\":[0.3,0.25,0.85],\"bbox_min\":[-0.3,-0.25,0.0],\"immutable\":true,\"name\":\"bath_vanity\",\"object_id\":\"recon_bath_vanity_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-2.2,1.0,0.0]}},{\"bbox_max\":[0.625,0.02,2.4],\"bbox_min\":[-0.625,-0.02,0.0],\"immutable\":true,\"name\":\"entry_screen\",\"object_id\":\"recon_entry_screen_0\",\"object_type\":\"wall_mounted\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[2.015,0.85,0.0]}},{\"bbox_max\":[0.2,0.2,0.05],\"bbox_min\":[-0.2,-0.2,0.0],\"immutable\":true,\"name\":\"main_light\",\"object_id\":\"recon_main_light_0\",\"object_type\":\"ceiling_mounted\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[0.0,0.0,2.45]}},{\"bbox_max\":[0.125,0.125,0.05],\"bbox_min\":[-0.125,-0.125,0.0],\"immutable\":true,\"name\":\"bath_light\",\"object_id\":\"recon_bath_light_0\",\"object_type\":\"ceiling_mounted\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[-1.65,1.65,2.45]}},{\"bbox_max\":[0.225,0.225,0.06],\"bbox_min\":[-0.225,-0.225,0.0],\"immutable\":true,\"name\":\"cooktop\",\"object_id\":\"recon_cooktop_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[1.05,-2.3,0.9]}},{\"bbox_max\":[0.25,0.225,0.08],\"bbox_min\":[-0.25,-0.225,0.0],\"immutable\":true,\"name\":\"kitchen_sink\",\"object_id\":\"recon_kitchen_sink_0\",\"object_type\":\"furniture\",\"transform\":{\"rotation_wxyz\":[1.0,0.0,0.0,0.0],\"translation\":[1.95,-2.3,0.9]}}],\"program_scope\":\"Propose a four-call move program from this initial observation. Calls are executed sequentially. This aggregated program example does not supply or simulate intermediate observations.\",\"request\":\"研究重建：低层高开间中需要保留储物，同时减少主要空间朝窗方向的遮挡；入口与其他用途仍须能够接近。只允许调整高收纳代理的位置与朝向，其他对象固定，记录收益、代价和未知项。输入的尺寸、对象及实例约束均为研究者设定。\",\"request_provenance\":\"adapted\",\"unknowns\":[\"All dimensions/placements/initial conditions are researcher assumptions; not a survey or historical before-state.\",\"Opaque entry screen is a fixed geometric curtain substitute; no cloth/articulation/material simulation.\",\"Window rays measure geometric visibility only, not daylight, spaciousness or aesthetics.\",\"Same cabinet envelope does not establish usable storage capacity; physical moving and installation unknown.\",\"Whole dwelling functions are represented by static proxies, not validated plumbing/cooking/sleeping/seating.\"]}"
+  },
+  "provenance": {
+    "family_id": "paris_19_remote_studio",
+    "decision_id": "ono_low_furniture_entry_storage",
+    "role": "source_conditioned_reconstructed_program",
+    "audit_only": true,
+    "training_eligible": false,
+    "historical_or_online_designer_trace": false,
+    "new_execution": false,
+    "scope": "Four actual sequential native calls aggregated under one initial observation; not four independently observed assistant steps. Conditional geometric benefit, no whole-room preference label."
+  },
+  "evaluation_only": {
+    "sentinel": "DBATCH_EVALUATION_ONLY_SENTINEL",
+    "outcome": {
+      "verified_local_gain": "Selected geometric aperture rays increase while named approach outcomes and the storage instance/envelope are retained.",
+      "source_implementation_gap": "Screen hides the cabinet from the declared dining station, but most sampled front points remain visible from living station.",
+      "preexisting_limit": "Kitchen prep fixed point remains unreachable for all three square widths; other point failures remain.",
+      "conditional_objective_demonstration": true,
+      "overall_professional_recommendation": false,
+      "daylight_or_spaciousness_gain_verified": false,
+      "whole_dwelling_function_verified": false,
+      "independent_professional_review": false,
+      "training_admitted": false
+    }
+  },
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "",
+      "images": [
+        "runtime/P920-ONO-v1_20261105T033650Z/replay/house/room_ono_conditional_storage/rollout_furniture/step_000.topdown.png",
+        "runtime/P920-ONO-v1_20261105T033650Z/replay/house/room_ono_conditional_storage/rollout_furniture/step_000.south.png",
+        "runtime/P920-ONO-v1_20261105T033650Z/replay/house/room_ono_conditional_storage/rollout_furniture/step_000.east.png",
+        "runtime/P920-ONO-v1_20261105T033650Z/replay/house/room_ono_conditional_storage/rollout_furniture/step_000.west.png",
+        "runtime/P920-ONO-v1_20261105T033650Z/replay/house/room_ono_conditional_storage/rollout_furniture/step_000.north.png"
+      ],
+      "tool_calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_high_storage_0",
+            "x": 0.3,
+            "y": 0.2,
+            "yaw": 0
+          }
+        },
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_high_storage_0",
+            "x": 0.3,
+            "y": 1.7,
+            "yaw": 0
+          }
+        },
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_high_storage_0",
+            "x": 0.3,
+            "y": 1.7,
+            "yaw": 90
+          }
+        },
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_high_storage_0",
+            "x": 2.2,
+            "y": 1.7,
+            "yaw": 90
+          }
+        }
+      ]
+    }
+  ]
+}
