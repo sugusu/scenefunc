@@ -1,0 +1,48 @@
+{
+  "run_id": "P920-PILOTPLAN-v1_20261105T094043Z",
+  "status": "failed_oom_before_first_optimizer_update",
+  "recorded_at": "2026-11-05T10:20:04.637951+00:00",
+  "plan_sha256": "6443a3bf19b2a7ec07df0ee4b76f48fb8e30f262da8fa459bd19869ef9d1f2c2",
+  "user_authorized": true,
+  "authorization_record": "USER_APPROVAL.json",
+  "planned_updates": 4,
+  "actual_updates": 0,
+  "arms_attempted": 1,
+  "arms_successful": 0,
+  "separate": {
+    "status": "failed",
+    "optimizer_updates": 0,
+    "started_at": "2026-11-05T10:16:07.964825+00:00",
+    "ended_at": "2026-11-05T10:17:19.425852+00:00",
+    "elapsed_seconds": 71.4610517299734,
+    "exit_code": 1
+  },
+  "paired": {
+    "status": "not_started_due_to_first_error_stop",
+    "optimizer_updates": 0
+  },
+  "batch": {
+    "started_at": "2026-11-05T10:15:27.789749+00:00",
+    "ended_at": "2026-11-05T10:17:20.145300+00:00",
+    "elapsed_seconds": 112.35557101201266,
+    "exit_code": 1
+  },
+  "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 272.00 MiB. GPU 0 has a total capacity of 23.56 GiB of which 128.94 MiB is free. Including non-PyTorch memory, this process has 23.42 GiB memory in use. Of the allocated memory 21.81 GiB is allocated by PyTorch, and 1.29 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+  "failure_phase": "Actual Trainer.training_step -> accelerator.backward -> non-reentrant checkpoint recomputation -> Qwen3-VL decoder MLP allocation.",
+  "completed_micro_backward_count": null,
+  "micro_count_note": "Micro loss list is saved only after success in this frozen code; do not invent a completed forward/backward count from missing logs.",
+  "checkpoint_or_adapter_saved": false,
+  "save_reload_verified": false,
+  "base_weights_modified": false,
+  "retries": 0,
+  "gpu_after_exit": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_MiB": 4,
+    "free_MiB": 24121,
+    "compute_processes": [],
+    "observed_at": "2026-11-05T10:20:04.637951+00:00"
+  },
+  "batch_counter_note": "BATCH.json completed_arms=1 counts one terminated attempt, not one successful arm.",
+  "interpretation": "The authorized BF16/SDPA configuration reaches real backward but fails before an optimizer update on GPU0. No paired/separate learning comparison, saved adapter or design/generalization result exists.",
+  "next_step": "Preserve failed attempt; inspect activation-memory options without changing frozen files or restarting training. Any new execution requires a concrete revised budget and separate authorization per the approved stop rule."
+}

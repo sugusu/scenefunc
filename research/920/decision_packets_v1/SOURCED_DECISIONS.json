@@ -1,17 +1,17 @@
 {
   "schema": "scenefunc-sourced-decision-maturity-v2",
-  "updated_at": "2026-11-05T08:07:34.929248+00:00",
+  "updated_at": "2026-11-05T09:59:32.922824+00:00",
   "purpose": "Separate supported professional knowledge from executable episode readiness without lowering evidence requirements.",
   "counts": {
-    "records_reviewed_here": 12,
-    "source_supported_knowledge": 12,
+    "records_reviewed_here": 14,
+    "source_supported_knowledge": 14,
     "partially_tool_expressible_candidates": 6,
     "source_grounded_replayed_episodes": 8,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
     "unique_source_decisions_with_replay": 5,
     "conditional_objective_benefit_demonstrations": 3,
-    "prospectively_train_allocated_knowledge_records": 6,
+    "prospectively_train_allocated_knowledge_records": 8,
     "conditional_mode_transition_demonstrations": 1
   },
   "records": [
@@ -1057,6 +1057,176 @@
       "training_eligible": false,
       "training_authorized": false,
       "next_action": "Use as a scoped source-guided candidate and objective review; do not retune this room or infer model learning. New loader check and training admission not performed."
+    },
+    {
+      "decision_id": "dlugi_external_roof_insulation_preserves_attic_volume",
+      "family_id": "poznan_dlugi_lokal_mili_mlodzi_ludzie_2014",
+      "allocation": "train_source_candidate",
+      "knowledge_category": "cost_construction_maintenance",
+      "professional_evidence": {
+        "evidence_kind": "architect_owned_project_statement",
+        "primary_crosscheck": {
+          "url": "https://milimlodziludzie.com/projects/dlugi-lokal/",
+          "attribution": "Lech Moczulski and Przemysław Nowak / Mili Młodzi Ludzie; architect-owned Polish first-person project description.",
+          "locator": "Wytyczne inwestorów paragraph; external insulation decision; web lines67",
+          "short_original_locator": "warstwa izolacyjna została położona",
+          "checked_at": "2026-11-05T09:57:44.110577+00:00",
+          "full_page_cached": false,
+          "raw_page_sha256": null
+        },
+        "raw_resident_brief_available": false,
+        "reuse_scope": "Brief attributed factual paraphrase; no source photographs or full text copied. Training/image reuse is not automatically cleared.",
+        "project_facts": {
+          "reported_year": 2014,
+          "reported_area_m2": 29.9,
+          "reported_length_m": 14,
+          "reported_width_m": 3,
+          "reported_max_height_m": 2.4,
+          "shape_caveat": "Attic with central constriction and roof slopes; these values do not define a rectangular surveyed shell."
+        }
+      },
+      "condition_summary": "阁楼可用空间紧张，原屋顶构架仍在。",
+      "condition_origin": "Retrospective architect account, not a raw resident brief; missing dimensions explicitly unknown.",
+      "rationale_summary": "把保温层设在屋顶外侧，保留室内空间及可见的原构架。",
+      "rationale_origin": "Researcher Chinese paraphrase of Polish architect explanation; not a verbatim translation label.",
+      "decision_scope": {
+        "source_decision": "外置屋顶保温",
+        "intended_benefit": "保留阁楼空间",
+        "unsupported_part": "This source statement does not establish a historically reconstructed tool action or measured benefit in our system."
+      },
+      "unknowns": [
+        "室外施工许可、围护构造及现场条件未取得。",
+        "热工、防水、结构、费用和维护后果未验证。"
+      ],
+      "tool_expression": {
+        "level": "knowledge_only_current_mechanism_unverified",
+        "full_source_decision_supported": false,
+        "executable_subdecision": null,
+        "qualification": "No accepted roof-envelope construction/insulation action in the current furniture editing workflow. Changing wall height or removing a proxy cannot represent preserving internal volume through external insulation.",
+        "existing_interface_evidence": "runs/920/P920-DIVERSITY-v1_20261105T071920Z/TOOL_SCOPE_AUDIT.json"
+      },
+      "source_to_scene": {
+        "historical_action_sequence": null,
+        "reconstructed_action_sequence": null,
+        "initial_proxy_ids": [],
+        "decision_packet": null
+      },
+      "maturity": {
+        "source_supported_knowledge": true,
+        "source_to_native_objects_bound": false,
+        "source_grounded_action_replayed": false,
+        "whole_room_consequences_reviewed": false,
+        "independent_professional_preference_label": false,
+        "paired_episode_ready": false
+      },
+      "readiness_by_layer": {
+        "professional_knowledge": {
+          "supported": true,
+          "use": "Attributed knowledge and retrieval candidate. Original explanation does not require a second designer to establish its provenance."
+        },
+        "professional_evaluation": {
+          "available": false
+        },
+        "scene_action": {
+          "executed": false,
+          "tool_calls": 0
+        },
+        "professional_decision_pair": {
+          "executed": false,
+          "positive_demonstration": false,
+          "core_training_ready": false
+        }
+      },
+      "split_fixed_at": "2026-11-05T07:41:49.807366+00:00",
+      "derived_knowledge_at": "2026-11-05T09:57:44.110577+00:00",
+      "training_eligible": false,
+      "training_authorized": false,
+      "knowledge_record": "runs/920/P920-DLUGI-KNOW-v1_20261105T095744Z/NEW_KNOWLEDGE.json"
+    },
+    {
+      "decision_id": "dlugi_raise_bed_for_view_and_underbed_storage",
+      "family_id": "poznan_dlugi_lokal_mili_mlodzi_ludzie_2014",
+      "allocation": "train_source_candidate",
+      "knowledge_category": "sightlines_and_daylight",
+      "professional_evidence": {
+        "evidence_kind": "architect_owned_project_statement",
+        "primary_crosscheck": {
+          "url": "https://milimlodziludzie.com/projects/dlugi-lokal/",
+          "attribution": "Lech Moczulski and Przemysław Nowak / Mili Młodzi Ludzie; architect-owned Polish first-person project description.",
+          "locator": "Final bedroom paragraph beginning W przeciwieństwie; web lines97",
+          "short_original_locator": "Przez podniesienie poziomu łóżka",
+          "checked_at": "2026-11-05T09:57:44.110577+00:00",
+          "full_page_cached": false,
+          "raw_page_sha256": null
+        },
+        "raw_resident_brief_available": false,
+        "reuse_scope": "Brief attributed factual paraphrase; no source photographs or full text copied. Training/image reuse is not automatically cleared.",
+        "project_facts": {
+          "reported_year": 2014,
+          "reported_area_m2": 29.9,
+          "reported_length_m": 14,
+          "reported_width_m": 3,
+          "reported_max_height_m": 2.4,
+          "shape_caveat": "Attic with central constriction and roof slopes; these values do not define a rectangular surveyed shell."
+        }
+      },
+      "condition_summary": "寝区需要利用窗外视野并安排收纳；准确窗台和屋面尺寸未知。",
+      "condition_origin": "Retrospective architect account, not a raw resident brief; missing dimensions explicitly unknown.",
+      "rationale_summary": "抬高床位对齐窗高，同时在床下设置抽屉。",
+      "rationale_origin": "Researcher Chinese paraphrase of Polish architect explanation; not a verbatim translation label.",
+      "decision_scope": {
+        "source_decision": "抬高床位并配置床下抽屉",
+        "intended_benefit": "窗外视野与收纳",
+        "unsupported_part": "This source statement does not establish a historically reconstructed tool action or measured benefit in our system."
+      },
+      "unknowns": [
+        "抬高量、睡眠姿态和床上净高未取得。",
+        "抽屉容量、开启路径、承重和实际视域未量测。"
+      ],
+      "tool_expression": {
+        "level": "knowledge_only_current_mechanism_unverified",
+        "full_source_decision_supported": false,
+        "executable_subdecision": null,
+        "qualification": "Current furniture move fixes floor z=0; scaling a bed changes dimensions and does not construct a raised support or working drawers. Native planar access cannot establish bed-level headroom or seated/lying view.",
+        "existing_interface_evidence": "runs/920/P920-DIVERSITY-v1_20261105T071920Z/TOOL_SCOPE_AUDIT.json"
+      },
+      "source_to_scene": {
+        "historical_action_sequence": null,
+        "reconstructed_action_sequence": null,
+        "initial_proxy_ids": [],
+        "decision_packet": null
+      },
+      "maturity": {
+        "source_supported_knowledge": true,
+        "source_to_native_objects_bound": false,
+        "source_grounded_action_replayed": false,
+        "whole_room_consequences_reviewed": false,
+        "independent_professional_preference_label": false,
+        "paired_episode_ready": false
+      },
+      "readiness_by_layer": {
+        "professional_knowledge": {
+          "supported": true,
+          "use": "Attributed knowledge and retrieval candidate. Original explanation does not require a second designer to establish its provenance."
+        },
+        "professional_evaluation": {
+          "available": false
+        },
+        "scene_action": {
+          "executed": false,
+          "tool_calls": 0
+        },
+        "professional_decision_pair": {
+          "executed": false,
+          "positive_demonstration": false,
+          "core_training_ready": false
+        }
+      },
+      "split_fixed_at": "2026-11-05T07:41:49.807366+00:00",
+      "derived_knowledge_at": "2026-11-05T09:57:44.110577+00:00",
+      "training_eligible": false,
+      "training_authorized": false,
+      "knowledge_record": "runs/920/P920-DLUGI-KNOW-v1_20261105T095744Z/NEW_KNOWLEDGE.json"
     }
   ],
   "count_scope": "Twelve knowledge records: six development and six prospective training-source records. Five source decisions have eight executed reconstruction variants. Three conditional geometric benefit demonstrations and one conditional activity-mode transition are distinct outcome types; four dependent Waterloo steps are one sourced decision."

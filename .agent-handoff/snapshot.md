@@ -1,13 +1,12 @@
 # 当前研究状态
 
-- 更新2026-11-05T09:48:43.400698+00:00，总体Goal active；上一轮LOSS为progress，本轮也是具体代码/验收进展。无活跃作业，未获训练授权，不更新权重。
-- 当前run P920-PILOTPLAN-v1_20261105T094043Z，首次可执行训练机制方案已就绪，正式文件PLAN_V2.json，SHA6443a3bf19b2a7ec07df0ee4b76f48fb8e30f262da8fa459bd19869ef9d1f2c2。请在发布后向用户申请这个具体方案的单独授权，不把历史“允许”当新训练批准。
-- 新decision_pilot.py与run_decision_pilot_batch.py通过固定官方train_sft独立overlay入口，继承实际Trainer，使用LOSS既有锁定实际加载器张量。专业training_manifest与旧audit_only门禁未改；此为条件重建机制试运行，不自动计正式专业训练准入。
-- 拟议两组各2更新/全计4，20微例一完整来源宏批次，共80前向反向；各982目标token、来源分母AIR118/STORAGE472/WATERLOO392。3来源等权；单GPU0、BF16/SDPA、非重入检查点、AdaFactor2e-5、seed42；语言36层q/v共72投影/r8alpha16/dropout0，3833856可训练参数，视觉/底座冻结。每组1800s/外层3900s，首错即停，无自动重试或扩预算。
-- 训练分支写好有限loss/梯度检查、精确更新/微例计数、每步checkpoint、适配器变化及磁盘保存/同进程清零重载核对；未执行真实反向/优化，显存与cold optimizer resume不保证。两步不支持学习或泛化结论。
-- 实际v2两官方CLI CPU检查42.112976s/0、42.162716s/0；常量logits通过真实Trainer.training_step，拦截backward，误差3.22e-8/9.21e-9；不创建优化器、不初始化CUDA。首v1检查41.807914s/0保留，修订仅补有限值/预算断言及首日志，AMENDMENT_01事前记录。missing/false批准均exit1为预期门禁验证，训练目录不存在。sessions91629/5487/66717/41943/13289全部终态。
-- 方案入口README、RESULT、PLAN_V2、PROPOSED_COMMAND、LORA_MODULES、INSPECT_*、execution；APPROVAL_TEMPLATE=false，仅示意，不能运行。若用户批准，另记真实消息引用+精确planSHA，再通过run_stage执行batch；不要修改批准后的代码/计划哈希。网络失败只推提交不重训。
-- 发布：当前准备训练前验收节点commit/push。上一个远端2a7dbd6f5632fa67ca646f4d429f7859c3f3f0fa为LOSS已核。
-- 独立继续方向：专业来源/独立整屋任务覆盖；无需再跑三来源加载器/前向。总体数据仍12知识、5来源决定/8版本、9回放34动作、6客观QA，3条件几何收益+1模式转换；外部Mini165。MODEBASE4会话24尝试0/4单列。20家族=12dev+8train_source、0sealed；专业人评/正式训练准入0。
-- LOSS既有30来源前向+2公式检查，动作NLL0.283854/0.437199，无学习结论。空think/完整理由的训练与推理上下文须交叉报告，不是同前缀矛盾目标；公共解释不能读测试事后答案。源决定不等于动作步。
-- 不碰Swiss及未跟踪extract_swiss_development_input.py。训练待授权不等于整体研究堵塞；资料与独立任务工作继续。Goal不缩减或标完成。
+- 更新2026-11-05T10:20:04.637951+00:00；总体Goal active，论文目标未完成。无活跃作业；session14349已exit1。
+- 用户明确批准PILOTPLAN精确PLAN_V2四更新试运行，记录USER_APPROVAL.json；已实际执行并按首错停止，不再待本次答复。批准不覆盖换配置、自动重试或后续训练。
+- 当前run P920-PILOTPLAN-v1_20261105T094043Z；planSHA6443a3bf19b2a7ec07df0ee4b76f48fb8e30f262da8fa459bd19869ef9d1f2c2不变。实际批次112.355571s/1，分开组71.461052s/1；反向检查点重算的Qwen MLP分配272MiB失败，0/4优化更新，配对组未启动。
+- 首日志/真实开始退出/错误/批准均已归档；TRAINING_RESULT.json是当前结果，之前RESULT与CPU检查是准备证据。没有训练checkpoint/adapter、未验证保存重载；逐微例日志在失败时未保存，完成微例数未知。BATCH completed_arms=1表示一次尝试结束，成功组0。GPU0已恢复4MiB占用/24121MiB空闲。
+- 不修改本次冻结代码、输入、模型或计划，不重跑。下一步只读诊断反向激活显存与保持同知识/动作/监督token的可执行方案；另立具体可审核计划后再申请训练。独立数据与整屋任务工作继续，不能把失败推为设计或学习结论。
+- 待发布阻断错误节点将一并带上普通数据增量：DLUGI两知识（外屋顶保温/抬床窗景抽屉），0新动作；EVALTASK两家族先划测试候选再读源，2草案导出0.064759s/0，无场景/模型。Casa读主文、Moabit仅作者作品搜索片段/fullpage403；明确研究人数、矩形与门窗，缺原始brief/测绘/评价阈值。
+- 数据：14知识/13知识家族，22登记家族=12dev+8train_source+2test_candidate，0sealed/0正式评价ready。5执行来源决定/8版本、9回放34动作、6客观QA、3条件几何收益+1模式转换，Mini165；真人专业验收/正式核心训练准入仍0。测试候选禁止训练与其他项目检索，不加入已执行pilot。
+- 最新已推ed9eafac5f7264c4fbadd0855212235d2fc2e456（训练前验收），本次失败按关键节点立即提交推送并ls-remote核对。历史LOSS30前向动作NLL.283854/.437199仅条件提示效应；MODEBASE0/4只作开发失败。无需重跑这些检查。
+- 当前证据目录：runs/920/P920-PILOTPLAN-v1_20261105T094043Z、P920-DLUGI-KNOW-v1_20261105T095744Z、P920-EVALTASK-v1_20261105T100503Z；批准记录不是模板。大模型与runtime仅服务器，Git存小日志/哈希/恢复说明。
+- 不碰Swiss及未跟踪scripts/920/extract_swiss_development_input.py，不使用其他GPU、不外发联系或付费。Goal持续active，不缩成机制试验。

@@ -1,18 +1,28 @@
 {
   "run_id": "P920-PILOTPLAN-v1_20261105T094043Z",
-  "status": "ready_for_separate_training_review",
+  "status": "failed_oom_before_first_optimizer_update",
   "question": "Can the actual official-entry Trainer accumulate a source-balanced matched objective, update only declared language LoRA adapters, and save/reload them under the same finite two-arm budget?",
-  "updated_at": "2026-11-05T09:47:03.765080+00:00",
+  "updated_at": "2026-11-05T10:20:04.637951+00:00",
   "configuration_hashes": {
     "final_plan": "6443a3bf19b2a7ec07df0ee4b76f48fb8e30f262da8fa459bd19869ef9d1f2c2"
   },
   "completed_planned": {
     "cpu_arm_inspections": 2,
     "planned": 2,
-    "optimizer_updates": 0
+    "optimizer_updates": 0,
+    "planned_optimizer_updates": 4,
+    "successful_training_arms": 0,
+    "planned_training_arms": 2
   },
-  "failure_reason": null,
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PILOTPLAN-v1_20261105T094043Z/RESULT.json",
-  "next_step": "Obtain separate approval for the concrete four-update pilot; continue source/independent-task work meanwhile.",
-  "execution_receipts": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PILOTPLAN-v1_20261105T094043Z/EXECUTION.json"
+  "failure_reason": "OutOfMemoryError: CUDA out of memory. Tried to allocate 272.00 MiB. GPU 0 has a total capacity of 23.56 GiB of which 128.94 MiB is free. Including non-PyTorch memory, this process has 23.42 GiB memory in use. Of the allocated memory 21.81 GiB is allocated by PyTorch, and 1.29 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PILOTPLAN-v1_20261105T094043Z/TRAINING_RESULT.json",
+  "next_step": "Preserve failed attempt; inspect activation-memory options without changing frozen files or restarting training. Any new execution requires a concrete revised budget and separate authorization per the approved stop rule.",
+  "execution_receipts": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PILOTPLAN-v1_20261105T094043Z/EXECUTION.json",
+  "training_authorized": true,
+  "authorization_record": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PILOTPLAN-v1_20261105T094043Z/USER_APPROVAL.json",
+  "actual_outer_start": "2026-11-05T10:15:27.789749+00:00",
+  "actual_outer_pid": 1262855,
+  "actual_exit_status": 1,
+  "actual_outer_end": "2026-11-05T10:17:20.145300+00:00",
+  "authorization_consumed": true
 }
