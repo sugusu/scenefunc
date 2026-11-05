@@ -1,29 +1,31 @@
 {
   "schema": "scenefunc-data-layers-v1",
-  "updated_at": "2026-11-05T07:33:49.430650+00:00",
+  "updated_at": "2026-11-05T08:07:34.929248+00:00",
   "scope": "Current decision packet, not all indexed corpus entries. Counts are independent; unavailable pair supervision does not erase other layers.",
   "knowledge_records": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
   "counts": {
-    "professional_knowledge_records": 11,
-    "partially_tool_expressible_knowledge_records": 5,
-    "executed_professional_decision_pairs": 4,
-    "existing_objective_replay_episodes": 8,
-    "existing_objective_replay_actions": 30,
+    "professional_knowledge_records": 12,
+    "partially_tool_expressible_knowledge_records": 6,
+    "executed_professional_decision_pairs": 5,
+    "existing_objective_replay_episodes": 9,
+    "existing_objective_replay_actions": 34,
     "professional_reviews_of_our_candidates": 0,
     "independent_acceptances_of_our_pairs": 0,
     "core_training_admitted": 0,
-    "executed_reconstruction_variants": 7,
-    "objective_QA_review_records": 5,
+    "executed_reconstruction_variants": 8,
+    "objective_QA_review_records": 6,
     "positive_professional_demonstrations": 0,
     "conditional_objective_benefit_demonstrations": 3,
-    "prospectively_train_allocated_knowledge_records": 5,
+    "prospectively_train_allocated_knowledge_records": 6,
     "conditional_corrective_OTA_candidates": 1,
     "published_professional_review_records_paper_attributed": 165,
     "local_floor_gain_with_failed_access_records": 1,
     "unadmitted_storage_mechanical_OTA_step_candidates": 5,
     "conditional_storage_OTA_step_candidates": 5,
     "conditional_source_guided_storage_decision_candidates": 1,
-    "new_knowledge_QA_candidates_diversity": 2
+    "new_knowledge_QA_candidates_diversity": 2,
+    "conditional_mode_transition_demonstrations": 1,
+    "conditional_table_mode_OTA_step_candidates": 4
   },
   "objective_action_records": [
     {
@@ -173,15 +175,26 @@
         }
       ],
       "conditional_objective_benefit": true
+    },
+    {
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "evidence": "runs/920/P920-WATERLOO-v1_20261105T074801Z/DECISION_PACKET.json",
+      "kind": "source_guided_transfer_with_conditional_activity_modes",
+      "positive_professional_recommendation": false,
+      "independent_review": false,
+      "core_training_ready": false,
+      "conditional_mode_transition": true,
+      "qualification": "runs/920/P920-WATERLOO-v1_20261105T074801Z/SUMMARY.json"
     }
   ],
   "counting_notes": [
-    "Eleven knowledge records (six development and five prospectively train-allocated sources) and four executed source decisions are separate counts. Two new text QA formulations repeat knowledge, not new decisions or expert labels.",
-    "Eight objective replay episodes contain30 actual tool calls; seven reconstructed variants belong to four sourced decisions. Dancer is the remaining diagnostic episode.",
-    "Five objective QA records are not human evaluations. Display order and repeated variants do not create independent professional reviews.",
+    "Twelve knowledge records and five executed source decisions are separate counts; Waterloo four moves and one objective review belong to one new source decision.",
+    "Nine objective replay episodes contain34 actual tool calls; eight reconstruction variants belong to five sourced decisions. Dancer is the remaining diagnostic episode.",
+    "Six objective QA records are not human evaluations. Three Waterloo states and repeated variants do not create independent professional judgments.",
     "165 official Mini plan/score/text triples are attributed to the professional-data method described in the paper. They are not 165 independent verified projects, our-candidate reviews, or 3D actions.",
     "Three conditional geometric benefit records (Ono, AIR-v2, STORAGE-v2) retain assumptions and costs; none establishes professional preference, training or generalization benefit.",
-    "STORAGE remains one sourced decision, now two input versions. V1 has five mechanical candidates and failed all-zero access; v2 has five conditionally useful action candidates with strict coverage passed. They are not10 independent decisions or a method-control experiment. Shared AIR geometry template is not independent test evidence."
+    "STORAGE remains one sourced decision, now two input versions. V1 has five mechanical candidates and failed all-zero access; v2 has five conditionally useful action candidates with strict coverage passed. They are not10 independent decisions or a method-control experiment. Shared AIR geometry template is not independent test evidence.",
+    "Waterloo supports a conditional work/hosting/return transition; it is counted separately from the three local geometric-benefit demonstrations. The existing largest-empty-rectangle metric is constant across its states and does not explain their activity difference."
   ],
   "objective_review_records": [
     {
@@ -223,6 +236,15 @@
       "evidence": "runs/920/P920-STORAGE-v2_20261105T062810Z/OBJECTIVE_REVIEW.json",
       "export_evidence": "runs/920/P920-STORAGE-v2_20261105T062810Z/EXPORT_CHECKS.json",
       "kind": "objective_geometric_review_of_source_guided_transfer",
+      "professional_review": false,
+      "new_actual_loader_audit": false,
+      "training_authorized": false
+    },
+    {
+      "id": "P920-WATERLOO-v1_20261105T074801Z_objective_modes",
+      "evidence": "runs/920/P920-WATERLOO-v1_20261105T074801Z/OBJECTIVE_REVIEW.json",
+      "export_evidence": "runs/920/P920-WATERLOO-v1_20261105T074801Z/EXPORT_CHECKS.json",
+      "kind": "objective_geometric_mode_review",
       "professional_review": false,
       "new_actual_loader_audit": false,
       "training_authorized": false

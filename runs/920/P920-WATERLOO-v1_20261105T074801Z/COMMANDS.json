@@ -1,0 +1,90 @@
+{
+  "working_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "commands": {
+    "prepare": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/prepare_table_modes.py",
+      "--run",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z",
+      "--runtime",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z"
+    ],
+    "build": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/build_reference_room.py",
+      "--plan",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z/BUILD_PLAN.json",
+      "--scenesmith",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build"
+    ],
+    "preflight": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/preflight_sourced_trajectory.py",
+      "--plan",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z/REPLAY_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/PREFLIGHT.json"
+    ],
+    "native": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/replay_table_modes.py",
+      "--plan",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z/REPLAY_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay"
+    ],
+    "summary": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/summarize_table_modes.py",
+      "--run-id",
+      "P920-WATERLOO-v1_20261105T074801Z"
+    ],
+    "export_initial": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z/EXPORT_INITIAL_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/export_initial"
+    ],
+    "export_hosting": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z/EXPORT_HOSTING_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/export_hosting"
+    ],
+    "export_returned": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/export_catalog_geometry.py",
+      "--plan",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z/EXPORT_RETURNED_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/export_returned"
+    ],
+    "sensitivity": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/geometry311/bin/python",
+      "scripts/920/check_table_width_sensitivity.py",
+      "--plan",
+      "runs/920/P920-WATERLOO-v1_20261105T074801Z/SENSITIVITY_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/WIDTH_SENSITIVITY.json"
+    ]
+  },
+  "execution_receipts": {
+    "prepare": "execution/prepare/receipt.json",
+    "build": "execution/build/receipt.json",
+    "preflight": "execution/preflight/receipt.json",
+    "native": "execution/native/receipt.json",
+    "summary": "execution/summary/receipt.json",
+    "export_initial": "execution/export_initial/receipt.json",
+    "export_hosting": "execution/export_hosting/receipt.json",
+    "export_returned": "execution/export_returned/receipt.json",
+    "sensitivity": "execution/sensitivity/receipt.json"
+  },
+  "additional_input_check": "INPUT_CHECK.json was computed directly before native execution using validate_bundle and table_modes; no native calls. No separate run_stage receipt for that short inline CPU check.",
+  "restoration": "Use BUILD_PLAN and generated_assets source hashes. Rebuild into a fresh directory using prepare_table_modes/build_reference_room with existing pinned environments. For continuation use replay/checkpoint_4 and native_project/native_checkpoint, not a new replay. Original loaded runtime and dependencies recorded in environment file; large scene/GLB remain on server."
+}
