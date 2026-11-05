@@ -1,0 +1,58 @@
+{
+  "run_id": "P920-CASA-COMP-v1_20261105T123924Z",
+  "frozen_at": "2026-11-05T12:39:24.896021+00:00",
+  "question": "Under identical complete-room input and decoding, what rooms do the frozen base and the two approved two-update adapters actually produce? Mechanism pilot follow-up only; no generalization or professional benefit claim.",
+  "arms": {
+    "base": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/base/PLAN.json",
+      "sha256": "cfada3e2d5f6b4c7177b79492f194f2d3974ae16333cfa7aadf014d856f25fb7"
+    },
+    "separate": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/separate/PLAN.json",
+      "sha256": "3426a4373c67fe48d4853c7b3b6e7da1a8e3a5b152e7453076d9c9929d513bbd"
+    },
+    "paired": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-COMP-v1_20261105T123924Z/paired/PLAN.json",
+      "sha256": "e4fa0af366c9c855f31ef419d8cd9dc34c250eb04ec55d83d778f6ce8b831ad5"
+    }
+  },
+  "execution_order": [
+    "base",
+    "separate",
+    "paired"
+  ],
+  "budget": {
+    "model_calls_total_max": 72,
+    "tool_calls_total_max": 72,
+    "per_arm": {
+      "model_calls": 24,
+      "tool_calls": 24,
+      "max_new_tokens": 1024,
+      "max_input_tokens": 12288,
+      "max_pixels": 65536,
+      "seconds_per_model_call": 180,
+      "prepare_seconds": 300,
+      "rollout_seconds": 5400,
+      "cpu_cores": 4,
+      "output_max_bytes": 8589934592,
+      "single_attempt": true,
+      "retries": 0,
+      "training_updates": 0
+    },
+    "retries": 0,
+    "training_updates": 0
+  },
+  "shared_preparation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CASA-COMP-v1_20261105T123924Z/prepare",
+  "initial_views_run": "P920-CASA-OBS-v1_20261105T123507Z",
+  "audit_plan_sha256": "fa58a7acdc85525852daa13a7493317a3056db22c4d2e69abda5297904e3c145",
+  "stop_rule": "First infrastructure failure stops the batch. Valid done/no-action or tool rejection is a retained policy outcome. No prompt/task/threshold/adapter changes after output.",
+  "scope": {
+    "requirements": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CASA-INPUT-v1_20261105T104553Z/REQUIREMENT_TRACKER.json",
+      "sha256": "591c93c65175628890db4d8c0620bb1796bc2e2efc3fa24a605446861518291b"
+    },
+    "primary_reporting": "Per requirement evidence (pass under stated proxy / violated / unknown), inventory, actual meshes/contact and access, immutable geometry, exact actions/rejections/cost. Never replace full requirements by furniture count or free area.",
+    "no_aggregate_professional_score": true,
+    "limitations": "One unsealed source-inspired room with researcher dimensions. Two training steps per adapter. No blind human review, training convergence or generalization claim. Strong same-knowledge prompt/retrieval and action-only training controls remain future work."
+  }
+}
