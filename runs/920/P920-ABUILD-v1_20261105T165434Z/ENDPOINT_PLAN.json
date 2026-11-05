@@ -1,0 +1,73 @@
+{
+  "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ABUILD-v1_20261105T165434Z/native/checkpoint",
+  "rail_id": "open_clothes_rail_0",
+  "rail_approach_definition": {
+    "local_sides": [
+      "+Y",
+      "-Y"
+    ],
+    "line_samples": 5,
+    "clearance_m": 0.05,
+    "claim": "Sampled side approaches to open rail; not garment reach/handling time or capacity."
+  },
+  "measurement": {
+    "grid_m": 0.02,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "entry_center_xy_m": [
+      0,
+      2.5
+    ],
+    "entry_inward_normal_xy": [
+      0,
+      -1
+    ],
+    "approach_points_xy_m": {
+      "bed_side": [
+        -0.7,
+        -1.2
+      ],
+      "living_front": [
+        0.35,
+        -0.55
+      ],
+      "dining_west": [
+        0.65,
+        -0.95
+      ],
+      "dining_east": [
+        2.55,
+        -0.95
+      ],
+      "kitchen_prep": [
+        1.8,
+        1.3
+      ],
+      "bath_center": [
+        -1.65,
+        1.3
+      ],
+      "window_front": [
+        0,
+        -2.1
+      ]
+    }
+  },
+  "unknowns": [
+    "6x5x2.6m rectangular shell, internal bath, openings and placements are research assumptions; only approximately 30m² and two short-stay visitors are source context.",
+    "Freestanding double-rail substitutes for original metal pipe, adding floor footprint and not reproducing original mounting.",
+    "Sleeping/cooking/bathroom/under-bed storage represented by unvalidated proxies; no capacity, services, physical reach, load or comfort claim.",
+    "Door leaves hypothetically open for route measurements; square body sizes/grid/clearance are declared proxies, not standards.",
+    "Moving this proxy rail is a researcher correction to a measured failure; the source does not specify this placement or movement. No weight, actual manual movement or turning proof."
+  ],
+  "code_sha256": {
+    "measure_clothing_construction.py": "bda1e1d79a03d9a7e4c1a101cf9be05c690ad0363f05ccb3356522e162af78b4",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "measure_room_access.py": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d",
+    "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1"
+  }
+}
