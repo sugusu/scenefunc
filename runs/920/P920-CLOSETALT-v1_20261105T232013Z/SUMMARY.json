@@ -1,0 +1,154 @@
+{
+  "run_id": "P920-CLOSETALT-v1_20261105T232013Z",
+  "status": "static_alternative_catalog_restored_candidate_pose_rejected",
+  "recorded_at": "2026-11-05T23:33:07.857367+00:00",
+  "source_decision": "airbnp_open_clothing_access_for_short_stays",
+  "new_source_families": 0,
+  "new_professional_knowledge_records": 0,
+  "new_source_native_actions": 0,
+  "model_calls": 0,
+  "training_updates": 0,
+  "selected_new_assets": 1,
+  "catalog_entries": 8,
+  "original_catalog_entries": 7,
+  "original_furniture": 13,
+  "final_actual_furniture": 13,
+  "proposed_furniture": 13,
+  "proposed_native_executed": false,
+  "observations": 0,
+  "asset_preview_images": 2,
+  "actual_native_new_tool_calls": 0,
+  "source_scope": "Attributed short-stay rapid-access rationale; no long-stay converse or designer rejection.",
+  "access": {
+    "open_rail": {
+      "bbox_floor_area_m2": 0.395947840481071,
+      "width_depth_height_m": [
+        0.8996918201446533,
+        0.4400927424430847,
+        1.7311038114115966
+      ],
+      "face_counts": [
+        {
+          "width_m": 0.4,
+          "reachable": {
+            "+Y": 0,
+            "-Y": 5
+          }
+        },
+        {
+          "width_m": 0.5,
+          "reachable": {
+            "+Y": 0,
+            "-Y": 5
+          }
+        },
+        {
+          "width_m": 0.6,
+          "reachable": {
+            "+Y": 0,
+            "-Y": 5
+          }
+        }
+      ],
+      "fixed_counts": [
+        7,
+        7,
+        7
+      ]
+    },
+    "closed_wardrobe": {
+      "bbox_floor_area_m2": 0.5263779969268079,
+      "width_depth_height_m": [
+        0.9002281725406647,
+        0.5847162008285522,
+        2.111999988555908
+      ],
+      "face_counts": [
+        {
+          "width_m": 0.4,
+          "reachable": {
+            "+Y": 0
+          }
+        },
+        {
+          "width_m": 0.5,
+          "reachable": {
+            "+Y": 0
+          }
+        },
+        {
+          "width_m": 0.6,
+          "reachable": {
+            "+Y": 0
+          }
+        }
+      ],
+      "fixed_counts": [
+        7,
+        7,
+        7
+      ]
+    }
+  },
+  "preflight": {
+    "status": "reference_preflight_completed",
+    "started_at": "2026-11-05T23:25:24.384192+00:00",
+    "phase": "preflight",
+    "plan_sha256": "b7464e5a26e40a3c9e86044c8a88ea21ad9cc0b4053b9ecf3abf5d0b136c98c8",
+    "model_calls": 0,
+    "training_updates": 0,
+    "tool_calls": 0,
+    "observations": 0,
+    "historical_trajectory": false,
+    "professional_demonstration": false,
+    "training_admitted": false,
+    "overlaps": [],
+    "outside": [],
+    "all_declared_targets_reachable": true,
+    "ended_at": "2026-11-05T23:25:24.535543+00:00"
+  },
+  "native_candidate_admitted": false,
+  "professional_preference_label": null,
+  "training_eligible": false,
+  "whole_home_accepted": false,
+  "restored_original_history_receipts": 7,
+  "cold_restore_roundoff_count": 4,
+  "failures": [
+    {
+      "stage": "restore_stage",
+      "exit_code": 1,
+      "reason": "Original session bound old canonical catalog hash; appended catalog correctly rejected422."
+    },
+    {
+      "stage": "migration_stage",
+      "exit_code": 1,
+      "reason": "Migration implementation initially compared canonical catalog hash to file-byte SHA256. Failed before output; v2 uses native canonical_hash."
+    }
+  ],
+  "corrected_restore": {
+    "receipt": {
+      "started_at": "2026-11-05T23:31:11.805175+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/restore_terminal_catalog.py",
+        "--plan",
+        "runs/920/P920-CLOSETALT-v1_20261105T232013Z/RESTORE_V2_PLAN.json",
+        "--out",
+        "../runtime/P920-CLOSETALT-v1_20261105T232013Z/cold_restore_v2"
+      ],
+      "timeout_seconds": 120,
+      "pid": 1412965,
+      "start_ticks": "57932039",
+      "log": "../runtime/P920-CLOSETALT-v1_20261105T232013Z/restore_v2_stage/stage.log",
+      "ended_at": "2026-11-05T23:31:20.351040+00:00",
+      "elapsed_seconds": 8.545886641019024,
+      "exit_code": 0,
+      "first_log": "2026-11-05T23:31:11.876757+00:00 begin terminal native cold restore"
+    },
+    "result": "runs/920/P920-CLOSETALT-v1_20261105T232013Z/cold_restore_v2/RESULT.json"
+  },
+  "catalog_bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CLOSETALT-v1_20261105T232013Z/migrated_v2/bundle",
+  "catalog_manifest_sha256": "56c5ee34d6b97577bb3a65e68e505fa1812897410f91a51475965a39edb2a75a",
+  "claim": "A static closed wardrobe is now represented in a recoverable extended catalog. This fixed pose fails door-side access and is not a fair functional choice candidate; no new paired demonstration or design gain."
+}

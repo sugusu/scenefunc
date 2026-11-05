@@ -311,3 +311,9 @@ Bukit交付追加：前后GLB各5,259,000B，34节点/10对象视觉全部回读
 2026-11-05T22:53:12.281959+00:00 MILAN build1.972268/0；preflight east1.219946/0 central1.219716/0，central .6四点失败未执行。east native131.542830/0，initialaudit5.183461/0 finalaudit5.133745/0 measurement.918015/0 restore8.947275/0 export12.860801/0 archive.265710/0。103产物hash、15图state/decode、2实际tool schema、11图视觉、冻结source/task/build/code hash均通过，gitdiffcheck通过。0模型/训练，formal评价未ready。
 
 2026-11-05T23:13:47.378140+00:00 MILAN prepare57.113084/0；calibration wrong-path .717730/1、v2 5.535114/0；rollout418.715213/1（第7输出1024未闭合）。initial evaluation5.183970/0、final5.285028/0、geometry5.435548/0、restore9.047005/0、export13.012491/0、archive.517364/0。35图实例/7状态绑定、5末图目视通过；1真实mesh接触、1原ID缺失如实报告，不等于验收通过。旧三批230文件hash复核通过，git diff --check通过。
+
+2026-11-05T23:17:01.400720+00:00 四批发布完成：runs/920 9b46fc10220a632241154f62aa7f1bf4bd161b0b，380个Git blob核验；push17.381701秒/0、ls-remote3.077393秒/0远端完全一致。publication_milan_20261105/PUBLICATION.json为真实回执。只留发布后交接补记及未跟踪Swiss，下一普通窗口>=00:15:57UTC；不重跑实验/不单独补提交。
+
+2026-11-05T23:34:32.223062+00:00 CLOSETALT resolve1.269766/0、download4.432146/0、inspect.516968/0、preview1.420549/0、catalog1.320532/0、preflight.717630/0、face1.169170/0。restore v1 8.194607/1(422 catalog mismatch)，migration v1 .215689/1(no output)，v2 .416563/0；restore v2 8.545887/0。两个真实资产图已看，原13状态/7历史/旧模板/资源保持，0新家具动作。
+
+2026-11-05T23:35:21.199950+00:00 CLOSETALT68公开产物hash/大小/JSON、四新脚本AST、冻结代码与失败v1代码快照hash通过。git diff --cached --check只报告Blender原始preview日志两行尾空白，原字节为证据保留；排除此唯一raw log后所有改动check通过。按实际恢复错误/修复节点合并发布，不等待普通小时窗口。
