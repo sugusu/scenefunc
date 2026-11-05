@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py", line 75, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py", line 24, in main
+    im,ih,ir,_=validate_bundle(original);fm,fh,fr,_=validate_bundle(a.bundle);rid=im['selected_room_id'];assert rid==fm['selected_room_id'];before=ih['rooms'][rid];after=fh['rooms'][rid];room=a.bundle/('room_'+rid)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/native_project.py", line 92, in validate_bundle
+    manifest = read_json(root / "manifest.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/native_project.py", line 39, in read_json
+    return json.loads(path.read_text(encoding="utf-8"),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-TASK-v1_20261105T224015Z/east/native/final_checkpoint/manifest.json'

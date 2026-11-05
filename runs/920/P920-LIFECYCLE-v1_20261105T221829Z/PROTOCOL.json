@@ -1,0 +1,227 @@
+{
+  "run_id": "P920-LIFECYCLE-v1_20261105T221829Z",
+  "frozen_at": "2026-11-05T22:18:42.276702+00:00",
+  "source_decision_id": "michelet_adapt_family_lifecycle",
+  "family_id": "paris_michelet_nomadic",
+  "source_sha256": "8eac05be02b76036b13dceafde5edf54aaa27ed68745c90c99361e535404670e",
+  "task_sha256": "573faf33ef621eeae67c51815ca76bc613663d68b1ea4f7f27037fdc5e13b8f4",
+  "commands": [
+    {
+      "role": "decommission_no_longer_required_bed",
+      "source_reason": "住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。",
+      "reason_scope": "Supports purpose adaptation, not a prescribed removal/disposal method.",
+      "command": {
+        "name": "remove_furniture_tool",
+        "arguments": {
+          "object_id": "former_child_bed_0"
+        }
+      }
+    },
+    {
+      "role": "provide_dedicated_work_surface",
+      "planned_id": "dining_table_0",
+      "command": {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_5d70cc76c99acee4513ec5f7fad497d2baebca9e",
+          "x": 4.1,
+          "y": 1.5,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "role": "provide_office_seat",
+      "planned_id": "dining_chair_1_0",
+      "command": {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02",
+          "x": 4.1,
+          "y": 0.6,
+          "yaw": 0
+        }
+      }
+    }
+  ],
+  "fixed_approach_points": {
+    "main_bed_side": [
+      -2.65,
+      1.2
+    ],
+    "living_sofa_front": [
+      -3.9,
+      -0.99
+    ],
+    "family_chair_n_side": [
+      -1.0,
+      1.72
+    ],
+    "family_chair_s_side": [
+      -1.0,
+      0.08
+    ],
+    "family_chair_e_side": [
+      0.42,
+      1.5
+    ],
+    "fridge_front": [
+      -1.9,
+      -1.38
+    ],
+    "prep_front": [
+      -0.8,
+      -1.54
+    ],
+    "sink_front": [
+      0.3,
+      -1.49
+    ],
+    "cooker_front": [
+      1.32,
+      -1.54
+    ],
+    "shower_front": [
+      4.55,
+      -1.62
+    ],
+    "basin_front": [
+      4.55,
+      -1.66
+    ],
+    "toilet_front": [
+      3.32,
+      -1.55
+    ],
+    "room_shelf_front": [
+      2.38,
+      1.7
+    ],
+    "living_shelf_front": [
+      -4.1,
+      -0.65
+    ],
+    "convertible_room_entry": [
+      2.45,
+      0.85
+    ]
+  },
+  "initial_role_points": {
+    "former_bed_side": [
+      2.45,
+      1.25
+    ]
+  },
+  "final_role_points": {
+    "office_seat_side": [
+      3.5,
+      0.6
+    ]
+  },
+  "reference_measurement": {
+    "grid_m": 0.02,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "entry_center_xy_m": [
+      2.45,
+      -2.5
+    ],
+    "entry_inward_normal_xy": [
+      0,
+      1
+    ],
+    "approach_points_xy_m": {
+      "main_bed_side": [
+        -2.65,
+        1.2
+      ],
+      "living_sofa_front": [
+        -3.9,
+        -0.99
+      ],
+      "family_chair_n_side": [
+        -1.0,
+        1.72
+      ],
+      "family_chair_s_side": [
+        -1.0,
+        0.08
+      ],
+      "family_chair_e_side": [
+        0.42,
+        1.5
+      ],
+      "fridge_front": [
+        -1.9,
+        -1.38
+      ],
+      "prep_front": [
+        -0.8,
+        -1.54
+      ],
+      "sink_front": [
+        0.3,
+        -1.49
+      ],
+      "cooker_front": [
+        1.32,
+        -1.54
+      ],
+      "shower_front": [
+        4.55,
+        -1.62
+      ],
+      "basin_front": [
+        4.55,
+        -1.66
+      ],
+      "toilet_front": [
+        3.32,
+        -1.55
+      ],
+      "room_shelf_front": [
+        2.38,
+        1.7
+      ],
+      "living_shelf_front": [
+        -4.1,
+        -0.65
+      ],
+      "convertible_room_entry": [
+        2.45,
+        0.85
+      ],
+      "office_seat_side": [
+        3.5,
+        0.6
+      ]
+    }
+  },
+  "budget": {
+    "tool_calls": 3,
+    "observations": 4,
+    "native_seconds": 600,
+    "build_seconds": 120,
+    "preflight_seconds": 120,
+    "model_calls": 0,
+    "training_updates": 0,
+    "candidate_sequences": 1,
+    "retries": 0,
+    "first_infrastructure_error_stop": true
+  },
+  "acceptance": "Report before/after fixed-role access at all three widths, mesh/bounds/identity, new desk/seat surface proxies and lost former sleeping role. Unknowns not success. Retain all failures; no adaptive pose tuning.",
+  "historical_trajectory": false,
+  "professional_positive_label": false,
+  "training_admitted": false,
+  "unknowns": [
+    "Current tools set rigid poses; real carrying, disposal/storage of removed bed, fixture operation, installation and ergonomics remain unknown.",
+    "Original Michelet has vertically interleaved uses, stairs and sliding doors; this single-plane transfer does not reconstruct these features.",
+    "Windows/doorways are fixed apertures without operable leaves. Privacy, daylight quality and professional preference are unassessed.",
+    "A table used as a desk has no verified equipment, power, task comfort or prolonged-work acceptance.",
+    "No independent designer endorsement or original historical object identity."
+  ]
+}

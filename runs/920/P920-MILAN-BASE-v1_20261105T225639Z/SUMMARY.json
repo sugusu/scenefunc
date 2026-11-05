@@ -1,0 +1,194 @@
+{
+  "run_id": "P920-MILAN-BASE-v1_20261105T225639Z",
+  "status": "terminal_frozen_base_diagnostic_audited",
+  "recorded_at": "2026-11-05T23:09:46.800856+00:00",
+  "costs": {
+    "model_calls": 7,
+    "tool_calls": 6,
+    "state_changing_calls": 4,
+    "encoded_input_tokens": 103487,
+    "generated_tokens": 1378,
+    "model_load_seconds": 33.06844025128521,
+    "generation_seconds": 93.2654069038108,
+    "peak_allocated_bytes": 21502714368,
+    "peak_reserved_bytes": 22542286848,
+    "rollout_receipt": {
+      "started_at": "2026-11-05T23:01:01.903080+00:00",
+      "status": "failed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/run_knowledge_policy.py",
+        "--phase",
+        "rollout",
+        "--plan",
+        "runs/920/P920-MILAN-BASE-v1_20261105T225639Z/PLAN.json",
+        "--out",
+        "../runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout"
+      ],
+      "timeout_seconds": 1800,
+      "pid": 1405059,
+      "start_ticks": "57751048",
+      "log": "../runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout_stage/stage.log",
+      "ended_at": "2026-11-05T23:08:00.618269+00:00",
+      "elapsed_seconds": 418.71521308703814,
+      "exit_code": 1,
+      "first_log": "2026-11-05T23:01:01.976002+00:00 begin whole-room rollout"
+    },
+    "model_attempts": [
+      {
+        "status": "completed",
+        "error": null,
+        "input_tokens": 14111,
+        "output_tokens": 80
+      },
+      {
+        "status": "completed",
+        "error": null,
+        "input_tokens": 14448,
+        "output_tokens": 26
+      },
+      {
+        "status": "completed",
+        "error": null,
+        "input_tokens": 14242,
+        "output_tokens": 86
+      },
+      {
+        "status": "completed",
+        "error": null,
+        "input_tokens": 14867,
+        "output_tokens": 50
+      },
+      {
+        "status": "completed",
+        "error": null,
+        "input_tokens": 15050,
+        "output_tokens": 86
+      },
+      {
+        "status": "completed",
+        "error": null,
+        "input_tokens": 15338,
+        "output_tokens": 26
+      },
+      {
+        "status": "failed",
+        "error": "Length-limited output retained without execution",
+        "input_tokens": 15431,
+        "output_tokens": 1024
+      }
+    ]
+  },
+  "stop_reason": "execution_error",
+  "execution_status": "failed",
+  "actual_exit_code": 1,
+  "failure_reason": "Model generate stage exited 1; no retry",
+  "schema_mismatch_calls": 1,
+  "parse_error_calls": 0,
+  "furniture_count": 14,
+  "original_retained": 12,
+  "original_count": 13,
+  "identity_preserved": false,
+  "immutable_preserved": true,
+  "role_access": [
+    {
+      "width_m": 0.4,
+      "planned": 14,
+      "reachable": 13,
+      "failed": [],
+      "missing": [
+        "shelf_front"
+      ]
+    },
+    {
+      "width_m": 0.5,
+      "planned": 14,
+      "reachable": 12,
+      "failed": [
+        "meal_chair_s_side"
+      ],
+      "missing": [
+        "shelf_front"
+      ]
+    },
+    {
+      "width_m": 0.6,
+      "planned": 14,
+      "reachable": 12,
+      "failed": [
+        "meal_chair_s_side"
+      ],
+      "missing": [
+        "shelf_front"
+      ]
+    }
+  ],
+  "dedicated_work_geometry_found": false,
+  "conditional_work_pairs": [],
+  "mesh_intersections": 1,
+  "outside": [],
+  "generic_access": [
+    {
+      "width_m": 0.4,
+      "planned": 29,
+      "reachable": 23,
+      "failed": [
+        "main_bed_0:left_side",
+        "meal_table_0:front",
+        "meal_chair_n_0:front",
+        "meal_chair_s_0:front",
+        "sofa_front",
+        "shelf_front"
+      ]
+    },
+    {
+      "width_m": 0.5,
+      "planned": 29,
+      "reachable": 22,
+      "failed": [
+        "main_bed_0:left_side",
+        "meal_table_0:front",
+        "meal_chair_n_0:front",
+        "meal_chair_s_0:front",
+        "sofa_front",
+        "meal_chair_s_side",
+        "shelf_front"
+      ]
+    },
+    {
+      "width_m": 0.6,
+      "planned": 29,
+      "reachable": 22,
+      "failed": [
+        "main_bed_0:left_side",
+        "meal_table_0:front",
+        "meal_chair_n_0:front",
+        "meal_chair_s_0:front",
+        "sofa_front",
+        "meal_chair_s_side",
+        "shelf_front"
+      ]
+    }
+  ],
+  "training_updates": 0,
+  "professional_evaluation": false,
+  "sealed_test": false,
+  "whole_dwelling_success": "unknown_not_accepted",
+  "interpretation": "One source-inspired independent-family furnished-home revision diagnostic. Neither reference similarity nor object presence establishes learning or whole-home quality.",
+  "checkpoint": {
+    "selected_at": "2026-11-05T23:08:39.220071+00:00",
+    "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_005/checkpoint",
+    "manifest_sha256": "245f3da4e0b874c643ea9ff2289ce718a9d2d3aa2fe94ae7a2b7933e1c073c48",
+    "observation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_005/observation.json",
+    "selection": "Last actual native checkpoint after six tool attempts. Seventh model output was length-limited and never dispatched; no final_checkpoint was produced by failed rollout.",
+    "model_calls": 7,
+    "tool_calls": 6,
+    "policy_complete": false,
+    "model_restarted": false
+  },
+  "export": {
+    "path": "../runtime/P920-MILAN-BASE-v1_20261105T225639Z/export/room_geometry.glb",
+    "bytes": 23869956,
+    "sha256": "0bb193735c70fe07fdda275ea20d646797b32e2b0496e7a7e06c3af106d344f7"
+  }
+}

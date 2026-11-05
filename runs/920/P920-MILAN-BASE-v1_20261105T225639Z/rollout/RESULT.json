@@ -1,0 +1,1214 @@
+{
+  "phase": "rollout",
+  "arm": "frozen_base_diagnostic",
+  "status": "failed",
+  "started_at": "2026-11-05T23:01:01.975783+00:00",
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-05T23:01:14.154134+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "21556e41095b3ea2315b7162d30b7b2bf429c3fc83de1daafe27af133597e837",
+        "plan_sha256": "7b48a9c2365a6af2d96458388b2160e2e2ebd3d803d3e711537e9e889fd489b2",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-TASK-v1_20261105T224015Z/east/native/house/room_milan_home_office_transfer/rollout_furniture/step_000.topdown.png",
+              "sha256": "0a6cd7df3e5814a36667ef9b054bbf31dabb8cc9bca2cf9a96c336c24b87fa59",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-TASK-v1_20261105T224015Z/east/native/house/room_milan_home_office_transfer/rollout_furniture/step_000.south.png",
+              "sha256": "621818364808c6d6dd3a95b53a73c5ebc5bd5a6a9e0e58a62aaabee506daf5af",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-TASK-v1_20261105T224015Z/east/native/house/room_milan_home_office_transfer/rollout_furniture/step_000.east.png",
+              "sha256": "e71b6b363d0d14942391ce9703a8f345feaf59810754b60791c6277c78883123",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-TASK-v1_20261105T224015Z/east/native/house/room_milan_home_office_transfer/rollout_furniture/step_000.west.png",
+              "sha256": "7c0740f568852ee49cef9494f463c17226fee8df848a22ec085318db06b0bd1b",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-TASK-v1_20261105T224015Z/east/native/house/room_milan_home_office_transfer/rollout_furniture/step_000.north.png",
+              "sha256": "b6772b538fc564c1d76b4f400337c61efcee726b0e8dbefaf04771d23d69cc47",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 14111,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              14111
+            ],
+            "attention_mask": [
+              1,
+              14111
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "cbc7f566e3d737ae9ff4bcb9fe6f9d4c46f5197f9a0a1f1630bc9785be45b5a1",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 5.0109127960167825,
+        "generation_seconds": 8.257125235977583,
+        "output_tokens": 80,
+        "ended_with_eos": false,
+        "raw_output_sha256": "af79bbd9e7f048c467eb713ebd745ced57cbaaaee2298a9f38d946f76185776e",
+        "peak_allocated_bytes": 21165064704,
+        "peak_reserved_bytes": 22053650432,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T23:01:30.952715+00:00",
+        "elapsed_seconds": 16.798601057962514
+      },
+      "calls": [
+        {
+          "name": "get_current_scene_state",
+          "arguments": {
+            "additionalProperties": false,
+            "properties": {
+              "bboxOnly": {
+                "description": "If true, only the bounding box of each object is returned.",
+                "title": "Bbox Only",
+                "type": "boolean"
+              }
+            },
+            "required": [],
+            "title": "get_current_scene_state_args",
+            "type": "object"
+          }
+        }
+      ],
+      "before_sha256": "1dc0a1979eca121161b843d68efb08667981a4fd61d3c19a98987ccff7c427b6",
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 30,
+              "objects": [
+                {
+                  "object_id": "shell_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": -3.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 10.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.0,
+                  "position_y": 3.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 10.1,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -5.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 7.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 5.025,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 7.1,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_north",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 4.0,
+                  "position_y": -1.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 2.0999999999999996,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bath_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.975,
+                  "position_y": -2.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 2.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bed_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -3.25,
+                  "position_y": 0.475,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 3.5999999999999996,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_bed_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": -1.475,
+                  "position_y": 2.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 3.0999999999999996,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_shaft_west",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 0.475,
+                  "position_y": 2.7625,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 1.5749999999999997,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_shaft_east",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 2.025,
+                  "position_y": 2.7625,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.05,
+                    "depth": 1.5749999999999997,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "shell_shaft_south",
+                  "description": "Research-assumed fixed boundary, not original surveyed structure",
+                  "position_x": 1.25,
+                  "position_y": 1.975,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.5999999999999999,
+                    "depth": 0.05,
+                    "height": 2.7
+                  }
+                },
+                {
+                  "object_id": "opening_entry",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.45,
+                  "position_y": -3.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.8999999999999999,
+                    "depth": 0.015,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bed_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -3.3,
+                  "position_y": 3.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.8000000000000003,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_east_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 3.75,
+                  "position_y": 3.525,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.5,
+                    "depth": 0.015,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_living_window",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -5.025,
+                  "position_y": -0.45,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 1.7000000000000002,
+                    "height": 1.3000000000000003
+                  }
+                },
+                {
+                  "object_id": "opening_bath_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": 2.975,
+                  "position_y": -2.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 1.0,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "opening_bed_access",
+                  "description": "Declared aperture; no door leaf, joint, track or operational validation",
+                  "position_x": -1.475,
+                  "position_y": 1.5,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.015,
+                    "depth": 1.0,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "main_bed_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -3.25,
+                  "position_y": 2.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.8546846508979797,
+                    "depth": 2.1535993814468384,
+                    "height": 0.8448971509933474
+                  }
+                },
+                {
+                  "object_id": "living_sofa_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -3.9,
+                  "position_y": -2.4,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.8015152215957642,
+                    "depth": 0.9576927125453949,
+                    "height": 0.9072695106367306
+                  }
+                },
+                {
+                  "object_id": "meal_table_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -0.5,
+                  "position_y": -0.6,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9500000178813934,
+                    "depth": 0.9447958469390869,
+                    "height": 0.7107922434806825
+                  }
+                },
+                {
+                  "object_id": "meal_chair_n_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -0.5,
+                  "position_y": 0.22,
+                  "rotation_degrees": 180.0,
+                  "dimensions": {
+                    "width": 0.41508205235004425,
+                    "depth": 0.4953000843524933,
+                    "height": 0.8630745024420321
+                  }
+                },
+                {
+                  "object_id": "meal_chair_s_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -0.5,
+                  "position_y": -1.42,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.41508205235004425,
+                    "depth": 0.4953000843524933,
+                    "height": 0.8630745024420321
+                  }
+                },
+                {
+                  "object_id": "fridge_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -2.0,
+                  "position_y": -3.11,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.5936102271080017,
+                    "depth": 0.7534396648406982,
+                    "height": 1.7884897945914418
+                  }
+                },
+                {
+                  "object_id": "prep_counter_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -0.9,
+                  "position_y": -3.19,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.80011385679245,
+                    "depth": 0.6000000238418579,
+                    "height": 0.8989704442210495
+                  }
+                },
+                {
+                  "object_id": "sink_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": 0.2,
+                  "position_y": -3.16,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.2100000381469727,
+                    "depth": 0.6408036053180695,
+                    "height": 1.2741262912750244
+                  }
+                },
+                {
+                  "object_id": "cooker_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": 1.25,
+                  "position_y": -3.19,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.6019999086856843,
+                    "depth": 0.6019994020462036,
+                    "height": 0.8999996781349182
+                  }
+                },
+                {
+                  "object_id": "bath_shower_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": 4.55,
+                  "position_y": -1.92,
+                  "rotation_degrees": 180.0,
+                  "dimensions": {
+                    "width": 0.8291425704956055,
+                    "depth": 0.7973619699478149,
+                    "height": 1.9441249408992007
+                  }
+                },
+                {
+                  "object_id": "bath_basin_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": 4.55,
+                  "position_y": -3.26,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.7997476160526276,
+                    "depth": 0.46073757112026215,
+                    "height": 1.1861588954925537
+                  }
+                },
+                {
+                  "object_id": "bath_toilet_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": 3.32,
+                  "position_y": -1.85,
+                  "rotation_degrees": 180.0,
+                  "dimensions": {
+                    "width": 0.4053383618593216,
+                    "depth": 0.6758959889411926,
+                    "height": 0.8003312349319458
+                  }
+                },
+                {
+                  "object_id": "retained_shelf_0",
+                  "description": "Research-authored initial instance using an unchanged catalog asset, not historical furniture",
+                  "position_x": -4.65,
+                  "position_y": -0.4,
+                  "rotation_degrees": -90.00000000000001,
+                  "dimensions": {
+                    "width": 0.6096042394638062,
+                    "depth": 0.4064580351114273,
+                    "height": 1.930157034736112
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_000/checkpoint",
+        "manifest_sha256": "a46c7e580350fe539f45d30545844c417ce4f614144f075fe6185e0c93eb4364",
+        "state_sha256": "9b2e1006828a89e1ca8edbf5a856ae399835a9579d618d02bd699ec9fd3092d6",
+        "step_idx": 1
+      },
+      "after_sha256": "1dc0a1979eca121161b843d68efb08667981a4fd61d3c19a98987ccff7c427b6"
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-05T23:02:12.641469+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "05cd40e497bb04449af2512ea7cfe8a4a1f29ba181462ca132ae1ab1692a1c93",
+        "plan_sha256": "7b48a9c2365a6af2d96458388b2160e2e2ebd3d803d3e711537e9e889fd489b2",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_001.topdown.png",
+              "sha256": "0a6cd7df3e5814a36667ef9b054bbf31dabb8cc9bca2cf9a96c336c24b87fa59",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_001.south.png",
+              "sha256": "cd4994f6c86ca640dd3adf8628af255b45c539bf912076c2b1513757e22284fc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_001.east.png",
+              "sha256": "907b902e75fca4770579fe3e6cf6fa82c8fabe8199908211efbe1b8cca648405",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_001.west.png",
+              "sha256": "d9cb1a0889022c521a7846e8a0bbb5c967734eefa610f7f3e9062f42384c4c62",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_001.north.png",
+              "sha256": "6ee70cf27a5573a98e1a5305c9baa84936e15248b124907654e1aeb5747b64ae",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 14448,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              14448
+            ],
+            "attention_mask": [
+              1,
+              14448
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "7b12b2e349d6f8394e9b94f964a98d140f8120bf74f4eafe66ed9d2865d23896",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.962557587074116,
+        "generation_seconds": 5.934568951954134,
+        "output_tokens": 26,
+        "ended_with_eos": false,
+        "raw_output_sha256": "74bbaa41754ad034a036bfd55679db902682953c1d80262251ad7fea06b150f8",
+        "peak_allocated_bytes": 21250156032,
+        "peak_reserved_bytes": 22273851392,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T23:02:27.056307+00:00",
+        "elapsed_seconds": 14.41485851292964
+      },
+      "calls": [
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "retained_shelf_0"
+          }
+        }
+      ],
+      "before_sha256": "1dc0a1979eca121161b843d68efb08667981a4fd61d3c19a98987ccff7c427b6",
+      "reply": {
+        "results": [
+          {
+            "name": "remove_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully removed retained_shelf from scene",
+              "object_id": "retained_shelf_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_001/checkpoint",
+        "manifest_sha256": "0c164e5ef507781f9f1550b3480b9791295060c2e97469e8ff4954ee55b2c4cd",
+        "state_sha256": "e7306b5f14ce07207efc417ede6f7e8493639708984cb44f1679d2caaa6327c7",
+        "step_idx": 2
+      },
+      "after_sha256": "026d98081da4fbd1a026742717b05751ca434075b53d9164cd377d409fd94fde"
+    },
+    {
+      "turn": 2,
+      "model": {
+        "started_at": "2026-11-05T23:03:08.217699+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "4fbda42863d7f25f99a89f4cc2211421c31d5c4c3365f07131264f4acb840703",
+        "plan_sha256": "7b48a9c2365a6af2d96458388b2160e2e2ebd3d803d3e711537e9e889fd489b2",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_002.topdown.png",
+              "sha256": "123ac09493003f517add5bec65927e76bdbc6c49bb23f94c44e10de5788caf88",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_002.south.png",
+              "sha256": "2d7eaa49158a747eb0300981b13e9cddfb7b450f5036377a9ddd9f7eda8cb97d",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_002.east.png",
+              "sha256": "b4ca208bccf650c15da8590c9e4ff8c96c48569aa7b3d1588e6d94958ea9c595",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_002.west.png",
+              "sha256": "ba6484e24a428b0f91761313fdbd56eda74ca1dba54d2202d2156fad2fb243dc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_002.north.png",
+              "sha256": "1126b7dee0ee56a26864ce162c5c5ac0f24d96f5ef707d480c0d54fbed5ab20c",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 14242,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              14242
+            ],
+            "attention_mask": [
+              1,
+              14242
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "1c263e3ee7ca401ae9cb974a3d70e28b9e7e4b76fa72fa06e1d97181c5cfb980",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.958330946043134,
+        "generation_seconds": 7.936197829898447,
+        "output_tokens": 86,
+        "ended_with_eos": false,
+        "raw_output_sha256": "2a044c8de1fb7a271736583e2608ed64e91f8c050912c024d87a86a1a98b8999",
+        "peak_allocated_bytes": 21200812032,
+        "peak_reserved_bytes": 21846032384,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T23:03:24.553618+00:00",
+        "elapsed_seconds": 16.335934886010364
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_a73ab435a592f804b7caa9c3a79f03122c536476",
+            "x": 4.35,
+            "y": 1.05,
+            "yaw": 0.0
+          }
+        }
+      ],
+      "before_sha256": "026d98081da4fbd1a026742717b05751ca434075b53d9164cd377d409fd94fde",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'bookshelf' as object 'bookshelf_0'. Use object_id 'bookshelf_0' for remove/move operations.",
+              "asset_id": "catalog_a73ab435a592f804b7caa9c3a79f03122c536476",
+              "object_id": "bookshelf_0",
+              "position": {
+                "x": 4.349140927497281,
+                "y": 1.0505511056925367,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.05377995118683629
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_002/checkpoint",
+        "manifest_sha256": "de0fb12d94f879daa72775c1d44c624123d223917f1dd41ac8f743f53e262b5a",
+        "state_sha256": "317b54082b76f67686277cd64d4ac0f126dd2fd59173b139d22ec1dc8bb56617",
+        "step_idx": 3
+      },
+      "after_sha256": "345e6ddc02d493edf079af1aa291f8e904705acaa0b65d102f8e0d7729b8df51"
+    },
+    {
+      "turn": 3,
+      "model": {
+        "started_at": "2026-11-05T23:04:06.727244+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "c7cfaada09ec3a2318412dcbd8c16745856e8ea950f452e81434b7c4e169608a",
+        "plan_sha256": "7b48a9c2365a6af2d96458388b2160e2e2ebd3d803d3e711537e9e889fd489b2",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_003.topdown.png",
+              "sha256": "1b609da2648aa1b406d9fd6740cc5f9d037766d6bca2d2963b369d12c692ee14",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_003.south.png",
+              "sha256": "bf8dbab7462144c54a48c5e05c8b4c7f67658e8ec810aabbd300fd0ec23e94bc",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_003.east.png",
+              "sha256": "6c592d3e0e2456a041f4cfe533c7e71c4db1f8eac77e02300852c4b3b490745a",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_003.west.png",
+              "sha256": "f0a5e804cae7433fc683c354084cd7a28fe29f36505a45fb74a73efe96916b7d",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_003.north.png",
+              "sha256": "90893e342fb2f6730e10c8cff729e1605fe629a28a8986a36e6bba21efdb708a",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 14867,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              14867
+            ],
+            "attention_mask": [
+              1,
+              14867
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "b5cd468187de5123dc78eca35b39c604752ab8a9aff7447d00a38e01e05571a1",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.07529838103801,
+        "generation_seconds": 7.355858833994716,
+        "output_tokens": 50,
+        "ended_with_eos": false,
+        "raw_output_sha256": "94c492ffc7712a75819c9346e879aa157a3ac432477fbd56312b70347490c8ce",
+        "peak_allocated_bytes": 21355908096,
+        "peak_reserved_bytes": 22045261824,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T23:04:21.680438+00:00",
+        "elapsed_seconds": 14.95321510010399
+      },
+      "calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "living_sofa_0",
+            "x": -3.0,
+            "y": -1.0,
+            "yaw": 0.0
+          }
+        }
+      ],
+      "before_sha256": "345e6ddc02d493edf079af1aa291f8e904705acaa0b65d102f8e0d7729b8df51",
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved living_sofa to new position and rotation",
+              "object_id": "living_sofa_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_003/checkpoint",
+        "manifest_sha256": "c20d051a7eb0566630e2cdde83d4e3f80b2602849849641a3f128a997818354c",
+        "state_sha256": "c3f295da6c29697143b31ecc4ec7d9a9de1134251b0f8379d49b35469e6c3bd8",
+        "step_idx": 4
+      },
+      "after_sha256": "60c53d179c7ff4e08f2009ead0aa8a0c1498aad631e4353d8cad5add42999814"
+    },
+    {
+      "turn": 4,
+      "model": {
+        "started_at": "2026-11-05T23:05:03.797110+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "df166578c227269b9862b1fa45e1fa0e8c3aa825542e3707183bd7a49e49600d",
+        "plan_sha256": "7b48a9c2365a6af2d96458388b2160e2e2ebd3d803d3e711537e9e889fd489b2",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_004.topdown.png",
+              "sha256": "8e706ffddd5c5790703838cda3067e151aeff0a09b707483af98f9f7a41cdadf",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_004.south.png",
+              "sha256": "6e9404d4884c5348b1f32d688f55ed09584fef47876ca4a01017824ca4da7a4c",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_004.east.png",
+              "sha256": "4a533c28e334008a45218352d992678de48a9f9ba9ad96fcc3580199d2702ddd",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_004.west.png",
+              "sha256": "d93abfc3f42fb16a97d17428edf7978788e51c30e7e6bdd944338ab03c0acf42",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_004.north.png",
+              "sha256": "01d7d0126b12b61866f7d13440b468ed9f5f04f52afe7c761297d22ab4b753e0",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 15050,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              15050
+            ],
+            "attention_mask": [
+              1,
+              15050
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "da0b8fb3064c6925f64ef296b92ec5420c0f0e6669375ceb891ca76cc376a635",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.991276564076543,
+        "generation_seconds": 8.338502412079833,
+        "output_tokens": 86,
+        "ended_with_eos": false,
+        "raw_output_sha256": "40cff8471c254eeb698b5f677d4eb211250b2d04ea5402e50ed790dc3aa497c4",
+        "peak_allocated_bytes": 21403765760,
+        "peak_reserved_bytes": 22462595072,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T23:05:20.542578+00:00",
+        "elapsed_seconds": 16.745483521022834
+      },
+      "calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_039f04552895e9d932d6a6eb3fcf7c4f77b7ddab",
+            "x": -2.15,
+            "y": -0.95,
+            "yaw": 0.0
+          }
+        }
+      ],
+      "before_sha256": "60c53d179c7ff4e08f2009ead0aa8a0c1498aad631e4353d8cad5add42999814",
+      "reply": {
+        "results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully placed asset 'coffee_table' as object 'coffee_table_0'. Use object_id 'coffee_table_0' for remove/move operations.",
+              "asset_id": "catalog_039f04552895e9d932d6a6eb3fcf7c4f77b7ddab",
+              "object_id": "coffee_table_0",
+              "position": {
+                "x": -2.148505865514883,
+                "y": -0.9515466063230765,
+                "z": 0.0
+              },
+              "rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": -0.18229211912710389
+              },
+              "has_geometry": true,
+              "error_type": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_004/checkpoint",
+        "manifest_sha256": "67dd68a69b0b2eb9c23dda0a70674dd3946eca6ba172b919ea6284417cc015bc",
+        "state_sha256": "970f4477eaed5ae0289ec4d30853e58efe4d8970b7eebdde97107aa10d169b05",
+        "step_idx": 5
+      },
+      "after_sha256": "87b0c53873a842c601489d8dcd6abdde4c702ba24adb06a0178e327fa54dc7ea"
+    },
+    {
+      "turn": 5,
+      "model": {
+        "started_at": "2026-11-05T23:06:02.964028+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "242ce4a6fcb2c4b1ae4377190125e489a1982f78ac9c689badcabfa0621b6d93",
+        "plan_sha256": "7b48a9c2365a6af2d96458388b2160e2e2ebd3d803d3e711537e9e889fd489b2",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 0,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_005.topdown.png",
+              "sha256": "aa1e6f6dcd36bfdd9faced97465b77599d48c504a5abbb6bf41c2cd94cd45e35",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_005.south.png",
+              "sha256": "41b1ffcc55b893f2424f07b9cb86aa51a434658d879ad73907ae224387d69831",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_005.east.png",
+              "sha256": "a85d8035cf08e5b0dc5cc18ecbc345876f4c116b0ac0b8a803f996cff06f9a2b",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_005.west.png",
+              "sha256": "186125539238c1697497f5e59a44e6d208c12f49262e652affbdf3f951bf4665",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/house/room_milan_home_office_transfer/rollout_furniture/step_005.north.png",
+              "sha256": "c9ca10c5eca9ddbea5675a711a89e3de5cdeac6179bf76ba805318fc95a94411",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 15338,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              15338
+            ],
+            "attention_mask": [
+              1,
+              15338
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "7e4ce4325a35df0488a912adf2d75cccb7b516ffa745d71a830c863a3ea460d0",
+          "max_pixels": 65536,
+          "max_input_tokens": 16384
+        },
+        "adapter": null,
+        "load_seconds": 4.093492462998256,
+        "generation_seconds": 6.527573051978834,
+        "output_tokens": 26,
+        "ended_with_eos": false,
+        "raw_output_sha256": "24c0645aa47197ef55bc08bd08694f66cb19624e52f6be8b6f6409305c41ae88",
+        "peak_allocated_bytes": 21481342464,
+        "peak_reserved_bytes": 22542286848,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-05T23:06:17.101810+00:00",
+        "elapsed_seconds": 14.137798344017938
+      },
+      "calls": [
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "retained_desk_0"
+          }
+        }
+      ],
+      "before_sha256": "87b0c53873a842c601489d8dcd6abdde4c702ba24adb06a0178e327fa54dc7ea",
+      "reply": {
+        "results": [
+          {
+            "name": "remove_furniture_tool",
+            "output": {
+              "success": false,
+              "message": "Object with ID 'retained_desk_0' not found in scene.\n\nCauses:\n1. Missing ID postfix - IDs have random postfixes like 'retained_desk_a1b2c3'\n2. Object already removed\n3. Typo in object_id\n\nCall get_current_scene_state() to see current object IDs with postfixes. Find objects whose names start with 'retained_desk'.",
+              "object_id": "retained_desk_0",
+              "error_type": "object_not_found",
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": "Call get_current_scene_state() to verify object IDs"
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-MILAN-BASE-v1_20261105T225639Z/rollout/round_005/checkpoint",
+        "manifest_sha256": "245f3da4e0b874c643ea9ff2289ce718a9d2d3aa2fe94ae7a2b7933e1c073c48",
+        "state_sha256": "970f4477eaed5ae0289ec4d30853e58efe4d8970b7eebdde97107aa10d169b05",
+        "step_idx": 6
+      },
+      "after_sha256": "87b0c53873a842c601489d8dcd6abdde4c702ba24adb06a0178e327fa54dc7ea"
+    }
+  ],
+  "tool_calls": 6,
+  "model_calls": 7,
+  "training_updates": 0,
+  "whole_room_success": "not_evaluated",
+  "initial_gpu": {
+    "uuid": "GPU-6df2660c-5a77-4e41-0b1a-c6208368fcd1",
+    "used_mib": 4,
+    "free_mib": 24121,
+    "required_free_bytes": 24396128736
+  },
+  "initial_request_sha256": "21556e41095b3ea2315b7162d30b7b2bf429c3fc83de1daafe27af133597e837",
+  "stop_reason": "execution_error",
+  "error_type": "RuntimeError",
+  "error": "Model generate stage exited 1; no retry",
+  "ended_at": "2026-11-05T23:07:58.074546+00:00",
+  "prior_lineage_tool_calls": 0,
+  "cumulative_lineage_tool_calls": 6
+}

@@ -1,19 +1,19 @@
 {
   "schema": "scenefunc-sourced-decision-maturity-v2",
-  "updated_at": "2026-11-05T19:42:58.577265+00:00",
+  "updated_at": "2026-11-05T22:31:10.484925+00:00",
   "purpose": "Separate supported professional knowledge from executable episode readiness without lowering evidence requirements.",
   "counts": {
     "records_reviewed_here": 21,
     "source_supported_knowledge": 21,
-    "partially_tool_expressible_candidates": 8,
-    "source_grounded_replayed_episodes": 13,
+    "partially_tool_expressible_candidates": 9,
+    "source_grounded_replayed_episodes": 14,
     "professional_evaluations_of_our_reconstructions": 0,
     "training_eligible": 0,
-    "unique_source_decisions_with_replay": 7,
+    "unique_source_decisions_with_replay": 8,
     "conditional_objective_benefit_demonstrations": 3,
     "prospectively_train_allocated_knowledge_records": 15,
     "conditional_mode_transition_demonstrations": 2,
-    "total_native_reconstruction_episodes_including_constructed_contrasts": 15
+    "total_native_reconstruction_episodes_including_constructed_contrasts": 16
   },
   "records": [
     {
@@ -1502,28 +1502,31 @@
       "rationale_origin": "Researcher Chinese factual paraphrase; source supports the stated relationship, not our future action coordinates.",
       "decision_scope": {
         "source_decision": "空间可随家庭演变调整；原长子卧室后来改为办公室。",
-        "unsupported_part": "No native episode, measured improvement, designer historical operation or expert ranking derived in this batch."
+        "unsupported_part": "No historical furniture operations, original geometry, disposal or whole-room functional acceptance; research transfer only."
       },
       "unknowns": [
         "不知完整改造时间表、搬迁代价与实际家具处置。"
       ],
       "tool_expression": {
-        "level": "knowledge_only",
+        "level": "partial_native_reconstruction",
         "full_source_decision_supported": false,
-        "executable_subdecision": null,
-        "qualification": "可记录用途转换原则，但原改造过程、家具变更与完整尺寸不足，不能构造历史动作。"
+        "executable_subdecision": "Reassign an explicitly no-longer-required sleeping room to office using deletion/additions.",
+        "qualification": "Three actual actions in declared flat research geometry; not original architecture or verified positive design."
       },
       "source_to_scene": {
         "historical_action_sequence": null,
-        "reconstructed_action_sequence": null,
-        "initial_proxy_ids": [],
-        "decision_packet": null
+        "reconstructed_action_sequence": "runs/920/P920-LIFECYCLE-v1_20261105T221829Z/native/STEPS.json",
+        "initial_proxy_ids": [
+          "former_child_bed_0",
+          "retained_room_shelf_0"
+        ],
+        "decision_packet": "runs/920/P920-LIFECYCLE-v1_20261105T221829Z/DECISION_PACKET.json"
       },
       "maturity": {
         "source_supported_knowledge": true,
-        "source_to_native_objects_bound": false,
-        "source_grounded_action_replayed": false,
-        "whole_room_consequences_reviewed": false,
+        "source_to_native_objects_bound": true,
+        "source_grounded_action_replayed": true,
+        "whole_room_consequences_reviewed": true,
         "independent_professional_preference_label": false,
         "paired_episode_ready": false
       },
@@ -1536,11 +1539,11 @@
           "available": false
         },
         "scene_action": {
-          "executed": false,
-          "tool_calls": 0
+          "executed": true,
+          "tool_calls": 3
         },
         "professional_decision_pair": {
-          "executed": false,
+          "executed": true,
           "positive_demonstration": false,
           "core_training_ready": false
         }
@@ -1549,7 +1552,9 @@
       "derived_knowledge_at": "2026-11-05T15:42:21.378162+00:00",
       "training_eligible": false,
       "training_authorized": false,
-      "knowledge_record": "runs/920/P920-FAMILYDATA-v1_20261105T154221Z/NEW_KNOWLEDGE.json"
+      "knowledge_record": "runs/920/P920-FAMILYDATA-v1_20261105T154221Z/NEW_KNOWLEDGE.json",
+      "latest_probe_qualification": "runs/920/P920-LIFECYCLE-v1_20261105T221829Z/PROBE_INTERPRETATION.json",
+      "native_derived_at": "2026-11-05T22:31:10.484925+00:00"
     },
     {
       "decision_id": "michelet_separate_hygiene_concurrency",

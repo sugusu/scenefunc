@@ -1,0 +1,13 @@
+2026-11-05T22:29:18.495702+00:00 archive actual lifecycle transfer and probe limitations
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/archive_lifecycle_decision.py", line 123, in <module>
+    main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/archive_lifecycle_decision.py", line 68, in main
+    tools = json.loads(obs['system'].split('Available executable tools:\n', 1)[1])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/runtime_python/cpython-3.11.7-linux-x86_64-gnu/lib/python3.11/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 2 column 1 (char 4518)

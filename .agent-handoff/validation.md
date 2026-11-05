@@ -301,3 +301,13 @@ Bukit交付追加：前后GLB各5,259,000B，34节点/10对象视觉全部回读
 2026-11-05T21:59:59.869726+00:00 Moabit REF：SciPy1.14.1实际MILP，180秒上限提前0.62求解秒终止；整阶段0.968419秒。实际连续/整数约束残差0，独立14家具原生transform及SDF边界/障碍测量0冲突/越界；局部clear14/6/0、入口reachable4/1/0，分母14，分别body.4/.5/.6、grid.02。SEARCH/VERIFY/ARCHIVE真实日志和exit0保留，归档0.416264秒。没有native执行/网格终态/图/训练，不能宣称那些检查通过。新ARTIFACTS逐文件哈希校验完成。
 
 2026-11-05T22:11:33.554960+00:00 FINALFIT v2在开始/结束两组各144张量3833856参数与存档FP32 exact；初始第一adapter无变化，第二adapter加载后144张量3833778元素被舍入，最大差6.0500577e-5，恢复后再比较。三组相同张量sha/536目标，模型param版本未变/无梯度；30行有限。首版失败保存原码/计划/日志。教师强制token正确471/472/467（各536）不是自由生成准确率。
+
+2026-11-05T22:13:23.109230+00:00 FINALFIT/Moabit关键节点批已发布runs/920 2e8b3b09216be7f752f1c98f9138922daf16a050，git ls-remote完全相同；72个Git blob证据核验。push4.984936秒/0，ls-remote3.027442秒/0。仅交接核验补记留本地下一实质批，不单独提交。
+
+2026-11-05T22:32:26.507849+00:00 LIFECYCLE native157.042025秒/0，restore8.896662秒/0，export12.810742秒/0；3实际成功动作schema/4状态context绑定/20图片hash+解码核验，12图视觉审阅；117ARTIFACTS及冻结source/task/plan代码hash正确。前后0mesh/0outside，固定15点三宽全部保留，通用各26/33。归档v1缺jsonschema .115314秒/1；v2json.loads尾部Extra data .215838秒/1；v3已有原生Python+raw_decode .416341秒/0。未重跑实验，未编码/训练，git diff --check通过。
+
+2026-11-05T22:38:55.251951+00:00 STUDYMAP审计.115438秒/exit0，所有锁定输入/实际候选文档/锚点任务图像相同性核对；39动作24add14move1remove、6理由位置5family。follow-up按SOURCE_RECORD和实际动作sha纠正四registry数，不改源总数/资格。10新及117旧公开hash、论文新增source哈希及git diff --check通过；无token重编码/模型/训练。
+
+2026-11-05T22:53:12.281959+00:00 MILAN build1.972268/0；preflight east1.219946/0 central1.219716/0，central .6四点失败未执行。east native131.542830/0，initialaudit5.183461/0 finalaudit5.133745/0 measurement.918015/0 restore8.947275/0 export12.860801/0 archive.265710/0。103产物hash、15图state/decode、2实际tool schema、11图视觉、冻结source/task/build/code hash均通过，gitdiffcheck通过。0模型/训练，formal评价未ready。
+
+2026-11-05T23:13:47.378140+00:00 MILAN prepare57.113084/0；calibration wrong-path .717730/1、v2 5.535114/0；rollout418.715213/1（第7输出1024未闭合）。initial evaluation5.183970/0、final5.285028/0、geometry5.435548/0、restore9.047005/0、export13.012491/0、archive.517364/0。35图实例/7状态绑定、5末图目视通过；1真实mesh接触、1原ID缺失如实报告，不等于验收通过。旧三批230文件hash复核通过，git diff --check通过。
