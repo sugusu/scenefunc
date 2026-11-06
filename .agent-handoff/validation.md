@@ -1,3 +1,7 @@
+## 2026-11-06T15:15:22.243666+00:00 接口诊断与停止状态
+
+audit_edit_study_interface.py:6.04秒exit0；seen prompt预检5.43秒exit0。首次启动0模型调用缺jsonschema退出，native launcher90.58秒exit1，实际4模型共90.019秒，未续跑；posthoc0.165秒exit0恢复计数与schema失败证据。check_edit_supervision.py:22.85秒exit0，全44例/37去空前缀，prompt、A、D、五图完全一致。公开新证据不含权重、GPU重训或场景重放。
+
 ## 2026-11-06T10:59:36.709643+00:00 本轮终审
 
 accept_edit_study.py实际2.974929秒/exit0。核12bundle逐文件、12GLB、60图、144模型记录与各预算、全部adapter精确重载、执行锁；133拒绝/0显式think。24项论文来源哈希均一致。只读验收无新GPU调用或优化。

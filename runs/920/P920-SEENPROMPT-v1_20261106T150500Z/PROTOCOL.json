@@ -1,0 +1,90 @@
+{
+  "run_id": "P920-SEENPROMPT-v1_20261106T150500Z",
+  "created_at": "2026-11-06T15:04:39.537002+00:00",
+  "question": "Can frozen/adapted models freely generate a legal edit and explicit decision from two exact seen preassistant prompts?",
+  "source_study": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z",
+  "selected_examples": [
+    "clothing_build_07",
+    "waterloo_edit_02"
+  ],
+  "selection": "One supported addition and one supported table move; fixed before any probe output.",
+  "budgets": {
+    "model_calls": 6,
+    "model_subprocess_seconds": 1080,
+    "max_new_tokens_each": 1024,
+    "optimizer_updates": 0,
+    "native_edits": 0,
+    "retries": 0
+  },
+  "script_sha256": "a3fac12641e23ebd2aa06fd84e7649f4daf01c95d326ca16d82de784b54dc8dd",
+  "cells": [
+    {
+      "id": "clothing_build_07_frozen_base_knowledge_feedback",
+      "example": "clothing_build_07",
+      "arm": "frozen_base_knowledge_feedback",
+      "plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/cells/clothing_build_07_frozen_base_knowledge_feedback/PLAN.json",
+      "plan_sha256": "fabc9ccf89aa5d46550c55e0d5254cc8c26cb2749c49067bc0b26e339af60ce9",
+      "request": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/inputs/clothing_build_07/request.json",
+      "request_sha256": "7a81a71a921678679e67696c977261d13b198c2b087ccf95a20ce225812a9bdf",
+      "training_prefix_ids_and_pixels_exact": true
+    },
+    {
+      "id": "clothing_build_07_action_only",
+      "example": "clothing_build_07",
+      "arm": "action_only",
+      "plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/cells/clothing_build_07_action_only/PLAN.json",
+      "plan_sha256": "a01b93364db7721acaacdadb7232e4c5f9770b9e5f0f71b6cdd80e658169b2d1",
+      "request": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/inputs/clothing_build_07/request.json",
+      "request_sha256": "7a81a71a921678679e67696c977261d13b198c2b087ccf95a20ce225812a9bdf",
+      "training_prefix_ids_and_pixels_exact": true
+    },
+    {
+      "id": "clothing_build_07_decision_action",
+      "example": "clothing_build_07",
+      "arm": "decision_action",
+      "plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/cells/clothing_build_07_decision_action/PLAN.json",
+      "plan_sha256": "4dfd3897daafda20e630dc62898b6cf0d6d1f700104d0420c07d923f139da65c",
+      "request": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/inputs/clothing_build_07/request.json",
+      "request_sha256": "7a81a71a921678679e67696c977261d13b198c2b087ccf95a20ce225812a9bdf",
+      "training_prefix_ids_and_pixels_exact": true
+    },
+    {
+      "id": "waterloo_edit_02_frozen_base_knowledge_feedback",
+      "example": "waterloo_edit_02",
+      "arm": "frozen_base_knowledge_feedback",
+      "plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/cells/waterloo_edit_02_frozen_base_knowledge_feedback/PLAN.json",
+      "plan_sha256": "b13b97d699c621c9d80247469565472e1b96a38cf1ca305bd0da9632a5970bd0",
+      "request": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/inputs/waterloo_edit_02/request.json",
+      "request_sha256": "e074b8a6566d63e50989df23f916a64e09d300720d1a039fd4301c5f6bd475aa",
+      "training_prefix_ids_and_pixels_exact": true
+    },
+    {
+      "id": "waterloo_edit_02_action_only",
+      "example": "waterloo_edit_02",
+      "arm": "action_only",
+      "plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/cells/waterloo_edit_02_action_only/PLAN.json",
+      "plan_sha256": "e214af9426a2a9cb4b149d4d0b5e10e06859eca23b44cf6278d3a48cf18ba236",
+      "request": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/inputs/waterloo_edit_02/request.json",
+      "request_sha256": "e074b8a6566d63e50989df23f916a64e09d300720d1a039fd4301c5f6bd475aa",
+      "training_prefix_ids_and_pixels_exact": true
+    },
+    {
+      "id": "waterloo_edit_02_decision_action",
+      "example": "waterloo_edit_02",
+      "arm": "decision_action",
+      "plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/cells/waterloo_edit_02_decision_action/PLAN.json",
+      "plan_sha256": "c6dd9cea34594fd1011b49b88d67867318c20a1ca9bb56218fd37d4d031e8925",
+      "request": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-SEENPROMPT-v1_20261106T150500Z/inputs/waterloo_edit_02/request.json",
+      "request_sha256": "e074b8a6566d63e50989df23f916a64e09d300720d1a039fd4301c5f6bd475aa",
+      "training_prefix_ids_and_pixels_exact": true
+    }
+  ],
+  "limits": [
+    "Training examples, not generalization evidence.",
+    "No gold decision or action supplied.",
+    "Exact reference action matching is diagnostic, not unique correct design.",
+    "Schema validity is not geometry or room success.",
+    "One seed; no causal attribution of failures."
+  ],
+  "stopping_rule": "Stop on infrastructure error or six completed calls. Never append updates, retries, alternate seeds or room rollouts."
+}
