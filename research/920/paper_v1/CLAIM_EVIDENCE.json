@@ -1,6 +1,6 @@
 {
   "created_at": "2026-11-05T16:47:24.681925+00:00",
-  "status": "working_paper_evidence_not_submission",
+  "status": "working_paper_with_active_bounded_study_no_new_design_gain_claim",
   "sources": {
     "training": {
       "path": "runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
@@ -37,6 +37,46 @@
     "milan_base_diagnostic": {
       "path": "runs/920/P920-MILAN-BASE-v1_20261105T225639Z/SUMMARY.json",
       "sha256": "f2a61c128fcaf9bfe3194868bcb45899160ba9284f8577010816f89f6b38706c"
+    },
+    "edit_encoding": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/ENCODING.json",
+      "sha256": "707d4b7293d47e31d8a190ddb2b394122e1b5e03a0b572dedcd62eb80f22b3fc"
+    },
+    "edit_train_plan": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/TRAIN_PLAN.json",
+      "sha256": "9d630b3998349e1a8c8312c9eeeb7bea66e708f9e8ad64ab7b1a412075bde6a7"
+    },
+    "edit_first_real_updates": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/recorded/action_run_snapshot.json",
+      "sha256": "ad3001e64c7e3ae2a76621b9ffc3ed807ba5de669920a1b582ba15d7664eebd8"
+    },
+    "edit_preflight": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/PREFLIGHT_RESULT.json",
+      "sha256": "dda1c92df08ae4b25309887b34872e8bf7ab4b318bbb6d151ecf19ea68efe9a4"
+    },
+    "edit_pine_initial": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/recorded/Pine_initial_audit.json",
+      "sha256": "be1ed07c19a6538de128ccbcb9ff4f037e3004a2c2b1363188e75c79fb708d98"
+    },
+    "edit_pine_reference": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Pine/REFERENCE_AUDIT.json",
+      "sha256": "1202b85e02b33e72398ed3ff7f58ef8e1a24c936b1548334641430852a614026"
+    },
+    "edit_milan_initial": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/recorded/Milan_initial_audit.json",
+      "sha256": "8cbeb6b0cc66cebb22d063e2c4a1136c4a071fd3f70931187e6a53060938205b"
+    },
+    "edit_report_validation": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/REPORT_VALIDATION.json",
+      "sha256": "9cbd14e98ed609589717f730fe33a682100840d105234d964cd89f221ebab81a"
+    },
+    "edit_initial_visual_check": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/INITIAL_VISUAL_CHECK.json",
+      "sha256": "4a53507b69afd0c2d81b767898847163b327ba2939c67182833d32e161f0fc57"
+    },
+    "edit_action_adapter_acceptance": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/ACTION_TRAINING_RESULT.json",
+      "sha256": "f0f8096527faf7c10cd8de74b49b212aee237588123c61709c9ad220ff5d73e1"
     }
   },
   "claims": [
@@ -126,9 +166,58 @@
         "milan_base_diagnostic"
       ],
       "not_supported": "Training necessity, professional ability or paired-learning/generalization advantage. Analyst-exposed source-inspired transfer, not a sealed original home."
+    },
+    {
+      "id": "E1",
+      "claim": "The furnished-room study encodes22identical action examples per arm from6source families, with7decision-supervised positions and6distinct source principles. Both arms have1245action targets; joint adds1094decision targets.",
+      "status": "supported_data_encoding_not_learning_result",
+      "evidence": [
+        "edit_encoding",
+        "edit_train_plan"
+      ],
+      "not_supported": "22independent professional decisions, equal total supervision/compute, independent geometric diversity or professional whole-room gold."
+    },
+    {
+      "id": "E2",
+      "claim": "The action-only arm completed8updates/176micro backwards in2681.473seconds, with144changed LoRA tensors and exact save/zero/reload. CPU audit verifies final FP32 finite adapter equals checkpoint8. Joint training is active; room evaluation is not started.",
+      "status": "supported_one_adapter_completion_not_study_result",
+      "evidence": [
+        "edit_action_adapter_acceptance",
+        "edit_train_plan"
+      ],
+      "not_supported": "Completion of joint training or twelve-room evaluation, cold optimizer resumption, convergence, or design improvement."
+    },
+    {
+      "id": "E3",
+      "claim": "Pine initially lacks a second concurrent work-place proxy; its existing reconstruction provides two. Milan already supports disjoint work-material/two-dining proxies in its initial room.",
+      "status": "supported_declared_static_proxies_only",
+      "evidence": [
+        "edit_preflight",
+        "edit_pine_initial",
+        "edit_pine_reference",
+        "edit_milan_initial"
+      ],
+      "not_supported": "Actual ergonomics, real project reproduction, final model success or a claim that both initial rooms require added furniture."
+    },
+    {
+      "id": "E4",
+      "claim": "Pine reference loses the old-seat-side probe while other actual old-chair approaches remain reachable. Reporting preserves both observations and separates probe loss from proven human-use loss.",
+      "status": "supported_measurement_semantics",
+      "evidence": [
+        "edit_pine_reference",
+        "edit_report_validation"
+      ],
+      "not_supported": "All reference approach probes pass, all alternative use modes are covered, or absence of human-use risks."
+    },
+    {
+      "id": "E5",
+      "claim": "Decision supervision improves independent complete-room design beyond same-knowledge prompting and action adaptation.",
+      "status": "not_yet_supported",
+      "evidence": [],
+      "not_supported": "New study terminal outputs pending; exposed two-project development results would still require new projects and mechanism controls before this broad claim."
     }
   ],
   "new_model_calls": 0,
   "new_training_updates": 0,
-  "updated_at": "2026-11-05T23:11:04.425938+00:00"
+  "updated_at": "2026-11-06T08:54:13.491789+00:00"
 }

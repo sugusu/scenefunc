@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-11-06T09:04:51.788225+00:00",
+  "scope": "Pre-evaluation fix for an observed CPU input-overflow bug, not an algorithm change.",
+  "old_code_sha256": "8b4e915f9ef03c7bf8f577354753dc809eb7335b12af8f7875e2c8041a591a43",
+  "new_code_sha256": "fe15aee2da2411c86df7489f9765e75aeab6a4343410e405940975d3469df591",
+  "old_code_snapshot": "code/run_edit_policy_before_feedback_fix.py",
+  "old_lock": "EVALUATION_EXECUTION_LOCK_V1.json",
+  "old_commit": "8c9d0960d0f5daf6625d1e56c58392310286c070",
+  "evidence": "REJECTION_MESSAGE_PREFLIGHT.json",
+  "before_after_input_tokens": {
+    "Pine": [
+      12275,
+      9361
+    ],
+    "Milan": [
+      18474,
+      15200
+    ]
+  },
+  "new_policy_model_outputs_before_revision": 0,
+  "model_input_limit": 18432,
+  "attempt_caps_unchanged": true,
+  "training_code_or_data_changed": false,
+  "initial_preparation_requests_unchanged": true,
+  "explanation": "JSON Schema exceptions included entire advertised schema. Milan initial request plus one invalid-query error had18474tokens (>18432), making a recoverable policy error terminate the batch. Bound prompt receipt to512characters; retain full original exception in per-round log and RESULT. No information about correct design or reference solution supplied. Historical preparation plans retain original hashes and are reproducible at the old Git commit."
+}

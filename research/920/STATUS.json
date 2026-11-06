@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-06T08:17:11.462355+00:00",
+  "updated_at": "2026-11-06T09:23:56.118334+00:00",
   "goal_status": "active",
   "goal_objective_sync": "synchronized_active",
   "research_complete": false,
   "objective": "Learn real-project interior-design decisions in Scene-Designer to generate complete editable usable rooms.",
-  "phase": "bounded_edit_learning_study_training_running",
+  "phase": "action_adapter_accepted_joint_training_running",
   "acceptance_criteria": "research/920/RESEARCH_GOAL.md",
   "requested_goal_text": "research/920/GOAL_TEXT.txt",
   "goal_sync_evidence": "research/920/GOAL_SYNC.json",
@@ -23,13 +23,23 @@
   "new_model_calls_this_turn": 0,
   "running_model_process": {
     "session": 79563,
-    "role": "two_adapter_training",
-    "action_updates_completed": 2,
+    "role": "decision_action_training_after_completed_action_arm",
+    "verified_live_at": "2026-11-06T09:23:56.118334+00:00",
+    "state_is_snapshot": true,
+    "authoritative_result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/decision_action/RUN.json",
+    "micro_progress": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/decision_action/MICRO_PROGRESS.json",
+    "action_updates_completed": 8,
+    "joint_updates_completed": 6,
     "planned_per_arm": 8
   },
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/recorded/action_micro_snapshot.json",
-  "next_step": "Complete existing two-adapter job and automatically execute frozen12-cell evaluation; compare initial failures and new side effects; no new cases or budget expansion.",
-  "publication": "Final four-update acceptance and independent native-input record ready for milestone push.",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/ACTION_TRAINING_RESULT.json",
+  "next_step": "Finish existing joint arm; queue then runs frozen12cells. After cells terminal, summarize initial/final effects, inspect scenes and export evidence. No new training or case expansion.",
+  "publication": {
+    "status": "verified",
+    "branch": "runs/920",
+    "commit": "8c9d0960d0f5daf6625d1e56c58392310286c070",
+    "evidence": "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/publication_editstudy_20261106/PUBLICATION.json"
+  },
   "scheduled_automation_created": false,
   "continuation_mechanism": "active thread Goal and repository handoff",
   "supporting_tool_diagnostic": {
@@ -49,7 +59,7 @@
   "same_project_professional_loader_gate": "source_guided_transfer_step_loader_passed; historical same-project geometry and core training admission not claimed",
   "completed_current_phase": false,
   "pending_user_input": null,
-  "last_verified_remote_head": "9f75c1891fd795a4190e4174c590cfd59518dc64",
+  "last_verified_remote_head": "8c9d0960d0f5daf6625d1e56c58392310286c070",
   "state_interface_engineering_check": "passed_on_four_saved_batches",
   "recovered_public_reference": {
     "final_rooms": 30,
@@ -59,7 +69,7 @@
     "source_snapshots": 336,
     "windows_byte_identity_verified": false
   },
-  "last_goal_turn_classification": "progress: executed 12 native reference additions, audited and restored complete room geometry",
+  "last_goal_turn_classification": "progress: verified running training/eval handles and preparing substantive hourly publication with accepted action adapter, pre-output evaluation revision2 and current method/report evidence.",
   "review_interface_engineering_check": "18_checks_passed_CPU_no_model_or_training",
   "training_manifest_check": "current_engineering_sample_rejected_no_training_directory_created",
   "source_relation_audit": "research/920/source_recovery_v1/SOURCE_RELATIONS.json",
@@ -454,7 +464,7 @@
   },
   "active_cpu_audit": null,
   "research_priority_review": "research/920/method_v1/DATA_PRIORITY_REVIEW.json",
-  "last_remote_verified_at": "2026-11-06T08:17:11.462355+00:00",
+  "last_remote_verified_at": "2026-11-06T08:20:57.306260+00:00",
   "source_supported_decision_packet": {
     "path": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
     "source_supported_knowledge": 14,
@@ -484,8 +494,10 @@
   },
   "running_cpu_process": {
     "session": 27562,
-    "role": "waiting_evaluation_queue",
-    "does_not_restart_training": true
+    "role": "waiting_for_two_adapter_acceptance",
+    "verified_live_at": "2026-11-06T09:14:51.280794+00:00",
+    "state_is_snapshot": true,
+    "authoritative_result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/EVALUATION_BATCH.json"
   },
   "data_layer_counts": {
     "professional_knowledge_records": 14,
@@ -682,12 +694,12 @@
     "new_independent_reviews": 0,
     "training_admitted": false
   },
-  "registered_project_families": 22,
+  "registered_project_families": 27,
   "registered_family_allocations": {
-    "development": 13,
-    "prospective_train_sources": 8,
-    "test_candidates_not_sealed": 1,
-    "sealed_test": 0
+    "development": 4,
+    "development_source_review": 11,
+    "train": 11,
+    "test": 1
   },
   "source_knowledge_diversity": {
     "run_id": "P920-DIVERSITY-v1_20261105T071920Z",
@@ -933,5 +945,13 @@
     "training_result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/TRAINING_RESULT.json",
     "evaluation_queue": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/EVALUATION_BATCH.json",
     "no_design_benefit_claim": true
-  }
+  },
+  "report_accounting": {
+    "script": "scripts/920/summarize_edit_study.py",
+    "validation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/REPORT_VALIDATION.json",
+    "training_or_evaluation_modified": false,
+    "all_twelve_cells_not_started": true
+  },
+  "evaluation_feedback_revision": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/FEEDBACK_REVISION.json",
+  "supplementary_visual_continuity": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/VISUAL_CONTINUITY_PROTOCOL.json"
 }

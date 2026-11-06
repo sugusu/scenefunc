@@ -1,3 +1,17 @@
+## 2026-11-06T09:14:51.280794+00:00 回执预算实际验证
+
+Native真实schema/current context拒绝无效query；原完整异常Pine24952字符/Milan28446字符。官方LocalQwenEngine CPU计数12275/18474；512字符回执实现及长ValueError边界通过，原18432cap下实际编码9361/15200通过。训练code_files哈希全部不变，评测V2所有锁文件已核；session27562活跃等待，cells0。旧初始化请求和量测未改。Milan初态source/prepared rotation checker差异0，旧视线代码hash保持，两个座15/15清晰与相反朝向均保留。
+
+## 2026-11-06T08:54:13.491789+00:00 实际训练验收
+
+动作组RUN completed、exit0、8更新/176backward/6336检查点调用，44分41秒。CPU safetensors144键、3833856参数、全FP32/finite，final与checkpoint8逐值一致，无CUDA初始化/模型前向。未验cold optimizer resume。联合MICRO_PROGRESS实际递增，非仅状态文件推断；session79563 poll仍live，队列27562等待。4初态图目视，非10图全审阅或人评。
+
+## 2026-11-06T08:33:08.532556+00:00 只读汇总核验
+
+check_edit_study_report通过8项，run_stage真实08:28:28.012692→08:28:28.077695UTC、0.065021秒、exit0；REPORT_VALIDATION记录前次错误期望及修正。summarize实际扫描12cell均未开始，明确0终态而非12失败；输出runtime/.../report_pre_evaluation_snapshot，不计模型结果。训练与评测锁全部哈希仍一致。79563/27562 poll均返回live；最新训练5/8更新。
+
+
+2026-11-06T08:20:57.306260+00:00：runs/920推送8c9d0960d0f5daf6625d1e56c58392310286c070，push17.023110秒/0、ls-remote一致，补齐旧2befbd1链。无新训练启动/重跑；当前训练79563与评测等待27562继续。发布回执../preflight/publication_editstudy_20261106/PUBLICATION.json，普通增量下批合并。
 ## 2026-11-06T08:17:11.462355+00:00 EDITSTUDY检查
 
 官方CPU44样本退出0/17.879623秒；两Trainer缩放dry-run退出0/4.782287和4.831807秒，误差1.50e-8/3.40e-8，无反向。官方Qwen3VL入口导入通过。Pine初态prepare64.237385秒/0，Milan64.945333秒/0；输入9320/15159。Pine既有参考readonly审计2.975914秒/0，2工作代理三宽通过；Milan初态共桌代理三宽已通过。12cell共同输入和脚本AST核验通过；实际评测模型尚0次，训练未结束。

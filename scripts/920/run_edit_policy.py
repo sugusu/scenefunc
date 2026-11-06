@@ -18,6 +18,17 @@ from run_knowledge_policy import request_messages, write
 from shared_action_contract import ActionContract, schemas_from_observation, strict_loads
 
 
+def compact_rejection_message(exc):
+    """Return a bounded receipt, keeping the full schema exception off prompt."""
+    detail=exc.message if isinstance(exc,ValidationError) else str(exc)
+    detail=' '.join(detail.split())
+    prefix=type(exc).__name__+': '
+    guidance=' Check advertised tool arguments and exact current object/asset IDs.'
+    available=512-len(prefix)-len(guidance)
+    if len(detail)>available:detail=detail[:available-3]+'...'
+    return prefix+detail+guidance
+
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--plan',type=Path,required=True)
@@ -139,7 +150,11 @@ def main():
                 except (ValueError,ValidationError) as exc:
                     # Schema errors are policy outcomes, consume the same budget,
                     # and return the actual rejection to all arms identically.
-                    rejection=f'{type(exc).__name__}: {exc}';row['rejection']=rejection;progress();continue
+                    rejection=compact_rejection_message(exc)
+                    row['rejection']=rejection
+                    row['full_validation_error']=f'{type(exc).__name__}: {exc}'
+                    write(rd/'validation_error.json',dict(feedback=rejection,full_error=row['full_validation_error']))
+                    progress();continue
                 before=canonical_hash(session.scene.to_state_dict())
                 reply=post('/session/step',dict(tool_calls=[call]));result['native_calls']+=1
                 write(rd/'tool_reply.json',reply);row.update(call=call,reply=reply,before_sha256=before)

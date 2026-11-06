@@ -1,0 +1,156 @@
+{
+  "frozen_at": "2026-11-06T09:07:54.386482+00:00",
+  "purpose": "Complete the original Milan task geometric sight-ray reporting without changing current primary activity evaluator or model feedback.",
+  "evaluation_plan": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/EVALUATION_PLAN.json",
+    "sha256": "78d414e30d0622546fed00c0393f3260f7aaf6c5c2dd3435b1b122c17eea5e3b"
+  },
+  "evaluator": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py",
+    "sha256": "28798bc2e4b1dd4cc4d17b87104da7955bafa7c3602fd44aee4d5b28cb56e803"
+  },
+  "initial_evidence": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/INITIAL_EVALUATION.json",
+    "sha256": "3c0d818a19c2f6a2533a1e55e8a8b1c984321bdb888ffb7c1db42a5143eca600",
+    "state_equivalence": "Original initial room and current prepared checkpoint compared with native rotation-roundtrip checker: zero differences.",
+    "candidate_seats": [
+      {
+        "table_id": "meal_table_0",
+        "chair_id": "meal_chair_n_0",
+        "clear_rays": 15,
+        "total_rays": 15,
+        "chair_toward_sofa_cos": [
+          0.6103860709759297
+        ]
+      },
+      {
+        "table_id": "meal_table_0",
+        "chair_id": "meal_chair_s_0",
+        "clear_rays": 15,
+        "total_rays": 15,
+        "chair_toward_sofa_cos": [
+          -0.27695995103763765
+        ]
+      }
+    ]
+  },
+  "method": {
+    "ray_heights_m": [
+      1.05,
+      1.15,
+      1.25
+    ],
+    "sofa_offsets_x_m": [
+      -0.6,
+      -0.3,
+      0.0,
+      0.3,
+      0.6
+    ],
+    "ray_count_per_chair": 15,
+    "scope": "Declared geometric rays through bounding-box obstacles, not verified gaze, comfort or subjective openness."
+  },
+  "execution_commands": [
+    {
+      "cell": "Milan_frozen_base_knowledge_feedback_17",
+      "argv": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/EVALUATION_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/rollout/final_checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/visual_continuity.json"
+      ],
+      "status": "pending_terminal_checkpoint"
+    },
+    {
+      "cell": "Milan_frozen_base_knowledge_feedback_29",
+      "argv": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/EVALUATION_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_29/rollout/final_checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_29/visual_continuity.json"
+      ],
+      "status": "pending_terminal_checkpoint"
+    },
+    {
+      "cell": "Milan_action_only_17",
+      "argv": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/EVALUATION_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_action_only_17/rollout/final_checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_action_only_17/visual_continuity.json"
+      ],
+      "status": "pending_terminal_checkpoint"
+    },
+    {
+      "cell": "Milan_action_only_29",
+      "argv": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/EVALUATION_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_action_only_29/rollout/final_checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_action_only_29/visual_continuity.json"
+      ],
+      "status": "pending_terminal_checkpoint"
+    },
+    {
+      "cell": "Milan_decision_action_17",
+      "argv": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/EVALUATION_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_decision_action_17/rollout/final_checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_decision_action_17/visual_continuity.json"
+      ],
+      "status": "pending_terminal_checkpoint"
+    },
+    {
+      "cell": "Milan_decision_action_29",
+      "argv": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_milan_policy.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/EVALUATION_PLAN.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_decision_action_29/rollout/final_checkpoint",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_decision_action_29/visual_continuity.json"
+      ],
+      "status": "pending_terminal_checkpoint"
+    }
+  ],
+  "report_fields": [
+    "workspace_pairs[].table_id",
+    "workspace_pairs[].chair_id",
+    "workspace_pairs[].clear_rays",
+    "workspace_pairs[].total_rays",
+    "workspace_pairs[].rays",
+    "workspace_pairs[].chair_toward_sofa_cos"
+  ],
+  "do_not_reuse_as_primary_acceptance": [
+    "dedicated_work_geometry_found",
+    "conditional_dedicated_work_geometry"
+  ],
+  "reason": "Legacy dedicated-work flag requires separate table/seat and cannot judge newly admitted shared-table solutions. Only sight rays/candidate identities are supplemental here.",
+  "new_policy_model_outputs": 0,
+  "new_training_updates": 0,
+  "feedback_or_scene_change": false,
+  "initial_interpretation": "Both existing dining-seat candidates have15/15clear rays to sofa; one faces more toward sofa, the other away. Do not credit an initially clear geometric connection as newly learned improvement."
+}

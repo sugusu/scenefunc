@@ -2,7 +2,7 @@
 
 本轮检验：在同动作、同知识与相同工具预算下，增加有出处的条件化决定监督，能否改善完整房间的用途调整，并减少对其他用途的损害。用户在具体六 GPU 小时方案后明确要求继续；授权解释与边界见 AUTHORIZATION.json。旧四更新授权不复用。
 
-当前快照 2026-11-06T08:17:11.462355+00:00：动作组实际完成 2/8 次完整批更新，训练继续。真实进程回执与微批进度在服务器 runtime 同名目录的 training 下；评测队列等待两组验收。此快照不是训练结束或设计收益报告。
+当前快照 2026-11-06T09:23:56.118334+00:00：动作组8/8更新已完成、保存重载与checkpoint8一致性已验；联合组6/8更新，训练继续。评测队列等待联合组验收，当前0策略输出。实际进度见STATUS.json与服务器runtime同名目录，不能将此快照当作完整试验结果。
 
 ## 数据与方法
 
@@ -34,3 +34,7 @@ Pine、Milan均为已暴露开发留出，已从本轮训练和知识池排除�
 恢复只从实际存在的记录判断：旧输出目录拒绝覆盖，断网不重启实验；训练中断保留已完成checkpoint，不自动恢复优化。评测具体命令/模板见 EVALUATION_COMMAND_MATRIX.json，代码/输入锁见 EVALUATION_EXECUTION_LOCK.json；模板仅在最终适配器验收后绑定其文件哈希，不改变任务或预算。
 
 主要文件：DATASET.json、KNOWLEDGE_POOL.json、SPLIT.json、TASKS.json、ENCODING.json、TRAIN_PLAN.json、PREFLIGHT_RESULT.json、TRAINING_RESULT.json、EVALUATION_BATCH.json、STATUS.json。小型训练快照及阶段真实回执在 recorded/；快照之后进度以服务器实际记录为准。
+
+## 评测前错误回执修订
+
+FEEDBACK_REVISION.json记录CPU实测：完整schema异常使Milan下一输入18474超过18432；未来三组统一512字符错误回执，完整异常另存，输入降至15200。训练与原始初态准备不改，未来执行锁为revision2。旧准备代码在8c9d096提交及code/快照可查，不重复执行已完成准备。VISUAL_CONTINUITY_PROTOCOL.json列出六个Milan终态的只读几何视线命令，待终态生成后补充结果；不改变模型输入或共享桌面主判定。

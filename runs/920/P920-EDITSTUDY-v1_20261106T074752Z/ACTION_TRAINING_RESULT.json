@@ -1,0 +1,212 @@
+{
+  "status": "action_only_eight_updates_and_adapter_accepted",
+  "recorded_at": "2026-11-06T08:51:36.733028+00:00",
+  "training": {
+    "status": "completed",
+    "arm": "action_only",
+    "started_at": "2026-11-06T08:01:06.441363+00:00",
+    "plan_sha256": "9d630b3998349e1a8c8312c9eeeb7bea66e708f9e8ad64ab7b1a412075bde6a7",
+    "optimizer_updates": 8,
+    "initial_host_available_bytes": 128730206208,
+    "updated_at": "2026-11-06T08:45:06.772611+00:00",
+    "ended_at": "2026-11-06T08:45:06.946828+00:00",
+    "exit_code": 0,
+    "changed_adapter_tensors": 144,
+    "peak_allocated_bytes": 21861773824,
+    "training_log": [
+      {
+        "loss": 0.5737,
+        "grad_norm": 1.1256593465805054,
+        "learning_rate": 2e-05,
+        "epoch": 1.0,
+        "step": 1
+      },
+      {
+        "loss": 0.5755,
+        "grad_norm": 1.1239957809448242,
+        "learning_rate": 2e-05,
+        "epoch": 2.0,
+        "step": 2
+      },
+      {
+        "loss": 0.5693,
+        "grad_norm": 1.1498923301696777,
+        "learning_rate": 2e-05,
+        "epoch": 3.0,
+        "step": 3
+      },
+      {
+        "loss": 0.5684,
+        "grad_norm": 1.2130299806594849,
+        "learning_rate": 2e-05,
+        "epoch": 4.0,
+        "step": 4
+      },
+      {
+        "loss": 0.5628,
+        "grad_norm": 1.2257622480392456,
+        "learning_rate": 2e-05,
+        "epoch": 5.0,
+        "step": 5
+      },
+      {
+        "loss": 0.5546,
+        "grad_norm": 1.2665594816207886,
+        "learning_rate": 2e-05,
+        "epoch": 6.0,
+        "step": 6
+      },
+      {
+        "loss": 0.5481,
+        "grad_norm": 1.3036725521087646,
+        "learning_rate": 2e-05,
+        "epoch": 7.0,
+        "step": 7
+      },
+      {
+        "loss": 0.5422,
+        "grad_norm": 1.3535382747650146,
+        "learning_rate": 2e-05,
+        "epoch": 8.0,
+        "step": 8
+      },
+      {
+        "train_runtime": 2634.6141,
+        "train_samples_per_second": 0.067,
+        "train_steps_per_second": 0.003,
+        "total_flos": 9.413838868787482e+16,
+        "train_loss": 0.5618377178907394,
+        "epoch": 8.0,
+        "step": 8
+      }
+    ],
+    "adapter": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/adapter",
+    "same_process_adapter_save_zero_reload_exact": true,
+    "backward_completed": 176,
+    "checkpoint_input_stats": {
+      "installed_layers": 36,
+      "checkpoint_forward_calls": 6336,
+      "input_bytes_seen": 568021745664,
+      "pin_memory": false,
+      "input_bytes_are_not_measured_memory_savings": true
+    },
+    "cold_process_optimizer_resume_tested": false,
+    "generalization_claim": false
+  },
+  "execution_receipt": {
+    "started_at": "2026-11-06T08:00:26.268619+00:00",
+    "status": "completed",
+    "command": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/train_edit_learning_study.py",
+      "--plan",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/TRAIN_PLAN.json",
+      "--arm",
+      "action_only",
+      "--authorization",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/AUTHORIZATION.json"
+    ],
+    "timeout_seconds": 7200,
+    "pid": 1469538,
+    "start_ticks": "60987485",
+    "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only_receipt/stage.log",
+    "ended_at": "2026-11-06T08:45:07.741908+00:00",
+    "elapsed_seconds": 2681.473313690047,
+    "exit_code": 0,
+    "first_log": "`torch_dtype` is deprecated! Use `dtype` instead!"
+  },
+  "acceptance": {
+    "optimizer_updates": 8,
+    "completed_backwards": 176,
+    "language_checkpoint_calls": 6336,
+    "trainable_parameters": 3833856,
+    "saved_tensor_count": 144,
+    "all_saved_tensors_fp32_finite": true,
+    "final_adapter_equals_checkpoint8": true,
+    "same_process_zero_reload_exact": true,
+    "cold_optimizer_resume_tested": false
+  },
+  "files": [
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/adapter/README.md",
+      "bytes": 5440,
+      "sha256": "27c8f5a03eae8937ba9f9583c00a7dbc6c46ef81b264c91ac452652400ad0a98",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/adapter/adapter_config.json",
+      "bytes": 976,
+      "sha256": "e821461377ae445b18e013caeac90ecc57bc3dba1a94d811f12e2f3ada037ed1",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/adapter/adapter_model.safetensors",
+      "bytes": 15356672,
+      "sha256": "33e66d7edf0267ea51a83bc2c833644d714f2494f281d2130f100c0bc37ffed6",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/adapter/training_args.bin",
+      "bytes": 6033,
+      "sha256": "6a5e5743dd100a0afe17ccbbc7f09f9bfafef0e866c2a4eded1088632dceb469",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/README.md",
+      "bytes": 5440,
+      "sha256": "27c8f5a03eae8937ba9f9583c00a7dbc6c46ef81b264c91ac452652400ad0a98",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/adapter_config.json",
+      "bytes": 976,
+      "sha256": "e821461377ae445b18e013caeac90ecc57bc3dba1a94d811f12e2f3ada037ed1",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/adapter_model.safetensors",
+      "bytes": 15356672,
+      "sha256": "33e66d7edf0267ea51a83bc2c833644d714f2494f281d2130f100c0bc37ffed6",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/optimizer.pt",
+      "bytes": 2039371,
+      "sha256": "6283d0a37fdccac1641f711114ca2a06bc79d76851fb0bd524f02d820248781b",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/rng_state.pth",
+      "bytes": 14645,
+      "sha256": "8490cfb9d94f20fe5607fed2a743e6b1131117a8970d608b2d431203307cb8cf",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/scheduler.pt",
+      "bytes": 1465,
+      "sha256": "a1b6ae795e54d7ed0816e4f19232a0f9b74a23484621a54fac3cfad09997fa3a",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/trainer_state.json",
+      "bytes": 1885,
+      "sha256": "1137cb95733757a9a9f4964bf7a71aef13060be5700b3788c2932f7eef36ab13",
+      "server_only": true
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/training/action_only/checkpoints/checkpoint-8/training_args.bin",
+      "bytes": 6033,
+      "sha256": "6a5e5743dd100a0afe17ccbbc7f09f9bfafef0e866c2a4eded1088632dceb469",
+      "server_only": true
+    }
+  ],
+  "peak_allocated_gib": 20.360363483428955,
+  "server_elapsed_seconds": 2681.473313690047,
+  "training_loss_first_last": [
+    0.5737,
+    0.5422
+  ],
+  "inference_restore": "Load fixed base revision in BF16/SDPA, then PEFT adapter with autocast_adapter_dtype=True. Verify get_peft_model_state_dict exactly equals FP32 safetensors before first inference; implemented in edit_study_model_step.py. No resuming optimizer is authorized by this record.",
+  "design_or_generalization_gain": "not_evaluated",
+  "new_forward_or_backward_calls_in_this_audit": 0
+}
