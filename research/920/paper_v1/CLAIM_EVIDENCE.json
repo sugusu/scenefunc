@@ -117,6 +117,26 @@
     "common_input_encoding": {
       "path": "runs/920/P920-SEENPROMPT-v1_20261106T150500Z/CPU_INTERFACE_ENCODING_v2.json",
       "sha256": "08ae2c9d89f75ba3c445bb86db604f098a904a7252b9151bf7c51400f0635d9d"
+    },
+    "deployment_input_budget": {
+      "path": "runs/920/P920-SEENPROMPT-v1_20261106T150500Z/DEPLOYMENT_BUDGET.json",
+      "sha256": "67880868cbe856205eb52a319fe8fda71742ab3858fc4b5095dffbea0b726225"
+    },
+    "decision_condition_coverage": {
+      "path": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/audit_v2/RESULT.json",
+      "sha256": "10189345dbafad01bdea93fcb7da1e5430e5496be9f57cf6cccd69df2a6d4b60"
+    },
+    "conditional_application_candidates": {
+      "path": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/CONDITIONAL_COMPLETIONS.json",
+      "sha256": "4e622c009d861f701df2bd8efcb3b45983ae90ec2fb752ffa305fe933d0d3088"
+    },
+    "conditional_recognition": {
+      "path": "runs/920/P920-CHOICE-v1_20261106T155500Z/REVIEW.json",
+      "sha256": "9d6cfd63c29ff44ef5856b24936e12c06249da6817a5031633c77310085e1c7a"
+    },
+    "fhouse_incremental_claim": {
+      "path": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/FHOUSE_DATA_USE_CORRECTION.json",
+      "sha256": "eea76dfa306d1f78df2868646bf728773fe80b6de0801c699d35d01e068296af"
     }
   },
   "claims": [
@@ -276,10 +296,30 @@
         "edit_final_report"
       ],
       "not_supported": "Professional whole-room success, adequate convergence, absence of implicit reasoning, or evidence that sourced decision learning cannot work."
+    },
+    {
+      "id": "D8",
+      "claim": "The historical F-House training prestate and moved-perimeter endpoint both have the same 15/15 clear rays. The exact prestate already passes the recorded shared-contact proxy; the move adds no measured visibility gain.",
+      "status": "supported_retrospective_data_correction",
+      "evidence": [
+        "fhouse_incremental_claim"
+      ],
+      "not_supported": "Causal explanation for training failure, professional no-edit optimum, or whole-room equivalence."
     }
   ],
   "new_model_calls": 0,
   "new_training_updates": 0,
-  "updated_at": "2026-11-06T15:14:02.520307+00:00",
-  "counter_scope": "new_model_calls/new_training_updates count authoring this index only, not experiment totals"
+  "updated_at": "2026-11-06T16:27:10.296946+00:00",
+  "counter_scope": "new_model_calls/new_training_updates count authoring this index only, not experiment totals",
+  "conditional_recognition_scope": {
+    "interpretation": "runs/920/P920-CHOICE-v1_20261106T155500Z/INTERPRETATION.md",
+    "supports": "No tested arm was robust to activity and candidate-label order in the supplied-endpoint diagnostic. Explicit choices and factual explanations diverged.",
+    "does_not_support": [
+      "Professional-learning improvement",
+      "Independent whole-room generalization",
+      "Single causal explanation for old rollout failures"
+    ],
+    "primary_parser_prompt_limitation": "Closing-tag requirement was not explicitly spelled out in the new prompt; invalid primary formatting is not a professional failure label.",
+    "posthoc_analysis": true
+  }
 }

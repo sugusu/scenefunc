@@ -1,3 +1,21 @@
+## 2026-11-06T16:28:15.341610+00:00 F-House增量收益核对
+
+incremental_claim_receipt实际16:25:39.883588→16:25:39.998929UTC、0.115353秒、exit0。历史episode SHA、native初末规范hash、图像hash、评估输入manifest及house_state与训练初态一致；15射线定义相同。新增依赖及34项CLAIM来源哈希均通过，AST/git diff --check通过。未重跑旧量测/模型。只读探查曾把access列表当dict导致AttributeError，未写文件或影响验证；按真实结构更正。
+
+## 2026-11-06T16:18:36.579855+00:00 CHOICE最终证据核验
+
+`validate_conditional_layout_choice.py --run runs/920/P920-CHOICE-v1_20261106T155500Z` 经 run_stage 120秒上限运行，实际0.767556秒，exit0。33项论文证据来源、98个唯一文件SHA、12 plan/request/model/raw及五图、实际adapter与模型配置均核对；重算主/事后分数与报告相同；git diff --check通过。底座大权重沿用原验收、未重哈希，无新增模型/训练/原生动作。输出VALIDATION.json与validation_receipt。待提交文件扫描167件约1.38MB，无>5MiB文件/权重网格/已知凭据模式；不是穷尽安全证明。Swiss未包含。
+
+## 2026-11-06T16:11:40.802300+00:00 CHOICE验收
+
+prepare V2 exit0/6.288秒；4实际编码、max5693token；12模型计划、配置/适配器hash核验；6解析/标签检查；12个模型stage及批次exit0，365.217秒，模型子进程364.332秒；report exit0/0.065秒。实际模型调用独立按RESULT计数12，不依赖解析成功。所有原始输出已读，初态/候选俯视已看。未新增场景动作、训练或独立专业验收。主判据和事后读取分开，模型选项未改。最终统一哈希/diff检查见VALIDATION.json。
+
+## 2026-11-06T15:46:58.291571+00:00 条件覆盖与候选数据
+
+check_edit_deployment_budget完成144/144，最大16279。audit_edit_decision_coverage两版均0.115秒exit0，44文档核hash；build_condition_completion_candidates0.115秒exit0，2候选/10图/依赖hash。32CLAIM_EVIDENCE来源与旧源码归档hash通过，VALIDATION.json。未运行模型/训练或GPU核验。
+
+发布补记：524b18aa2feddbad8017148d9df8e14c0f4667d1推送5.39秒、远端核验精确一致；29项论文来源哈希通过。本发布元数据留下一批，不创建自引用提交。
+
 ## 2026-11-06T15:28:02.710011+00:00 共同输入CPU验收
 
 check_edit_requests V1/V2均2.72秒exit0：44/144、22组相同输入及3错误拒绝；encoding首次4.28秒import失败、第二次16.78秒token超限、第三次18.63秒exit0全44。27旧论文来源哈希无变化；新增2项CPU证据。git diff --check通过。部署token预算未验。

@@ -1,0 +1,22 @@
+{
+  "id": "reserve_forward_action_only",
+  "arm": "action_only",
+  "activity": "reserve",
+  "order": "forward",
+  "model_result": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_action_only/model/RESULT.json",
+    "sha256": "1a00b93299e662109ec465935b156633d3d2095438feb951952eec38b35a1e24"
+  },
+  "raw_output": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_action_only/model/raw_output.txt",
+    "sha256": "17063add70d9a84440cdeafbfdab464374dc4ed45028218dc9cec907c100cbdd"
+  },
+  "valid_response": true,
+  "correct": false,
+  "selected_endpoint": "everyday",
+  "choice": {
+    "candidate_id": "A",
+    "reason": "The mobile_table_0 in the current scene occupies the specified visitor-activity floor rectangle [-2.6,-0.55,-1.0,0.75]. In candidate A, it is moved to x≈0.75, y≈-1.55, outside that rectangle, leaving the reserved zone unoccupied. The chair_right_0 also moves, but the stated requirement is specifically about the floor-rectangle being free; the table's relocation directly satisfies that. Therefore A is selected for preserving the visitor activity area.",
+    "unknowns": "The mobile table's wheels are a visual mesh with no reported physical clearance; the scene is a simplified object placement without verified collisions or accessibility. The sofa is not convertible, and the current room may include other elements outside the selected floor area, but those are not represented here."
+  }
+}

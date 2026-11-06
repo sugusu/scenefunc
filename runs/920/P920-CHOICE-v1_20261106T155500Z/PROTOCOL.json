@@ -1,0 +1,264 @@
+{
+  "run_id": "P920-CHOICE-v1_20261106T155500Z",
+  "frozen_at": "2026-11-06T15:55:12.312065+00:00",
+  "question": "Can models distinguish the activity-appropriate supplied endpoint independently of native tool execution?",
+  "scope": "One training-exposed Paper reconstruction; two activity conditions and reversed option labels, NOT four independent projects. Recognition with supplied candidates and world AABBs, not generation or professional evaluation.",
+  "budgets": {
+    "model_calls": 12,
+    "subprocess_seconds": 2160,
+    "max_new_tokens_each": 768,
+    "training_updates": 0,
+    "native_edits": 0,
+    "retries": 0
+  },
+  "code_sha256": {
+    "probe_conditional_layout_choice.py": "819456d578dc87cd031ba2b30a6d4327c5f090a78b9b080a1975cd7bd2874dfb",
+    "edit_study_model_step.py": "c9d1882634c39e6ca1a054a0956b836af257725a96a148f6a99b072ef3deb100",
+    "run_stage.py": "d3bb72feb8a7040c16e269d4de7187cabedc64e5d7ee750e796eabdb5fdb5d65"
+  },
+  "scoring_sha256": "cdb568b0c3f48d428322f1d37371f7ed1e92bc414f2869e0d33a804e4ae0eccc",
+  "cells": [
+    {
+      "id": "reserve_forward_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "reserve",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "expected_endpoint": "reserve",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_frozen_base_knowledge_feedback/PLAN.json",
+        "sha256": "e3d3b52c3cb03b69f32cdbf2d1caa71f29c4978b5f5e295bb9188e5f5c22406c"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/reserve_forward/request.json",
+        "sha256": "c0d6f116c00bbe5ce8b0b345f19441cbce93be5fadf6a5432887c0a8e234b09f"
+      }
+    },
+    {
+      "id": "reserve_forward_action_only",
+      "arm": "action_only",
+      "activity": "reserve",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "expected_endpoint": "reserve",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_action_only/PLAN.json",
+        "sha256": "f7604925ecf968365d1095341d8072eb030249aa5d7ad4bf9ed3ffc0d9ae7968"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/reserve_forward/request.json",
+        "sha256": "c0d6f116c00bbe5ce8b0b345f19441cbce93be5fadf6a5432887c0a8e234b09f"
+      }
+    },
+    {
+      "id": "reserve_forward_decision_action",
+      "arm": "decision_action",
+      "activity": "reserve",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "expected_endpoint": "reserve",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_decision_action/PLAN.json",
+        "sha256": "e06a1253b0cf0b44cd2492d1ec2dc0a0c11c37de04b5c8c45579c8a7f70c7724"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/reserve_forward/request.json",
+        "sha256": "c0d6f116c00bbe5ce8b0b345f19441cbce93be5fadf6a5432887c0a8e234b09f"
+      }
+    },
+    {
+      "id": "everyday_forward_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "everyday",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "expected_endpoint": "everyday",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_forward_frozen_base_knowledge_feedback/PLAN.json",
+        "sha256": "8a0ef65483070201a7f9007babb1799a67651050a92f35ee623504a34bc00ba3"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/everyday_forward/request.json",
+        "sha256": "94dbbad7eb6878390eb398832c5fafc79d6e22e6353e7ef792c0366a708bd034"
+      }
+    },
+    {
+      "id": "everyday_forward_action_only",
+      "arm": "action_only",
+      "activity": "everyday",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "expected_endpoint": "everyday",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_forward_action_only/PLAN.json",
+        "sha256": "a9f5217461e6d800ad9541d426942772a5c9653b299e392c59884776774b0adf"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/everyday_forward/request.json",
+        "sha256": "94dbbad7eb6878390eb398832c5fafc79d6e22e6353e7ef792c0366a708bd034"
+      }
+    },
+    {
+      "id": "everyday_forward_decision_action",
+      "arm": "decision_action",
+      "activity": "everyday",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "expected_endpoint": "everyday",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_forward_decision_action/PLAN.json",
+        "sha256": "18c8c530deeb9883ee4b5221876134c63d7518d75a952e4c1855baf52e2a4353"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/everyday_forward/request.json",
+        "sha256": "94dbbad7eb6878390eb398832c5fafc79d6e22e6353e7ef792c0366a708bd034"
+      }
+    },
+    {
+      "id": "reserve_reversed_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "reserve",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "expected_endpoint": "reserve",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_reversed_frozen_base_knowledge_feedback/PLAN.json",
+        "sha256": "ee1bedf1006f36076f3f4e36722c6c18d89d30b5fc9f332854b486926ec1e5a1"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/reserve_reversed/request.json",
+        "sha256": "530f392a7517830bcec04e9893b4ccfa89e963a49fe539b46546dcf8f391b954"
+      }
+    },
+    {
+      "id": "reserve_reversed_action_only",
+      "arm": "action_only",
+      "activity": "reserve",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "expected_endpoint": "reserve",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_reversed_action_only/PLAN.json",
+        "sha256": "b2dd52a9ac1d5e4e79b1331e1b6446c5d040842e4f2690474e667b35cc9f9bbf"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/reserve_reversed/request.json",
+        "sha256": "530f392a7517830bcec04e9893b4ccfa89e963a49fe539b46546dcf8f391b954"
+      }
+    },
+    {
+      "id": "reserve_reversed_decision_action",
+      "arm": "decision_action",
+      "activity": "reserve",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "expected_endpoint": "reserve",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_reversed_decision_action/PLAN.json",
+        "sha256": "1695a0e5923af4aaf2f0fe0687d99a23eb3029d6fca0b413701cd39f76361dae"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/reserve_reversed/request.json",
+        "sha256": "530f392a7517830bcec04e9893b4ccfa89e963a49fe539b46546dcf8f391b954"
+      }
+    },
+    {
+      "id": "everyday_reversed_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "everyday",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "expected_endpoint": "everyday",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_reversed_frozen_base_knowledge_feedback/PLAN.json",
+        "sha256": "5da5a7caddb765c2be7ca592ee3f8d4aa131e599829b629542446b701f291e28"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/everyday_reversed/request.json",
+        "sha256": "a3f52b21762835c43663d9ccc892317a9f61f3f0dbb1e9c4435eb007e1bf31bb"
+      }
+    },
+    {
+      "id": "everyday_reversed_action_only",
+      "arm": "action_only",
+      "activity": "everyday",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "expected_endpoint": "everyday",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_reversed_action_only/PLAN.json",
+        "sha256": "f4b791750c2c41c6f7c0fbc906fc6c796de4e3187f169eb681f93b0e95e5a7d9"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/everyday_reversed/request.json",
+        "sha256": "a3f52b21762835c43663d9ccc892317a9f61f3f0dbb1e9c4435eb007e1bf31bb"
+      }
+    },
+    {
+      "id": "everyday_reversed_decision_action",
+      "arm": "decision_action",
+      "activity": "everyday",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "expected_endpoint": "everyday",
+      "plan": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_reversed_decision_action/PLAN.json",
+        "sha256": "44cc747f755a95fe42fcd8ca52549d6d51c5fecab56ebf98f9ebd8121f899db3"
+      },
+      "request": {
+        "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/inputs/everyday_reversed/request.json",
+        "sha256": "a3f52b21762835c43663d9ccc892317a9f61f3f0dbb1e9c4435eb007e1bf31bb"
+      }
+    }
+  ],
+  "primary": "Per arm: both opposing activities correct under both label orders (4/4); report malformed/undetermined and label consistency separately. No significance claim.",
+  "gates": [
+    "If base is 4/4, conditional recognition is available on this scaffold; no need for more training on this task is established.",
+    "If joint exceeds controls, record exposed recognition only; do not infer generation or professional-learning benefit.",
+    "If all fail, diagnose recognition/prompt geometry limitations; do not automatically add training or rerun.",
+    "Regardless of result: stop after the frozen batch; no prompt tuning, alternate seed or additional Paper rollout."
+  ],
+  "limitations": [
+    "Researchers supplied both complete endpoints, world AABBs and quantitative task criteria; substantially easier than autonomous design.",
+    "Both adapters saw this family and its actions; seen layouts are not independent generalization.",
+    "No source-gold reason, measured per-candidate success, or phase labels enter input. Source knowledge remains shared.",
+    "Prompt and output task differ from edit training. Success or failure cannot isolate training, interface or knowledge causally.",
+    "Static endpoint selection does not validate sofa conversion, sweeps, comfort, full residence or independent professional preference."
+  ]
+}

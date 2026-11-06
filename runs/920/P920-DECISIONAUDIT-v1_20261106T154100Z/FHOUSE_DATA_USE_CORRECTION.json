@@ -1,0 +1,200 @@
+{
+  "status": "completed_retrospective_data_use_correction",
+  "recorded_at": "2026-11-06T16:25:39.987755+00:00",
+  "episode_id": "fhouse_perimeter_01",
+  "family_id": "osaka_f_house_coilkma",
+  "source_decision_id": "fhouse_existing_furniture_shared_living",
+  "original_target": {
+    "current_condition": "当前需求强调餐桌与沙发之间的共同交流，且已有家具必须保留。",
+    "principle_applicability": {
+      "source_decision_id": "fhouse_existing_furniture_shared_living",
+      "sourced_principle": "为容纳既有家具并优先共同生活，F-House采用了较开放的空间组织。"
+    },
+    "proposed_decision": {
+      "description": "保留高柜并将其移向房间边缘，减少两活动区间的分隔。",
+      "object_or_asset_references": "recon_tall_storage_0"
+    },
+    "expected_cost_and_unknowns": "需要检查柜前、餐位、窗前及入口接近；实际隐私、声学和专业偏好未测。"
+  },
+  "original_command": {
+    "name": "move_furniture_tool",
+    "arguments": {
+      "object_id": "recon_tall_storage_0",
+      "x": -1.6,
+      "y": 1.95,
+      "yaw": 180
+    }
+  },
+  "prestate_canonical_sha256": "54fced6a449ac3f97871d74b52e9925e9aa4aa9c89a0f94d7186723a330ddf0d",
+  "poststate_canonical_sha256": "312f27e09b2cd656587e3387d68521f9a218f044dbed597dd6c72c8b74d2a99f",
+  "binding": {
+    "training_object_records": 14,
+    "views": 5,
+    "exact_evaluated_prestate": true,
+    "same_15_ray_definitions": true
+  },
+  "observed": {
+    "initial_clear_rays": 15,
+    "final_clear_rays": 15,
+    "clear_ray_gain": 0,
+    "initial_conditional_proxy_pass": true,
+    "initial_four_declared_places": true,
+    "initial_role_access": [
+      {
+        "body_m": 0.4,
+        "passed": 9,
+        "total": 9
+      },
+      {
+        "body_m": 0.5,
+        "passed": 9,
+        "total": 9
+      },
+      {
+        "body_m": 0.6,
+        "passed": 9,
+        "total": 9
+      }
+    ],
+    "final_fixed_access_all_pass": true,
+    "access_comparison_limit": "Different role-relative and fixed approach definitions; do not claim equal accessibility or equal route lengths.",
+    "initial_storage_transform": {
+      "translation": [
+        1.3,
+        1.95,
+        0.0
+      ],
+      "rotation_wxyz": [
+        6.123233995736766e-17,
+        -0.0,
+        -0.0,
+        -1.0
+      ]
+    },
+    "final_storage_transform": {
+      "translation": [
+        -1.6014050780862161,
+        1.9514797403187765,
+        0.0
+      ],
+      "rotation_wxyz": [
+        0.001096423627084839,
+        0.0,
+        -0.0,
+        -0.9999993989274345
+      ]
+    },
+    "actual_translation_distance_m": 2.901405455426024,
+    "edits": 1,
+    "other_object_records_unchanged": true
+  },
+  "future_data_use": {
+    "status": "candidate_overlay_not_encoded_not_trained",
+    "retain_source_principle": true,
+    "retain_actual_move_as_feasible_action_record": true,
+    "admit_original_as_positive_incremental_visibility_decision": false,
+    "reason": "Claimed reduction of separation is unsupported relative to its own initial state under the recorded visibility proxy.",
+    "candidate_decision": "初态已满足声明的共同交流视线、四餐位及对象相对接近代理；在这些指标下可维持现状。现有靠边移柜是另一可行端点，未显示视线增益，且增加一次编辑。",
+    "candidate_authorship": "Researcher interpretation of historical execution evidence, not an original designer statement or expert preference.",
+    "no_edit_scope": "Admissible for measured initial shared-contact proxies only; not professionally optimal or whole-room accepted.",
+    "endpoint_contrast_retained": "Perimeter vs divider remains 15 vs 0 clear rays; this does not establish improvement over the initial layout.",
+    "training_episode_and_adapters_unchanged": true
+  },
+  "limits": [
+    "No causal attribution of training failure to this one target.",
+    "No new professional decision, project, human rating, model call, training update or scene edit.",
+    "Physical moving effort, comfort, acoustic privacy and complete-room success remain unknown.",
+    "Existing evaluation reused; no geometry or model rerun."
+  ],
+  "sources": {
+    "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/fhouse_perimeter_01/episode.json": {
+      "sha256": "c74fd8bcb26037d81a4a41677cd9c29b6c25305728443891453d87db222038f7",
+      "bytes": 25371
+    },
+    "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/DATASET.json": {
+      "sha256": "2df4c5c9756d121ef48f9bde9b388cbcefe25d71b3ec543b1cc36cd7d9d9d355",
+      "bytes": 80586
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/initial_state.json": {
+      "sha256": "46fbafb7c8014ac6969718ee52173573acd8eb4a17c743443726abcb850254f1",
+      "bytes": 20775
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/step_01_before.json": {
+      "sha256": "46fbafb7c8014ac6969718ee52173573acd8eb4a17c743443726abcb850254f1",
+      "bytes": 20775
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/step_01_after.json": {
+      "sha256": "d3b6aab1df87e1d43eebf293d77ce7ae2110eb030a3e0cc1e01ed624a28be7ed",
+      "bytes": 20818
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/final_state.json": {
+      "sha256": "d3b6aab1df87e1d43eebf293d77ce7ae2110eb030a3e0cc1e01ed624a28be7ed",
+      "bytes": 20818
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/STEPS.json": {
+      "sha256": "182d1da763cd1b38d59af0e35c9f6c966af87941b37f3f21d7278ed10ec8be02",
+      "bytes": 972
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/perimeter/bindings/step_000.state_binding.json": {
+      "sha256": "be99c5d9b89b7a068fab467bde76dffedb3480c5a3cd497594fa2af91178cf54",
+      "bytes": 24274
+    },
+    "runs/920/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/bindings/step_000.state_binding.json": {
+      "sha256": "be99c5d9b89b7a068fab467bde76dffedb3480c5a3cd497594fa2af91178cf54",
+      "bytes": 24274
+    },
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.topdown.png": {
+      "sha256": "6f95477c5f1561d36919ee230a79928677cf69ef996f4b62fa6047d23045a42d",
+      "bytes": 1432121
+    },
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.south.png": {
+      "sha256": "3e6c0422e1d2d200f493b65ef9615b5e00c1816f549e8a70a99d7f0a338c6c28",
+      "bytes": 1172451
+    },
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.east.png": {
+      "sha256": "6f18cdd6b8a5b3fecee1bbd642aba975754d74ac7712b608b07d427f769cdaf8",
+      "bytes": 1124080
+    },
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.west.png": {
+      "sha256": "0468570491db393be132d769aca131cf906130fdfa5a5a7d9f6162125ea254ec",
+      "bytes": 1170925
+    },
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FCHOICE-v2_20261105T193428Z/perimeter/native/house/room_fhouse_shared_living_transfer/rollout_furniture/step_000.north.png": {
+      "sha256": "da6efecce9dd0eb8c4ded31d82b5d732bc3361d8eba3e21b7148e581ec4536e6",
+      "bytes": 1151232
+    },
+    "runs/920/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/PLAN.json": {
+      "sha256": "98d82afb1e161d6dc70a9a0600854148894790b806b4df6457a9ba02d4516577",
+      "bytes": 7495
+    },
+    "runs/920/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/INITIAL_EVALUATION.json": {
+      "sha256": "c93cd59d770d6d6f95dcd75d0b768f324aa90167d970f113e4552c53ee858f02",
+      "bytes": 15563
+    },
+    "runs/920/P920-FPOLICY-v1_20261105T195352Z/execution/shared_visual_contact/initial_evaluation_execution/receipt.json": {
+      "sha256": "bb6b877eda93fbd07a73eeeb07903cf2f680c8eec1259422fcffbd05e7021549",
+      "bytes": 1321
+    },
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/input_bundle/manifest.json": {
+      "sha256": "71f53603f93cbbdfbf3092ed9380e085d71dec1b37a3d7e33dc2598ad0840feb",
+      "bytes": 5353
+    },
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FPOLICY-v1_20261105T195352Z/shared_visual_contact/input_bundle/house_state.json": {
+      "sha256": "76b5f700457063d6d4cc890ee1e1a3141a5b16925ac09eb9ed38106af7d5c286",
+      "bytes": 32599
+    },
+    "runs/920/P920-FPOLICY-v1_20261105T195352Z/EVALUATION_PLAN.json": {
+      "sha256": "edb0500940a227297f63501e8d22b0c01c6dbb6bd395e5b7272072f21db17ed5",
+      "bytes": 2848
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/MEASUREMENT.json": {
+      "sha256": "ef2ad5547310fd04d622c12e7c1384c49d4c3bca2ee9abfef30c1cbd2b91c775",
+      "bytes": 12386
+    },
+    "runs/920/P920-FCHOICE-v2_20261105T193428Z/SOURCE_RECORD.json": {
+      "sha256": "e28f6d59e93c1c067397efd5692867949d0485e7b6bb7e3e7dc646823816575e",
+      "bytes": 3629
+    }
+  },
+  "script_sha256": "6bab2f54a00fb01bf0a139760ccea36d64748bee8c4be0a2e6b4c9434c99e066"
+}

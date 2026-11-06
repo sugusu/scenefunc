@@ -1,0 +1,408 @@
+{
+  "created_at": "2026-11-06T16:04:25.904706+00:00",
+  "status": "completed",
+  "actual_model_calls": 12,
+  "model_subprocess_seconds": 364.33215688797645,
+  "native_edits": 0,
+  "training_updates": 0,
+  "arms": {
+    "frozen_base_knowledge_feedback": {
+      "primary": {
+        "scored": 4,
+        "correct": 0,
+        "valid": 0
+      },
+      "posthoc_literal_correct": 2,
+      "posthoc_payload_readable": 3,
+      "label_order_consistency": {
+        "reserve": false,
+        "everyday": false
+      },
+      "total_cells": 4
+    },
+    "action_only": {
+      "primary": {
+        "scored": 4,
+        "correct": 0,
+        "valid": 1
+      },
+      "posthoc_literal_correct": 1,
+      "posthoc_payload_readable": 4,
+      "label_order_consistency": {
+        "reserve": false,
+        "everyday": false
+      },
+      "total_cells": 4
+    },
+    "decision_action": {
+      "primary": {
+        "scored": 4,
+        "correct": 1,
+        "valid": 2
+      },
+      "posthoc_literal_correct": 2,
+      "posthoc_payload_readable": 3,
+      "label_order_consistency": {
+        "reserve": false,
+        "everyday": false
+      },
+      "total_cells": 4
+    }
+  },
+  "rows": [
+    {
+      "id": "reserve_forward_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "reserve",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5677,
+      "output_tokens": 297,
+      "generation_seconds": 11.625561957014725,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_frozen_base_knowledge_feedback/model/raw_output.txt",
+      "raw_output_sha256": "049cfda38bed35bf7f5af9064cc6a929d41b615dd05d4f6705cc2ed973755ad5",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "The mobile table in the current scene occupies the specified visitor-activity floor rectangle [-2.6,-0.55,-1.0,0.75]. In candidate A, that table is moved to x≈0.75, y≈-1.55, which is outside the rectangle, leaving the required floor area unobstructed. The chair_right relocation does not affect this specific reserve.",
+        "unknowns": "The mobile table's geometry and exact movement are based on reported positions and rotations; physical clearance around it and other objects is not verified.",
+        "closing_tag_present": false,
+        "eos_marker_present": true,
+        "selected_endpoint": "everyday",
+        "matches_frozen_activity": false
+      }
+    },
+    {
+      "id": "reserve_forward_action_only",
+      "arm": "action_only",
+      "activity": "reserve",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "primary_correct": false,
+      "primary_valid": true,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5677,
+      "output_tokens": 340,
+      "generation_seconds": 15.787598915980197,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_action_only/model/raw_output.txt",
+      "raw_output_sha256": "17063add70d9a84440cdeafbfdab464374dc4ed45028218dc9cec907c100cbdd",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "The mobile_table_0 in the current scene occupies the specified visitor-activity floor rectangle [-2.6,-0.55,-1.0,0.75]. In candidate A, it is moved to x≈0.75, y≈-1.55, outside that rectangle, leaving the reserved zone unoccupied. The chair_right_0 also moves, but the stated requirement is specifically about the floor-rectangle being free; the table's relocation directly satisfies that. Therefore A is selected for preserving the visitor activity area.",
+        "unknowns": "The mobile table's wheels are a visual mesh with no reported physical clearance; the scene is a simplified object placement without verified collisions or accessibility. The sofa is not convertible, and the current room may include other elements outside the selected floor area, but those are not represented here.",
+        "closing_tag_present": true,
+        "eos_marker_present": false,
+        "selected_endpoint": "everyday",
+        "matches_frozen_activity": false
+      }
+    },
+    {
+      "id": "reserve_forward_decision_action",
+      "arm": "decision_action",
+      "activity": "reserve",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5677,
+      "output_tokens": 419,
+      "generation_seconds": 18.892544703907333,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_forward_decision_action/model/raw_output.txt",
+      "raw_output_sha256": "ec178d17b2f7a324d1e1ff8889f957d46ed1e91cc96ea34bbf276228f0ef31c0",
+      "posthoc_literal": {
+        "payload_readable": false,
+        "error": "Not exactly one explicit selection block",
+        "selected_endpoint": null,
+        "matches_frozen_activity": false
+      }
+    },
+    {
+      "id": "everyday_forward_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "everyday",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5693,
+      "output_tokens": 459,
+      "generation_seconds": 21.799966005957685,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_forward_frozen_base_knowledge_feedback/model/raw_output.txt",
+      "raw_output_sha256": "e44e2aab3c5bc07fd1a394e958e9fc547bde2d06213d50222b0e26e3ffbfd528",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "The right chair in A is close to the mobile table, supporting the two stools at the table for the meal, while the left chair is too far left. B pushes the right chair beyond the table's right edge, making it unusable, and the left chair is also too far from the table.",
+        "unknowns": "Only the reported shared living/dining/kitchen activity area is represented; permanent bedroom, bathroom and corridor are outside this selected room. The full45m²home is not reconstructed. The source supports a movable co-designed table and a convertible sofa. This static sofa has no conversion; a declared guest floor reserve is not evidence that anyone can sleep there. All room/furniture dimensions, entrance/window positions and candidate movements are researcher assumptions. Source geometry/coordinates are unavailable. Generated table wheels are visual meshes only; moving tools teleport poses. No physical pushing, swept articulation, braking or load claim. Capacity, comfort, seating, kitchen services, privacy and professional quality remain unknown.",
+        "closing_tag_present": false,
+        "eos_marker_present": true,
+        "selected_endpoint": "everyday",
+        "matches_frozen_activity": true
+      }
+    },
+    {
+      "id": "everyday_forward_action_only",
+      "arm": "action_only",
+      "activity": "everyday",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5693,
+      "output_tokens": 364,
+      "generation_seconds": 16.87587008299306,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_forward_action_only/model/raw_output.txt",
+      "raw_output_sha256": "4b6226d7d1af277984cf6b01abe2b48fce47e26395eefc630c5ddb82477ded8c",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "The right chair's world bbox is 0.23 m beyond the table's right edge and fully within the tabletop Y extent, satisfying the stated geometric constraints for supporting a meal with the mobile table. The left chair is far west and does not serve the table in this arrangement.",
+        "unknowns": "The actual meal usability, circulation, and physical accessibility around the table are not verified by the available measurements.",
+        "closing_tag_present": false,
+        "eos_marker_present": true,
+        "selected_endpoint": "everyday",
+        "matches_frozen_activity": true
+      }
+    },
+    {
+      "id": "everyday_forward_decision_action",
+      "arm": "decision_action",
+      "activity": "everyday",
+      "order": "forward",
+      "label_map": {
+        "A": "everyday",
+        "B": "reserve"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5693,
+      "output_tokens": 552,
+      "generation_seconds": 24.53546597692184,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_forward_decision_action/model/raw_output.txt",
+      "raw_output_sha256": "524c192f50c891fc0b96e538facfc834cdd254bfd7bbabb4e0ae9fbece194adc",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "In the current room, the mobile table is in the left half around x=-1.8, and the two stools must serve it for a meal. The right chair in candidate A is pulled toward the table at x=-0.75, with its centre about 0.75 m beyond the right table edge, within the required 0.2–0.75 m range, and its y extent aligns with the tabletop. The left chair in A is at x=-2.85, too far left, but only the right chair meets the geometric requirement. In B, the right chair is pushed to x=0.75, far from the table, and the left chair is also displaced, so neither seat is properly positioned. Therefore A is the only option that supports the required seating at the table.",
+        "unknowns": "The stated guest floor reserve is not evidence that anyone can sleep there; the sofa has no stated conversion; the table and sofa are not fully validated as usable for dining or lounging; all dimensions are assumed; no physical capacity, comfort, privacy, or professional quality is confirmed.",
+        "closing_tag_present": false,
+        "eos_marker_present": true,
+        "selected_endpoint": "everyday",
+        "matches_frozen_activity": true
+      }
+    },
+    {
+      "id": "reserve_reversed_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "reserve",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5677,
+      "output_tokens": 468,
+      "generation_seconds": 17.53849912097212,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_reversed_frozen_base_knowledge_feedback/model/raw_output.txt",
+      "raw_output_sha256": "4db0840da6daced4071cb4bed29547f574dbc28ce385992ef44909bb503f4627",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "In the current room, the specified floor-rectangle guest activity zone is [-2.6,-0.55,-1.0,0.75]. In candidate A, the right chair is moved into the upper-right area at about x=0.75, y=0.8, well outside that rectangle, and the mobile table remains in the south at y≈-1.55, also outside. This keeps the entire reserved rectangle free of furniture. In candidate B, the right chair is moved to x=-0.75, y=0.0, which is inside the guest zone, so the reserved floor area is occupied. Since the current activity requires the rectangle to be unoccupied, A is the correct choice.",
+        "unknowns": "The reported physical unknowns from the fixed prompt context remain unchanged and still apply: the full 45m² home is not reconstructed, the sofa has no stated conversion, and all dimensions/positions are assumed.",
+        "closing_tag_present": false,
+        "eos_marker_present": true,
+        "selected_endpoint": "reserve",
+        "matches_frozen_activity": true
+      }
+    },
+    {
+      "id": "reserve_reversed_action_only",
+      "arm": "action_only",
+      "activity": "reserve",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5677,
+      "output_tokens": 524,
+      "generation_seconds": 23.118831243016757,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_reversed_action_only/model/raw_output.txt",
+      "raw_output_sha256": "48f973336c463c5a4d918d7a82d43774b041dfce25d3dfa21655b6541a5bd0bb",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "undetermined",
+        "reason": "In the current room, the specified floor-rectangle guest activity zone is [-2.6,-0.55,-1.0,0.75]. The right chair's world bounding box is approximately x≈-0.97 to x≈-0.53 and y≈0.22, overlapping the required x range [-2.6,-1.0] and y range [-0.55,0.75]. The mobile table's world bounding box is approximately x≈-2.40 to x≈-1.20 and y≈-0.35 to y≈0.35, also fully intersecting the target rectangle. The layout therefore places furniture into the reserved guest activity area, which contradicts the stated requirement that the rectangle remain unoccupied.",
+        "unknowns": "Only the reported shared living/dining/kitchen activity area is represented; permanent bedroom, bathroom and corridor are outside this selected room. The full45m²home is not reconstructed. The source supports a movable co-designed table and a convertible sofa. This static sofa has no conversion; a declared guest floor reserve is not evidence that anyone can sleep there. All room/furniture dimensions, entrance/window positions and candidate movements are researcher assumptions. Source geometry/coordinates are unavailable. Generated table wheels are visual meshes only; moving tools teleport poses. No physical pushing, swept articulation, braking or load claim. Capacity, comfort, seating, kitchen services, privacy and professional quality remain unknown.",
+        "closing_tag_present": false,
+        "eos_marker_present": true,
+        "selected_endpoint": null,
+        "matches_frozen_activity": false
+      }
+    },
+    {
+      "id": "reserve_reversed_decision_action",
+      "arm": "decision_action",
+      "activity": "reserve",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "primary_correct": true,
+      "primary_valid": true,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5677,
+      "output_tokens": 466,
+      "generation_seconds": 21.026484641013667,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/reserve_reversed_decision_action/model/raw_output.txt",
+      "raw_output_sha256": "48008d8b534c2d00663409678fda12b4e8bab76923c7d794336b4ad9cc2677f9",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "In the current room, the specified floor-rectangle guest activity zone is [-2.6,-0.55,-1.0,0.75]. The chosen layout places the right chair within this rectangle: its world bounding box spans from x≈-0.97 to x≈-0.53, which overlaps the required x-range. The mobile table is also inside the rectangle, with its world bounding box extending from x≈-2.40 to x≈-1.20, fully within the [-2.6,-1.0] x-range. Because both the chair and table occupy the reserved floor area, this configuration does not satisfy the requirement to leave the rectangle unoccupied by furniture.",
+        "unknowns": "Only the reported shared living/dining/kitchen activity area is represented; permanent bedroom, bathroom and corridor are outside this selected room. The full45m²home is not reconstructed. The source supports a movable co-designed table and a convertible sofa. This static sofa has no conversion; a declared guest floor reserve is not evidence that anyone can sleep there. All room/furniture dimensions, entrance/window positions and candidate movements are researcher assumptions. Source geometry/coordinates are unavailable. Generated table wheels are visual meshes only; moving tools teleport poses. No physical pushing, swept articulation, braking or load claim. Capacity, comfort, seating, kitchen services, privacy and professional quality remain unknown.",
+        "closing_tag_present": true,
+        "eos_marker_present": false,
+        "selected_endpoint": "reserve",
+        "matches_frozen_activity": true
+      }
+    },
+    {
+      "id": "everyday_reversed_frozen_base_knowledge_feedback",
+      "arm": "frozen_base_knowledge_feedback",
+      "activity": "everyday",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5693,
+      "output_tokens": 602,
+      "generation_seconds": 21.910065411939286,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_reversed_frozen_base_knowledge_feedback/model/raw_output.txt",
+      "raw_output_sha256": "48da71a07608c451979c0594bce0e61699b95d8fff0f9092771b9a6aa25285b8",
+      "posthoc_literal": {
+        "payload_readable": false,
+        "error": "Not exactly one explicit selection block",
+        "selected_endpoint": null,
+        "matches_frozen_activity": false
+      }
+    },
+    {
+      "id": "everyday_reversed_action_only",
+      "arm": "action_only",
+      "activity": "everyday",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "primary_correct": false,
+      "primary_valid": false,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5693,
+      "output_tokens": 382,
+      "generation_seconds": 22.57029680395499,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_reversed_action_only/model/raw_output.txt",
+      "raw_output_sha256": "0fd9184777d3afecef84b54f9d0dcba74567e7644f399c1c9a4d60128f9df743",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "The right stool in A is pulled to x≈0.75, beyond the table's right edge by about 0.5 m and within the tabletop Y extent, matching the required offset. In B, the stool is pushed to x≈-0.75, 1.0 m beyond the table's right edge, but this far-left position leaves a large gap between the two stools, undermining the meal setup. A supports the two stools at the table more coherently.",
+        "unknowns": "The physical quality of the seating arrangement, including comfort, accessibility, and full usability, remains unknown.",
+        "closing_tag_present": false,
+        "eos_marker_present": true,
+        "selected_endpoint": "reserve",
+        "matches_frozen_activity": false
+      }
+    },
+    {
+      "id": "everyday_reversed_decision_action",
+      "arm": "decision_action",
+      "activity": "everyday",
+      "order": "reversed",
+      "label_map": {
+        "A": "reserve",
+        "B": "everyday"
+      },
+      "primary_correct": false,
+      "primary_valid": true,
+      "model_calls": 1,
+      "exit_code": 0,
+      "input_tokens": 5693,
+      "output_tokens": 543,
+      "generation_seconds": 24.329397021094337,
+      "raw_output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-CHOICE-v1_20261106T155500Z/cells/everyday_reversed_decision_action/model/raw_output.txt",
+      "raw_output_sha256": "27cb53feb10f939c4868af45b5902acc30c465bd1a5711f6d7b5ab1014e2c9af",
+      "posthoc_literal": {
+        "payload_readable": true,
+        "candidate_id": "A",
+        "reason": "In the current room, the two stools must serve the mobile table for a meal, so the layout needs to support both seating positions while keeping the table reachable. The table is centered in the room; the right stool is at about x=-0.75, and the left stool is at about x=-2.85. The left stool is far from the table, beyond the required 0.2–0.75 m boundary, so it cannot function as a usable seat for the table. The right stool is within the allowed range relative to the table. This means the left stool is effectively unusable in this configuration, reducing the functional dining setup to a single seat. The right stool alone does not create a meaningful pairing; it is merely present near the table. Therefore, the arrangement with the right stool near the table and the left stool far away is not a viable solution for the stated meal activity.",
+        "unknowns": "Only the reported shared living/dining/kitchen activity area is represented; permanent bedroom, bathroom and corridor are outside this selected room. The full45m²home is not reconstructed. The source supports a movable co-designed table and a convertible sofa. This static sofa has no conversion; a declared guest floor reserve is not evidence that anyone can sleep there. All room/furniture dimensions, entrance/window positions and candidate movements are researcher assumptions. Source geometry/coordinates are unavailable. Generated table wheels are visual meshes only; moving tools teleport poses. No physical pushing, swept articulation, braking or load claim. Capacity, comfort, seating, kitchen services, privacy and professional quality remain unknown.",
+        "closing_tag_present": true,
+        "eos_marker_present": false,
+        "selected_endpoint": "reserve",
+        "matches_frozen_activity": false
+      }
+    }
+  ],
+  "protocol_sha256": "84cabd341e87f26dc295db21a2de9737dd6b01b6e91444c23786596ec64de8a6",
+  "primary_summary_sha256": "da8b324a7a700bb230d024e8cde99e6db1098e275086c02331ef16d322f617f0",
+  "posthoc_review_plan": {
+    "recorded_at": "2026-11-06T15:59:54.418552+00:00",
+    "posthoc": true,
+    "completed_cells_when_recorded": 6,
+    "trigger": "First outputs omitted </tool_call>; one first output described geometry belonging to the other option label. The prospective system text did not explicitly spell out the closing tag.",
+    "primary_scoring_unchanged": true,
+    "secondary_rule": "Read exactly one explicit select_layout JSON payload following <tool_call>. Allow only whitespace, one closing </tool_call> and/or <|im_end|> after the JSON. Require unique JSON keys and exact argument schema. Record literal candidate_id against frozen label map, without correcting labels from reasoning. Invalid primary outputs remain invalid.",
+    "purpose": "Separate schema/serialization compliance from explicit selection. No original primary outcome replacement, no retries or new model calls.",
+    "reason_review": "Researcher factual review of object/coordinate statements, not independent professional scoring; report contradictions as observed, no inferred intended answer."
+  },
+  "report_script_sha256": "610d2d18ac9edc6f67e31ca71c70a3f40dad6db7f00c85f8e7f4fec0342d986a",
+  "claim": "Training-exposed supplied-endpoint recognition only; no new scene, professional label, independent project or generation benefit."
+}

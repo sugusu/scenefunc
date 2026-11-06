@@ -1,0 +1,994 @@
+{
+  "status": "completed",
+  "recorded_at": "2026-11-06T15:39:51.777309+00:00",
+  "dataset": {
+    "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/DATASET.json",
+    "sha256": "2df4c5c9756d121ef48f9bde9b388cbcefe25d71b3ec543b1cc36cd7d9d9d355"
+  },
+  "script_sha256": "571c6fc6c9de78596b3d017345fc376c8226aba12d1c376bf9e200d7d559ac9a",
+  "checked_documents": 44,
+  "steps": 22,
+  "families": 6,
+  "decision_positions": 7,
+  "professional_principles": 6,
+  "knowledge_records": 6,
+  "identical_knowledge_pool_in_all_44_documents": true,
+  "exact_same_state_multiple_condition_groups": [
+    [
+      "paper_table_modes_build_08",
+      "paper_table_modes_build_10"
+    ]
+  ],
+  "exact_state_grouping_limit": "Includes all object fields, not geometry alone; absence does not prove absence of useful conditional learning.",
+  "input_metadata_finding": "Knowledge scope includes researcher supervision/sequence annotations. Gold-field mutation checks do not detect information copied into the input beforehand. Shared exposure does not establish an arm-specific advantage.",
+  "rows": [
+    {
+      "id": "clothing_build_07",
+      "family_id": "budapest_airbnp_position_collective_2015",
+      "decision_id": "airbnp_open_clothing_access_for_short_stays",
+      "has_decision_target": true,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/clothing_build_07/episode.json",
+          "sha256": "a65235c22f824fc1c84f02761e9ae17a6517da4d28d00ffc944808b91bf82b75"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/clothing_build_07/episode.json",
+          "sha256": "3b9ac61a598d5a9d4254ebd0cb45bdda4898e164e4fbc9e1189452ae19c3e28f"
+        }
+      },
+      "exact_state_hash": "067b1011240b1772a0452812e6d746d1b11647fccb3eccf91e14b9b2b22505b3",
+      "condition": {
+        "design_request": "研究者重建任务：为两位短住旅客完成6米×5米房间的家具布置。已有固定厨房操作台、灶台、水槽和三件卫浴设施；保留房壳、开口和这些设施。使用目录补齐睡眠、起居、两人吃饭、冷藏及便于取放衣物所需的家具，保持入口、餐位、厨卫与窗前可接近。不得删除必需角色或缩放资产。人数与短住用途来自项目说明；矩形房壳、精确尺寸、设施、替代家具及具体要求整理为研究者重建，不是原住户任务书。"
+      },
+      "condition_hash": "bead8563c433098877204084ed7b98c0c2761b140b2e83989d15e7f0c66a8a53",
+      "catalog_names": [
+        "bed",
+        "sofa",
+        "table",
+        "chair_west",
+        "chair_east",
+        "low_fridge",
+        "open_clothes_rail"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_construct_open_clothes_rail",
+            "x": 2.4490002368452943,
+            "y": -0.0006494827931256097,
+            "yaw": 0.03140364494624525
+          }
+        }
+      ],
+      "researcher_review": "用途没有指定挂杆，但给定目录只有开放挂杆这一衣物专用资产；没有已核可用的封闭衣柜对照。不能据此评价开放/封闭策略选择。",
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_build_07",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": true,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_build_07/episode.json",
+          "sha256": "37dfbe39a3e53fff5f506e54ded2b9874cdf6706a0b70241cce1a6faa12ef976"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_build_07/episode.json",
+          "sha256": "ab31622c444efd3dba399d8e666838f9d170fe352f7ad14d401487077174df95"
+        }
+      },
+      "exact_state_hash": "493a0c0d3c3790c2f7cc2ed7ebb9c41f6c37c68fc96c91027700c700bbe0b665",
+      "condition": {
+        "design_request": "研究者重建任务：两人居住的6米×5米房间已有固定厨卫设施。保留房壳、开口、操作台及其上的灶台和水槽、三件卫浴设施，使用所给目录完成床、沙发、桌子、两把椅子、小冰箱和三件柜体的家具布置。需要睡眠、起居、两人吃饭、厨房与卫生间接近、窗前接近和可取放收纳，并尽量保有连续起居空间。不得删掉必需角色或缩放资产；未测功能请保留未知。这里的尺寸、人数、设施与目录均为研究者设定，不是住户原始任务或原项目精确平面。"
+      },
+      "condition_hash": "129f50dc43bd470d425fa4db3afd41a5fe9d3ca1e807e726abb210e67c3da2d9",
+      "catalog_names": [
+        "bed",
+        "sofa",
+        "table",
+        "chair_west",
+        "chair_east",
+        "low_fridge",
+        "storage_a",
+        "storage_b",
+        "storage_c"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_construct_storage_a",
+            "x": -2.7,
+            "y": -1.85,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": "任务指定三件柜体，位置未指定；可学习集中布置，但柜体数量不是模型选择。同族另一决定位置不是独立项目。",
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_build_08",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_build_08/episode.json",
+          "sha256": "ea170d608d413447b9e6d6b0dee77e5f62d50cca658a14ffa28114233b0c06ac"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_build_08/episode.json",
+          "sha256": "ea170d608d413447b9e6d6b0dee77e5f62d50cca658a14ffa28114233b0c06ac"
+        }
+      },
+      "exact_state_hash": "5511b7b357daced7f32af8a919751d7b4b822bea6706fba6e43285c42ae1723d",
+      "condition": {
+        "design_request": "研究者重建任务：两人居住的6米×5米房间已有固定厨卫设施。保留房壳、开口、操作台及其上的灶台和水槽、三件卫浴设施，使用所给目录完成床、沙发、桌子、两把椅子、小冰箱和三件柜体的家具布置。需要睡眠、起居、两人吃饭、厨房与卫生间接近、窗前接近和可取放收纳，并尽量保有连续起居空间。不得删掉必需角色或缩放资产；未测功能请保留未知。这里的尺寸、人数、设施与目录均为研究者设定，不是住户原始任务或原项目精确平面。"
+      },
+      "condition_hash": "129f50dc43bd470d425fa4db3afd41a5fe9d3ca1e807e726abb210e67c3da2d9",
+      "catalog_names": [
+        "bed",
+        "sofa",
+        "table",
+        "chair_west",
+        "chair_east",
+        "low_fridge",
+        "storage_a",
+        "storage_b",
+        "storage_c"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_construct_storage_b",
+            "x": -2.7,
+            "y": -0.95,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_build_09",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_build_09/episode.json",
+          "sha256": "b02a19efc255d62d41b91a68b6a784f166ba15e9e827d7901d80bb21718b68c4"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_build_09/episode.json",
+          "sha256": "b02a19efc255d62d41b91a68b6a784f166ba15e9e827d7901d80bb21718b68c4"
+        }
+      },
+      "exact_state_hash": "b90cc5f1a67c11b7a5848e2adf2758bfb99575c322675b71184723e3c69d7f8f",
+      "condition": {
+        "design_request": "研究者重建任务：两人居住的6米×5米房间已有固定厨卫设施。保留房壳、开口、操作台及其上的灶台和水槽、三件卫浴设施，使用所给目录完成床、沙发、桌子、两把椅子、小冰箱和三件柜体的家具布置。需要睡眠、起居、两人吃饭、厨房与卫生间接近、窗前接近和可取放收纳，并尽量保有连续起居空间。不得删掉必需角色或缩放资产；未测功能请保留未知。这里的尺寸、人数、设施与目录均为研究者设定，不是住户原始任务或原项目精确平面。"
+      },
+      "condition_hash": "129f50dc43bd470d425fa4db3afd41a5fe9d3ca1e807e726abb210e67c3da2d9",
+      "catalog_names": [
+        "bed",
+        "sofa",
+        "table",
+        "chair_west",
+        "chair_east",
+        "low_fridge",
+        "storage_a",
+        "storage_b",
+        "storage_c"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_construct_storage_c",
+            "x": -2.7,
+            "y": -0.05,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "paper_table_modes_build_07",
+      "family_id": "milan_paper_paper_associates",
+      "decision_id": "paper_table_mobility_for_overnight_guest",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/paper_table_modes_build_07/episode.json",
+          "sha256": "e7f08cba04e71a001cfa04e4830fd2a2c368ef579cda64e221d65e50124eb2c6"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/paper_table_modes_build_07/episode.json",
+          "sha256": "e7f08cba04e71a001cfa04e4830fd2a2c368ef579cda64e221d65e50124eb2c6"
+        }
+      },
+      "exact_state_hash": "a7118a23f2ca4acf371fb5c1ae2d96ad606adfb84a91130ec51e0f80d3845d26",
+      "condition": {
+        "design_request": "研究者重建任务：为两位住户布置共享餐厨起居区，满足日常做饭、用餐、起居和食品收纳；偶尔来客留宿时，声明的来客预留区应不被家具占用，并保留所有家具、入口、厨房、储物和窗前的接近；之后恢复日常用餐。房间6.4米×4.4米及家具均为声明的替代条件。静态沙发没有已验证的展开或睡眠功能，检查仅涉及预留区几何占用。卧室与卫浴不在本活动区域内。需求不指定修改哪个对象或具体摆位。",
+        "activity_context": {
+          "guest_floor_reserve_xy_m": [
+            -2.6,
+            -0.55,
+            -1.0,
+            0.75
+          ],
+          "phase": "prepare_guest_reserve",
+          "reserve_provenance": "Researcher task requirement, not original surveyed dimensions or a furniture target pose.",
+          "sleeping_use_verified": false
+        }
+      },
+      "condition_hash": "31e4f471a3141986fa9dc3ff615ccb30f6210ce1443d2c9bc9876d8d351bf73d",
+      "catalog_names": [
+        "sofa",
+        "low_fridge",
+        "pantry",
+        "chair_left",
+        "chair_right",
+        "mobile_table"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "chair_right_0",
+            "x": 0.75,
+            "y": 0.8,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "paper_table_modes_build_08",
+      "family_id": "milan_paper_paper_associates",
+      "decision_id": "paper_table_mobility_for_overnight_guest",
+      "has_decision_target": true,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/paper_table_modes_build_08/episode.json",
+          "sha256": "9233310b8d291f24ad721346f20419251e4d6fa38c8f7acba8b9f6a10a87b873"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/paper_table_modes_build_08/episode.json",
+          "sha256": "575841ceb9a9e07d19094b15ded6f0e373c0541b54ac1caed8b498836f185204"
+        }
+      },
+      "exact_state_hash": "acf8958d15770459e66d5ee8f652508c3a4dc63b1b56973e8d076f3a9e3eea43",
+      "condition": {
+        "design_request": "研究者重建任务：为两位住户布置共享餐厨起居区，满足日常做饭、用餐、起居和食品收纳；偶尔来客留宿时，声明的来客预留区应不被家具占用，并保留所有家具、入口、厨房、储物和窗前的接近；之后恢复日常用餐。房间6.4米×4.4米及家具均为声明的替代条件。静态沙发没有已验证的展开或睡眠功能，检查仅涉及预留区几何占用。卧室与卫浴不在本活动区域内。需求不指定修改哪个对象或具体摆位。",
+        "activity_context": {
+          "guest_floor_reserve_xy_m": [
+            -2.6,
+            -0.55,
+            -1.0,
+            0.75
+          ],
+          "phase": "prepare_guest_reserve",
+          "reserve_provenance": "Researcher task requirement, not original surveyed dimensions or a furniture target pose.",
+          "sleeping_use_verified": false
+        }
+      },
+      "condition_hash": "31e4f471a3141986fa9dc3ff615ccb30f6210ce1443d2c9bc9876d8d351bf73d",
+      "catalog_names": [
+        "sofa",
+        "low_fridge",
+        "pantry",
+        "chair_left",
+        "chair_right",
+        "mobile_table"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "mobile_table_0",
+            "x": 0.75,
+            "y": -1.55,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": "需求指定访客预留区和活动阶段，没有指定移动对象或坐标；有恢复阶段动作，但恢复阶段没有专业决定目标，且起始场景不同。",
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "paper_table_modes_build_09",
+      "family_id": "milan_paper_paper_associates",
+      "decision_id": "paper_table_mobility_for_overnight_guest",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/paper_table_modes_build_09/episode.json",
+          "sha256": "cd4f87801bc92f4ca7f212eab12f89703f077a4b669a7aeedb0c8f3fd1f93728"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/paper_table_modes_build_09/episode.json",
+          "sha256": "cd4f87801bc92f4ca7f212eab12f89703f077a4b669a7aeedb0c8f3fd1f93728"
+        }
+      },
+      "exact_state_hash": "96ecf72ba417c57e0026ee60b838f4f575dc632a30588285b06c254228087160",
+      "condition": {
+        "design_request": "研究者重建任务：为两位住户布置共享餐厨起居区，满足日常做饭、用餐、起居和食品收纳；偶尔来客留宿时，声明的来客预留区应不被家具占用，并保留所有家具、入口、厨房、储物和窗前的接近；之后恢复日常用餐。房间6.4米×4.4米及家具均为声明的替代条件。静态沙发没有已验证的展开或睡眠功能，检查仅涉及预留区几何占用。卧室与卫浴不在本活动区域内。需求不指定修改哪个对象或具体摆位。",
+        "activity_context": {
+          "guest_floor_reserve_xy_m": [
+            -2.6,
+            -0.55,
+            -1.0,
+            0.75
+          ],
+          "phase": "restore_everyday",
+          "reserve_provenance": "Researcher task requirement, not original surveyed dimensions or a furniture target pose.",
+          "sleeping_use_verified": false
+        }
+      },
+      "condition_hash": "6c82fd424878267aeb843ba25272684388fc96d4314989f7f9eff8962807910f",
+      "catalog_names": [
+        "sofa",
+        "low_fridge",
+        "pantry",
+        "chair_left",
+        "chair_right",
+        "mobile_table"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "mobile_table_0",
+            "x": -1.8,
+            "y": 0,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "paper_table_modes_build_10",
+      "family_id": "milan_paper_paper_associates",
+      "decision_id": "paper_table_mobility_for_overnight_guest",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/paper_table_modes_build_10/episode.json",
+          "sha256": "2ceace5dd46e7e3a34de2d8d6f2693afd0f1f747f0f84111406b32b8a5140e6a"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/paper_table_modes_build_10/episode.json",
+          "sha256": "2ceace5dd46e7e3a34de2d8d6f2693afd0f1f747f0f84111406b32b8a5140e6a"
+        }
+      },
+      "exact_state_hash": "acf8958d15770459e66d5ee8f652508c3a4dc63b1b56973e8d076f3a9e3eea43",
+      "condition": {
+        "design_request": "研究者重建任务：为两位住户布置共享餐厨起居区，满足日常做饭、用餐、起居和食品收纳；偶尔来客留宿时，声明的来客预留区应不被家具占用，并保留所有家具、入口、厨房、储物和窗前的接近；之后恢复日常用餐。房间6.4米×4.4米及家具均为声明的替代条件。静态沙发没有已验证的展开或睡眠功能，检查仅涉及预留区几何占用。卧室与卫浴不在本活动区域内。需求不指定修改哪个对象或具体摆位。",
+        "activity_context": {
+          "guest_floor_reserve_xy_m": [
+            -2.6,
+            -0.55,
+            -1.0,
+            0.75
+          ],
+          "phase": "restore_everyday",
+          "reserve_provenance": "Researcher task requirement, not original surveyed dimensions or a furniture target pose.",
+          "sleeping_use_verified": false
+        }
+      },
+      "condition_hash": "6c82fd424878267aeb843ba25272684388fc96d4314989f7f9eff8962807910f",
+      "catalog_names": [
+        "sofa",
+        "low_fridge",
+        "pantry",
+        "chair_left",
+        "chair_right",
+        "mobile_table"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "chair_right_0",
+            "x": -0.75,
+            "y": 0,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "air_edit_01",
+      "family_id": "budapest_airbnp_position_collective_2015",
+      "decision_id": "airbnp_open_clothing_access_for_short_stays",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/air_edit_01/episode.json",
+          "sha256": "b38c7d91b92fcf62a0ed7b61844627633ee7eda9a27aac98c74c5577302183a0"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/air_edit_01/episode.json",
+          "sha256": "b38c7d91b92fcf62a0ed7b61844627633ee7eda9a27aac98c74c5577302183a0"
+        }
+      },
+      "exact_state_hash": "e94be5abee76cf970bc6b18528f6b52b95da6af6e59a0c40aadceee8a2ff3b9b",
+      "condition": {
+        "request": "研究重建：两位旅客短期居住，需要让常用衣物便于取放；保留当前睡眠、起居、用餐、厨房和卫浴的对象与接近条件。根据现有目录补充一件合适的家具，位置自行决定。房间、尺寸、初态与对象约束由研究者设定。",
+        "revision_request": "保持全部对象与衣架实例，恢复东侧餐位入口路径，同时保留至少一侧开放衣架接近；只能移动衣架。"
+      },
+      "condition_hash": "622b5d8a1ac2e39eeae99fff1ff165287bab870cfaa0a6a9d1cccdb1958f2927",
+      "catalog_names": [],
+      "system_operation_constraints": "Revise this reconstructed room using only move_furniture_tool(object_id, x, y, yaw). Units are metres/degrees. Only open_clothes_rail_0 may move. Preserve every object. Propose one edit and do not assert its unmeasured outcome.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "open_clothes_rail_0",
+            "x": 2.45,
+            "y": 0.0,
+            "yaw": 0.0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_edit_01",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": true,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_edit_01/episode.json",
+          "sha256": "f1a78e1712b57a66a7d6e4a1a6f7afd0107f632880df92fd899a98ece26184f0"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_edit_01/episode.json",
+          "sha256": "750175748201fcbfceae4d3035f0e79185556ca9360b9d0b112470d00cbcf98b"
+        }
+      },
+      "exact_state_hash": "9c4ef3ad02289f467fb13d3c5546a01c2e790ba189599cbc188be7bf9367733a",
+      "condition": {
+        "design_request": "研究者迁移任务：两人居住，需要较连续的起居活动空间、柜前接近和窗前通路，保留已有柜体以及睡眠、起居、两餐位、厨房和卫浴可达活动。可重新布置三件柜体，其余对象不能改动；不得删除或缩放。当前窗前与储物可能有接近缺陷，需用给定量测核实。房间、尺寸和初态为研究者假设，具体方案自行选择。"
+      },
+      "condition_hash": "80646b141f468987ad32b5552a513b62a003109f3d8a0e4a0ca72305f77f9b01",
+      "catalog_names": [],
+      "system_operation_constraints": "Edit this declared reconstructed room using move_furniture_tool(object_id,x,y,yaw). Units metres/degrees. Preserve all objects and dimensions; only the three listed storage units may move. Report planned protection, not unmeasured future success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_storage_a_0",
+            "x": -2.7,
+            "y": -1.85,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": "只允许移动三柜，目标位置未指定；仍有布局选择空间。目标说明的“本步指定柜体”不是输入事实，输入未指定本步移动哪一柜。",
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_edit_02",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_edit_02/episode.json",
+          "sha256": "a52eb3557527225593d125ad17ff204bdf81f5be6c5a5845b31964fe4c4bce95"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_edit_02/episode.json",
+          "sha256": "a52eb3557527225593d125ad17ff204bdf81f5be6c5a5845b31964fe4c4bce95"
+        }
+      },
+      "exact_state_hash": "6e43c45367eb7e68c08e86094bf69b0c8fca1f2eb4f165135148586a9b1c3b7d",
+      "condition": {
+        "design_request": "研究者迁移任务：两人居住，需要较连续的起居活动空间、柜前接近和窗前通路，保留已有柜体以及睡眠、起居、两餐位、厨房和卫浴可达活动。可重新布置三件柜体，其余对象不能改动；不得删除或缩放。当前窗前与储物可能有接近缺陷，需用给定量测核实。房间、尺寸和初态为研究者假设，具体方案自行选择。"
+      },
+      "condition_hash": "80646b141f468987ad32b5552a513b62a003109f3d8a0e4a0ca72305f77f9b01",
+      "catalog_names": [],
+      "system_operation_constraints": "Edit this declared reconstructed room using move_furniture_tool(object_id,x,y,yaw). Units metres/degrees. Preserve all objects and dimensions; only the three listed storage units may move. Report planned protection, not unmeasured future success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_storage_b_0",
+            "x": -2.2,
+            "y": -1.65,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_edit_03",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_edit_03/episode.json",
+          "sha256": "5b9f1cf156c74db13f4ea44543d274c5845c319e7b5cc7b2021e6c6ef16d4bc1"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_edit_03/episode.json",
+          "sha256": "5b9f1cf156c74db13f4ea44543d274c5845c319e7b5cc7b2021e6c6ef16d4bc1"
+        }
+      },
+      "exact_state_hash": "69ee2ec740bb2c51636268ed3b06fdda892f9df485d2764a6853c29e6c74f358",
+      "condition": {
+        "design_request": "研究者迁移任务：两人居住，需要较连续的起居活动空间、柜前接近和窗前通路，保留已有柜体以及睡眠、起居、两餐位、厨房和卫浴可达活动。可重新布置三件柜体，其余对象不能改动；不得删除或缩放。当前窗前与储物可能有接近缺陷，需用给定量测核实。房间、尺寸和初态为研究者假设，具体方案自行选择。"
+      },
+      "condition_hash": "80646b141f468987ad32b5552a513b62a003109f3d8a0e4a0ca72305f77f9b01",
+      "catalog_names": [],
+      "system_operation_constraints": "Edit this declared reconstructed room using move_furniture_tool(object_id,x,y,yaw). Units metres/degrees. Preserve all objects and dimensions; only the three listed storage units may move. Report planned protection, not unmeasured future success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_storage_b_0",
+            "x": -2.2,
+            "y": -0.95,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_edit_04",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_edit_04/episode.json",
+          "sha256": "0a977616d99f52150ad57b72e47d722a1c59dcd253c9702fb3261730ffb73fbb"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_edit_04/episode.json",
+          "sha256": "0a977616d99f52150ad57b72e47d722a1c59dcd253c9702fb3261730ffb73fbb"
+        }
+      },
+      "exact_state_hash": "b4fe72f736321fdb4eb3ab1420257c51a351306e19ec085f16c945bb97a510d1",
+      "condition": {
+        "design_request": "研究者迁移任务：两人居住，需要较连续的起居活动空间、柜前接近和窗前通路，保留已有柜体以及睡眠、起居、两餐位、厨房和卫浴可达活动。可重新布置三件柜体，其余对象不能改动；不得删除或缩放。当前窗前与储物可能有接近缺陷，需用给定量测核实。房间、尺寸和初态为研究者假设，具体方案自行选择。"
+      },
+      "condition_hash": "80646b141f468987ad32b5552a513b62a003109f3d8a0e4a0ca72305f77f9b01",
+      "catalog_names": [],
+      "system_operation_constraints": "Edit this declared reconstructed room using move_furniture_tool(object_id,x,y,yaw). Units metres/degrees. Preserve all objects and dimensions; only the three listed storage units may move. Report planned protection, not unmeasured future success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_storage_b_0",
+            "x": -2.7,
+            "y": -0.95,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "storage_edit_05",
+      "family_id": "paris_30m2_richard_guilbault_2015",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/storage_edit_05/episode.json",
+          "sha256": "138225a6e9836ba2d6d056fc40800bee8edad74ecbf9ebe779e7f043a9518be5"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_edit_05/episode.json",
+          "sha256": "138225a6e9836ba2d6d056fc40800bee8edad74ecbf9ebe779e7f043a9518be5"
+        }
+      },
+      "exact_state_hash": "81e219c4c1beb6925044c430688ee3b47fe6df1e59cc1b5535fa2d0cb0093a0c",
+      "condition": {
+        "design_request": "研究者迁移任务：两人居住，需要较连续的起居活动空间、柜前接近和窗前通路，保留已有柜体以及睡眠、起居、两餐位、厨房和卫浴可达活动。可重新布置三件柜体，其余对象不能改动；不得删除或缩放。当前窗前与储物可能有接近缺陷，需用给定量测核实。房间、尺寸和初态为研究者假设，具体方案自行选择。"
+      },
+      "condition_hash": "80646b141f468987ad32b5552a513b62a003109f3d8a0e4a0ca72305f77f9b01",
+      "catalog_names": [],
+      "system_operation_constraints": "Edit this declared reconstructed room using move_furniture_tool(object_id,x,y,yaw). Units metres/degrees. Preserve all objects and dimensions; only the three listed storage units may move. Report planned protection, not unmeasured future success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_storage_c_0",
+            "x": -2.7,
+            "y": -0.05,
+            "yaw": 270
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "waterloo_edit_01",
+      "family_id": "singapore_waterloo_street_dess_chew",
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/waterloo_edit_01/episode.json",
+          "sha256": "b1de659437ab78190829d79edeb3f677f707a9494550fbfdc619bba69795264c"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/waterloo_edit_01/episode.json",
+          "sha256": "b1de659437ab78190829d79edeb3f677f707a9494550fbfdc619bba69795264c"
+        }
+      },
+      "exact_state_hash": "d67d10c56556f6c59b25b04558d5f5d9686222cfebd1650db44562b336789fc2",
+      "condition": {
+        "design_request": "研究者迁移任务：两位住户平日同时工作，各需独立的桌面；待客阶段四人需要围坐开展共享桌面活动，之后恢复两人同时工作。保留全部家具、对象身份和尺寸，以及睡眠、起居、厨房、卫浴、收纳和窗前接近。只可调整table_b与chair_b，其余物体固定。具体布局自行选择；人数、活动和可改对象为研究设定，并非住户原话。",
+        "current_requested_mode": "four_person_shared_activity"
+      },
+      "condition_hash": "c3f767afdde5484197ca741a4816b2f36ac9abe037bd1381ad32adec37db63fa",
+      "catalog_names": [],
+      "system_operation_constraints": "Use move_furniture_tool(object_id,x,y,yaw) in metres/degrees. Preserve objects and dimensions. Only table_b and chair_b are editable. Do not assert future measured success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_chair_b_0",
+            "x": 0.12,
+            "y": -0.45,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "waterloo_edit_02",
+      "family_id": "singapore_waterloo_street_dess_chew",
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "has_decision_target": true,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/waterloo_edit_02/episode.json",
+          "sha256": "396ffee1d98b76e10081ddb1cd4c8b3dcec18bbc25c2d2369d5e82a6500eba46"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/waterloo_edit_02/episode.json",
+          "sha256": "13b5536137e9e4787e215dd4ebdd7e7975b3984bce34ab806105fecc0d6ec8eb"
+        }
+      },
+      "exact_state_hash": "824297a02015d81316d1e7b5a582aa40765f3701c4e847ef46d7bb795c2ac114",
+      "condition": {
+        "design_request": "研究者迁移任务：两位住户平日同时工作，各需独立的桌面；待客阶段四人需要围坐开展共享桌面活动，之后恢复两人同时工作。保留全部家具、对象身份和尺寸，以及睡眠、起居、厨房、卫浴、收纳和窗前接近。只可调整table_b与chair_b，其余物体固定。具体布局自行选择；人数、活动和可改对象为研究设定，并非住户原话。",
+        "current_requested_mode": "four_person_shared_activity"
+      },
+      "condition_hash": "c3f767afdde5484197ca741a4816b2f36ac9abe037bd1381ad32adec37db63fa",
+      "catalog_names": [],
+      "system_operation_constraints": "Use move_furniture_tool(object_id,x,y,yaw) in metres/degrees. Preserve objects and dimensions. Only table_b and chair_b are editable. Do not assert future measured success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_b_0",
+            "x": 0.12,
+            "y": 0.5,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": "需求指定共享活动模式，可编辑对象限于第二桌和椅；有恢复独立工作模式的动作，但该模式没有专业决定目标，且起始场景不同。",
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "waterloo_edit_03",
+      "family_id": "singapore_waterloo_street_dess_chew",
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/waterloo_edit_03/episode.json",
+          "sha256": "7d3503ebca2028fba207b59b04bed68242990a80109b9556a7891507513eac8d"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/waterloo_edit_03/episode.json",
+          "sha256": "7d3503ebca2028fba207b59b04bed68242990a80109b9556a7891507513eac8d"
+        }
+      },
+      "exact_state_hash": "825418b8a07563af1c95abbc03a77969aded89e3e01ad148a786fa7fdf0f2652",
+      "condition": {
+        "design_request": "研究者迁移任务：两位住户平日同时工作，各需独立的桌面；待客阶段四人需要围坐开展共享桌面活动，之后恢复两人同时工作。保留全部家具、对象身份和尺寸，以及睡眠、起居、厨房、卫浴、收纳和窗前接近。只可调整table_b与chair_b，其余物体固定。具体布局自行选择；人数、活动和可改对象为研究设定，并非住户原话。",
+        "current_requested_mode": "two_simultaneous_individual_workplaces"
+      },
+      "condition_hash": "6f6349baef008085bf4b3cc214975214eae52e358f1d534db5b4f3c1ebc8cb93",
+      "catalog_names": [],
+      "system_operation_constraints": "Use move_furniture_tool(object_id,x,y,yaw) in metres/degrees. Preserve objects and dimensions. Only table_b and chair_b are editable. Do not assert future measured success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_b_0",
+            "x": 1.1,
+            "y": 0.5,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "waterloo_edit_04",
+      "family_id": "singapore_waterloo_street_dess_chew",
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/waterloo_edit_04/episode.json",
+          "sha256": "b2f2cfa3ff4a9f6f4f53cc6084962c72058439c56b49b2036ab11e9ac5767024"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/waterloo_edit_04/episode.json",
+          "sha256": "b2f2cfa3ff4a9f6f4f53cc6084962c72058439c56b49b2036ab11e9ac5767024"
+        }
+      },
+      "exact_state_hash": "45e2ad6dcd5225bce4c8869eec3afd117de0f24ad9cdeacd5429e10349fc9ca4",
+      "condition": {
+        "design_request": "研究者迁移任务：两位住户平日同时工作，各需独立的桌面；待客阶段四人需要围坐开展共享桌面活动，之后恢复两人同时工作。保留全部家具、对象身份和尺寸，以及睡眠、起居、厨房、卫浴、收纳和窗前接近。只可调整table_b与chair_b，其余物体固定。具体布局自行选择；人数、活动和可改对象为研究设定，并非住户原话。",
+        "current_requested_mode": "two_simultaneous_individual_workplaces"
+      },
+      "condition_hash": "6f6349baef008085bf4b3cc214975214eae52e358f1d534db5b4f3c1ebc8cb93",
+      "catalog_names": [],
+      "system_operation_constraints": "Use move_furniture_tool(object_id,x,y,yaw) in metres/degrees. Preserve objects and dimensions. Only table_b and chair_b are editable. Do not assert future measured success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_chair_b_0",
+            "x": 1.1,
+            "y": -0.45,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "lifecycle_01",
+      "family_id": "paris_michelet_nomadic",
+      "decision_id": "michelet_adapt_family_lifecycle",
+      "has_decision_target": true,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/lifecycle_01/episode.json",
+          "sha256": "a30dce3cc99fb195218ada7102503483fb1523c099859ad2cfc7ee7755ab4b96"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/lifecycle_01/episode.json",
+          "sha256": "ec5b491f8e697447cfc11b9fd8557bdfe728f6643ea9c3ada9a34e028082b4b8"
+        }
+      },
+      "exact_state_hash": "3dd2e9daccdf58a12966ff13dce80c803a9f4d345c371e06218aea2ff4e23f62",
+      "condition": {
+        "design_request": "研究者构造的用途转换任务：原来三名住户使用此住宅，其中一名成年子女已搬离；现有两位常住者需要一处专用办公桌面和坐席。可重新安排东北房间的用途，该房间原床不再是常住者必需床位，允许移出；无需保留来客过夜位置。保留该房间原书架实例，以及其余房间所有家具、睡眠位置、起居、家庭餐位、厨房和卫生间的通行与使用条件。房壳和开口不变，家具不缩放；不得通过移除其他必需功能来完成办公室。任务不规定采用何种家具操作或坐标。原住户原话、原项目操作过程不可得；50平方米的单层矩形、人数三变二、几何和资产均为研究假设，不是Michelet测绘或原历史初态。"
+      },
+      "condition_hash": "830ffc7401d5dc6c9b2b986e9dbf1017d2e1e3df76476b2b9af9e3cf38f8962b",
+      "catalog_names": [
+        "refrigerator",
+        "kitchen_counter",
+        "kitchen_sink",
+        "queen_bed",
+        "bookshelf",
+        "storage_bin",
+        "dining_table",
+        "dining_chair_1",
+        "sofa",
+        "coffee_table",
+        "floor_lamp",
+        "washroom_vanity",
+        "shower",
+        "toilet",
+        "screen",
+        "cooker"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "remove_furniture_tool",
+          "arguments": {
+            "object_id": "former_child_bed_0"
+          }
+        }
+      ],
+      "researcher_review": "任务解除儿童床需求并允许移出，但没有强制删除；已有示范仅覆盖移除这一方案，未建立床位仍需保留时的对应决定监督。",
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "lifecycle_02",
+      "family_id": "paris_michelet_nomadic",
+      "decision_id": "michelet_adapt_family_lifecycle",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/lifecycle_02/episode.json",
+          "sha256": "779b4e41565d0f96cfea3add35010aad8e65ac56c0daf3770daa1562baeb5940"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/lifecycle_02/episode.json",
+          "sha256": "779b4e41565d0f96cfea3add35010aad8e65ac56c0daf3770daa1562baeb5940"
+        }
+      },
+      "exact_state_hash": "2b46a9f6ecbd450ef6b639d95bb8f7aed45087b63230f9dfbbb42db2aefe254f",
+      "condition": {
+        "design_request": "研究者构造的用途转换任务：原来三名住户使用此住宅，其中一名成年子女已搬离；现有两位常住者需要一处专用办公桌面和坐席。可重新安排东北房间的用途，该房间原床不再是常住者必需床位，允许移出；无需保留来客过夜位置。保留该房间原书架实例，以及其余房间所有家具、睡眠位置、起居、家庭餐位、厨房和卫生间的通行与使用条件。房壳和开口不变，家具不缩放；不得通过移除其他必需功能来完成办公室。任务不规定采用何种家具操作或坐标。原住户原话、原项目操作过程不可得；50平方米的单层矩形、人数三变二、几何和资产均为研究假设，不是Michelet测绘或原历史初态。"
+      },
+      "condition_hash": "830ffc7401d5dc6c9b2b986e9dbf1017d2e1e3df76476b2b9af9e3cf38f8962b",
+      "catalog_names": [
+        "refrigerator",
+        "kitchen_counter",
+        "kitchen_sink",
+        "queen_bed",
+        "bookshelf",
+        "storage_bin",
+        "dining_table",
+        "dining_chair_1",
+        "sofa",
+        "coffee_table",
+        "floor_lamp",
+        "washroom_vanity",
+        "shower",
+        "toilet",
+        "screen",
+        "cooker"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_5d70cc76c99acee4513ec5f7fad497d2baebca9e",
+            "x": 4.1,
+            "y": 1.5,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "lifecycle_03",
+      "family_id": "paris_michelet_nomadic",
+      "decision_id": "michelet_adapt_family_lifecycle",
+      "has_decision_target": false,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/lifecycle_03/episode.json",
+          "sha256": "8a0ce0dc19efda6860e0010273a33328c509c5bee4dc67aedd830c2c90a858a6"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/lifecycle_03/episode.json",
+          "sha256": "8a0ce0dc19efda6860e0010273a33328c509c5bee4dc67aedd830c2c90a858a6"
+        }
+      },
+      "exact_state_hash": "b7f24c321e45b4bab14c15dc3a03b73dc04c724a5535c535695d50fd2d3c25ce",
+      "condition": {
+        "design_request": "研究者构造的用途转换任务：原来三名住户使用此住宅，其中一名成年子女已搬离；现有两位常住者需要一处专用办公桌面和坐席。可重新安排东北房间的用途，该房间原床不再是常住者必需床位，允许移出；无需保留来客过夜位置。保留该房间原书架实例，以及其余房间所有家具、睡眠位置、起居、家庭餐位、厨房和卫生间的通行与使用条件。房壳和开口不变，家具不缩放；不得通过移除其他必需功能来完成办公室。任务不规定采用何种家具操作或坐标。原住户原话、原项目操作过程不可得；50平方米的单层矩形、人数三变二、几何和资产均为研究假设，不是Michelet测绘或原历史初态。"
+      },
+      "condition_hash": "830ffc7401d5dc6c9b2b986e9dbf1017d2e1e3df76476b2b9af9e3cf38f8962b",
+      "catalog_names": [
+        "refrigerator",
+        "kitchen_counter",
+        "kitchen_sink",
+        "queen_bed",
+        "bookshelf",
+        "storage_bin",
+        "dining_table",
+        "dining_chair_1",
+        "sofa",
+        "coffee_table",
+        "floor_lamp",
+        "washroom_vanity",
+        "shower",
+        "toilet",
+        "screen",
+        "cooker"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02",
+            "x": 4.1,
+            "y": 0.6,
+            "yaw": 0
+          }
+        }
+      ],
+      "researcher_review": null,
+      "action_is_reconstructed_not_historical": true
+    },
+    {
+      "id": "fhouse_perimeter_01",
+      "family_id": "osaka_f_house_coilkma",
+      "decision_id": "fhouse_existing_furniture_shared_living",
+      "has_decision_target": true,
+      "documents": {
+        "action_only": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/action_only/fhouse_perimeter_01/episode.json",
+          "sha256": "efd6f1b3f893f54af8270b57e63968613b735de3f341850f32c1785dc9c87317"
+        },
+        "decision_action": {
+          "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/fhouse_perimeter_01/episode.json",
+          "sha256": "c74fd8bcb26037d81a4a41677cd9c29b6c25305728443891453d87db222038f7"
+        }
+      },
+      "exact_state_hash": "bb670d9e18db0fe0bc121020c4457dc2b5bbecaca5b2c5e15200210182407199",
+      "condition": {
+        "design_request": "研究者迁移任务：四人家庭的共同起居和用餐房间需保留已有八件家具的身份与尺寸，支持四个餐位、沙发起居和收纳取放，保持入口与窗前通行。家具位置可调整，具体活动需要由单独的条件卡给出。房间、已有家具和尺寸均为研究假设；本任务不指定采用哪种分隔或摆法。\n家人在餐桌处理日常事务时，希望仍能看见沙发上的家人，便于共同交流；保留所有家具以及用餐、起居、收纳和通行。"
+      },
+      "condition_hash": "d15c0a251518fba10084d55a69884d4108aa1e1f41fd277a99854683ec174eb7",
+      "catalog_names": [
+        "sofa",
+        "dining_table",
+        "seat_nw",
+        "seat_ne",
+        "seat_sw",
+        "seat_se",
+        "sideboard",
+        "tall_storage"
+      ],
+      "system_operation_constraints": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\n",
+      "command": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_tall_storage_0",
+            "x": -1.6,
+            "y": 1.95,
+            "yaw": 180
+          }
+        }
+      ],
+      "researcher_review": "需求给出交流和保留家具约束，没有指定靠边摆柜；训练只包含共同交流条件，已有减少干扰的研究者条件未纳入专业决定监督。",
+      "action_is_reconstructed_not_historical": true
+    }
+  ],
+  "model_calls": 0,
+  "training_updates": 0,
+  "scene_edits": 0,
+  "research_conclusion": "No design benefit demonstrated. Data has some genuine layout discretion, but sparse decision supervision and asymmetric condition coverage; not all tasks dictate the answer. This audit does not identify the causal reason for training failure."
+}
