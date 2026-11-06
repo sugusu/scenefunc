@@ -2,7 +2,7 @@
 
 本轮检验：在同动作、同知识与相同工具预算下，增加有出处的条件化决定监督，能否改善完整房间的用途调整，并减少对其他用途的损害。用户在具体六 GPU 小时方案后明确要求继续；授权解释与边界见 AUTHORIZATION.json。旧四更新授权不复用。
 
-当前快照 2026-11-06T09:55:26.309911+00:00：两组各8/8更新通过验收，评测已保存5/12份终态并继续。首个完整三组对照（Milan种子17）见FIRST_BLOCK_REVIEW.md：基线和联合组均删后重建保留书架，动作组12次查询全被拒绝而未编辑；尚无联合监督收益。
+本轮已完成并核验：两组各8次更新、12/12终态、实际退出0。**没有专业决定监督的设计收益**；完整结果与后续取舍见[FINAL_REVIEW.md](FINAL_REVIEW.md)。全部运行已结束，不要重启。
 
 ## 数据与方法
 
@@ -24,7 +24,7 @@ Pine、Milan均为已暴露开发留出，已从本轮训练和知识池排除�
 
 ## 运行与恢复
 
-所有运行已实际启动，不要复制命令重复开作业。训练会话79563已退出0，顺序评测会话27562继续（会话号仅当前客户端有效）；应先核进程、receipt与checkpoint。
+所有运行已实际启动，不要复制命令重复开作业。训练会话79563及评测会话27562均已退出0（会话号仅当前客户端有效）；应先核进程、receipt与checkpoint。
 
 ```bash
 /data/wyh/conda/envs/c15_genrec/bin/python scripts/920/run_edit_training_batch.py --plan runs/920/P920-EDITSTUDY-v1_20261106T074752Z/TRAIN_PLAN.json --authorization runs/920/P920-EDITSTUDY-v1_20261106T074752Z/AUTHORIZATION.json

@@ -1,16 +1,13 @@
-# 当前执行：有限的完整房间编辑学习试验
+# 当前：有限学习试验已完成，研究Goal继续
 
-更新 2026-11-06T09:36:00.823049+00:00；Goal active。两组各8/8训练通过，现有评测会话27562继续。不要重启任何训练/评测。
+更新 2026-11-06T10:59:36.709643+00:00。run `P920-EDITSTUDY-v1_20261106T074752Z`。训练79563、评测27562均已退出0，无活跃作业；勿重启。
 
-- 用户在六GPU小时具体方案后两次要求继续，AUTHORIZATION.json记录本轮授权；不授额外训练/扩预算。
-- run `P920-EDITSTUDY-v1_20261106T074752Z`，public runs/920同名；runtime位于仓库上一级runtime同名。6家族22编辑/7决定位置；Pine、Milan为已暴露开发留出，不进训练/知识池。
-- 训练session79563已退出0。action08:00:26→08:45:07UTC，2681.47秒；joint08:45:07→09:29:53UTC，2685.32秒。两者各8更新/176backward/144张量改变，最终全FP32且finite、final==checkpoint8，同进程save-zero-reload exact；cold optimizer resume未验。ACTION_TRAINING_RESULT与JOINT_TRAINING_RESULT有权重路径/哈希。
-- 评测session27562自动启动Milan_frozen_base_knowledge_feedback_17于09:30:12UTC。目前5/12终态，首Milan17三组已齐，正在第二种子。原队列12cell、每cell12模型/工具尝试、600模型子进程秒，总7200秒；固定种子17/29、代码锁revision2。首基础设施错误停，schema拒绝计预算。初始模型删除保留书架并循环dummy非法查询，保留所有原始输出，不改当前代码/重抽。
-- 三组同6来源知识、可自生成think与原生tool_call、五视图和用途反馈；训练联合组多1094决定目标token，动作1245各组相同，非等监督量配对机制试验。
-- Pine缺第二工作位；Milan初态共桌工作材料/两餐位三宽已通过，只能测保持和副作用。静态代理不等于舒适/人类用途/专业盲评。Pine旧椅侧点失效但其他侧可达，严格探针损失须与完全不可用区分。
-- 回执修订V2在任何评测输出前冻结：schema异常只给模型<=512字符，完整原始异常保留；旧代码和执行锁V1留存。训练与初态准备未改。
-- 最新已核远端runs/920 `099d5c3a5db7c7b3fb0c58661eb60876f6798e89`；push66.349秒/0、ls-remote09:32:06UTC一致，PUBLICATION记录。上一publication115不可变文件均与stage blob核对。下一普通小时批>=10:31:16UTC，关键验收/错误节点按约发布。不要stage无关scripts/920/extract_swiss_development_input.py。
+- 用户授权的两adapter各8更新、12终态全部完成，预算未扩。训练总5366.80阶段秒，评测2355.77模型子进程秒，最终评测结束2026-11-06T10:23:29UTC。
+- 两adapter各176backward、144张量改变；最终FP32有限、checkpoint8相同、每次实际推理精确重载。12终态checkpoint逐文件、60视图归档、12GLB哈希均通过最终只读验收。
+- 最终结果：144调用133拒绝，0显式think；Pine六份均缺第二工作位。Milan初态已满足共享工作材料/两餐位，六份保持；基线与联合两个种子均删后重建原书架，29还与马桶相交。动作组Milan两例因全查询拒绝未编辑，不能包装为设计收益。无联合监督收益。
+- FINAL_REVIEW.md、FINAL_ACCEPTANCE.json、reports/final/SUMMARY.json与RESULTS.md为当前完整结果。六个Milan视线后处理全部完成；12俯视按字节去重5张已查看，另4南视，不是专业盲评。
+- 运行代码/预算冻结未随结果改动；schema回执V2修订发生在评测开始前。官方无参数query定义已核，不将本轮非法参数循环称评估器误拒绝。
+- 最新已核远端648a4c8d320f9ce995272502d48fb7ddb4c9e35e，正在准备最终验收关键提交。PUBLICATION记录实际推送与ls-remote；下一代理以实际Git核验为准。
+- 不提交无关scripts/920/extract_swiss_development_input.py；服务器权重/完整checkpoint/GLB不入Git。
 
-下一步：监控现有27562，核真实模型与adapter加载回执；各终态保存后依VISUAL_CONTINUITY_PROTOCOL执行6个Milan只读射线检查（旧dedicated-work指标不用于共桌验收）。完整12终态后运行summarize_edit_study.py --study本run --out新的唯一目录，审阅初末用途/身份/接近/相交及图像。报告脚本8项核对已通过，不需重复无变化测试。更新论文证据并发布关键里程碑；当前无设计收益结论。
-
-首Milan17完整三组：原生调用2/0/2，schema拒绝10/12/10，基线/联合丢原书架，动作组不编辑。36输出均无think段（显式D未产生，不推断内部推理）；所有adapter推理重载精确。三份Milan17终态视线已测，每坐席15/15清晰；剩余三个Milan29须补。FIRST_BLOCK_REVIEW/DIAGNOSIS和reports/first_matched_block可查。当前准备关键首模型/首终态提交，不是普通小时进度。
+下一步：发布最终验收同一runs/920链并ls-remote；收束当前配置，不扩训。研究主线保留，但先围绕实际失败定位合法编辑、显式自生成决定和训练/部署一致性的最小门槛；当前在线loss不证明充分拟合。新模型试验须冻结范围，新训练仍单独审定；不能把本轮工程验收/负结果当论文目标完成。没有用户材料依赖，Goal active。
