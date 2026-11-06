@@ -1,3 +1,7 @@
+## 2026-11-06T15:28:02.710011+00:00 共同输入CPU验收
+
+check_edit_requests V1/V2均2.72秒exit0：44/144、22组相同输入及3错误拒绝；encoding首次4.28秒import失败、第二次16.78秒token超限、第三次18.63秒exit0全44。27旧论文来源哈希无变化；新增2项CPU证据。git diff --check通过。部署token预算未验。
+
 ## 2026-11-06T15:15:22.243666+00:00 接口诊断与停止状态
 
 audit_edit_study_interface.py:6.04秒exit0；seen prompt预检5.43秒exit0。首次启动0模型调用缺jsonschema退出，native launcher90.58秒exit1，实际4模型共90.019秒，未续跑；posthoc0.165秒exit0恢复计数与schema失败证据。check_edit_supervision.py:22.85秒exit0，全44例/37去空前缀，prompt、A、D、五图完全一致。公开新证据不含权重、GPU重训或场景重放。

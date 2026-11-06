@@ -1,15 +1,14 @@
-# 当前：完整学习试验已发布；接口诊断停止，候选前缀修正通过CPU验证
+# 当前：整屋试验已结束；共同输入候选完成CPU验收
 
-更新 2026-11-06T15:15:22.243666+00:00。研究Goal active，无活跃训练/推理/CPU作业。不重启已结束作业。
+更新 2026-11-06T15:28:02.710011+00:00。Goal active，无运行作业；训练无追加授权。
 
-- 主试验 P920-EDITSTUDY-v1_20261106T074752Z：两adapter各8更新、12房间已结束，144调用133拒绝；未见专业决定监督收益。FINAL_REVIEW/FINAL_ACCEPTANCE为完整结论。
-- 最终提交56f76fff0ac4218e91f3b11a8e4be471cb7ca335已推送并ls-remote精确核验，15:03:04UTC。首次600秒超时、重推同一提交219.7秒成功，未重跑试验。PUBLICATION记录证据。
-- 只读接口审计：动作22/22、联合15/22在未监督空think后学习A；线上从助手起点生成。144调用中131query、119相邻重复、121有上次拒绝、0助手历史。没有enable_thinking模板开关，未确立因果。
-- P920-SEENPROMPT-v1_20261106T150500Z原计划6调用，实际4调用90.019秒、0训练/0场景编辑；AIR三组都有think、都用非法来源资产ID。第四个Waterloo底座有think，rotation代替yaw。校验器假定完整schema/字典对象而退出1，后两adapter未调用；按规则不补跑。
-- 新run的RECOVERED_ACCOUNTING.json才是实际4调用计数，原SUMMARY仅计3个完成校验的行；FAILED_RUN_STATUS/原回执保留。首次启动缺jsonschema发生在0模型调用前，原生启动器修正已记录。
-- 22示例12完整schema+dict对象、10文字签名+list对象。两个抽查prompt的Memory为空历史但Task含已有对象；不能称房间为空或已证失败原因。
-- 新候选scripts/920/edit_supervision.py用官方no_thinking=True去掉无D样本的未监督前缀；check_edit_supervision.py在全部44真实样本通过，37改变、原prompt/action/D/五图完全一致。0新训练，历史encoder/tensors不改，尚无候选推理收益。
-- 新run REVIEW.md含结果、限制及复核命令。当前变更准备合并同一runs/920链；以实际Git和PUBLICATION核最终发布状态。
-- 勿提交无关scripts/920/extract_swiss_development_input.py；权重/完整checkpoint/GLB仍只在服务器。
+- 主试验P920-EDITSTUDY-v1_20261106T074752Z：两adapter各8更新，12终态、144调用、133拒绝，无专业决定监督收益。最终56f76fff已发布。
+- seen-prompt探针实际4/6调用（90.019秒），第四输出后校验器崩溃；0场景编辑。不补跑两格，计数以RECOVERED_ACCOUNTING为准。四份输出有think但无合法候选，不等于专业决定验收。
+- 诊断提交6d73b1b65248bf8561469648ab726b2900207d55已推送，15:17:10UTC ls-remote精确核验；PUBLICATION有回执。
+- 当前新增edit_request.py共用输入生成器：44训练样本、144历史请求CPU校验通过；只move旧任务仍只move，保留原状态、任务、五图及回执，不按目标筛资产。
+- edit_supervision新增共同请求编码：44例实际处理器通过，首助手token监督、A/D目标和像素与历史完全一致，两组prompt相同。最大15409/16384token；0模型、0更新。
+- 两次CPU编码失败保留：import路径顺序错误；首版JSON空白导致超限。V2仅压缩空白后通过。CPU_INTERFACE_REVIEW.md说明限制；部署token上限尚未逐请求核验。
+- 原始失败探针STATUS仍为停止，新增CPU验收为子字段；主研究结论不变。当前CPU批次待提交发布；勿混淆上一提交已公开。
+- 勿碰/提交无关scripts/920/extract_swiss_development_input.py。大请求在runtime可重建，权重/GLB不提交。
 
-下一步围绕具体专业决定统一已有22示例和部署的对象表、工具schema、可调用/来源资产身份、已存家具与空历史表达，用同一生成器并CPU校验所有格式。不要因这次校验器错误再补跑6调用，也不要扩主试验或自动追加训练。训练必须单独审定，候选前缀修复只是工程前提，不是论文贡献。没有待用户提供资料的阻断。
+下一步：先完成部署预算检查，再冻结有限同接口推理范围，围绕已有专业条件取舍核验能否执行。不要重启旧试验、扩大训练或把接口收益当专业学习；新训练须单独审定。没有待用户资料的阻断。
