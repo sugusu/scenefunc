@@ -1,0 +1,161 @@
+{
+  "frozen_at": "2026-11-06T00:31:49.245359+00:00",
+  "source_record": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PINE-v1_20261106T002523Z/SOURCE_RECORD.json",
+    "sha256": "d84e0b962d0c1c7c137f95edae489f82e6f82874059d9b0ccbb566327cc0e991"
+  },
+  "task": {
+    "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-PINE-v1_20261106T002523Z/TASK_INPUT.json",
+    "sha256": "da27ba0bf6d251e00d6b33a2dfb0991bc39029fdd39e2ff037610acead92691a"
+  },
+  "source_boundary": "Gurney designed window desk/bookshelves; residents reused an existing IKEA desk along an adjacent wall for concurrent work. Co-produced reported outcome, not all professional-authored operations.",
+  "reconstruction_boundary": "One declared 19.2m2 transfer room. Two unscaled substitutes for distinct original desk types. Adjacent-wall arrangement has a corner gap; not a continuous bespoke L desktop. One shelf is a book-access proxy, not surrounding-window cabinetry. Sofa does not prove guest sleeping.",
+  "commands": [
+    {
+      "role": "retain_and_reposition_source_reported_old_desk",
+      "planned_id": "old_desk_0",
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "old_desk_0",
+          "x": 2.09,
+          "y": 0.25,
+          "yaw": 90
+        }
+      }
+    },
+    {
+      "role": "retain_and_reposition_research_initial_chair",
+      "planned_id": "old_chair_0",
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "old_chair_0",
+          "x": 1.18,
+          "y": 0.25,
+          "yaw": 270
+        }
+      }
+    },
+    {
+      "role": "provide_window_workstation_substitute",
+      "planned_id": "work_desk_0",
+      "command": {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_03f226dd0e012925a8674564c4de19cb786c9a88",
+          "x": 0.3,
+          "y": 1.65,
+          "yaw": 180
+        }
+      }
+    },
+    {
+      "role": "provide_second_seat",
+      "planned_id": "dining_chair_1_0",
+      "command": {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02",
+          "x": 0.3,
+          "y": 0.8,
+          "yaw": 0
+        }
+      }
+    }
+  ],
+  "reference_measurement": {
+    "grid_m": 0.02,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "entry_center_xy_m": [
+      0.4,
+      -2.0
+    ],
+    "entry_inward_normal_xy": [
+      0,
+      1
+    ]
+  },
+  "fixed_approach_points": {
+    "sofa_front": [
+      -0.9,
+      0.0
+    ],
+    "bookshelf_front": [
+      -1.1,
+      -1.05
+    ],
+    "central_activity": [
+      -0.4,
+      0.25
+    ]
+  },
+  "initial_role_points": {
+    "old_seat_side": [
+      -0.65,
+      0.8
+    ]
+  },
+  "final_role_points": {
+    "old_seat_side": [
+      1.18,
+      -0.4
+    ],
+    "new_seat_side": [
+      -0.35,
+      0.8
+    ]
+  },
+  "work_pairs_before": [
+    [
+      "old_desk_0",
+      "old_chair_0"
+    ]
+  ],
+  "work_pairs_after": [
+    [
+      "old_desk_0",
+      "old_chair_0"
+    ],
+    [
+      "work_desk_0",
+      "dining_chair_1_0"
+    ]
+  ],
+  "surface_probe": {
+    "width_m": 0.4,
+    "depth_m": 0.3,
+    "near_top_band_m": 0.03,
+    "min_up_normal": 0.99,
+    "not_normative": true
+  },
+  "simultaneous_seat_proxies": {
+    "square_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "centred_on_chairs": true,
+    "not_human_models": true
+  },
+  "interpretation": "Measure desk-surface patches, chair facing/separation, actual static mesh contacts, retained IDs/bindings and common access. No claim that one table cannot serve two people, that this layout is unique/optimal, or that all room uses pass.",
+  "sensitivity": "Three declared square-body widths only; not source-dimension validation. No tuned retries or empirical generalization from one assumed room.",
+  "budget": {
+    "tool_calls": 4,
+    "observations": 5,
+    "native_seconds": 600,
+    "build_seconds": 120,
+    "preflight_seconds": 120,
+    "analysis_seconds": 120,
+    "model_calls": 0,
+    "training_updates": 0,
+    "candidate_sequences": 1,
+    "retries": 0,
+    "first_infrastructure_error_stop": true
+  }
+}

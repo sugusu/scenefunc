@@ -1,0 +1,308 @@
+{
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "get_current_scene_state"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {},
+          "required": [],
+          "title": "get_current_scene_state_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "add_furniture_to_scene_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_id": {
+              "description": "ID of the furniture to place.",
+              "title": "Asset Id",
+              "type": "string",
+              "enum": [
+                "catalog_02e22ed56270338bef5f8436e82023c36cd29104",
+                "catalog_039f04552895e9d932d6a6eb3fcf7c4f77b7ddab",
+                "catalog_19b181ef136dd9cbbea4505899f9015c58dca260",
+                "catalog_31db4fd468ce40de28ea3bf907b1569ef27c9852",
+                "catalog_3d780643626fa80329154d35920d87d0df72d2fc",
+                "catalog_43fa24cb165eb3bfde976d070bfd615f41c78028",
+                "catalog_4979cfe2e691ac484078b909543db3f21b80462f",
+                "catalog_4d46ffe6a7d88704ba605d7dd6f41c1114d88631",
+                "catalog_50d2f90f2ef2466c22a1d1da45fc657763cbfb2a",
+                "catalog_5d70cc76c99acee4513ec5f7fad497d2baebca9e",
+                "catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02",
+                "catalog_9bc019d4d9b1041bb10f625cfb6d45214f1e7122",
+                "catalog_a73ab435a592f804b7caa9c3a79f03122c536476",
+                "catalog_dfc33bed23e9440507bca1a1409763942a913cd5",
+                "catalog_ee06a781bc8796d23c0f27564110f677cff7779d",
+                "catalog_f983ff568379c97ee9dfa7095b02a7688fbf60a4"
+              ]
+            },
+            "x": {
+              "description": "X position in the room (meters).",
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "description": "Y position in the room (meters).",
+              "title": "Y",
+              "type": "number"
+            },
+            "yaw": {
+              "default": 0.0,
+              "description": "Yaw rotation in degrees around vertical axis (default: 0.0).\nPositive values rotate counterclockwise in top-down view.",
+              "title": "Yaw",
+              "type": "number"
+            }
+          },
+          "required": [
+            "asset_id",
+            "x",
+            "y",
+            "yaw"
+          ],
+          "title": "add_furniture_to_scene_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "move_furniture_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "object_id": {
+              "description": "ID of the furniture item to move.",
+              "title": "Object Id",
+              "type": "string",
+              "enum": [
+                "bath_basin_0",
+                "bath_shower_0",
+                "bath_toilet_0",
+                "cooker_0",
+                "fridge_0",
+                "living_sofa_0",
+                "main_bed_0",
+                "meal_chair_n_0",
+                "meal_chair_s_0",
+                "meal_table_0",
+                "prep_counter_0",
+                "retained_shelf_0",
+                "sink_0"
+              ]
+            },
+            "x": {
+              "description": "New X position in the room (meters).",
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "description": "New Y position in the room (meters).",
+              "title": "Y",
+              "type": "number"
+            },
+            "yaw": {
+              "default": 0.0,
+              "description": "New yaw rotation in degrees around vertical axis (default: 0.0).\nPositive values rotate counterclockwise in top-down view.",
+              "title": "Yaw",
+              "type": "number"
+            }
+          },
+          "required": [
+            "object_id",
+            "x",
+            "y",
+            "yaw"
+          ],
+          "title": "move_furniture_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "remove_furniture_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "object_id": {
+              "description": "ID of the furniture item to remove.",
+              "title": "Object Id",
+              "type": "string",
+              "enum": [
+                "bath_basin_0",
+                "bath_shower_0",
+                "bath_toilet_0",
+                "cooker_0",
+                "fridge_0",
+                "living_sofa_0",
+                "main_bed_0",
+                "meal_chair_n_0",
+                "meal_chair_s_0",
+                "meal_table_0",
+                "prep_counter_0",
+                "retained_shelf_0",
+                "sink_0"
+              ]
+            }
+          },
+          "required": [
+            "object_id"
+          ],
+          "title": "remove_furniture_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "check_facing_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "direction": {
+              "default": "toward",
+              "description": "Direction to check. Valid values:\n- \"toward\": Check if object A faces toward object B (default).\n  Use for: chairs→tables, sofas→TVs, seating→focal points.\n- \"away\": Check if object A faces away from object B.\n  Use for: furniture against walls (drawers, shelves, washing\n  machines, desks with backs to walls).",
+              "title": "Direction",
+              "type": "string"
+            },
+            "object_a_id": {
+              "description": "ID of the first object (the one being checked).",
+              "title": "Object A Id",
+              "type": "string",
+              "enum": [
+                "bath_basin_0",
+                "bath_shower_0",
+                "bath_toilet_0",
+                "cooker_0",
+                "fridge_0",
+                "living_sofa_0",
+                "main_bed_0",
+                "meal_chair_n_0",
+                "meal_chair_s_0",
+                "meal_table_0",
+                "prep_counter_0",
+                "retained_shelf_0",
+                "sink_0"
+              ]
+            },
+            "object_b_id": {
+              "description": "ID of the second object (the target).",
+              "title": "Object B Id",
+              "type": "string",
+              "enum": [
+                "bath_basin_0",
+                "bath_shower_0",
+                "bath_toilet_0",
+                "cooker_0",
+                "fridge_0",
+                "living_sofa_0",
+                "main_bed_0",
+                "meal_chair_n_0",
+                "meal_chair_s_0",
+                "meal_table_0",
+                "prep_counter_0",
+                "retained_shelf_0",
+                "sink_0"
+              ]
+            }
+          },
+          "required": [
+            "object_a_id",
+            "object_b_id",
+            "direction"
+          ],
+          "title": "check_facing_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "__done__"
+          ]
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "unmet_or_unknown": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "unmet_or_unknown"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

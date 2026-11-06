@@ -1,12 +1,14 @@
 {
-  "updated_at": "2026-11-05T23:33:07.857367+00:00",
+  "updated_at": "2026-11-06T00:12:40.754697+00:00",
   "status": "study_design_revision_not_training_request",
   "actual_training_authorized": false,
   "evidence": {
     "final_weight_common_action_fit": "runs/920/P920-FINALFIT-v2_20261105T220648Z/SUMMARY.json",
     "curated_data": "runs/920/P920-CURATE-v1_20261105T212407Z/DATASET.json",
     "independent_whole_room_diagnostics": "research/920/paper_v1/PILOT_RESULTS.md",
-    "current_material_intervention_audit": "runs/920/P920-STUDYMAP-v1_20261105T223531Z/audit/RESULT.json"
+    "current_material_intervention_audit": "runs/920/P920-STUDYMAP-v1_20261105T223531Z/audit/RESULT.json",
+    "shared_action_contract": "runs/920/P920-ACTIONCONTRACT-v1_20261105T234424Z/SUMMARY.json",
+    "shared_action_contract_native_integration": "runs/920/P920-STRUCTBASE-v1_20261105T235442Z/SUMMARY.json"
   },
   "interpretation": "The completed tiny pilot yielded a small action-fit gain for separate and no gain for paired under a common direct-action input. This is in-sample teacher forcing, not the estimand of independent room quality. Do not continue its optimizer or claim the core hypothesis disproven.",
   "next_training_comparison": {
@@ -64,7 +66,30 @@
     "direct_action": "Same no-gold-rationale input to all arms; report explicitly as this mode.",
     "self_generated_reason_then_action": "If tested, every arm gets the same two-stage protocol and a shared total token/tool budget; use model-generated reasons, never held-out designer answers.",
     "same_knowledge_retrieval": "Same other-project knowledge pool; source-family split applies to retrieval too.",
-    "primary_outcome": "Complete-room requirements with fixed denominators, object/asset identity, failures, repair cost and independent professional blind assessment. Teacher-forced likelihood is secondary."
+    "primary_outcome": "Complete-room requirements with fixed denominators, object/asset identity, failures, repair cost and independent professional blind assessment. Teacher-forced likelihood is secondary.",
+    "shared_interface_boundary": {
+      "implementation": "scripts/920/shared_action_contract.py",
+      "status": "CPU fixtures passed; STRUCTBASE frozen base executed12/12 valid native calls with5 actual adds,0 errors, but room not accepted. One exposed source family, no independent test or training gain.",
+      "fairness": "All future comparison arms share the same exact native schemas, current-ID restrictions, raw-JSON output protocol, completion handling and final validator. Report this as ordinary baseline engineering, not learned professional knowledge.",
+      "separate_outcomes": [
+        "syntax/schema validity",
+        "reference validity",
+        "native execution acceptance",
+        "task identity/retention",
+        "geometry",
+        "measured use",
+        "professional whole-room assessment"
+      ],
+      "limits": "Do not retrospectively repair old results, select reference coordinates, reject design choices using test truth, or credit a grammar-only change to training."
+    },
+    "training_inference_serialization": {
+      "observed_official_loader": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/sft_dataset.py",
+      "sha256": "9e4d18f67e746af16f830d7e8d0da714964a43bfa320ef091a0092b3e9bb2569",
+      "official_format": "assistant think/content plus chat-template tool_call blocks; no_thinking omits thinking but retains tool_call serialization",
+      "current_engineering_pilot": "P920-STRUCTBASE-v1_20261105T235442Z uses raw JSON with __done__; intentionally different, frozen base only",
+      "requirement_for_future_learning": "Before freezing a new study, choose one target/decoding serialization consistently for all arms. Preserve semantic actions and professional reason provenance; document masks, target tokens and any serializer changes. Do not silently reuse old encoded caches under a new output protocol or attribute protocol mismatch to pairing.",
+      "not_authorized": "No dataset conversion, re-encoding or training performed in this check."
+    }
   },
   "negative_and_unknown_handling": [
     "Keep Moabit reference rejected and task feasibility unknown; do not spend model budget on it as a valid benchmark.",

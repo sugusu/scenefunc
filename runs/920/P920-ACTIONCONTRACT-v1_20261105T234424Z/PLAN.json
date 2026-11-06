@@ -1,0 +1,39 @@
+{
+  "run_id": "P920-ACTIONCONTRACT-v1_20261105T234424Z",
+  "frozen_at": "2026-11-05T23:44:24.627440+00:00",
+  "question": "Can one shared strict action contract reject interface errors without supplying design decisions, and can the actual tokenizer support constrained output?",
+  "scope": "CPU engineering prerequisite only; no model sampling, scene edits, optimizer updates or learning claims",
+  "public": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ACTIONCONTRACT-v1_20261105T234424Z",
+  "runtime": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ACTIONCONTRACT-v1_20261105T234424Z",
+  "source_run": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z",
+  "inputs": {
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/prepare/observation.json": "6777f5bda87e83ec5c22b95019d246c4378a2c7fbf465a3c95005540162495a8",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-MILAN-BASE-v1_20261105T225639Z/prepare/request.json": "21556e41095b3ea2315b7162d30b7b2bf429c3fc83de1daafe27af133597e837"
+  },
+  "budget": {
+    "dependency_seconds": 180,
+    "contract_check_seconds": 180,
+    "tokenizer_check_seconds": 300,
+    "model_calls": 0,
+    "native_tool_calls": 0,
+    "training_updates": 0,
+    "retries": 0
+  },
+  "dependency": {
+    "target": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ACTIONCONTRACT-v1_20261105T234424Z/dependencies",
+    "requested": [
+      "lm-format-enforcer==0.11.3",
+      "jsonschema==4.23.0"
+    ],
+    "install_policy": "wheel-only isolated --target; original environments unchanged; resolution report and full installed-file hashes before checks"
+  },
+  "contract": {
+    "tools": "exact five advertised native schemas",
+    "identifiers": "catalog asset IDs and current furniture IDs only; no inferred hard-retention filter",
+    "coordinates": "unbounded finite numbers; no reference coordinates, geometry optimizer or target-layout filtering",
+    "termination": "explicit done with unknown/unmet statement, not auto-success",
+    "execution": "strict JSON plus schema/reference validation before dispatch; any rejection counted; no correction or retry",
+    "decoding": "shared across future arms; changes output protocol; no strict old-vs-new causal comparison"
+  },
+  "acceptance": "positive/negative fixtures, actual old-output classification, real-tokenizer prefix walk with EOS boundary; failures preserved and no GPU escalation"
+}

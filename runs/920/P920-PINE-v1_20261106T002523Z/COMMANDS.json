@@ -1,0 +1,285 @@
+{
+  "stages": [
+    {
+      "stage": "archive_receipt",
+      "started_at": "2026-11-06T00:39:49.100868+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/archive_pine_decision.py",
+        "--public",
+        "runs/920/P920-PINE-v1_20261106T002523Z",
+        "--runtime",
+        "../runtime/P920-PINE-v1_20261106T002523Z"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58343768",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/archive_receipt/stage.log",
+      "ended_at": "2026-11-06T00:39:49.467260+00:00",
+      "elapsed_seconds": 0.3664128229720518,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:39:49.222039+00:00 archive Pine reconstruction, source attribution and limitations"
+    },
+    {
+      "stage": "build_receipt",
+      "started_at": "2026-11-06T00:31:49.452640+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/build_pine_input.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/BUILD_PLAN.json",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/build"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58295803",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/build_receipt/stage.log",
+      "ended_at": "2026-11-06T00:31:52.277831+00:00",
+      "elapsed_seconds": 2.825214094016701,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:31:49.870843+00:00 build declared source transfer input, no model or rendering"
+    },
+    {
+      "stage": "consequences_receipt",
+      "started_at": "2026-11-06T00:37:34.097097+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/measure_pine_consequences.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/CONSEQUENCE_PLAN.json",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/CONSEQUENCES.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58330268",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/consequences_receipt/stage.log",
+      "ended_at": "2026-11-06T00:37:36.972721+00:00",
+      "elapsed_seconds": 2.875648590037599,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:37:34.502814+00:00 measure source-conditioned two-workstation transfer"
+    },
+    {
+      "stage": "download_receipt",
+      "started_at": "2026-11-06T00:29:04.633097+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/fetch_asset_bundle.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/DOWNLOAD_PLAN.json",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/download"
+      ],
+      "timeout_seconds": 180,
+      "pid": 1424292,
+      "start_ticks": "58279321",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/download_receipt/stage.log",
+      "ended_at": "2026-11-06T00:29:09.416734+00:00",
+      "elapsed_seconds": 4.783658039057627,
+      "exit_code": 0,
+      "first_log": "verified 03f226dd0e012925a8674564c4de19cb786c9a88 mesh 1021504"
+    },
+    {
+      "stage": "export_receipt",
+      "started_at": "2026-11-06T00:38:04.037185+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/EXPORT_PLAN.json",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/export"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58333262",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/export_receipt/stage.log",
+      "ended_at": "2026-11-06T00:38:09.622082+00:00",
+      "elapsed_seconds": 5.584922907059081,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 23, \"maximum_roundtrip_bound_error_m\": 9.834783742945774e-08, \"glb\": {\"path\": \"../runtime/P920-PINE-v1_20261106T002523Z/export/room_geometry.glb\", \"bytes\": 9757076, \"sha256\": \"cd9dd408dfaa770630b01c0045636e94c705e556a98fe956dd4344e0a86fe018\"}}"
+    },
+    {
+      "stage": "final_audit_receipt",
+      "started_at": "2026-11-06T00:37:34.062267+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/audit_family_choice_geometry.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/GEOMETRY_PLAN.json",
+        "--bundle",
+        "../runtime/P920-PINE-v1_20261106T002523Z/native/checkpoint",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/FINAL_AUDIT.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58330264",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/final_audit_receipt/stage.log",
+      "ended_at": "2026-11-06T00:37:36.234900+00:00",
+      "elapsed_seconds": 2.1726551490137354,
+      "exit_code": 0,
+      "first_log": "{\"furniture\": 6, \"surface_intersection_pairs\": 0, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+    },
+    {
+      "stage": "initial_audit_receipt",
+      "started_at": "2026-11-06T00:34:02.401560+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/audit_family_choice_geometry.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/GEOMETRY_PLAN.json",
+        "--bundle",
+        "../runtime/P920-PINE-v1_20261106T002523Z/build/bundle",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/INITIAL_AUDIT.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58309098",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/initial_audit_receipt/stage.log",
+      "ended_at": "2026-11-06T00:34:04.675347+00:00",
+      "elapsed_seconds": 2.2738115900428966,
+      "exit_code": 0,
+      "first_log": "{\"furniture\": 4, \"surface_intersection_pairs\": 0, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+    },
+    {
+      "stage": "inspect_receipt",
+      "started_at": "2026-11-06T00:29:27.925645+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/geometry311/bin/python",
+        "scripts/920/inspect_decision_assets.py",
+        "--download",
+        "../runtime/P920-PINE-v1_20261106T002523Z/download/DOWNLOAD.json",
+        "--out",
+        "runs/920/P920-PINE-v1_20261106T002523Z/ASSET_MEASUREMENT.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58281651",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/inspect_receipt/stage.log",
+      "ended_at": "2026-11-06T00:29:28.442921+00:00",
+      "elapsed_seconds": 0.5172997139161453,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:29:28.273823+00:00 begin candidate mesh inspection"
+    },
+    {
+      "stage": "native_receipt",
+      "started_at": "2026-11-06T00:32:48.351131+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/execute_lifecycle_decision.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/EXECUTION_PLAN.json",
+        "--phase",
+        "execute",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/native"
+      ],
+      "timeout_seconds": 600,
+      "pid": 1425222,
+      "start_ticks": "58301693",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/native_receipt/stage.log",
+      "ended_at": "2026-11-06T00:36:34.496947+00:00",
+      "elapsed_seconds": 226.14584043202922,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:32:48.887000+00:00 begin researcher reference execute"
+    },
+    {
+      "stage": "preflight_receipt",
+      "started_at": "2026-11-06T00:32:27.045239+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/execute_lifecycle_decision.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/EXECUTION_PLAN.json",
+        "--phase",
+        "preflight",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/preflight"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58299563",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/preflight_receipt/stage.log",
+      "ended_at": "2026-11-06T00:32:27.913471+00:00",
+      "elapsed_seconds": 0.8682527090422809,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:32:27.652794+00:00 begin researcher reference preflight"
+    },
+    {
+      "stage": "preview_receipt",
+      "started_at": "2026-11-06T00:29:40.207735+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/render_asset_previews.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/PREVIEW_PLAN.json",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/previews"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "58282879",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/preview_receipt/stage.log",
+      "ended_at": "2026-11-06T00:29:41.928180+00:00",
+      "elapsed_seconds": 1.7204692489467561,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:29:40.641389+00:00 begin fixed candidate visual inspection"
+    },
+    {
+      "stage": "resolve_receipt",
+      "started_at": "2026-11-06T00:28:41.696249+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/resolve_pine_desk.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/ASSET_PLAN.json",
+        "--out",
+        "runs/920/P920-PINE-v1_20261106T002523Z/DOWNLOAD_PLAN.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 1424219,
+      "start_ticks": "58277028",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/resolve_receipt/stage.log",
+      "ended_at": "2026-11-06T00:28:42.915612+00:00",
+      "elapsed_seconds": 1.2193657970055938,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:28:41.892309+00:00 resolve one selected desk; metadata only"
+    },
+    {
+      "stage": "restore_receipt",
+      "started_at": "2026-11-06T00:38:02.733212+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/restore_terminal_catalog.py",
+        "--plan",
+        "runs/920/P920-PINE-v1_20261106T002523Z/RESTORE_PLAN.json",
+        "--out",
+        "../runtime/P920-PINE-v1_20261106T002523Z/cold_restore"
+      ],
+      "timeout_seconds": 120,
+      "pid": 1427937,
+      "start_ticks": "58333131",
+      "log": "../runtime/P920-PINE-v1_20261106T002523Z/restore_receipt/stage.log",
+      "ended_at": "2026-11-06T00:38:11.579993+00:00",
+      "elapsed_seconds": 8.846805945038795,
+      "exit_code": 0,
+      "first_log": "2026-11-06T00:38:02.802699+00:00 begin terminal native cold restore"
+    }
+  ]
+}

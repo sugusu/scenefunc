@@ -1,0 +1,279 @@
+{
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "get_current_scene_state"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {},
+          "required": [],
+          "title": "get_current_scene_state_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "add_furniture_to_scene_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_id": {
+              "description": "ID of the furniture to place.",
+              "title": "Asset Id",
+              "type": "string",
+              "enum": [
+                "catalog_construct_bed",
+                "catalog_construct_chair_east",
+                "catalog_construct_chair_west",
+                "catalog_construct_low_fridge",
+                "catalog_construct_open_clothes_rail",
+                "catalog_construct_sofa",
+                "catalog_construct_table"
+              ]
+            },
+            "x": {
+              "description": "X position in the room (meters).",
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "description": "Y position in the room (meters).",
+              "title": "Y",
+              "type": "number"
+            },
+            "yaw": {
+              "default": 0.0,
+              "description": "Yaw rotation in degrees around vertical axis (default: 0.0).\nPositive values rotate counterclockwise in top-down view.",
+              "title": "Yaw",
+              "type": "number"
+            }
+          },
+          "required": [
+            "asset_id",
+            "x",
+            "y",
+            "yaw"
+          ],
+          "title": "add_furniture_to_scene_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "move_furniture_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "object_id": {
+              "description": "ID of the furniture item to move.",
+              "title": "Object Id",
+              "type": "string",
+              "enum": [
+                "bed_0",
+                "recon_bath_shower_0",
+                "recon_bath_toilet_0",
+                "recon_bath_vanity_0",
+                "recon_cooktop_0",
+                "recon_kitchen_counter_0",
+                "recon_kitchen_sink_0",
+                "sofa_0"
+              ]
+            },
+            "x": {
+              "description": "New X position in the room (meters).",
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "description": "New Y position in the room (meters).",
+              "title": "Y",
+              "type": "number"
+            },
+            "yaw": {
+              "default": 0.0,
+              "description": "New yaw rotation in degrees around vertical axis (default: 0.0).\nPositive values rotate counterclockwise in top-down view.",
+              "title": "Yaw",
+              "type": "number"
+            }
+          },
+          "required": [
+            "object_id",
+            "x",
+            "y",
+            "yaw"
+          ],
+          "title": "move_furniture_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "remove_furniture_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "object_id": {
+              "description": "ID of the furniture item to remove.",
+              "title": "Object Id",
+              "type": "string",
+              "enum": [
+                "bed_0",
+                "recon_bath_shower_0",
+                "recon_bath_toilet_0",
+                "recon_bath_vanity_0",
+                "recon_cooktop_0",
+                "recon_kitchen_counter_0",
+                "recon_kitchen_sink_0",
+                "sofa_0"
+              ]
+            }
+          },
+          "required": [
+            "object_id"
+          ],
+          "title": "remove_furniture_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "check_facing_tool"
+          ]
+        },
+        "arguments": {
+          "additionalProperties": false,
+          "properties": {
+            "direction": {
+              "default": "toward",
+              "description": "Direction to check. Valid values:\n- \"toward\": Check if object A faces toward object B (default).\n  Use for: chairs→tables, sofas→TVs, seating→focal points.\n- \"away\": Check if object A faces away from object B.\n  Use for: furniture against walls (drawers, shelves, washing\n  machines, desks with backs to walls).",
+              "title": "Direction",
+              "type": "string"
+            },
+            "object_a_id": {
+              "description": "ID of the first object (the one being checked).",
+              "title": "Object A Id",
+              "type": "string",
+              "enum": [
+                "bed_0",
+                "recon_bath_shower_0",
+                "recon_bath_toilet_0",
+                "recon_bath_vanity_0",
+                "recon_cooktop_0",
+                "recon_kitchen_counter_0",
+                "recon_kitchen_sink_0",
+                "sofa_0"
+              ]
+            },
+            "object_b_id": {
+              "description": "ID of the second object (the target).",
+              "title": "Object B Id",
+              "type": "string",
+              "enum": [
+                "bed_0",
+                "recon_bath_shower_0",
+                "recon_bath_toilet_0",
+                "recon_bath_vanity_0",
+                "recon_cooktop_0",
+                "recon_kitchen_counter_0",
+                "recon_kitchen_sink_0",
+                "sofa_0"
+              ]
+            }
+          },
+          "required": [
+            "object_a_id",
+            "object_b_id",
+            "direction"
+          ],
+          "title": "check_facing_tool_args",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "__done__"
+          ]
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "unmet_or_unknown": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "unmet_or_unknown"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

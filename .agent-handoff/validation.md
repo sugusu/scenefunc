@@ -317,3 +317,13 @@ Bukit交付追加：前后GLB各5,259,000B，34节点/10对象视觉全部回读
 2026-11-05T23:34:32.223062+00:00 CLOSETALT resolve1.269766/0、download4.432146/0、inspect.516968/0、preview1.420549/0、catalog1.320532/0、preflight.717630/0、face1.169170/0。restore v1 8.194607/1(422 catalog mismatch)，migration v1 .215689/1(no output)，v2 .416563/0；restore v2 8.545887/0。两个真实资产图已看，原13状态/7历史/旧模板/资源保持，0新家具动作。
 
 2026-11-05T23:35:21.199950+00:00 CLOSETALT68公开产物hash/大小/JSON、四新脚本AST、冻结代码与失败v1代码快照hash通过。git diff --cached --check只报告Blender原始preview日志两行尾空白，原字节为证据保留；排除此唯一raw log后所有改动check通过。按实际恢复错误/修复节点合并发布，不等待普通小时窗口。
+
+2026-11-05T23:37:07.701361+00:00 CLOSETALT错误/修复节点已发布runs/920 9f75c1891fd795a4190e4174c590cfd59518dc64；68个Git blob已核，push4.432516秒/0，ls-remote3.378240秒/0一致。新最新远端取代9b46fc1；当前0活跃作业。下一普通窗口>=00:35:47UTC，不单独补提交、不空等。专业决定和训练动作计数不变。
+
+2026-11-05T23:51:14.867760+00:00 ACTIONCONTRACT dependency13.517160s/0、guard.417003s/0、tokenizer12.861326s/0。22/22+stale+empty、15/15token fixtures、old7分类通过。381依赖文件hash、2代码AST/快照、8旧frozen code hash、JSON及公开文本凭据模式核查通过。最初metadata yaml名称查询失败，改PyYAML成功；不影响实验。GPU生成/原生dispatch/学习未验，pip原有CUDA metadata警告保留。
+
+2026-11-06T00:14:29.223395+00:00 STRUCTBASE prepare55.757938/0，rollout751.151750/0，initialaudit.968304/0，finalaudit1.420241/0，restore8.595921/0，export2.825142/0，archive1.119015/0；全部20实际stage receipts终态0。12native success与双gate、65图hash/decode/state、末5目视、恢复12历史/7目录和3tinyquaterniondiff、GLB重载通过。11 frozen代码/4快照AST、旧8源hash、前22artifacthash/JSON/凭据模式通过。探测错误仅未存在文件名和猜catalog键，已rg/keys更正，未影响冻结运行。
+
+2026-11-06T00:15:20.189732+00:00 收尾：ACTIONCONTRACT22+STRUCTBASE263个ARTIFACTS条目逐文件大小/SHA256全部通过；git diff --check通过。当前实际branch runs/920、HEAD9f75c1891fd795a4190e4174c590cfd59518dc64；两批未commit/push，非新远端验收。
+
+2026-11-06T00:45:48.074345+00:00 PINE来源及四步迁移完成：22知识/10部分可表达/9独特回放决定，15来源episode+2研究对照=17；规范39候选动作不变。源窗下桌/书架属设计师，旧桌复用属住户；必须保留ID是研究任务。4.8×4m假设房间4→6家具，两桌40×30cm块通过/两座三宽不重叠/两侧向点通，0接触/越界，0.6m书架仍不通、客睡/膝部/容量未知。native226.145840秒/0、冷恢复8.846806秒/0、GLB9757076B/23nodes/SHAcd9dd408dfaa770630b01c0045636e94c705e556a98fe956dd4344e0a86fe018，25图绑定验；初末10图+3中间俯视+2资产图实看。0模型/训练。用户明确纠偏：暂停新增场景/泛接口微批，下一工作单位为已有几何合理备选的条件化策略选择诊断，预设继续/修改/放弃判据；不要自动扩大训练。
