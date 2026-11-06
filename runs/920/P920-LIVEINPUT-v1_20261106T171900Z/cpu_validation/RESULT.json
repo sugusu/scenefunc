@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checks": [
+    "common builder preserves current state, task, schema, five views and current measured feedback",
+    "source request not mutated",
+    "whole recent native/rejected exchange selection explicit",
+    "native outcome preserved verbatim, not replaced by claimed success",
+    "rejected raw proposal and real error preserved, never marked executed",
+    "unobserved target/reference fields cannot enter history",
+    "character budget evicts complete older exchange only",
+    "oversized latest exchange fails rather than silently truncate",
+    "missing turn in history rejected",
+    "ambiguous rejected-versus-executed outcome rejected",
+    "initial step explicitly records zero prior attempts",
+    "current state retains actual deletion despite omission of old exchange",
+    "action on actually removed object rejected at advertised boundary",
+    "actual prospective runner imports and exposes CLI"
+  ],
+  "recorded_source_sha256": {
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/rollout/RESULT.json": "7bbe919a3eb9b9d23ac8657ae59e4ca3679d89aa885babf4f07274fedad78f85",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/rollout/round_000/model/raw_output.txt": "74bbaa41754ad034a036bfd55679db902682953c1d80262251ad7fea06b150f8",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/rollout/round_001/model/raw_output.txt": "d1437a9bc5daff7f6e092a4795123a39a27a2ed033d809f8ffb090847bff42c0",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/rollout/round_002/model/raw_output.txt": "6ecd54fb27da6913b58943700afd255d282b0ca839b6d164487f46f5b2d75295",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/rollout/round_003/request.json": "401a34b12c79801c589bd4043714d3bc132188e853abbd2ada99aab02853a175",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Milan_frozen_base_knowledge_feedback_17/rollout/round_000/request.json": "704729a190d6b2346625656d6e71aa78f059d12ac280dc23f6e64d359c20cd0a"
+  },
+  "included_history": {
+    "contract": "common-edit-v1-with-exchange-history",
+    "total_prior_attempts": 3,
+    "included_turns": [
+      1,
+      2
+    ],
+    "omitted_older_attempts": 1,
+    "individual_exchanges_truncated": false,
+    "history_chars": 1327,
+    "history_sha256": "1803c7b6fec0e564a85842fa6a9a71008306341bdf86ba40569a5bf940466c8c",
+    "policy": {
+      "name": "common-edit-v1-with-exchange-history",
+      "max_recent_turns": 2,
+      "max_history_chars": 60000
+    }
+  },
+  "source_rows": 3,
+  "new_model_calls": 0,
+  "native_calls": 0,
+  "training_updates": 0,
+  "processor_encoding_performed": false,
+  "live_rollout_executed": false,
+  "limitation": "Recorded fixtures and live runner import only; no evidence of model, execution, design or learning benefit."
+}

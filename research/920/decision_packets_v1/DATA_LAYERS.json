@@ -1,6 +1,6 @@
 {
   "schema": "scenefunc-data-layers-v1",
-  "updated_at": "2026-11-05T09:59:32.922824+00:00",
+  "updated_at": "2026-11-06T17:12:11.004812+00:00",
   "scope": "Current decision packet, not all indexed corpus entries. Counts are independent; unavailable pair supervision does not erase other layers.",
   "knowledge_records": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
   "counts": {
@@ -317,6 +317,66 @@
       "independent_professional_reviews": 0,
       "training_admitted": 0,
       "evidence": "runs/920/P920-DLUGI-KNOW-v1_20261105T095744Z/NEW_KNOWLEDGE.json"
+    }
+  ],
+  "supplementary_candidate_packages": [
+    {
+      "id": "waterloo_single_state_activity_reviews_v1",
+      "kind": "researcher_derived_objective_QA",
+      "path": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/activity_reviews_v1",
+      "result_sha256": "38ef5f6b6353fd66300b351ea628a98403228d95f7305a5030646c186ab68d49",
+      "counts": {
+        "records": 10,
+        "unique_states": 5,
+        "source_families": 1,
+        "measured_no_edit_admissible": 3,
+        "measured_deficit": 7,
+        "whole_room_success_labels": 0,
+        "new_sources": 0,
+        "new_actions": 0
+      },
+      "official_samples_verified": 10,
+      "new_independent_projects": 0,
+      "professional_reviews": 0,
+      "training_admitted": false,
+      "training_authorized": false,
+      "scope": "Supplement to previously counted Waterloo replay; do not add to independent source/action/professional review counts. Historical counts above retain their original scope."
+    }
+  ],
+  "external_layout_intakes": [
+    {
+      "id": "m3dlayout_train_v1",
+      "run_id": "P920-DATAINTAKE-v1_20261106T170200Z",
+      "report": "runs/920/P920-DATAINTAKE-v1_20261106T170200Z/README.md",
+      "result_sha256": "3422f538ee29beaa7aa0c73abf8f809e3aa57696132653c999f072c83f563d2e",
+      "dataset_revision": "72a2a80c3b96788635b9192b64853e1428d59cb4",
+      "license": "CC-BY-NC-4.0 per dataset card; upstream asset terms separate",
+      "records": 17091,
+      "within_source_distinct_ids": 16721,
+      "staged_records": 36,
+      "development_exposed": true,
+      "training_admitted": false,
+      "native_actions": 0,
+      "professional_decisions": 0,
+      "professional_reviews": 0,
+      "counting_policy": "Separate supporting layout layer. Do not add layout/ID counts to independent professional projects, source decisions or native action counts.",
+      "missing": [
+        "resident_brief",
+        "professional_reason",
+        "native_asset_binding",
+        "explicit_room_shell",
+        "native_tool_actions"
+      ]
+    }
+  ],
+  "external_requirements_source_intakes": [
+    {
+      "id": "vida_availability_v1",
+      "revision": "550c85009e59b7495be795ecb3d63fb552685b06",
+      "source_record": "runs/920/P920-DATAINTAKE-v1_20261106T170200Z/SOURCES.json",
+      "consultation_records_acquired": 0,
+      "dataset_license_verified": false,
+      "scope": "No payload or download link in inspected complete official tree and two cards; availability elsewhere unverified."
     }
   ]
 }

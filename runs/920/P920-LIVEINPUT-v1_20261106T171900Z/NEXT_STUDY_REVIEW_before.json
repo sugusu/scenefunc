@@ -1,0 +1,112 @@
+{
+  "updated_at": "2026-11-06T08:17:11.462355+00:00",
+  "status": "user_directed_bounded_study_running",
+  "actual_training_authorized": true,
+  "evidence": {
+    "final_weight_common_action_fit": "runs/920/P920-FINALFIT-v2_20261105T220648Z/SUMMARY.json",
+    "curated_data": "runs/920/P920-CURATE-v1_20261105T212407Z/DATASET.json",
+    "independent_whole_room_diagnostics": "research/920/paper_v1/PILOT_RESULTS.md",
+    "current_material_intervention_audit": "runs/920/P920-STUDYMAP-v1_20261105T223531Z/audit/RESULT.json",
+    "shared_action_contract": "runs/920/P920-ACTIONCONTRACT-v1_20261105T234424Z/SUMMARY.json",
+    "shared_action_contract_native_integration": "runs/920/P920-STRUCTBASE-v1_20261105T235442Z/SUMMARY.json"
+  },
+  "interpretation": "The completed tiny pilot yielded a small action-fit gain for separate and no gain for paired under a common direct-action input. This is in-sample teacher forcing, not the estimand of independent room quality. Do not continue its optimizer or claim the core hypothesis disproven.",
+  "next_training_comparison": {
+    "arms": [
+      "base_same_knowledge_feedback",
+      "action_only",
+      "decision_action"
+    ],
+    "protocol": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/STUDY.json",
+    "authorization": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/AUTHORIZATION.json",
+    "claim": "Added decision supervision only; same-material separate control deferred until useful benefit exists."
+  },
+  "candidate_specific_gaps": [
+    {
+      "ids": [
+        "clothing_build_07"
+      ],
+      "source_supported": "Short-stay open-clothing access strategy",
+      "current_gap": "Original candidate remains open-rail-only. A separate8-entry catalog now has one real static wardrobe; its single same-anchor pose was rejected because door-side access0/5 at all widths. No fair functional choice pair or closed-storage preference label exists.",
+      "next_data_change": "Treat source short-stay rationale as conditional, not universal. A valid alternative needs a feasible usable-side orientation/layout and declared capacity/articulation limits; do not use this bad pose as evidence that the wardrobe type is professionally inferior.",
+      "alternative_evidence": "runs/920/P920-CLOSETALT-v1_20261105T232013Z/SUMMARY.json"
+    },
+    {
+      "ids": [
+        "storage_build_07",
+        "storage_edit_01"
+      ],
+      "source_supported": "Concentrated storage to preserve continuous living space",
+      "current_gap": "Same source and related shell twice; integrated wall functions not represented.",
+      "next_data_change": "Count one source family, keep role/identity and measured side effects; add genuinely different source conditions rather than more versions of this layout."
+    },
+    {
+      "ids": [
+        "paper_table_modes_build_08"
+      ],
+      "source_supported": "Movable table to accommodate changing activities",
+      "current_gap": "Task text was retrospectively changed and sofa sleep is unimplemented.",
+      "next_data_change": "Call the existing result a reserve-area geometry demonstration, not guest sleeping success; evaluate complete dwelling independently."
+    },
+    {
+      "ids": [
+        "waterloo_edit_02"
+      ],
+      "source_supported": "Separate or joined tables support changing activities",
+      "current_gap": "Only one table and chair editable; not unconstrained whole-room design.",
+      "next_data_change": "Keep limited action scope and measured joint-use proxies; do not market existing relabeling as new autonomous execution."
+    }
+  ],
+  "inference_contract": {
+    "direct_action": "Same no-gold-rationale input to all arms; report explicitly as this mode.",
+    "self_generated_reason_then_action": "If tested, every arm gets the same two-stage protocol and a shared total token/tool budget; use model-generated reasons, never held-out designer answers.",
+    "same_knowledge_retrieval": "Same other-project knowledge pool; source-family split applies to retrieval too.",
+    "primary_outcome": "Complete-room requirements with fixed denominators, object/asset identity, failures, repair cost and independent professional blind assessment. Teacher-forced likelihood is secondary.",
+    "shared_interface_boundary": {
+      "implementation": "scripts/920/shared_action_contract.py",
+      "status": "CPU fixtures passed; STRUCTBASE frozen base executed12/12 valid native calls with5 actual adds,0 errors, but room not accepted. One exposed source family, no independent test or training gain.",
+      "fairness": "All arms use official OTA think/tool_call serialization and identical final native-schema/current-ID validator; prior STRUCTBASE rawJSON is historical only.",
+      "separate_outcomes": [
+        "syntax/schema validity",
+        "reference validity",
+        "native execution acceptance",
+        "task identity/retention",
+        "geometry",
+        "measured use",
+        "professional whole-room assessment"
+      ],
+      "limits": "Do not retrospectively repair old results, select reference coordinates, reject design choices using test truth, or credit a grammar-only change to training."
+    },
+    "training_inference_serialization": {
+      "observed_official_loader": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/sft_dataset.py",
+      "sha256": "9e4d18f67e746af16f830d7e8d0da714964a43bfa320ef091a0092b3e9bb2569",
+      "official_format": "assistant think/content plus chat-template tool_call blocks; no_thinking omits thinking but retains tool_call serialization",
+      "current_engineering_pilot": "P920-STRUCTBASE-v1_20261105T235442Z uses raw JSON with __done__; intentionally different, frozen base only",
+      "requirement_for_future_learning": "Before freezing a new study, choose one target/decoding serialization consistently for all arms. Preserve semantic actions and professional reason provenance; document masks, target tokens and any serializer changes. Do not silently reuse old encoded caches under a new output protocol or attribute protocol mismatch to pairing.",
+      "not_authorized": "No dataset conversion, re-encoding or training performed in this check."
+    }
+  },
+  "negative_and_unknown_handling": [
+    "Keep Moabit reference rejected and task feasibility unknown; do not spend model budget on it as a valid benchmark.",
+    "Keep Casa outcomes and previous precision configuration disclosed, not replaced retrospectively.",
+    "Frozen-base/strong-prompt/retrieval failures do not prove training necessary.",
+    "No final professional positive label or universal recommendation without supporting evidence."
+  ],
+  "priority": "Finish current frozen trial, not more disconnected cases or tool diagnostics.",
+  "identified_intervention": "At7source-linked positions joint predicts its own short D then same A;15ordinary positions onlyA; all arms use identical knowledge. Honest extra supervision/compute disclosed.",
+  "historical_superseded_training_comparison": {
+    "arms": [
+      "action_only",
+      "separate",
+      "paired"
+    ],
+    "shared_conditions": [
+      "same admitted actions and source family allocation",
+      "same base initialization and LoRA scope",
+      "same action exposure and update count; report missing reason tokens in action-only rather than padding synthetic labels",
+      "same independent-task tools, assets, original requirements, observations and total inference budget"
+    ],
+    "normalization": "Equal project-family mean of total target NLL; related construction/edit episodes of Guilbault stay within one family. Document differential reason/action mass and input compute.",
+    "not_ready_to_submit_reason": "Five source families now contribute 39 existing candidate actions and six source-reason positions across two separate manifests, not a combined encoded dataset. Limited choice conditions and no ready independent whole-room evaluation remain; adding optimizer steps would not resolve these evidence gaps."
+  }
+}

@@ -1,8 +1,8 @@
 {
   "run_id": "P920-DECISIONAUDIT-v1_20261106T154100Z",
-  "status": "completed_cpu_review_and_data_candidates",
+  "status": "completed_cpu_activity_review_candidates",
   "question": "Do actual decision targets cover conditional strategy choice, and what existing evidence can complete the missing modes?",
-  "updated_at": "2026-11-06T16:27:10.296946+00:00",
+  "updated_at": "2026-11-06T16:52:00.207781+00:00",
   "started_at": "2026-11-06T15:39:51.675636+00:00",
   "ended_at": "2026-11-06T15:43:21.787189+00:00",
   "actual_exit_codes": [
@@ -25,11 +25,23 @@
     "scripts/920/audit_edit_decision_coverage.py": "48c92035c531394e951f78ef95d8c32f55e25a94b9fbde3e288d5f292ae7add2",
     "scripts/920/build_condition_completion_candidates.py": "e2041bcbb5c7cf90f869e532589656e36c2111a4c6e28a21ff7e5575ed95ed76"
   },
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/DATA_USE_CORRECTION.md",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/activity_reviews_v1/README.md",
   "failure_reason": null,
   "annotation_correction": "V1 Paper different-state wording contradicted exact grouping; corrected in V2, originals retained.",
-  "next_step": "Apply explicit initial-to-final evidence and admissible no-edit alternatives to future data; no repeat model diagnostic or new training.",
-  "publication": "pending_next_substantive_hourly_batch",
+  "next_step": "Close this single-trajectory QA construction; do not rerun or train on it automatically. Preserve revised action candidates and objective QA as distinct layers. Next study must test strategy choice with executable actions and cross-project outcomes, not a new presentation of this exposed trajectory.",
+  "publication": {
+    "status": "pushed_and_remote_sha_verified",
+    "branch": "runs/920",
+    "commit": "394890a38761e0f02822965b49f0cdeaff68ea0d",
+    "commit_url": "https://github.com/sugusu/scenefunc/commit/394890a38761e0f02822965b49f0cdeaff68ea0d",
+    "verified_at": "2026-11-06T16:30:55.426406+00:00",
+    "push_receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/publication_decision_correction_v1/push_network/receipt.json",
+    "remote_receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/publication_decision_correction_v1/verify/receipt.json",
+    "initial_transport_failure_preserved": "/data/wyh/scene_cvpr_20261020/design_decisions_920/preflight/publication_decision_correction_v1/push/receipt.json",
+    "files_verified_from_git_blobs": 172,
+    "next_ordinary_batch_not_before": "2026-11-06T17:30:32.133450+00:00",
+    "metadata_note": "Post-push receipt retained locally for next substantive batch; no self-referential follow-up commit."
+  },
   "retrospective_data_use_correction": {
     "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/FHOUSE_DATA_USE_CORRECTION.json",
     "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/incremental_claim_receipt/receipt.json",
@@ -38,5 +50,124 @@
     "exit_code": 0,
     "first_log": "2026-11-06T16:25:39.927647+00:00 bind historical F-House evidence",
     "historical_training_unchanged": true
+  },
+  "candidate_preparation": {
+    "status": "completed",
+    "completed": 44,
+    "planned": 44,
+    "counts": {
+      "actions": 22,
+      "documents": 44,
+      "source_families": 6,
+      "decision_positions": 8,
+      "source_principles_with_decision_targets": 5,
+      "knowledge_records": 6,
+      "new_actions": 0,
+      "new_sources": 0,
+      "new_projects": 0
+    },
+    "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/candidate_v3/ENCODING_VALIDATION.json",
+    "dataset_sha256": "7b8587e932080b985e600ea0ce79bcfdf3df637050f1a3419564e7346f6952fe",
+    "manifest": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/candidate_v3/MANIFEST.json",
+    "receipts": {
+      "candidate_build_receipt": {
+        "started_at": "2026-11-06T16:38:01.217121+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "scripts/920/build_corrected_decision_candidates.py",
+          "--study",
+          "runs/920/P920-EDITSTUDY-v1_20261106T074752Z",
+          "--audit",
+          "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z",
+          "--out",
+          "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/candidate_v3"
+        ],
+        "timeout_seconds": 60,
+        "pid": 7,
+        "start_ticks": "64092980",
+        "log": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/candidate_build_receipt/stage.log",
+        "ended_at": "2026-11-06T16:38:02.285740+00:00",
+        "elapsed_seconds": 1.068638474913314,
+        "exit_code": 0,
+        "first_log": "2026-11-06T16:38:01.258711+00:00 materialize corrected 44 documents; no model"
+      },
+      "candidate_encoding_receipt": {
+        "started_at": "2026-11-06T16:38:29.501153+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/conda/envs/c15_genrec/bin/python",
+          "scripts/920/check_corrected_decision_encoding.py",
+          "--plan",
+          "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/candidate_v3/ENCODING_PLAN.json",
+          "--out",
+          "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/candidate_v3/ENCODING_VALIDATION.json"
+        ],
+        "timeout_seconds": 300,
+        "pid": 7,
+        "start_ticks": "64095808",
+        "log": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/candidate_encoding_receipt/stage.log",
+        "ended_at": "2026-11-06T16:38:45.673995+00:00",
+        "elapsed_seconds": 16.172866305918433,
+        "exit_code": 0,
+        "first_log": "2026-11-06T16:38:33.852768+00:00 encode44correctedCandidatesCPU; no weights"
+      }
+    },
+    "publication": "local_pending_next_hourly_substantive_batch",
+    "maximum_sequence_tokens": 15296,
+    "supervised_tokens": {
+      "action_only": {
+        "action": 1245,
+        "decision": 0
+      },
+      "decision_action": {
+        "action": 1245,
+        "decision": 1332
+      }
+    },
+    "failure_reason": null
+  },
+  "activity_review_preparation": {
+    "status": "completed",
+    "completed": 10,
+    "planned": 10,
+    "counts": {
+      "records": 10,
+      "unique_states": 5,
+      "source_families": 1,
+      "measured_no_edit_admissible": 3,
+      "measured_deficit": 7,
+      "whole_room_success_labels": 0,
+      "new_sources": 0,
+      "new_actions": 0
+    },
+    "protocol": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/ACTIVITY_REVIEW_PROTOCOL.json",
+    "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/activity_reviews_v1/RESULT.json",
+    "validation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/activity_reviews_v1/VALIDATION.json",
+    "manifest": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/activity_reviews_v1/MANIFEST.json",
+    "receipt": {
+      "started_at": "2026-11-06T16:50:10.780474+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/build_activity_completion_reviews.py",
+        "--repo",
+        ".",
+        "--protocol",
+        "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/ACTIVITY_REVIEW_PROTOCOL.json",
+        "--out",
+        "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/activity_reviews_v1"
+      ],
+      "timeout_seconds": 120,
+      "pid": 7,
+      "start_ticks": "64165936",
+      "log": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/activity_review_receipt/stage.log",
+      "ended_at": "2026-11-06T16:50:12.549716+00:00",
+      "elapsed_seconds": 1.7692644539056346,
+      "exit_code": 0,
+      "first_log": "2026-11-06T16:50:10.830659+00:00 build10singleStateActivityReviewsCPU; no model"
+    },
+    "publication": "local_pending_next_hourly_substantive_batch",
+    "failure_reason": null
   }
 }

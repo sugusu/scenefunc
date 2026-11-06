@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-06T08:17:11.462355+00:00",
-  "status": "user_directed_bounded_study_running",
-  "actual_training_authorized": true,
+  "updated_at": "2026-11-06T17:30:01.130181+00:00",
+  "status": "authorized_editstudy_completed_no_followup_training_authorized",
+  "actual_training_authorized": false,
   "evidence": {
     "final_weight_common_action_fit": "runs/920/P920-FINALFIT-v2_20261105T220648Z/SUMMARY.json",
     "curated_data": "runs/920/P920-CURATE-v1_20261105T212407Z/DATASET.json",
@@ -10,7 +10,7 @@
     "shared_action_contract": "runs/920/P920-ACTIONCONTRACT-v1_20261105T234424Z/SUMMARY.json",
     "shared_action_contract_native_integration": "runs/920/P920-STRUCTBASE-v1_20261105T235442Z/SUMMARY.json"
   },
-  "interpretation": "The completed tiny pilot yielded a small action-fit gain for separate and no gain for paired under a common direct-action input. This is in-sample teacher forcing, not the estimand of independent room quality. Do not continue its optimizer or claim the core hypothesis disproven.",
+  "interpretation": "The formerly proposed EDITSTUDY completed 16 updates and 12 room outcomes without demonstrated joint-training benefit. Its authorization is exhausted. Revised source/action candidates and the prospective common live-input runner are untrained; CPU encoding is not model or design improvement.",
   "next_training_comparison": {
     "arms": [
       "base_same_knowledge_feedback",
@@ -19,7 +19,8 @@
     ],
     "protocol": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/STUDY.json",
     "authorization": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/AUTHORIZATION.json",
-    "claim": "Added decision supervision only; same-material separate control deferred until useful benefit exists."
+    "claim": "Added decision supervision only; same-material separate control deferred until useful benefit exists.",
+    "status": "historical_completed_authorization_exhausted"
   },
   "candidate_specific_gaps": [
     {
@@ -92,7 +93,7 @@
     "Frozen-base/strong-prompt/retrieval failures do not prove training necessary.",
     "No final professional positive label or universal recommendation without supporting evidence."
   ],
-  "priority": "Finish current frozen trial, not more disconnected cases or tool diagnostics.",
+  "priority": "Prior trial is closed. Publish corrected candidates and common live input. Before any further training, establish a finite native execution baseline on a feasible task with explicit conditional alternatives; do not repeat closed probes.",
   "identified_intervention": "At7source-linked positions joint predicts its own short D then same A;15ordinary positions onlyA; all arms use identical knowledge. Honest extra supervision/compute disclosed.",
   "historical_superseded_training_comparison": {
     "arms": [
@@ -108,5 +109,7 @@
     ],
     "normalization": "Equal project-family mean of total target NLL; related construction/edit episodes of Guilbault stay within one family. Document differential reason/action mass and input compute.",
     "not_ready_to_submit_reason": "Five source families now contribute 39 existing candidate actions and six source-reason positions across two separate manifests, not a combined encoded dataset. Limited choice conditions and no ready independent whole-room evaluation remain; adding optimizer steps would not resolve these evidence gaps."
-  }
+  },
+  "prospective_live_input_evidence": "runs/920/P920-LIVEINPUT-v1_20261106T171900Z/README.md",
+  "identified_intervention_scope": "The 7 decision positions and 15 ordinary actions below describe historical EDITSTUDY; candidate_v3 instead has 8 decision positions across 5 principles and is untrained."
 }
