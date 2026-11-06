@@ -77,6 +77,18 @@
     "edit_action_adapter_acceptance": {
       "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/ACTION_TRAINING_RESULT.json",
       "sha256": "f0f8096527faf7c10cd8de74b49b212aee237588123c61709c9ad220ff5d73e1"
+    },
+    "edit_joint_adapter_acceptance": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/JOINT_TRAINING_RESULT.json",
+      "sha256": "a5d2a8eb6c78917ad90fe573238a1f091dbdbb0f68424fc1bdcf297b3fd04563"
+    },
+    "edit_first_block": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/reports/first_matched_block/SUMMARY.json",
+      "sha256": "0ccf665fc1dc74dd18787e99c3d36b69ed81e533eecb04ce96953dbddf3681bd"
+    },
+    "edit_first_block_diagnosis": {
+      "path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/FIRST_BLOCK_DIAGNOSIS.json",
+      "sha256": "453969d4b1db88e197c08da4d85ed48dbac3d25ff4b40b68e37bbd303c105de8"
     }
   },
   "claims": [
@@ -179,13 +191,14 @@
     },
     {
       "id": "E2",
-      "claim": "The action-only arm completed8updates/176micro backwards in2681.473seconds, with144changed LoRA tensors and exact save/zero/reload. CPU audit verifies final FP32 finite adapter equals checkpoint8. Joint training is active; room evaluation is not started.",
-      "status": "supported_one_adapter_completion_not_study_result",
+      "claim": "Both arms completed8updates/176micro backwards each. Action/joint stage durations2681.473/2685.323seconds, with144changed LoRA tensors each and exact save/zero/reload. CPU audits verify final finite FP32 adapters equal checkpoint8.",
+      "status": "supported_both_adapter_completion_not_design_effect",
       "evidence": [
         "edit_action_adapter_acceptance",
+        "edit_joint_adapter_acceptance",
         "edit_train_plan"
       ],
-      "not_supported": "Completion of joint training or twelve-room evaluation, cold optimizer resumption, convergence, or design improvement."
+      "not_supported": "Twelve-room evaluation completion, cold optimizer resumption, convergence or design benefit."
     },
     {
       "id": "E3",
@@ -214,10 +227,21 @@
       "claim": "Decision supervision improves independent complete-room design beyond same-knowledge prompting and action adaptation.",
       "status": "not_yet_supported",
       "evidence": [],
-      "not_supported": "New study terminal outputs pending; exposed two-project development results would still require new projects and mechanism controls before this broad claim."
+      "not_supported": "First completed Milan seed17 block has no joint advantage; full12cells pending. Two exposed projects cannot establish independent generalization."
+    },
+    {
+      "id": "E6",
+      "claim": "In the first Milan seed17 block, base and joint each execute2actions and lose original shelf identity; action-only executes0actions. Schema rejections10/12/10; all36outputs omit explicit think blocks. Shared workspace/dining proxies remain initially satisfied.",
+      "status": "supported_one_prespecified_development_block_not_final_study",
+      "evidence": [
+        "edit_first_block",
+        "edit_first_block_diagnosis"
+      ],
+      "not_supported": "Professional decision learning benefit, successful deliberate no-edit policy, internal reasoning absence, or conclusions about all12cells."
     }
   ],
   "new_model_calls": 0,
   "new_training_updates": 0,
-  "updated_at": "2026-11-06T08:54:13.491789+00:00"
+  "updated_at": "2026-11-06T09:52:59.651242+00:00",
+  "counter_scope": "new_model_calls/new_training_updates count authoring this index only, not experiment totals"
 }

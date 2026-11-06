@@ -1,3 +1,11 @@
+## 2026-11-06T09:55:26.309911+00:00 首个完整三组对照
+
+22项CLAIM_EVIDENCE来源哈希全部核对。两份optimizer144状态均step8、lr2e-5、relative_step/scale_parameter false；只读CPU，不是新训练。首块36输出均无think，所有adapter加载精确；3个Milan17视线后处理各退出0。
+
+## 2026-11-06T09:36:00.823049+00:00 两组训练完成，整屋评测运行
+
+staged manifest115路径的SHA/字节数全部核对，Swiss未stage。joint144张量3833856参数全FP32/finite、final==checkpoint8；8更新/176backward；无额外GPU前向或优化。Git099d5c3远端精确一致。
+
 ## 2026-11-06T09:14:51.280794+00:00 回执预算实际验证
 
 Native真实schema/current context拒绝无效query；原完整异常Pine24952字符/Milan28446字符。官方LocalQwenEngine CPU计数12275/18474；512字符回执实现及长ValueError边界通过，原18432cap下实际编码9361/15200通过。训练code_files哈希全部不变，评测V2所有锁文件已核；session27562活跃等待，cells0。旧初始化请求和量测未改。Milan初态source/prepared rotation checker差异0，旧视线代码hash保持，两个座15/15清晰与相反朝向均保留。
