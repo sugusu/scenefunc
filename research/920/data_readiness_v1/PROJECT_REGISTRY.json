@@ -667,7 +667,7 @@
     {
       "project_id": "milan_home_office_set_architects",
       "family_id": "milan_home_office_set_architects",
-      "allocation": "test",
+      "allocation": "development",
       "split_fixed_at": "2026-11-05T22:40:09.902414+00:00",
       "allocation_reason": "New architect-owned project page; absent from local source registry/search. Allocate before full-page reading, structured extraction, scene construction or model runs.",
       "reported_name": "Home Office in Milan",
@@ -687,12 +687,13 @@
       "source_reviewed_at": "2026-11-05T22:51:37.545959+00:00",
       "evaluation_reference": "runs/920/P920-MILAN-TASK-v1_20261105T224015Z/SUMMARY.json",
       "geometric_diagnostic_input_available": true,
-      "native_episode_scope": "One researcher evaluation reference with two additions; one other proposal rejected before native execution. Not training data or original-source reconstruction."
+      "native_episode_scope": "One researcher evaluation reference with two additions; one other proposal rejected before native execution. Not training data or original-source reconstruction.",
+      "study_holdout": "P920-EDITSTUDY-v1_20261106T074752Z"
     },
     {
       "project_id": "sydney_pine_nicholas_gurney_2022",
       "family_id": "sydney_pine_nicholas_gurney_2022",
-      "allocation": "train",
+      "allocation": "development",
       "split_fixed_at": "2026-11-06T00:25:23.630496+00:00",
       "allocation_reason": "Full interview and identity page already read; allocated before geometry/action derivation. Not a sealed test.",
       "reported_name": "Pine / Everything Room",
@@ -719,10 +720,11 @@
         "pine_existing_desk_with_window_workstation_for_two_people"
       ],
       "knowledge_record": "runs/920/P920-PINE-v1_20261106T002523Z/SOURCE_RECORD.json",
-      "reconstruction_evidence": "runs/920/P920-PINE-v1_20261106T002523Z/DECISION_PACKET.json"
+      "reconstruction_evidence": "runs/920/P920-PINE-v1_20261106T002523Z/DECISION_PACKET.json",
+      "study_holdout": "P920-EDITSTUDY-v1_20261106T074752Z"
     }
   ],
-  "updated_at": "2026-11-06T00:44:52.938583+00:00",
+  "updated_at": "2026-11-06T07:47:52.501704+00:00",
   "source_relation_audit": "research/920/source_recovery_v1/SOURCE_RELATIONS.json",
   "evaluation_exposure_events": [
     {
@@ -753,6 +755,24 @@
       "event": "Full primary text reviewed; three declared native initial shells prepared, nominal observed; no policy call.",
       "evidence": "runs/920/P920-MOABIT-INPUT-v1_20261105T213853Z/EXPOSURE_AUDIT.json",
       "sealed_test": false
+    }
+  ],
+  "allocation_change_events": [
+    {
+      "family_id": "milan_home_office_set_architects",
+      "previous_allocation": "test",
+      "new_allocation": "development",
+      "reason": "User study plan explicitly reserves Pine and Milan as exposed development holdouts; exclude training and retrieval.",
+      "recorded_at": "2026-11-06T07:47:52.501704+00:00",
+      "source_already_exposed": true
+    },
+    {
+      "family_id": "sydney_pine_nicholas_gurney_2022",
+      "previous_allocation": "train",
+      "new_allocation": "development",
+      "reason": "User study plan explicitly reserves Pine and Milan as exposed development holdouts; exclude training and retrieval.",
+      "recorded_at": "2026-11-06T07:47:52.501704+00:00",
+      "source_already_exposed": true
     }
   ]
 }

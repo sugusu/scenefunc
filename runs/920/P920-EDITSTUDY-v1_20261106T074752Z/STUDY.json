@@ -1,0 +1,65 @@
+{
+  "study_id": "P920-EDITSTUDY-v1_20261106T074752Z",
+  "status": "authorized_training_running",
+  "question": "Does source-grounded decision supervision improve complete furnished-room adaptation beyond identical action training and same-knowledge strong prompting?",
+  "arms": [
+    "frozen_base_knowledge_feedback",
+    "action_only",
+    "decision_action"
+  ],
+  "mechanism_claim": "This3-arm study tests added decision supervision, not pairing versus same-material separate learning. Add truthful separate control only if warranted.",
+  "train_family_count": 6,
+  "development_tasks": 2,
+  "evaluation_seeds": [
+    17,
+    29
+  ],
+  "final_rooms_planned": 12,
+  "training": {
+    "adapters": 2,
+    "max_full_dataset_updates_per_adapter": 8,
+    "max_seconds_per_adapter": 7200,
+    "max_total_seconds": 14400,
+    "lora": "language q/v r8 alpha16,3833856 trainable parameters; BF16/SDPA/CPU checkpoint-input offload36layers; Adafactor2e-5 seed42",
+    "equal_action_exposure": true,
+    "loss": "mean of six family mean action-token CEs; joint adds separately normalized mean family decision-token CE, lambda1. Same action weights, extra decision supervision disclosed.",
+    "not_started": false
+  },
+  "evaluation": {
+    "max_total_gpu_seconds": 7200,
+    "full_batch_total_gpu_seconds_upper_bound": 21600,
+    "common_knowledge_pool": "KNOWLEDGE_POOL.json",
+    "common_tools_views_assets_feedback": true,
+    "model_generates_own_decision": true,
+    "max_tool_calls_per_room": 12,
+    "max_total_generated_tokens_per_room": 12288,
+    "seeds_are_not_independent_projects": true,
+    "stochastic_decode_must_be_frozen": false,
+    "stopping_rule": "Do not extend budgets or cherry-pick a checkpoint after development results.",
+    "protocol": "EVALUATION_PROTOCOL.json"
+  },
+  "serialization": {
+    "chosen": "Official OTA think + tool_call format for this study; do not silently reuse STRUCTBASE raw-JSON decoder or old encoded caches.",
+    "action_only": "Empty decision content, supervise tool action only; no gold decision prefix.",
+    "decision_action": "At7supported positions supervise short D plus same A; ordinary15positions supervise A only.",
+    "deployment": "Every arm receives same planning permission and generates its own D/action; no gold D supplied."
+  },
+  "primary_acceptance": [
+    "Verify requested activity proxies, including simultaneous occupancy and usable surfaces/seats.",
+    "Retained instance/asset IDs and newly introduced hard side effects.",
+    "Compare area/edit/tool failure/token/GPU cost conditional on use outcomes.",
+    "Unknown guest sleep/comfort/capacity remain unknown; do not erase a valid local demonstration or claim whole-room gold."
+  ],
+  "decision_rules": [
+    "Strong retrieval achieves requirements and training adds no benefit: stop extending training on these tasks.",
+    "Both adapters similar: credit action/task adaptation, no decision-mechanism claim.",
+    "Decision supervision improves use with no additional hard violation: add same-material separate control, then new unexposed projects.",
+    "Retrieval/parser/tool errors dominate: resolve named engineering cause, do not relabel it as missing design knowledge.",
+    "Training tasks fitted but no development gain: report result and inspect condition coverage; no automatic expansion."
+  ],
+  "remaining_before_approval": [],
+  "authorization": "User explicitly instructed continuation after the concrete bounded study proposal; see AUTHORIZATION.json. Broad Goal alone remains insufficient.",
+  "remaining_before_execution": [],
+  "preflight_result": "PREFLIGHT_RESULT.json",
+  "initial_task_findings": "Milan initial material/dining proxies already pass; do not claim newly achieved use. Pine lacks second work place."
+}

@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-06T00:12:40.754697+00:00",
-  "status": "study_design_revision_not_training_request",
-  "actual_training_authorized": false,
+  "updated_at": "2026-11-06T08:17:11.462355+00:00",
+  "status": "user_directed_bounded_study_running",
+  "actual_training_authorized": true,
   "evidence": {
     "final_weight_common_action_fit": "runs/920/P920-FINALFIT-v2_20261105T220648Z/SUMMARY.json",
     "curated_data": "runs/920/P920-CURATE-v1_20261105T212407Z/DATASET.json",
@@ -13,18 +13,13 @@
   "interpretation": "The completed tiny pilot yielded a small action-fit gain for separate and no gain for paired under a common direct-action input. This is in-sample teacher forcing, not the estimand of independent room quality. Do not continue its optimizer or claim the core hypothesis disproven.",
   "next_training_comparison": {
     "arms": [
+      "base_same_knowledge_feedback",
       "action_only",
-      "separate",
-      "paired"
+      "decision_action"
     ],
-    "shared_conditions": [
-      "same admitted actions and source family allocation",
-      "same base initialization and LoRA scope",
-      "same action exposure and update count; report missing reason tokens in action-only rather than padding synthetic labels",
-      "same independent-task tools, assets, original requirements, observations and total inference budget"
-    ],
-    "normalization": "Equal project-family mean of total target NLL; related construction/edit episodes of Guilbault stay within one family. Document differential reason/action mass and input compute.",
-    "not_ready_to_submit_reason": "Five source families now contribute 39 existing candidate actions and six source-reason positions across two separate manifests, not a combined encoded dataset. Limited choice conditions and no ready independent whole-room evaluation remain; adding optimizer steps would not resolve these evidence gaps."
+    "protocol": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/STUDY.json",
+    "authorization": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/AUTHORIZATION.json",
+    "claim": "Added decision supervision only; same-material separate control deferred until useful benefit exists."
   },
   "candidate_specific_gaps": [
     {
@@ -70,7 +65,7 @@
     "shared_interface_boundary": {
       "implementation": "scripts/920/shared_action_contract.py",
       "status": "CPU fixtures passed; STRUCTBASE frozen base executed12/12 valid native calls with5 actual adds,0 errors, but room not accepted. One exposed source family, no independent test or training gain.",
-      "fairness": "All future comparison arms share the same exact native schemas, current-ID restrictions, raw-JSON output protocol, completion handling and final validator. Report this as ordinary baseline engineering, not learned professional knowledge.",
+      "fairness": "All arms use official OTA think/tool_call serialization and identical final native-schema/current-ID validator; prior STRUCTBASE rawJSON is historical only.",
       "separate_outcomes": [
         "syntax/schema validity",
         "reference validity",
@@ -97,11 +92,21 @@
     "Frozen-base/strong-prompt/retrieval failures do not prove training necessary.",
     "No final professional positive label or universal recommendation without supporting evidence."
   ],
-  "priority": "Prepare independent project decision tasks and executable alternatives with whole-room accounting. Do not repeat existing material/loader audits, F-House candidates or equivalent action rows; training requires a concrete separately approved study.",
-  "identified_intervention": {
-    "both_arms": "Scene-grounded reason prediction I -> R is shared.",
-    "contrast": "Action prediction with versus without its teacher-forced same-sequence reason.",
-    "not_identified": "Presence versus absence of any project/state association; universal professional design learning.",
-    "control_policy": "Keep the truthful strong separate control; do not manufacture wrong reasons to make it weaker."
+  "priority": "Finish current frozen trial, not more disconnected cases or tool diagnostics.",
+  "identified_intervention": "At7source-linked positions joint predicts its own short D then same A;15ordinary positions onlyA; all arms use identical knowledge. Honest extra supervision/compute disclosed.",
+  "historical_superseded_training_comparison": {
+    "arms": [
+      "action_only",
+      "separate",
+      "paired"
+    ],
+    "shared_conditions": [
+      "same admitted actions and source family allocation",
+      "same base initialization and LoRA scope",
+      "same action exposure and update count; report missing reason tokens in action-only rather than padding synthetic labels",
+      "same independent-task tools, assets, original requirements, observations and total inference budget"
+    ],
+    "normalization": "Equal project-family mean of total target NLL; related construction/edit episodes of Guilbault stay within one family. Document differential reason/action mass and input compute.",
+    "not_ready_to_submit_reason": "Five source families now contribute 39 existing candidate actions and six source-reason positions across two separate manifests, not a combined encoded dataset. Limited choice conditions and no ready independent whole-room evaluation remain; adding optimizer steps would not resolve these evidence gaps."
   }
 }

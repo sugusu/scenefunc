@@ -1,0 +1,39 @@
+{
+  "frozen_at": "2026-11-06T07:58:41.362422+00:00",
+  "tasks_sha256": "a7dbf2e3852058cd14543d7791895619ba0022fa6a97f7155209120653f6ee90",
+  "knowledge_sha256": "b2a64c872798981c21e08a457cb6db2cb0be1b034011b1e6072d1d2cfbcb410e",
+  "arms": [
+    "frozen_base_knowledge_feedback",
+    "action_only",
+    "decision_action"
+  ],
+  "seeds": [
+    17,
+    29
+  ],
+  "sampling": {
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "top_k": 50,
+    "seed_rule": "cell seed + turn number, same for every arm"
+  },
+  "budget": {
+    "model_calls_per_room": 12,
+    "tool_attempts_per_room": 12,
+    "max_new_tokens_per_call": 1024,
+    "max_generated_tokens_per_room": 12288,
+    "max_input_tokens": 18432,
+    "max_pixels_per_view": 65536,
+    "evaluation_gpu_reservation_seconds": 7200,
+    "max_gpu_subprocess_seconds_per_room": 600
+  },
+  "accounting": "Conservative GPU reservation is wall time for model subprocess including load, encode, generate and save. Max600 seconds/cell across12; unspent cell budget is not transferred. CPU rendering/audit excluded and separately reported. No inference call starts with less than15 seconds remaining. If exhausted, export last actual state and mark budget exhaustion.",
+  "serialization": "Official OTA <think> plus one <tool_call>; every arm can generate own short four-field decision; no gold D or reference layouts.",
+  "feedback": "Identical current-state mesh/outside/identity/route and workspace proxy checks, recomputed after actual changes. No developer reference outcomes or reference coordinates.",
+  "primary": "Requested activity proxies plus original identity and new side effects, compared to measured initial failures. Shared surfaces permitted if disjoint work/dining patches and seats; no mandatory new desk. Unknown ergonomics/guest sleep never success.",
+  "checkpoint_selection": "Final update8; no best-checkpoint choice using dev outputs.",
+  "error_policy": "Malformed or schema-invalid action counts as rejected attempt, retain raw and report rejection for next turn within original cap. Infrastructure/model exception stops cell, saves last state; no retry. Batch stops on infrastructure failure; no automatically retrained adapter.",
+  "development_only": true,
+  "training_mechanism_claim": false
+}
