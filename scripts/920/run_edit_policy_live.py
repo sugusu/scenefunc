@@ -41,6 +41,9 @@ def main():
     ap.add_argument('--phase',choices=['prepare','rollout'],required=True)
     a=ap.parse_args();p=json.loads(a.plan.read_text())
     validate_policy(p['input_contract'])
+    audit_script=p['evaluation'].get('script','evaluate_edit_room.py')
+    if audit_script not in ('evaluate_edit_room.py','evaluate_storage_room.py') or audit_script not in p['code_sha256']:
+        raise ValueError('Unfrozen or unsupported task evaluator')
     for required in ('run_edit_policy_live.py', 'live_edit_request.py', 'edit_request.py'):
         if required not in p['code_sha256']:raise ValueError('Unfrozen live dependency: '+required)
     a.out.mkdir(parents=True,exist_ok=False)
@@ -68,7 +71,7 @@ def main():
         code=subprocess.call(cmd,env=env)
         return code,json.loads((directory/'receipt.json').read_text())
     def audit(bundle,target):
-        cmd=[sys.executable,str(Path(__file__).with_name('evaluate_edit_room.py')),'--plan',p['evaluation']['plan'],
+        cmd=[sys.executable,str(Path(__file__).with_name(audit_script)),'--plan',p['evaluation']['plan'],
              '--bundle',str(bundle),'--out',str(target)]
         code,_=stage(cmd,target.parent/(target.stem+'_receipt'),120)
         if code:raise RuntimeError('Current-state audit failed; no stale feedback')
@@ -81,7 +84,7 @@ def main():
             outside=[x['object_id'] for x in feedback['bounds'] if x['outside_nominal_room_xy']],
             identity=feedback['activity']['identity_asset_dimensions_preserved'],
             activity=[{k:v for k,v in s.items() if k!='witness'} for s in feedback['activity']['scenarios']],
-            unknown=['real ergonomics','guest sleeping','comfort','capacity','facility installation'],previous_rejection=rejection)
+            unknown=p.get('task_unknowns',['real ergonomics','guest sleeping','comfort','capacity','facility installation']),previous_rejection=rejection)
         suffix='\nCURRENT MEASURED FEEDBACK (declared proxies; no reference solution):\n'+json.dumps(compact,separators=(',',':'))
         user=next(m for m in reversed(msg) if m['role']=='user')
         if isinstance(user['content'],str):user['content']+=suffix

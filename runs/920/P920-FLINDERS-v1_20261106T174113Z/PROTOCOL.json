@@ -1,0 +1,39 @@
+{
+  "run_id": "P920-FLINDERS-v1_20261106T174113Z",
+  "frozen_at": "2026-11-06T17:41:13.926158+00:00",
+  "question": "Can a frozen source-knowledge baseline select and execute storage placement for a changed visual requirement while preserving the entire represented room?",
+  "not_claimed": [
+    "Training benefit",
+    "Sealed cross-project generalization",
+    "Original project reproduction",
+    "Full dwelling success"
+  ],
+  "initial": "Perimeter shelves; open visual relation may already be satisfied and should be preserved when requested.",
+  "alternatives": [
+    "Keep three shelves at north wall",
+    "Move three shelves to x=.35, y=.46/1.10/1.74, yaw90; independently measure real mesh effects before any model call"
+  ],
+  "candidate_scope": "One fixed candidate and original; no placement optimization loop. If feasibility fails, retain failure and stop model phase.",
+  "conditions": {
+    "screen": "Reduce living-to-bed sampled mesh sight lines to zero while keeping all declared activity proxies.",
+    "open": "Keep all sampled living-to-bed sight lines clear while keeping all declared activity proxies; no edit is a valid choice."
+  },
+  "source_and_inference": "Own Flinders source explanation and candidate coordinates excluded from model input. Same other-project knowledge in both conditions.",
+  "budget": {
+    "native_reference_moves": 3,
+    "reference_observations": 4,
+    "model_cells": 2,
+    "model_calls_per_cell": 6,
+    "tool_attempts_per_cell": 6,
+    "gpu_seconds_per_cell": 900,
+    "seconds_per_model_call": 180,
+    "max_input_tokens": 18432,
+    "max_new_tokens": 1024,
+    "max_pixels": 65536,
+    "training_updates": 0,
+    "retry_model_outputs": false
+  },
+  "stopping": "First infrastructure error stops affected cell; no retries. If initial/candidate do not meet respective proxies or render semantics are wrong, no model rollout.",
+  "primary": "Report condition-specific sampled visibility and preserved-ID/meal/sleep/living/storage/window access at .5m; .4/.6 sensitivity; collisions/outside hard deficits. No single whole-human-use success flag.",
+  "scope": "Single complete represented room, excluding kitchen/bath elsewhere; not a 75m2 full dwelling."
+}

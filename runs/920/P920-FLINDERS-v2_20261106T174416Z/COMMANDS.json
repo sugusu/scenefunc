@@ -1,0 +1,199 @@
+{
+  "cwd": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "commands": [
+    {
+      "receipt": "archive_receipt/receipt.json",
+      "started_at": "2026-11-06T18:14:52.269111+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/archive_flinders_result.py",
+        "--public",
+        "runs/920/P920-FLINDERS-v2_20261106T174416Z",
+        "--runtime",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "64674085",
+      "log": "runs/920/P920-FLINDERS-v2_20261106T174416Z/archive_receipt/stage.log",
+      "ended_at": "2026-11-06T18:14:52.535017+00:00",
+      "elapsed_seconds": 0.26592775201424956,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"closed_reference_rejected_no_model_rollout\", \"actual_native_edits\": 3, \"model_calls\": 0, \"initial_clear_segments\": 27, \"final_clear_segments\": 18}"
+    },
+    {
+      "receipt": "build_receipt/receipt.json",
+      "started_at": "2026-11-06T17:44:16.480981+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/build_flinders_input.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FLINDERS-v2_20261106T174416Z/BUILD_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/build"
+      ],
+      "timeout_seconds": 180,
+      "pid": 10,
+      "start_ticks": "64490506",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FLINDERS-v2_20261106T174416Z/build_receipt/stage.log",
+      "ended_at": "2026-11-06T17:44:18.402862+00:00",
+      "elapsed_seconds": 1.9219011119566858,
+      "exit_code": 0,
+      "first_log": "2026-11-06T17:44:16.884540+00:00 build declared held-out input, no model or rendering"
+    },
+    {
+      "receipt": "candidate_audit_receipt/receipt.json",
+      "started_at": "2026-11-06T17:49:12.085900+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/evaluate_storage_room.py",
+        "--plan",
+        "runs/920/P920-FLINDERS-v2_20261106T174416Z/AUDIT_screen.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/candidate/native/checkpoint",
+        "--out",
+        "runs/920/P920-FLINDERS-v2_20261106T174416Z/CANDIDATE_AUDIT.json"
+      ],
+      "timeout_seconds": 180,
+      "pid": 6,
+      "start_ticks": "64520067",
+      "log": "runs/920/P920-FLINDERS-v2_20261106T174416Z/candidate_audit_receipt/stage.log",
+      "ended_at": "2026-11-06T17:49:16.667270+00:00",
+      "elapsed_seconds": 4.58139296900481,
+      "exit_code": 0,
+      "first_log": "{\"furniture\": 8, \"surface_intersection_pairs\": 1, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+    },
+    {
+      "receipt": "candidate_native_receipt/receipt.json",
+      "started_at": "2026-11-06T17:45:14.844814+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/construct_and_switch_room.py",
+        "--plan",
+        "runs/920/P920-FLINDERS-v2_20261106T174416Z/CANDIDATE_PLAN.json",
+        "--phase",
+        "execute",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/candidate/native"
+      ],
+      "timeout_seconds": 480,
+      "pid": 1555265,
+      "start_ticks": "64496343",
+      "log": "runs/920/P920-FLINDERS-v2_20261106T174416Z/candidate_native_receipt/stage.log",
+      "ended_at": "2026-11-06T17:48:02.766591+00:00",
+      "elapsed_seconds": 167.92180348699912,
+      "exit_code": 0,
+      "first_log": "2026-11-06T17:45:15.373106+00:00 begin researcher reference execute"
+    },
+    {
+      "receipt": "candidate_preflight_receipt/receipt.json",
+      "started_at": "2026-11-06T17:44:39.206152+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/construct_and_switch_room.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FLINDERS-v2_20261106T174416Z/CANDIDATE_PLAN.json",
+        "--phase",
+        "preflight",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/candidate/preflight"
+      ],
+      "timeout_seconds": 180,
+      "pid": 10,
+      "start_ticks": "64492779",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FLINDERS-v2_20261106T174416Z/candidate_preflight_receipt/stage.log",
+      "ended_at": "2026-11-06T17:44:40.274609+00:00",
+      "elapsed_seconds": 1.068478839006275,
+      "exit_code": 0,
+      "first_log": "2026-11-06T17:44:39.783263+00:00 begin researcher reference preflight"
+    },
+    {
+      "receipt": "export_receipt/receipt.json",
+      "started_at": "2026-11-06T18:02:28.727396+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/export_catalog_geometry.py",
+        "--plan",
+        "runs/920/P920-FLINDERS-v2_20261106T174416Z/EXPORT_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/export"
+      ],
+      "timeout_seconds": 90,
+      "pid": 6,
+      "start_ticks": "64599731",
+      "log": "runs/920/P920-FLINDERS-v2_20261106T174416Z/export_receipt/stage.log",
+      "ended_at": "2026-11-06T18:02:37.523244+00:00",
+      "elapsed_seconds": 8.795866791973822,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"geometry_export_roundtrip_checked\", \"geometry_nodes\": 31, \"maximum_roundtrip_bound_error_m\": 1.144409176312422e-07, \"glb\": {\"path\": \"/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/export/room_geometry.glb\", \"bytes\": 14575424, \"sha256\": \"d528fb77ac5669420fc56afce7a94654530de7bbd19fe32ca5b00ce450fda433\"}}"
+    },
+    {
+      "receipt": "initial_audit_receipt/receipt.json",
+      "started_at": "2026-11-06T17:44:34.615092+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/evaluate_storage_room.py",
+        "--plan",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FLINDERS-v2_20261106T174416Z/AUDIT_open.json",
+        "--bundle",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/build/bundle",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FLINDERS-v2_20261106T174416Z/INITIAL_AUDIT.json"
+      ],
+      "timeout_seconds": 180,
+      "pid": 8,
+      "start_ticks": "64492320",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FLINDERS-v2_20261106T174416Z/initial_audit_receipt/stage.log",
+      "ended_at": "2026-11-06T17:44:39.145894+00:00",
+      "elapsed_seconds": 4.530821315944195,
+      "exit_code": 0,
+      "first_log": "{\"furniture\": 8, \"surface_intersection_pairs\": 0, \"outside_room\": 0, \"immutable_records_unchanged\": true}"
+    },
+    {
+      "receipt": "restore_receipt/receipt.json",
+      "started_at": "2026-11-06T18:02:38.698366+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/restore_terminal_catalog.py",
+        "--plan",
+        "runs/920/P920-FLINDERS-v2_20261106T174416Z/RESTORE_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FLINDERS-v2_20261106T174416Z/restore"
+      ],
+      "timeout_seconds": 90,
+      "pid": 1558813,
+      "start_ticks": "64600728",
+      "log": "runs/920/P920-FLINDERS-v2_20261106T174416Z/restore_receipt/stage.log",
+      "ended_at": "2026-11-06T18:02:47.494863+00:00",
+      "elapsed_seconds": 8.796471082023345,
+      "exit_code": 0,
+      "first_log": "2026-11-06T18:02:38.766913+00:00 begin terminal native cold restore"
+    },
+    {
+      "receipt": "validation_receipt/receipt.json",
+      "started_at": "2026-11-06T18:25:16.501031+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "runs/920/P920-FLINDERS-v2_20261106T174416Z/validate_delivery.py"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "64736508",
+      "log": "runs/920/P920-FLINDERS-v2_20261106T174416Z/validation_receipt/stage.log",
+      "ended_at": "2026-11-06T18:25:17.319006+00:00",
+      "elapsed_seconds": 0.8179907969897613,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"passed_evidence_checks_not_design_acceptance\", \"checked_at\": \"2026-11-06T18:25:17.214193+00:00\", \"finite_ray_checks\": {\"crosses_actual_box\": true, \"finite_endpoint_before_box\": true, \"misses_box\": true}, \"archive_copies_checked\": 59, \"code_hash_references_checked\": 80, \"state_image_bindings\": 4, \"images_checked\": 20, \"actual_model_calls\": 0, \"new_scene_edits\": 0, \"caveat\": \"No professional evaluation or new live model loop test; frozen reference still fails.\"}"
+    }
+  ],
+  "note": "Actual completed commands; do not rerun into immutable output directories."
+}
