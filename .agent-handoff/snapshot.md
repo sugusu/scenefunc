@@ -1,10 +1,9 @@
-# 当前：执行历史与活动阶段输入已完成 CPU 验收，待本批发布
+# 当前：条件转移评分与executed-edit-v1入口CPU验收完成
 
-更新 2026-11-07T08:07:26.658785+00:00。Goal active；本批记录的7阶段均已退出（2失败已修复、5成功）；0模型/原生场景/训练调用；当前无新训练授权，用户无待办。
+更新 2026-11-07T08:24:52.490568+00:00。Goal active；本批两项CPU阶段均exit0，0真实模型/native/训练，无活跃本批作业，无待用户输入，新训练仍须另审。
 
-- 当前入口 `runs/920/P920-EXECINPUT-v1_20261107T075321Z/SUMMARY.json`。22动作/44文档/6来源族，8决定监督位置来自5原则；17原候选本来已有回执。已统一真实命令/回执表达，8个Paper/Waterloo当前活动请求明确标为研究设定，目标动作与五图不变。
-- 最终44张量在父目录runtime/P920-EXECINPUT-v1_20261107T075321Z/phase_encoding；实际Dataset/Trainer CPU归一化通过，104合同检查通过，最长15483/16384 tokens。未加载真实模型/反传/优化。两组各1245动作token，联合额外1332决定token，不是等材料配对机制证明。
-- 两次准备失败、全部真实命令与退出已保存；PLAN_v5的checker曾改一处断言，旧版本重建SHA匹配，见CODE_PROVENANCE。当前源码和恢复清单已归档；不是所有早期materializer源码都有快照。
-- 最近已核远端仍6a46ac3c74de85c0dde6ad9fe94783691cd7fd7b。本批数据验收待正常commit/push/ls-remote，排除无关extract_swiss_development_input.py，权重/张量/网格不进Git。
-- 下一步：先冻结任务匹配的条件策略评价和实际部署入口，再提出具体有限训练方案。需可行备选、已满足无需编辑情况、整屋副作用；当前不具备新训练可审启动卡。不得再重做本批成功编码/另开散乱探针。
-- STORAGEGATE、EDITSTUDY、Paper CHOICE、Waterloo/F-House/Moabit/Flinders均关闭，不复跑。现有adapter尚无专业学习收益；CPU输入修正亦不证明设计能力提高。科研Goal未完成。
+- 本批入口 `runs/920/P920-CONDITIONAL-v1_20261107T082058Z/SUMMARY.json`。14循环检查＋17任务/评分检查通过；四任务=同一Waterloo已暴露来源两状态×两活动，9历史转移评分，不是新独立试验。
+- `run_edit_policy_executed.py`调用上一批executed-edit-v1，旧runner不变。拒绝保留未改状态哈希，恢复后重新观测与量测。实际控制流仅CPU服务替身验证，没有真实模型/渲染收益。
+- 校准输入保留原需求、五图、当前量测；后续状态/参考动作仅evaluation_only。33/42项声明检查按活动区分修复/新增失败/维持；无整屋专业成功标签。
+- 校准包不是native启动卡：任意新终态量测接口尚未接入；纠正语料仍未训练，无保持现状/拒绝恢复训练目标；独立封存评测仍缺。下一步围绕这些科学缺口准备完整有限试验，不再重做CPU编码、源案例探针或无明确决定关联的工具支线。
+- 当前批待发布；上一提交0666a453已核远端。Swiss未跟踪脚本保持不动。关闭的EDITSTUDY/STORAGEGATE/Paper/Waterloo/F-House/Moabit/Flinders不复跑。
