@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-04T11:37:57.282703+00:00",
-  "source": "create_goal followed by get_goal; exact text comparison",
+  "checked_at": "2026-11-07T18:45:51.232250+00:00",
+  "source": "get_goal observation; no mutation of app objective/status",
   "thread_id": "01a1a420-3d3e-7202-b86a-3a5986daa115",
   "actual_goal_status": "active",
   "actual_objective": "在 Scene-Designer 上学习真实项目中的室内设计决策：持续推进 /data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc，依据 research/920/RESEARCH_GOAL.md，从住户用途和实际房间条件生成完整、可编辑、支持真实活动的三维房间，形成可复现、经证据审阅的论文成果包。\n\n系统采用 Scene-Designer 的工具动作、场景状态、建设／评审格式及 SceneSmith 的执行分工；以公开 SFT 底座 Scene-Builder-Qwen3-VL-8B-Instruct（revision 63e235a0c0d6e5bc2f8f3485214df4457fd2e672）起步。保留原始需求，整理使用者、活动、时间关系、不可变对象、偏好与未知项，制作不泄漏答案的带比例需求卡。Builder 依据需求、对象表、工具、回执与俯视加四斜视图逐步请求资产或编辑，按问题选量测与观察工具。保存对象／资产 ID、位姿、完整状态、动作和三维终态。专业评审指出对象、活动、证据与未知量，接受独立核验。\n\n以独立真实项目为采集和划分单位，以有来源、可重演的决定为训练单位，以完整房间为评价对象。登记任务、作者、许可、项目家族、专业理由、动作与后果；先按项目家族划分训练／开发／封存测试，再派生样本，检索亦隔离测试。建立 OTA 建设、OTC 评审样本及知识覆盖账，明确研究者重建和未知项；不把照片解释或构造候选冒充专业理由或历史否决方案。\n\n核心假设：两组学习相同专业理由和动作时，将理由与对应项目、状态、对象和动作配对，是否比分开学习更能改善未见房间。使用官方 SFT 入口，优先冻结底座、仅训练 LoRA 适配器；教师强制 token 交叉熵只监督助手动作／评审目标，屏蔽输入、工具回执及评分真值。先验证真实加载器中的配对改变上下文或监督 token，再单独申请训练。训练必须另行审定，本 Goal 不授予训练权限。\n\n尽量匹配两组受监督 token、动作数、更新步数与预算；加入动作微调、冻结底座充分提示／同知识检索／几何及用途检查参照。配对有收益后再消融显式理由，单次生成和评审重排分别报告，首轮无须 GRPO。用未参与调参的独立项目评价硬需求、整屋盲评、返工、成本与不确定性。保留失败和负结果，unknown 不算成功；普通反馈、工程修复或巴黎单题改善不能算训练或泛化收益。\n\n主线为系统闭环、可信同项目数据、实际加载器及公平算法对照、独立整屋评价、论文与复现包；巴黎 P920-DD-v1 和已有工具诊断仅作底座验证，不扩大微实验替代主线，不重跑已有输出。数据来源和三维可表达性可先本地审阅。完成代码、来源与哈希、命令、运行记录、统计、图表、论文草稿及逐条证据审阅后才标记研究完成，不保证录用。遵守已有 GPU、资产及费用授权，只在实验副本配置专用 SSH 密钥；正常推进 runs/920，保护 main／AutoDL，不 force-push、不公开凭据或大权重、不擅自投稿。保存真实启动／退出状态和持久交接，断网保留同一提交链。暂停、限额和外部依赖如实记录，不虚报完成或持续运行。",
@@ -8,7 +8,7 @@
   "requested_objective_path": "research/920/GOAL_TEXT.txt",
   "requested_detail_path": "research/920/RESEARCH_GOAL.md",
   "state": "synchronized_active",
-  "reason": "User explicitly deleted the previous Goal; get_goal confirmed null before creating the full research objective.",
+  "reason": "Actual app Goal observed active on this continuation; supersedes stale blocked repository snapshot.",
   "required_action": null,
   "official_ui_reference": "https://learn.chatgpt.com/docs/long-running-work",
   "research_complete": false,
