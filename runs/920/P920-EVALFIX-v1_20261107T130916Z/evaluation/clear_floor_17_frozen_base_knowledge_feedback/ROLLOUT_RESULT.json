@@ -1,0 +1,469 @@
+{
+  "status": "running",
+  "phase": "rollout",
+  "started_at": "2026-11-07T16:50:06.860842+00:00",
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-07T13:00:00.265712+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "da69543ce06e1b41948d5b7ba26a06f3b0aa41694a5c7c2935585c0f12ddc6c6",
+        "plan_sha256": "e4b6fa4ffdb9ba96cc1d3c159b7d5207805b5446403615cdd9f66b6445a11a95",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 17,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.topdown.png",
+              "sha256": "462539cd749d6d860d5074b17b17c23375b22309a4b83245a5ef0308308d327f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.south.png",
+              "sha256": "e406fdd7c63974c7ab27f74de05c7e4e3a5e951c7f808063b42239f1cb43f0bf",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.east.png",
+              "sha256": "493b05c980e39fb463593a54a49e4689988d44d121e8894dd928f358b8e63e40",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.west.png",
+              "sha256": "3ed05bc2e53d86825bf074675c2c9253ed3b104cb7271c4be9dd7c5f54c2de51",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.north.png",
+              "sha256": "b5c54f952346abf489439d6e0d6e9cb12385b00a730bf2da52e5ed82ecef5998",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9067,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9067
+            ],
+            "attention_mask": [
+              1,
+              9067
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "6a0b5c55f267dfe7f90daaeb309485cea5bafa07520aa4a9438feb363f3a6a44",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter": null,
+        "load_seconds": 5.200125630013645,
+        "generation_seconds": 13.313846709090285,
+        "output_tokens": 310,
+        "ended_with_eos": true,
+        "raw_output_sha256": "80706981069a25f7b861021d16a3d1234ebc9d122e2bf6795197788849d6b8f3",
+        "peak_allocated_bytes": 19880602112,
+        "peak_reserved_bytes": 20577255424,
+        "ended_at_complete_single_action": false,
+        "ended_at": "2026-11-07T13:00:22.251900+00:00",
+        "elapsed_seconds": 21.986213685944676
+      },
+      "raw_output": "<think>\nThe central floor area is currently occupied by the mobile table (0.275m x 0.2m x 0.4m) and work stool (0.2m x 0.2m x 0.44m). The user requests the central floor region cleared for activity. Moving these items to the west side of the room (x≈-1.75, y≈-1.1) places them near the wall, away from the central zone, while keeping them accessible. The west side is chosen because it is far from the central activity area and the door. The new positions are within the room bounds and should avoid collisions with the bed, sofa, and other furniture. This move satisfies the request to clear the central floor and preserves access to the west-side wall. I will move the mobile_table to (-1.75, -1.1) with 0° rotation and the work_stool to (-1.75, -0.5) with 0° rotation.\n</tool_call>\n{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_mobile_table_0\", \"x\": -1.75, \"y\": -1.1, \"yaw\": 0}}\n</tool_call>\n{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_work_stool_0\", \"x\": -1.75, \"y\": -0.5, \"yaw\": 0}}<|im_end|>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 1,
+        "supplied_attempts": [],
+        "included_attempts": [],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "current_native_state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d"
+      },
+      "rejection": "ValueError: Expected one complete tool block Check advertised tool arguments and exact current object/asset IDs.",
+      "full_validation_error": "ValueError: Expected one complete tool block",
+      "execution": {
+        "attempt": 1,
+        "origin": "model_execution",
+        "calls": [],
+        "outcome": {
+          "kind": "validation_rejection",
+          "message": "ValueError: Expected one complete tool block Check advertised tool arguments and exact current object/asset IDs.",
+          "native_call_made": false
+        },
+        "before_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+        "after_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d"
+      },
+      "recovered_from": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/round_000",
+      "new_model_call": false
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-07T16:51:07.705239+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "c649bb04bb733986b0dd3d17960e5e19d56497d9b198b8af53d59a5a49cc1d46",
+        "plan_sha256": "65e6ba69399e15a32ef5ceef4a92bd75f6df2eb6e493f8235694e6e1d015b35d",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 18,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.topdown.png",
+              "sha256": "462539cd749d6d860d5074b17b17c23375b22309a4b83245a5ef0308308d327f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.south.png",
+              "sha256": "1b674b3368ec4927b1240e62566a84d9bc3cf40071bae67fc83afc2d89c7c5fb",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.east.png",
+              "sha256": "ea7dd5e1bc6fe2253430c3d0f8290825dc2429b7c7e891aa75272fa66972f613",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.west.png",
+              "sha256": "5af35f5c34b1f3988a4a0d4dc12fd95d661215d24d0c497cc9c4ee93cef8a058",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/clear_floor_17_frozen_base_knowledge_feedback/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.north.png",
+              "sha256": "3a823f20108407e2db1b06f84d98711efbcdf6beba5d0a37242353e6dae2e61a",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9254,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9254
+            ],
+            "attention_mask": [
+              1,
+              9254
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "a513ee4c821bbaa030a4891419ed1326d11c1362999ab1cbfda6e3d608f52a71",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter": null,
+        "load_seconds": 4.982503278995864,
+        "generation_seconds": 11.629698534030467,
+        "output_tokens": 258,
+        "ended_with_eos": true,
+        "raw_output_sha256": "a06befecb23625ddf6a59200692acfc1e2d65c50814b41c9aa0eb752416e8852",
+        "peak_allocated_bytes": 19927756288,
+        "peak_reserved_bytes": 20635975680,
+        "ended_at_complete_single_action": false,
+        "ended_at": "2026-11-07T16:51:27.783202+00:00",
+        "elapsed_seconds": 20.077982157003134
+      },
+      "raw_output": "<think>\nThe current state shows the central floor area is still occupied by the mobile table, which was the main obstacle to the requested central activity zone. The room contains many fixed and movable objects, but the key issue is the table blocking the center. The user's goal is to clear the central floor area for an activity while the desk remains unused; the table must be moved out of the way. The most straightforward solution is to relocate the mobile table to a position near the west wall where it can still serve as a small table but no longer obstructs the center. I'll move the mobile table to x=-1.8, y=-1.35, which places it in the west side of the room, roughly near the bed area but out of the central zone. This should preserve the desk's unused status and keep the central floor clear. I'll also leave the stool where it is for now, as it's a smaller item and can be adjusted later if needed. I'll execute the move of the mobile table now.\n</tool_call>\n{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_mobile_table_0\", \"x\": -1.8, \"y\": -1.35, \"yaw\": 0}}</tool_call><|im_end|>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 2,
+        "supplied_attempts": [
+          1
+        ],
+        "included_attempts": [
+          1
+        ],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "7d6619c89db78df7a5659ab99c0274f1e2068d4f05cca2ad8139efd8b8df62b6",
+        "current_native_state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d"
+      },
+      "rejection": "ValueError: Expected one complete tool block Check advertised tool arguments and exact current object/asset IDs.",
+      "execution": {
+        "attempt": 2,
+        "origin": "model_execution",
+        "calls": [],
+        "outcome": {
+          "kind": "validation_rejection",
+          "message": "ValueError: Expected one complete tool block Check advertised tool arguments and exact current object/asset IDs.",
+          "native_call_made": false
+        },
+        "before_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+        "after_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d"
+      },
+      "full_validation_error": "ValueError: Expected one complete tool block"
+    }
+  ],
+  "model_calls": 3,
+  "tool_attempts": 2,
+  "native_calls": 0,
+  "gpu_subprocess_seconds": 62.756739410921,
+  "generated_tokens": 661,
+  "training_updates": 0,
+  "plan_sha256": "4f52fdf2e40be7d032658e8413f44408ce623ee57743fb46f8354bdb4f433da3",
+  "cell_id": "clear_floor_17_frozen_base_knowledge_feedback",
+  "input_contract": {
+    "name": "executed-edit-v1",
+    "max_recent_attempts": 2,
+    "max_history_chars": 12000
+  },
+  "restoration_differences": [],
+  "initial_review": {
+    "requested_mode": "clear_floor",
+    "checks": [
+      {
+        "requirement": "all_original_instances_and_assets",
+        "pass": true,
+        "object_ids": [
+          "recon_bath_door",
+          "recon_bath_east_wall",
+          "recon_bath_shower_0",
+          "recon_bath_south_wall",
+          "recon_bath_toilet_0",
+          "recon_bath_vanity_0",
+          "recon_bed_0",
+          "recon_desk_north_support_0",
+          "recon_desk_south_support_0",
+          "recon_desktop_0",
+          "recon_east_wall",
+          "recon_entry_door",
+          "recon_kitchen_counter_0",
+          "recon_mobile_table_0",
+          "recon_north_wall",
+          "recon_sofa_0",
+          "recon_south_wall",
+          "recon_south_window",
+          "recon_wardrobe_0",
+          "recon_west_wall",
+          "recon_work_stool_0"
+        ],
+        "evidence": "native nonpose fields"
+      },
+      {
+        "requirement": "fixed_objects_unchanged",
+        "pass": true,
+        "object_ids": [
+          "recon_bath_door",
+          "recon_bath_east_wall",
+          "recon_bath_shower_0",
+          "recon_bath_south_wall",
+          "recon_bath_toilet_0",
+          "recon_bath_vanity_0",
+          "recon_bed_0",
+          "recon_desk_north_support_0",
+          "recon_desk_south_support_0",
+          "recon_desktop_0",
+          "recon_east_wall",
+          "recon_entry_door",
+          "recon_kitchen_counter_0",
+          "recon_north_wall",
+          "recon_sofa_0",
+          "recon_south_wall",
+          "recon_south_window",
+          "recon_wardrobe_0",
+          "recon_west_wall"
+        ],
+        "evidence": "native records"
+      },
+      {
+        "requirement": "room_geometry_unchanged",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "room records"
+      },
+      {
+        "requirement": "no_recorded_envelope_overlap_or_boundary_violation",
+        "pass": true,
+        "object_ids": [
+          "recon_bath_door",
+          "recon_bath_east_wall",
+          "recon_bath_shower_0",
+          "recon_bath_south_wall",
+          "recon_bath_toilet_0",
+          "recon_bath_vanity_0",
+          "recon_bed_0",
+          "recon_desk_north_support_0",
+          "recon_desk_south_support_0",
+          "recon_desktop_0",
+          "recon_east_wall",
+          "recon_entry_door",
+          "recon_kitchen_counter_0",
+          "recon_mobile_table_0",
+          "recon_north_wall",
+          "recon_sofa_0",
+          "recon_south_wall",
+          "recon_south_window",
+          "recon_wardrobe_0",
+          "recon_west_wall",
+          "recon_work_stool_0"
+        ],
+        "evidence": "current AABB geometry"
+      },
+      {
+        "requirement": "access_bed_side_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_kitchen_front_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_wardrobe_front_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bath_entry_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bed_side_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_kitchen_front_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_wardrobe_front_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bath_entry_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bed_side_width_0.6",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_kitchen_front_width_0.6",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_wardrobe_front_width_0.6",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bath_entry_width_0.6",
+        "pass": false,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "central_activity_floor_clear",
+        "pass": false,
+        "object_ids": [],
+        "evidence": "current declared activity geometry"
+      }
+    ],
+    "measured_requirements_status": "fail",
+    "requested_activity_status": "fail",
+    "whole_room_success": "unknown",
+    "professional_preference": "not_assessed"
+  },
+  "stop_reason": "call_budget_exhausted",
+  "carried_gpu_subprocess_seconds": 24.04812056897208,
+  "interrupted_result_sha256": "9fe4a7ba6c2f4b35f7e7f803f017f0d93e0db6e99ef2c741782767dec266c324",
+  "latest_input_history": {
+    "contract": "executed-edit-v1",
+    "next_attempt": 3,
+    "supplied_attempts": [
+      1,
+      2
+    ],
+    "included_attempts": [
+      1,
+      2
+    ],
+    "complete_from_first_attempt": true,
+    "individual_exchanges_truncated": false,
+    "history_sha256": "9c8ee3c8519df11e5a1cf2664c84f6d407e88b1df5afcd462889ea82f797428f",
+    "current_native_state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d"
+  }
+}
