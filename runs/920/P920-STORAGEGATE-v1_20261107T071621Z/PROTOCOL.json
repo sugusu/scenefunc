@@ -1,0 +1,22 @@
+{
+  "run_id": "P920-STORAGEGATE-v1_20261107T071621Z",
+  "frozen_at": "2026-11-07T07:16:21.781267+00:00",
+  "plans": [
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGEGATE-v1_20261107T071621Z/prepare/PLAN.json",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGEGATE-v1_20261107T071621Z/frozen_base_knowledge_feedback/PLAN.json",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGEGATE-v1_20261107T071621Z/action_only/PLAN.json",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STORAGEGATE-v1_20261107T071621Z/decision_action/PLAN.json"
+  ],
+  "training_updates": 0,
+  "independent_test": false,
+  "comparison": "Three existing weight sets; source/task exposed during training. One seed 17, turns use seed 17+turn.",
+  "stop": "One preparation; one rollout per arm; no retries, no prompt/geometry repair. Infrastructure failure stops remaining arms.",
+  "criteria": "Same 26 IDs; 23 fixed objects unchanged; cabinet identity/shape retained; 7/7 fixed and 15/15 front probes at all three body widths; positive living free-area gain; no positive AABB overlap/outside.",
+  "caveats": [
+    "Not a professional room-quality or generalization test.",
+    "Common new input differs from old training representation.",
+    "Only native move tool advertised; no causal comparison to historical general-edit rejection counts.",
+    "Gold reference used only for offline feasibility, never included in prompts.",
+    "Static geometric probes do not establish storage capacity, physical movement or full human usability."
+  ]
+}
