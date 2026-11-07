@@ -1,6 +1,6 @@
 {
   "created_at": "2026-11-05T16:47:24.681925+00:00",
-  "status": "historical_negative_results_and_completed_stopdata_training_with_infrastructure_interrupted_evaluation",
+  "status": "completed_stopdata_evalfix_negative_result_with_saved_trajectory_and_learning_audits",
   "sources": {
     "training": {
       "path": "runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
@@ -177,6 +177,30 @@
     "evaluation_interface_repair": {
       "path": "runs/920/P920-EVALFIX-v1_20261107T130916Z/REPAIR_ACCEPTANCE.json",
       "sha256": "1ca9d37c3842d840df36cbb97b9c8a2ed63d4d766ef0528d74d1e77f8a38766c"
+    },
+    "evalfix_final": {
+      "path": "runs/920/P920-EVALFIX-v1_20261107T130916Z/review/FINAL_ACCEPTANCE.json",
+      "sha256": "8b2a0aae54f22a87631fc0223e5c71f80a69e8dbcc3222d815f8e9f8533430b9"
+    },
+    "evalfix_execution": {
+      "path": "runs/920/P920-EVALFIX-v1_20261107T130916Z/EXECUTION.json",
+      "sha256": "0707a870273a5fa69de80ddf5fdc9a99bd217e84d26d8f6c62ffaae463bf12ec"
+    },
+    "evalfix_trajectory": {
+      "path": "runs/920/P920-EVALFIX-v1_20261107T130916Z/trajectory_analysis/TRAJECTORY_ANALYSIS.json",
+      "sha256": "1dd181790122e86b45ebf85d8b8357f47b3e0b9c14ad59d8df456a88fd5503a1"
+    },
+    "saved_training_components": {
+      "path": "runs/920/P920-FITDIAG-v1_20261107T185219Z/saved_training_audit/SAVED_TRAINING_AUDIT.json",
+      "sha256": "466cdb7d89578ca79d113e378d814faee4209f8452b91cd66a3f0861f921203b"
+    },
+    "final_fit_preflight": {
+      "path": "runs/920/P920-FITDIAG-v1_20261107T185219Z/CPU_VALIDATION.json",
+      "sha256": "3c0e432098ae4e5b49ef3d1776cb66c531da80a598fdbf536407c1b590a240c8"
+    },
+    "final_fit_plan": {
+      "path": "runs/920/P920-FITDIAG-v1_20261107T185219Z/PLAN.json",
+      "sha256": "b06d168cfba27d68b0163cd7264a655782d215760dd597fd05877546f58b982d"
     }
   },
   "claims": [
@@ -233,10 +257,10 @@
       "status": "unproven_research_hypothesis",
       "evidence": [],
       "missing": [
-        "Adequate independent source families and construction coverage",
-        "Training beyond a mechanism smoke test with separate approval",
-        "Same-knowledge and strong feedback controls on matched tasks",
-        "Sealed independent project evaluation",
+        "Training with verified fit and a deployed decision protocol matching the tested hypothesis",
+        "A matched same-material separate-versus-joint comparison beyond the early mechanism pilot",
+        "Sufficient independent project families and applicable conditional decisions",
+        "Sealed independent project evaluation against strong same-knowledge/action controls",
         "Independent professional whole-room judgments and uncertainty analysis"
       ]
     },
@@ -368,11 +392,59 @@
         "stopdata_validation"
       ],
       "not_supported": "Model rollout completion, whole-room usability, sealed cross-project generalization, or approval to train."
+    },
+    {
+      "id": "S3",
+      "claim": "STOPDATA completed two final-step-8 adapters. Separately approved EVALFIX finished all12cells, with71new calls plus the retained original rejection, exit0 and zero additional training.",
+      "status": "supported_completed_execution",
+      "evidence": [
+        "stopdata_training_completed",
+        "evalfix_final",
+        "evalfix_execution"
+      ],
+      "not_supported": "Convergence, independent professional room acceptance, or renewed permission for another model experiment."
+    },
+    {
+      "id": "S4",
+      "claim": "Base/action/joint activity passes are3/4,2/4,2/4; activity with no new measured loss is0/4 for every arm.56native calls produced46state changes.",
+      "status": "supported_bounded_development_negative_result",
+      "evidence": [
+        "evalfix_final"
+      ],
+      "not_supported": "Equal-material pairing mechanism, statistical population effects, sealed generalization, or a proof that sourced professional decisions cannot help."
+    },
+    {
+      "id": "S5",
+      "claim": "All72saved feedback inputs agree with actual current states; no trajectory has a prefix satisfying activity without new loss.8trajectories execute11forbidden removals. Training already contains preservation and condition reversals; its sole removal is explicitly authorized by that training task.",
+      "status": "supported_retrospective_trace_and_training_audit",
+      "evidence": [
+        "evalfix_trajectory"
+      ],
+      "not_supported": "A causal attribution of failures, a tested hard-preservation repair, or a claim that all possible early-stopping/alternative-action policies fail."
+    },
+    {
+      "id": "S6",
+      "claim": "All384saved micro-loss records reconcile with encoded targets and trainer normalization. Between0and7completed updates, action component NLL decreases4.0003%/3.3614% in action/joint arms; joint decision component decreases0.4655%.16initial no-reason examples match exactly.",
+      "status": "supported_training_mode_preupdate_evidence",
+      "evidence": [
+        "saved_training_components"
+      ],
+      "not_supported": "Final-step-8 fit, free conditional execution, cross-arm advantage under gold-reason context, or room quality."
+    },
+    {
+      "id": "S7",
+      "claim": "The prospective final-weight fit diagnostic passed12CPU check groups on48actual tensors; no new model experiment has begun.",
+      "status": "supported_preparation_only",
+      "evidence": [
+        "final_fit_preflight",
+        "final_fit_plan"
+      ],
+      "not_supported": "GPU memory acceptance, final-weight predictions, new training, or approval for the proposed diagnostic."
     }
   ],
   "new_model_calls": 0,
   "new_training_updates": 0,
-  "updated_at": "2026-11-07T13:19:38.798097+00:00",
+  "updated_at": "2026-11-07T19:07:19.881299+00:00",
   "counter_scope": "new_model_calls/new_training_updates count authoring this index only, not experiment totals",
   "conditional_recognition_scope": {
     "interpretation": "runs/920/P920-CHOICE-v1_20261106T155500Z/INTERPRETATION.md",
