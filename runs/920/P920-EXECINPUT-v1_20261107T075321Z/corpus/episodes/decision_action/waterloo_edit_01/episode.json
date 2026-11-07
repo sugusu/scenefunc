@@ -1,0 +1,1519 @@
+{
+  "stage": "furniture",
+  "system": "Use move_furniture_tool(object_id,x,y,yaw) in metres/degrees. Preserve objects and dimensions. Only table_b and chair_b are editable. Do not assert future measured success.\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+  "task_context": {
+    "scene_description": "{\"available_measurement\": {\"fixed_access\": {\"door_assumption\": \"Both proxy door leaves omitted as hypothetically fully open; hinge/sweep unverified.\", \"limits\": [\"Full-height AABB footprints are conservative, including gaps within furniture.\", \"2 cm discretization and square body scenarios; not a human or accessibility model.\", \"A failed conservative route is a warning, not proof no human route exists.\", \"A successful route does not verify sitting, opening storage, reaching, turning or comfort.\"], \"obstacle_count\": 29, \"scenarios\": [{\"entry_cell_clear\": true, \"entry_grid_point_m\": [-0.009999999999999787, 3.25], \"reachable_floor_center_area_m2\": 28.6556, \"square_body_width_m\": 0.4, \"targets\": {\"bath_center\": {\"grid_route_length_m\": 3.6, \"reachable_from_entry\": true, \"requested_point_m\": [-2.65, 2.3], \"sampled_grid_point_m\": [-2.65, 2.29], \"target_cell_clear\": true}, \"bed_side\": {\"grid_route_length_m\": 7.74, \"reachable_from_entry\": true, \"requested_point_m\": [1.4, -2], \"sampled_grid_point_m\": [1.3899999999999997, -2.01], \"target_cell_clear\": true}, \"fridge_front\": {\"grid_route_length_m\": 4.2, \"reachable_from_entry\": true, \"requested_point_m\": [2.9, 1.95], \"sampled_grid_point_m\": [2.8900000000000006, 1.9500000000000002], \"target_cell_clear\": true}, \"kitchen_prep\": {\"grid_route_length_m\": 3.2600000000000002, \"reachable_from_entry\": true, \"requested_point_m\": [2.3, 2.3], \"sampled_grid_point_m\": [2.29, 2.29], \"target_cell_clear\": true}, \"living_edge\": {\"grid_route_length_m\": 6.74, \"reachable_from_entry\": true, \"requested_point_m\": [-2.6, -0.9], \"sampled_grid_point_m\": [-2.61, -0.8900000000000001], \"target_cell_clear\": true}, \"wardrobe_front\": {\"grid_route_length_m\": 6.38, \"reachable_from_entry\": true, \"requested_point_m\": [-2.85, -0.3], \"sampled_grid_point_m\": [-2.8499999999999996, -0.29000000000000004], \"target_cell_clear\": true}, \"window_front\": {\"grid_route_length_m\": 10.200000000000001, \"reachable_from_entry\": true, \"requested_point_m\": [0, -3.1], \"sampled_grid_point_m\": [-0.009999999999999787, -3.11], \"target_cell_clear\": true}}}, {\"entry_cell_clear\": true, \"entry_grid_point_m\": [-0.009999999999999787, 3.21], \"reachable_floor_center_area_m2\": 25.1304, \"square_body_width_m\": 0.5, \"targets\": {\"bath_center\": {\"grid_route_length_m\": 3.56, \"reachable_from_entry\": true, \"requested_point_m\": [-2.65, 2.3], \"sampled_grid_point_m\": [-2.65, 2.29], \"target_cell_clear\": true}, \"bed_side\": {\"grid_route_length_m\": 10.540000000000001, \"reachable_from_entry\": true, \"requested_point_m\": [1.4, -2], \"sampled_grid_point_m\": [1.3899999999999997, -2.01], \"target_cell_clear\": true}, \"fridge_front\": {\"grid_route_length_m\": 4.16, \"reachable_from_entry\": true, \"requested_point_m\": [2.9, 1.95], \"sampled_grid_point_m\": [2.8900000000000006, 1.9500000000000002], \"target_cell_clear\": true}, \"kitchen_prep\": {\"grid_route_length_m\": 3.22, \"reachable_from_entry\": true, \"requested_point_m\": [2.3, 2.3], \"sampled_grid_point_m\": [2.29, 2.29], \"target_cell_clear\": true}, \"living_edge\": {\"grid_route_length_m\": 6.7, \"reachable_from_entry\": true, \"requested_point_m\": [-2.6, -0.9], \"sampled_grid_point_m\": [-2.61, -0.8900000000000001], \"target_cell_clear\": true}, \"wardrobe_front\": {\"grid_route_length_m\": 6.34, \"reachable_from_entry\": true, \"requested_point_m\": [-2.85, -0.3], \"sampled_grid_point_m\": [-2.8499999999999996, -0.29000000000000004], \"target_cell_clear\": true}, \"window_front\": {\"grid_route_length_m\": 10.24, \"reachable_from_entry\": true, \"requested_point_m\": [0, -3.1], \"sampled_grid_point_m\": [-0.009999999999999787, -3.11], \"target_cell_clear\": true}}}, {\"entry_cell_clear\": true, \"entry_grid_point_m\": [-0.009999999999999787, 3.1500000000000004], \"reachable_floor_center_area_m2\": 22.422800000000002, \"square_body_width_m\": 0.6, \"targets\": {\"bath_center\": {\"grid_route_length_m\": 3.5, \"reachable_from_entry\": true, \"requested_point_m\": [-2.65, 2.3], \"sampled_grid_point_m\": [-2.65, 2.29], \"target_cell_clear\": true}, \"bed_side\": {\"grid_route_length_m\": 10.6, \"reachable_from_entry\": true, \"requested_point_m\": [1.4, -2], \"sampled_grid_point_m\": [1.3899999999999997, -2.01], \"target_cell_clear\": true}, \"fridge_front\": {\"grid_route_length_m\": 4.1, \"reachable_from_entry\": true, \"requested_point_m\": [2.9, 1.95], \"sampled_grid_point_m\": [2.8900000000000006, 1.9500000000000002], \"target_cell_clear\": true}, \"kitchen_prep\": {\"grid_route_length_m\": 3.16, \"reachable_from_entry\": true, \"requested_point_m\": [2.3, 2.3], \"sampled_grid_point_m\": [2.29, 2.29], \"target_cell_clear\": true}, \"living_edge\": {\"grid_route_length_m\": 6.640000000000001, \"reachable_from_entry\": true, \"requested_point_m\": [-2.6, -0.9], \"sampled_grid_point_m\": [-2.61, -0.8900000000000001], \"target_cell_clear\": true}, \"wardrobe_front\": {\"grid_route_length_m\": 6.28, \"reachable_from_entry\": true, \"requested_point_m\": [-2.85, -0.3], \"sampled_grid_point_m\": [-2.8499999999999996, -0.29000000000000004], \"target_cell_clear\": true}, \"window_front\": {\"grid_route_length_m\": 10.3, \"reachable_from_entry\": true, \"requested_point_m\": [0, -3.1], \"sampled_grid_point_m\": [-0.009999999999999787, -3.11], \"target_cell_clear\": true}}}], \"settings\": {\"approach_points_xy_m\": {\"bath_center\": [-2.65, 2.3], \"bed_side\": [1.4, -2], \"fridge_front\": [2.9, 1.95], \"kitchen_prep\": [2.3, 2.3], \"living_edge\": [-2.6, -0.9], \"wardrobe_front\": [-2.85, -0.3], \"window_front\": [0, -3.1]}, \"assumed_body_height_m\": 1.8, \"entry_center_xy_m\": [0, 3.5], \"entry_inward_normal_xy\": [0, -1], \"grid_m\": 0.02, \"square_body_widths_m\": [0.4, 0.5, 0.6]}}, \"floor_rectangle\": {\"bounds_xyxy_m\": [-1.6800000000000002, -3.48, 1.8399999999999999, -0.6800000000000002], \"largest_grid_empty_rectangle_m2\": 9.856, \"scope\": \"Empty axis-aligned floor rectangle under conservative AABBs and assumed clear height, anywhere in room; not an activity pass or reachable human area.\", \"width_depth_m\": [3.52, 2.8000000000000003]}, \"limits\": [\"Known generated rectangular tabletops, not a semantic estimate from an arbitrary mesh.\", \"Place rectangles and chair-edge gaps are researcher assumptions, not ergonomic or meal-use standards.\", \"Standing approaches do not validate sitting, knees, comfort or simultaneous people.\", \"Joined geometry does not validate wheel brakes, structural connection, load or human pushing.\", \"A mode-specific geometric pass is not full room usability or a professional preference label.\"], \"mode_geometry\": {\"joined_four_place_hosting\": false, \"separate_work\": true}, \"place_rectangles_overlap\": false, \"seat_alignment\": {\"recon_chair_a_0\": {\"aligned_under_declared_proxy\": true, \"chair_envelope_to_table_edge_gap_m\": 0.38000000715255733, \"local_chair_xy_m\": [0.0, -0.95], \"place_rectangle_on_table\": true, \"table_id\": \"recon_table_a_0\"}, \"recon_chair_b_0\": {\"aligned_under_declared_proxy\": true, \"chair_envelope_to_table_edge_gap_m\": 0.38000000715255733, \"local_chair_xy_m\": [0.0, -0.95], \"place_rectangle_on_table\": true, \"table_id\": \"recon_table_b_0\"}, \"recon_guest_a_0\": {\"aligned_under_declared_proxy\": true, \"chair_envelope_to_table_edge_gap_m\": 0.38000000715255733, \"local_chair_xy_m\": [0.0, 0.95], \"place_rectangle_on_table\": true, \"table_id\": \"recon_table_a_0\"}, \"recon_guest_b_0\": {\"aligned_under_declared_proxy\": false, \"chair_envelope_to_table_edge_gap_m\": 0.38000000715255733, \"local_chair_xy_m\": [-0.9800000000000001, 0.95], \"place_rectangle_on_table\": false, \"table_id\": \"recon_table_b_0\"}}, \"seat_approaches\": [{\"entry_cell_clear\": true, \"entry_grid_point_m\": [-0.009999999999999787, 3.25], \"reachable_floor_center_area_m2\": 28.6556, \"square_body_width_m\": 0.4, \"targets\": {\"recon_chair_a_0\": {\"grid_route_length_m\": 6.9, \"reachable_from_entry\": true, \"requested_point_m\": [-1.1, -0.9199999988079071], \"sampled_grid_point_m\": [-1.1099999999999999, -0.9100000000000001], \"target_cell_clear\": true}, \"recon_chair_b_0\": {\"grid_route_length_m\": 6.94, \"reachable_from_entry\": true, \"requested_point_m\": [1.1, -0.9199999988079071], \"sampled_grid_point_m\": [1.0899999999999999, -0.9100000000000001], \"target_cell_clear\": true}, \"recon_guest_a_0\": {\"grid_route_length_m\": 2.44, \"reachable_from_entry\": true, \"requested_point_m\": [-1.1, 1.919999998807907], \"sampled_grid_point_m\": [-1.1099999999999999, 1.9100000000000001], \"target_cell_clear\": true}, \"recon_guest_b_0\": {\"grid_route_length_m\": 1.46, \"reachable_from_entry\": true, \"requested_point_m\": [0.12, 1.919999998807907], \"sampled_grid_point_m\": [0.11000000000000032, 1.9100000000000001], \"target_cell_clear\": true}}}, {\"entry_cell_clear\": true, \"entry_grid_point_m\": [-0.009999999999999787, 3.21], \"reachable_floor_center_area_m2\": 25.1304, \"square_body_width_m\": 0.5, \"targets\": {\"recon_chair_a_0\": {\"grid_route_length_m\": 7.0, \"reachable_from_entry\": true, \"requested_point_m\": [-1.1, -0.9699999988079071], \"sampled_grid_point_m\": [-1.1099999999999999, -0.9699999999999998], \"target_cell_clear\": true}, \"recon_chair_b_0\": {\"grid_route_length_m\": 9.200000000000001, \"reachable_from_entry\": true, \"requested_point_m\": [1.1, -0.9699999988079071], \"sampled_grid_point_m\": [1.0899999999999999, -0.9699999999999998], \"target_cell_clear\": true}, \"recon_guest_a_0\": {\"grid_route_length_m\": 2.34, \"reachable_from_entry\": true, \"requested_point_m\": [-1.1, 1.969999998807907], \"sampled_grid_point_m\": [-1.1099999999999999, 1.9699999999999998], \"target_cell_clear\": true}, \"recon_guest_b_0\": {\"grid_route_length_m\": 1.36, \"reachable_from_entry\": true, \"requested_point_m\": [0.12, 1.969999998807907], \"sampled_grid_point_m\": [0.11000000000000032, 1.9699999999999998], \"target_cell_clear\": true}}}, {\"entry_cell_clear\": true, \"entry_grid_point_m\": [-0.009999999999999787, 3.1500000000000004], \"reachable_floor_center_area_m2\": 22.422800000000002, \"square_body_width_m\": 0.6, \"targets\": {\"recon_chair_a_0\": {\"grid_route_length_m\": 7.1000000000000005, \"reachable_from_entry\": true, \"requested_point_m\": [-1.1, -1.0199999988079071], \"sampled_grid_point_m\": [-1.1099999999999999, -1.0099999999999998], \"target_cell_clear\": true}, \"recon_chair_b_0\": {\"grid_route_length_m\": 9.3, \"reachable_from_entry\": true, \"requested_point_m\": [1.1, -1.0199999988079071], \"sampled_grid_point_m\": [1.0899999999999999, -1.0099999999999998], \"target_cell_clear\": true}, \"recon_guest_a_0\": {\"grid_route_length_m\": 2.24, \"reachable_from_entry\": true, \"requested_point_m\": [-1.1, 2.019999998807907], \"sampled_grid_point_m\": [-1.1099999999999999, 2.01], \"target_cell_clear\": true}, \"recon_guest_b_0\": {\"grid_route_length_m\": 1.26, \"reachable_from_entry\": true, \"requested_point_m\": [0.12, 2.019999998807907], \"sampled_grid_point_m\": [0.11000000000000032, 2.01], \"target_cell_clear\": true}}}], \"table_geometry\": {\"footprint_gap_m\": 0.9999999523162844, \"joined_under_declared_threshold\": false, \"parallel_axis_dot\": 1.0, \"relative_center_offset_m\": [2.2, 0.0, 0.0], \"top_height_difference_m\": 0.0, \"top_rectangular_areas_m2\": {\"recon_table_a_0\": 0.8400000190734858, \"recon_table_b_0\": 0.8400000190734858}}}, \"available_source_knowledge\": [{\"condition\": \"为两位旅客短期住宿设计的紧凑布达佩斯公寓，衣物需要方便、快速取用。\", \"decision_id\": \"airbnp_open_clothing_access_for_short_stays\", \"principle\": \"在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。\"}, {\"condition\": \"四口之家已有家具，希望主要空间供共同生活。\", \"decision_id\": \"fhouse_existing_furniture_shared_living\", \"principle\": \"为容纳既有家具并优先共同生活，F-House采用了较开放的空间组织。\"}, {\"condition\": \"年轻伴侣的约30平方米住宅原先分为四个昏暗房间，改造同时追求明亮起居、私密空间与收纳。\", \"decision_id\": \"guilbault_consolidated_storage_for_continuous_living_space\", \"principle\": \"在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。\"}, {\"condition\": \"家庭成员长大、居住安排会变化。\", \"decision_id\": \"michelet_adapt_family_lifecycle\", \"principle\": \"住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。\"}, {\"condition\": \"同一生活区需吃饭、聚会并偶尔容纳留宿者。\", \"decision_id\": \"paper_table_mobility_for_overnight_guest\", \"principle\": \"同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。\"}, {\"condition\": \"住户重视可变配置，不希望固定在单一家具布置中。\", \"decision_id\": \"waterloo_separable_tables_for_changing_activities\", \"principle\": \"住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。\"}], \"current_requested_mode\": \"four_person_shared_activity\", \"design_request\": \"研究者迁移任务：两位住户平日同时工作，各需独立的桌面；待客阶段四人需要围坐开展共享桌面活动，之后恢复两人同时工作。保留全部家具、对象身份和尺寸，以及睡眠、起居、厨房、卫浴、收纳和窗前接近。只可调整table_b与chair_b，其余物体固定。具体布局自行选择；人数、活动和可改对象为研究设定，并非住户原话。\", \"objects\": [{\"bbox_max\": [4.0, 0.01, 1.3], \"bbox_min\": [-4.0, -0.01, -1.3], \"immutable\": true, \"name\": \"north_wall\", \"object_id\": \"recon_north_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, 3.5, 1.3]}}, {\"bbox_max\": [4.0, 0.01, 1.3], \"bbox_min\": [-4.0, -0.01, -1.3], \"immutable\": true, \"name\": \"south_wall\", \"object_id\": \"recon_south_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, -3.5, 1.3]}}, {\"bbox_max\": [0.01, 3.5, 1.3], \"bbox_min\": [-0.01, -3.5, -1.3], \"immutable\": true, \"name\": \"east_wall\", \"object_id\": \"recon_east_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [4.0, 0.0, 1.3]}}, {\"bbox_max\": [0.01, 3.5, 1.3], \"bbox_min\": [-0.01, -3.5, -1.3], \"immutable\": true, \"name\": \"west_wall\", \"object_id\": \"recon_west_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-4.0, 0.0, 1.3]}}, {\"bbox_max\": [1.0, 0.01, 1.3], \"bbox_min\": [-1.0, -0.01, -1.3], \"immutable\": true, \"name\": \"bathroom_south_wall\", \"object_id\": \"recon_bathroom_south_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-3.0, 1.5, 1.3]}}, {\"bbox_max\": [0.01, 1.0, 1.3], \"bbox_min\": [-0.01, -1.0, -1.3], \"immutable\": true, \"name\": \"bathroom_east_wall\", \"object_id\": \"recon_bathroom_east_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-2.0, 2.5, 1.3]}}, {\"bbox_max\": [0.45, 0.01, 1.0], \"bbox_min\": [-0.45, -0.01, -1.0], \"immutable\": true, \"name\": \"entry_door\", \"object_id\": \"recon_entry_door\", \"object_type\": \"wall_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, 3.5, 1.0]}}, {\"bbox_max\": [0.01, 0.45, 1.0], \"bbox_min\": [-0.01, -0.45, -1.0], \"immutable\": true, \"name\": \"bathroom_door\", \"object_id\": \"recon_bathroom_door\", \"object_type\": \"wall_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-2.0, 2.25, 1.0]}}, {\"bbox_max\": [0.9, 0.005, 0.7], \"bbox_min\": [-0.9, -0.005, -0.7], \"immutable\": true, \"name\": \"south_window\", \"object_id\": \"recon_south_window\", \"object_type\": \"wall_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, -3.5, 1.55]}}, {\"bbox_max\": [0.8, 1.0, 0.5], \"bbox_min\": [-0.8, -1.0, 0.0], \"immutable\": true, \"name\": \"bed\", \"object_id\": \"recon_bed_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [2.65, -2.0, 0.0]}}, {\"bbox_max\": [0.9007576107978821, 0.47884635627269745, 0.9072695106367306], \"bbox_min\": [-0.9007576107978821, -0.47884635627269745, 0.0], \"immutable\": true, \"name\": \"sofa\", \"object_id\": \"recon_sofa_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [6.123233995736766e-17, -0.0, -0.0, -1.0], \"translation\": [-2.6, -1.8, 0.0]}}, {\"bbox_max\": [1.0, 0.3, 0.9], \"bbox_min\": [-1.0, -0.3, 0.0], \"immutable\": true, \"name\": \"kitchen_counter\", \"object_id\": \"recon_kitchen_counter_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [2.5, 3.1, 0.0]}}, {\"bbox_max\": [0.25, 0.3, 0.85], \"bbox_min\": [-0.25, -0.3, 0.0], \"immutable\": true, \"name\": \"low_fridge\", \"object_id\": \"recon_low_fridge_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [3.55, 1.95, 0.0]}}, {\"bbox_max\": [0.4, 0.4, 0.12], \"bbox_min\": [-0.4, -0.4, 0.0], \"immutable\": true, \"name\": \"bath_shower\", \"object_id\": \"recon_bath_shower_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-3.4, 2.9, 0.0]}}, {\"bbox_max\": [0.25, 0.25, 0.55], \"bbox_min\": [-0.25, -0.25, 0.0], \"immutable\": true, \"name\": \"bath_toilet\", \"object_id\": \"recon_bath_toilet_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-3.45, 1.9, 0.0]}}, {\"bbox_max\": [0.3, 0.225, 0.8], \"bbox_min\": [-0.3, -0.225, 0.0], \"immutable\": true, \"name\": \"bath_vanity\", \"object_id\": \"recon_bath_vanity_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-2.5, 3.05, 0.0]}}, {\"bbox_max\": [0.25, 0.25, 0.08], \"bbox_min\": [-0.25, -0.25, 0.0], \"immutable\": true, \"name\": \"main_light\", \"object_id\": \"recon_main_light_0\", \"object_type\": \"ceiling_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.5, -0.4, 2.52]}}, {\"bbox_max\": [0.15, 0.15, 0.08], \"bbox_min\": [-0.15, -0.15, 0.0], \"immutable\": true, \"name\": \"bath_light\", \"object_id\": \"recon_bath_light_0\", \"object_type\": \"ceiling_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-3.0, 2.5, 2.52]}}, {\"bbox_max\": [0.6000000238418579, 0.3499999940395355, 0.7400000095367432], \"bbox_min\": [-0.6000000238418579, -0.3499999940395355, 0.0], \"immutable\": true, \"name\": \"table_a\", \"object_id\": \"recon_table_a_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-1.1, 0.5, 0.0]}}, {\"bbox_max\": [0.6000000238418579, 0.3499999940395355, 0.7400000095367432], \"bbox_min\": [-0.6000000238418579, -0.3499999940395355, 0.0], \"immutable\": false, \"name\": \"table_b\", \"object_id\": \"recon_table_b_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [1.1, 0.5, 0.0]}}, {\"bbox_max\": [0.2199999988079071, 0.2199999988079071, 0.44999998807907104], \"bbox_min\": [-0.2199999988079071, -0.2199999988079071, 0.0], \"immutable\": true, \"name\": \"chair_a\", \"object_id\": \"recon_chair_a_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-1.1, -0.45, 0.0]}}, {\"bbox_max\": [0.2199999988079071, 0.2199999988079071, 0.44999998807907104], \"bbox_min\": [-0.2199999988079071, -0.2199999988079071, 0.0], \"immutable\": false, \"name\": \"chair_b\", \"object_id\": \"recon_chair_b_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [1.1, -0.45, 0.0]}}, {\"bbox_max\": [0.2199999988079071, 0.2199999988079071, 0.44999998807907104], \"bbox_min\": [-0.2199999988079071, -0.2199999988079071, 0.0], \"immutable\": true, \"name\": \"guest_a\", \"object_id\": \"recon_guest_a_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-1.1, 1.45, 0.0]}}, {\"bbox_max\": [0.2199999988079071, 0.2199999988079071, 0.44999998807907104], \"bbox_min\": [-0.2199999988079071, -0.2199999988079071, 0.0], \"immutable\": true, \"name\": \"guest_b\", \"object_id\": \"recon_guest_b_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.12, 1.45, 0.0]}}, {\"bbox_max\": [0.3, 0.4, 2.2], \"bbox_min\": [-0.3, -0.4, 0.0], \"immutable\": true, \"name\": \"wardrobe\", \"object_id\": \"recon_wardrobe_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-3.55, -0.3, 0.0]}}, {\"bbox_max\": [0.275, 0.24, 0.04], \"bbox_min\": [-0.275, -0.24, 0.0], \"immutable\": true, \"name\": \"cooktop\", \"object_id\": \"recon_cooktop_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [1.95, 3.1, 0.9]}}, {\"bbox_max\": [0.3, 0.24, 0.08], \"bbox_min\": [-0.3, -0.24, 0.0], \"immutable\": true, \"name\": \"kitchen_sink\", \"object_id\": \"recon_kitchen_sink_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [3.0, 3.1, 0.9]}}], \"original_request\": null, \"request_provenance\": \"adapted\", \"unknowns\": [\"Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.\", \"Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.\", \"Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.\", \"Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.\", \".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards.\"]}"
+  },
+  "provenance": {
+    "family_id": "singapore_waterloo_street_dess_chew",
+    "allocation": "train_source_candidate",
+    "episode_group": "P920-WATERLOO-v1_20261105T074801Z",
+    "step_index": 1,
+    "kind": "source_only_curated_reconstruction_candidate",
+    "reason_origin": "none_action_only",
+    "historical_designer_trace": false,
+    "training_eligible": false,
+    "training_authorized": false,
+    "audit_only": true,
+    "task_reconditioned": true,
+    "original_episode": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-LOSS-v1_20261105T092125Z/prepare_absolute/episodes/waterloo_step_01/paired/episode.json",
+      "sha256": "f8cecaab968a6e975ec910984403472d2162a6aaa9bf8a9c10f41bcfcf1fd6d7"
+    },
+    "study": "P920-EDITSTUDY-v1_20261106T074752Z",
+    "source_family": "singapore_waterloo_street_dess_chew",
+    "historical_designer_trajectory": false,
+    "decision_text_authorship": "Only sourced_principle is an attributed paraphrase; applications and costs are researcher annotations.",
+    "candidate_data_only": true,
+    "original_document": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/waterloo_edit_01/episode.json",
+      "sha256": "b1de659437ab78190829d79edeb3f677f707a9494550fbfdc619bba69795264c"
+    },
+    "prospective_input_contract": "executed-edit-v1"
+  },
+  "evaluation_only": {
+    "actual_after_state": {
+      "path": "runtime/P920-WATERLOO-v1_20261105T074801Z/replay/step_1_after_state.json",
+      "sha256": "eeaae9d44257a12eba049ca09ea2e758ce2f29d190e4eda8ded1b5fa79e5af7d"
+    },
+    "summary": {
+      "path": "scenefunc/runs/920/P920-WATERLOO-v1_20261105T074801Z/SUMMARY.json",
+      "sha256": "e07e6c81878883d493358e397d3ba6ed4b45beb537a07d01837ea6d7f5342f35"
+    },
+    "sentinel": "EVAL_ONLY_SENTINEL_LOSS",
+    "curation": {
+      "original_reason": "报道中Dess Chew为需要灵活配置的住户选择两张可分可合的带轮桌。本迁移准备把分桌工作改为合桌待客；先移动第二张桌对应的凳子。这一步次序和坐标是研究者实现，仍须检查实际通路。",
+      "original_task_context": {
+        "available_measurement": {
+          "fixed_access": {
+            "door_assumption": "Both proxy door leaves omitted as hypothetically fully open; hinge/sweep unverified.",
+            "limits": [
+              "Full-height AABB footprints are conservative, including gaps within furniture.",
+              "2 cm discretization and square body scenarios; not a human or accessibility model.",
+              "A failed conservative route is a warning, not proof no human route exists.",
+              "A successful route does not verify sitting, opening storage, reaching, turning or comfort."
+            ],
+            "obstacle_count": 29,
+            "scenarios": [
+              {
+                "entry_cell_clear": true,
+                "entry_grid_point_m": [
+                  -0.009999999999999787,
+                  3.25
+                ],
+                "reachable_floor_center_area_m2": 28.6556,
+                "square_body_width_m": 0.4,
+                "targets": {
+                  "bath_center": {
+                    "grid_route_length_m": 3.6,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.65,
+                      2.3
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.65,
+                      2.29
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "bed_side": {
+                    "grid_route_length_m": 7.74,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      1.4,
+                      -2
+                    ],
+                    "sampled_grid_point_m": [
+                      1.3899999999999997,
+                      -2.01
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "fridge_front": {
+                    "grid_route_length_m": 4.2,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      2.9,
+                      1.95
+                    ],
+                    "sampled_grid_point_m": [
+                      2.8900000000000006,
+                      1.9500000000000002
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "kitchen_prep": {
+                    "grid_route_length_m": 3.2600000000000002,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      2.3,
+                      2.3
+                    ],
+                    "sampled_grid_point_m": [
+                      2.29,
+                      2.29
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "living_edge": {
+                    "grid_route_length_m": 6.74,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.6,
+                      -0.9
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.61,
+                      -0.8900000000000001
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "wardrobe_front": {
+                    "grid_route_length_m": 6.38,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.85,
+                      -0.3
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.8499999999999996,
+                      -0.29000000000000004
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "window_front": {
+                    "grid_route_length_m": 10.200000000000001,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      0,
+                      -3.1
+                    ],
+                    "sampled_grid_point_m": [
+                      -0.009999999999999787,
+                      -3.11
+                    ],
+                    "target_cell_clear": true
+                  }
+                }
+              },
+              {
+                "entry_cell_clear": true,
+                "entry_grid_point_m": [
+                  -0.009999999999999787,
+                  3.21
+                ],
+                "reachable_floor_center_area_m2": 25.1304,
+                "square_body_width_m": 0.5,
+                "targets": {
+                  "bath_center": {
+                    "grid_route_length_m": 3.56,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.65,
+                      2.3
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.65,
+                      2.29
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "bed_side": {
+                    "grid_route_length_m": 10.540000000000001,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      1.4,
+                      -2
+                    ],
+                    "sampled_grid_point_m": [
+                      1.3899999999999997,
+                      -2.01
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "fridge_front": {
+                    "grid_route_length_m": 4.16,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      2.9,
+                      1.95
+                    ],
+                    "sampled_grid_point_m": [
+                      2.8900000000000006,
+                      1.9500000000000002
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "kitchen_prep": {
+                    "grid_route_length_m": 3.22,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      2.3,
+                      2.3
+                    ],
+                    "sampled_grid_point_m": [
+                      2.29,
+                      2.29
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "living_edge": {
+                    "grid_route_length_m": 6.7,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.6,
+                      -0.9
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.61,
+                      -0.8900000000000001
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "wardrobe_front": {
+                    "grid_route_length_m": 6.34,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.85,
+                      -0.3
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.8499999999999996,
+                      -0.29000000000000004
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "window_front": {
+                    "grid_route_length_m": 10.24,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      0,
+                      -3.1
+                    ],
+                    "sampled_grid_point_m": [
+                      -0.009999999999999787,
+                      -3.11
+                    ],
+                    "target_cell_clear": true
+                  }
+                }
+              },
+              {
+                "entry_cell_clear": true,
+                "entry_grid_point_m": [
+                  -0.009999999999999787,
+                  3.1500000000000004
+                ],
+                "reachable_floor_center_area_m2": 22.422800000000002,
+                "square_body_width_m": 0.6,
+                "targets": {
+                  "bath_center": {
+                    "grid_route_length_m": 3.5,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.65,
+                      2.3
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.65,
+                      2.29
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "bed_side": {
+                    "grid_route_length_m": 10.6,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      1.4,
+                      -2
+                    ],
+                    "sampled_grid_point_m": [
+                      1.3899999999999997,
+                      -2.01
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "fridge_front": {
+                    "grid_route_length_m": 4.1,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      2.9,
+                      1.95
+                    ],
+                    "sampled_grid_point_m": [
+                      2.8900000000000006,
+                      1.9500000000000002
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "kitchen_prep": {
+                    "grid_route_length_m": 3.16,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      2.3,
+                      2.3
+                    ],
+                    "sampled_grid_point_m": [
+                      2.29,
+                      2.29
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "living_edge": {
+                    "grid_route_length_m": 6.640000000000001,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.6,
+                      -0.9
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.61,
+                      -0.8900000000000001
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "wardrobe_front": {
+                    "grid_route_length_m": 6.28,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      -2.85,
+                      -0.3
+                    ],
+                    "sampled_grid_point_m": [
+                      -2.8499999999999996,
+                      -0.29000000000000004
+                    ],
+                    "target_cell_clear": true
+                  },
+                  "window_front": {
+                    "grid_route_length_m": 10.3,
+                    "reachable_from_entry": true,
+                    "requested_point_m": [
+                      0,
+                      -3.1
+                    ],
+                    "sampled_grid_point_m": [
+                      -0.009999999999999787,
+                      -3.11
+                    ],
+                    "target_cell_clear": true
+                  }
+                }
+              }
+            ],
+            "settings": {
+              "approach_points_xy_m": {
+                "bath_center": [
+                  -2.65,
+                  2.3
+                ],
+                "bed_side": [
+                  1.4,
+                  -2
+                ],
+                "fridge_front": [
+                  2.9,
+                  1.95
+                ],
+                "kitchen_prep": [
+                  2.3,
+                  2.3
+                ],
+                "living_edge": [
+                  -2.6,
+                  -0.9
+                ],
+                "wardrobe_front": [
+                  -2.85,
+                  -0.3
+                ],
+                "window_front": [
+                  0,
+                  -3.1
+                ]
+              },
+              "assumed_body_height_m": 1.8,
+              "entry_center_xy_m": [
+                0,
+                3.5
+              ],
+              "entry_inward_normal_xy": [
+                0,
+                -1
+              ],
+              "grid_m": 0.02,
+              "square_body_widths_m": [
+                0.4,
+                0.5,
+                0.6
+              ]
+            }
+          },
+          "floor_rectangle": {
+            "bounds_xyxy_m": [
+              -1.6800000000000002,
+              -3.48,
+              1.8399999999999999,
+              -0.6800000000000002
+            ],
+            "largest_grid_empty_rectangle_m2": 9.856,
+            "scope": "Empty axis-aligned floor rectangle under conservative AABBs and assumed clear height, anywhere in room; not an activity pass or reachable human area.",
+            "width_depth_m": [
+              3.52,
+              2.8000000000000003
+            ]
+          },
+          "limits": [
+            "Known generated rectangular tabletops, not a semantic estimate from an arbitrary mesh.",
+            "Place rectangles and chair-edge gaps are researcher assumptions, not ergonomic or meal-use standards.",
+            "Standing approaches do not validate sitting, knees, comfort or simultaneous people.",
+            "Joined geometry does not validate wheel brakes, structural connection, load or human pushing.",
+            "A mode-specific geometric pass is not full room usability or a professional preference label."
+          ],
+          "mode_geometry": {
+            "joined_four_place_hosting": false,
+            "separate_work": true
+          },
+          "place_rectangles_overlap": false,
+          "seat_alignment": {
+            "recon_chair_a_0": {
+              "aligned_under_declared_proxy": true,
+              "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+              "local_chair_xy_m": [
+                0.0,
+                -0.95
+              ],
+              "place_rectangle_on_table": true,
+              "table_id": "recon_table_a_0"
+            },
+            "recon_chair_b_0": {
+              "aligned_under_declared_proxy": true,
+              "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+              "local_chair_xy_m": [
+                0.0,
+                -0.95
+              ],
+              "place_rectangle_on_table": true,
+              "table_id": "recon_table_b_0"
+            },
+            "recon_guest_a_0": {
+              "aligned_under_declared_proxy": true,
+              "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+              "local_chair_xy_m": [
+                0.0,
+                0.95
+              ],
+              "place_rectangle_on_table": true,
+              "table_id": "recon_table_a_0"
+            },
+            "recon_guest_b_0": {
+              "aligned_under_declared_proxy": false,
+              "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+              "local_chair_xy_m": [
+                -0.9800000000000001,
+                0.95
+              ],
+              "place_rectangle_on_table": false,
+              "table_id": "recon_table_b_0"
+            }
+          },
+          "seat_approaches": [
+            {
+              "entry_cell_clear": true,
+              "entry_grid_point_m": [
+                -0.009999999999999787,
+                3.25
+              ],
+              "reachable_floor_center_area_m2": 28.6556,
+              "square_body_width_m": 0.4,
+              "targets": {
+                "recon_chair_a_0": {
+                  "grid_route_length_m": 6.9,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    -1.1,
+                    -0.9199999988079071
+                  ],
+                  "sampled_grid_point_m": [
+                    -1.1099999999999999,
+                    -0.9100000000000001
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_chair_b_0": {
+                  "grid_route_length_m": 6.94,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    1.1,
+                    -0.9199999988079071
+                  ],
+                  "sampled_grid_point_m": [
+                    1.0899999999999999,
+                    -0.9100000000000001
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_guest_a_0": {
+                  "grid_route_length_m": 2.44,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    -1.1,
+                    1.919999998807907
+                  ],
+                  "sampled_grid_point_m": [
+                    -1.1099999999999999,
+                    1.9100000000000001
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_guest_b_0": {
+                  "grid_route_length_m": 1.46,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    0.12,
+                    1.919999998807907
+                  ],
+                  "sampled_grid_point_m": [
+                    0.11000000000000032,
+                    1.9100000000000001
+                  ],
+                  "target_cell_clear": true
+                }
+              }
+            },
+            {
+              "entry_cell_clear": true,
+              "entry_grid_point_m": [
+                -0.009999999999999787,
+                3.21
+              ],
+              "reachable_floor_center_area_m2": 25.1304,
+              "square_body_width_m": 0.5,
+              "targets": {
+                "recon_chair_a_0": {
+                  "grid_route_length_m": 7.0,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    -1.1,
+                    -0.9699999988079071
+                  ],
+                  "sampled_grid_point_m": [
+                    -1.1099999999999999,
+                    -0.9699999999999998
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_chair_b_0": {
+                  "grid_route_length_m": 9.200000000000001,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    1.1,
+                    -0.9699999988079071
+                  ],
+                  "sampled_grid_point_m": [
+                    1.0899999999999999,
+                    -0.9699999999999998
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_guest_a_0": {
+                  "grid_route_length_m": 2.34,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    -1.1,
+                    1.969999998807907
+                  ],
+                  "sampled_grid_point_m": [
+                    -1.1099999999999999,
+                    1.9699999999999998
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_guest_b_0": {
+                  "grid_route_length_m": 1.36,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    0.12,
+                    1.969999998807907
+                  ],
+                  "sampled_grid_point_m": [
+                    0.11000000000000032,
+                    1.9699999999999998
+                  ],
+                  "target_cell_clear": true
+                }
+              }
+            },
+            {
+              "entry_cell_clear": true,
+              "entry_grid_point_m": [
+                -0.009999999999999787,
+                3.1500000000000004
+              ],
+              "reachable_floor_center_area_m2": 22.422800000000002,
+              "square_body_width_m": 0.6,
+              "targets": {
+                "recon_chair_a_0": {
+                  "grid_route_length_m": 7.1000000000000005,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    -1.1,
+                    -1.0199999988079071
+                  ],
+                  "sampled_grid_point_m": [
+                    -1.1099999999999999,
+                    -1.0099999999999998
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_chair_b_0": {
+                  "grid_route_length_m": 9.3,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    1.1,
+                    -1.0199999988079071
+                  ],
+                  "sampled_grid_point_m": [
+                    1.0899999999999999,
+                    -1.0099999999999998
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_guest_a_0": {
+                  "grid_route_length_m": 2.24,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    -1.1,
+                    2.019999998807907
+                  ],
+                  "sampled_grid_point_m": [
+                    -1.1099999999999999,
+                    2.01
+                  ],
+                  "target_cell_clear": true
+                },
+                "recon_guest_b_0": {
+                  "grid_route_length_m": 1.26,
+                  "reachable_from_entry": true,
+                  "requested_point_m": [
+                    0.12,
+                    2.019999998807907
+                  ],
+                  "sampled_grid_point_m": [
+                    0.11000000000000032,
+                    2.01
+                  ],
+                  "target_cell_clear": true
+                }
+              }
+            }
+          ],
+          "table_geometry": {
+            "footprint_gap_m": 0.9999999523162844,
+            "joined_under_declared_threshold": false,
+            "parallel_axis_dot": 1.0,
+            "relative_center_offset_m": [
+              2.2,
+              0.0,
+              0.0
+            ],
+            "top_height_difference_m": 0.0,
+            "top_rectangular_areas_m2": {
+              "recon_table_a_0": 0.8400000190734858,
+              "recon_table_b_0": 0.8400000190734858
+            }
+          }
+        },
+        "current_requested_mode": "joined_four_place_hosting",
+        "design_request": "研究者迁移任务：两位住户平日分别使用两张桌子工作；待客时把桌子组合供四人使用，再恢复分桌工作。保留全部家具和对象身份，并保留睡眠、起居、厨房、卫浴、收纳与窗前的接近条件。只可移动table_b与chair_b，不删除、不缩放。",
+        "objects": [
+          {
+            "bbox_max": [
+              4.0,
+              0.01,
+              1.3
+            ],
+            "bbox_min": [
+              -4.0,
+              -0.01,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "north_wall",
+            "object_id": "recon_north_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                3.5,
+                1.3
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              4.0,
+              0.01,
+              1.3
+            ],
+            "bbox_min": [
+              -4.0,
+              -0.01,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "south_wall",
+            "object_id": "recon_south_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                -3.5,
+                1.3
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.01,
+              3.5,
+              1.3
+            ],
+            "bbox_min": [
+              -0.01,
+              -3.5,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "east_wall",
+            "object_id": "recon_east_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                4.0,
+                0.0,
+                1.3
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.01,
+              3.5,
+              1.3
+            ],
+            "bbox_min": [
+              -0.01,
+              -3.5,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "west_wall",
+            "object_id": "recon_west_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -4.0,
+                0.0,
+                1.3
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              1.0,
+              0.01,
+              1.3
+            ],
+            "bbox_min": [
+              -1.0,
+              -0.01,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "bathroom_south_wall",
+            "object_id": "recon_bathroom_south_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -3.0,
+                1.5,
+                1.3
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.01,
+              1.0,
+              1.3
+            ],
+            "bbox_min": [
+              -0.01,
+              -1.0,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "bathroom_east_wall",
+            "object_id": "recon_bathroom_east_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -2.0,
+                2.5,
+                1.3
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.45,
+              0.01,
+              1.0
+            ],
+            "bbox_min": [
+              -0.45,
+              -0.01,
+              -1.0
+            ],
+            "immutable": true,
+            "name": "entry_door",
+            "object_id": "recon_entry_door",
+            "object_type": "wall_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                3.5,
+                1.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.01,
+              0.45,
+              1.0
+            ],
+            "bbox_min": [
+              -0.01,
+              -0.45,
+              -1.0
+            ],
+            "immutable": true,
+            "name": "bathroom_door",
+            "object_id": "recon_bathroom_door",
+            "object_type": "wall_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -2.0,
+                2.25,
+                1.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.9,
+              0.005,
+              0.7
+            ],
+            "bbox_min": [
+              -0.9,
+              -0.005,
+              -0.7
+            ],
+            "immutable": true,
+            "name": "south_window",
+            "object_id": "recon_south_window",
+            "object_type": "wall_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                -3.5,
+                1.55
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.8,
+              1.0,
+              0.5
+            ],
+            "bbox_min": [
+              -0.8,
+              -1.0,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bed",
+            "object_id": "recon_bed_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                2.65,
+                -2.0,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.9007576107978821,
+              0.47884635627269745,
+              0.9072695106367306
+            ],
+            "bbox_min": [
+              -0.9007576107978821,
+              -0.47884635627269745,
+              0.0
+            ],
+            "immutable": true,
+            "name": "sofa",
+            "object_id": "recon_sofa_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                6.123233995736766e-17,
+                -0.0,
+                -0.0,
+                -1.0
+              ],
+              "translation": [
+                -2.6,
+                -1.8,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              1.0,
+              0.3,
+              0.9
+            ],
+            "bbox_min": [
+              -1.0,
+              -0.3,
+              0.0
+            ],
+            "immutable": true,
+            "name": "kitchen_counter",
+            "object_id": "recon_kitchen_counter_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                2.5,
+                3.1,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.25,
+              0.3,
+              0.85
+            ],
+            "bbox_min": [
+              -0.25,
+              -0.3,
+              0.0
+            ],
+            "immutable": true,
+            "name": "low_fridge",
+            "object_id": "recon_low_fridge_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                3.55,
+                1.95,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.4,
+              0.4,
+              0.12
+            ],
+            "bbox_min": [
+              -0.4,
+              -0.4,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_shower",
+            "object_id": "recon_bath_shower_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -3.4,
+                2.9,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.25,
+              0.25,
+              0.55
+            ],
+            "bbox_min": [
+              -0.25,
+              -0.25,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_toilet",
+            "object_id": "recon_bath_toilet_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -3.45,
+                1.9,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.3,
+              0.225,
+              0.8
+            ],
+            "bbox_min": [
+              -0.3,
+              -0.225,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_vanity",
+            "object_id": "recon_bath_vanity_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -2.5,
+                3.05,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.25,
+              0.25,
+              0.08
+            ],
+            "bbox_min": [
+              -0.25,
+              -0.25,
+              0.0
+            ],
+            "immutable": true,
+            "name": "main_light",
+            "object_id": "recon_main_light_0",
+            "object_type": "ceiling_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.5,
+                -0.4,
+                2.52
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.15,
+              0.15,
+              0.08
+            ],
+            "bbox_min": [
+              -0.15,
+              -0.15,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_light",
+            "object_id": "recon_bath_light_0",
+            "object_type": "ceiling_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -3.0,
+                2.5,
+                2.52
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.6000000238418579,
+              0.3499999940395355,
+              0.7400000095367432
+            ],
+            "bbox_min": [
+              -0.6000000238418579,
+              -0.3499999940395355,
+              0.0
+            ],
+            "immutable": true,
+            "name": "table_a",
+            "object_id": "recon_table_a_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -1.1,
+                0.5,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.6000000238418579,
+              0.3499999940395355,
+              0.7400000095367432
+            ],
+            "bbox_min": [
+              -0.6000000238418579,
+              -0.3499999940395355,
+              0.0
+            ],
+            "immutable": false,
+            "name": "table_b",
+            "object_id": "recon_table_b_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                1.1,
+                0.5,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.2199999988079071,
+              0.2199999988079071,
+              0.44999998807907104
+            ],
+            "bbox_min": [
+              -0.2199999988079071,
+              -0.2199999988079071,
+              0.0
+            ],
+            "immutable": true,
+            "name": "chair_a",
+            "object_id": "recon_chair_a_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -1.1,
+                -0.45,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.2199999988079071,
+              0.2199999988079071,
+              0.44999998807907104
+            ],
+            "bbox_min": [
+              -0.2199999988079071,
+              -0.2199999988079071,
+              0.0
+            ],
+            "immutable": false,
+            "name": "chair_b",
+            "object_id": "recon_chair_b_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                1.1,
+                -0.45,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.2199999988079071,
+              0.2199999988079071,
+              0.44999998807907104
+            ],
+            "bbox_min": [
+              -0.2199999988079071,
+              -0.2199999988079071,
+              0.0
+            ],
+            "immutable": true,
+            "name": "guest_a",
+            "object_id": "recon_guest_a_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -1.1,
+                1.45,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.2199999988079071,
+              0.2199999988079071,
+              0.44999998807907104
+            ],
+            "bbox_min": [
+              -0.2199999988079071,
+              -0.2199999988079071,
+              0.0
+            ],
+            "immutable": true,
+            "name": "guest_b",
+            "object_id": "recon_guest_b_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.12,
+                1.45,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.3,
+              0.4,
+              2.2
+            ],
+            "bbox_min": [
+              -0.3,
+              -0.4,
+              0.0
+            ],
+            "immutable": true,
+            "name": "wardrobe",
+            "object_id": "recon_wardrobe_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -3.55,
+                -0.3,
+                0.0
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.275,
+              0.24,
+              0.04
+            ],
+            "bbox_min": [
+              -0.275,
+              -0.24,
+              0.0
+            ],
+            "immutable": true,
+            "name": "cooktop",
+            "object_id": "recon_cooktop_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                1.95,
+                3.1,
+                0.9
+              ]
+            }
+          },
+          {
+            "bbox_max": [
+              0.3,
+              0.24,
+              0.08
+            ],
+            "bbox_min": [
+              -0.3,
+              -0.24,
+              0.0
+            ],
+            "immutable": true,
+            "name": "kitchen_sink",
+            "object_id": "recon_kitchen_sink_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                3.0,
+                3.1,
+                0.9
+              ]
+            }
+          }
+        ],
+        "original_request": null,
+        "request_provenance": "adapted",
+        "unknowns": [
+          "Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.",
+          "Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.",
+          "Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.",
+          "Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.",
+          ".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards."
+        ]
+      },
+      "supervision_class": "ordinary_executed_action",
+      "reason_scope": "Source rationale attached to actual table configuration change, not preparatory chair relocation.",
+      "task_revision_scope": "Research-authored demonstration relabeling; no new execution or model success claimed."
+    },
+    "study_origin": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CURATE-v1_20261105T212407Z/dataset/episodes/waterloo_edit_01/shared/episode.json",
+      "sha256": "f10d86f78db52739d09984944d2e70a5361aaccec65b79237c8d28f231adb788"
+    },
+    "decision_scope": "Source rationale attached to actual table configuration change, not preparatory chair relocation."
+  },
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "",
+      "images": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.topdown.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.south.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.east.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.west.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/house/room_waterloo_table_transfer/rollout_furniture/step_000.north.png"
+      ],
+      "tool_calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_chair_b_0",
+            "x": 0.12,
+            "y": -0.45,
+            "yaw": 0
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "run_id": "P920-EXECINPUT-v1_20261107T075321Z",
+  "status": "completed_cpu_data_acceptance",
+  "updated_at": "2026-11-07T08:05:59.568279+00:00",
+  "question": "Do verified executed histories and explicit activity conditions reach common five-view requests and real masked training tensors?",
+  "counts": {
+    "actions": 22,
+    "documents": 44,
+    "source_families": 6,
+    "decision_positions": 8,
+    "source_principles": 5,
+    "examples_with_history": 17,
+    "explicit_activity_requests": 8
+  },
+  "contract_checks_passed": 104,
+  "maximum_sequence_tokens": 15483,
+  "token_totals": {
+    "action_only": {
+      "input_tokens": 228139,
+      "action_tokens": 1245,
+      "decision_tokens": 0
+    },
+    "decision_action": {
+      "input_tokens": 229471,
+      "action_tokens": 1245,
+      "decision_tokens": 1332
+    }
+  },
+  "trainer_normalization_max_absolute_error": 1.5018191690252536e-08,
+  "model_calls": 0,
+  "native_scene_calls": 0,
+  "optimizer_updates": 0,
+  "training_authorized": false,
+  "initial_failed_attempts": [
+    {
+      "stage": "materialize_receipt",
+      "exit_code": 1,
+      "reason": "Native state canonicalization differed from compact request hash"
+    },
+    {
+      "stage": "materialize_v2_receipt",
+      "exit_code": 1,
+      "reason": "Model CP310 environment lacks jsonschema; materialization moved to native CP311 environment"
+    }
+  ],
+  "all_stage_receipts": {
+    "contract_checks_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/receipts/contract_checks_receipt/receipt.json",
+      "sha256": "e2f9f22cc8416d12965477f82ca0ec29e1df7e0d909583e543230ac65a9ab271"
+    },
+    "encoding_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/receipts/encoding_receipt/receipt.json",
+      "sha256": "7aa07619d74a70454f429e424244778ac61da6ef3eb68452d0bd7c1e6dd6112d"
+    },
+    "materialize_phase_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/receipts/materialize_phase_receipt/receipt.json",
+      "sha256": "ded1f3621a7c0238655c6367a775cef7dbfb7a2fedc6d9585ec67735cb3cb9cf"
+    },
+    "materialize_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/receipts/materialize_receipt/receipt.json",
+      "sha256": "b61a241c00975eb18e291c429bcfa11f6b0b4856ba3132f64a0dc9b9150ec07c"
+    },
+    "materialize_v2_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/receipts/materialize_v2_receipt/receipt.json",
+      "sha256": "698ff713c9524d153e9a90b823c7bdfc8d67d41798c44c2bb3d76bcc854fcc93"
+    },
+    "materialize_v3_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/receipts/materialize_v3_receipt/receipt.json",
+      "sha256": "3073e681f35f441e641b544dd1b11a3aa1928a1dff739e2e45a3af37fe9a887d"
+    },
+    "phase_encoding_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/receipts/phase_encoding_receipt/receipt.json",
+      "sha256": "9f071f0a9fd9c088764e34463075ebea8291b351f14f9b97dc9f15f6578f9fa1"
+    }
+  },
+  "latest_artifacts": {
+    "corpus_phase/DATASET.json": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/DATASET.json",
+      "sha256": "62f63905096bf6613aafb98b58004b925c244b98ed3fd6a9e488cd66fc028822"
+    },
+    "ENCODING.json": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/ENCODING.json",
+      "sha256": "e9c213562ca435ce94d7a756a0ec27318589ecb23d5137c686c8d09a82db8528"
+    },
+    "CONTRACT_CHECKS.json": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/CONTRACT_CHECKS.json",
+      "sha256": "b7d51b05fddfacd14fbb046e755021cf6c927eeb323d13181b92cc9e14381646"
+    },
+    "CODE_PROVENANCE.json": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/CODE_PROVENANCE.json",
+      "sha256": "af4ebfab57f5ac610fa8073d5fd70a990c2a6e809d2dfb40cec8e3418a086c35"
+    }
+  },
+  "conclusion": "Final candidate requests/tensors preserve original actions and images, make current activity explicit for eight records, and pass CPU consumption. They do not establish a learning benefit.",
+  "limitations": [
+    "This is a data/input correction, not trained model improvement, new source evidence or an independent-room evaluation.",
+    "17/22 original candidate inputs already had actual receipts. The gap was inconsistent representation and sometimes missing associated commands, not universally absent history.",
+    "Eight activity requests are explicitly researcher-authored prospective conditions, not historical user messages; phase availability cannot retrospectively fix old experiments.",
+    "22 actions and 44 arm documents contain eight decision-supervision positions derived from five principles across six source families; these are not 44 professional decisions.",
+    "Shared builder is CPU-verified, not integrated into a newly executed live rollout. Existing closed runners/results are unchanged.",
+    "Per-task query-tool availability remains unchanged. No no-edit or rejected-call training targets were added.",
+    "Decision/action arm adds 1332 supervised decision tokens. This is not a matched-material separate-versus-paired mechanism comparison.",
+    "Tensor consumption used the actual Dataset/Trainer normalization path with fixture logits and intercepted backward; no real-model forward, backward, optimizer, GPU use or native scene execution.",
+    "Source rights, physical mobility, independent professional quality and cross-project generalization remain limited by existing source/evaluation records."
+  ],
+  "next_step": "Freeze a task-matched conditional decision evaluation with useful feasible alternatives and no-edit cases before seeking another training budget. Do not reopen closed probes or rerun successful encodings."
+}
