@@ -1,0 +1,58 @@
+{
+  "created_at": "2026-11-07T09:01:03.713560+00:00",
+  "family_id": "paris_bien_vivre_16m2_nabucet_baillargeon",
+  "tasks": {
+    "clear_floor": {
+      "request": "现在暂不使用书桌，需要在标明的中央地面区域进行活动，请清空该区域。房壳、门窗及固定家具不能动。保留所有对象实例，仅可移动小桌和凳子。保留床侧、厨房、衣柜和卫浴的接近条件；未知功能如实报告。",
+      "reserved_floor_xyxy_m": [
+        -1.25,
+        -1.1,
+        0.25,
+        0.5
+      ],
+      "desk_active": false
+    },
+    "desk_work": {
+      "request": "现在需要坐在原书桌前学习，让凳子、桌面和桌下腿部空间可用。无需保留中央地面活动区。房壳、门窗及固定家具不能动。保留所有对象实例，仅可移动小桌和凳子。保留床侧、厨房、衣柜和卫浴的接近条件；未知功能如实报告。",
+      "desk_active": true,
+      "desk_top_work_patch_xyxy_m": [
+        -1.9,
+        -0.25,
+        -1.4,
+        0.25
+      ],
+      "knee_volume_lo_hi_m": [
+        [
+          -1.85,
+          -0.25,
+          0.05
+        ],
+        [
+          -1.15,
+          0.25,
+          0.68
+        ]
+      ],
+      "seat_target_region_xyxy_m": [
+        -1.0,
+        -0.1,
+        -0.8,
+        0.1
+      ]
+    }
+  },
+  "original_resident_request": null,
+  "request_provenance": "researcher transfer, not original project brief",
+  "unknowns": [
+    "All dimensions, initial poses, apertures and body thresholds are research assumptions.",
+    "Fixed bed and separate sofa replace original retractable bed; platform kitchen and rail mechanism are not reproduced.",
+    "Mobile table and stool are boxes: no real casters, pushing force, comfort or load validation.",
+    "Bathroom/kitchen/storage are static proxies: capacity, plumbing, operation and ventilation unknown.",
+    "Source read by task designer; family excluded from training/retrieval, not sealed or pretraining-unseen.",
+    "Only geometric activity proxies may pass. Independent professional or whole-room human-use acceptance is absent."
+  ],
+  "scoring_rule": "Use declared activity geometry and full-room side effects; never score distance to reference actions or poses.",
+  "distinct_projects": 1,
+  "conditions": 2,
+  "independent_professional_labels": 0
+}

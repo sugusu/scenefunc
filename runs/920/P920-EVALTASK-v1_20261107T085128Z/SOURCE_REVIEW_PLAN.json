@@ -1,0 +1,85 @@
+{
+  "run_id": "P920-EVALTASK-v1_20261107T085128Z",
+  "created_at": "2026-11-07T08:51:28.781220+00:00",
+  "question": "Select project-separated, source-grounded evaluation tasks expressing a conditional decision with existing tools; determine concrete task inputs before another learning study.",
+  "status": "source_review_only",
+  "inputs": {
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/microapartments_v1/SOURCE_INDEX.json": "1f9e39da47a6d1e381f63a3ec2abb8c3134c3a06bf06f50d1ff0e8d8ce82de10"
+  },
+  "selection": [
+    {
+      "source_case_id": "M.XS.3",
+      "family_id": "warsaw_tamka_jakub_szczesny",
+      "name": "Mieszkanie na Tamce",
+      "author": "Jakub Szczęsny",
+      "fragment": {
+        "pdf_page": 18,
+        "char_start_in_sorted_page_text": 2224,
+        "char_end_in_sorted_page_text": 3303,
+        "source_references": [
+          45,
+          46
+        ],
+        "local_fragment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CORPUS-v2_20261104T180559Z/index/source_fragments/M_XS_3.txt",
+        "sha256": "9decf3807108a249398967cceb03180b1599484b78d0daebc84f98cda3dbd011",
+        "role": "Published final-design description. NOT raw brief, tool trajectory or SFT target."
+      },
+      "bibliography": {
+        "45": {
+          "url_as_indexed": "https://www.szcz.com.pl/portfolio_page/tamka",
+          "kind": "published_source",
+          "reference_text_sha256": "99d0f14c6dad911fdf8ab202e28c0f7650bbc29a8a3230ebaa38dc18ca35f2a7",
+          "normalization": "PDF line wrapping removed, Unicode ligatures normalized; URL access not implied."
+        },
+        "46": {
+          "url_as_indexed": null,
+          "kind": "author_correspondence_not_acquired",
+          "reference_text_sha256": "4f20a7285d13747b003fda9aaa7f9d6d4ab6f39f99db0aa82ba797152a0fff1d",
+          "normalization": "PDF line wrapping removed, Unicode ligatures normalized; URL access not implied."
+        }
+      },
+      "allocation": "evaluation_source_review_excluded_from_training_and_retrieval",
+      "sealed_test": false,
+      "reason": "Metadata reviewed; source content already in common article, not an unseen sealed project. New scene has not been constructed."
+    },
+    {
+      "source_case_id": "M.XS.8",
+      "family_id": "sophia_apartment_blackhaus",
+      "name": "Sophia Apartment",
+      "author": "BlackHaus",
+      "fragment": {
+        "pdf_page": 19,
+        "char_start_in_sorted_page_text": 2995,
+        "char_end_in_sorted_page_text": 3679,
+        "source_references": [
+          51
+        ],
+        "local_fragment": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CORPUS-v2_20261104T180559Z/index/source_fragments/M_XS_8.txt",
+        "sha256": "b4157bbb3f005971f202adef86919aede10d35920f38d751960ec16e6888aedd",
+        "role": "Published final-design description. NOT raw brief, tool trajectory or SFT target."
+      },
+      "bibliography": {
+        "51": {
+          "url_as_indexed": "https://blackhaus.co/project/ophia-apartment",
+          "kind": "published_source",
+          "reference_text_sha256": "d9bcf41e8311a4f4d28081e885d8c863c6b539737642f3082e354328606ca40e",
+          "normalization": "PDF line wrapping removed, Unicode ligatures normalized; URL access not implied."
+        }
+      },
+      "allocation": "evaluation_source_review_excluded_from_training_and_retrieval",
+      "sealed_test": false,
+      "reason": "Metadata reviewed; source content already in common article, not an unseen sealed project. New scene has not been constructed."
+    }
+  ],
+  "budget": {
+    "local_fragments": 2,
+    "primary_web_pages": 2,
+    "network_seconds_per_page": 30,
+    "network_bytes_per_page": 2000000,
+    "model_calls": 0,
+    "training_updates": 0
+  },
+  "stop_rule": "Do not force articulated or structural source solutions into furniture-motion labels. Record supported subdecisions and missing evidence; no candidate selection from model outcomes.",
+  "derivation_authorized_now": "source reading and task specification only; native execution requires a separate frozen build plan",
+  "training_authorized": false
+}
