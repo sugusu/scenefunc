@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "completed_pending_scientific_review",
   "started_at": "2026-11-07T16:50:06.707634+00:00",
   "study_plan_sha256": "9097c298b61377d06b76cae27e7b02e27128a5ebf62c327e7ebb4f41eb394f79",
   "cells": [
@@ -495,7 +495,107 @@
       ],
       "unknown_checks": [],
       "scoped_improvement_without_new_loss": false
+    },
+    {
+      "id": "desk_work_29_action_only",
+      "condition": "desk_work",
+      "seed": 29,
+      "arm": "action_only",
+      "exit_code": 0,
+      "result_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_action_only/rollout/RESULT.json",
+      "receipt": {
+        "started_at": "2026-11-07T17:52:13.692731+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_edit_policy_executed_v2.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_action_only/PLAN.json",
+          "--phase",
+          "rollout",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_action_only/rollout"
+        ],
+        "timeout_seconds": 1800,
+        "pid": 1696378,
+        "start_ticks": "73178227",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_action_only/rollout_receipt/stage.log",
+        "ended_at": "2026-11-07T17:57:34.970867+00:00",
+        "elapsed_seconds": 321.2781599459704,
+        "exit_code": 0,
+        "first_log": "2026-11-07T17:52:13.804803+00:00 begin study cell desk_work_29_action_only rollout"
+      },
+      "plan_sha256": "e36fe6594348249484e786796f7461e7a12a4bbcfaaa0e2cc73cad4fdb594607",
+      "model_calls": 6,
+      "tool_attempts": 6,
+      "native_calls": 4,
+      "gpu_seconds": 109.30525624100119,
+      "whole_room_success": "unknown",
+      "activity_status": "fail",
+      "overall_measured_status": "fail",
+      "newly_lost_checks": [
+        "desk_knee_volume_clear"
+      ],
+      "absolute_failed_checks": [
+        "access_bath_entry_width_0.6",
+        "desk_knee_volume_clear",
+        "work_stool_in_declared_region"
+      ],
+      "unknown_checks": [],
+      "scoped_improvement_without_new_loss": false
+    },
+    {
+      "id": "desk_work_29_decision_action",
+      "condition": "desk_work",
+      "seed": 29,
+      "arm": "decision_action",
+      "exit_code": 0,
+      "result_path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_decision_action/rollout/RESULT.json",
+      "receipt": {
+        "started_at": "2026-11-07T17:57:35.664958+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_edit_policy_executed_v2.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_decision_action/PLAN.json",
+          "--phase",
+          "rollout",
+          "--out",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_decision_action/rollout"
+        ],
+        "timeout_seconds": 1800,
+        "pid": 1698348,
+        "start_ticks": "73210425",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_29_decision_action/rollout_receipt/stage.log",
+        "ended_at": "2026-11-07T18:03:55.098754+00:00",
+        "elapsed_seconds": 379.4338224750245,
+        "exit_code": 0,
+        "first_log": "2026-11-07T17:57:35.768938+00:00 begin study cell desk_work_29_decision_action rollout"
+      },
+      "plan_sha256": "e531a6a26e8699825e5615c82087f31cf86c3afca09143891b3aaa8f5ec3bedb",
+      "model_calls": 6,
+      "tool_attempts": 6,
+      "native_calls": 5,
+      "gpu_seconds": 114.52734280680306,
+      "whole_room_success": "unknown",
+      "activity_status": "fail",
+      "overall_measured_status": "fail",
+      "newly_lost_checks": [
+        "no_recorded_envelope_overlap_or_boundary_violation",
+        "desk_knee_volume_clear"
+      ],
+      "absolute_failed_checks": [
+        "no_recorded_envelope_overlap_or_boundary_violation",
+        "access_bath_entry_width_0.6",
+        "desk_knee_volume_clear",
+        "work_stool_in_declared_region"
+      ],
+      "unknown_checks": [],
+      "scoped_improvement_without_new_loss": false
     }
   ],
-  "gpu_subprocess_seconds": 1172.3459671894088
+  "gpu_subprocess_seconds": 1396.178566237213,
+  "ended_at": "2026-11-07T18:03:55.716813+00:00",
+  "exit_code": 0
 }
