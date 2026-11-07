@@ -21,6 +21,7 @@ from run_knowledge_policy import write
 from shared_action_contract import ActionContract, schemas_from_observation, strict_loads
 from edit_request import validate_action
 from executed_live_policy import build_session_request, validate_policy, bind_outcome
+from score_activity_transition import score_transition
 
 
 def compact_rejection_message(exc):
@@ -42,8 +43,11 @@ def main():
     a=ap.parse_args();p=json.loads(a.plan.read_text())
     validate_policy(p['input_contract'])
     audit_script=p['evaluation'].get('script','evaluate_edit_room.py')
-    if audit_script not in ('evaluate_edit_room.py','evaluate_storage_room.py') or audit_script not in p['code_sha256']:
+    if audit_script not in ('evaluate_edit_room.py','evaluate_storage_room.py','evaluate_conditional_room.py') or audit_script not in p['code_sha256']:
         raise ValueError('Unfrozen or unsupported task evaluator')
+    if audit_script == 'evaluate_conditional_room.py':
+        for name in ('conditional_room_metrics.py', 'score_activity_transition.py', 'build_activity_completion_reviews.py'):
+            if name not in p['code_sha256']:raise ValueError('Unfrozen condition dependency: '+name)
     for required in ('run_edit_policy_executed.py', 'executed_live_policy.py', 'executed_edit_request.py',
                      'edit_request.py', 'compact_catalog_context.py', 'shared_action_contract.py',
                      'catalog_project_session.py', 'native_checkpoint.py', 'run_stage.py',
@@ -82,11 +86,16 @@ def main():
     def request(observation,feedback,rejection=None):
         # Reuse the established native state/tool/image representation. The
         # supplement is shared across all arms, with only source-pool knowledge.
-        compact=dict(intersections=[x['objects'] for x in feedback['positive_aabb_pairs'] if x['triangle_surface_intersection_detected']],
-            outside=[x['object_id'] for x in feedback['bounds'] if x['outside_nominal_room_xy']],
-            identity=feedback['activity']['identity_asset_dimensions_preserved'],
-            activity=[{k:v for k,v in s.items() if k!='witness'} for s in feedback['activity']['scenarios']],
-            unknown=p.get('task_unknowns',['real ergonomics','guest sleeping','comfort','capacity','facility installation']),previous_rejection=rejection)
+        if audit_script == 'evaluate_conditional_room.py':
+            if feedback['state_sha256'] != canonical_hash(session.scene.to_state_dict()):
+                raise ValueError('Condition feedback is not bound to current state')
+            compact={**feedback['feedback'], 'unknown':feedback['limits'], 'previous_rejection':rejection}
+        else:
+            compact=dict(intersections=[x['objects'] for x in feedback['positive_aabb_pairs'] if x['triangle_surface_intersection_detected']],
+                outside=[x['object_id'] for x in feedback['bounds'] if x['outside_nominal_room_xy']],
+                identity=feedback['activity']['identity_asset_dimensions_preserved'],
+                activity=[{k:v for k,v in s.items() if k!='witness'} for s in feedback['activity']['scenarios']],
+                unknown=p.get('task_unknowns',['real ergonomics','guest sleeping','comfort','capacity','facility installation']),previous_rejection=rejection)
         current,metadata=build_session_request(session,observation,p,result['rounds'],compact,
             p['budget']['tool_calls']-result['tool_attempts'])
         write(a.out/'latest_input_history.json',metadata)
@@ -149,6 +158,7 @@ def main():
             obs=post('/session/observation')
             post('/session/checkpoint',dict(output_directory=str(a.out/'restored_checkpoint')))
             feedback=audit(a.out/'restored_checkpoint',a.out/'restored_audit.json')
+            if audit_script == 'evaluate_conditional_room.py':result['initial_review']=feedback['review']
             result['stop_reason']='call_budget_exhausted';rejection=None
             for turn in range(p['budget']['model_calls']):
                 if result['tool_attempts']>=p['budget']['tool_calls']:break
@@ -198,6 +208,11 @@ def main():
                 write(a.out/'final_state.json',session.scene.to_state_dict())
                 if obs is not None:write(a.out/'final_observation.json',obs)
                 result['final_audit']=audit(a.out/'final_checkpoint',a.out/'final_audit.json')
+                if audit_script == 'evaluate_conditional_room.py' and 'initial_review' in result:
+                    result['transition_score']=score_transition(result['initial_review'],result['final_audit']['review'],
+                        attempts=result['tool_attempts'],native_calls=result['native_calls'],
+                        state_changes=sum(r.get('execution',{}).get('before_sha256') != r.get('execution',{}).get('after_sha256') for r in result['rounds']),
+                        generated_tokens=result['generated_tokens'],gpu_seconds=result['gpu_subprocess_seconds'])
             except BaseException as exc:
                 result['finalization_error']=f'{type(exc).__name__}: {exc}';result['status']='failed'
         result['ended_at']=now();progress()

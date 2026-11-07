@@ -22,6 +22,7 @@ from shared_action_contract import context_from_request
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--plan',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
+    p.add_argument('--conditional-fixture',action='store_true',help='Exercise new conditional feedback/transition branch with explicitly synthetic review rows')
     a=p.parse_args();plan=json.loads(a.plan.read_text())
     for path,h in plan['input_hashes'].items():
         if sha256(Path(path))!=h:raise ValueError('Input changed: '+path)
@@ -39,6 +40,11 @@ def main():
     raw+=['<tool_call>{broken json}</tool_call>', '<done>Declared activity and whole-room quality remain unverified.']
     task=read(prepared/'checkpoint/task.json')
     audits=[read(prepared/'initial_audit.json')]+[read(root/f'round_{i:03d}/audit.json') for i in range(2)]
+    if a.conditional_fixture:
+        audits=[dict(state_sha256=runner.canonical_hash(s),limits=['Synthetic CPU review, not a room outcome'],
+            feedback=dict(synthetic_current_marker='condition_state_'+str(i)),
+            review=dict(requested_mode='synthetic_condition',checks=[dict(requirement='synthetic_requirement',**{'pass':i==2})],
+                measured_requirements_status='pass' if i==2 else 'fail')) for i,s in enumerate(states)]
     pointer={'state':0,'model':0};events=[]
     def current_context():
         i=pointer['state'];ctx=copy.deepcopy(contexts[i]);ctx['objects']=copy.deepcopy(states[i]['objects'])
@@ -77,12 +83,14 @@ def main():
         else:write(target,audits[pointer['state']])
         return 0
     live=copy.deepcopy(original_plan)
+    if a.conditional_fixture:live['evaluation']['script']='evaluate_conditional_room.py'
     live.update(input_contract=POLICY,cell_id='cpu_fixture_not_model',public_directory=str(a.out/'fixture_public'),
         gpu_lock_paths=[str(a.out/'fixture.lock')],gpu_uuid='GPU-CPU-FIXTURE',
         budget=dict(model_calls=4,tool_calls=4,gpu_seconds_per_cell=100,seconds_per_model_call=30))
     deps=['run_edit_policy_executed.py','executed_live_policy.py','executed_edit_request.py','edit_request.py',
           'compact_catalog_context.py','shared_action_contract.py','catalog_project_session.py','native_checkpoint.py',
           'run_stage.py','edit_study_model_step.py',live['evaluation'].get('script','evaluate_edit_room.py')]
+    if a.conditional_fixture:deps+=['conditional_room_metrics.py','score_activity_transition.py','build_activity_completion_reviews.py']
     live['code_sha256']={n:sha256(Path(__file__).with_name(n)) for n in deps}
     livepath=a.out/'FIXTURE_PLAN_NOT_FOR_NATIVE_LAUNCH.json';write(livepath,live)
     print('Exercise actual runner control flow with CPU service doubles; zero real model/native calls.',flush=True)
@@ -110,6 +118,11 @@ def main():
     check('history_keeps_two_complete_attempts',result['rounds'][3]['input_history']['included_attempts']==[2,3])
     check('final_checkpoint_and_audit_retained',(a.out/'loop/final_checkpoint/house_state.json').exists() and 'final_audit' in result)
     check('done_does_not_create_success_label','whole_room_success' not in result)
+    if a.conditional_fixture:
+        check('current_condition_measurements_in_model_request','condition_state_2' in text)
+        check('transition_scored_from_actual_initial_and_final_audits',result['transition_score']['outcome']=='resolved_declared_deficit')
+        check('costs_do_not_count_rejection_as_execution',result['transition_score']['costs']['validation_rejections']==1)
+        check('condition_pass_never_whole_room_success',result['transition_score']['whole_room_success']=='unknown')
     good=result['rounds'][:3]
     # An extra model reference/gold field is not accepted into shared input.
     clean=build_session_request(session,observations[2],live,good,{},1)
@@ -126,6 +139,7 @@ def main():
     write(a.out/'RESULT.json',dict(status='passed',checks=checks,input_hashes=sources,
         actual_runner_loop_exercised_with_doubles=True,real_model_calls=0,real_native_calls=0,training_updates=0,
         simulated_model_calls=4,simulated_native_calls=2,
+        conditional_fixture=a.conditional_fixture,
         limits='CPU doubles verify wiring and control flow only. Native rendering, model generation, GPU scheduling and live latency are not tested. Archived calls are not rerun.'))
     print(f'PASS {len(checks)} integration checks; no real model/native execution.',flush=True)
 

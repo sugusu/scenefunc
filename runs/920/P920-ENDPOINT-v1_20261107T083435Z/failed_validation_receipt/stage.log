@@ -1,0 +1,31 @@
+Read-only actual checkpoint measurement; synthetic adversarial states are not scene executions.
+2026-11-07T08:37:13.699807+00:00 measure actual checkpoint; no model or edit
+{"status": "pass", "requirement_count": 34}
+2026-11-07T08:37:15.232471+00:00 measure actual checkpoint; no model or edit
+{"status": "fail", "requirement_count": 34}
+2026-11-07T08:37:16.825829+00:00 measure actual checkpoint; no model or edit
+{"status": "fail", "requirement_count": 43}
+2026-11-07T08:37:18.384683+00:00 measure actual checkpoint; no model or edit
+{"status": "pass", "requirement_count": 43}
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_conditional_endpoints.py", line 82, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_conditional_endpoints.py", line 52, in main
+    values, result = evaluate('changed_chair',bad)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_conditional_endpoints.py", line 42, in evaluate
+    result = measure_endpoint(state,initial,room,root,program,'separate_work')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/conditional_room_metrics.py", line 57, in measure_endpoint
+    geometry = inspect(state)
+               ^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/preflight_sourced_trajectory.py", line 24, in inspect
+    env=boxes(state);outside=[oid for oid,(a,b) in env.items() if np.any(a<lo-1e-8) or np.any(b>hi+1e-8)]
+        ^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/preflight_sourced_trajectory.py", line 16, in boxes
+    p=np.c_[p,np.ones(len(p))]@world_transform(obj).T
+                               ^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/inspect_native_mesh_contacts.py", line 64, in world_transform
+    raise ValueError('Unexpected object scaling')
+ValueError: Unexpected object scaling

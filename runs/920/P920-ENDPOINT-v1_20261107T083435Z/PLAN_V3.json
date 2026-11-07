@@ -1,0 +1,60 @@
+{
+  "run_id": "P920-ENDPOINT-v1_20261107T083435Z",
+  "frozen_at": "2026-11-07T08:41:28.402542+00:00",
+  "cases": [
+    {
+      "id": "initial_work",
+      "evaluation_plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_WORK_V3.json",
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle",
+      "expected_status": "pass",
+      "expected_requirements": 34
+    },
+    {
+      "id": "joined_work",
+      "evaluation_plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_WORK_V3.json",
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2",
+      "expected_status": "fail",
+      "expected_requirements": 34
+    },
+    {
+      "id": "initial_host",
+      "evaluation_plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_HOST_V3.json",
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle",
+      "expected_status": "fail",
+      "expected_requirements": 43
+    },
+    {
+      "id": "joined_host",
+      "evaluation_plan": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_HOST_V3.json",
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2",
+      "expected_status": "pass",
+      "expected_requirements": 43
+    }
+  ],
+  "budget": {
+    "endpoint_cpu_seconds": 180,
+    "loop_cpu_seconds": 60,
+    "model_calls": 0,
+    "training_updates": 0,
+    "native_edits": 0
+  },
+  "input_hashes": {
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/evaluate_conditional_room.py": "e2ab2f38dc4a8e0ed02697b580e3bdd578d6f78c53a6c552e442fac39f71d2cd",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/conditional_room_metrics.py": "46dc23ebb6127e88036ce94239c4dbd3ea60e276224d41cfe519aaf590bbc9ea",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/build_activity_completion_reviews.py": "d4d09568057ddd8c74e8c8a1ffe667f85d7e493df0cd79eee10323477fcf9c5d",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/measure_free_floor.py": "61acc43cdf0598bca0aa58edc54cc3fea93d42d144d7aef63ec4aa88da445ead",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/measure_room_access.py": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/preflight_sourced_trajectory.py": "09af86a11819827509a35f1a7d144e25e473c99ff5ec72bf9ac914a0ce4135d6",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/score_activity_transition.py": "b449ceb1840e8fa28cac0688bc8b71d386ebb49f18ea98ab9a8311b1da30311d",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_conditional_endpoints.py": "a27f92070fe38ac99b90a22c37e1d273333709e70c82e59c08487fb441a02a1f",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle/manifest.json": "93b0b2fb3ded15bf4f65ff82f99ee2cf05213c3f0197ee6c136b3674db6de08b",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2/manifest.json": "927b5e21ac8937f7aa734fdd8df4179b0cc427e7d126605d43edd0c640d625e6",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_WORK_V3.json": "eabd6b14165c48e308d75b499e295a1723429900d46b1ab5905d08e3af52e740",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_HOST_V3.json": "72aaafef74f6dfb8a45f19a16d936092bc800b12e3cd908f38a31810f112cb5d"
+  },
+  "revision": 3,
+  "revision_reason": "Compact only model-visible feedback; retain full measurements in evidence. Reject programs carrying reference-action metadata and enforce evaluator dependency freeze. No geometric thresholds changed."
+}

@@ -1,0 +1,207 @@
+{
+  "run_id": "P920-ENDPOINT-v1_20261107T083435Z",
+  "updated_at": "2026-11-07T08:43:26.641784+00:00",
+  "status": "completed_condition_endpoint_integration",
+  "question": "Can arbitrary current known-proxy native checkpoints be scored without reference endpoints, changing denominators, or stale feedback?",
+  "endpoint_checks": 31,
+  "conditional_loop_checks": 18,
+  "native_checkpoints_measured": 2,
+  "condition_evaluations": 4,
+  "synthetic_state_cases": 4,
+  "synthetic_parameter_cases": 1,
+  "real_model_calls": 0,
+  "native_edit_calls": 0,
+  "training_updates": 0,
+  "measured_transitions": {
+    "keep_satisfied": {
+      "outcome": "maintained_declared_requirements",
+      "initial_status": "pass",
+      "final_status": "pass",
+      "requested_mode": "separate_work",
+      "requirement_count": 34,
+      "newly_failed": [],
+      "newly_unknown": [],
+      "repaired": [],
+      "final_failed": [],
+      "final_unknown": [],
+      "measured_success": true,
+      "measured_incremental_gain": false,
+      "editing_without_declared_deficit": false,
+      "costs": {
+        "attempts": 0,
+        "native_calls": 0,
+        "state_changes": 0,
+        "validation_rejections": 0,
+        "generated_tokens": null,
+        "gpu_seconds": null
+      },
+      "whole_room_success": "unknown",
+      "professional_preference": "not_assessed",
+      "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+    },
+    "repair_hosting": {
+      "outcome": "resolved_declared_deficit",
+      "initial_status": "fail",
+      "final_status": "pass",
+      "requested_mode": "joined_four_place_hosting",
+      "requirement_count": 43,
+      "newly_failed": [],
+      "newly_unknown": [],
+      "repaired": [
+        "joined_table_geometry",
+        "assigned_seat_alignment_recon_guest_b_0"
+      ],
+      "final_failed": [],
+      "final_unknown": [],
+      "measured_success": true,
+      "measured_incremental_gain": true,
+      "editing_without_declared_deficit": false,
+      "costs": {
+        "attempts": 2,
+        "native_calls": 2,
+        "state_changes": 2,
+        "validation_rejections": 0,
+        "generated_tokens": null,
+        "gpu_seconds": null
+      },
+      "whole_room_success": "unknown",
+      "professional_preference": "not_assessed",
+      "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+    },
+    "damage_work": {
+      "outcome": "introduced_declared_failure",
+      "initial_status": "pass",
+      "final_status": "fail",
+      "requested_mode": "separate_work",
+      "requirement_count": 34,
+      "newly_failed": [
+        "separate_table_gap"
+      ],
+      "newly_unknown": [],
+      "repaired": [],
+      "final_failed": [
+        "separate_table_gap"
+      ],
+      "final_unknown": [],
+      "measured_success": false,
+      "measured_incremental_gain": false,
+      "editing_without_declared_deficit": true,
+      "costs": {
+        "attempts": 2,
+        "native_calls": 2,
+        "state_changes": 2,
+        "validation_rejections": 0,
+        "generated_tokens": null,
+        "gpu_seconds": null
+      },
+      "whole_room_success": "unknown",
+      "professional_preference": "not_assessed",
+      "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+    }
+  },
+  "initial_requirements": {
+    "separate_work": 34,
+    "joined_four_place_hosting": 43
+  },
+  "metric_version": "conditional-endpoint-v1",
+  "changes": [
+    "Measure current objects and geometric/activity side effects from portable bundle; no prerecorded endpoint lookup.",
+    "Deletion fails fixed requirements; changed proxy geometry and tilt retain unknowns; malformed nonunit scale explicitly rejected.",
+    "Project current rotated chair envelope into table frame; require off-room targets to fail instead of nearest-cell clamping.",
+    "Common runner consumes state-bound feedback and records initial-to-final outcome and execution costs; done is not whole-room acceptance.",
+    "Compact feedback omits full redundant grids; full evidence retained; programs carrying reference-action metadata rejected."
+  ],
+  "actual_stages": {
+    "endpoint_receipt": {
+      "started_at": "2026-11-07T08:37:12.794008+00:00",
+      "status": "failed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/check_conditional_endpoints.py",
+        "--plan",
+        "runs/920/P920-ENDPOINT-v1_20261107T083435Z/PLAN.json",
+        "--out",
+        "../runtime/P920-ENDPOINT-v1_20261107T083435Z/measurements"
+      ],
+      "timeout_seconds": 180,
+      "pid": 6,
+      "start_ticks": "69848137",
+      "log": "../runtime/P920-ENDPOINT-v1_20261107T083435Z/endpoint_receipt/stage.log",
+      "ended_at": "2026-11-07T08:37:20.737898+00:00",
+      "elapsed_seconds": 7.943903484963812,
+      "exit_code": 1,
+      "first_log": "Read-only actual checkpoint measurement; synthetic adversarial states are not scene executions."
+    },
+    "endpoint_v2_receipt": {
+      "started_at": "2026-11-07T08:38:22.208534+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/check_conditional_endpoints.py",
+        "--plan",
+        "runs/920/P920-ENDPOINT-v1_20261107T083435Z/PLAN_V2.json",
+        "--out",
+        "../runtime/P920-ENDPOINT-v1_20261107T083435Z/measurements_v2"
+      ],
+      "timeout_seconds": 180,
+      "pid": 7,
+      "start_ticks": "69855079",
+      "log": "../runtime/P920-ENDPOINT-v1_20261107T083435Z/endpoint_v2_receipt/stage.log",
+      "ended_at": "2026-11-07T08:38:34.266608+00:00",
+      "elapsed_seconds": 12.058086429955438,
+      "exit_code": 0,
+      "first_log": "Read-only actual checkpoint measurement; synthetic adversarial states are not scene executions."
+    },
+    "endpoint_v3_receipt": {
+      "started_at": "2026-11-07T08:41:28.455966+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/check_conditional_endpoints.py",
+        "--plan",
+        "runs/920/P920-ENDPOINT-v1_20261107T083435Z/PLAN_V3.json",
+        "--out",
+        "../runtime/P920-ENDPOINT-v1_20261107T083435Z/measurements_v3"
+      ],
+      "timeout_seconds": 180,
+      "pid": 7,
+      "start_ticks": "69873704",
+      "log": "../runtime/P920-ENDPOINT-v1_20261107T083435Z/endpoint_v3_receipt/stage.log",
+      "ended_at": "2026-11-07T08:41:40.463135+00:00",
+      "elapsed_seconds": 12.007185284979641,
+      "exit_code": 0,
+      "first_log": "Read-only actual checkpoint measurement; synthetic adversarial states are not scene executions."
+    },
+    "loop_receipt": {
+      "started_at": "2026-11-07T08:37:12.814781+00:00",
+      "status": "completed",
+      "command": [
+        "../envs/scene_designer311_native/bin/python",
+        "scripts/920/check_executed_live_loop.py",
+        "--conditional-fixture",
+        "--plan",
+        "runs/920/P920-ENDPOINT-v1_20261107T083435Z/LOOP_PLAN.json",
+        "--out",
+        "../runtime/P920-ENDPOINT-v1_20261107T083435Z/loop"
+      ],
+      "timeout_seconds": 60,
+      "pid": 6,
+      "start_ticks": "69848140",
+      "log": "../runtime/P920-ENDPOINT-v1_20261107T083435Z/loop_receipt/stage.log",
+      "ended_at": "2026-11-07T08:37:13.533519+00:00",
+      "elapsed_seconds": 0.7187504239846021,
+      "exit_code": 0,
+      "first_log": "Exercise actual runner control flow with CPU service doubles; zero real model/native calls."
+    }
+  },
+  "failed_stage_explanation": "First harness used nonunit scaling to stand for replacement; existing geometry rejects nonunit scaling. V2 separates changed-envelope unknown and explicit invalid-scale rejection. V3 compacts feedback and freezes dependencies; thresholds unchanged.",
+  "limits": [
+    "Two archived bundles from one exposed Waterloo researcher reconstruction; no new independent project or design-learning result.",
+    "Fixed seating assignments and known rectangular/square proxies; unknown physical moving, knees, comfort, facility use and professional whole-room quality.",
+    "Metric V1 adds room-geometry integrity and table-relative rotated-chair access; do not retrospectively replace historical 33/42-check reports with new34/43 scores.",
+    "Real model/native rollout through the new branch has not run; live control-flow checks use explicit CPU service doubles.",
+    "New native task launch must bind current activity, knowledge, initial bundle, evaluator and token budget; these read-only evaluator plans are not training/rollout approval.",
+    "Local sandbox NVIDIA-SMI query returned driver-unavailable exit9; no GPU availability or model-run claim made."
+  ],
+  "next_step": "Close this evaluator task. Freeze a task-matched study with project/knowledge exclusion, feasible independent evaluation cases, full commands and bounded budget. Do not repeat closed probes or launch training before separate review."
+}
