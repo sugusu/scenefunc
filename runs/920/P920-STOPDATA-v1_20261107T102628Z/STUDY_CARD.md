@@ -1,6 +1,6 @@
 # 有限学习试验：共同执行输入＋用途条件决定监督
 
-状态：准备完成，**未开训、未进行新模型生成；等待本计划单独审定**。
+状态：用户已明确批准本计划，**2026-11-07T11:27:02Z 启动真实训练**。当前阶段和实际退出见 EXECUTION.json；不预写评测结果。
 
 问题：有出处的条件化决定监督，能否在相同知识、动作、反馈下改善实际房间编辑？本轮是开发方向验证，不是论文结论。上一轮失败已关闭，不续用旧预算。
 
@@ -30,6 +30,6 @@ GPU0，固定Scene-Builder revision `63e235a0c0d6e5bc2f8f3485214df4457fd2e672`�
 
 ## 执行与恢复
 
-精确冻结计划：STUDY_PLAN.json；训练计划：TRAIN_PLAN.json；12格模板：evaluation/；真实准备证据：prepare_v2/；数据编码：ENCODING.json。命令见COMMANDS.txt。授权文件只能在收到实际用户批准后建立，须绑定两份计划SHA并记录真实批准文字。当前未创建授权文件。
+精确冻结计划：STUDY_PLAN.json；训练计划：TRAIN_PLAN.json；12格模板：evaluation/；真实准备证据：prepare_v2/；数据编码：ENCODING.json。命令见COMMANDS.txt。授权文件只能在收到实际用户批准后建立，须绑定两份计划SHA并记录真实批准文字。实际批准已记录于 AUTHORIZATION.json；冻结计划中的授权前快照字段保留，执行授权由该独立文件核验。
 
 训练、原生场景checkpoint和完整GLB保留服务器runtime；小日志、指标、实际输入、输出及可分享视图提交Git。断网推送同一提交，不重跑。

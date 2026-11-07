@@ -1,10 +1,10 @@
 {
   "run_id": "P920-STOPDATA-v1_20261107T102628Z",
-  "question": "Can two satisfied condition states supply identical, properly masked terminal control targets to both arms without pretending whole-room success?",
-  "state": "prepared_awaiting_new_training_review",
-  "completed": 2,
-  "planned": 2,
-  "updated_at": "2026-11-07T10:58:05.415259+00:00",
+  "question": "Does decision-plus-control supervision improve requested activity without new measured losses over the same-control adapter and frozen base with equal input/feedback?",
+  "state": "training_running",
+  "completed": 5,
+  "planned": 16,
+  "updated_at": "2026-11-07T12:01:06.110505+00:00",
   "runtime_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z",
   "config_sha256": "04c2e1149cec20b370f04e669c3e8408191a7106fd97699b9b8152d574c7df42",
   "input_hashes": {
@@ -13,14 +13,12 @@
     "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/measurements/initial_work.json": "739d0958e214c2758ca7719b8fbe96bc06f53e31d521712f06e32d12a7476a93",
     "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/measurements/joined_host.json": "45e0e24c81c2eef3a25a04076ef7700c8e0ca2826d438913f2dfafc06353484b"
   },
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/FINAL_VALIDATION.json",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/TRAINING_RESULT.json",
   "failure_reason": null,
-  "next_step": "Separate user review of concrete STUDY_PLAN; no training or model calls until approved.",
+  "next_step": "Monitor the existing approved batch; evaluate 12 cells only after both final adapters pass. First infrastructure error stops; no retry.",
   "training_config_sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f",
-  "training_updates": 0,
+  "training_updates": 5,
   "model_calls": 0,
-  "started_at": "2026-11-07T10:28:47.496265+00:00",
-  "ended_at": "2026-11-07T10:54:28.568847+00:00",
   "actual_stage_exit_codes": {
     "materialize_v2/receipt.json": 1,
     "materialize/receipt.json": 1,
@@ -35,6 +33,40 @@
     "loop_receipt/receipt.json": 0,
     "encoding_receipt/receipt.json": 0
   },
-  "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/materialize/stage.log",
-  "training_started": false
+  "training_started": true,
+  "execution_started_at": "2026-11-07T11:27:02.933118+00:00",
+  "first_execution_log": "Approved batch launched; train first, evaluation only after accepted adapters.",
+  "preparation_counts": {
+    "completed": 2,
+    "planned": 2,
+    "started_at": "2026-11-07T10:28:47.496265+00:00",
+    "ended_at": "2026-11-07T10:54:28.568847+00:00",
+    "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/materialize/stage.log"
+  },
+  "count_unit": "optimizer_updates; evaluation counted separately",
+  "training_updates_planned": 16,
+  "evaluation_cells_completed": 0,
+  "evaluation_cells_planned": 12,
+  "started_at": "2026-11-07T11:27:02.933118+00:00",
+  "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/training_batch.log",
+  "active_arm": "action_only",
+  "latest_progress": {
+    "status": "running",
+    "updated_at": "2026-11-07T12:01:00.398817+00:00",
+    "micro_started": 142,
+    "forward_losses_completed": 141,
+    "backward_completed": 141,
+    "optimizer_updates": 5,
+    "checkpoint_input_stats": {
+      "installed_layers": 36,
+      "checkpoint_forward_calls": 5076,
+      "input_bytes_seen": 431503147008,
+      "pin_memory": false,
+      "input_bytes_are_not_measured_memory_savings": true
+    },
+    "error": null,
+    "cuda_allocated_bytes": 17767138304,
+    "cuda_reserved_bytes": 23689428992,
+    "cuda_peak_allocated_bytes": 21716105728
+  }
 }

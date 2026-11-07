@@ -1,6 +1,6 @@
 {
   "created_at": "2026-11-05T16:47:24.681925+00:00",
-  "status": "bounded_study_completed_no_design_gain_with_interface_diagnosis",
+  "status": "historical_negative_results_with_untrained_stopdata_protocol",
   "sources": {
     "training": {
       "path": "runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
@@ -137,6 +137,34 @@
     "fhouse_incremental_claim": {
       "path": "runs/920/P920-DECISIONAUDIT-v1_20261106T154100Z/FHOUSE_DATA_USE_CORRECTION.json",
       "sha256": "eea76dfa306d1f78df2868646bf728773fe80b6de0801c699d35d01e068296af"
+    },
+    "stopdata_summary": {
+      "path": "runs/920/P920-STOPDATA-v1_20261107T102628Z/SUMMARY.json",
+      "sha256": "4be5f0094782f243b6bba4ed8eedcc976cf32a5117a69e6ceff68f342444feb3"
+    },
+    "stopdata_encoding": {
+      "path": "runs/920/P920-STOPDATA-v1_20261107T102628Z/ENCODING.json",
+      "sha256": "9bddfa343c5b8c18bf7409e84f4481872c080b627e5a23f491ada27bfc00f499"
+    },
+    "stopdata_train_plan": {
+      "path": "runs/920/P920-STOPDATA-v1_20261107T102628Z/TRAIN_PLAN.json",
+      "sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f"
+    },
+    "stopdata_study_plan": {
+      "path": "runs/920/P920-STOPDATA-v1_20261107T102628Z/STUDY_PLAN.json",
+      "sha256": "04c2e1149cec20b370f04e669c3e8408191a7106fd97699b9b8152d574c7df42"
+    },
+    "stopdata_validation": {
+      "path": "runs/920/P920-STOPDATA-v1_20261107T102628Z/FINAL_VALIDATION.json",
+      "sha256": "2099ab483ef68d6a51488927314823e0b18421dc47be9a49a41a16ff353e20d6"
+    },
+    "stopdata_clear_prepare": {
+      "path": "runs/920/P920-STOPDATA-v1_20261107T102628Z/prepare_v2/clear_floor/recorded/RESULT.json",
+      "sha256": "1df36b4d4b72923951ad72f8ec9b5256b0b734e6ffea4fbce406ed183d40bb79"
+    },
+    "stopdata_work_prepare": {
+      "path": "runs/920/P920-STOPDATA-v1_20261107T102628Z/prepare_v2/desk_work/recorded/RESULT.json",
+      "sha256": "beb86e7aee033e4c421a848245be452cd8bba4173501d1c2e416ce39e05dfffe"
     }
   },
   "claims": [
@@ -305,11 +333,34 @@
         "fhouse_incremental_claim"
       ],
       "not_supported": "Causal explanation for training failure, professional no-edit optimum, or whole-room equivalence."
+    },
+    {
+      "id": "S1",
+      "claim": "The STOPDATA data package, as frozen before training, has24examples per arm:22tool and2researcher terminal-control examples across6training families. Both arms supervise1647control tokens; the joint arm adds1332decision tokens at8positions from5source principles.",
+      "status": "supported_candidate_data_not_learning_result",
+      "evidence": [
+        "stopdata_summary",
+        "stopdata_encoding"
+      ],
+      "not_supported": "24independent professional decisions, equal-total-supervision pairing mechanism or trained design benefit."
+    },
+    {
+      "id": "S2",
+      "claim": "Two native initial preparations completed with5views and9067/9124input tokens. Prospective evaluation contains1excluded development family,2conditions,2seeds and3arms, not2independent projects. At the preparation snapshot no model calls or training updates had run; authorized execution subsequently started on 2026-11-07T11:27:02Z.",
+      "status": "supported_preparation_with_prospective_evaluation_only",
+      "evidence": [
+        "stopdata_summary",
+        "stopdata_clear_prepare",
+        "stopdata_work_prepare",
+        "stopdata_study_plan",
+        "stopdata_validation"
+      ],
+      "not_supported": "Model rollout completion, whole-room usability, sealed cross-project generalization, or approval to train."
     }
   ],
   "new_model_calls": 0,
   "new_training_updates": 0,
-  "updated_at": "2026-11-06T16:27:10.296946+00:00",
+  "updated_at": "2026-11-07T12:01:06.110505+00:00",
   "counter_scope": "new_model_calls/new_training_updates count authoring this index only, not experiment totals",
   "conditional_recognition_scope": {
     "interpretation": "runs/920/P920-CHOICE-v1_20261106T155500Z/INTERPRETATION.md",
