@@ -1,0 +1,2827 @@
+{
+  "status": "policy_completed_pending_comparison",
+  "phase": "rollout",
+  "started_at": "2026-11-07T17:32:03.472567+00:00",
+  "rounds": [
+    {
+      "turn": 0,
+      "model": {
+        "started_at": "2026-11-07T17:33:04.520011+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "41392ff1fcbfe8e5500eb71b662e36e91cc154caf014777f014917b6a8dd685e",
+        "plan_sha256": "2369385f8990a0e745d45b0691bbe7958197ad72a87adfebcfe0c9924520fc8b",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 17,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.topdown.png",
+              "sha256": "462539cd749d6d860d5074b17b17c23375b22309a4b83245a5ef0308308d327f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.south.png",
+              "sha256": "228d5fadae8b804df4c81248efcebbf180a8e0f5c8575a6a53d08c5665c2ed0d",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.east.png",
+              "sha256": "ef09c823773d4b06152b0444ba3f3634c4ba98d3f47b3cce1c779aebe237c1af",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.west.png",
+              "sha256": "7c7ef7011c057add70f4d7f2949f1b85a1f5ced22ca9e370d1a61ca04c764366",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_000.north.png",
+              "sha256": "b58ab9cd9057065cd620f0fa7e8fd8582a17e4fce5784aacb7dfcc649818fb19",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9124,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9124
+            ],
+            "attention_mask": [
+              1,
+              9124
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "1b304fa73e7a07de9eadad2e4df30461fce041db23008ae164a1823f32e99eb5",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter_reload_exact": true,
+        "adapter": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/adapter",
+          "sha256": {
+            "adapter_config.json": "ac6e4729894ee84f3fcdb80b04634fa71521223c25069775d11610fa2527eec1",
+            "adapter_model.safetensors": "706cd0af80ed9c29ad920262152c0e409886a8eec2645f13433a9b76542014d9"
+          }
+        },
+        "load_seconds": 5.390358872944489,
+        "generation_seconds": 12.071165790082887,
+        "output_tokens": 220,
+        "ended_with_eos": false,
+        "raw_output_sha256": "ee0f9c0c14dcd50f577ebfcd827ddfbf5c01fc40667927cd8185652b25d8c601",
+        "peak_allocated_bytes": 19912256000,
+        "peak_reserved_bytes": 20308819968,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-07T17:33:25.528884+00:00",
+        "elapsed_seconds": 21.008893679012544
+      },
+      "raw_output": "<think>\nThe central floor area is currently occupied by the mobile table and work stool, which obstructs the requested central clearance. Moving them to the north-east corner will free this space. The north-east corner is far from the bed (x≈1.3,-0.65), the kitchen (x≈1.25,1.65), the wardrobe (x≈0,1.72), and the bath (near x≈-1.1,1.0). This relocation should preserve access to these zones while clearing the central region. The new positions are x=1.7, y=1.7 for the mobile table and x=1.7, y=1.5 for the stool, both well within the room boundaries and away from the south entry door at (0.35,-2).\n</tool_call>\n<tool_call>{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_mobile_table_0\", \"x\": 1.7, \"y\": 1.7, \"yaw\": 0}}</tool_call>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 1,
+        "supplied_attempts": [],
+        "included_attempts": [],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "current_native_state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d"
+      },
+      "call": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_mobile_table_0",
+          "x": 1.7,
+          "y": 1.7,
+          "yaw": 0
+        }
+      },
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved mobile_table to new position and rotation",
+              "object_id": "recon_mobile_table_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "before_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/round_000/checkpoint",
+        "manifest_sha256": "36ff3417f767122e314362487efad610f0f6923c3812292ef00677396d83c9a5",
+        "state_sha256": "b9c7d9a13225f04d8eec2304ced1311a026f63b83e605dba528fe9b65e288a37",
+        "step_idx": 1
+      },
+      "after_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037",
+      "execution": {
+        "attempt": 1,
+        "origin": "model_execution",
+        "calls": [
+          {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "recon_mobile_table_0",
+              "x": 1.7,
+              "y": 1.7,
+              "yaw": 0
+            }
+          }
+        ],
+        "outcome": {
+          "kind": "native_reply",
+          "receipt": {
+            "results": [
+              {
+                "name": "move_furniture_tool",
+                "output": {
+                  "success": true,
+                  "message": "Successfully moved mobile_table to new position and rotation",
+                  "object_id": "recon_mobile_table_0",
+                  "error_type": null,
+                  "current_position": null,
+                  "attempted_position": null,
+                  "current_rotation": null,
+                  "attempted_rotation": null,
+                  "suggested_action": null
+                }
+              }
+            ]
+          }
+        },
+        "before_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+        "after_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037"
+      }
+    },
+    {
+      "turn": 1,
+      "model": {
+        "started_at": "2026-11-07T17:34:17.477357+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "915c3029321704db8ae2cf54b8331116726d96361d9a278e363c8d92aa0be0a7",
+        "plan_sha256": "9fd27c40890bd5ee275d01332bc6e10bbe92198cdfa72d6ea929846f488a6e0e",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 18,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_001.topdown.png",
+              "sha256": "878e55120bad35252597eef6d76c1e7e7b476759fb0778536371d0411bc4a49b",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_001.south.png",
+              "sha256": "98a572bc6cff67adc1832748ceaaf7f084ac6871dc76fd63f50623f7486d3c59",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_001.east.png",
+              "sha256": "5f26e72886b40f205f462b5290315c86671cc908697e5b47834448b30f41ea78",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_001.west.png",
+              "sha256": "455d1cc8e498695052c7896dc6d0298a2e2dbde497f4e11bdb37b74bc9f855b4",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_001.north.png",
+              "sha256": "be52437bf2f0a9d21ce4e5c798dae1b45326d6481ea88209ce4b320bb3695dcf",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9464,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9464
+            ],
+            "attention_mask": [
+              1,
+              9464
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "c09a6316bc4113bef6073bc20df3312d99cd778e78761de9acff62cd2978945b",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter_reload_exact": true,
+        "adapter": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/adapter",
+          "sha256": {
+            "adapter_config.json": "ac6e4729894ee84f3fcdb80b04634fa71521223c25069775d11610fa2527eec1",
+            "adapter_model.safetensors": "706cd0af80ed9c29ad920262152c0e409886a8eec2645f13433a9b76542014d9"
+          }
+        },
+        "load_seconds": 5.2523834789171815,
+        "generation_seconds": 15.968089759000577,
+        "output_tokens": 306,
+        "ended_with_eos": false,
+        "raw_output_sha256": "13f8159224e3cee459c6aec3e9e7258f4dccaeeb51a8c996353d3a8786ba0daa",
+        "peak_allocated_bytes": 19998398976,
+        "peak_reserved_bytes": 20633878528,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-07T17:34:42.156563+00:00",
+        "elapsed_seconds": 24.679225325002335
+      },
+      "raw_output": "<think>\nThe current state shows the room with its fixed desk components (recon_desk_north_support_0, recon_desk_south_support_0, recon_desktop_0) in the north-west area, and the mobile_table_0 and work_stool_0 near the north-east corner. The central floor area is still occupied by the original mobile_table_0, which is not part of the fixed desk setup. To clear the central region as requested, I need to move the mobile table away from the middle. The west side of the room has a free floor patch between the bed and the west wall, which is a suitable location for the mobile table as a small occasional surface. Moving it to approximately x=-1.5, y=0.5, with a slight rotation of about -0.88 degrees, will keep it out of the central circulation path while still leaving the desk components undisturbed. The work stool should remain near the desk area, so I'll keep it at x=-1.68, y=-0.86, which is close to the original position. This should preserve the desk's usability while freeing the central floor.\n</tool_call>\n<tool_call>{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_mobile_table_0\", \"x\": -1.5, \"y\": 0.5, \"yaw\": -0.8808192049857236}}\n</tool_call>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 2,
+        "supplied_attempts": [
+          1
+        ],
+        "included_attempts": [
+          1
+        ],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "cc87f77e4875ab77b6bf53b584ff23fbb1261605208cba08408d45ccb5f1730f",
+        "current_native_state_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037"
+      },
+      "call": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_mobile_table_0",
+          "x": -1.5,
+          "y": 0.5,
+          "yaw": -0.8808192049857236
+        }
+      },
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved mobile_table to new position and rotation",
+              "object_id": "recon_mobile_table_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "before_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037",
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/round_001/checkpoint",
+        "manifest_sha256": "60fbb2f6c4ab753d2cde1618ee04ca09600d624864026c4c4e426768fccd37a9",
+        "state_sha256": "94e2185afefacdd915c4d75f599e18a3908f785e1d31c462e97d5ed93745b86c",
+        "step_idx": 2
+      },
+      "after_sha256": "94a620ffb9bddb0efcd38624a5f8c05635fdef69e16e84e340e2c586fd15711f",
+      "execution": {
+        "attempt": 2,
+        "origin": "model_execution",
+        "calls": [
+          {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "recon_mobile_table_0",
+              "x": -1.5,
+              "y": 0.5,
+              "yaw": -0.8808192049857236
+            }
+          }
+        ],
+        "outcome": {
+          "kind": "native_reply",
+          "receipt": {
+            "results": [
+              {
+                "name": "move_furniture_tool",
+                "output": {
+                  "success": true,
+                  "message": "Successfully moved mobile_table to new position and rotation",
+                  "object_id": "recon_mobile_table_0",
+                  "error_type": null,
+                  "current_position": null,
+                  "attempted_position": null,
+                  "current_rotation": null,
+                  "attempted_rotation": null,
+                  "suggested_action": null
+                }
+              }
+            ]
+          }
+        },
+        "before_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037",
+        "after_sha256": "94a620ffb9bddb0efcd38624a5f8c05635fdef69e16e84e340e2c586fd15711f"
+      }
+    },
+    {
+      "turn": 2,
+      "model": {
+        "started_at": "2026-11-07T17:35:33.402100+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "64a8b4eded645f955d81622dd6726b96d5f91e97df80cd88af6cd04a7c0fe7a8",
+        "plan_sha256": "33e2fdd6f3849efd0d44bd768016b672b7d404a6b7571d46538b0a7e2ae726f3",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 19,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_002.topdown.png",
+              "sha256": "50ef8c905fdb97d844a4d7666c76f1c981a7fa40eb03bf0ca4832dc35e2f5477",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_002.south.png",
+              "sha256": "2446aaa17b80f452f11147f101c845959b49875c316c6a26e0930665ec9e8f54",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_002.east.png",
+              "sha256": "4d69ad5e914badd02816e485958e6cbfb0b673ead89926e8a98fe748c0737a38",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_002.west.png",
+              "sha256": "d0a321a48ad849f48d7d5982fb8bf3a2e1e00334478385cc8ce654dfb8bbe9c3",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_002.north.png",
+              "sha256": "618f015399289026ca7e4b621ed61686b85b1c407b3ac2e61e3733cb3423acaa",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9782,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9782
+            ],
+            "attention_mask": [
+              1,
+              9782
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "a02ae3af822ba630a9bf74dd3c692eac932104fde087aa41394933c958d3243e",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter_reload_exact": true,
+        "adapter": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/adapter",
+          "sha256": {
+            "adapter_config.json": "ac6e4729894ee84f3fcdb80b04634fa71521223c25069775d11610fa2527eec1",
+            "adapter_model.safetensors": "706cd0af80ed9c29ad920262152c0e409886a8eec2645f13433a9b76542014d9"
+          }
+        },
+        "load_seconds": 5.2335451960098,
+        "generation_seconds": 8.827397363027558,
+        "output_tokens": 129,
+        "ended_with_eos": false,
+        "raw_output_sha256": "e86bf034b2b51ce80a6c90c368c6374ee6e4425a6f0e2ba2a61200f23caf7203",
+        "peak_allocated_bytes": 20086014976,
+        "peak_reserved_bytes": 20742930432,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-07T17:35:50.910508+00:00",
+        "elapsed_seconds": 17.508429009933025
+      },
+      "raw_output": "<think>\nThe central floor area is now clear after moving the mobile table out of the way. The stool remains at its original position near the desk, not in the central region. The room now satisfies the request to clear the central floor for activity, while preserving all other objects and maintaining access around the bed, kitchen, wardrobe, and bath. No physics verification is performed, but the layout is free of known obstructions in the central zone.\n</think>\n<tool_call>{\"name\":\"move_furniture_tool\",\"arguments\":{\"object_id\":\"recon_mobile_table_0\",\"x\":1.7,\"y\":1.7,\"yaw\":0}}\n</tool_call>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 3,
+        "supplied_attempts": [
+          1,
+          2
+        ],
+        "included_attempts": [
+          1,
+          2
+        ],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "84ab007ae98cf9c5f7e4bf2c7a0861df87aa6feb47eb85a822ab37b6f2e5d5de",
+        "current_native_state_sha256": "94a620ffb9bddb0efcd38624a5f8c05635fdef69e16e84e340e2c586fd15711f"
+      },
+      "call": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_mobile_table_0",
+          "x": 1.7,
+          "y": 1.7,
+          "yaw": 0
+        }
+      },
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved mobile_table to new position and rotation",
+              "object_id": "recon_mobile_table_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "before_sha256": "94a620ffb9bddb0efcd38624a5f8c05635fdef69e16e84e340e2c586fd15711f",
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/round_002/checkpoint",
+        "manifest_sha256": "c13eb936d858d4a912ee9997f763eb6739d8ba16351d3b9dcc29bfe548625729",
+        "state_sha256": "b9c7d9a13225f04d8eec2304ced1311a026f63b83e605dba528fe9b65e288a37",
+        "step_idx": 3
+      },
+      "after_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037",
+      "execution": {
+        "attempt": 3,
+        "origin": "model_execution",
+        "calls": [
+          {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "recon_mobile_table_0",
+              "x": 1.7,
+              "y": 1.7,
+              "yaw": 0
+            }
+          }
+        ],
+        "outcome": {
+          "kind": "native_reply",
+          "receipt": {
+            "results": [
+              {
+                "name": "move_furniture_tool",
+                "output": {
+                  "success": true,
+                  "message": "Successfully moved mobile_table to new position and rotation",
+                  "object_id": "recon_mobile_table_0",
+                  "error_type": null,
+                  "current_position": null,
+                  "attempted_position": null,
+                  "current_rotation": null,
+                  "attempted_rotation": null,
+                  "suggested_action": null
+                }
+              }
+            ]
+          }
+        },
+        "before_sha256": "94a620ffb9bddb0efcd38624a5f8c05635fdef69e16e84e340e2c586fd15711f",
+        "after_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037"
+      }
+    },
+    {
+      "turn": 3,
+      "model": {
+        "started_at": "2026-11-07T17:36:40.208690+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "1578ceaefb41226702754d42df23a59c578a677426481ffd9397125c6d81336d",
+        "plan_sha256": "84a4d4ff261e9e877ca7d407f595a3998781694dff7ea1cbd1bd24f72b48f739",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 20,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_003.topdown.png",
+              "sha256": "878e55120bad35252597eef6d76c1e7e7b476759fb0778536371d0411bc4a49b",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_003.south.png",
+              "sha256": "fc8583dd7c105c12858a1576267bf8479ea2198064c88f7b68829ee8f9bc7bc3",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_003.east.png",
+              "sha256": "f8eb78829b92d87997273d6dca69d848441ec0303a8f74b47b79dc0b011ac7e9",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_003.west.png",
+              "sha256": "01b86cfc33e0aca7d7f4c62832bfe763803ade29fe3588387caf7e4e29ad4fc0",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_003.north.png",
+              "sha256": "97f6629af0f3ecceb697db9756331eca4e02477ff18f4e75be74cafd4c92a5d5",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9744,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9744
+            ],
+            "attention_mask": [
+              1,
+              9744
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "caed670786c1fa5c536dcf09b6af2c458d0d69c3acb5333a2a58f528f17fe51d",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter_reload_exact": true,
+        "adapter": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/adapter",
+          "sha256": {
+            "adapter_config.json": "ac6e4729894ee84f3fcdb80b04634fa71521223c25069775d11610fa2527eec1",
+            "adapter_model.safetensors": "706cd0af80ed9c29ad920262152c0e409886a8eec2645f13433a9b76542014d9"
+          }
+        },
+        "load_seconds": 5.455686756060459,
+        "generation_seconds": 6.15968069806695,
+        "output_tokens": 64,
+        "ended_with_eos": false,
+        "raw_output_sha256": "fccda4437e62c483453051e26715c5f84825742dd4dcb8a25af5c87dcee9b17a",
+        "peak_allocated_bytes": 20069588992,
+        "peak_reserved_bytes": 20742930432,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-07T17:36:55.319825+00:00",
+        "elapsed_seconds": 15.111153885023668
+      },
+      "raw_output": "<tool_call>{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_mobile_table_0\", \"x\": 1.4, \"y\": 0.2, \"yaw\": 0.25820664913262653}}\n</tool_call>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 4,
+        "supplied_attempts": [
+          1,
+          2,
+          3
+        ],
+        "included_attempts": [
+          2,
+          3
+        ],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "67377e2dcdf40c449d8572bebf96c11ea9bdacc72467a86daeafb0e85972ed25",
+        "current_native_state_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037"
+      },
+      "call": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_mobile_table_0",
+          "x": 1.4,
+          "y": 0.2,
+          "yaw": 0.25820664913262653
+        }
+      },
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved mobile_table to new position and rotation",
+              "object_id": "recon_mobile_table_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "before_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037",
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/round_003/checkpoint",
+        "manifest_sha256": "9b7daba80652d3d0f8faa759b3a6afd39c24a56676476522f74d6869892d7872",
+        "state_sha256": "aaec0ba41c2abfa4d46793f8b70421fb305dd0812a8fe5a8cfd7e03ad7588a79",
+        "step_idx": 4
+      },
+      "after_sha256": "24b591fefa5b5776080594cc406a5f950f9d264ab2325159ad41fcab14200655",
+      "execution": {
+        "attempt": 4,
+        "origin": "model_execution",
+        "calls": [
+          {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "recon_mobile_table_0",
+              "x": 1.4,
+              "y": 0.2,
+              "yaw": 0.25820664913262653
+            }
+          }
+        ],
+        "outcome": {
+          "kind": "native_reply",
+          "receipt": {
+            "results": [
+              {
+                "name": "move_furniture_tool",
+                "output": {
+                  "success": true,
+                  "message": "Successfully moved mobile_table to new position and rotation",
+                  "object_id": "recon_mobile_table_0",
+                  "error_type": null,
+                  "current_position": null,
+                  "attempted_position": null,
+                  "current_rotation": null,
+                  "attempted_rotation": null,
+                  "suggested_action": null
+                }
+              }
+            ]
+          }
+        },
+        "before_sha256": "52000d9cb45922a62a6c8593c91d717bdd81c82c886b54c87f1c086b9e209037",
+        "after_sha256": "24b591fefa5b5776080594cc406a5f950f9d264ab2325159ad41fcab14200655"
+      }
+    },
+    {
+      "turn": 4,
+      "model": {
+        "started_at": "2026-11-07T17:37:46.701716+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "740be5991872fe8778fba97a3c335b6e692f2279c6a11fbd1ad10fa7b95bbe33",
+        "plan_sha256": "64f3938ce4424ae3e904fbf44eb054e71287cefcce4d2c9aacf945c0add1beab",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 21,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_004.topdown.png",
+              "sha256": "cffb3b023e07d8b8f6fa55673c4d8282445b7f77d9ca36eb358549089f46fb8f",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_004.south.png",
+              "sha256": "54d5709495d2e6bff1ab48f2a283a11ea6b0fc8176711d09fc58efca598b8a48",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_004.east.png",
+              "sha256": "d3c219cb0761d94e51be672dd241882126e044554dfa797a0de9033369e7b99f",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_004.west.png",
+              "sha256": "560953917239fb138b9673e8171ecb584aa7d95845b584c427fa21eb493df4c8",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_004.north.png",
+              "sha256": "d4243ffc7c5a8ce055beca697b61ba23cf85d57f8d8e225f52e99a3c40ac2eeb",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9774,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9774
+            ],
+            "attention_mask": [
+              1,
+              9774
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "926c34c843683e48cab03b5d453beae7d0f601070800de1cc02c48176c370465",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter_reload_exact": true,
+        "adapter": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/adapter",
+          "sha256": {
+            "adapter_config.json": "ac6e4729894ee84f3fcdb80b04634fa71521223c25069775d11610fa2527eec1",
+            "adapter_model.safetensors": "706cd0af80ed9c29ad920262152c0e409886a8eec2645f13433a9b76542014d9"
+          }
+        },
+        "load_seconds": 4.951056057005189,
+        "generation_seconds": 20.096680089947768,
+        "output_tokens": 412,
+        "ended_with_eos": false,
+        "raw_output_sha256": "1e559409cd5640dfe195ecac1c61bb93928f794231c265c80b037b335deed093",
+        "peak_allocated_bytes": 20085785600,
+        "peak_reserved_bytes": 20742930432,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-07T17:38:15.227407+00:00",
+        "elapsed_seconds": 28.525710736983456
+      },
+      "raw_output": "<think>\nThe room is in a desk-focused state: the desktop remains in the west-central area around x=-1.65, y=-0.03, with the desk north and south supports flanking it, and the work stool is near the west side at about x=-1.67, y=-0.84. The previous moves of the mobile table were to far eastern/northern positions (1.7, 1.7; then 1.4, 0.2), but the user request does not require the central floor to be clear; it specifically asks to clear the central floor area when not using the desk, while preserving the desk’s usability. Since the work stool is still not in the required seat region and the mobile table has been relocated out of the way, the next sensible action is to re-establish the desk setup for seated work without disturbing the newly cleared central zone. I want the stool back in the west-side seat region, roughly aligned with the desktop, at x=-1.65, y=-0.15, close to the previous successful position but slightly adjusted to better center it with the desk. I also want the mobile table to remain out of the central circulation area, so I will place it in the north-east quadrant at x=1.55, y=1.35, away from the bed and the central floor. This keeps the requested central area open, preserves access around the bed, kitchen, wardrobe, and bath, and restores the desk/stool relationship for seated work. I will therefore call move_furniture_tool for the work stool to (-1.65, -0.15, yaw 0) and the mobile table to (1.55, 1.35, yaw 0).\n</tool_call>\n<tool_call>{\"name\":\"move_furniture_tool\",\"arguments\":{\"object_id\":\"recon_work_stool_0\",\"x\":1.55,\"y\":1.35,\"yaw\":0}}\n</tool_call>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 5,
+        "supplied_attempts": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "included_attempts": [
+          3,
+          4
+        ],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "c76f8b469705390d571bd1b40d41a2bb4abacf00bec52abc12829030a7e16f49",
+        "current_native_state_sha256": "24b591fefa5b5776080594cc406a5f950f9d264ab2325159ad41fcab14200655"
+      },
+      "call": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_work_stool_0",
+          "x": 1.55,
+          "y": 1.35,
+          "yaw": 0
+        }
+      },
+      "reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": true,
+              "message": "Successfully moved work_stool to new position and rotation",
+              "object_id": "recon_work_stool_0",
+              "error_type": null,
+              "current_position": null,
+              "attempted_position": null,
+              "current_rotation": null,
+              "attempted_rotation": null,
+              "suggested_action": null
+            }
+          }
+        ]
+      },
+      "before_sha256": "24b591fefa5b5776080594cc406a5f950f9d264ab2325159ad41fcab14200655",
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/round_004/checkpoint",
+        "manifest_sha256": "67f504f74741280a39866bddfe2c77e7c26860ec4129e51d8738a5c511a65108",
+        "state_sha256": "7a739b3156f160dfd8681690a67cb858ed1e663f015471fb5e2dbe92dc0d4872",
+        "step_idx": 5
+      },
+      "after_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa",
+      "execution": {
+        "attempt": 5,
+        "origin": "model_execution",
+        "calls": [
+          {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "recon_work_stool_0",
+              "x": 1.55,
+              "y": 1.35,
+              "yaw": 0
+            }
+          }
+        ],
+        "outcome": {
+          "kind": "native_reply",
+          "receipt": {
+            "results": [
+              {
+                "name": "move_furniture_tool",
+                "output": {
+                  "success": true,
+                  "message": "Successfully moved work_stool to new position and rotation",
+                  "object_id": "recon_work_stool_0",
+                  "error_type": null,
+                  "current_position": null,
+                  "attempted_position": null,
+                  "current_rotation": null,
+                  "attempted_rotation": null,
+                  "suggested_action": null
+                }
+              }
+            ]
+          }
+        },
+        "before_sha256": "24b591fefa5b5776080594cc406a5f950f9d264ab2325159ad41fcab14200655",
+        "after_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa"
+      }
+    },
+    {
+      "turn": 5,
+      "model": {
+        "started_at": "2026-11-07T17:39:07.369202+00:00",
+        "mode": "generate",
+        "status": "completed",
+        "request_sha256": "af99ffa6d5d5c14c3ba46e4655920b1c700039d372f5d980b0519e78b1de4148",
+        "plan_sha256": "175c88d76f42fe226e29e0a3c2bf27c50a4c364e0e61fac78592c4c3c9d1faaa",
+        "model_calls": 1,
+        "training_updates": 0,
+        "paid_api_calls": 0,
+        "dtype": "bfloat16",
+        "attention": "sdpa",
+        "seed": 22,
+        "batch_size": 1,
+        "encoding": {
+          "images": [
+            {
+              "index": 0,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_005.topdown.png",
+              "sha256": "625526643b7b6b5e6259c0be80f947e646a46a8e5e5d11992cd3ef3e545ba5fa",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "index": 1,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_005.south.png",
+              "sha256": "72b4bff983fa14ed7ec20f7a507d4d8a2a3c6154d606ff71437cbefb627d9ced",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 2,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_005.east.png",
+              "sha256": "87a4b928ccf1f34f4c9692582c6c6a52aac93eca2324edd6bfb26734f2fdfa0f",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 3,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_005.west.png",
+              "sha256": "2197fcffdb2cda2c1de82f45ea7dc1ce63fda32ddf945d94845623ccd7b2bda6",
+              "size": [
+                1024,
+                768
+              ]
+            },
+            {
+              "index": 4,
+              "origin": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/house/room_nesting_table_transfer/rollout_furniture/step_005.north.png",
+              "sha256": "3db9fb4def43505275f3a938e7c3c07fb9a54380570ed487e371035e3bf21a73",
+              "size": [
+                1024,
+                768
+              ]
+            }
+          ],
+          "input_tokens": 9915,
+          "input_shapes": {
+            "input_ids": [
+              1,
+              9915
+            ],
+            "attention_mask": [
+              1,
+              9915
+            ],
+            "pixel_values": [
+              1120,
+              1536
+            ],
+            "image_grid_thw": [
+              5,
+              3
+            ]
+          },
+          "chat_template_sha256": "1adeec72851db7b13d9260bd5ac5aa24cff7492c8cd8d864dd75ed123719c0f9",
+          "max_pixels": 65536,
+          "max_input_tokens": 15360
+        },
+        "adapter_reload_exact": true,
+        "adapter": {
+          "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/adapter",
+          "sha256": {
+            "adapter_config.json": "ac6e4729894ee84f3fcdb80b04634fa71521223c25069775d11610fa2527eec1",
+            "adapter_model.safetensors": "706cd0af80ed9c29ad920262152c0e409886a8eec2645f13433a9b76542014d9"
+          }
+        },
+        "load_seconds": 5.297759998939,
+        "generation_seconds": 10.705859784968197,
+        "output_tokens": 134,
+        "ended_with_eos": false,
+        "raw_output_sha256": "69a4bd780873f6dd9143736d0a7cdc9fff35302d0391cb86c9dfd5deaaab6a93",
+        "peak_allocated_bytes": 20113453056,
+        "peak_reserved_bytes": 20789067776,
+        "ended_at_complete_single_action": true,
+        "ended_at": "2026-11-07T17:39:26.890191+00:00",
+        "elapsed_seconds": 19.521008610958233
+      },
+      "raw_output": "<think>\nThe central floor area is now clear after moving the mobile table and stool away from the previous collision and desk zones. The current layout places the table at (1.4, 0.2) and the stool at (1.55, 1.35), which should avoid the central region. However, the stool is not in the requested seat region, and the earlier 0.6m bath-access failure remains unaddressed. No new collisions were introduced in this step, but the overall room configuration has not been verified for all access and clearance requirements.\n</think>\n<tool_call>{\"name\":\"get_current_scene_state\",\"arguments\":{}}\n</tool_call>",
+      "input_history": {
+        "contract": "executed-edit-v1",
+        "next_attempt": 6,
+        "supplied_attempts": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "included_attempts": [
+          4,
+          5
+        ],
+        "complete_from_first_attempt": true,
+        "individual_exchanges_truncated": false,
+        "history_sha256": "9886182c688bc2d96552d269573969d128ebc2d439e8648f4343c0321f0c9098",
+        "current_native_state_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa"
+      },
+      "call": {
+        "name": "get_current_scene_state",
+        "arguments": {}
+      },
+      "reply": {
+        "results": [
+          {
+            "name": "get_current_scene_state",
+            "output": {
+              "success": true,
+              "furniture_count": 21,
+              "objects": [
+                {
+                  "object_id": "recon_north_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 0.0,
+                  "position_y": 2.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 4.0,
+                    "depth": 0.02,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "recon_south_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 0.0,
+                  "position_y": -2.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 4.0,
+                    "depth": 0.02,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "recon_west_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": -2.0,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 4.0,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "recon_east_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": 2.0,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 4.0,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "recon_bath_south_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": -1.25,
+                  "position_y": 0.7,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.5,
+                    "depth": 0.02,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "recon_bath_east_wall",
+                  "description": "Generated-reference structural proxy",
+                  "position_x": -0.5,
+                  "position_y": 1.35,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 1.3,
+                    "height": 2.6
+                  }
+                },
+                {
+                  "object_id": "recon_entry_door",
+                  "description": "Generated proxy opening; hinge and operability unknown",
+                  "position_x": 0.35,
+                  "position_y": -2.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.9,
+                    "depth": 0.02,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "recon_bath_door",
+                  "description": "Generated proxy opening; hinge and operability unknown",
+                  "position_x": -0.5,
+                  "position_y": 1.05,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.02,
+                    "depth": 0.6,
+                    "height": 2.1
+                  }
+                },
+                {
+                  "object_id": "recon_south_window",
+                  "description": "Generated proxy opening; hinge and operability unknown",
+                  "position_x": -1.15,
+                  "position_y": -2.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.2,
+                    "depth": 0.02,
+                    "height": 0.9
+                  }
+                },
+                {
+                  "object_id": "recon_desktop_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": -1.64,
+                  "position_y": 0.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.62,
+                    "depth": 1.2,
+                    "height": 0.04
+                  }
+                },
+                {
+                  "object_id": "recon_desk_north_support_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": -1.64,
+                  "position_y": 0.575,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.62,
+                    "depth": 0.05,
+                    "height": 0.72
+                  }
+                },
+                {
+                  "object_id": "recon_desk_south_support_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": -1.64,
+                  "position_y": -0.575,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.62,
+                    "depth": 0.05,
+                    "height": 0.72
+                  }
+                },
+                {
+                  "object_id": "recon_mobile_table_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 1.4015039193043906,
+                  "position_y": 0.20170254681108268,
+                  "rotation_degrees": 0.403901044653545,
+                  "dimensions": {
+                    "width": 0.54,
+                    "depth": 0.4,
+                    "height": 0.4
+                  }
+                },
+                {
+                  "object_id": "recon_work_stool_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 1.5515820789142092,
+                  "position_y": 1.3512913986239832,
+                  "rotation_degrees": 0.04918863244908384,
+                  "dimensions": {
+                    "width": 0.4,
+                    "depth": 0.4,
+                    "height": 0.44
+                  }
+                },
+                {
+                  "object_id": "recon_sofa_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": -0.95,
+                  "position_y": -1.6,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.6,
+                    "depth": 0.7,
+                    "height": 0.7
+                  }
+                },
+                {
+                  "object_id": "recon_bed_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 1.3,
+                  "position_y": -0.65,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.2,
+                    "depth": 2.0,
+                    "height": 0.48
+                  }
+                },
+                {
+                  "object_id": "recon_kitchen_counter_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 1.25,
+                  "position_y": 1.65,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 1.3,
+                    "depth": 0.6,
+                    "height": 0.9
+                  }
+                },
+                {
+                  "object_id": "recon_wardrobe_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": 0.0,
+                  "position_y": 1.72,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.55,
+                    "depth": 0.46,
+                    "height": 2.0
+                  }
+                },
+                {
+                  "object_id": "recon_bath_shower_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": -1.55,
+                  "position_y": 1.6300000000000001,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.7,
+                    "depth": 0.7,
+                    "height": 0.1
+                  }
+                },
+                {
+                  "object_id": "recon_bath_toilet_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": -1.1,
+                  "position_y": 1.0,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4,
+                    "depth": 0.5,
+                    "height": 0.43
+                  }
+                },
+                {
+                  "object_id": "recon_bath_vanity_0",
+                  "description": "Labelled reconstruction: procedural_proxy",
+                  "position_x": -0.78,
+                  "position_y": 1.7,
+                  "rotation_degrees": 0.0,
+                  "dimensions": {
+                    "width": 0.4,
+                    "depth": 0.4,
+                    "height": 0.8
+                  }
+                }
+              ],
+              "message": null
+            }
+          }
+        ]
+      },
+      "before_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa",
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/round_005/checkpoint",
+        "manifest_sha256": "4fd85b75b12da258f0e7d606f8998efd576522acc753f75355f47b4d5715d333",
+        "state_sha256": "7a739b3156f160dfd8681690a67cb858ed1e663f015471fb5e2dbe92dc0d4872",
+        "step_idx": 6
+      },
+      "after_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa",
+      "execution": {
+        "attempt": 6,
+        "origin": "model_execution",
+        "calls": [
+          {
+            "name": "get_current_scene_state",
+            "arguments": {}
+          }
+        ],
+        "outcome": {
+          "kind": "native_reply",
+          "receipt": {
+            "results": [
+              {
+                "name": "get_current_scene_state",
+                "output": {
+                  "success": true,
+                  "furniture_count": 21,
+                  "objects": [
+                    {
+                      "object_id": "recon_north_wall",
+                      "description": "Generated-reference structural proxy",
+                      "position_x": 0.0,
+                      "position_y": 2.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 4.0,
+                        "depth": 0.02,
+                        "height": 2.6
+                      }
+                    },
+                    {
+                      "object_id": "recon_south_wall",
+                      "description": "Generated-reference structural proxy",
+                      "position_x": 0.0,
+                      "position_y": -2.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 4.0,
+                        "depth": 0.02,
+                        "height": 2.6
+                      }
+                    },
+                    {
+                      "object_id": "recon_west_wall",
+                      "description": "Generated-reference structural proxy",
+                      "position_x": -2.0,
+                      "position_y": 0.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.02,
+                        "depth": 4.0,
+                        "height": 2.6
+                      }
+                    },
+                    {
+                      "object_id": "recon_east_wall",
+                      "description": "Generated-reference structural proxy",
+                      "position_x": 2.0,
+                      "position_y": 0.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.02,
+                        "depth": 4.0,
+                        "height": 2.6
+                      }
+                    },
+                    {
+                      "object_id": "recon_bath_south_wall",
+                      "description": "Generated-reference structural proxy",
+                      "position_x": -1.25,
+                      "position_y": 0.7,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 1.5,
+                        "depth": 0.02,
+                        "height": 2.6
+                      }
+                    },
+                    {
+                      "object_id": "recon_bath_east_wall",
+                      "description": "Generated-reference structural proxy",
+                      "position_x": -0.5,
+                      "position_y": 1.35,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.02,
+                        "depth": 1.3,
+                        "height": 2.6
+                      }
+                    },
+                    {
+                      "object_id": "recon_entry_door",
+                      "description": "Generated proxy opening; hinge and operability unknown",
+                      "position_x": 0.35,
+                      "position_y": -2.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.9,
+                        "depth": 0.02,
+                        "height": 2.1
+                      }
+                    },
+                    {
+                      "object_id": "recon_bath_door",
+                      "description": "Generated proxy opening; hinge and operability unknown",
+                      "position_x": -0.5,
+                      "position_y": 1.05,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.02,
+                        "depth": 0.6,
+                        "height": 2.1
+                      }
+                    },
+                    {
+                      "object_id": "recon_south_window",
+                      "description": "Generated proxy opening; hinge and operability unknown",
+                      "position_x": -1.15,
+                      "position_y": -2.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 1.2,
+                        "depth": 0.02,
+                        "height": 0.9
+                      }
+                    },
+                    {
+                      "object_id": "recon_desktop_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": -1.64,
+                      "position_y": 0.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.62,
+                        "depth": 1.2,
+                        "height": 0.04
+                      }
+                    },
+                    {
+                      "object_id": "recon_desk_north_support_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": -1.64,
+                      "position_y": 0.575,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.62,
+                        "depth": 0.05,
+                        "height": 0.72
+                      }
+                    },
+                    {
+                      "object_id": "recon_desk_south_support_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": -1.64,
+                      "position_y": -0.575,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.62,
+                        "depth": 0.05,
+                        "height": 0.72
+                      }
+                    },
+                    {
+                      "object_id": "recon_mobile_table_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": 1.4015039193043906,
+                      "position_y": 0.20170254681108268,
+                      "rotation_degrees": 0.403901044653545,
+                      "dimensions": {
+                        "width": 0.54,
+                        "depth": 0.4,
+                        "height": 0.4
+                      }
+                    },
+                    {
+                      "object_id": "recon_work_stool_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": 1.5515820789142092,
+                      "position_y": 1.3512913986239832,
+                      "rotation_degrees": 0.04918863244908384,
+                      "dimensions": {
+                        "width": 0.4,
+                        "depth": 0.4,
+                        "height": 0.44
+                      }
+                    },
+                    {
+                      "object_id": "recon_sofa_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": -0.95,
+                      "position_y": -1.6,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 1.6,
+                        "depth": 0.7,
+                        "height": 0.7
+                      }
+                    },
+                    {
+                      "object_id": "recon_bed_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": 1.3,
+                      "position_y": -0.65,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 1.2,
+                        "depth": 2.0,
+                        "height": 0.48
+                      }
+                    },
+                    {
+                      "object_id": "recon_kitchen_counter_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": 1.25,
+                      "position_y": 1.65,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 1.3,
+                        "depth": 0.6,
+                        "height": 0.9
+                      }
+                    },
+                    {
+                      "object_id": "recon_wardrobe_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": 0.0,
+                      "position_y": 1.72,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.55,
+                        "depth": 0.46,
+                        "height": 2.0
+                      }
+                    },
+                    {
+                      "object_id": "recon_bath_shower_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": -1.55,
+                      "position_y": 1.6300000000000001,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.7,
+                        "depth": 0.7,
+                        "height": 0.1
+                      }
+                    },
+                    {
+                      "object_id": "recon_bath_toilet_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": -1.1,
+                      "position_y": 1.0,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.4,
+                        "depth": 0.5,
+                        "height": 0.43
+                      }
+                    },
+                    {
+                      "object_id": "recon_bath_vanity_0",
+                      "description": "Labelled reconstruction: procedural_proxy",
+                      "position_x": -0.78,
+                      "position_y": 1.7,
+                      "rotation_degrees": 0.0,
+                      "dimensions": {
+                        "width": 0.4,
+                        "depth": 0.4,
+                        "height": 0.8
+                      }
+                    }
+                  ],
+                  "message": null
+                }
+              }
+            ]
+          }
+        },
+        "before_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa",
+        "after_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa"
+      }
+    }
+  ],
+  "model_calls": 6,
+  "tool_attempts": 6,
+  "native_calls": 6,
+  "gpu_subprocess_seconds": 138.30560883809812,
+  "generated_tokens": 1265,
+  "training_updates": 0,
+  "plan_sha256": "2369385f8990a0e745d45b0691bbe7958197ad72a87adfebcfe0c9924520fc8b",
+  "cell_id": "desk_work_17_action_only",
+  "input_contract": {
+    "name": "executed-edit-v1",
+    "max_recent_attempts": 2,
+    "max_history_chars": 12000
+  },
+  "restoration_differences": [],
+  "initial_review": {
+    "requested_mode": "desk_work",
+    "checks": [
+      {
+        "requirement": "all_original_instances_and_assets",
+        "pass": true,
+        "object_ids": [
+          "recon_bath_door",
+          "recon_bath_east_wall",
+          "recon_bath_shower_0",
+          "recon_bath_south_wall",
+          "recon_bath_toilet_0",
+          "recon_bath_vanity_0",
+          "recon_bed_0",
+          "recon_desk_north_support_0",
+          "recon_desk_south_support_0",
+          "recon_desktop_0",
+          "recon_east_wall",
+          "recon_entry_door",
+          "recon_kitchen_counter_0",
+          "recon_mobile_table_0",
+          "recon_north_wall",
+          "recon_sofa_0",
+          "recon_south_wall",
+          "recon_south_window",
+          "recon_wardrobe_0",
+          "recon_west_wall",
+          "recon_work_stool_0"
+        ],
+        "evidence": "native nonpose fields"
+      },
+      {
+        "requirement": "fixed_objects_unchanged",
+        "pass": true,
+        "object_ids": [
+          "recon_bath_door",
+          "recon_bath_east_wall",
+          "recon_bath_shower_0",
+          "recon_bath_south_wall",
+          "recon_bath_toilet_0",
+          "recon_bath_vanity_0",
+          "recon_bed_0",
+          "recon_desk_north_support_0",
+          "recon_desk_south_support_0",
+          "recon_desktop_0",
+          "recon_east_wall",
+          "recon_entry_door",
+          "recon_kitchen_counter_0",
+          "recon_north_wall",
+          "recon_sofa_0",
+          "recon_south_wall",
+          "recon_south_window",
+          "recon_wardrobe_0",
+          "recon_west_wall"
+        ],
+        "evidence": "native records"
+      },
+      {
+        "requirement": "room_geometry_unchanged",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "room records"
+      },
+      {
+        "requirement": "no_recorded_envelope_overlap_or_boundary_violation",
+        "pass": true,
+        "object_ids": [
+          "recon_bath_door",
+          "recon_bath_east_wall",
+          "recon_bath_shower_0",
+          "recon_bath_south_wall",
+          "recon_bath_toilet_0",
+          "recon_bath_vanity_0",
+          "recon_bed_0",
+          "recon_desk_north_support_0",
+          "recon_desk_south_support_0",
+          "recon_desktop_0",
+          "recon_east_wall",
+          "recon_entry_door",
+          "recon_kitchen_counter_0",
+          "recon_mobile_table_0",
+          "recon_north_wall",
+          "recon_sofa_0",
+          "recon_south_wall",
+          "recon_south_window",
+          "recon_wardrobe_0",
+          "recon_west_wall",
+          "recon_work_stool_0"
+        ],
+        "evidence": "current AABB geometry"
+      },
+      {
+        "requirement": "access_bed_side_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_kitchen_front_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_wardrobe_front_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bath_entry_width_0.4",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bed_side_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_kitchen_front_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_wardrobe_front_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bath_entry_width_0.5",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bed_side_width_0.6",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_kitchen_front_width_0.6",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_wardrobe_front_width_0.6",
+        "pass": true,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "access_bath_entry_width_0.6",
+        "pass": false,
+        "object_ids": [],
+        "evidence": "absolute current proxy access; pre-existing failures retained"
+      },
+      {
+        "requirement": "desk_work_patch_supported_and_unoccupied",
+        "pass": true,
+        "object_ids": [
+          "recon_desktop_0",
+          "recon_work_stool_0"
+        ],
+        "evidence": "current declared activity geometry"
+      },
+      {
+        "requirement": "desk_knee_volume_clear",
+        "pass": true,
+        "object_ids": [
+          "recon_desktop_0",
+          "recon_work_stool_0"
+        ],
+        "evidence": "current declared activity geometry"
+      },
+      {
+        "requirement": "work_stool_in_declared_region",
+        "pass": false,
+        "object_ids": [
+          "recon_desktop_0",
+          "recon_work_stool_0"
+        ],
+        "evidence": "current declared activity geometry"
+      }
+    ],
+    "measured_requirements_status": "fail",
+    "requested_activity_status": "fail",
+    "whole_room_success": "unknown",
+    "professional_preference": "not_assessed"
+  },
+  "stop_reason": "call_budget_exhausted",
+  "latest_input_history": {
+    "contract": "executed-edit-v1",
+    "next_attempt": 6,
+    "supplied_attempts": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "included_attempts": [
+      4,
+      5
+    ],
+    "complete_from_first_attempt": true,
+    "individual_exchanges_truncated": false,
+    "history_sha256": "9886182c688bc2d96552d269573969d128ebc2d439e8648f4343c0321f0c9098",
+    "current_native_state_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa"
+  },
+  "checkpoint": {
+    "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALFIX-v1_20261107T130916Z/evaluation/desk_work_17_action_only/rollout/final_checkpoint",
+    "manifest_sha256": "4fd85b75b12da258f0e7d606f8998efd576522acc753f75355f47b4d5715d333",
+    "state_sha256": "7a739b3156f160dfd8681690a67cb858ed1e663f015471fb5e2dbe92dc0d4872",
+    "step_idx": 6
+  },
+  "final_audit": {
+    "review": {
+      "requested_mode": "desk_work",
+      "checks": [
+        {
+          "requirement": "all_original_instances_and_assets",
+          "pass": true,
+          "object_ids": [
+            "recon_bath_door",
+            "recon_bath_east_wall",
+            "recon_bath_shower_0",
+            "recon_bath_south_wall",
+            "recon_bath_toilet_0",
+            "recon_bath_vanity_0",
+            "recon_bed_0",
+            "recon_desk_north_support_0",
+            "recon_desk_south_support_0",
+            "recon_desktop_0",
+            "recon_east_wall",
+            "recon_entry_door",
+            "recon_kitchen_counter_0",
+            "recon_mobile_table_0",
+            "recon_north_wall",
+            "recon_sofa_0",
+            "recon_south_wall",
+            "recon_south_window",
+            "recon_wardrobe_0",
+            "recon_west_wall",
+            "recon_work_stool_0"
+          ],
+          "evidence": "native nonpose fields"
+        },
+        {
+          "requirement": "fixed_objects_unchanged",
+          "pass": true,
+          "object_ids": [
+            "recon_bath_door",
+            "recon_bath_east_wall",
+            "recon_bath_shower_0",
+            "recon_bath_south_wall",
+            "recon_bath_toilet_0",
+            "recon_bath_vanity_0",
+            "recon_bed_0",
+            "recon_desk_north_support_0",
+            "recon_desk_south_support_0",
+            "recon_desktop_0",
+            "recon_east_wall",
+            "recon_entry_door",
+            "recon_kitchen_counter_0",
+            "recon_north_wall",
+            "recon_sofa_0",
+            "recon_south_wall",
+            "recon_south_window",
+            "recon_wardrobe_0",
+            "recon_west_wall"
+          ],
+          "evidence": "native records"
+        },
+        {
+          "requirement": "room_geometry_unchanged",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "room records"
+        },
+        {
+          "requirement": "no_recorded_envelope_overlap_or_boundary_violation",
+          "pass": false,
+          "object_ids": [
+            "recon_bath_door",
+            "recon_bath_east_wall",
+            "recon_bath_shower_0",
+            "recon_bath_south_wall",
+            "recon_bath_toilet_0",
+            "recon_bath_vanity_0",
+            "recon_bed_0",
+            "recon_desk_north_support_0",
+            "recon_desk_south_support_0",
+            "recon_desktop_0",
+            "recon_east_wall",
+            "recon_entry_door",
+            "recon_kitchen_counter_0",
+            "recon_mobile_table_0",
+            "recon_north_wall",
+            "recon_sofa_0",
+            "recon_south_wall",
+            "recon_south_window",
+            "recon_wardrobe_0",
+            "recon_west_wall",
+            "recon_work_stool_0"
+          ],
+          "evidence": "current AABB geometry"
+        },
+        {
+          "requirement": "access_bed_side_width_0.4",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_kitchen_front_width_0.4",
+          "pass": false,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_wardrobe_front_width_0.4",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_bath_entry_width_0.4",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_bed_side_width_0.5",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_kitchen_front_width_0.5",
+          "pass": false,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_wardrobe_front_width_0.5",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_bath_entry_width_0.5",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_bed_side_width_0.6",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_kitchen_front_width_0.6",
+          "pass": false,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_wardrobe_front_width_0.6",
+          "pass": true,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "access_bath_entry_width_0.6",
+          "pass": false,
+          "object_ids": [],
+          "evidence": "absolute current proxy access; pre-existing failures retained"
+        },
+        {
+          "requirement": "desk_work_patch_supported_and_unoccupied",
+          "pass": true,
+          "object_ids": [
+            "recon_desktop_0",
+            "recon_work_stool_0"
+          ],
+          "evidence": "current declared activity geometry"
+        },
+        {
+          "requirement": "desk_knee_volume_clear",
+          "pass": true,
+          "object_ids": [
+            "recon_desktop_0",
+            "recon_work_stool_0"
+          ],
+          "evidence": "current declared activity geometry"
+        },
+        {
+          "requirement": "work_stool_in_declared_region",
+          "pass": false,
+          "object_ids": [
+            "recon_desktop_0",
+            "recon_work_stool_0"
+          ],
+          "evidence": "current declared activity geometry"
+        }
+      ],
+      "measured_requirements_status": "fail",
+      "requested_activity_status": "fail",
+      "whole_room_success": "unknown",
+      "professional_preference": "not_assessed"
+    },
+    "measurements": {
+      "geometry": {
+        "outside_declared_wall_inner_faces": [],
+        "positive_3d_AABB_pairs": [
+          {
+            "a": "recon_mobile_table_0",
+            "b": "recon_bed_0",
+            "overlap_extents_m": [
+              0.5428063205313323,
+              0.3501958068690332,
+              0.4
+            ]
+          },
+          {
+            "a": "recon_work_stool_0",
+            "b": "recon_kitchen_counter_0",
+            "overlap_extents_m": [
+              0.40034325398845905,
+              0.20146302561821283,
+              0.44
+            ]
+          }
+        ],
+        "scope": "Conservative box geometry, not physical stability or use."
+      },
+      "access": {
+        "settings": {
+          "grid_m": 0.02,
+          "assumed_body_height_m": 1.8,
+          "square_body_widths_m": [
+            0.4,
+            0.5,
+            0.6
+          ],
+          "entry_center_xy_m": [
+            0.35,
+            -2
+          ],
+          "entry_inward_normal_xy": [
+            0,
+            1
+          ],
+          "approach_points_xy_m": {
+            "bed_side": [
+              0.35,
+              -0.5
+            ],
+            "kitchen_front": [
+              1.25,
+              1.0
+            ],
+            "wardrobe_front": [
+              0,
+              1.15
+            ],
+            "bath_entry": [
+              -0.25,
+              1.05
+            ]
+          }
+        },
+        "obstacle_count": 26,
+        "scenarios": [
+          {
+            "square_body_width_m": 0.4,
+            "entry_grid_point_m": [
+              0.3500000000000001,
+              -1.77
+            ],
+            "entry_cell_clear": true,
+            "reachable_floor_center_area_m2": 4.1356,
+            "targets": {
+              "bed_side": {
+                "requested_point_m": [
+                  0.35,
+                  -0.5
+                ],
+                "sampled_grid_point_m": [
+                  0.3500000000000001,
+                  -0.51
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 1.26,
+                "requested_point_inside_room": true
+              },
+              "kitchen_front": {
+                "requested_point_m": [
+                  1.25,
+                  1.0
+                ],
+                "sampled_grid_point_m": [
+                  1.25,
+                  0.9900000000000002
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null,
+                "requested_point_inside_room": true
+              },
+              "wardrobe_front": {
+                "requested_point_m": [
+                  0,
+                  1.15
+                ],
+                "sampled_grid_point_m": [
+                  -0.010000000000000009,
+                  1.15
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 3.2800000000000002,
+                "requested_point_inside_room": true
+              },
+              "bath_entry": {
+                "requested_point_m": [
+                  -0.25,
+                  1.05
+                ],
+                "sampled_grid_point_m": [
+                  -0.25,
+                  1.0500000000000003
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 3.42,
+                "requested_point_inside_room": true
+              }
+            }
+          },
+          {
+            "square_body_width_m": 0.5,
+            "entry_grid_point_m": [
+              0.3500000000000001,
+              -1.71
+            ],
+            "entry_cell_clear": true,
+            "reachable_floor_center_area_m2": 3.4048000000000003,
+            "targets": {
+              "bed_side": {
+                "requested_point_m": [
+                  0.35,
+                  -0.5
+                ],
+                "sampled_grid_point_m": [
+                  0.3500000000000001,
+                  -0.51
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 1.2,
+                "requested_point_inside_room": true
+              },
+              "kitchen_front": {
+                "requested_point_m": [
+                  1.25,
+                  1.0
+                ],
+                "sampled_grid_point_m": [
+                  1.25,
+                  0.9900000000000002
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null,
+                "requested_point_inside_room": true
+              },
+              "wardrobe_front": {
+                "requested_point_m": [
+                  0,
+                  1.15
+                ],
+                "sampled_grid_point_m": [
+                  -0.010000000000000009,
+                  1.15
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 3.22,
+                "requested_point_inside_room": true
+              },
+              "bath_entry": {
+                "requested_point_m": [
+                  -0.25,
+                  1.05
+                ],
+                "sampled_grid_point_m": [
+                  -0.25,
+                  1.0500000000000003
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 3.36,
+                "requested_point_inside_room": true
+              }
+            }
+          },
+          {
+            "square_body_width_m": 0.6,
+            "entry_grid_point_m": [
+              0.3500000000000001,
+              -1.67
+            ],
+            "entry_cell_clear": true,
+            "reachable_floor_center_area_m2": 2.7756000000000003,
+            "targets": {
+              "bed_side": {
+                "requested_point_m": [
+                  0.35,
+                  -0.5
+                ],
+                "sampled_grid_point_m": [
+                  0.3500000000000001,
+                  -0.51
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 1.16,
+                "requested_point_inside_room": true
+              },
+              "kitchen_front": {
+                "requested_point_m": [
+                  1.25,
+                  1.0
+                ],
+                "sampled_grid_point_m": [
+                  1.25,
+                  0.9900000000000002
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null,
+                "requested_point_inside_room": true
+              },
+              "wardrobe_front": {
+                "requested_point_m": [
+                  0,
+                  1.15
+                ],
+                "sampled_grid_point_m": [
+                  -0.010000000000000009,
+                  1.15
+                ],
+                "target_cell_clear": true,
+                "reachable_from_entry": true,
+                "grid_route_length_m": 3.18,
+                "requested_point_inside_room": true
+              },
+              "bath_entry": {
+                "requested_point_m": [
+                  -0.25,
+                  1.05
+                ],
+                "sampled_grid_point_m": [
+                  -0.25,
+                  1.0500000000000003
+                ],
+                "target_cell_clear": false,
+                "reachable_from_entry": false,
+                "grid_route_length_m": null,
+                "requested_point_inside_room": true
+              }
+            }
+          }
+        ],
+        "door_assumption": "Both proxy door leaves omitted as hypothetically fully open; hinge/sweep unverified.",
+        "limits": [
+          "Full-height AABB footprints are conservative, including gaps within furniture.",
+          "2 cm discretization and square body scenarios; not a human or accessibility model.",
+          "A failed conservative route is a warning, not proof no human route exists.",
+          "A successful route does not verify sitting, opening storage, reaching, turning or comfort."
+        ]
+      },
+      "central_area_m2": 2.4000000000000004,
+      "occupied_activity_floor_m2": 0.0,
+      "central_colliders": [],
+      "knee_colliders": [],
+      "seat_ready": false,
+      "work_patch_available": true,
+      "work_patch_colliders": [],
+      "measurement_support": {
+        "recon_desktop_0": "supported_known_proxy",
+        "recon_work_stool_0": "supported_known_proxy"
+      }
+    },
+    "feedback": {
+      "requested_mode": "desk_work",
+      "declared_requirements": {
+        "movable_ids": [
+          "recon_mobile_table_0",
+          "recon_work_stool_0"
+        ],
+        "desk_id": "recon_desktop_0",
+        "stool_id": "recon_work_stool_0",
+        "reserved_floor_xyxy_m": [
+          -1.25,
+          -1.1,
+          0.25,
+          0.5
+        ],
+        "desk_top_work_patch_xyxy_m": [
+          -1.9,
+          -0.25,
+          -1.4,
+          0.25
+        ],
+        "knee_volume_lo_hi_m": [
+          [
+            -1.85,
+            -0.25,
+            0.05
+          ],
+          [
+            -1.15,
+            0.25,
+            0.68
+          ]
+        ],
+        "seat_target_region_xyxy_m": [
+          -1.0,
+          -0.1,
+          -0.8,
+          0.1
+        ],
+        "access_settings": {
+          "grid_m": 0.02,
+          "assumed_body_height_m": 1.8,
+          "square_body_widths_m": [
+            0.4,
+            0.5,
+            0.6
+          ],
+          "entry_center_xy_m": [
+            0.35,
+            -2
+          ],
+          "entry_inward_normal_xy": [
+            0,
+            1
+          ],
+          "approach_points_xy_m": {
+            "bed_side": [
+              0.35,
+              -0.5
+            ],
+            "kitchen_front": [
+              1.25,
+              1.0
+            ],
+            "wardrobe_front": [
+              0,
+              1.15
+            ],
+            "bath_entry": [
+              -0.25,
+              1.05
+            ]
+          }
+        }
+      },
+      "checks": {
+        "all_original_instances_and_assets": true,
+        "fixed_objects_unchanged": true,
+        "room_geometry_unchanged": true,
+        "no_recorded_envelope_overlap_or_boundary_violation": false,
+        "access_bed_side_width_0.4": true,
+        "access_kitchen_front_width_0.4": false,
+        "access_wardrobe_front_width_0.4": true,
+        "access_bath_entry_width_0.4": true,
+        "access_bed_side_width_0.5": true,
+        "access_kitchen_front_width_0.5": false,
+        "access_wardrobe_front_width_0.5": true,
+        "access_bath_entry_width_0.5": true,
+        "access_bed_side_width_0.6": true,
+        "access_kitchen_front_width_0.6": false,
+        "access_wardrobe_front_width_0.6": true,
+        "access_bath_entry_width_0.6": false,
+        "desk_work_patch_supported_and_unoccupied": true,
+        "desk_knee_volume_clear": true,
+        "work_stool_in_declared_region": false
+      },
+      "measurements": {
+        "geometry": {
+          "outside_declared_wall_inner_faces": [],
+          "positive_3d_AABB_pairs": [
+            {
+              "a": "recon_mobile_table_0",
+              "b": "recon_bed_0",
+              "overlap_extents_m": [
+                0.5428063205313323,
+                0.3501958068690332,
+                0.4
+              ]
+            },
+            {
+              "a": "recon_work_stool_0",
+              "b": "recon_kitchen_counter_0",
+              "overlap_extents_m": [
+                0.40034325398845905,
+                0.20146302561821283,
+                0.44
+              ]
+            }
+          ],
+          "scope": "Conservative box geometry, not physical stability or use."
+        },
+        "access": {
+          "settings": {
+            "grid_m": 0.02,
+            "assumed_body_height_m": 1.8,
+            "square_body_widths_m": [
+              0.4,
+              0.5,
+              0.6
+            ],
+            "entry_center_xy_m": [
+              0.35,
+              -2
+            ],
+            "entry_inward_normal_xy": [
+              0,
+              1
+            ],
+            "approach_points_xy_m": {
+              "bed_side": [
+                0.35,
+                -0.5
+              ],
+              "kitchen_front": [
+                1.25,
+                1.0
+              ],
+              "wardrobe_front": [
+                0,
+                1.15
+              ],
+              "bath_entry": [
+                -0.25,
+                1.05
+              ]
+            }
+          },
+          "obstacle_count": 26,
+          "scenarios": [
+            {
+              "square_body_width_m": 0.4,
+              "entry_grid_point_m": [
+                0.3500000000000001,
+                -1.77
+              ],
+              "entry_cell_clear": true,
+              "reachable_floor_center_area_m2": 4.1356,
+              "targets": {
+                "bed_side": {
+                  "requested_point_m": [
+                    0.35,
+                    -0.5
+                  ],
+                  "sampled_grid_point_m": [
+                    0.3500000000000001,
+                    -0.51
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 1.26,
+                  "requested_point_inside_room": true
+                },
+                "kitchen_front": {
+                  "requested_point_m": [
+                    1.25,
+                    1.0
+                  ],
+                  "sampled_grid_point_m": [
+                    1.25,
+                    0.9900000000000002
+                  ],
+                  "target_cell_clear": false,
+                  "reachable_from_entry": false,
+                  "grid_route_length_m": null,
+                  "requested_point_inside_room": true
+                },
+                "wardrobe_front": {
+                  "requested_point_m": [
+                    0,
+                    1.15
+                  ],
+                  "sampled_grid_point_m": [
+                    -0.010000000000000009,
+                    1.15
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 3.2800000000000002,
+                  "requested_point_inside_room": true
+                },
+                "bath_entry": {
+                  "requested_point_m": [
+                    -0.25,
+                    1.05
+                  ],
+                  "sampled_grid_point_m": [
+                    -0.25,
+                    1.0500000000000003
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 3.42,
+                  "requested_point_inside_room": true
+                }
+              }
+            },
+            {
+              "square_body_width_m": 0.5,
+              "entry_grid_point_m": [
+                0.3500000000000001,
+                -1.71
+              ],
+              "entry_cell_clear": true,
+              "reachable_floor_center_area_m2": 3.4048000000000003,
+              "targets": {
+                "bed_side": {
+                  "requested_point_m": [
+                    0.35,
+                    -0.5
+                  ],
+                  "sampled_grid_point_m": [
+                    0.3500000000000001,
+                    -0.51
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 1.2,
+                  "requested_point_inside_room": true
+                },
+                "kitchen_front": {
+                  "requested_point_m": [
+                    1.25,
+                    1.0
+                  ],
+                  "sampled_grid_point_m": [
+                    1.25,
+                    0.9900000000000002
+                  ],
+                  "target_cell_clear": false,
+                  "reachable_from_entry": false,
+                  "grid_route_length_m": null,
+                  "requested_point_inside_room": true
+                },
+                "wardrobe_front": {
+                  "requested_point_m": [
+                    0,
+                    1.15
+                  ],
+                  "sampled_grid_point_m": [
+                    -0.010000000000000009,
+                    1.15
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 3.22,
+                  "requested_point_inside_room": true
+                },
+                "bath_entry": {
+                  "requested_point_m": [
+                    -0.25,
+                    1.05
+                  ],
+                  "sampled_grid_point_m": [
+                    -0.25,
+                    1.0500000000000003
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 3.36,
+                  "requested_point_inside_room": true
+                }
+              }
+            },
+            {
+              "square_body_width_m": 0.6,
+              "entry_grid_point_m": [
+                0.3500000000000001,
+                -1.67
+              ],
+              "entry_cell_clear": true,
+              "reachable_floor_center_area_m2": 2.7756000000000003,
+              "targets": {
+                "bed_side": {
+                  "requested_point_m": [
+                    0.35,
+                    -0.5
+                  ],
+                  "sampled_grid_point_m": [
+                    0.3500000000000001,
+                    -0.51
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 1.16,
+                  "requested_point_inside_room": true
+                },
+                "kitchen_front": {
+                  "requested_point_m": [
+                    1.25,
+                    1.0
+                  ],
+                  "sampled_grid_point_m": [
+                    1.25,
+                    0.9900000000000002
+                  ],
+                  "target_cell_clear": false,
+                  "reachable_from_entry": false,
+                  "grid_route_length_m": null,
+                  "requested_point_inside_room": true
+                },
+                "wardrobe_front": {
+                  "requested_point_m": [
+                    0,
+                    1.15
+                  ],
+                  "sampled_grid_point_m": [
+                    -0.010000000000000009,
+                    1.15
+                  ],
+                  "target_cell_clear": true,
+                  "reachable_from_entry": true,
+                  "grid_route_length_m": 3.18,
+                  "requested_point_inside_room": true
+                },
+                "bath_entry": {
+                  "requested_point_m": [
+                    -0.25,
+                    1.05
+                  ],
+                  "sampled_grid_point_m": [
+                    -0.25,
+                    1.0500000000000003
+                  ],
+                  "target_cell_clear": false,
+                  "reachable_from_entry": false,
+                  "grid_route_length_m": null,
+                  "requested_point_inside_room": true
+                }
+              }
+            }
+          ],
+          "door_assumption": "Both proxy door leaves omitted as hypothetically fully open; hinge/sweep unverified.",
+          "limits": [
+            "Full-height AABB footprints are conservative, including gaps within furniture.",
+            "2 cm discretization and square body scenarios; not a human or accessibility model.",
+            "A failed conservative route is a warning, not proof no human route exists.",
+            "A successful route does not verify sitting, opening storage, reaching, turning or comfort."
+          ]
+        },
+        "central_area_m2": 2.4000000000000004,
+        "occupied_activity_floor_m2": 0.0,
+        "central_colliders": [],
+        "knee_colliders": [],
+        "seat_ready": false,
+        "work_patch_available": true,
+        "work_patch_colliders": [],
+        "measurement_support": {
+          "recon_desktop_0": "supported_known_proxy",
+          "recon_work_stool_0": "supported_known_proxy"
+        }
+      },
+      "scope": "Current declared proxies; overall failure and unknown human usability must remain visible. No reference poses, actions or original project solution."
+    },
+    "status": "completed_native_checkpoint_measurement",
+    "evaluated_at": "2026-11-07T17:39:28.527544+00:00",
+    "plan_sha256": "208b270d2800d2e97b94838314ad09754617148b92426b36ae29b52a9971b711",
+    "input_manifest_sha256": "4fd85b75b12da258f0e7d606f8998efd576522acc753f75355f47b4d5715d333",
+    "state_sha256": "2c55a262e236d9304c92546b9d0e6da38cb4b53213f8945d9819a707160883fa",
+    "initial_state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+    "metric_version": "nesting-endpoint-v1",
+    "limits": [
+      "All dimensions, initial poses, apertures and body thresholds are research assumptions.",
+      "Fixed bed and separate sofa replace original retractable bed; platform kitchen and rail mechanism are not reproduced.",
+      "Mobile table and stool are boxes: no real casters, pushing force, comfort or load validation.",
+      "Bathroom/kitchen/storage are static proxies: capacity, plumbing, operation and ventilation unknown.",
+      "Source read by task designer; family excluded from training/retrieval, not sealed or pretraining-unseen.",
+      "Only geometric activity proxies may pass. Independent professional or whole-room human-use acceptance is absent.",
+      "Pre-existing .6m bath approach fails; retain absolute failures and report conditional improvements separately."
+    ],
+    "model_calls": 0,
+    "scene_edits": 0,
+    "training_updates": 0
+  },
+  "transition_score": {
+    "outcome": "introduced_declared_failure",
+    "initial_status": "fail",
+    "final_status": "fail",
+    "requested_mode": "desk_work",
+    "requirement_count": 19,
+    "newly_failed": [
+      "no_recorded_envelope_overlap_or_boundary_violation",
+      "access_kitchen_front_width_0.4",
+      "access_kitchen_front_width_0.5",
+      "access_kitchen_front_width_0.6"
+    ],
+    "newly_unknown": [],
+    "repaired": [],
+    "final_failed": [
+      "no_recorded_envelope_overlap_or_boundary_violation",
+      "access_kitchen_front_width_0.4",
+      "access_kitchen_front_width_0.5",
+      "access_kitchen_front_width_0.6",
+      "access_bath_entry_width_0.6",
+      "work_stool_in_declared_region"
+    ],
+    "final_unknown": [],
+    "measured_success": false,
+    "measured_incremental_gain": false,
+    "editing_without_declared_deficit": false,
+    "costs": {
+      "attempts": 6,
+      "native_calls": 6,
+      "state_changes": 5,
+      "validation_rejections": 0,
+      "generated_tokens": 1265,
+      "gpu_seconds": 138.30560883809812
+    },
+    "whole_room_success": "unknown",
+    "professional_preference": "not_assessed",
+    "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+  },
+  "ended_at": "2026-11-07T17:39:28.661562+00:00"
+}

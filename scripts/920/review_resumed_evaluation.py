@@ -109,6 +109,29 @@ def review(public):
             adapter = bound['adapter']
             for name, digest in adapter['sha256'].items():
                 assert sha(Path(adapter['directory']) / name) == digest
+        child_seconds = 0.0
+        assert len(rounds) == result['model_calls']
+        for turn, round_row in enumerate(rounds):
+            rd = runtime / 'rollout' / f'round_{turn:03d}'
+            model = read(rd / 'model/RESULT.json')
+            assert model['status'] == 'completed' and model['training_updates'] == 0
+            assert model['paid_api_calls'] == 0 and model['model_calls'] == 1
+            assert model['seed'] == bound['inference']['seed'] + turn
+            assert len(model['encoding']['images']) == 5
+            assert model['encoding']['input_tokens'] <= bound['budget']['max_input_tokens']
+            assert model['output_tokens'] <= bound['budget']['max_new_tokens']
+            assert sha(rd / 'request.json') == model['request_sha256']
+            assert sha(rd / 'model/raw_output.txt') == model['raw_output_sha256']
+            if bound['adapter']:
+                assert model['adapter_reload_exact'] is True and model['adapter'] == bound['adapter']
+            if interrupted and turn == 0:
+                child_seconds += old_result['gpu_subprocess_seconds']
+                assert round_row['new_model_call'] is False
+            else:
+                receipt = read(rd / 'model_receipt/receipt.json')
+                assert receipt['exit_code'] == 0
+                child_seconds += receipt['elapsed_seconds']
+        assert abs(child_seconds - result['gpu_subprocess_seconds']) < 1e-6
         checkpoint = runtime / 'rollout/final_checkpoint'
         manifest = read(checkpoint / 'manifest.json')
         for name, info in manifest['files'].items():
@@ -121,6 +144,10 @@ def review(public):
         assert sha(checkpoint / 'manifest.json') == export['input_manifest_sha256']
         images = list((cell_public / 'recorded/views').glob('*'))
         assert len(images) == 5 and all(x.stat().st_size > 0 for x in images)
+        observation = read(runtime / 'rollout/final_observation.json')
+        assert len(observation['image_paths']) == 5
+        for i, source in enumerate(observation['image_paths']):
+            assert sha(source) == sha(cell_public / 'recorded/views' / f'{i}_{Path(source).name}')
         cell = dict(row, initial_activity=result['initial_review']['requested_activity_status'],
             rejected_outputs=rejected, state_changes=changes, stop_reason=result['stop_reason'],
             checkpoint_manifest_sha256=sha(checkpoint / 'manifest.json'),
