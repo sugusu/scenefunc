@@ -1,0 +1,91 @@
+{
+  "schema": "scenefunc-existing-session-v1",
+  "stage": "furniture",
+  "room_id": "guilbault_storage_transfer_v2",
+  "step_idx": 1,
+  "memory": {
+    "assets": {},
+    "physics": null,
+    "recent_tool_calls": [
+      {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_storage_a_0",
+          "x": 1.7,
+          "y": -1.7,
+          "yaw": 180
+        },
+        "result": "Successfully moved storage_a to new position and rotation"
+      }
+    ],
+    "asset_library": {}
+  },
+  "receipts": [
+    {
+      "step_idx": 1,
+      "tool_calls": [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_storage_a_0",
+            "x": 1.7,
+            "y": -1.7,
+            "yaw": 180
+          }
+        }
+      ],
+      "results": [
+        {
+          "name": "move_furniture_tool",
+          "output": {
+            "success": true,
+            "message": "Successfully moved storage_a to new position and rotation",
+            "object_id": "recon_storage_a_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          }
+        }
+      ],
+      "before_sha256": "a6784ce27d5865c46d70a6dd797461295c74e748554fc39506a606c921b3d12f",
+      "after_sha256": "4f157f26bfa7700fca5f26b1c433f827b2c9129f5bc813fbc079bf2f6c659ba6"
+    }
+  ],
+  "restoration_transitions": [],
+  "initial_state_sha256": "a6784ce27d5865c46d70a6dd797461295c74e748554fc39506a606c921b3d12f",
+  "config_name": "scene_designer",
+  "effective_config_sha256": "7c4f4273045d218327a67792fdbe225c9b91d73d0557aaaeca0db06519fc4389",
+  "tool_names": [
+    "get_current_scene_state",
+    "move_furniture_tool",
+    "remove_furniture_tool",
+    "check_facing_tool"
+  ],
+  "runtime_fingerprint": {
+    "designer/src/agent_rollout_decoupled.py": "4dfcaa1f3f91aa72762a8b89d7c3ebc411358b8ef65971ade444610d81dcbc91",
+    "designer/src/tool_server.py": "b0327a7db14b52a66cca585f12642a89127c3004dba767ff5a4503b1ec74c977",
+    "designer/src/memory.py": "553ec3c6624659bee3b2dfc77d3aa9f20cc92de7740a3e7eaedee3ceccb03d36",
+    "designer/src/render_observation.py": "60dd3504f7c8e0e93a39d8babeb232c6e4fef61df729672306e6b787e7807251",
+    "designer/src_critic/pil_annotate.py": "e69faaddbdf0be85e004ce8caf9bf341de8ce924cba7512e2600878e0092f104",
+    "designer/tools/render_five_views.py": "5340c6599c0285248548f29414e245c805cba5e6098b552168e1393bbb5f53b6",
+    "designer/tools/render_cardinal_views.py": "cac037cf956f520037b333c90c9468015a77cff7090ec32bda735fe2177a986a",
+    "scenesmith/scenesmith/agent_utils/room.py": "5e830e3d769af65709a5d488b1872422d64c2e5d80a68b09dbd1a874e27be9dd",
+    "scenesmith/scenesmith/agent_utils/house.py": "b092c37920feb072a728559564dab25afeac62c6bde60c691eb3ccd920318725",
+    "scenesmith/scenesmith/agent_utils/placement_noise.py": "4af22622a5cff0b4fb945c2f81ec29b242d67d703cb52f7da9f60d1b4da732dd",
+    "scenesmith/scenesmith/furniture_agents/stateful_furniture_agent.py": "764432255e2f7e78605031694e78ee9a1ce1d658bfde9a8d4b679b84f742839d",
+    "scenesmith/scenesmith/furniture_agents/tools/furniture_tools.py": "7f0c18655247048bb666f8ba91c9ddac81d7730f6b05c2883f90b1e809b4a7b7",
+    "scenesmith/scenesmith/furniture_agents/tools/scene_tools.py": "35238fb4b9580f09d2cd3812bfaee2bee466260d304f475155adeaad08453304",
+    "adapter/native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "adapter/native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "adapter/existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a"
+  },
+  "active_noise_profile": {
+    "position_xy_std_meters": 0.001,
+    "rotation_yaw_std_degrees": 0.1
+  },
+  "scope": "existing_objects_furniture_revision",
+  "recovery_boundary": "between completed tool batches; no in-flight operation recovery"
+}
