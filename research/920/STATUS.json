@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-07T09:26:56.504324+00:00",
+  "updated_at": "2026-11-07T10:58:05.415259+00:00",
   "goal_status": "active",
   "goal_objective_sync": "synchronized_active",
   "research_complete": false,
   "objective": "Learn real-project interior-design decisions in Scene-Designer to generate complete editable usable rooms.",
-  "phase": "source_grounded_conditional_task_references_completed",
+  "phase": "prepared_awaiting_new_training_review",
   "acceptance_criteria": "research/920/RESEARCH_GOAL.md",
   "requested_goal_text": "research/920/GOAL_TEXT.txt",
   "goal_sync_evidence": "research/920/GOAL_SYNC.json",
@@ -18,16 +18,96 @@
   "training_authorized": false,
   "training_requires_separate_approval": true,
   "latest_completed_experiment": "P920-EDITSTUDY-v1_20261106T074752Z",
-  "current_run_id": "P920-EVALTASK-v1_20261107T085128Z",
-  "current_run_role": "isolated_evaluation_family_reference_feasibility",
+  "current_run_id": "P920-STOPDATA-v1_20261107T102628Z",
+  "current_run_role": "finite_learning_study_preparation",
   "new_model_calls_this_turn": 0,
   "running_model_process": null,
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALTASK-v1_20261107T085128Z/SUMMARY.json",
-  "next_step": "Concrete matched learning protocol using existing training candidates and isolated evaluation tasks; no old study reruns, no unapproved training.",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/FINAL_VALIDATION.json",
+  "next_step": "请用户单独审定STUDY_CARD：GPU0两adapter各8更新/最多2小时，12终态评测最多2小时，总6GPU小时；批准前不创建授权文件、不启动训练。旧实验关闭，不重跑。",
   "publication": {
-    "status": "local_pending_final_acceptance_push",
+    "status": "local_commit_preserved_remote_not_updated",
     "branch": "runs/920",
-    "previous_verified_commit": "8349a9a268cb02efb467bf0afb5485a6d8b63dbf"
+    "local_commit": "67311b64e33ad93879d7ca2ba0349ce903930061",
+    "remote_commit": "8349a9a268cb02efb467bf0afb5485a6d8b63dbf",
+    "verified_at": "2026-11-07T10:08:26.304894+00:00",
+    "push_attempts": [
+      {
+        "started_at": "2026-11-07T09:37:38.037642+00:00",
+        "status": "failed",
+        "command": [
+          "git",
+          "push",
+          "origin",
+          "runs/920"
+        ],
+        "timeout_seconds": 300,
+        "pid": 1635985,
+        "start_ticks": "70210662",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALTASK-v1_20261107T085128Z/publication_receipt/stage.log",
+        "ended_at": "2026-11-07T09:42:38.041376+00:00",
+        "elapsed_seconds": 300.0037497120211,
+        "exit_code": 124,
+        "first_log": null
+      },
+      {
+        "started_at": "2026-11-07T09:49:31.810787+00:00",
+        "status": "failed",
+        "command": [
+          "git",
+          "push",
+          "origin",
+          "runs/920"
+        ],
+        "timeout_seconds": 300,
+        "pid": 1636926,
+        "start_ticks": "70282039",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALTASK-v1_20261107T085128Z/publication_retry_receipt/stage.log",
+        "ended_at": "2026-11-07T09:54:31.814367+00:00",
+        "elapsed_seconds": 300.00362199696247,
+        "exit_code": 124,
+        "first_log": null
+      }
+    ],
+    "remote_receipt": {
+      "started_at": "2026-11-07T10:03:22.929460+00:00",
+      "status": "completed",
+      "command": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/runs/920"
+      ],
+      "timeout_seconds": 45,
+      "pid": 1637864,
+      "start_ticks": "70365151",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALTASK-v1_20261107T085128Z/final_remote_receipt/stage.log",
+      "ended_at": "2026-11-07T10:03:26.760462+00:00",
+      "elapsed_seconds": 3.8310130939353257,
+      "exit_code": 0,
+      "first_log": "8349a9a268cb02efb467bf0afb5485a6d8b63dbf\trefs/heads/runs/920"
+    },
+    "direct_attempt": {
+      "started_at": "2026-11-07T09:59:27.610526+00:00",
+      "status": "failed",
+      "command": [
+        "git",
+        "-c",
+        "core.sshCommand=ssh -i /home/wyh/.ssh/scenefunc_920 -o IdentitiesOnly=yes -o IdentityAgent=none -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=15 -o ProxyCommand=none",
+        "ls-remote",
+        "origin",
+        "refs/heads/runs/920"
+      ],
+      "timeout_seconds": 30,
+      "pid": 1637583,
+      "start_ticks": "70341619",
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EVALTASK-v1_20261107T085128Z/direct_remote_receipt/stage.log",
+      "ended_at": "2026-11-07T09:59:47.658157+00:00",
+      "elapsed_seconds": 20.047639796044677,
+      "exit_code": 128,
+      "first_log": "ssh: Could not resolve hostname github.com: Temporary failure in name resolution"
+    },
+    "next_step": "Network recovery: push this same commit; do not rerun experiment.",
+    "note": "Post-commit metadata kept locally for next substantive batch, not a separate metadata commit."
   },
   "scheduled_automation_created": false,
   "continuation_mechanism": "active thread Goal and repository handoff",
@@ -47,7 +127,12 @@
   "actual_loader_engineering_check": "passed",
   "same_project_professional_loader_gate": "source_guided_transfer_step_loader_passed; historical same-project geometry and core training admission not claimed",
   "completed_current_phase": true,
-  "pending_user_input": null,
+  "pending_user_input": {
+    "type": "separate_training_review",
+    "card": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/STUDY_CARD.md",
+    "training_plan_sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f",
+    "study_plan_sha256": "04c2e1149cec20b370f04e669c3e8408191a7106fd97699b9b8152d574c7df42"
+  },
   "last_verified_remote_head": "8349a9a268cb02efb467bf0afb5485a6d8b63dbf",
   "state_interface_engineering_check": "passed_on_four_saved_batches",
   "recovered_public_reference": {
@@ -453,7 +538,7 @@
   },
   "active_cpu_audit": null,
   "research_priority_review": "research/920/method_v1/DATA_PRIORITY_REVIEW.json",
-  "last_remote_verified_at": "2026-11-07T07:44:53.904505+00:00",
+  "last_remote_verified_at": "2026-11-07T10:08:26.304894+00:00",
   "source_supported_decision_packet": {
     "path": "research/920/decision_packets_v1/SOURCED_DECISIONS.json",
     "source_supported_knowledge": 14,
@@ -1095,12 +1180,13 @@
     "readme": "runs/920/P920-FLINDERS-v2_20261106T174416Z/README.md"
   },
   "current_execution": {
-    "status": "completed",
-    "run_id": "P920-EVALTASK-v1_20261107T085128Z",
+    "status": "prepared_awaiting_new_training_review",
+    "run_id": "P920-STOPDATA-v1_20261107T102628Z",
     "real_model_calls": 0,
     "training_updates": 0,
-    "native_tool_calls": 6,
-    "summary": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALTASK-v1_20261107T085128Z/SUMMARY.json"
+    "native_preparations_completed": 2,
+    "active_processes": 0,
+    "summary": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/SUMMARY.json"
   },
   "storage_execution_gate": {
     "model_calls": 18,
@@ -1123,5 +1209,10 @@
     "summary": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/SUMMARY.json",
     "checks": 49,
     "model_generated_rooms": 0
+  },
+  "terminal_learning_preparation": {
+    "summary": "STOPDATA学习准备已完成：两组各24样本（22动作＋2研究者停止控制），6训练族，共同1647控制token，联合额外1332决定token。两条件实际原生恢复/五视图/CPU编码通过（9067、9124 token）；0新模型生成、0训练更新。训练和12格评测入口、冻结预算、失败即停及验收表已具备。",
+    "limitations": "仅1隔离来源族×2条件×2种子，非封存跨项目测试；0.6m卫浴接近原有失败保留，整屋可用未知。停止标签是研究者控制示范，非新增专业知识；联合多1332监督token，不能证明等材料配对机制。",
+    "final_validation": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/FINAL_VALIDATION.json"
   }
 }

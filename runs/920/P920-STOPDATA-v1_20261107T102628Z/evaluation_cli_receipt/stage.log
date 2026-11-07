@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_terminal_evaluation.py", line 78, in <module>
+    result=dict(success=exercise(args.out/'success'),failure=exercise(args.out/'failure',True))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_terminal_evaluation.py", line 39, in exercise
+    frozen_files={c['template']:sha256(c['template']) for c in cells})
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_terminal_evaluation.py", line 39, in <dictcomp>
+    frozen_files={c['template']:sha256(c['template']) for c in cells})
+                                ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/native_project.py", line 25, in sha256
+    with path.open("rb") as stream:
+         ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'open'

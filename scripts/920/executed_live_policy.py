@@ -53,7 +53,14 @@ def build_session_request(session, observation, plan, rounds, feedback, remainin
         raise ValueError('History is not bound to the actual current native state')
     # Compact only repeated current catalog facts. Do not also supply a second,
     # differently truncated legacy history from the checkpoint.
-    context, _ = pack_context(session.current_context())
+    native_context = session.current_context()
+    if plan.get('session_backend', 'catalog') == 'existing':
+        # An existing-object session has no acquisition catalog. An explicit
+        # empty catalog keeps the shared representation without fabricating assets.
+        if native_context.get('asset_catalog'):
+            raise ValueError('Existing-object backend unexpectedly advertises acquisition assets')
+        native_context['asset_catalog'] = []
+    context, _ = pack_context(native_context)
     event = plan.get('current_activity_request')
     if event is not None:
         if set(event) != {'request', 'authorship', 'scope'} or event['authorship'] != 'researcher_specified_pre_action_activity':

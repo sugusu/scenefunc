@@ -42,12 +42,20 @@ def main():
     ap.add_argument('--phase',choices=['prepare','rollout'],required=True)
     a=ap.parse_args();p=json.loads(a.plan.read_text())
     validate_policy(p['input_contract'])
+    backend = p.get('session_backend', 'catalog')
+    if backend not in ('catalog', 'existing'):
+        raise ValueError('Unknown native session backend')
+    if backend == 'existing' and 'existing_project_session.py' not in p['code_sha256']:
+        raise ValueError('Unfrozen existing-object backend')
     audit_script=p['evaluation'].get('script','evaluate_edit_room.py')
-    if audit_script not in ('evaluate_edit_room.py','evaluate_storage_room.py','evaluate_conditional_room.py') or audit_script not in p['code_sha256']:
+    if audit_script not in ('evaluate_edit_room.py','evaluate_storage_room.py','evaluate_conditional_room.py','evaluate_nesting_room.py') or audit_script not in p['code_sha256']:
         raise ValueError('Unfrozen or unsupported task evaluator')
-    if audit_script == 'evaluate_conditional_room.py':
+    condition_audit = audit_script in ('evaluate_conditional_room.py','evaluate_nesting_room.py')
+    if condition_audit:
         for name in ('conditional_room_metrics.py', 'score_activity_transition.py', 'build_activity_completion_reviews.py'):
             if name not in p['code_sha256']:raise ValueError('Unfrozen condition dependency: '+name)
+    if audit_script == 'evaluate_nesting_room.py' and 'nesting_room_metrics.py' not in p['code_sha256']:
+        raise ValueError('Unfrozen nesting metric')
     for required in ('run_edit_policy_executed.py', 'executed_live_policy.py', 'executed_edit_request.py',
                      'edit_request.py', 'compact_catalog_context.py', 'shared_action_contract.py',
                      'catalog_project_session.py', 'native_checkpoint.py', 'run_stage.py',
@@ -86,7 +94,7 @@ def main():
     def request(observation,feedback,rejection=None):
         # Reuse the established native state/tool/image representation. The
         # supplement is shared across all arms, with only source-pool knowledge.
-        if audit_script == 'evaluate_conditional_room.py':
+        if condition_audit:
             if feedback['state_sha256'] != canonical_hash(session.scene.to_state_dict()):
                 raise ValueError('Condition feedback is not bound to current state')
             compact={**feedback['feedback'], 'unknown':feedback['limits'], 'previous_rejection':rejection}
@@ -129,7 +137,11 @@ def main():
             values=subprocess.check_output(['nvidia-smi','-i','0','--query-gpu=uuid,memory.used,memory.free','--format=csv,noheader,nounits'],text=True,timeout=15).strip().split(',')
             if values[0].strip()!=p['gpu_uuid'] or int(values[1])>512 or int(values[2])<23000:raise RuntimeError('GPU0 unavailable')
         from fastapi.testclient import TestClient
-        app,server=create_app(Path(p['designer']),Path(p['scenesmith']));client=TestClient(app)
+        factory = create_app
+        if backend == 'existing':
+            from existing_project_session import create_app as existing_app
+            factory = existing_app
+        app,server=factory(Path(p['designer']),Path(p['scenesmith']));client=TestClient(app)
         def post(route,payload=None):
             reply=client.post(route,json=payload or {})
             if reply.status_code!=200:raise RuntimeError('Native route '+route+': '+reply.text[:500])
@@ -137,7 +149,7 @@ def main():
         prepared=Path(p['prepared_directory'])
         bundle=Path(p['bundle']) if a.phase=='prepare' else prepared/'checkpoint'
         if a.phase=='prepare' and sha256(bundle/'manifest.json')!=p['manifest_sha256']:raise ValueError('Initial bundle changed')
-        post('/session/catalog',dict(bundle_directory=str(bundle),output_directory=str(a.out/'house')))
+        post('/session/'+backend,dict(bundle_directory=str(bundle),output_directory=str(a.out/'house')))
         session=server._state.session
         post('/session/stage',dict(stage='furniture',stub_assets=False,skip_render=False))
         if a.phase=='prepare':
@@ -158,7 +170,7 @@ def main():
             obs=post('/session/observation')
             post('/session/checkpoint',dict(output_directory=str(a.out/'restored_checkpoint')))
             feedback=audit(a.out/'restored_checkpoint',a.out/'restored_audit.json')
-            if audit_script == 'evaluate_conditional_room.py':result['initial_review']=feedback['review']
+            if condition_audit:result['initial_review']=feedback['review']
             result['stop_reason']='call_budget_exhausted';rejection=None
             for turn in range(p['budget']['model_calls']):
                 if result['tool_attempts']>=p['budget']['tool_calls']:break
@@ -208,7 +220,7 @@ def main():
                 write(a.out/'final_state.json',session.scene.to_state_dict())
                 if obs is not None:write(a.out/'final_observation.json',obs)
                 result['final_audit']=audit(a.out/'final_checkpoint',a.out/'final_audit.json')
-                if audit_script == 'evaluate_conditional_room.py' and 'initial_review' in result:
+                if condition_audit and 'initial_review' in result:
                     result['transition_score']=score_transition(result['initial_review'],result['final_audit']['review'],
                         attempts=result['tool_attempts'],native_calls=result['native_calls'],
                         state_changes=sum(r.get('execution',{}).get('before_sha256') != r.get('execution',{}).get('after_sha256') for r in result['rounds']),

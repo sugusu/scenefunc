@@ -1,0 +1,64 @@
+{
+  "status": "prepared_awaiting_new_training_review",
+  "run_id": "P920-STOPDATA-v1_20261107T102628Z",
+  "updated_at": "2026-11-07T10:54:28.568847+00:00",
+  "training_examples_per_arm": 24,
+  "tool_examples": 22,
+  "stop_examples": 2,
+  "families": 6,
+  "professional_decision_positions": 8,
+  "source_principles": 5,
+  "supervised_tokens": {
+    "action_only": {
+      "input_tokens": 248346,
+      "action_tokens": 1647,
+      "tool_tokens": 1245,
+      "terminal_tokens": 402,
+      "decision_tokens": 0
+    },
+    "decision_action": {
+      "input_tokens": 249678,
+      "action_tokens": 1647,
+      "tool_tokens": 1245,
+      "terminal_tokens": 402,
+      "decision_tokens": 1332
+    }
+  },
+  "native_preparations": [
+    {
+      "condition": "clear_floor",
+      "exit_code": 0,
+      "input_tokens": 9067,
+      "views": 5,
+      "state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+      "request_sha256": "18126188784b9bbca7ab55b6e3f07998d0d7c2d8be8fb316d85f717accb3c019",
+      "runtime": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/prepare_v2/clear_floor"
+    },
+    {
+      "condition": "desk_work",
+      "exit_code": 0,
+      "input_tokens": 9124,
+      "views": 5,
+      "state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+      "request_sha256": "2aee2c53e7c4f62936e780fc1b760fb7010bbcc4699e07aa8b4d06467bf054f3",
+      "runtime": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/prepare_v2/desk_work"
+    }
+  ],
+  "model_calls": 0,
+  "training_updates": 0,
+  "new_furniture_edits": 0,
+  "learning_benefit_established": false,
+  "study_plan_sha256": "04c2e1149cec20b370f04e669c3e8408191a7106fd97699b9b8152d574c7df42",
+  "training_plan_sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f",
+  "checks": [
+    "Actual CPU encoding and Trainer scaling of24examples per arm",
+    "Six saved endpoint/condition combinations and synthetic adversarial checks",
+    "Two actual native initial restores and five-view deployment encodings",
+    "CPU evaluation batch:12cells, first-error stop, duplicate prevention"
+  ],
+  "failures_retained": [
+    "materialize original/int-vs-float hashing; compact fields comparison",
+    "catalog backend rejected existing-object input before any edit; revised backend preparations passed",
+    "CPU evaluation fixture str/Path type error corrected; original receipt retained"
+  ]
+}

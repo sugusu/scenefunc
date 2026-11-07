@@ -1,0 +1,66 @@
+{
+  "repo_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "official_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+  "model": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "input_contract": {
+    "name": "executed-edit-v1",
+    "max_recent_attempts": 2,
+    "max_history_chars": 12000
+  },
+  "materializer_python": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+  "encoder_python": "/data/wyh/conda/envs/c15_genrec/bin/python",
+  "run_id": "P920-STOPDATA-v1_20261107T102628Z",
+  "frozen_at": "2026-11-07T10:31:59.005244+00:00",
+  "stage": "cpu_terminal_data",
+  "base_dataset": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/DATASET.json",
+  "base_encoding": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/ENCODING.json",
+  "output": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z",
+  "runtime": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z",
+  "budget": {
+    "cpu_seconds_per_stage": 600,
+    "max_sequence_tokens": 16384,
+    "max_pixels": 65536,
+    "terminal_states": 2,
+    "model_calls": 0,
+    "training_updates": 0,
+    "native_edits": 0
+  },
+  "training_authorized": false,
+  "cases": [
+    {
+      "id": "waterloo_initial_work_stop",
+      "input_id": "waterloo_edit_01",
+      "state": "initial",
+      "measurement": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/measurements/initial_work.json",
+      "mode": "separate_work",
+      "request": "当前两位住户同时独立办公，各需独立桌面与坐席。保持其他用途和全部家具身份；仅在当前需求有未满足条件时调整。",
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle",
+      "bundle_manifest_sha256": "93b0b2fb3ded15bf4f65ff82f99ee2cf05213c3f0197ee6c136b3674db6de08b"
+    },
+    {
+      "id": "waterloo_joined_host_stop",
+      "input_id": "waterloo_edit_03",
+      "state": "step_2",
+      "measurement": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/measurements/joined_host.json",
+      "mode": "joined_four_place_hosting",
+      "request": "当前四人围坐开展共享桌面活动。保持其他用途和全部家具身份；仅在当前需求有未满足条件时调整。",
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2",
+      "bundle_manifest_sha256": "927b5e21ac8937f7aa734fdd8df4179b0cc427e7d126605d43edd0c640d625e6"
+    }
+  ],
+  "scope": "New researcher no-edit policy labels for two already measured states, not historical designer terminal actions or new professional decisions.",
+  "input_hashes": {
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/DATASET.json": "62f63905096bf6613aafb98b58004b925c244b98ed3fd6a9e488cd66fc028822",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/ENCODING.json": "e9c213562ca435ce94d7a756a0ec27318589ecb23d5137c686c8d09a82db8528",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/measurements/initial_work.json": "739d0958e214c2758ca7719b8fbe96bc06f53e31d521712f06e32d12a7476a93",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/measurements/joined_host.json": "45e0e24c81c2eef3a25a04076ef7700c8e0ca2826d438913f2dfafc06353484b",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/materialize_terminal_candidates.py": "8f1cd0aaaa7fb3adab64e385121f56a325430d2599de698e2dc9741f5ff441be",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/encode_terminal_candidates.py": "aa1d937de11c83817a0e34dc43aff922019a6e78fe482826b7636678d4f4b7b4",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/terminal_supervision.py": "648d40d3fe6613ba7f3165642ec3aad122b859cce373fd3d6ef13ff55bc94d7b",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/terminal_training_dataset.py": "77d6aa86812691b63d25925c1f93d7ab32daa0197ddbf14300e8403c09b48d38",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/executed_edit_request.py": "d7981b09565d8846009670f50154a449c1a05f1775df96420bdbc59098d5f0d2",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/edit_request.py": "14cd80ab5c9023fd84bf971fee6aca21ed12feff39c88664f88abd680fff20d7",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/train_edit_learning_study.py": "27ecad4f33e325177979b6d0df4972bbd56f321ec8287ce8dc2cf63186cc8ac4"
+  },
+  "revision_reason": "Check every represented compact object field against native state; do not require omitted catalog metadata to reappear."
+}

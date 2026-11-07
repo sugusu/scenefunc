@@ -1,0 +1,114 @@
+Clear the declared central floor rectangle for an activity while the fixed desk is idle. Desk knee occupancy need not pass in this condition.
+Preserve all original identities and assets. Move only the mobile table and stool; keep all other objects and room geometry. Preserve existing access and avoid intersections/outside. The pre-existing 0.6m bath-access failure remains a failure even if the target activity improves. Do not claim real ergonomics, comfort or whole-room success.
+The following are pre-action researcher requirements, not target furniture poses:
+{
+  "movable_ids": [
+    "recon_mobile_table_0",
+    "recon_work_stool_0"
+  ],
+  "desk_id": "recon_desktop_0",
+  "stool_id": "recon_work_stool_0",
+  "reserved_floor_xyxy_m": [
+    -1.25,
+    -1.1,
+    0.25,
+    0.5
+  ],
+  "desk_top_work_patch_xyxy_m": [
+    -1.9,
+    -0.25,
+    -1.4,
+    0.25
+  ],
+  "knee_volume_lo_hi_m": [
+    [
+      -1.85,
+      -0.25,
+      0.05
+    ],
+    [
+      -1.15,
+      0.25,
+      0.68
+    ]
+  ],
+  "seat_target_region_xyxy_m": [
+    -1.0,
+    -0.1,
+    -0.8,
+    0.1
+  ],
+  "access_settings": {
+    "grid_m": 0.02,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "entry_center_xy_m": [
+      0.35,
+      -2
+    ],
+    "entry_inward_normal_xy": [
+      0,
+      1
+    ],
+    "approach_points_xy_m": {
+      "bed_side": [
+        0.35,
+        -0.5
+      ],
+      "kitchen_front": [
+        1.25,
+        1.0
+      ],
+      "wardrobe_front": [
+        0,
+        1.15
+      ],
+      "bath_entry": [
+        -0.25,
+        1.05
+      ]
+    }
+  }
+}
+Common source-pool knowledge (evaluation family excluded):
+{
+  "status": "not_deployed_not_trained",
+  "records": [
+    {
+      "decision_id": "airbnp_open_clothing_access_for_short_stays",
+      "condition": "为两位旅客短期住宿设计的紧凑布达佩斯公寓，衣物需要方便、快速取用。",
+      "principle": "在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。"
+    },
+    {
+      "decision_id": "fhouse_existing_furniture_shared_living",
+      "condition": "四口之家已有家具，希望主要空间供共同生活。",
+      "principle": "为容纳既有家具并优先共同生活，F-House采用了较开放的空间组织。"
+    },
+    {
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "condition": "年轻伴侣的约30平方米住宅原先分为四个昏暗房间，改造同时追求明亮起居、私密空间与收纳。",
+      "principle": "在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。"
+    },
+    {
+      "decision_id": "michelet_adapt_family_lifecycle",
+      "condition": "家庭成员长大、居住安排会变化。",
+      "principle": "住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。"
+    },
+    {
+      "decision_id": "paper_table_mobility_for_overnight_guest",
+      "condition": "同一生活区需吃饭、聚会并偶尔容纳留宿者。",
+      "principle": "同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。"
+    },
+    {
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "condition": "住户重视可变配置，不希望固定在单一家具布置中。",
+      "principle": "住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。"
+    }
+  ],
+  "original_pool_sha256": "8b654b8d73506e79b820c8dda55ce648ef1e5de6a9dbdb05d2d4de8cc8d4cd96",
+  "limitation": "Original source/rights ledger and scene unknowns remain required. This export only separates existing experiment annotations; it is not a new source verification."
+}
