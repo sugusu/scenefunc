@@ -1,6 +1,243 @@
 {
-  "status": "running",
+  "status": "completed",
   "started_at": "2026-11-07T11:27:06.261684+00:00",
   "plan_sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f",
-  "arms": {}
+  "arms": {
+    "action_only": {
+      "exit_code": 0,
+      "receipt": {
+        "started_at": "2026-11-07T11:27:06.303118+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/conda/envs/c15_genrec/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/train_terminal_edit_study.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/TRAIN_PLAN.json",
+          "--arm",
+          "action_only",
+          "--authorization",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/AUTHORIZATION.json"
+        ],
+        "timeout_seconds": 7200,
+        "pid": 1649787,
+        "start_ticks": "70867488",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only_receipt/stage.log",
+        "ended_at": "2026-11-07T12:12:56.498746+00:00",
+        "elapsed_seconds": 2750.195650701062,
+        "exit_code": 0,
+        "first_log": "`torch_dtype` is deprecated! Use `dtype` instead!"
+      },
+      "training": {
+        "status": "completed",
+        "arm": "action_only",
+        "started_at": "2026-11-07T11:27:46.553954+00:00",
+        "plan_sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f",
+        "optimizer_updates": 8,
+        "initial_host_available_bytes": 128199909376,
+        "updated_at": "2026-11-07T12:12:55.490959+00:00",
+        "ended_at": "2026-11-07T12:12:55.666973+00:00",
+        "exit_code": 0,
+        "changed_adapter_tensors": 144,
+        "peak_allocated_bytes": 21716105728,
+        "training_log": [
+          {
+            "loss": 0.8015,
+            "grad_norm": 1.1124900579452515,
+            "learning_rate": 2e-05,
+            "epoch": 1.0,
+            "step": 1
+          },
+          {
+            "loss": 0.8042,
+            "grad_norm": 1.092032551765442,
+            "learning_rate": 2e-05,
+            "epoch": 2.0,
+            "step": 2
+          },
+          {
+            "loss": 0.7921,
+            "grad_norm": 1.1206247806549072,
+            "learning_rate": 2e-05,
+            "epoch": 3.0,
+            "step": 3
+          },
+          {
+            "loss": 0.7924,
+            "grad_norm": 1.1680622100830078,
+            "learning_rate": 2e-05,
+            "epoch": 4.0,
+            "step": 4
+          },
+          {
+            "loss": 0.7912,
+            "grad_norm": 1.223745584487915,
+            "learning_rate": 2e-05,
+            "epoch": 5.0,
+            "step": 5
+          },
+          {
+            "loss": 0.7803,
+            "grad_norm": 1.2387422323226929,
+            "learning_rate": 2e-05,
+            "epoch": 6.0,
+            "step": 6
+          },
+          {
+            "loss": 0.772,
+            "grad_norm": 1.283018946647644,
+            "learning_rate": 2e-05,
+            "epoch": 7.0,
+            "step": 7
+          },
+          {
+            "loss": 0.7695,
+            "grad_norm": 1.3397855758666992,
+            "learning_rate": 2e-05,
+            "epoch": 8.0,
+            "step": 8
+          },
+          {
+            "train_runtime": 2703.2518,
+            "train_samples_per_second": 0.071,
+            "train_steps_per_second": 0.003,
+            "total_flos": 9.71049567288407e+16,
+            "train_loss": 0.7878915518522263,
+            "epoch": 8.0,
+            "step": 8
+          }
+        ],
+        "adapter": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/adapter",
+        "same_process_adapter_save_zero_reload_exact": true,
+        "backward_completed": 192,
+        "checkpoint_input_stats": {
+          "installed_layers": 36,
+          "checkpoint_forward_calls": 6912,
+          "input_bytes_seen": 585921724416,
+          "pin_memory": false,
+          "input_bytes_are_not_measured_memory_savings": true
+        },
+        "cold_process_optimizer_resume_tested": false,
+        "generalization_claim": false
+      }
+    },
+    "decision_action": {
+      "exit_code": 0,
+      "receipt": {
+        "started_at": "2026-11-07T12:12:56.560140+00:00",
+        "status": "completed",
+        "command": [
+          "/data/wyh/conda/envs/c15_genrec/bin/python",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/train_terminal_edit_study.py",
+          "--plan",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/TRAIN_PLAN.json",
+          "--arm",
+          "decision_action",
+          "--authorization",
+          "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/AUTHORIZATION.json"
+        ],
+        "timeout_seconds": 7200,
+        "pid": 1654269,
+        "start_ticks": "71142514",
+        "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/decision_action_receipt/stage.log",
+        "ended_at": "2026-11-07T12:58:58.887485+00:00",
+        "elapsed_seconds": 2762.3273682260187,
+        "exit_code": 0,
+        "first_log": "`torch_dtype` is deprecated! Use `dtype` instead!"
+      },
+      "training": {
+        "status": "completed",
+        "arm": "decision_action",
+        "started_at": "2026-11-07T12:13:37.083766+00:00",
+        "plan_sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f",
+        "optimizer_updates": 8,
+        "initial_host_available_bytes": 128201314304,
+        "updated_at": "2026-11-07T12:58:57.878438+00:00",
+        "ended_at": "2026-11-07T12:58:58.054874+00:00",
+        "exit_code": 0,
+        "changed_adapter_tensors": 144,
+        "peak_allocated_bytes": 21716264960,
+        "training_log": [
+          {
+            "loss": 3.0617,
+            "grad_norm": 1.347957968711853,
+            "learning_rate": 2e-05,
+            "epoch": 1.0,
+            "step": 1
+          },
+          {
+            "loss": 3.0611,
+            "grad_norm": 1.340850830078125,
+            "learning_rate": 2e-05,
+            "epoch": 2.0,
+            "step": 2
+          },
+          {
+            "loss": 3.0539,
+            "grad_norm": 1.3414603471755981,
+            "learning_rate": 2e-05,
+            "epoch": 3.0,
+            "step": 3
+          },
+          {
+            "loss": 3.0515,
+            "grad_norm": 1.3876798152923584,
+            "learning_rate": 2e-05,
+            "epoch": 4.0,
+            "step": 4
+          },
+          {
+            "loss": 3.0444,
+            "grad_norm": 1.4162880182266235,
+            "learning_rate": 2e-05,
+            "epoch": 5.0,
+            "step": 5
+          },
+          {
+            "loss": 3.0377,
+            "grad_norm": 1.5341923236846924,
+            "learning_rate": 2e-05,
+            "epoch": 6.0,
+            "step": 6
+          },
+          {
+            "loss": 3.0341,
+            "grad_norm": 1.483847737312317,
+            "learning_rate": 2e-05,
+            "epoch": 7.0,
+            "step": 7
+          },
+          {
+            "loss": 3.0258,
+            "grad_norm": 1.5126010179519653,
+            "learning_rate": 2e-05,
+            "epoch": 8.0,
+            "step": 8
+          },
+          {
+            "train_runtime": 2715.06,
+            "train_samples_per_second": 0.071,
+            "train_steps_per_second": 0.003,
+            "total_flos": 9.762577768976947e+16,
+            "train_loss": 3.0462656915187836,
+            "epoch": 8.0,
+            "step": 8
+          }
+        ],
+        "adapter": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/decision_action/adapter",
+        "same_process_adapter_save_zero_reload_exact": true,
+        "backward_completed": 192,
+        "checkpoint_input_stats": {
+          "installed_layers": 36,
+          "checkpoint_forward_calls": 6912,
+          "input_bytes_seen": 589064306688,
+          "pin_memory": false,
+          "input_bytes_are_not_measured_memory_savings": true
+        },
+        "cold_process_optimizer_resume_tested": false,
+        "generalization_claim": false
+      }
+    }
+  },
+  "ended_at": "2026-11-07T12:58:58.906160+00:00",
+  "exit_code": 0
 }

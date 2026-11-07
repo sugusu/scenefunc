@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "failed",
   "started_at": "2026-11-07T11:27:02.933118+00:00",
   "pid": 1649757,
   "stages": [
@@ -16,7 +16,29 @@
         "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/AUTHORIZATION.json"
       ],
       "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/training_batch.log",
-      "pid": 1649762
+      "pid": 1649762,
+      "exit_code": 0,
+      "ended_at": "2026-11-07T12:58:59.579953+00:00"
+    },
+    {
+      "stage": "evaluation",
+      "started_at": "2026-11-07T12:58:59.581391+00:00",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "-u",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_terminal_edit_evaluation.py",
+        "--study",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/STUDY_PLAN.json",
+        "--authorization",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/AUTHORIZATION.json"
+      ],
+      "log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/evaluation_batch.log",
+      "pid": 1657687,
+      "exit_code": 1,
+      "ended_at": "2026-11-07T13:00:26.636033+00:00"
     }
-  ]
+  ],
+  "error": "RuntimeError: evaluation failed; no subsequent stage or retry",
+  "ended_at": "2026-11-07T13:00:26.636960+00:00",
+  "exit_code": 1
 }

@@ -1,3 +1,9 @@
+## 2026-11-07T13:19:38.798097+00:00 STOPDATA终态与EVALFIX验收
+
+16/16更新完成，2adapter最终checkpoint8一致；首格1模型/1尝试/0native，接口错误exit1，0/12完整有效对照。总GPU子进程5536.571秒。17项真实快照CPU回归通过；原生host恢复exit0/61.632秒、状态完全一致，0新增模型/训练/编辑。首次沙盒预检exit124留档。原冻结代码保留；新版承接首输出为拒绝、原调用/成本不清零。待精确评测-only续行批准，最多71新增调用和7175.951879GPU秒，0新训练；旧批不重启。详情STOPDATA/FAILURE_REVIEW.json、EVALFIX/REPAIR_ACCEPTANCE.json与STUDY_CARD.md。
+
+以下为历史记录，当前状态以snapshot及真实回执为准。
+
 ## 2026-11-07T12:01:06.110505+00:00
 
 小时批：已保存真实action_only中途回执（5更新、141反向），明确用户批准与自动评测接续。原ef8c301已推送并ls-remote核实。

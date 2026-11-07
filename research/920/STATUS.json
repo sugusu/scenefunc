@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-07T11:30:11.083159+00:00",
+  "updated_at": "2026-11-07T13:19:38.798097+00:00",
   "goal_status": "blocked",
-  "goal_objective_sync": "synchronized_active",
+  "goal_objective_sync": "objective_retained_app_blocked_status_cannot_resume_via_available_tool",
   "research_complete": false,
   "objective": "Learn real-project interior-design decisions in Scene-Designer to generate complete editable usable rooms.",
-  "phase": "approved_preflight_passed",
+  "phase": "evaluation_interface_repaired_awaiting_specific_continuation",
   "acceptance_criteria": "research/920/RESEARCH_GOAL.md",
   "requested_goal_text": "research/920/GOAL_TEXT.txt",
   "goal_sync_evidence": "research/920/GOAL_SYNC.json",
@@ -18,16 +18,15 @@
   "training_authorized": true,
   "training_requires_separate_approval": true,
   "latest_completed_experiment": "P920-EDITSTUDY-v1_20261106T074752Z",
-  "current_run_id": "P920-STOPDATA-v1_20261107T102628Z",
-  "current_run_role": "finite_learning_study_preparation",
-  "new_model_calls_this_turn": 0,
+  "current_run_id": "P920-EVALFIX-v1_20261107T130916Z",
+  "current_run_role": "evaluation_only_revision_no_new_training",
+  "new_model_calls_this_turn": 1,
   "running_model_process": null,
-  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/FINAL_VALIDATION.json",
-  "next_step": "请用户单独审定STUDY_CARD：GPU0两adapter各8更新/最多2小时，12终态评测最多2小时，总6GPU小时；批准前不创建授权文件、不启动训练。旧实验关闭，不重跑。",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALFIX-v1_20261107T130916Z/REPAIR_ACCEPTANCE.json",
+  "next_step": "Request exact evaluation-only continuation; reuse both adapters, carry first rejected output and cost, max71 new calls.",
   "publication": {
-    "status": "local_commit_preserved_not_published",
-    "local_head": "ef8c30105cf81a0fa4556ba9624ad15d31547eb3",
-    "last_verified_remote_head": "8349a9a268cb02efb467bf0afb5485a6d8b63dbf",
+    "status": "new_terminal_results_pending_commit",
+    "last_verified_remote_head": "06951a1c9b4e1a21a003b500234c26d1c71f034d",
     "receipt": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/PUBLICATION.json"
   },
   "scheduled_automation_created": false,
@@ -47,9 +46,9 @@
   "source_supported_candidates": 14,
   "actual_loader_engineering_check": "passed",
   "same_project_professional_loader_gate": "source_guided_transfer_step_loader_passed; historical same-project geometry and core training admission not claimed",
-  "completed_current_phase": true,
-  "pending_user_input": null,
-  "last_verified_remote_head": "8349a9a268cb02efb467bf0afb5485a6d8b63dbf",
+  "completed_current_phase": false,
+  "pending_user_input": "Exact evaluation-only continuation approval after stopped infrastructure error.",
+  "last_verified_remote_head": "06951a1c9b4e1a21a003b500234c26d1c71f034d",
   "state_interface_engineering_check": "passed_on_four_saved_batches",
   "recovered_public_reference": {
     "final_rooms": 30,
@@ -60,8 +59,8 @@
     "windows_byte_identity_verified": false
   },
   "last_goal_turn_classification": {
-    "classification": "no_progress",
-    "reason": "Same explicit new-training approval remains absent for third consecutive turn; preparation and evidence writing exhausted; Goal blocked."
+    "classification": "substantial_progress",
+    "reason": "Explicit approval received;16updates completed,1actual model output,interface failure stopped evaluation; exact repair underway."
   },
   "review_interface_engineering_check": "18_checks_passed_CPU_no_model_or_training",
   "training_manifest_check": "current_engineering_sample_rejected_no_training_directory_created",
@@ -780,21 +779,7 @@
     "training_eligible": false,
     "summary": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALTASK-v1_20261107T085128Z/SUMMARY.json"
   },
-  "training_authorization_scope": {
-    "approved": true,
-    "recorded_at": "2026-11-07T11:25:01.922666+00:00",
-    "plan_sha256": "03a0d316bdcfe2998506d6c67a917ea4c8c35ea95293094b724bc2038890fc4f",
-    "study_plan_sha256": "04c2e1149cec20b370f04e669c3e8408191a7106fd97699b9b8152d574c7df42",
-    "user_messages": [
-      {
-        "question": "是否批准这份已完成验收的学习试验？GPU0 上两个 LoRA 各 8 次更新、各最多 2 小时，再做三组共 12 份终态评测（1 项目族 × 2 用途 × 2 种子），评测最多 2 小时，总上限 6 GPU 小时；首个基础设施错误即停，不自动追加预算。",
-        "answer": "批准本方案的训练和评测"
-      }
-    ],
-    "gpu": "GPU0",
-    "total_gpu_seconds_upper_bound": 21600,
-    "no_automatic_retry_or_extension": true
-  },
+  "training_authorization_scope": "STOPDATA consumed: both final8 adapters complete; no new training authorized.",
   "decision_pilot_execution": {
     "run_id": "P920-PILOTPLAN-v1_20261105T094043Z",
     "status": "failed_oom_before_first_optimizer_update",
@@ -1119,13 +1104,14 @@
     "wrapper_pid": 1649757,
     "training_pid": 1649762,
     "tool_session_id": 63686,
-    "training_updates": 4,
+    "training_updates": 12,
     "training_updates_planned": 16,
     "evaluation_completed": 0,
     "evaluation_planned": 12,
-    "progress_observed_at": "2026-11-07T11:53:13.263978+00:00",
+    "progress_observed_at": "2026-11-07T12:38:56.409328+00:00",
     "execution": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/EXECUTION.json",
-    "progress": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/MICRO_PROGRESS.json"
+    "progress": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-STOPDATA-v1_20261107T102628Z/training/action_only/MICRO_PROGRESS.json",
+    "active_arm": "decision_action"
   },
   "storage_execution_gate": {
     "model_calls": 18,
@@ -1169,5 +1155,16 @@
   "goal_blocker": {
     "resolved_at": "2026-11-07T11:25:01.922666+00:00",
     "reason": "User explicitly approved exact frozen plan; app Goal still reports blocked and cannot be resumed with update_goal tool."
+  },
+  "current_learning_trial": {
+    "optimizer_updates_completed": 16,
+    "optimizer_updates_planned": 16,
+    "evaluation_cells_completed": 0,
+    "evaluation_cells_attempted": 1,
+    "evaluation_cells_planned": 12,
+    "actual_exit_code": 1,
+    "report": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/FAILURE_REVIEW.json",
+    "pending_revision": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EVALFIX-v1_20261107T130916Z/STUDY_PLAN.json",
+    "repair_native_exit_code": 0
   }
 }
