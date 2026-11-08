@@ -1,6 +1,6 @@
 {
   "created_at": "2026-11-05T16:47:24.681925+00:00",
-  "status": "completed_stopdata_evalfix_negative_result_with_saved_trajectory_and_learning_audits",
+  "status": "completed_final_weight_diagnostic_without_established_design_benefit",
   "sources": {
     "training": {
       "path": "runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
@@ -201,6 +201,18 @@
     "final_fit_plan": {
       "path": "runs/920/P920-FITDIAG-v1_20261107T185219Z/PLAN.json",
       "sha256": "b06d168cfba27d68b0163cd7264a655782d215760dd597fd05877546f58b982d"
+    },
+    "final_fit_result": {
+      "path": "runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/FINAL_DIAGNOSTIC.json",
+      "sha256": "a7a6f8f5935e5b73397bd3fc95e595c13f361c9c56244c017cd679cbef7f6873"
+    },
+    "final_fit_receipt": {
+      "path": "runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/PROCESS_RECEIPT.json",
+      "sha256": "a07eb1f8559114effd64f4d40b98e6ac3550ea059a2d3e53b3c6ebf3f328857f"
+    },
+    "final_fit_contract": {
+      "path": "runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/CONTRACT_REVIEW.json",
+      "sha256": "8e8618a60a9a800378f89cb382efb75e386c1d95323f11bef46cb910a130dc27"
     }
   },
   "claims": [
@@ -433,18 +445,29 @@
     },
     {
       "id": "S7",
-      "claim": "The prospective final-weight fit diagnostic passed12CPU check groups on48actual tensors; no new model experiment has begun.",
-      "status": "supported_preparation_only",
+      "claim": "Before GPU execution, the frozen final-weight diagnostic passed12CPU check groups on48actual tensors. GPU execution is now recorded separately by S8.",
+      "status": "supported_historical_preflight",
       "evidence": [
         "final_fit_preflight",
         "final_fit_plan"
       ],
-      "not_supported": "GPU memory acceptance, final-weight predictions, new training, or approval for the proposed diagnostic."
+      "not_supported": "CPU checks alone do not establish final-weight predictions or room quality."
+    },
+    {
+      "id": "S8",
+      "claim": "The fixed final adapters completed96forwards and18free generations in615.119seconds,exit0,zero training/scene edits. Common six-family action NLL is0.801513/0.755116/0.770285. Six sampled training states have0/6exact target structures and0/2valid done outputs in every arm; explicit fixed-object and unadvertised-tool violations occur in the action arm.",
+      "status": "supported_training_state_diagnostic",
+      "evidence": [
+        "final_fit_result",
+        "final_fit_receipt",
+        "final_fit_contract"
+      ],
+      "not_supported": "That all alternative actions are functionally wrong, cross-project generalization, professional decision benefit, equal-material pairing causality, or automatic training authorization."
     }
   ],
   "new_model_calls": 0,
   "new_training_updates": 0,
-  "updated_at": "2026-11-07T19:07:19.881299+00:00",
+  "updated_at": "2026-11-08T05:08:06.778416+00:00",
   "counter_scope": "new_model_calls/new_training_updates count authoring this index only, not experiment totals",
   "conditional_recognition_scope": {
     "interpretation": "runs/920/P920-CHOICE-v1_20261106T155500Z/INTERPRETATION.md",

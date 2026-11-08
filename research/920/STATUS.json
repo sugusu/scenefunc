@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T04:57:18.004257+00:00",
+  "updated_at": "2026-11-08T05:08:06.778416+00:00",
   "goal_status": "active",
   "goal_objective_sync": "update_goal_blocked_objective_retained",
   "research_complete": false,
@@ -1132,20 +1132,22 @@
   },
   "current_execution": {
     "run_id": "P920-FITDIAG-v1_20261107T185219Z",
-    "state": "running",
+    "state": "completed",
     "question": "Do fixed final adapters fit common training targets and freely produce the demonstrated conditional edits/stops without gold decisions?",
-    "started_at": "2026-11-08T04:55:33.994285+00:00",
-    "ended_at": null,
-    "actual_exit_code": null,
-    "updated_at": "2026-11-08T04:57:18.004257+00:00",
+    "started_at": "2026-11-08T04:55:33.946704+00:00",
+    "ended_at": "2026-11-08T05:05:49.066013+00:00",
+    "updated_at": "2026-11-08T05:08:06.778416+00:00",
+    "actual_exit_code": 0,
     "first_log": "2026-11-08T04:55:33.994333+00:00 begin authorized frozen-weight diagnostic",
-    "completed": 16,
+    "completed": 114,
     "planned": 114,
     "configuration_sha256": "b06d168cfba27d68b0163cd7264a655782d215760dd597fd05877546f58b982d",
     "input_sha256": "9bddfa343c5b8c18bf7409e84f4481872c080b627e5a23f491ada27bfc00f499",
-    "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-FITDIAG-v1_20261107T185219Z/diagnostic/RESULT.json",
+    "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/FINAL_DIAGNOSTIC.json",
     "failure_reason": null,
-    "next_step": "Interpret fit and free decoding separately; no automatic training or inference extension."
+    "next_step": "Completed final-weight diagnostic. Review only already-produced legal alternatives for measured consequences before considering a new training proposal; no automatic training or rerun.",
+    "training_updates": 0,
+    "scene_edits": 0
   },
   "storage_execution_gate": {
     "model_calls": 18,
@@ -1226,7 +1228,7 @@
     "repair_native_exit_code": 0,
     "original_failed_execution": "runs/920/P920-STOPDATA-v1_20261107T102628Z/EXECUTION.json"
   },
-  "current_execution_state": "running",
+  "current_execution_state": "completed_exit0",
   "evaluation_cells_completed": 12,
   "evaluation_cells_planned": 12,
   "evaluation_authorization_scope": "Standing user authorization for bounded zero-training diagnostics using existing weights; research/920/EVALUATION_AUTHORIZATION.json",
@@ -1283,10 +1285,34 @@
     "report": "runs/920/P920-FITDIAG-v1_20261107T185219Z/SUMMARY.md",
     "micro_logs_verified": 384,
     "last_observed_updates": 7,
-    "final_adapter_fit_verified": false,
+    "final_adapter_fit_verified": true,
     "joint_reason_relative_loss_decrease": 0.0046552261133217835,
     "new_training_updates": 0,
-    "new_model_calls": 0
+    "new_model_calls": 0,
+    "final_adapter_diagnostic": "runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/FINAL_DIAGNOSTIC.json"
   },
-  "latest_verified_remote_head": "852fac3f87f41b8c36c5bdff413bdc39fd2565bd"
+  "latest_verified_remote_head": "852fac3f87f41b8c36c5bdff413bdc39fd2565bd",
+  "final_weight_diagnostic": {
+    "run_id": "P920-FITDIAG-v1_20261107T185219Z",
+    "completed": 114,
+    "planned": 114,
+    "forwards": 96,
+    "generations": 18,
+    "gpu_process_seconds": 615.1193199900445,
+    "actual_exit_code": 0,
+    "common_action_nll": {
+      "base": 0.8015132380452541,
+      "action_only": 0.7551159147514462,
+      "decision_action": 0.7702846148546945
+    },
+    "exact_target_by_arm": {
+      "base": 0,
+      "action_only": 0,
+      "decision_action": 0
+    },
+    "summary": "runs/920/P920-FITDIAG-v1_20261107T185219Z/SUMMARY.md",
+    "training_updates": 0,
+    "scene_edits": 0,
+    "design_benefit_established": false
+  }
 }
