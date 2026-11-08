@@ -1,6 +1,6 @@
 {
   "created_at": "2026-11-05T16:47:24.681925+00:00",
-  "status": "completed_final_weight_diagnostic_without_established_design_benefit",
+  "status": "completed_diagnostics_and_frozen_learning_proposal_without_established_design_benefit",
   "sources": {
     "training": {
       "path": "runs/920/P920-OFFLOAD-v1_20261105T102528Z/TRAINING_RESULT.json",
@@ -241,6 +241,30 @@
     "learning_revision": {
       "path": "runs/920/P920-TARGETFIELDS-v1_20261108T053512Z/LEARNING_REVISION.md",
       "sha256": "9143eb5167fdaa089f068889c13cb8a2a44c309c62031a86f2c095b98f34f420"
+    },
+    "matched_roll_summary": {
+      "path": "runs/920/P920-MATCHEDROLL-v1_20261108T062940Z/SUMMARY.json",
+      "sha256": "819c59bb48307ec24d92b1519f2118acb983c0dc11a0216caeb7a1dcd99f9b04"
+    },
+    "matched_roll_review": {
+      "path": "runs/920/P920-MATCHEDROLL-v1_20261108T062940Z/RESULTS_REVIEW.md",
+      "sha256": "5eb08c286d4fae6267a857a0c1a58a613e5fba3de67d7ffa987ad7b4bc399f6e"
+    },
+    "matched_roll_parser": {
+      "path": "runs/920/P920-MATCHEDROLL-v1_20261108T062940Z/PARSER_SENSITIVITY.json",
+      "sha256": "318f5f05a4fcb2c71f480184deee913b503df4950b57329c7af62eee0c85822b"
+    },
+    "learn_train_plan": {
+      "path": "runs/920/P920-LEARN-v1_20261108T075646Z/TRAIN_PLAN.json",
+      "sha256": "950ff0447fb68062bae82a5538ee878a76e853f53dca167f47ba54250de2b59d"
+    },
+    "learn_trial_plan": {
+      "path": "runs/920/P920-LEARN-v1_20261108T075646Z/TRIAL_PLAN.json",
+      "sha256": "b52bbea9ca1fcddd458a17b3f63299afdab76927173ef27a06925471961c74c4"
+    },
+    "learn_preflight": {
+      "path": "runs/920/P920-LEARN-v1_20261108T075646Z/preflight/ACCEPTANCE.json",
+      "sha256": "e75c4e9e70416e31baa9ffa5d668c5e5e28c5beb432ce6d93ea1425126d5b109"
     }
   },
   "claims": [
@@ -513,11 +537,33 @@
         "target_protocol_evidence"
       ],
       "not_supported": "Causal explanation of rollout failure, harmless coordinate rounding, professional learning benefit, or validation of the proposed new protocol."
+    },
+    {
+      "id": "S11",
+      "claim": "MATCHEDROLL completed 12 trajectories with 35 model calls and no new training. Satisfied-start retention and valid stop: base/action/joint 1/2, 1/2, 2/2; required activity changes solved: 0/2 in every arm. Eleven trajectories have retrospective parser-control divergence.",
+      "status": "supported_training_exposed_trajectory_diagnostic",
+      "evidence": [
+        "matched_roll_summary",
+        "matched_roll_review",
+        "matched_roll_parser"
+      ],
+      "not_supported": "Professional decision-learning benefit, a causal parser repair effect, or independent-project generalization."
+    },
+    {
+      "id": "S12",
+      "claim": "LEARN freezes two 8-update adapters and up to 24 gated complete trajectories within 20400 GPU-subprocess seconds. Six preflight stages exited zero, with two native restores and no model calls or training updates.",
+      "status": "supported_preflight_only_pending_training_approval",
+      "evidence": [
+        "learn_train_plan",
+        "learn_trial_plan",
+        "learn_preflight"
+      ],
+      "not_supported": "Training execution, optimization success, learning benefit, equal-material pairing causality, or professional whole-room validation."
     }
   ],
   "new_model_calls": 0,
   "new_training_updates": 0,
-  "updated_at": "2026-11-08T05:42:26.470671+00:00",
+  "updated_at": "2026-11-08T08:13:10.158007+00:00",
   "counter_scope": "new_model_calls/new_training_updates count authoring this index only, not experiment totals",
   "conditional_recognition_scope": {
     "interpretation": "runs/920/P920-CHOICE-v1_20261106T155500Z/INTERPRETATION.md",

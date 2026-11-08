@@ -1,6 +1,10 @@
+2026-11-08T09:20:29.814299+00:00 收到用户“批准本方案的训练与评测”，精确授权已记录；训练实际启动，session47601。此前审批阻断解除，待真实退出再继续评测。
+
+2026-11-08T08:14:44.799853+00:00 Goal已实际标记blocked（未完成）。同一新训练审批缺失连续三轮：首次发布并询问，第二轮完成论文证据同步但无答复，第三轮核实仍无授权。AUTHORIZATION/TRAINING_RESULT/EVALUATION_RESULT不存在，当前ps可见范围无新训练/评测入口进程；无可续等活跃句柄。仅有自动Goal续轮，不构成审批。已授权独立论文同步完成，下一实质动作依赖新训练批准；不新增旧权重诊断或重复整理。收到真实批准后核已发布TRAIN_PLAN哈希再执行。
+
 ## 2026-11-08T08:06:36.401380+00:00 完整有限学习方案
 
-先正常commit/push本方案及上一训练入口增量，ls-remote核验；随后只问一次新训练精确批准（Goal/AGENTS明确要求）。批准后核TRAIN_PLAN SHA 950ff0447fb68062bae82a5538ee878a76e853f53dca167f47ba54250de2b59d，先train_equal_material再run_learning_trial_eval；不重跑旧房间或另开诊断。
+发布及远端核验已完成（ac8df195）；下一步一次新训练精确批准（Goal/AGENTS明确要求）。批准后核TRAIN_PLAN SHA 950ff0447fb68062bae82a5538ee878a76e853f53dca167f47ba54250de2b59d，先train_equal_material再run_learning_trial_eval；不重跑旧房间或另开诊断。
 
 以下为历史记录，当前以 snapshot 为准。
 
