@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_equal_training_entry.py", line 99, in <module>
+    main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_equal_training_entry.py", line 37, in main
+    entry.save(altered, c)
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_decision_loss.py", line 17, in save
+    tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False)+'\n')
+  File "/data/wyh/conda/envs/c15_genrec/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/data/wyh/conda/envs/c15_genrec/lib/python3.10/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/data/wyh/conda/envs/c15_genrec/lib/python3.10/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/data/wyh/conda/envs/c15_genrec/lib/python3.10/json/encoder.py", line 397, in _iterencode_dict
+    yield _floatstr(value)
+  File "/data/wyh/conda/envs/c15_genrec/lib/python3.10/json/encoder.py", line 239, in floatstr
+    raise ValueError(
+ValueError: Out of range float values are not JSON compliant: nan

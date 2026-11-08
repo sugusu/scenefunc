@@ -1,0 +1,57 @@
+{
+  "status": "preflight_passed_awaiting_separate_training_approval",
+  "ended_at": "2026-11-08T08:05:26.398308+00:00",
+  "started_at": "2026-11-08T07:59:00.851781+00:00",
+  "stage_exit_codes": {
+    "clear_floor_restore_receipt": 0,
+    "desk_work_encode_receipt": 0,
+    "controller_receipt": 0,
+    "desk_work_restore_receipt": 0,
+    "trainer_receipt": 0,
+    "clear_floor_encode_receipt": 0
+  },
+  "summed_stage_seconds": 140.2332103298977,
+  "model_calls": 0,
+  "training_updates": 0,
+  "native_scene_restores": 2,
+  "native_furniture_edits": 0,
+  "training_plan_sha256": "950ff0447fb68062bae82a5538ee878a76e853f53dca167f47ba54250de2b59d",
+  "trial_plan_sha256": "b52bbea9ca1fcddd458a17b3f63299afdab76927173ef27a06925471961c74c4",
+  "controller_check_groups": 13,
+  "development": {
+    "desk_work": {
+      "input_tokens": 8445,
+      "images": 5,
+      "restored_state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+      "failed": [
+        "access_bath_entry_width_0.6",
+        "work_stool_in_declared_region"
+      ],
+      "result_sha256": "0eb31840034f1770c774f27b282632c1c0bd2f13875541a492f4b775692dd39c",
+      "encoding_sha256": "12c45aae7fdbb538035680c6814895680040a18cea7d305457ebcead170fe2d1"
+    },
+    "clear_floor": {
+      "input_tokens": 8409,
+      "images": 5,
+      "restored_state_sha256": "d77dcc58cc84e891966457cf9cde8cce79a84a919db4ed162c37ebdd29f8817d",
+      "failed": [
+        "access_bath_entry_width_0.6",
+        "central_activity_floor_clear"
+      ],
+      "result_sha256": "ca6dcc8ab6dc758106d1924d38508d9817274809d011704fc1871f56a763b335",
+      "encoding_sha256": "b693c42311f4ab2563c8db886fff225179f76d8f41c616e97f38589b13df73d3"
+    }
+  },
+  "source_hashes": {
+    "prepare_learning_trial.py": "75de8b2d333310af81ccd80a5903cc58ffc5a0c07a8a31721dd56b8c77c55e0e",
+    "run_learning_trial_eval.py": "ea052fa14bb7eec223b635443d096d96b50de842836a710a869e584aa791e3d8",
+    "run_learning_room_policy.py": "d296f46ba6cd97fe64501256c95bd6d13ce4ba707719fbcdfadf58c7cc46f33b",
+    "check_learning_trial.py": "bde697f1cc0d861772056a9aff8ec93da4f7a2d810bb961c65b680b15074b1f5",
+    "train_equal_material.py": "0c2725bcf0550489afc82abcadcb2fba590ea36168d9caa63b64ae9b63bdb15e"
+  },
+  "limitations": [
+    "No real model or optimization in this preflight.",
+    "Gate reuses four existing accepted preparations; no new Waterloo rollout.",
+    "Development actual initial native requests encoded; future post-edit histories still obey runtime length limits."
+  ]
+}

@@ -1,3 +1,15 @@
+## 2026-11-08T08:06:36.401380+00:00 完整有限学习方案
+
+6预检stage全部exit0，总140.233210秒（阶段耗时相加，含交叠）；13控制检查；动作24/配对32实际Trainer组件归一化；两个native恢复无家具编辑，5图输入8445/8409token。0新模型/优化。证据 preflight/ACCEPTANCE.json。首次旧ENTRY控制夹具失败仍保留，未覆盖历史。 AST与git diff --check通过；真实新adapter训练/推理尚未发生。
+
+以下为历史记录，当前以 snapshot 为准。
+
+## 2026-11-08T07:49:03.317852+00:00 训练入口接入与发布核验
+
+实际新增训练CLI消耗88组件，三个归一化误差通过；17控制检查通过，仅 subprocess 替身。首次错误回执保留。未执行真实反向、GPU或native。34已提交文件与9代码／回执hash核验；push0、随后ls-remote0完全一致。
+
+以下为历史记录，当前以 snapshot 为准。
+
 ## 2026-11-08T07:39:41.502030+00:00 同材料学习修订
 
 本批 prepare_equal_material 8.998779秒、check_equal_material 6.540210秒、check_upstream_stop 0.918827秒，全部exit0。实际EditTrainer消费／归一化误差4.07e-8，64目标原生标记及8错误拒绝通过；35解析原文与上游一致，4主循环替身通过。6新脚本AST及git diff --check通过。未测真实backward、native渲染、新模型或泛化。
