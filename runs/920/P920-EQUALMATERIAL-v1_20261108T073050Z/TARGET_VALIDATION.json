@@ -1,0 +1,342 @@
+{
+  "status": "passed",
+  "checks": [
+    "all64_actual_component_targets_preserve_native_markers_and_correct_EOS",
+    "empty_dataset",
+    "duplicate_component",
+    "mixed_training_arms",
+    "source_tensor_hash_corruption",
+    "transformed_label_corruption",
+    "unknown_component",
+    "declared_target_count_corruption",
+    "absent_reason_cannot_be_invented"
+  ],
+  "target_texts": [
+    {
+      "id": "clothing_build_07:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"两位短住者已具有主要生活家具，还需常用衣物取放。\", \"principle_applicability\": {\"source_decision_id\": \"airbnp_open_clothing_access_for_short_stays\", \"sourced_principle\": \"在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。\"}, \"proposed_decision\": {\"description\": \"增加开放挂杆；不替换已有生活家具。\", \"object_or_asset_references\": \"catalog_construct_open_clothes_rail\"}, \"expected_cost_and_unknowns\": \"需检查挂杆两侧取用与通行；承重、容量和封闭储物偏好未知。\"}\n</think>\n"
+    },
+    {
+      "id": "clothing_build_07:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"两位短住者已具有主要生活家具，还需常用衣物取放。\", \"principle_applicability\": {\"source_decision_id\": \"airbnp_open_clothing_access_for_short_stays\", \"sourced_principle\": \"在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。\"}, \"proposed_decision\": {\"description\": \"增加开放挂杆；不替换已有生活家具。\", \"object_or_asset_references\": \"catalog_construct_open_clothes_rail\"}, \"expected_cost_and_unknowns\": \"需检查挂杆两侧取用与通行；承重、容量和封闭储物偏好未知。\"}\n</think>\n"
+    },
+    {
+      "id": "clothing_build_07:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_open_clothes_rail\", \"x\": 2.4490002368452943, \"y\": -0.0006494827931256097, \"yaw\": 0.03140364494624525}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "clothing_build_07:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_open_clothes_rail\", \"x\": 2.4490002368452943, \"y\": -0.0006494827931256097, \"yaw\": 0.03140364494624525}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_build_07:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"主要生活家具已放入紧凑房间，还需补充收纳并保留连续起居空间。\", \"principle_applicability\": {\"source_decision_id\": \"guilbault_consolidated_storage_for_continuous_living_space\", \"sourced_principle\": \"在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。\"}, \"proposed_decision\": {\"description\": \"开始将新增柜体沿边界集中组织；后续柜体属于同一重建序列。\", \"object_or_asset_references\": \"catalog_construct_storage_a\"}, \"expected_cost_and_unknowns\": \"集中储物仍可能占用窗前或柜前空间；完整集成墙的技术功能未复现。\"}\n</think>\n"
+    },
+    {
+      "id": "storage_build_07:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"主要生活家具已放入紧凑房间，还需补充收纳并保留连续起居空间。\", \"principle_applicability\": {\"source_decision_id\": \"guilbault_consolidated_storage_for_continuous_living_space\", \"sourced_principle\": \"在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。\"}, \"proposed_decision\": {\"description\": \"开始将新增柜体沿边界集中组织；后续柜体属于同一重建序列。\", \"object_or_asset_references\": \"catalog_construct_storage_a\"}, \"expected_cost_and_unknowns\": \"集中储物仍可能占用窗前或柜前空间；完整集成墙的技术功能未复现。\"}\n</think>\n"
+    },
+    {
+      "id": "storage_build_07:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_storage_a\", \"x\": -2.7, \"y\": -1.85, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_build_07:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_storage_a\", \"x\": -2.7, \"y\": -1.85, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_build_08:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_storage_b\", \"x\": -2.7, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_build_08:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_storage_b\", \"x\": -2.7, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_build_09:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_storage_c\", \"x\": -2.7, \"y\": -0.05, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_build_09:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_construct_storage_c\", \"x\": -2.7, \"y\": -0.05, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_07:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"chair_right_0\", \"x\": 0.75, \"y\": 0.8, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_07:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"chair_right_0\", \"x\": 0.75, \"y\": 0.8, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_08:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"当前活动从日常用餐转为需要让出访客预留区，仍需保留餐桌。\", \"principle_applicability\": {\"source_decision_id\": \"paper_table_mobility_for_overnight_guest\", \"sourced_principle\": \"同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。\"}, \"proposed_decision\": {\"description\": \"将现有桌移到临时停放位置，保留同一实例。\", \"object_or_asset_references\": \"mobile_table_0\"}, \"expected_cost_and_unknowns\": \"日常用餐布置暂时改变；需要检查停放处与厨房、通路冲突，客床展开未验证。\"}\n</think>\n"
+    },
+    {
+      "id": "paper_table_modes_build_08:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"当前活动从日常用餐转为需要让出访客预留区，仍需保留餐桌。\", \"principle_applicability\": {\"source_decision_id\": \"paper_table_mobility_for_overnight_guest\", \"sourced_principle\": \"同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。\"}, \"proposed_decision\": {\"description\": \"将现有桌移到临时停放位置，保留同一实例。\", \"object_or_asset_references\": \"mobile_table_0\"}, \"expected_cost_and_unknowns\": \"日常用餐布置暂时改变；需要检查停放处与厨房、通路冲突，客床展开未验证。\"}\n</think>\n"
+    },
+    {
+      "id": "paper_table_modes_build_08:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"mobile_table_0\", \"x\": 0.75, \"y\": -1.55, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_08:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"mobile_table_0\", \"x\": 0.75, \"y\": -1.55, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_09:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"当前活动已从访客预留转回日常用餐。\", \"principle_applicability\": {\"source_decision_id\": \"paper_table_mobility_for_overnight_guest\", \"sourced_principle\": \"同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。\"}, \"proposed_decision\": {\"description\": \"移动同一桌实例恢复日常桌面位置；随后仍需归位坐凳。活动改变后，不将腾空访客区域作为永久目标。\", \"object_or_asset_references\": \"mobile_table_0\"}, \"expected_cost_and_unknowns\": \"恢复餐桌将占用访客预留区；仍需归位坐凳并检查两餐位及移动路径。沙发床展开和真实睡眠尚未知，不能仅凭端点位置承诺完整物理搬运可行。\"}\n</think>\n"
+    },
+    {
+      "id": "paper_table_modes_build_09:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"当前活动已从访客预留转回日常用餐。\", \"principle_applicability\": {\"source_decision_id\": \"paper_table_mobility_for_overnight_guest\", \"sourced_principle\": \"同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。\"}, \"proposed_decision\": {\"description\": \"移动同一桌实例恢复日常桌面位置；随后仍需归位坐凳。活动改变后，不将腾空访客区域作为永久目标。\", \"object_or_asset_references\": \"mobile_table_0\"}, \"expected_cost_and_unknowns\": \"恢复餐桌将占用访客预留区；仍需归位坐凳并检查两餐位及移动路径。沙发床展开和真实睡眠尚未知，不能仅凭端点位置承诺完整物理搬运可行。\"}\n</think>\n"
+    },
+    {
+      "id": "paper_table_modes_build_09:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"mobile_table_0\", \"x\": -1.8, \"y\": 0, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_09:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"mobile_table_0\", \"x\": -1.8, \"y\": 0, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_10:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"chair_right_0\", \"x\": -0.75, \"y\": 0, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "paper_table_modes_build_10:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"chair_right_0\", \"x\": -0.75, \"y\": 0, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "air_edit_01:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"open_clothes_rail_0\", \"x\": 2.45, \"y\": 0.0, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "air_edit_01:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"open_clothes_rail_0\", \"x\": 2.45, \"y\": 0.0, \"yaw\": 0.0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_01:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"已有柜体需要保留，当前要求连续起居、柜前及窗前接近。\", \"principle_applicability\": {\"source_decision_id\": \"guilbault_consolidated_storage_for_continuous_living_space\", \"sourced_principle\": \"在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。\"}, \"proposed_decision\": {\"description\": \"选择移动已有柜体 recon_storage_a_0，作为集中收纳布局的首个重建动作；这不是用户指定的柜体选择。\", \"object_or_asset_references\": \"recon_storage_a_0\"}, \"expected_cost_and_unknowns\": \"须逐步检查其他柜体、餐位、窗前和厨卫通行；不预先承诺全屋改善。\"}\n</think>\n"
+    },
+    {
+      "id": "storage_edit_01:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"已有柜体需要保留，当前要求连续起居、柜前及窗前接近。\", \"principle_applicability\": {\"source_decision_id\": \"guilbault_consolidated_storage_for_continuous_living_space\", \"sourced_principle\": \"在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。\"}, \"proposed_decision\": {\"description\": \"选择移动已有柜体 recon_storage_a_0，作为集中收纳布局的首个重建动作；这不是用户指定的柜体选择。\", \"object_or_asset_references\": \"recon_storage_a_0\"}, \"expected_cost_and_unknowns\": \"须逐步检查其他柜体、餐位、窗前和厨卫通行；不预先承诺全屋改善。\"}\n</think>\n"
+    },
+    {
+      "id": "storage_edit_01:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_a_0\", \"x\": -2.7, \"y\": -1.85, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_01:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_a_0\", \"x\": -2.7, \"y\": -1.85, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_02:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -1.65, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_02:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -1.65, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_03:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_03:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.2, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_04:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.7, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_04:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_b_0\", \"x\": -2.7, \"y\": -0.95, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_05:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_c_0\", \"x\": -2.7, \"y\": -0.05, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "storage_edit_05:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_storage_c_0\", \"x\": -2.7, \"y\": -0.05, \"yaw\": 270}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_01:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_chair_b_0\", \"x\": 0.12, \"y\": -0.45, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_01:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_chair_b_0\", \"x\": 0.12, \"y\": -0.45, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_02:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"当前需要共享活动工作面；已有两张桌可以重新组合。\", \"principle_applicability\": {\"source_decision_id\": \"waterloo_separable_tables_for_changing_activities\", \"sourced_principle\": \"住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。\"}, \"proposed_decision\": {\"description\": \"移动第二张桌，形成共享桌面的重建方案，保留原桌身份。\", \"object_or_asset_references\": \"recon_table_b_0\"}, \"expected_cost_and_unknowns\": \"独立工作位模式暂时改变；须检查坐席和通路，移动阻力、拼缝及稳定性未知。\"}\n</think>\n"
+    },
+    {
+      "id": "waterloo_edit_02:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"当前需要共享活动工作面；已有两张桌可以重新组合。\", \"principle_applicability\": {\"source_decision_id\": \"waterloo_separable_tables_for_changing_activities\", \"sourced_principle\": \"住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。\"}, \"proposed_decision\": {\"description\": \"移动第二张桌，形成共享桌面的重建方案，保留原桌身份。\", \"object_or_asset_references\": \"recon_table_b_0\"}, \"expected_cost_and_unknowns\": \"独立工作位模式暂时改变；须检查坐席和通路，移动阻力、拼缝及稳定性未知。\"}\n</think>\n"
+    },
+    {
+      "id": "waterloo_edit_02:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_table_b_0\", \"x\": 0.12, \"y\": 0.5, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_02:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_table_b_0\", \"x\": 0.12, \"y\": 0.5, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_03:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"共享待客阶段结束，当前需要恢复两人同时独立工作。\", \"principle_applicability\": {\"source_decision_id\": \"waterloo_separable_tables_for_changing_activities\", \"sourced_principle\": \"住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。\"}, \"proposed_decision\": {\"description\": \"将第二张桌从组合布局移开，保留桌实例；随后调整第二把椅子，恢复独立工作模式。可分可合的经验在这里支持分开。\", \"object_or_asset_references\": \"recon_table_b_0\"}, \"expected_cost_and_unknowns\": \"分开桌面将暂时失去共享围坐布局；还需调整第二把椅子并检查两人工位和通路。桌宽扰动、拼缝、轮载与实际搬运未知。\"}\n</think>\n"
+    },
+    {
+      "id": "waterloo_edit_03:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"共享待客阶段结束，当前需要恢复两人同时独立工作。\", \"principle_applicability\": {\"source_decision_id\": \"waterloo_separable_tables_for_changing_activities\", \"sourced_principle\": \"住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。\"}, \"proposed_decision\": {\"description\": \"将第二张桌从组合布局移开，保留桌实例；随后调整第二把椅子，恢复独立工作模式。可分可合的经验在这里支持分开。\", \"object_or_asset_references\": \"recon_table_b_0\"}, \"expected_cost_and_unknowns\": \"分开桌面将暂时失去共享围坐布局；还需调整第二把椅子并检查两人工位和通路。桌宽扰动、拼缝、轮载与实际搬运未知。\"}\n</think>\n"
+    },
+    {
+      "id": "waterloo_edit_03:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_table_b_0\", \"x\": 1.1, \"y\": 0.5, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_03:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_table_b_0\", \"x\": 1.1, \"y\": 0.5, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_04:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_chair_b_0\", \"x\": 1.1, \"y\": -0.45, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_edit_04:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_chair_b_0\", \"x\": 1.1, \"y\": -0.45, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "lifecycle_01:decision",
+      "arm": "separate",
+      "target": "<think>\n{\"current_condition\": \"研究任务已明确不再需要原儿童床，同时需要新的办公用途。\", \"principle_applicability\": {\"source_decision_id\": \"michelet_adapt_family_lifecycle\", \"sourced_principle\": \"住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。\"}, \"proposed_decision\": {\"description\": \"移除该床以开始用途转换，保留仍需的主床和其他房间功能。\", \"object_or_asset_references\": \"former_child_bed_0\"}, \"expected_cost_and_unknowns\": \"损失该床实例和原睡眠位置；仅在该睡眠需求已解除时适用，搬运处置及办公舒适度未知。\"}\n</think>\n"
+    },
+    {
+      "id": "lifecycle_01:decision",
+      "arm": "paired",
+      "target": "<think>\n{\"current_condition\": \"研究任务已明确不再需要原儿童床，同时需要新的办公用途。\", \"principle_applicability\": {\"source_decision_id\": \"michelet_adapt_family_lifecycle\", \"sourced_principle\": \"住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。\"}, \"proposed_decision\": {\"description\": \"移除该床以开始用途转换，保留仍需的主床和其他房间功能。\", \"object_or_asset_references\": \"former_child_bed_0\"}, \"expected_cost_and_unknowns\": \"损失该床实例和原睡眠位置；仅在该睡眠需求已解除时适用，搬运处置及办公舒适度未知。\"}\n</think>\n"
+    },
+    {
+      "id": "lifecycle_01:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"remove_furniture_tool\", \"arguments\": {\"object_id\": \"former_child_bed_0\"}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "lifecycle_01:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"remove_furniture_tool\", \"arguments\": {\"object_id\": \"former_child_bed_0\"}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "lifecycle_02:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_5d70cc76c99acee4513ec5f7fad497d2baebca9e\", \"x\": 4.1, \"y\": 1.5, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "lifecycle_02:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_5d70cc76c99acee4513ec5f7fad497d2baebca9e\", \"x\": 4.1, \"y\": 1.5, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "lifecycle_03:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02\", \"x\": 4.1, \"y\": 0.6, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "lifecycle_03:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"add_furniture_to_scene_tool\", \"arguments\": {\"asset_id\": \"catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02\", \"x\": 4.1, \"y\": 0.6, \"yaw\": 0}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "fhouse_perimeter_01:action",
+      "arm": "separate",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_tall_storage_0\", \"x\": -1.6, \"y\": 1.95, \"yaw\": 180}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "fhouse_perimeter_01:action",
+      "arm": "paired",
+      "target": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"recon_tall_storage_0\", \"x\": -1.6, \"y\": 1.95, \"yaw\": 180}}\n</tool_call><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_initial_work_stop:action",
+      "arm": "separate",
+      "target": "<think>\n{\"requested_mode\":\"separate_work\",\"measured_scope\":\"Declared object identity, fixed geometry, assigned tabletop places and proxy access checks for the current activity.\",\"unmet_in_measured_scope\":[],\"unknowns\":[\"Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.\",\"Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.\",\"Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.\",\"Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.\",\".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards.\"],\"whole_room_success\":\"unknown\"}\n</think><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_initial_work_stop:action",
+      "arm": "paired",
+      "target": "<think>\n{\"requested_mode\":\"separate_work\",\"measured_scope\":\"Declared object identity, fixed geometry, assigned tabletop places and proxy access checks for the current activity.\",\"unmet_in_measured_scope\":[],\"unknowns\":[\"Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.\",\"Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.\",\"Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.\",\"Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.\",\".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards.\"],\"whole_room_success\":\"unknown\"}\n</think><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_joined_host_stop:action",
+      "arm": "separate",
+      "target": "<think>\n{\"requested_mode\":\"joined_four_place_hosting\",\"measured_scope\":\"Declared object identity, fixed geometry, assigned tabletop places and proxy access checks for the current activity.\",\"unmet_in_measured_scope\":[],\"unknowns\":[\"Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.\",\"Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.\",\"Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.\",\"Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.\",\".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards.\"],\"whole_room_success\":\"unknown\"}\n</think><|im_end|>\n"
+    },
+    {
+      "id": "waterloo_joined_host_stop:action",
+      "arm": "paired",
+      "target": "<think>\n{\"requested_mode\":\"joined_four_place_hosting\",\"measured_scope\":\"Declared object identity, fixed geometry, assigned tabletop places and proxy access checks for the current activity.\",\"unmet_in_measured_scope\":[],\"unknowns\":[\"Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.\",\"Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.\",\"Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.\",\"Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.\",\".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards.\"],\"whole_room_success\":\"unknown\"}\n</think><|im_end|>\n"
+    }
+  ],
+  "manifest_sha256": "a4ecb640adfa937a213847d45edbd515237b620fc77e73c47b5a481568d29438",
+  "tokenizer_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+  "model_loaded": false,
+  "model_calls": 0,
+  "optimizer_updates": 0,
+  "cuda_initialized": false
+}

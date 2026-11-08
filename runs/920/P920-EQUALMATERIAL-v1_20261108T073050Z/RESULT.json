@@ -1,0 +1,156 @@
+{
+  "status": "cpu_preparation_and_deployment_control_checks_passed",
+  "ended_at": "2026-11-08T07:38:22.123044+00:00",
+  "exit_code": 0,
+  "receipts": {
+    "prepare_receipt": {
+      "started_at": "2026-11-08T07:31:01.229594+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/prepare_equal_material.py",
+        "--plan",
+        "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/PLAN.json"
+      ],
+      "timeout_seconds": 300,
+      "pid": 6,
+      "start_ticks": "78090981",
+      "log": "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/prepare_receipt/stage.log",
+      "ended_at": "2026-11-08T07:31:10.228360+00:00",
+      "elapsed_seconds": 8.99877911398653,
+      "exit_code": 0,
+      "first_log": "Equal-material CPU preparation started; no model or optimizer"
+    },
+    "check_receipt": {
+      "started_at": "2026-11-08T07:32:28.833817+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/conda/envs/c15_genrec/bin/python",
+        "scripts/920/check_equal_material.py",
+        "--manifest",
+        "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/MATERIAL_MANIFEST.json",
+        "--model",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+        "--out",
+        "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/TARGET_VALIDATION.json"
+      ],
+      "timeout_seconds": 120,
+      "pid": 6,
+      "start_ticks": "78099741",
+      "log": "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/check_receipt/stage.log",
+      "ended_at": "2026-11-08T07:32:35.374030+00:00",
+      "elapsed_seconds": 6.540209906059317,
+      "exit_code": 0,
+      "first_log": "{\"status\": \"passed\", \"groups\": 9, \"actual_components\": 64}"
+    },
+    "deployment_receipt": {
+      "started_at": "2026-11-08T07:35:53.778582+00:00",
+      "status": "completed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/check_upstream_stop.py",
+        "--plan",
+        "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/DEPLOYMENT_CHECK_PLAN.json",
+        "--out",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EQUALMATERIAL-v1_20261108T073050Z/deployment_checks"
+      ],
+      "timeout_seconds": 120,
+      "pid": 7,
+      "start_ticks": "78120236",
+      "log": "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/deployment_receipt/stage.log",
+      "ended_at": "2026-11-08T07:35:54.697398+00:00",
+      "elapsed_seconds": 0.9188274189364165,
+      "exit_code": 0,
+      "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead."
+    }
+  },
+  "total_cpu_stage_seconds": 16.457816438982263,
+  "model_calls": 0,
+  "native_scene_calls": 0,
+  "optimizer_updates": 0,
+  "training_authorized": false,
+  "material": {
+    "separate": {
+      "components": 32,
+      "families": 6,
+      "input_tokens": 331125,
+      "action_tokens": 1643,
+      "decision_tokens": 1332,
+      "family_component_tokens": {
+        "budapest_airbnp_position_collective_2015": {
+          "action": 162,
+          "decision": 156
+        },
+        "milan_paper_paper_associates": {
+          "action": 196,
+          "decision": 352
+        },
+        "osaka_f_house_coilkma": {
+          "action": 55,
+          "decision": 0
+        },
+        "paris_30m2_richard_guilbault_2015": {
+          "action": 432,
+          "decision": 327
+        },
+        "paris_michelet_nomadic": {
+          "action": 190,
+          "decision": 161
+        },
+        "singapore_waterloo_street_dess_chew": {
+          "action": 608,
+          "decision": 336
+        }
+      },
+      "attention_length_squared_proxy": 3581327663
+    },
+    "paired": {
+      "components": 32,
+      "families": 6,
+      "input_tokens": 332457,
+      "action_tokens": 1643,
+      "decision_tokens": 1332,
+      "family_component_tokens": {
+        "budapest_airbnp_position_collective_2015": {
+          "action": 162,
+          "decision": 156
+        },
+        "milan_paper_paper_associates": {
+          "action": 196,
+          "decision": 352
+        },
+        "osaka_f_house_coilkma": {
+          "action": 55,
+          "decision": 0
+        },
+        "paris_30m2_richard_guilbault_2015": {
+          "action": 432,
+          "decision": 327
+        },
+        "paris_michelet_nomadic": {
+          "action": 190,
+          "decision": 161
+        },
+        "singapore_waterloo_street_dess_chew": {
+          "action": 608,
+          "decision": 336
+        }
+      },
+      "attention_length_squared_proxy": 3608235315
+    }
+  },
+  "source_coverage": {
+    "reason_positions": 8,
+    "unique_principles": 5,
+    "reason_families": 5,
+    "all_families": 6,
+    "limits": "Existing source-guided reconstructions, not new historical designer trajectories or independent quality labels."
+  },
+  "limits": [
+    "No model optimization or inference; no new learning/performance evidence",
+    "Only two matched state pairs in one exposed Waterloo reconstruction",
+    "Professional principles remain 5; reason positions 8; source families with reasons 5 of 6",
+    "New runner tested with archived outputs and CPU doubles, not real native session/model",
+    "No-tool termination is not format validity, activity success or explanation correctness"
+  ]
+}

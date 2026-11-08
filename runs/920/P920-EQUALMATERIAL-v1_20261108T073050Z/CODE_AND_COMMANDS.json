@@ -1,0 +1,70 @@
+{
+  "code": [
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/conditional_material_dataset.py",
+      "sha256": "1efcfee9edb8ee55883db06b515f66644ba39602f5455e652ccbdb25c419b79a"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/prepare_equal_material.py",
+      "sha256": "b3381879f2a90e3af0611988c84dfc79dc0a19c75722d01158c5f07c9cf12391"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_equal_material.py",
+      "sha256": "f4d7b58765997bbb3334d0e2cf8444db78ce50db4644ce9a2121bde6d42d007a"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/upstream_termination_policy.py",
+      "sha256": "864ee6518807d730cdc0889d29fe96f2f630be1c0b1a6e48ef693f06f292b570"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/run_upstream_stop_policy.py",
+      "sha256": "8134d28c6b4d178214d7687dbece6b0ebdb9e8f961c34cce31944a1cda6e9140"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/check_upstream_stop.py",
+      "sha256": "2434ca9be3f3d84492af92be4c5a8e5d8fc2df0f0b4a0c0220ac118518594a43"
+    }
+  ],
+  "commands": {
+    "prepare_receipt": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "scripts/920/prepare_equal_material.py",
+      "--plan",
+      "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/PLAN.json"
+    ],
+    "check_receipt": [
+      "/data/wyh/conda/envs/c15_genrec/bin/python",
+      "scripts/920/check_equal_material.py",
+      "--manifest",
+      "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/MATERIAL_MANIFEST.json",
+      "--model",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/models/Scene-Builder-Qwen3-VL-8B-Instruct/63e235a0c0d6e5bc2f8f3485214df4457fd2e672",
+      "--out",
+      "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/TARGET_VALIDATION.json"
+    ],
+    "deployment_receipt": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/check_upstream_stop.py",
+      "--plan",
+      "runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/DEPLOYMENT_CHECK_PLAN.json",
+      "--out",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EQUALMATERIAL-v1_20261108T073050Z/deployment_checks"
+    ]
+  },
+  "receipts": {
+    "prepare_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/prepare_receipt/receipt.json",
+      "sha256": "3f224581275bb0030708ed56375da2be5395a9a9781795df98be5d87f6c7065f"
+    },
+    "check_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/check_receipt/receipt.json",
+      "sha256": "9605b4a4d94dc63d35fe896990bd53d3241859aa26055d1d84c5c7e60003c33c"
+    },
+    "deployment_receipt": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EQUALMATERIAL-v1_20261108T073050Z/deployment_receipt/receipt.json",
+      "sha256": "d22e26d04fb007c79edb1a7878d8891cb0dd2cdc43d4eeee7bbc5358d8144e44"
+    }
+  },
+  "restore": "Reuse hash-locked source tensors referenced by MATERIAL_MANIFEST. The component loader computes views without rewriting tensors. If archived sources are missing, follow MATCHEDINPUT COMMANDS and validate before producing a new manifest; do not silently accept changed hashes. CPU check output directories are immutable.",
+  "validation_fixture_root": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-EQUALMATERIAL-v1_20261108T073050Z/deployment_checks"
+}
