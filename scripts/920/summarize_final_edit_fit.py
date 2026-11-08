@@ -116,7 +116,7 @@ def main():
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / 'FINAL_DIAGNOSTIC.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     with (args.out / 'LIKELIHOODS.csv').open('w') as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator='\n')
         writer.writerow(['arm', 'setting', 'family', 'id', 'component', 'tokens', 'nll_sum', 'token_nll'])
         for r in result['forwards']:
             for name, part in r['components'].items():
