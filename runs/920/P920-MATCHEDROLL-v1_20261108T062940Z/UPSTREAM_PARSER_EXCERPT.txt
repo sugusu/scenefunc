@@ -1,0 +1,21 @@
+_TOOL_CALL_RE = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.DOTALL)
+
+_THINK_RE = re.compile(r"<think>\s*(.*?)\s*</think>", re.DOTALL)
+
+def parse_assistant_text(text: str) -> tuple[str | None, list[dict]]:
+    think_m = _THINK_RE.search(text)
+    think = think_m.group(1).strip() if think_m else None
+    tool_calls: list[dict] = []
+    for m in _TOOL_CALL_RE.finditer(text):
+        body = m.group(1).strip()
+        try:
+            tc = json.loads(body)
+            tool_calls.append({"name": tc.get("name"),
+                               "arguments": tc.get("arguments") or {}})
+        except json.JSONDecodeError:
+            # Include a sentinel 'name' so the many downstream `tc["name"]`
+            # accesses (logging, handler dispatch) never KeyError on a
+            # truncated/malformed tool call — it's caught as a parse error.
+            tool_calls.append({"_parse_error": True, "_raw": body,
+                               "name": "_parse_error"})
+    return think, tool_calls

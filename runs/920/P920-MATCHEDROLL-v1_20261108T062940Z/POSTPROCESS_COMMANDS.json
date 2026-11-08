@@ -1,0 +1,26 @@
+{
+  "working_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc",
+  "executed_commands": [
+    {
+      "argv": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/summarize_matched_trajectories.py",
+        "--run",
+        "runs/920/P920-MATCHEDROLL-v1_20261108T062940Z"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/920/audit_completion_sensitivity.py",
+        "--run",
+        "runs/920/P920-MATCHEDROLL-v1_20261108T062940Z",
+        "--upstream",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/rollout_client.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "additional_verification": "FINAL_ACCEPTANCE.json records direct byte equality of every archived nonimage file, every raw output hash, 12 receipts/manifest existence, actual resource limits, and source syntax. No new model or native scene call in postprocessing."
+}

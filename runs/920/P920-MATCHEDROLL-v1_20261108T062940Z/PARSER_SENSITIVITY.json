@@ -1,0 +1,863 @@
+{
+  "kind": "posthoc_offline_parser_sensitivity",
+  "training_updates": 0,
+  "model_calls": 0,
+  "upstream_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/rollout_client.py",
+  "upstream_source_sha256": "f10ec60d0509bf88d582e336330a58be2f7dfd9429d0531e3ffa4ae93f920151",
+  "upstream_revision": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "upstream_parser_matches_committed_source": true,
+  "upstream_parser_lines": [
+    59,
+    75
+  ],
+  "stop_rule": "rollout_client.py: if not tool_calls -> stop_reason=no_tool_call, break",
+  "rows": [
+    {
+      "cell": "waterloo_initial_work_stop__frozen_base",
+      "result_sha256": "764912f9ba64fba72d71186827975d418ab29f9779cc114195bc1601c6e7b8fa",
+      "first_parser_divergence_turn": 1,
+      "first_output_upstream_stop": false,
+      "initial_measured_status": "pass",
+      "actual_final_outcome": "maintained_declared_requirements",
+      "actual_valid_completion": false,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "ea7c1705f477d6fe8e542c933811b5bbffb10c6c6552b5712eaa25ed221f5538",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 1.1,
+                "y": 0.5,
+                "yaw": 0
+              }
+            }
+          ],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "tool",
+            "call": {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 1.1,
+                "y": 0.5,
+                "yaw": 0
+              }
+            },
+            "raw_json": "\n{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_table_b_0\", \"x\": 1.1, \"y\": 0.5, \"yaw\": 0}}\n"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "f7b250e15403c73fd98e0f104555cec0ce4e58375c4f17cd188388104c4d7adb",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 2,
+          "raw_output_sha256": "7d3eebd160cd1e1cfb94c201f1d18109f314cf199d91d131cb628c5057e57c7c",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 3,
+          "raw_output_sha256": "f5d4790d27cebc2eb6b5117fe6aaf2ebb75b616c09f6f2f3cce46686ae84489b",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_initial_work_stop__action_only",
+      "result_sha256": "77b51be1652c10b47560099c165f7fb836d69d6c09ec6f90b7edc0eb2fa118e1",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "pass",
+      "actual_final_outcome": "introduced_declared_failure",
+      "actual_valid_completion": false,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "774bef2fb1ac82a10eb1e31821aab58b1b72a040c782d6d3d4f80400ac1d3512",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "5e30c00820bf0250fc05d8b2142fde66caf63736622e7d83c97759561c64d8be",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 2,
+          "raw_output_sha256": "e1985dc2610722466af0ad1ca3bf1f17b82cb5d9ff8060c2da7da1e74dc58321",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 0.0,
+                "y": 1.0,
+                "yaw": 0
+              }
+            }
+          ],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "tool",
+            "call": {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 0.0,
+                "y": 1.0,
+                "yaw": 0
+              }
+            },
+            "raw_json": "\n{\"name\":\"move_furniture_tool\",\"arguments\": {\"object_id\": \"recon_table_b_0\", \"x\": 0.0, \"y\": 1.0, \"yaw\": 0}}\n"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        },
+        {
+          "turn": 3,
+          "raw_output_sha256": "64de674dcda532d46503b860559705bd85c2ce29e5504620fde759769b566857",
+          "upstream_parsed_calls": [
+            {
+              "name": "check_current_room_tool",
+              "arguments": {}
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_initial_work_stop__decision_action",
+      "result_sha256": "f3cc38f6831b6eb4dd75628753e3c0288cdffafb8e3b8093f0c5897f8c5a9ceb",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "pass",
+      "actual_final_outcome": "maintained_declared_requirements",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "ddd8e4b5c16c03ad0c5f97eb92ec81f741079b5a403e9d73664ce8dbe0315c11",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "434bcea793050e044699dbe84b9c028c23c173327c6f04e53ce819e705f6915b",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current validation shows no unmet requirement for the specified current activity: two separate workstations are already in place with the tables and chairs, and all other requested access points (sleeping, bathing, kitchen, wardrobe, windows) are accounted for without any reported conflict. Since the only allowed edits are table_b and chair_b, and no violation is indicated, the room satisfies the stated conditions.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_edit_01__frozen_base",
+      "result_sha256": "4643070c82cd0a86c3464780d0169222c54cf7a29943c16063786d29e73acbb7",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "fail",
+      "actual_final_outcome": "remaining_declared_deficit",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "41626bb2f97b8ea9e5bce4f3a7168c29786bc5c23084e56ae1c1bda7b7539c8b",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "17b6360423dc5dde27943d588800610049f3022ed25446da3681b83008bc74cd",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current room is the baseline for a compact 8x7m apartment with a bath, bed, kitchen, wardrobe, and seating; the requested four-person shared-dining layout has already been set with table_a and table_b at x=-1.1,1.1 and y=0.5,0.5, with guest chairs on the north side. Since the task now asks to preserve that setup while moving table_b and chair_b, the only changes that can be made are to these two movable objects. The earlier validation found no violations in the current arrangement, so there is no known functional deficit to correct; the current state already satisfies the original four-person hosting requirement. The user\u2019s subsequent request to move table_b and chair_b is a separate adjustment, not a correction of an unmet condition, so the appropriate action is not to make a move but to confirm the current valid configuration by treating the current layout as the selected design.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_edit_01__action_only",
+      "result_sha256": "38dfb3416848b8353a79214f7528bb23d098ae332b7a541823291e5e85fbfc45",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": false,
+      "initial_measured_status": "fail",
+      "actual_final_outcome": "remaining_declared_deficit",
+      "actual_valid_completion": false,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "2812fa878a9df857ecf95b7bbeee3436267183a9054928b76ac434e330850425",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 1.6,
+                "y": 1.0,
+                "yaw": 0
+              }
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "bb1421034621a138ddef1df38486333940b92123949668d2a31760337d62c5bf",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 2,
+          "raw_output_sha256": "7ebb1d73dc49d4b16eb3ef55ce037ffa5196a6464b93044966eef3703c04c3b4",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_chair_b_0",
+                "x": 1.1,
+                "y": 0.5,
+                "yaw": 0
+              }
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 3,
+          "raw_output_sha256": "ac86950472501ad02cf12f0e4e26e1906ac081bbd61c8aff74010da7cdce7708",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 1.06,
+                "y": 0.4988020782293264,
+                "yaw": 0
+              }
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_edit_01__decision_action",
+      "result_sha256": "686ea67fc06bdb071134bc7842861101d827cb95fa29e1593f8ee6fec42ee4f6",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": false,
+      "initial_measured_status": "fail",
+      "actual_final_outcome": "remaining_declared_deficit",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "5a9e0dde7980728acb1b4195c0254599d6da9feaf3c4c3e2e70033208f6fb959",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 0,
+                "y": 1.0,
+                "yaw": 90
+              }
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "25f374e5c49fe15df128f8d73fa8cd8f7a601cbd52995b797470d0002da97d40",
+          "upstream_parsed_calls": [
+            {
+              "name": "get_current_scene_state",
+              "arguments": {}
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 2,
+          "raw_output_sha256": "7d3062ed6445f58766c750e816f45990cf21b483029b1db38b5a4c6173566ad5",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_chair_b_0",
+                "x": 1.112358514251114,
+                "y": -0.55,
+                "yaw": 0
+              }
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 3,
+          "raw_output_sha256": "9a5c8c976d6e840aad3bbcdbd00b7d13f584c0db3ef34d184e4423d217915d7f",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current room is a compact 8x7 m apartment with bed, bath, kitchen, wardrobe, sofa, and two small tables, as per the fixed furniture. The requested hosting layout requires four seated positions around two tables, with chair_b on the right side at y\u2248\u22120.45. The previous validation found no current defect for this exact configuration; the only prior issue was that guest_b\u2019s table placement failed the seat alignment test. Since no further changes have been made, the layout remains unchanged and still satisfies the known requirements: two work positions, four hosting places, and all fixed furniture remain in place. There is no unmet requirement to correct at this point.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_joined_host_stop__frozen_base",
+      "result_sha256": "8ddcbb193a2fc4a919ee36870168db538548a4874f32202efa785837a32a5610",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "pass",
+      "actual_final_outcome": "maintained_declared_requirements",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "b804061ea3e6800d06bc5235faf164097f222e7ce087a010140075cfaf37bd99",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Generation failed or was truncated"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": false,
+          "generation_rejected": "length_limited_incomplete_output",
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "76ed171d8c8f1eb9ff5ef5cc4202fe7e1180a99f07e28a13ad0d8a875ff4a321",
+          "upstream_parsed_calls": [
+            {
+              "name": "get_current_scene_state",
+              "arguments": {}
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 2,
+          "raw_output_sha256": "cb703e68a249f7a3a58dd131de485e2593ee8f2e9374505dbd1ceb661a5d43ec",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 3,
+          "raw_output_sha256": "e0aabf72d76f98c21b6bbd55d2eda67df0cdca9b1dd3faee29f8a18088a506e0",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current room is already configured for the requested four-person shared desktop activity, with table_a and table_b placed as a joined pair at the center, and four chairs around them. The move_furniture_tool is the only available action, and the user's constraints preserve all existing furniture, so the layout is complete. I am therefore not making any further adjustments.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_joined_host_stop__action_only",
+      "result_sha256": "8e9158f913831ab5df461f800956a4f67fe0b77f632927cca9e49dad251a18d2",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "pass",
+      "actual_final_outcome": "maintained_declared_requirements",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "0651cd77e5c6dc84040d4a24027edee73f527760fca6a63952f7e29bc2d33d48",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "1be89775bd15bd0df9553dac084c7c8764128e4b8eb2f7666e4779e8300cf402",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current room is the same compact apartment layout shown in the prompt: a bed on the east side, wardrobe and bath fixtures in the west/north-west, kitchen counter and appliances in the north-east, sofa on the west, and two small tables with chairs in the central-south area. The last successful move placed table_b at x\u22480.12, y\u22480.5 with a slight yaw, while chair_b remained near x\u22480.12, y\u2248-0.45 as a work chair on the south side. The room has already completed the requested transition: after the initial two-table setup for four seated guests, table_b was moved to create two separate work positions, with table_a and table_b now paired with chair_a and chair_b respectively. The current measured state has no reported violations, and the objects are still within the room with the bed, kitchen, bath, and wardrobe all preserved. Since the user\u2019s activity now depends on the two-workstation arrangement rather than the original four-seat grouping, the layout is essentially stable and does not need further adjustment. I will therefore make no new move_furniture_tool call.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_joined_host_stop__decision_action",
+      "result_sha256": "4fb7d8b1c8c395bf7d7735cdb47cd16236d29822fa0f19f8a643c8f541595aeb",
+      "first_parser_divergence_turn": null,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "pass",
+      "actual_final_outcome": "maintained_declared_requirements",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "f3042eb7aa0eaa0a4ef2e6c91c39eb5d63bfe0cd1e73121cb8b033e5e5697e00",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "\u5f53\u524droom_state\u6ee1\u8db3\u56db\u4eba\u56f4\u5750\u7684\u5171\u4eab\u684c\u9762\u6d3b\u52a8\uff1atable_a(\u22121.1,0.5)\u4e0etable_b(0.1204,0.5012)\u5e76\u6392\uff0crecon_chair_a(\u22121.1,\u22120.45)\u3001recon_chair_b(0.1211,\u22120.4519)\u3001recon_guest_a(\u22121.1,1.45)\u3001recon_guest_b(0.12,1.45)\u5206\u5750\u4e24\u684c\uff0ctable_b\u4e0echair_b\u7684move_furniture_tool\u8c03\u7528\u5df2\u6210\u529f\u3002bbox\u548cspace_around checks\u672a\u62a5\u544a violation\uff0c\u4e24\u684c\u95f40.22m gap\u3001table/chair/seating overlap margin 0.0202m\u30010.38m gap\u30010.6m separate_min_gap\u5747\u5728\u53ef\u63a5\u53d7\u8303\u56f4\u3002window_0(0,\u22123.1)\u3001entry_0(0,3.5)\u3001bath_shower(\u22123.4,2.9)\u3001wardrobe(\u22123.55,\u22120.3)\u7b49\u5173\u952e access \u4e0e proximity \u4e5f\u65e0 conflict\u3002\u6b64 state \u5df2 ready for the requested four-person hosting mode\uff0c\u65e0\u9700 further adjustment\u3002",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_edit_03__frozen_base",
+      "result_sha256": "62ae84726d92cf6274f66c8be565e5daa3d49173f1538c88a2d50275b9bf2b89",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "fail",
+      "actual_final_outcome": "remaining_declared_deficit",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "2dda1a59c093cdd5234d78f73d3dd4f33ba1bccd7cba357bced158033e937e86",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "0120740368d8e5b3cfcf39013b6016cb5e986c1a11badbfc70d9ef64dd4fc3e2",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_table_b_0",
+                "x": 1.35,
+                "y": 0.5,
+                "yaw": 0
+              }
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 2,
+          "raw_output_sha256": "7ca727987d15b76a1858c0cdad333e0bff095b375c2fde1b4ff5822bf9012edf",
+          "upstream_parsed_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "recon_chair_b_0",
+                "x": 0.12044957556673148,
+                "y": 0.5012093251942861,
+                "yaw": 180
+              }
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 3,
+          "raw_output_sha256": "f864fa48d7383c0c8902ac690b57a14ed6cc0890fa6e8bdbd9342d4162882a5b",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current layout is already organized for two separate workstations: table_a at about (-1.12, 0.53) with chair_a on its west side at (-1.11, -0.45), and table_b at (0.12, 0.50) with chair_b on its west side at (0.12, -0.45). The objects remain at the same positions and rotations as the last successful state, with only the chair_b rotation adjusted to 0.001376 radians and then reconfirmed. The earlier move_furniture_tool calls were not executed because the system treated them as invalid or blocked, but the current scene is unchanged from the successful validation. Since no new requirements have appeared and the current arrangement satisfies the stated need for two separate workstations, there is no further action needed.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_edit_03__action_only",
+      "result_sha256": "9a37dea22a2c44ac9c1f70a5139e2997c62b398d72269cc7e9a40120388aca22",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": false,
+      "initial_measured_status": "fail",
+      "actual_final_outcome": "remaining_declared_deficit",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "f80c3f2fdc326b4643b59689cb31ce92ba1276934b777a12fabc22b1a8b42769",
+          "upstream_parsed_calls": [
+            {
+              "name": "get_current_scene_state",
+              "arguments": {}
+            }
+          ],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": false,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": false,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_extracts_calls_rejected_or_differently_parsed_by_strict_gate"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "1ccdd9198ed15cb78958995432cc9d0c4d397ed279588ad857b9d6e1ae7f2d7f",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current layout is already a compact apartment: bed in the south-west, wardrobe on the west, bathroom fixtures in the north-west, kitchen counter and appliances along the east and north-east, and the sofa in the south-central area. The two tables and their chairs are positioned near the center, with table_a at about (-1.1, 0.5) and table_b at about (0.12, 0.5), facing each other across the central aisle. This satisfies the current request for two separate workstations because each table has its own chair and sufficient separation from the other workstation. The room also preserves the other required functions: sleep near the south-west wall, storage with the wardrobe, kitchen prep along the east/north-east side, and circulation from the north entry into the central floor area. Since the only allowed edits were on table_b and chair_b, and no further defect was identified, the arrangement is stable and meets the stated requirements without needing another move.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    },
+    {
+      "cell": "waterloo_edit_03__decision_action",
+      "result_sha256": "916191808356ea26fde4927b5f458189b7b0e0686ef19784f3141deb0a54b9db",
+      "first_parser_divergence_turn": 0,
+      "first_output_upstream_stop": true,
+      "initial_measured_status": "fail",
+      "actual_final_outcome": "remaining_declared_deficit",
+      "actual_valid_completion": true,
+      "turns": [
+        {
+          "turn": 0,
+          "raw_output_sha256": "0302cedb5c0a192fea6c58eae97edcd43d6a31996128fadfa506ad824bcd052e",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": false,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "rejection",
+            "reason": "Unclosed reasoning block"
+          },
+          "observed_only_after_prior_parser_divergence": false,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": true,
+          "difference_kind": "upstream_no_tool_stop"
+        },
+        {
+          "turn": 1,
+          "raw_output_sha256": "f708f95c56fa8b6bd57ff994c3749024c44173b6f177a1429afa0ca3019550ea",
+          "upstream_parsed_calls": [],
+          "upstream_has_closed_think": true,
+          "upstream_no_tool_stop": true,
+          "strict_classification": {
+            "kind": "completion",
+            "content": "The current layout is already a compact apartment: bed in the south-west, wardrobe on the west, bath zone in the north-west, kitchen counter and appliances along the east and north-east, and the sofa in the south-central area. Table_b and chair_b have been adjusted so that both work positions now share the central floor area, with table_b near x\u22480.12, y\u22480.5 and chair_b just slightly rotated. The requested activity is to preserve this for two users while keeping the rest of the furniture unchanged, so there is no need to disturb the established zoning for storage, cooking, bathing, and lounging. Since the only movable objects that can be changed are table_b and chair_b, and they are already in a usable configuration, the appropriate action is to leave them as is rather than make another move.",
+            "whole_room_success": "unknown",
+            "semantic_success_not_inferred": true
+          },
+          "observed_only_after_prior_parser_divergence": true,
+          "ended_with_eos": true,
+          "generation_rejected": null,
+          "parser_control_flow_differs": false,
+          "difference_kind": null
+        }
+      ]
+    }
+  ],
+  "trajectories_with_parser_divergence": 11,
+  "recorded_outputs_with_no_tool_stop_but_strict_rejection": 13,
+  "interpretation": [
+    "The frozen strict primary scoring and executed trajectories are unchanged.",
+    "Official no-tool termination does not certify valid syntax, fulfilled needs or professional quality.",
+    "After the first parser divergence, subsequent recorded outputs are conditional on strict feedback; they are not outputs of an official-parser trajectory.",
+    "An upstream stop on the first output would preserve the observed initial state; this is a control-flow implication, not a newly executed scene or alternative benchmark score.",
+    "Reject/retry may mediate later edits; observational evidence does not establish that changing the parser improves design."
+  ]
+}
