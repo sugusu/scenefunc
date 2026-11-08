@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-08T05:20:18.794796+00:00",
+  "updated_at": "2026-11-08T05:29:45.361178+00:00",
   "goal_status": "active",
   "goal_objective_sync": "active_goal_objective_retained",
   "research_complete": false,
   "objective": "Learn real-project interior-design decisions in Scene-Designer to generate complete editable usable rooms.",
-  "phase": "existing_legal_output_consequence_replay",
+  "phase": "native_consequence_review_complete",
   "acceptance_criteria": "research/920/RESEARCH_GOAL.md",
   "requested_goal_text": "research/920/GOAL_TEXT.txt",
   "goal_sync_evidence": "research/920/GOAL_SYNC.json",
@@ -17,24 +17,25 @@
   ],
   "training_authorized": false,
   "training_requires_separate_approval": true,
-  "latest_completed_experiment": "P920-FITDIAG-v1_20261107T185219Z",
+  "latest_completed_experiment": "P920-ALTREPLAY-v2_20261108T051928Z",
   "current_run_id": "P920-ALTREPLAY-v2_20261108T051928Z",
-  "current_run_role": "zero_model_native_replay_continuation",
+  "current_run_role": "posthoc_native_consequences_of_existing_training_state_outputs",
   "new_model_calls_this_turn": 0,
   "running_model_process": null,
-  "latest_verifiable_artifact": "runs/920/P920-ALTREPLAY-v1_20261108T051517Z/STATUS.json",
-  "next_step": "Continue five pending legal proposals; one retained native execution and first infrastructure failure are preserved.",
+  "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ALTREPLAY-v2_20261108T051928Z/RESULT.json",
+  "next_step": "Prepare a task-aligned learning revision with explicit demonstration-fit, conditional-choice and stopping gates, self-generated decisions at deployment and same-knowledge baseline. Do not expand the same tiny training recipe or claim professional/generalization gains; new training remains separately reviewed.",
   "publication": {
-    "status": "published_and_remote_verified",
-    "recorded_at": "2026-11-07T19:04:08.035089+00:00",
-    "branch": "runs/920",
-    "local_head": "852fac3f87f41b8c36c5bdff413bdc39fd2565bd",
-    "remote_head": "852fac3f87f41b8c36c5bdff413bdc39fd2565bd",
-    "push_exit_code": 0,
-    "ls_remote_exit_code": 0,
-    "committed_file_bytes_verified": 21,
-    "commit_url": "https://github.com/sugusu/scenefunc/commit/852fac3f87f41b8c36c5bdff413bdc39fd2565bd",
-    "note": "Post-publication receipt remains local until next substantive commit; do not create a receipt-only commit. Initial sandbox network failure retained in session, escalated push succeeded."
+    "status": "current_result_pending_commit_and_push",
+    "last_verified_publication": {
+      "recorded_at": "2026-11-08T05:21:46.895252+00:00",
+      "status": "published_and_remote_verified",
+      "branch": "runs/920",
+      "local_head": "aab7dcd9146af83d4d7c781a87b7cb9cfa984908",
+      "remote_head": "aab7dcd9146af83d4d7c781a87b7cb9cfa984908",
+      "push_exit_code": 0,
+      "ls_remote_exit_code": 0,
+      "commit_url": "https://github.com/sugusu/scenefunc/commit/aab7dcd9146af83d4d7c781a87b7cb9cfa984908"
+    }
   },
   "scheduled_automation_created": false,
   "continuation_mechanism": "active thread Goal and repository handoff",
@@ -1131,23 +1132,62 @@
     "readme": "runs/920/P920-FLINDERS-v2_20261106T174416Z/README.md"
   },
   "current_execution": {
-    "run_id": "P920-FITDIAG-v1_20261107T185219Z",
-    "state": "completed",
-    "question": "Do fixed final adapters fit common training targets and freely produce the demonstrated conditional edits/stops without gold decisions?",
-    "started_at": "2026-11-08T04:55:33.946704+00:00",
-    "ended_at": "2026-11-08T05:05:49.066013+00:00",
-    "updated_at": "2026-11-08T05:08:06.778416+00:00",
-    "actual_exit_code": 0,
-    "first_log": "2026-11-08T04:55:33.994333+00:00 begin authorized frozen-weight diagnostic",
-    "completed": 114,
-    "planned": 114,
-    "configuration_sha256": "b06d168cfba27d68b0163cd7264a655782d215760dd597fd05877546f58b982d",
-    "input_sha256": "9bddfa343c5b8c18bf7409e84f4481872c080b627e5a23f491ada27bfc00f499",
-    "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/FINAL_DIAGNOSTIC.json",
-    "failure_reason": null,
-    "next_step": "Completed final-weight diagnostic. Review only already-produced legal alternatives for measured consequences before considering a new training proposal; no automatic training or rerun.",
+    "run_id": "P920-ALTREPLAY-v2_20261108T051928Z",
+    "question": "Do existing legal free outputs preserve or improve declared room activities when actually executed, regardless of target-coordinate match?",
+    "status": "completed_and_verified",
+    "phase": "native_consequence_review_complete",
+    "updated_at": "2026-11-08T05:29:45.361178+00:00",
+    "completed": 6,
+    "planned": 6,
+    "arm_rows": 7,
+    "model_calls": 0,
     "training_updates": 0,
-    "scene_edits": 0
+    "native_calls": 6,
+    "state_changes": 4,
+    "started_at": "2026-11-08T05:19:51.690921+00:00",
+    "ended_at": "2026-11-08T05:23:47.919248+00:00",
+    "actual_exit_code": 0,
+    "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.",
+    "execution_receipt": "execution/receipt.json",
+    "cumulative_execution_seconds": 289.68886423890945,
+    "prior_failure_retained": "../P920-ALTREPLAY-v1_20261108T051517Z/FAILURE_REVIEW.md",
+    "configuration_hashes": {
+      "plan": "9a78cbf4821f59fc7c93b118b0ff42fdafa0e912efc5a820ad9396c4c51f3a49",
+      "code": {
+        "evaluate_conditional_room.py": "e2ab2f38dc4a8e0ed02697b580e3bdd578d6f78c53a6c552e442fac39f71d2cd",
+        "conditional_room_metrics.py": "46dc23ebb6127e88036ce94239c4dbd3ea60e276224d41cfe519aaf590bbc9ea",
+        "build_activity_completion_reviews.py": "d4d09568057ddd8c74e8c8a1ffe667f85d7e493df0cd79eee10323477fcf9c5d",
+        "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1",
+        "measure_free_floor.py": "61acc43cdf0598bca0aa58edc54cc3fea93d42d144d7aef63ec4aa88da445ead",
+        "measure_room_access.py": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d",
+        "preflight_sourced_trajectory.py": "09af86a11819827509a35f1a7d144e25e473c99ff5ec72bf9ac914a0ce4135d6",
+        "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+        "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+        "score_activity_transition.py": "b449ceb1840e8fa28cac0688bc8b71d386ebb49f18ea98ab9a8311b1da30311d",
+        "replay_final_fit_alternatives.py": "918f1b2240cbb92c59f59141a8a63cc0132b10cca53776e603dde2819262bf62",
+        "existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a",
+        "run_stage.py": "d3bb72feb8a7040c16e269d4de7187cabedc64e5d7ee750e796eabdb5fdb5d65"
+      }
+    },
+    "input_hashes": {
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/RAW_RESULT.json": "9230c84b59d74ef304e7b22e47f475bf6a508ff5b49e89107ad3da7559e41625",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_WORK.json": "ad99395decab4e7fdbd7d14c75fc6fd1d87888eca5cf2960c6d44b1a4ded7fa7",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FITDIAG-v1_20261107T185219Z/FREE_OUTPUT_CONTRACT_SOURCES.json": "ecbe3c57b9ff23b0328ec8772ea1da73a52cc0627713ff8e7d92f55bebd0214b",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/EVALUATION_AUTHORIZATION.json": "5b83d369de0b5b0fa58842ddc9f498db17643412ac6d33170b0f9339536e2d61",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_1/manifest.json": "23669408cc0f2379684b32c324370035b577e3c740ce863bea209a9e9d701967",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_02.json": "7d67f04427990ea058f840d53fdc08744b21b49029f300a5f8c7311cdffea875",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2/manifest.json": "927b5e21ac8937f7aa734fdd8df4179b0cc427e7d126605d43edd0c640d625e6",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_03.json": "d0e3a364d2b9e7bd73dfb783cfcb1b7771fa72ab6edcde6af1b4cfb1e26dee5e",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle/manifest.json": "93b0b2fb3ded15bf4f65ff82f99ee2cf05213c3f0197ee6c136b3674db6de08b",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/terminal_corpus/waterloo_initial_work_stop/inputs.json": "d308f6519ec2b1f90f5b6a760e1816a120ae7ac53c2b12f18c262b67cdb441df",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_WORK_V3.json": "eabd6b14165c48e308d75b499e295a1723429900d46b1ab5905d08e3af52e740",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/RESULT.json": "e86fb66d6bbbd6ec8b8c4ae9b818a6cadd4bd0d7c96d4febee58be1993c106fb",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ALTREPLAY-v1_20261108T051517Z/execution/receipt.json": "f3e034a1da51b71defafe9a442ef633cac7ef21f50aeb1f016e3882795bac065",
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/checkpoint/manifest.json": "536505d6b0483955155daa2adbc8f53ba9fc8c654b9b45f2f61224d672a2101b"
+    },
+    "latest_verifiable_artifact": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ALTREPLAY-v2_20261108T051928Z/RESULT.json",
+    "failure_reason": null,
+    "next_step": "Prepare a task-aligned learning revision with explicit demonstration-fit, conditional-choice and stopping gates, self-generated decisions at deployment and same-knowledge baseline. Do not expand the same tiny training recipe or claim professional/generalization gains; new training remains separately reviewed."
   },
   "storage_execution_gate": {
     "model_calls": 18,
@@ -1184,38 +1224,7 @@
     "methods_current": true,
     "new_model_calls": 0
   },
-  "goal_blocker": {
-    "checked_at": "2026-11-07T19:10:21.582008+00:00",
-    "blocking_condition": "Explicit approval of prospective FITDIAG GPU evaluation not received",
-    "consecutive_goal_turns": 3,
-    "turns": [
-      {
-        "turn": "diagnostic_preparation_and_question",
-        "progress": "384 saved micro-loss audit and12CPU check groups completed",
-        "blocker_present": true
-      },
-      {
-        "turn": "paper_evidence_sync",
-        "progress": "Corrected current methods and verified50source hashes/24claims",
-        "blocker_present": true
-      },
-      {
-        "turn": "current_revalidation",
-        "progress": "none; authorization/runtime/receipt absence and old completed exit0 rechecked",
-        "blocker_present": true
-      }
-    ],
-    "authorization_file_exists": false,
-    "diagnostic_runtime_exists": false,
-    "diagnostic_execution_exists": false,
-    "old_evaluation_status": "completed_exit0",
-    "goal_tool_result": "blocked",
-    "objective_preserved": true,
-    "research_complete": false,
-    "next_step": "Await response to already-issued specific approval question; no automatic new run or training. Push existing local commit at next eligible substantive/hourly publication batch.",
-    "resolved_at": "2026-11-08T04:55:17.277195+00:00",
-    "resolution": "User approved FITDIAG and standing bounded zero-training evaluations; get_goal verified active."
-  },
+  "goal_blocker": null,
   "current_learning_trial": {
     "optimizer_updates_completed": 16,
     "optimizer_updates_planned": 16,
@@ -1228,7 +1237,7 @@
     "repair_native_exit_code": 0,
     "original_failed_execution": "runs/920/P920-STOPDATA-v1_20261107T102628Z/EXECUTION.json"
   },
-  "current_execution_state": "completed_exit0",
+  "current_execution_state": "completed",
   "evaluation_cells_completed": 12,
   "evaluation_cells_planned": 12,
   "evaluation_authorization_scope": "Standing user authorization for bounded zero-training diagnostics using existing weights; research/920/EVALUATION_AUTHORIZATION.json",
@@ -1318,5 +1327,48 @@
       "commit": "f98d1bf06a6ea3a7d6dc73a4d59c852f58a9a5c9",
       "remote_verified_at": "2026-11-08T05:10:37.968999+00:00"
     }
+  },
+  "historical_resolved_goal_blocker": {
+    "checked_at": "2026-11-07T19:10:21.582008+00:00",
+    "blocking_condition": "Explicit approval of prospective FITDIAG GPU evaluation not received",
+    "consecutive_goal_turns": 3,
+    "turns": [
+      {
+        "turn": "diagnostic_preparation_and_question",
+        "progress": "384 saved micro-loss audit and12CPU check groups completed",
+        "blocker_present": true
+      },
+      {
+        "turn": "paper_evidence_sync",
+        "progress": "Corrected current methods and verified50source hashes/24claims",
+        "blocker_present": true
+      },
+      {
+        "turn": "current_revalidation",
+        "progress": "none; authorization/runtime/receipt absence and old completed exit0 rechecked",
+        "blocker_present": true
+      }
+    ],
+    "authorization_file_exists": false,
+    "diagnostic_runtime_exists": false,
+    "diagnostic_execution_exists": false,
+    "old_evaluation_status": "completed_exit0",
+    "goal_tool_result": "blocked",
+    "objective_preserved": true,
+    "research_complete": false,
+    "next_step": "Await response to already-issued specific approval question; no automatic new run or training. Push existing local commit at next eligible substantive/hourly publication batch.",
+    "resolved_at": "2026-11-08T04:55:17.277195+00:00",
+    "resolution": "User approved FITDIAG and standing bounded zero-training evaluations; get_goal verified active."
+  },
+  "native_alternative_replay": {
+    "result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ALTREPLAY-v2_20261108T051928Z/RESULT.json",
+    "summary": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ALTREPLAY-v2_20261108T051928Z/SUMMARY.md",
+    "unique_cases": 6,
+    "arm_rows": 7,
+    "state_changes": 4,
+    "model_calls": 0,
+    "training_updates": 0,
+    "cumulative_seconds": 289.68886423890945,
+    "conclusion": "No demonstrated professional learning gain. Joint pass->pass is engine-rejected no_movement, not valid stopping. Saved reference intermediate may also temporarily misalign a chair; evaluate complete trajectories separately."
   }
 }

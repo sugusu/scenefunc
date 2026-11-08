@@ -1,0 +1,1078 @@
+{
+  "status": "verified_completed",
+  "recorded_at": "2026-11-08T05:26:03.713843+00:00",
+  "unique_native_replays": 6,
+  "arm_rows": 7,
+  "excluded_outputs": [
+    {
+      "id": "paper_table_modes_build_08",
+      "arm": "base",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "sofa_0",
+            "object_b_id": "mobile_table_0",
+            "direction": "toward"
+          }
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_09",
+      "arm": "base",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "get_current_scene_state",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "waterloo_joined_host_stop",
+      "arm": "base",
+      "classification": "unparseable_no_repair",
+      "parsed": null
+    },
+    {
+      "id": "paper_table_modes_build_08",
+      "arm": "action_only",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "sofa_0",
+            "object_b_id": "mobile_table_0",
+            "direction": "toward"
+          }
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_09",
+      "arm": "action_only",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "get_current_scene_state",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "waterloo_edit_03",
+      "arm": "action_only",
+      "classification": "fixed_object_violation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": 0.0,
+            "y": 0.5,
+            "yaw": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "waterloo_joined_host_stop",
+      "arm": "action_only",
+      "classification": "unadvertised_tool",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_current_room",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_08",
+      "arm": "decision_action",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "sofa_0",
+            "object_b_id": "mobile_table_0",
+            "direction": "toward"
+          }
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_09",
+      "arm": "decision_action",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "get_current_scene_state",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "waterloo_edit_02",
+      "arm": "decision_action",
+      "classification": "unparseable_no_repair",
+      "parsed": null
+    },
+    {
+      "id": "waterloo_joined_host_stop",
+      "arm": "decision_action",
+      "classification": "unparseable_no_repair",
+      "parsed": null
+    }
+  ],
+  "model_calls": 0,
+  "training_updates": 0,
+  "rows": [
+    {
+      "id": "case_01",
+      "state_id": "waterloo_edit_02",
+      "arms": [
+        "base",
+        "action_only"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      },
+      "tool_accepted": false,
+      "native_error_type": "no_movement",
+      "transition": {
+        "outcome": "remaining_declared_deficit",
+        "initial_status": "fail",
+        "final_status": "fail",
+        "requested_mode": "joined_four_place_hosting",
+        "requirement_count": 43,
+        "newly_failed": [],
+        "newly_unknown": [],
+        "repaired": [],
+        "final_failed": [
+          "joined_table_geometry",
+          "assigned_seat_alignment_recon_chair_b_0",
+          "assigned_seat_alignment_recon_guest_b_0"
+        ],
+        "final_unknown": [],
+        "measured_success": false,
+        "measured_incremental_gain": false,
+        "editing_without_declared_deficit": false,
+        "costs": {
+          "attempts": 1,
+          "native_calls": 1,
+          "state_changes": 0,
+          "validation_rejections": 0,
+          "generated_tokens": null,
+          "gpu_seconds": null
+        },
+        "whole_room_success": "unknown",
+        "professional_preference": "not_assessed",
+        "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+      },
+      "before_table_geometry": {
+        "footprint_gap_m": 0.9999999523162844,
+        "relative_center_offset_m": [
+          2.2,
+          0.0,
+          0.0
+        ],
+        "parallel_axis_dot": 1.0,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "after_table_geometry": {
+        "footprint_gap_m": 0.9999999523162844,
+        "relative_center_offset_m": [
+          2.2,
+          0.0,
+          0.0
+        ],
+        "parallel_axis_dot": 1.0,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "before_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38133584220602,
+          "place_rectangle_on_table": false
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38133584220602,
+          "place_rectangle_on_table": false
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_geometry": {
+        "outside_declared_wall_inner_faces": [],
+        "positive_3d_AABB_pairs": [],
+        "scope": "Conservative box geometry, not physical stability or use."
+      }
+    },
+    {
+      "id": "case_02",
+      "state_id": "waterloo_edit_03",
+      "arms": [
+        "base"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": -1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      },
+      "tool_accepted": true,
+      "native_error_type": null,
+      "transition": {
+        "outcome": "introduced_declared_failure",
+        "initial_status": "fail",
+        "final_status": "fail",
+        "requested_mode": "separate_work",
+        "requirement_count": 34,
+        "newly_failed": [
+          "no_recorded_envelope_overlap_or_boundary_violation",
+          "assigned_seat_alignment_recon_chair_b_0"
+        ],
+        "newly_unknown": [],
+        "repaired": [],
+        "final_failed": [
+          "no_recorded_envelope_overlap_or_boundary_violation",
+          "separate_table_gap",
+          "assigned_seat_alignment_recon_chair_b_0"
+        ],
+        "final_unknown": [],
+        "measured_success": false,
+        "measured_incremental_gain": false,
+        "editing_without_declared_deficit": false,
+        "costs": {
+          "attempts": 1,
+          "native_calls": 1,
+          "state_changes": 1,
+          "validation_rejections": 0,
+          "generated_tokens": null,
+          "gpu_seconds": null
+        },
+        "whole_room_success": "unknown",
+        "professional_preference": "not_assessed",
+        "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+      },
+      "before_table_geometry": {
+        "footprint_gap_m": 0.02016428014690399,
+        "relative_center_offset_m": [
+          1.2204495755667315,
+          0.0012093251942860705,
+          0.0
+        ],
+        "parallel_axis_dot": 0.9999996660713693,
+        "top_height_difference_m": 0.0,
+        "joined": true
+      },
+      "after_table_geometry": {
+        "footprint_gap_m": 0.0,
+        "relative_center_offset_m": [
+          -0.001285671439294589,
+          -0.00012976633876998767,
+          0.0
+        ],
+        "parallel_axis_dot": 0.9999992789923545,
+        "top_height_difference_m": 0.0,
+        "joined": true
+      },
+      "before_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38272478268883026,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.3786110164392029,
+          "place_rectangle_on_table": true
+        }
+      },
+      "after_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.3829369442216606,
+          "place_rectangle_on_table": false
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.378398494738898,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_geometry": {
+        "outside_declared_wall_inner_faces": [],
+        "positive_3d_AABB_pairs": [
+          {
+            "a": "recon_table_a_0",
+            "b": "recon_table_b_0",
+            "overlap_extents_m": [
+              1.1991342373507297,
+              0.699999988079071,
+              0.7400000095367432
+            ]
+          }
+        ],
+        "scope": "Conservative box geometry, not physical stability or use."
+      }
+    },
+    {
+      "id": "case_03",
+      "state_id": "waterloo_initial_work_stop",
+      "arms": [
+        "base"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 0.3,
+          "y": 1.0,
+          "yaw": 0.0
+        }
+      },
+      "tool_accepted": true,
+      "native_error_type": null,
+      "transition": {
+        "outcome": "introduced_declared_failure",
+        "initial_status": "pass",
+        "final_status": "fail",
+        "requested_mode": "separate_work",
+        "requirement_count": 34,
+        "newly_failed": [
+          "no_recorded_envelope_overlap_or_boundary_violation",
+          "separate_table_gap",
+          "assigned_seat_alignment_recon_chair_b_0"
+        ],
+        "newly_unknown": [],
+        "repaired": [],
+        "final_failed": [
+          "no_recorded_envelope_overlap_or_boundary_violation",
+          "separate_table_gap",
+          "assigned_seat_alignment_recon_chair_b_0"
+        ],
+        "final_unknown": [],
+        "measured_success": false,
+        "measured_incremental_gain": false,
+        "editing_without_declared_deficit": true,
+        "costs": {
+          "attempts": 1,
+          "native_calls": 1,
+          "state_changes": 1,
+          "validation_rejections": 0,
+          "generated_tokens": null,
+          "gpu_seconds": null
+        },
+        "whole_room_success": "unknown",
+        "professional_preference": "not_assessed",
+        "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+      },
+      "before_table_geometry": {
+        "footprint_gap_m": 0.9999999523162844,
+        "relative_center_offset_m": [
+          2.2,
+          0.0,
+          0.0
+        ],
+        "parallel_axis_dot": 1.0,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "after_table_geometry": {
+        "footprint_gap_m": 0.1992827213615492,
+        "relative_center_offset_m": [
+          1.3993787852111448,
+          0.5013658505856926,
+          0.0
+        ],
+        "parallel_axis_dot": 0.9999999623532949,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "before_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.8810857565492956,
+          "place_rectangle_on_table": false
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": -0.12147544015876055,
+          "place_rectangle_on_table": true
+        }
+      },
+      "after_geometry": {
+        "outside_declared_wall_inner_faces": [],
+        "positive_3d_AABB_pairs": [
+          {
+            "a": "recon_table_b_0",
+            "b": "recon_guest_b_0",
+            "overlap_extents_m": [
+              0.4399999976158142,
+              0.12153046812996937,
+              0.44999998807907104
+            ]
+          }
+        ],
+        "scope": "Conservative box geometry, not physical stability or use."
+      }
+    },
+    {
+      "id": "case_04",
+      "state_id": "waterloo_initial_work_stop",
+      "arms": [
+        "action_only"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.35,
+          "y": 1.05,
+          "yaw": 0
+        }
+      },
+      "tool_accepted": true,
+      "native_error_type": null,
+      "transition": {
+        "outcome": "introduced_declared_failure",
+        "initial_status": "pass",
+        "final_status": "fail",
+        "requested_mode": "separate_work",
+        "requirement_count": 34,
+        "newly_failed": [
+          "assigned_seat_alignment_recon_chair_b_0"
+        ],
+        "newly_unknown": [],
+        "repaired": [],
+        "final_failed": [
+          "assigned_seat_alignment_recon_chair_b_0"
+        ],
+        "final_unknown": [],
+        "measured_success": false,
+        "measured_incremental_gain": false,
+        "editing_without_declared_deficit": true,
+        "costs": {
+          "attempts": 1,
+          "native_calls": 1,
+          "state_changes": 1,
+          "validation_rejections": 0,
+          "generated_tokens": null,
+          "gpu_seconds": null
+        },
+        "whole_room_success": "unknown",
+        "professional_preference": "not_assessed",
+        "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+      },
+      "before_table_geometry": {
+        "footprint_gap_m": 0.9999999523162844,
+        "relative_center_offset_m": [
+          2.2,
+          0.0,
+          0.0
+        ],
+        "parallel_axis_dot": 1.0,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "after_table_geometry": {
+        "footprint_gap_m": 1.2508888988013538,
+        "relative_center_offset_m": [
+          2.4504043582402,
+          0.5500974987924219,
+          0.0
+        ],
+        "parallel_axis_dot": 0.9999969999619228,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "before_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.928941408508013,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": -0.1676230423893828,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_geometry": {
+        "outside_declared_wall_inner_faces": [],
+        "positive_3d_AABB_pairs": [],
+        "scope": "Conservative box geometry, not physical stability or use."
+      }
+    },
+    {
+      "id": "case_05",
+      "state_id": "waterloo_edit_03",
+      "arms": [
+        "decision_action"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 0.12044957556673148,
+          "y": 0.5012093251942861,
+          "yaw": 1.2566370614359177
+        }
+      },
+      "tool_accepted": true,
+      "native_error_type": null,
+      "transition": {
+        "outcome": "remaining_declared_deficit",
+        "initial_status": "fail",
+        "final_status": "fail",
+        "requested_mode": "separate_work",
+        "requirement_count": 34,
+        "newly_failed": [],
+        "newly_unknown": [],
+        "repaired": [],
+        "final_failed": [
+          "separate_table_gap"
+        ],
+        "final_unknown": [],
+        "measured_success": false,
+        "measured_incremental_gain": false,
+        "editing_without_declared_deficit": false,
+        "costs": {
+          "attempts": 1,
+          "native_calls": 1,
+          "state_changes": 1,
+          "validation_rejections": 0,
+          "generated_tokens": null,
+          "gpu_seconds": null
+        },
+        "whole_room_success": "unknown",
+        "professional_preference": "not_assessed",
+        "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+      },
+      "before_table_geometry": {
+        "footprint_gap_m": 0.02016428014690399,
+        "relative_center_offset_m": [
+          1.2204495755667315,
+          0.0012093251942860705,
+          0.0
+        ],
+        "parallel_axis_dot": 0.9999996660713693,
+        "top_height_difference_m": 0.0,
+        "joined": true
+      },
+      "after_table_geometry": {
+        "footprint_gap_m": 0.012273408945208897,
+        "relative_center_offset_m": [
+          1.219985549755487,
+          -0.00013551010122025975,
+          0.0
+        ],
+        "parallel_axis_dot": 0.9997475789411948,
+        "top_height_difference_m": 0.0,
+        "joined": true
+      },
+      "before_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38272478268883026,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.3786110164392029,
+          "place_rectangle_on_table": true
+        }
+      },
+      "after_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.37729635700470177,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.3750080907630077,
+          "place_rectangle_on_table": true
+        }
+      },
+      "after_geometry": {
+        "outside_declared_wall_inner_faces": [],
+        "positive_3d_AABB_pairs": [],
+        "scope": "Conservative box geometry, not physical stability or use."
+      }
+    },
+    {
+      "id": "case_06",
+      "state_id": "waterloo_initial_work_stop",
+      "arms": [
+        "decision_action"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      },
+      "tool_accepted": false,
+      "native_error_type": "no_movement",
+      "transition": {
+        "outcome": "maintained_declared_requirements",
+        "initial_status": "pass",
+        "final_status": "pass",
+        "requested_mode": "separate_work",
+        "requirement_count": 34,
+        "newly_failed": [],
+        "newly_unknown": [],
+        "repaired": [],
+        "final_failed": [],
+        "final_unknown": [],
+        "measured_success": true,
+        "measured_incremental_gain": false,
+        "editing_without_declared_deficit": false,
+        "costs": {
+          "attempts": 1,
+          "native_calls": 1,
+          "state_changes": 0,
+          "validation_rejections": 0,
+          "generated_tokens": null,
+          "gpu_seconds": null
+        },
+        "whole_room_success": "unknown",
+        "professional_preference": "not_assessed",
+        "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+      },
+      "before_table_geometry": {
+        "footprint_gap_m": 0.9999999523162844,
+        "relative_center_offset_m": [
+          2.2,
+          0.0,
+          0.0
+        ],
+        "parallel_axis_dot": 1.0,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "after_table_geometry": {
+        "footprint_gap_m": 0.9999999523162844,
+        "relative_center_offset_m": [
+          2.2,
+          0.0,
+          0.0
+        ],
+        "parallel_axis_dot": 1.0,
+        "top_height_difference_m": 0.0,
+        "joined": false
+      },
+      "before_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_seat_alignment": {
+        "recon_chair_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_chair_b_0": {
+          "pass_": true,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_a_0": {
+          "pass_": true,
+          "table_id": "recon_table_a_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": true
+        },
+        "recon_guest_b_0": {
+          "pass_": false,
+          "table_id": "recon_table_b_0",
+          "chair_envelope_to_table_edge_gap_m": 0.38000000715255733,
+          "place_rectangle_on_table": false
+        }
+      },
+      "after_geometry": {
+        "outside_declared_wall_inner_faces": [],
+        "positive_3d_AABB_pairs": [],
+        "scope": "Conservative box geometry, not physical stability or use."
+      }
+    }
+  ],
+  "execution": {
+    "started_at": "2026-11-08T05:19:51.690921+00:00",
+    "status": "completed",
+    "command": [
+      "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+      "scripts/920/replay_final_fit_alternatives.py",
+      "--plan",
+      "runs/920/P920-ALTREPLAY-v2_20261108T051928Z/PLAN.json"
+    ],
+    "timeout_seconds": 1146,
+    "pid": 1748998,
+    "start_ticks": "77304027",
+    "log": "runs/920/P920-ALTREPLAY-v2_20261108T051928Z/execution/stage.log",
+    "ended_at": "2026-11-08T05:23:47.919248+00:00",
+    "elapsed_seconds": 236.22834260598756,
+    "exit_code": 0,
+    "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead."
+  },
+  "prior_receipts": [
+    {
+      "started_at": "2026-11-08T05:16:22.354606+00:00",
+      "status": "failed",
+      "command": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/bin/python",
+        "scripts/920/replay_final_fit_alternatives.py",
+        "--plan",
+        "runs/920/P920-ALTREPLAY-v1_20261108T051517Z/PLAN.json"
+      ],
+      "timeout_seconds": 1200,
+      "pid": 1747417,
+      "start_ticks": "77283094",
+      "log": "runs/920/P920-ALTREPLAY-v1_20261108T051517Z/execution/stage.log",
+      "ended_at": "2026-11-08T05:17:15.815114+00:00",
+      "elapsed_seconds": 53.46052163292188,
+      "exit_code": 1,
+      "first_log": "/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead."
+    }
+  ],
+  "cumulative_execution_seconds": 289.68886423890945,
+  "scope": "Posthoc single-step replay of training-exposed states, no new generation. Each start restored independently. Same-start activity transition, fixed identity reference. Native yaw in degrees unchanged; natural tool pose noise retained. One duplicate action shares execution across two arms; not independent replication.",
+  "unknowns": [
+    "Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.",
+    "Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.",
+    "Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.",
+    "Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.",
+    ".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards."
+  ],
+  "reference_context": {
+    "path": "REFERENCE_CONTEXT.json",
+    "sha256": "7b50d2b7dffbdccda8f62b079342e2f675ced6443cb1ecf703dd64a466ac77c0",
+    "status": "posthoc_read_only_saved_reference_intermediates",
+    "rows": [
+      {
+        "state_id": "waterloo_edit_02",
+        "transition": {
+          "outcome": "resolved_declared_deficit",
+          "initial_status": "fail",
+          "final_status": "pass",
+          "requested_mode": "joined_four_place_hosting",
+          "requirement_count": 43,
+          "newly_failed": [],
+          "newly_unknown": [],
+          "repaired": [
+            "joined_table_geometry",
+            "assigned_seat_alignment_recon_chair_b_0",
+            "assigned_seat_alignment_recon_guest_b_0"
+          ],
+          "final_failed": [],
+          "final_unknown": [],
+          "measured_success": true,
+          "measured_incremental_gain": true,
+          "editing_without_declared_deficit": false,
+          "costs": {
+            "attempts": 1,
+            "native_calls": 1,
+            "state_changes": 1,
+            "validation_rejections": 0,
+            "generated_tokens": null,
+            "gpu_seconds": null
+          },
+          "whole_room_success": "unknown",
+          "professional_preference": "not_assessed",
+          "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+        }
+      },
+      {
+        "state_id": "waterloo_edit_03",
+        "transition": {
+          "outcome": "introduced_declared_failure",
+          "initial_status": "fail",
+          "final_status": "fail",
+          "requested_mode": "separate_work",
+          "requirement_count": 34,
+          "newly_failed": [
+            "assigned_seat_alignment_recon_chair_b_0"
+          ],
+          "newly_unknown": [],
+          "repaired": [
+            "separate_table_gap"
+          ],
+          "final_failed": [
+            "assigned_seat_alignment_recon_chair_b_0"
+          ],
+          "final_unknown": [],
+          "measured_success": false,
+          "measured_incremental_gain": false,
+          "editing_without_declared_deficit": false,
+          "costs": {
+            "attempts": 1,
+            "native_calls": 1,
+            "state_changes": 1,
+            "validation_rejections": 0,
+            "generated_tokens": null,
+            "gpu_seconds": null
+          },
+          "whole_room_success": "unknown",
+          "professional_preference": "not_assessed",
+          "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+        }
+      },
+      {
+        "state_id": "waterloo_initial_work_stop",
+        "transition": {
+          "outcome": "maintained_declared_requirements",
+          "initial_status": "pass",
+          "final_status": "pass",
+          "requested_mode": "separate_work",
+          "requirement_count": 34,
+          "newly_failed": [],
+          "newly_unknown": [],
+          "repaired": [],
+          "final_failed": [],
+          "final_unknown": [],
+          "measured_success": true,
+          "measured_incremental_gain": false,
+          "editing_without_declared_deficit": false,
+          "costs": {
+            "attempts": 0,
+            "native_calls": 0,
+            "state_changes": 0,
+            "validation_rejections": 0,
+            "generated_tokens": null,
+            "gpu_seconds": null
+          },
+          "whole_room_success": "unknown",
+          "professional_preference": "not_assessed",
+          "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+        }
+      }
+    ]
+  }
+}
