@@ -1,0 +1,129 @@
+{
+  "status": "failed",
+  "started_at": "2026-11-08T05:16:23.151457+00:00",
+  "model_calls": 0,
+  "training_updates": 0,
+  "native_calls": 1,
+  "completed": 1,
+  "planned": 6,
+  "rows": [
+    {
+      "id": "case_01",
+      "state_id": "waterloo_edit_02",
+      "arms": [
+        "base",
+        "action_only"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      },
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_1",
+      "input_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_02.json",
+      "mode": "joined_four_place_hosting",
+      "transition": {
+        "outcome": "remaining_declared_deficit",
+        "initial_status": "fail",
+        "final_status": "fail",
+        "requested_mode": "joined_four_place_hosting",
+        "requirement_count": 43,
+        "newly_failed": [],
+        "newly_unknown": [],
+        "repaired": [],
+        "final_failed": [
+          "joined_table_geometry",
+          "assigned_seat_alignment_recon_chair_b_0",
+          "assigned_seat_alignment_recon_guest_b_0"
+        ],
+        "final_unknown": [],
+        "measured_success": false,
+        "measured_incremental_gain": false,
+        "editing_without_declared_deficit": false,
+        "costs": {
+          "attempts": 1,
+          "native_calls": 1,
+          "state_changes": 0,
+          "validation_rejections": 0,
+          "generated_tokens": null,
+          "gpu_seconds": null
+        },
+        "whole_room_success": "unknown",
+        "professional_preference": "not_assessed",
+        "limitation": "Declared geometric/activity checks only; pass->pass movement is not improvement or evidence of waste. Costs break ties only after requirements; no scalar weighted reward."
+      },
+      "native_reply": {
+        "results": [
+          {
+            "name": "move_furniture_tool",
+            "output": {
+              "success": false,
+              "message": "table_b is already at the target position and rotation - no movement needed",
+              "object_id": "recon_table_b_0",
+              "error_type": "no_movement",
+              "current_position": {
+                "x": 1.1,
+                "y": 0.5,
+                "z": 0.0
+              },
+              "attempted_position": {
+                "x": 1.1,
+                "y": 0.5,
+                "z": 0.0
+              },
+              "current_rotation": {
+                "roll": 0.0,
+                "pitch": -0.0,
+                "yaw": 0.0
+              },
+              "attempted_rotation": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0
+              },
+              "suggested_action": "Try moving to a different position or rotation"
+            }
+          }
+        ]
+      },
+      "checkpoint": {
+        "directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/checkpoint",
+        "manifest_sha256": "536505d6b0483955155daa2adbc8f53ba9fc8c654b9b45f2f61224d672a2101b",
+        "state_sha256": "f81714b7cdfd112a86932cf4d628ecac9eba87673605b51672f1a54616e7db3a",
+        "step_idx": 2
+      },
+      "checkpoint_manifest_sha256": "536505d6b0483955155daa2adbc8f53ba9fc8c654b9b45f2f61224d672a2101b",
+      "before_sha256": "b464de06e9b6856b20c9b1ab84b5f9d688ce8d05a4a2653539e365666123987e",
+      "after_sha256": "b464de06e9b6856b20c9b1ab84b5f9d688ce8d05a4a2653539e365666123987e",
+      "restoration_roundoff": [
+        {
+          "path": [
+            "objects",
+            "recon_chair_b_0",
+            "transform",
+            "rotation_wxyz",
+            3
+          ],
+          "before": 0.00137648362185991,
+          "after": 0.0013764836218599103
+        }
+      ],
+      "image_paths": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/house/room_waterloo_table_transfer/rollout_furniture/step_002.topdown.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/house/room_waterloo_table_transfer/rollout_furniture/step_002.south.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/house/room_waterloo_table_transfer/rollout_furniture/step_002.east.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/house/room_waterloo_table_transfer/rollout_furniture/step_002.west.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/house/room_waterloo_table_transfer/rollout_furniture/step_002.north.png"
+      ]
+    }
+  ],
+  "plan_sha256": "72d5beba05ff89fae507db41ff778db89bd08bac5442c7bc6631fd4cf5fa63a4",
+  "exit_code": 1,
+  "error": "RuntimeError: Existing-project routes already installed in this process",
+  "ended_at": "2026-11-08T05:17:14.370973+00:00",
+  "elapsed_seconds": 51.218985770014115
+}

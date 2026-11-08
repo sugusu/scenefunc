@@ -1,0 +1,392 @@
+{
+  "run_id": "P920-ALTREPLAY-v1_20261108T051517Z",
+  "created_at": "2026-11-08T05:15:17.348882+00:00",
+  "question": "Do existing legal free outputs preserve or improve declared room activities when actually executed, regardless of target-coordinate match?",
+  "public_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ALTREPLAY-v1_20261108T051517Z",
+  "runtime_directory": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay",
+  "raw_result": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/RAW_RESULT.json",
+  "identity_reference_bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle",
+  "designer": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer",
+  "scenesmith": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/scenesmith",
+  "program": {
+    "table_ids": [
+      "recon_table_a_0",
+      "recon_table_b_0"
+    ],
+    "work_chair_ids": [
+      "recon_chair_a_0",
+      "recon_chair_b_0"
+    ],
+    "seat_assignments": [
+      {
+        "chair_id": "recon_chair_a_0",
+        "table_id": "recon_table_a_0",
+        "side_y": -1
+      },
+      {
+        "chair_id": "recon_chair_b_0",
+        "table_id": "recon_table_b_0",
+        "side_y": -1
+      },
+      {
+        "chair_id": "recon_guest_a_0",
+        "table_id": "recon_table_a_0",
+        "side_y": 1
+      },
+      {
+        "chair_id": "recon_guest_b_0",
+        "table_id": "recon_table_b_0",
+        "side_y": 1
+      }
+    ],
+    "joined_max_gap_m": 0.05,
+    "separate_min_gap_m": 0.6,
+    "place_rectangle_width_depth_m": [
+      0.4,
+      0.25
+    ],
+    "access_settings": {
+      "grid_m": 0.02,
+      "assumed_body_height_m": 1.8,
+      "square_body_widths_m": [
+        0.4,
+        0.5,
+        0.6
+      ],
+      "entry_center_xy_m": [
+        0,
+        3.5
+      ],
+      "entry_inward_normal_xy": [
+        0,
+        -1
+      ],
+      "approach_points_xy_m": {
+        "bed_side": [
+          1.4,
+          -2
+        ],
+        "living_edge": [
+          -2.6,
+          -0.9
+        ],
+        "kitchen_prep": [
+          2.3,
+          2.3
+        ],
+        "bath_center": [
+          -2.65,
+          2.3
+        ],
+        "fridge_front": [
+          2.9,
+          1.95
+        ],
+        "wardrobe_front": [
+          -2.85,
+          -0.3
+        ],
+        "window_front": [
+          0,
+          -3.1
+        ]
+      }
+    },
+    "movable_ids": [
+      "recon_table_b_0",
+      "recon_chair_b_0"
+    ]
+  },
+  "cases": [
+    {
+      "id": "case_01",
+      "state_id": "waterloo_edit_02",
+      "arms": [
+        "base",
+        "action_only"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      },
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_1",
+      "input_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_02.json",
+      "mode": "joined_four_place_hosting"
+    },
+    {
+      "id": "case_02",
+      "state_id": "waterloo_edit_03",
+      "arms": [
+        "base"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": -1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      },
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2",
+      "input_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_03.json",
+      "mode": "separate_work"
+    },
+    {
+      "id": "case_03",
+      "state_id": "waterloo_initial_work_stop",
+      "arms": [
+        "base"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 0.3,
+          "y": 1.0,
+          "yaw": 0.0
+        }
+      },
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle",
+      "input_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/terminal_corpus/waterloo_initial_work_stop/inputs.json",
+      "mode": "separate_work"
+    },
+    {
+      "id": "case_04",
+      "state_id": "waterloo_initial_work_stop",
+      "arms": [
+        "action_only"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.35,
+          "y": 1.05,
+          "yaw": 0
+        }
+      },
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle",
+      "input_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/terminal_corpus/waterloo_initial_work_stop/inputs.json",
+      "mode": "separate_work"
+    },
+    {
+      "id": "case_05",
+      "state_id": "waterloo_edit_03",
+      "arms": [
+        "decision_action"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 0.12044957556673148,
+          "y": 0.5012093251942861,
+          "yaw": 1.2566370614359177
+        }
+      },
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2",
+      "input_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_03.json",
+      "mode": "separate_work"
+    },
+    {
+      "id": "case_06",
+      "state_id": "waterloo_initial_work_stop",
+      "arms": [
+        "decision_action"
+      ],
+      "command": {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      },
+      "bundle": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle",
+      "input_source": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/terminal_corpus/waterloo_initial_work_stop/inputs.json",
+      "mode": "separate_work"
+    }
+  ],
+  "excluded_outputs": [
+    {
+      "id": "paper_table_modes_build_08",
+      "arm": "base",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "sofa_0",
+            "object_b_id": "mobile_table_0",
+            "direction": "toward"
+          }
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_09",
+      "arm": "base",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "get_current_scene_state",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "waterloo_joined_host_stop",
+      "arm": "base",
+      "classification": "unparseable_no_repair",
+      "parsed": null
+    },
+    {
+      "id": "paper_table_modes_build_08",
+      "arm": "action_only",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "sofa_0",
+            "object_b_id": "mobile_table_0",
+            "direction": "toward"
+          }
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_09",
+      "arm": "action_only",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "get_current_scene_state",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "waterloo_edit_03",
+      "arm": "action_only",
+      "classification": "fixed_object_violation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_a_0",
+            "x": 0.0,
+            "y": 0.5,
+            "yaw": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "waterloo_joined_host_stop",
+      "arm": "action_only",
+      "classification": "unadvertised_tool",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_current_room",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_08",
+      "arm": "decision_action",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "check_facing_tool",
+          "arguments": {
+            "object_a_id": "sofa_0",
+            "object_b_id": "mobile_table_0",
+            "direction": "toward"
+          }
+        }
+      }
+    },
+    {
+      "id": "paper_table_modes_build_09",
+      "arm": "decision_action",
+      "classification": "legal_nonediting_query_no_continuation",
+      "parsed": {
+        "kind": "tool_call",
+        "value": {
+          "name": "get_current_scene_state",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "waterloo_edit_02",
+      "arm": "decision_action",
+      "classification": "unparseable_no_repair",
+      "parsed": null
+    },
+    {
+      "id": "waterloo_joined_host_stop",
+      "arm": "decision_action",
+      "classification": "unparseable_no_repair",
+      "parsed": null
+    }
+  ],
+  "code_sha256": {
+    "evaluate_conditional_room.py": "abd2eee4c92c92f71021936d504e6ae87ff1f54bff3fe4cdaa15c6eb7e3cc171",
+    "conditional_room_metrics.py": "51171e1e865390dc5a79cc25e0d0b2034ff5f4253d0e68436f747f75d6f7f8b1",
+    "build_activity_completion_reviews.py": "d4d09568057ddd8c74e8c8a1ffe667f85d7e493df0cd79eee10323477fcf9c5d",
+    "inspect_native_mesh_contacts.py": "b0db628a28a9f275c59870e6e4a8cd679a141ac29e367665c2578ac6464e71f1",
+    "measure_free_floor.py": "61acc43cdf0598bca0aa58edc54cc3fea93d42d144d7aef63ec4aa88da445ead",
+    "measure_room_access.py": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d",
+    "preflight_sourced_trajectory.py": "09af86a11819827509a35f1a7d144e25e473c99ff5ec72bf9ac914a0ce4135d6",
+    "native_project.py": "1c418410b1d5db8606305f200154418dd59844ce1c22fee3afb903286417ad19",
+    "native_checkpoint.py": "080c9014523f95bf9d452d7c94c99ef20779f214e85c34b49b718e43164e8982",
+    "score_activity_transition.py": "b449ceb1840e8fa28cac0688bc8b71d386ebb49f18ea98ab9a8311b1da30311d",
+    "replay_final_fit_alternatives.py": "b634ea61ee1124efb2280f4043eab58ef19bf09faa56f77349a6627b55c42470",
+    "existing_project_session.py": "699b4539f893e5c1747f0a9a869cb206a071270605a5792f981801a760e6197a",
+    "run_stage.py": "d3bb72feb8a7040c16e269d4de7187cabedc64e5d7ee750e796eabdb5fdb5d65"
+  },
+  "input_hashes": {
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FITDIAG-v1_20261107T185219Z/final_review/RAW_RESULT.json": "9230c84b59d74ef304e7b22e47f475bf6a508ff5b49e89107ad3da7559e41625",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-ENDPOINT-v1_20261107T083435Z/EVALUATE_WORK.json": "ad99395decab4e7fdbd7d14c75fc6fd1d87888eca5cf2960c6d44b1a4ded7fa7",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-FITDIAG-v1_20261107T185219Z/FREE_OUTPUT_CONTRACT_SOURCES.json": "ecbe3c57b9ff23b0328ec8772ea1da73a52cc0627713ff8e7d92f55bebd0214b",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/research/920/EVALUATION_AUTHORIZATION.json": "5b83d369de0b5b0fa58842ddc9f498db17643412ac6d33170b0f9339536e2d61",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_1/manifest.json": "23669408cc0f2379684b32c324370035b577e3c740ce863bea209a9e9d701967",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_02.json": "7d67f04427990ea058f840d53fdc08744b21b49029f300a5f8c7311cdffea875",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/replay/checkpoint_2/manifest.json": "927b5e21ac8937f7aa734fdd8df4179b0cc427e7d126605d43edd0c640d625e6",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/waterloo_edit_03.json": "d0e3a364d2b9e7bd73dfb783cfcb1b7771fa72ab6edcde6af1b4cfb1e26dee5e",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-WATERLOO-v1_20261105T074801Z/build/bundle/manifest.json": "93b0b2fb3ded15bf4f65ff82f99ee2cf05213c3f0197ee6c136b3674db6de08b",
+    "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-STOPDATA-v1_20261107T102628Z/terminal_corpus/waterloo_initial_work_stop/inputs.json": "d308f6519ec2b1f90f5b6a760e1816a120ae7ac53c2b12f18c262b67cdb441df"
+  },
+  "budget": {
+    "native_edit_calls": 6,
+    "model_calls": 0,
+    "training_updates": 0,
+    "total_wall_seconds": 1200,
+    "first_infrastructure_error": "stop_no_retry"
+  },
+  "limits": [
+    "Original59m²housing, removed walls, glass blocks, curtains, lighting and actual furniture dimensions are not reconstructed. This is an8x7m transfer task.",
+    "Two generated wheeled-table meshes and four stools are substitutes. Caster joints, brakes, load, pushing effort, seated knees and comfort are unverified.",
+    "Four hosting places and two work positions are researcher task conditions, not a sourced occupancy or capacity claim.",
+    "Bathroom, bed, kitchen, wardrobe and ceiling lights include static proxies with unverified real functions; source curtain privacy and daylight are unknown.",
+    ".02m grid,.4/.5/.6m square bodies at1.8m and fully open doors are conditional measurement assumptions, not standards."
+  ],
+  "interpretation": "Posthoc single-step replay of training-exposed states, no new generation. Each start restored independently. Same-start activity transition, fixed identity reference. Native yaw in degrees unchanged; natural tool pose noise retained. One duplicate action shares execution across two arms; not independent replication."
+}

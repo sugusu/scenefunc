@@ -1,0 +1,30 @@
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+2026-11-08T05:16:23.151568+00:00 begin frozen existing-output native replay; zero model calls
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/data/wyh/scene_cvpr_20261020/design_decisions_920/envs/scene_designer311_native/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - Logging to file: /data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ALTREPLAY-v1_20261108T051517Z/replay/case_01/house/room_waterloo_table_transfer/room.log
+[ConvexDecomp Server] INFO - OMP_NUM_THREADS set to 4
+[ConvexDecomp Server] INFO - Convex decomposition server initialized
+[ConvexDecomp Server] INFO - Starting convex decomposition server on 127.0.0.1:18133
+ * Serving Flask app 'convex_decomposition_server'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:18133
+[ConvexDecomp Server] INFO - [33mPress CTRL+C to quit[0m
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [08/Nov/2026 13:16:32] "GET /health HTTP/1.1" 200 -
+[furniture] agent ready (13 tools)
+2026-11-08T05:17:13.178195+00:00 case_01 remaining_declared_deficit ['joined_table_geometry', 'assigned_seat_alignment_recon_chair_b_0', 'assigned_seat_alignment_recon_guest_b_0']
+Traceback (most recent call last):
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/replay_final_fit_alternatives.py", line 159, in <module>
+    main()
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/replay_final_fit_alternatives.py", line 97, in main
+    app, server = create_app(Path(plan['designer']), Path(plan['scenesmith']))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/existing_project_session.py", line 55, in create_app
+    raise RuntimeError("Existing-project routes already installed in this process")
+RuntimeError: Existing-project routes already installed in this process
