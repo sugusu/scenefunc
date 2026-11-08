@@ -1,0 +1,1237 @@
+{
+  "stage": "furniture",
+  "system": "Construct and revise the supplied room for its original design request using the fixed asset catalog. Preserve existing object identities and immutability constraints; use catalog asset_id for native additions. Inspect the current state, latest real receipts and five views. A successful edit does not establish collision freedom or activity suitability. Report unverified requirements as unknown.\nAvailable executable tools:\n[{\"description\": \"See all furniture currently in the room with precise spatial data.\\n\\nShows existing furniture with positions, rotations, and bounding boxes.\\nEach object includes:\\n- dimensions: Width, depth, height in meters (object's local frame)\\n- world_bounds: Min/max corners showing exact space occupied in world\\n\\nUse this to check clearances, understand scale, and plan placements.\", \"name\": \"get_current_scene_state\", \"parameters\": {\"additionalProperties\": false, \"properties\": {}, \"required\": [], \"title\": \"get_current_scene_state_args\", \"type\": \"object\"}}, {\"description\": \"Place furniture in the room at a specific floor position.\\n\\nFurniture sits flat on the floor at z=0 with upright orientation.\\nYou can only control the x, y position and yaw rotation (rotation\\naround the vertical axis).\\n\\nEach placement gets a unique ID so you can move or remove it later.\\nThe same furniture model can be placed multiple times.\\n\\nUse 'list_available_assets' to see what furniture you can place.\", \"name\": \"add_furniture_to_scene_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"asset_id\": {\"description\": \"ID of the furniture to place.\", \"title\": \"Asset Id\", \"type\": \"string\"}, \"x\": {\"description\": \"X position in the room (meters).\", \"title\": \"X\", \"type\": \"number\"}, \"y\": {\"description\": \"Y position in the room (meters).\", \"title\": \"Y\", \"type\": \"number\"}, \"yaw\": {\"default\": 0.0, \"description\": \"Yaw rotation in degrees around vertical axis (default: 0.0).\\nPositive values rotate counterclockwise in top-down view.\", \"title\": \"Yaw\", \"type\": \"number\"}}, \"required\": [\"asset_id\", \"x\", \"y\", \"yaw\"], \"title\": \"add_furniture_to_scene_tool_args\", \"type\": \"object\"}}, {\"description\": \"Move existing furniture to a new floor position.\\n\\nFurniture sits flat on the floor at z=0 with upright orientation.\\nYou can only control the x, y position and yaw rotation (rotation\\naround the vertical axis).\\n\\nUse this to relocate furniture that's already in the room. You need\\nthe object ID from when you placed it or from 'get_current_scene_state'.\", \"name\": \"move_furniture_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"object_id\": {\"description\": \"ID of the furniture item to move.\", \"title\": \"Object Id\", \"type\": \"string\"}, \"x\": {\"description\": \"New X position in the room (meters).\", \"title\": \"X\", \"type\": \"number\"}, \"y\": {\"description\": \"New Y position in the room (meters).\", \"title\": \"Y\", \"type\": \"number\"}, \"yaw\": {\"default\": 0.0, \"description\": \"New yaw rotation in degrees around vertical axis (default: 0.0).\\nPositive values rotate counterclockwise in top-down view.\", \"title\": \"Yaw\", \"type\": \"number\"}}, \"required\": [\"object_id\", \"x\", \"y\", \"yaw\"], \"title\": \"move_furniture_tool_args\", \"type\": \"object\"}}, {\"description\": \"Remove furniture from the room.\\n\\nUse this to delete furniture you no longer want. You need the object ID\\nfrom when you placed it or from 'get_current_scene_state'.\", \"name\": \"remove_furniture_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"object_id\": {\"description\": \"ID of the furniture item to remove.\", \"title\": \"Object Id\", \"type\": \"string\"}}, \"required\": [\"object_id\"], \"title\": \"remove_furniture_tool_args\", \"type\": \"object\"}}, {\"description\": \"Verify furniture orientation relationships and get exact rotation angles.\\n\\nIMPORTANT: Use this tool to check facing relationships - it's MORE\\nRELIABLE than visual assessment. Always verify orientation-critical\\nfurniture with this tool after placement or rotation.\\n\\nChecks whether object A is correctly oriented relative to object B,\\nand provides the exact rotation needed for perfect alignment.\", \"name\": \"check_facing_tool\", \"parameters\": {\"additionalProperties\": false, \"properties\": {\"direction\": {\"default\": \"toward\", \"description\": \"Direction to check. Valid values:\\n- \\\"toward\\\": Check if object A faces toward object B (default).\\n  Use for: chairs→tables, sofas→TVs, seating→focal points.\\n- \\\"away\\\": Check if object A faces away from object B.\\n  Use for: furniture against walls (drawers, shelves, washing\\n  machines, desks with backs to walls).\", \"title\": \"Direction\", \"type\": \"string\"}, \"object_a_id\": {\"description\": \"ID of the first object (the one being checked).\", \"title\": \"Object A Id\", \"type\": \"string\"}, \"object_b_id\": {\"description\": \"ID of the second object (the target).\", \"title\": \"Object B Id\", \"type\": \"string\"}}, \"required\": [\"object_a_id\", \"object_b_id\", \"direction\"], \"title\": \"check_facing_tool_args\", \"type\": \"object\"}}]\n## SUPPLIED ROOM GEOMETRY (native room coordinates, metres):\n{\"room_id\": \"guilbault_storage_transfer_v2\", \"room_type\": \"studio\", \"recorded_length\": 6, \"recorded_width\": 5, \"wall_count\": 6, \"wall_objects\": [{\"object_id\": \"recon_north_wall\", \"immutable\": true, \"bounds_min\": [-3.0, 2.49, 0.0], \"bounds_max\": [3.0, 2.51, 2.6]}, {\"object_id\": \"recon_south_wall\", \"immutable\": true, \"bounds_min\": [-3.0, -2.51, 0.0], \"bounds_max\": [3.0, -2.49, 2.6]}, {\"object_id\": \"recon_east_wall\", \"immutable\": true, \"bounds_min\": [2.99, -2.5, 0.0], \"bounds_max\": [3.01, 2.5, 2.6]}, {\"object_id\": \"recon_west_wall\", \"immutable\": true, \"bounds_min\": [-3.01, -2.5, 0.0], \"bounds_max\": [-2.99, 2.5, 2.6]}, {\"object_id\": \"recon_bathroom_south_wall\", \"immutable\": true, \"bounds_min\": [-3.0, 0.89, 0.0], \"bounds_max\": [-1.0, 0.91, 2.6]}, {\"object_id\": \"recon_bathroom_east_wall\", \"immutable\": true, \"bounds_min\": [-1.01, 0.8999999999999999, 0.0], \"bounds_max\": [-0.99, 2.5, 2.6]}], \"recorded_openings\": [{\"opening_id\": \"entry_door\", \"opening_type\": \"door\", \"wall_direction\": \"north\", \"center_world\": [0.0, 2.5, 1.0], \"width\": 0.9, \"sill_height\": 0.0, \"height\": 2.0, \"clearance_bbox_min\": null, \"clearance_bbox_max\": null, \"wall_start\": [-0.45, 2.5], \"wall_end\": [0.45, 2.5], \"position_along_wall\": 0.45}, {\"opening_id\": \"bathroom_door\", \"opening_type\": \"door\", \"wall_direction\": \"east\", \"center_world\": [-1.0, 1.4, 1.0], \"width\": 0.8, \"sill_height\": 0.0, \"height\": 2.0, \"clearance_bbox_min\": null, \"clearance_bbox_max\": null, \"wall_start\": [-1.0, 0.9999999999999999], \"wall_end\": [-1.0, 1.7999999999999998], \"position_along_wall\": 0.4}, {\"opening_id\": \"south_window\", \"opening_type\": \"window\", \"wall_direction\": \"south\", \"center_world\": [0.0, -2.5, 1.55], \"width\": 1.8, \"sill_height\": 0.8500000000000001, \"height\": 1.4, \"clearance_bbox_min\": null, \"clearance_bbox_max\": null, \"wall_start\": [-0.9, -2.5], \"wall_end\": [0.9, -2.5], \"position_along_wall\": 0.9}], \"completeness\": \"Only the supplied structure is described; enclosure is not inferred.\"}\n对需要权衡的步骤，可先在<think>内用短决定记录说明当前条件、来源原则适用性、涉及对象及预期代价，再给出一个原生tool_call。未知项保持未知；不要在动作前写成已经获得实测改善。",
+  "task_context": {
+    "scene_description": "{\"asset_bindings\": {\"bed_0\": {\"asset_id\": \"procedural_reference:bed\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_bed\", \"representation\": \"procedural_proxy\"}, \"chair_east_0\": {\"asset_id\": \"procedural_reference:chair_east\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_chair_east\", \"representation\": \"procedural_proxy\"}, \"chair_west_0\": {\"asset_id\": \"procedural_reference:chair_west\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_chair_west\", \"representation\": \"procedural_proxy\"}, \"low_fridge_0\": {\"asset_id\": \"procedural_reference:low_fridge\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_low_fridge\", \"representation\": \"procedural_proxy\"}, \"recon_bath_light_0\": {\"asset_id\": \"procedural_reference:bath_light\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_bath_shower_0\": {\"asset_id\": \"procedural_reference:bath_shower\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_bath_toilet_0\": {\"asset_id\": \"procedural_reference:bath_toilet\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_bath_vanity_0\": {\"asset_id\": \"procedural_reference:bath_vanity\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_bathroom_door\": {\"asset_id\": \"procedural_opening:bathroom_door\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_bathroom_east_wall\": {\"asset_id\": \"procedural_structure:bathroom_east_wall\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_bathroom_south_wall\": {\"asset_id\": \"procedural_structure:bathroom_south_wall\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_cooktop_0\": {\"asset_id\": \"procedural_reference:cooktop\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_east_wall\": {\"asset_id\": \"procedural_structure:east_wall\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_entry_door\": {\"asset_id\": \"procedural_opening:entry_door\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_kitchen_counter_0\": {\"asset_id\": \"procedural_reference:kitchen_counter\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_kitchen_sink_0\": {\"asset_id\": \"procedural_reference:kitchen_sink\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_main_light_0\": {\"asset_id\": \"procedural_reference:main_light\", \"identity_provenance\": \"researcher_reconstruction_not_historical\", \"representation\": \"procedural_proxy\"}, \"recon_north_wall\": {\"asset_id\": \"procedural_structure:north_wall\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_south_wall\": {\"asset_id\": \"procedural_structure:south_wall\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_south_window\": {\"asset_id\": \"procedural_opening:south_window\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"recon_west_wall\": {\"asset_id\": \"procedural_structure:west_wall\", \"identity_provenance\": \"researcher_reconstruction_not_historical\"}, \"sofa_0\": {\"asset_id\": \"4979cfe2e691ac484078b909543db3f21b80462f\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_sofa\", \"representation\": \"mesh\"}, \"storage_a_0\": {\"asset_id\": \"procedural_reference:storage_a\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_storage_a\", \"representation\": \"procedural_proxy\"}, \"storage_b_0\": {\"asset_id\": \"procedural_reference:storage_b\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_storage_b\", \"representation\": \"procedural_proxy\"}, \"table_0\": {\"asset_id\": \"5d70cc76c99acee4513ec5f7fad497d2baebca9e\", \"created_by\": \"native_add_furniture_to_scene_tool\", \"identity_provenance\": \"new_instance_from_reconstructed_source_asset_not_historical_identity\", \"registry_id\": \"catalog_construct_table\", \"representation\": \"mesh\"}}, \"asset_catalog\": [{\"asset_id\": \"catalog_construct_bed\", \"bbox_max\": [0.8, 1.0, 0.5], \"bbox_min\": [-0.8, -1.0, 0.0], \"description\": \"Labelled reconstruction: procedural_proxy\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"bed\", \"source_asset_id\": \"procedural_reference:bed\"}, {\"asset_id\": \"catalog_construct_sofa\", \"bbox_max\": [0.9007576107978821, 0.47884635627269745, 0.9072695106367306], \"bbox_min\": [-0.9007576107978821, -0.47884635627269745, 0.0], \"description\": \"Labelled reconstruction: mesh\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"sofa\", \"source_asset_id\": \"4979cfe2e691ac484078b909543db3f21b80462f\"}, {\"asset_id\": \"catalog_construct_table\", \"bbox_max\": [0.4750000089406967, 0.47239792346954346, 0.7107922434806825], \"bbox_min\": [-0.4750000089406967, -0.47239792346954346, 0.0], \"description\": \"Labelled reconstruction: mesh\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"table\", \"source_asset_id\": \"5d70cc76c99acee4513ec5f7fad497d2baebca9e\"}, {\"asset_id\": \"catalog_construct_chair_west\", \"bbox_max\": [0.225, 0.225, 0.85], \"bbox_min\": [-0.225, -0.225, 0.0], \"description\": \"Labelled reconstruction: procedural_proxy\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"chair_west\", \"source_asset_id\": \"procedural_reference:chair_west\"}, {\"asset_id\": \"catalog_construct_chair_east\", \"bbox_max\": [0.225, 0.225, 0.85], \"bbox_min\": [-0.225, -0.225, 0.0], \"description\": \"Labelled reconstruction: procedural_proxy\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"chair_east\", \"source_asset_id\": \"procedural_reference:chair_east\"}, {\"asset_id\": \"catalog_construct_low_fridge\", \"bbox_max\": [0.25, 0.3, 0.85], \"bbox_min\": [-0.25, -0.3, 0.0], \"description\": \"Labelled reconstruction: procedural_proxy\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"low_fridge\", \"source_asset_id\": \"procedural_reference:low_fridge\"}, {\"asset_id\": \"catalog_construct_storage_a\", \"bbox_max\": [0.4, 0.2, 2.2], \"bbox_min\": [-0.4, -0.2, 0.0], \"description\": \"Labelled reconstruction: procedural_proxy\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"storage_a\", \"source_asset_id\": \"procedural_reference:storage_a\"}, {\"asset_id\": \"catalog_construct_storage_b\", \"bbox_max\": [0.4, 0.2, 2.2], \"bbox_min\": [-0.4, -0.2, 0.0], \"description\": \"Labelled reconstruction: procedural_proxy\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"storage_b\", \"source_asset_id\": \"procedural_reference:storage_b\"}, {\"asset_id\": \"catalog_construct_storage_c\", \"bbox_max\": [0.4, 0.2, 2.2], \"bbox_min\": [-0.4, -0.2, 0.0], \"description\": \"Labelled reconstruction: procedural_proxy\", \"limitations\": [\"Original procedural proxies remain proxies; a derived GLB is not a real product.\", \"Construction order and coordinates are researcher labels, not original architect actions.\"], \"name\": \"storage_c\", \"source_asset_id\": \"procedural_reference:storage_c\"}], \"available_source_knowledge\": [{\"condition\": \"为两位旅客短期住宿设计的紧凑布达佩斯公寓，衣物需要方便、快速取用。\", \"decision_id\": \"airbnp_open_clothing_access_for_short_stays\", \"principle\": \"在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。\"}, {\"condition\": \"四口之家已有家具，希望主要空间供共同生活。\", \"decision_id\": \"fhouse_existing_furniture_shared_living\", \"principle\": \"为容纳既有家具并优先共同生活，F-House采用了较开放的空间组织。\"}, {\"condition\": \"年轻伴侣的约30平方米住宅原先分为四个昏暗房间，改造同时追求明亮起居、私密空间与收纳。\", \"decision_id\": \"guilbault_consolidated_storage_for_continuous_living_space\", \"principle\": \"在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。\"}, {\"condition\": \"家庭成员长大、居住安排会变化。\", \"decision_id\": \"michelet_adapt_family_lifecycle\", \"principle\": \"住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。\"}, {\"condition\": \"同一生活区需吃饭、聚会并偶尔容纳留宿者。\", \"decision_id\": \"paper_table_mobility_for_overnight_guest\", \"principle\": \"同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。\"}, {\"condition\": \"住户重视可变配置，不希望固定在单一家具布置中。\", \"decision_id\": \"waterloo_separable_tables_for_changing_activities\", \"principle\": \"住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。\"}], \"design_request\": \"研究者重建任务：两人居住的6米×5米房间已有固定厨卫设施。保留房壳、开口、操作台及其上的灶台和水槽、三件卫浴设施，使用所给目录完成床、沙发、桌子、两把椅子、小冰箱和三件柜体的家具布置。需要睡眠、起居、两人吃饭、厨房与卫生间接近、窗前接近和可取放收纳，并尽量保有连续起居空间。不得删掉必需角色或缩放资产；未测功能请保留未知。这里的尺寸、人数、设施与目录均为研究者设定，不是住户原始任务或原项目精确平面。\", \"objects\": {\"bed_0\": {\"bbox_max\": [0.8, 1.0, 0.5], \"bbox_min\": [-0.8, -1.0, 0.0], \"immutable\": false, \"name\": \"bed\", \"object_id\": \"bed_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.9999987285919549, 0.0, 0.0, 0.0015946204793732567], \"translation\": [1.8511553648722587, -1.1985827532615256, 0.0]}}, \"chair_east_0\": {\"bbox_max\": [0.225, 0.225, 0.85], \"bbox_min\": [-0.225, -0.225, 0.0], \"immutable\": false, \"name\": \"chair_east\", \"object_id\": \"chair_east_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.9999998880779453, 0.0, 0.0, -0.0004731216511097393], \"translation\": [1.7987723555177433, 0.29909703350876515, 0.0]}}, \"chair_west_0\": {\"bbox_max\": [0.225, 0.225, 0.85], \"bbox_min\": [-0.225, -0.225, 0.0], \"immutable\": false, \"name\": \"chair_west\", \"object_id\": \"chair_west_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.9999994942046556, 0.0, 0.0, -0.0010057785208178354], \"translation\": [0.1999454428087652, 0.2999969846737693, 0.0]}}, \"low_fridge_0\": {\"bbox_max\": [0.25, 0.3, 0.85], \"bbox_min\": [-0.25, -0.3, 0.0], \"immutable\": false, \"name\": \"low_fridge\", \"object_id\": \"low_fridge_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.9999997904432064, 0.0, 0.0, -0.0006473897923798641], \"translation\": [2.6499615428056047, 0.8004030028253113, 0.0]}}, \"recon_bath_light_0\": {\"bbox_max\": [0.15, 0.15, 0.08], \"bbox_min\": [-0.15, -0.15, 0.0], \"immutable\": true, \"name\": \"bath_light\", \"object_id\": \"recon_bath_light_0\", \"object_type\": \"ceiling_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-2.0, 1.7, 2.52]}}, \"recon_bath_shower_0\": {\"bbox_max\": [0.4, 0.4, 0.12], \"bbox_min\": [-0.4, -0.4, 0.0], \"immutable\": true, \"name\": \"bath_shower\", \"object_id\": \"recon_bath_shower_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-2.5, 2.0, 0.0]}}, \"recon_bath_toilet_0\": {\"bbox_max\": [0.25, 0.25, 0.55], \"bbox_min\": [-0.25, -0.25, 0.0], \"immutable\": true, \"name\": \"bath_toilet\", \"object_id\": \"recon_bath_toilet_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-2.45, 1.25, 0.0]}}, \"recon_bath_vanity_0\": {\"bbox_max\": [0.3, 0.225, 0.8], \"bbox_min\": [-0.3, -0.225, 0.0], \"immutable\": true, \"name\": \"bath_vanity\", \"object_id\": \"recon_bath_vanity_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-1.45, 2.15, 0.0]}}, \"recon_bathroom_door\": {\"bbox_max\": [0.01, 0.4, 1.0], \"bbox_min\": [-0.01, -0.4, -1.0], \"immutable\": true, \"name\": \"bathroom_door\", \"object_id\": \"recon_bathroom_door\", \"object_type\": \"wall_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-1.0, 1.4, 1.0]}}, \"recon_bathroom_east_wall\": {\"bbox_max\": [0.01, 0.8, 1.3], \"bbox_min\": [-0.01, -0.8, -1.3], \"immutable\": true, \"name\": \"bathroom_east_wall\", \"object_id\": \"recon_bathroom_east_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-1.0, 1.7, 1.3]}}, \"recon_bathroom_south_wall\": {\"bbox_max\": [1.0, 0.01, 1.3], \"bbox_min\": [-1.0, -0.01, -1.3], \"immutable\": true, \"name\": \"bathroom_south_wall\", \"object_id\": \"recon_bathroom_south_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-2.0, 0.9, 1.3]}}, \"recon_cooktop_0\": {\"bbox_max\": [0.275, 0.24, 0.04], \"bbox_min\": [-0.275, -0.24, 0.0], \"immutable\": true, \"name\": \"cooktop\", \"object_id\": \"recon_cooktop_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [1.25, 2.05, 0.9]}}, \"recon_east_wall\": {\"bbox_max\": [0.01, 2.5, 1.3], \"bbox_min\": [-0.01, -2.5, -1.3], \"immutable\": true, \"name\": \"east_wall\", \"object_id\": \"recon_east_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [3.0, 0.0, 1.3]}}, \"recon_entry_door\": {\"bbox_max\": [0.45, 0.01, 1.0], \"bbox_min\": [-0.45, -0.01, -1.0], \"immutable\": true, \"name\": \"entry_door\", \"object_id\": \"recon_entry_door\", \"object_type\": \"wall_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, 2.5, 1.0]}}, \"recon_kitchen_counter_0\": {\"bbox_max\": [1.0, 0.3, 0.9], \"bbox_min\": [-1.0, -0.3, 0.0], \"immutable\": true, \"name\": \"kitchen_counter\", \"object_id\": \"recon_kitchen_counter_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [1.8, 2.05, 0.0]}}, \"recon_kitchen_sink_0\": {\"bbox_max\": [0.3, 0.24, 0.08], \"bbox_min\": [-0.3, -0.24, 0.0], \"immutable\": true, \"name\": \"kitchen_sink\", \"object_id\": \"recon_kitchen_sink_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [2.3, 2.05, 0.9]}}, \"recon_main_light_0\": {\"bbox_max\": [0.25, 0.25, 0.08], \"bbox_min\": [-0.25, -0.25, 0.0], \"immutable\": true, \"name\": \"main_light\", \"object_id\": \"recon_main_light_0\", \"object_type\": \"ceiling_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.5, 0.0, 2.52]}}, \"recon_north_wall\": {\"bbox_max\": [3.0, 0.01, 1.3], \"bbox_min\": [-3.0, -0.01, -1.3], \"immutable\": true, \"name\": \"north_wall\", \"object_id\": \"recon_north_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, 2.5, 1.3]}}, \"recon_south_wall\": {\"bbox_max\": [3.0, 0.01, 1.3], \"bbox_min\": [-3.0, -0.01, -1.3], \"immutable\": true, \"name\": \"south_wall\", \"object_id\": \"recon_south_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, -2.5, 1.3]}}, \"recon_south_window\": {\"bbox_max\": [0.9, 0.005, 0.7], \"bbox_min\": [-0.9, -0.005, -0.7], \"immutable\": true, \"name\": \"south_window\", \"object_id\": \"recon_south_window\", \"object_type\": \"wall_mounted\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [0.0, -2.5, 1.55]}}, \"recon_west_wall\": {\"bbox_max\": [0.01, 2.5, 1.3], \"bbox_min\": [-0.01, -2.5, -1.3], \"immutable\": true, \"name\": \"west_wall\", \"object_id\": \"recon_west_wall\", \"object_type\": \"wall\", \"transform\": {\"rotation_wxyz\": [1.0, 0.0, 0.0, 0.0], \"translation\": [-3.0, 0.0, 1.3]}}, \"sofa_0\": {\"bbox_max\": [0.9007576107978821, 0.47884635627269745, 0.9072695106367306], \"bbox_min\": [-0.9007576107978821, -0.47884635627269745, 0.0], \"immutable\": false, \"name\": \"sofa\", \"object_id\": \"sofa_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.7070363192844313, 0.0, -0.0, -0.707177236067963], \"translation\": [-1.1996964034307664, -0.19928524456249397, 0.0]}}, \"storage_a_0\": {\"bbox_max\": [0.4, 0.2, 2.2], \"bbox_min\": [-0.4, -0.2, 0.0], \"immutable\": false, \"name\": \"storage_a\", \"object_id\": \"storage_a_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.7069874351406708, 0.0, -0.0, -0.7072261070925024], \"translation\": [-2.699312648258669, -1.84899086117331, 0.0]}}, \"storage_b_0\": {\"bbox_max\": [0.4, 0.2, 2.2], \"bbox_min\": [-0.4, -0.2, 0.0], \"immutable\": false, \"name\": \"storage_b\", \"object_id\": \"storage_b_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.7063758285737457, 0.0, -0.0, -0.7078369789766245], \"translation\": [-2.6999710396942884, -0.9494102683507244, 0.0]}}, \"table_0\": {\"bbox_max\": [0.4750000089406967, 0.47239792346954346, 0.7107922434806825], \"bbox_min\": [-0.4750000089406967, -0.47239792346954346, 0.0], \"immutable\": false, \"name\": \"table\", \"object_id\": \"table_0\", \"object_type\": \"furniture\", \"transform\": {\"rotation_wxyz\": [0.9999994911835846, 0.0, 0.0, 0.0010087777612639447], \"translation\": [0.9999125669212383, 0.3002491401107897, 0.0]}}}, \"original_request\": null, \"physical_unknowns\": [\"This is a 6x5x2.6m research reconstruction with a northwest bathroom and one window, not surveyed source geometry or a resident brief.\", \"Six fixed installed kitchen/bath fixtures are procedural proxies; their installation and operation are unverified.\", \"Seven catalogue entries are procedural envelope proxies; sofa and table are cached mesh substitutes.\", \"Door leaves, hinges, storage internals/capacity, light, comfort and physical handling are unverified.\", \"All generated object instances are new; no original historical identity is claimed.\"], \"recent_actual_tool_receipts\": [{\"after_sha256\": \"28cd052f32d9558e784110a1e0248d37216ccf2aaf314d8fc3d73eb2381cebf0\", \"before_sha256\": \"d0dcc7d793a4ad7944b21b0d09da6cf9fec599e7587d7b9e97d2be8c09fe489e\", \"results\": [{\"name\": \"add_furniture_to_scene_tool\", \"output\": {\"asset_id\": \"catalog_construct_storage_a\", \"error_type\": null, \"has_geometry\": true, \"message\": \"Successfully placed asset 'storage_a' as object 'storage_a_0'. Use object_id 'storage_a_0' for remove/move operations.\", \"object_id\": \"storage_a_0\", \"position\": {\"x\": -2.699312648258669, \"y\": -1.84899086117331, \"z\": 0.0}, \"rotation\": {\"pitch\": 0.0, \"roll\": 0.0, \"yaw\": -90.0193392228117}, \"success\": true, \"suggested_action\": null}}], \"step_idx\": 7, \"tool_calls\": [{\"arguments\": {\"asset_id\": \"catalog_construct_storage_a\", \"x\": -2.7, \"y\": -1.85, \"yaw\": 270}, \"name\": \"add_furniture_to_scene_tool\"}]}, {\"after_sha256\": \"542fe5c807add2932dd588cf3d16a49f9f324122cc38a5938806b76fed5a4bf8\", \"before_sha256\": \"28cd052f32d9558e784110a1e0248d37216ccf2aaf314d8fc3d73eb2381cebf0\", \"results\": [{\"name\": \"add_furniture_to_scene_tool\", \"output\": {\"asset_id\": \"catalog_construct_storage_b\", \"error_type\": null, \"has_geometry\": true, \"message\": \"Successfully placed asset 'storage_b' as object 'storage_b_0'. Use object_id 'storage_b_0' for remove/move operations.\", \"object_id\": \"storage_b_0\", \"position\": {\"x\": -2.6999710396942884, \"y\": -0.9494102683507244, \"z\": 0.0}, \"rotation\": {\"pitch\": 0.0, \"roll\": 0.0, \"yaw\": -90.11839480039045}, \"success\": true, \"suggested_action\": null}}], \"step_idx\": 8, \"tool_calls\": [{\"arguments\": {\"asset_id\": \"catalog_construct_storage_b\", \"x\": -2.7, \"y\": -0.95, \"yaw\": 270}, \"name\": \"add_furniture_to_scene_tool\"}]}], \"request_provenance\": \"adapted\"}"
+  },
+  "provenance": {
+    "family_id": "paris_30m2_richard_guilbault_2015",
+    "run_id": "storage_source_only",
+    "step": 9,
+    "kind": "source_only_curated_reconstruction_candidate",
+    "historical_designer_trajectory": false,
+    "training_eligible": false,
+    "training_authorized": false,
+    "source_reason_only": false,
+    "researcher_execution_plan_supervised": false,
+    "allocation": "train_source_candidate",
+    "reason_origin": "none_action_only",
+    "task_reconditioned": false,
+    "original_episode": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-ABUILD-v1_20261105T165434Z/storage_dataset/episodes/step_09/shared/episode.json",
+      "sha256": "61c265dbd2cf1b9183dbb110fb5b8b23fdcd2ff95a5caf35c06a45adf520ff59"
+    },
+    "study": "P920-EDITSTUDY-v1_20261106T074752Z",
+    "source_family": "paris_30m2_richard_guilbault_2015",
+    "decision_text_authorship": "Only sourced_principle is an attributed paraphrase; applications and costs are researcher annotations.",
+    "candidate_data_only": true,
+    "original_document": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/runs/920/P920-EDITSTUDY-v1_20261106T074752Z/dataset/decision_action/storage_build_09/episode.json",
+      "sha256": "b02a19efc255d62d41b91a68b6a784f166ba15e9e827d7901d80bb21718b68c4"
+    },
+    "prospective_input_contract": "executed-edit-v1",
+    "prospective_deployment_protocol": "native-completion-v1"
+  },
+  "evaluation_only": {
+    "sentinel": "EVAL_ONLY_SOURCE_CONSTRUCTION",
+    "after_state": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SBUILD-v1_20261105T143623Z/native/step_09_after.json",
+    "actual_reply": {
+      "results": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "output": {
+            "success": true,
+            "message": "Successfully placed asset 'storage_c' as object 'storage_c_0'. Use object_id 'storage_c_0' for remove/move operations.",
+            "asset_id": "catalog_construct_storage_c",
+            "object_id": "storage_c_0",
+            "position": {
+              "x": -2.7003179395895693,
+              "y": -0.04944507186853783,
+              "z": 0.0
+            },
+            "rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": -90.00438071147187
+            },
+            "has_geometry": true,
+            "error_type": null,
+            "suggested_action": null
+          }
+        }
+      ]
+    },
+    "curation": {
+      "original_reason": "",
+      "original_task_context": {
+        "asset_bindings": {
+          "bed_0": {
+            "asset_id": "procedural_reference:bed",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_bed",
+            "representation": "procedural_proxy"
+          },
+          "chair_east_0": {
+            "asset_id": "procedural_reference:chair_east",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_chair_east",
+            "representation": "procedural_proxy"
+          },
+          "chair_west_0": {
+            "asset_id": "procedural_reference:chair_west",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_chair_west",
+            "representation": "procedural_proxy"
+          },
+          "low_fridge_0": {
+            "asset_id": "procedural_reference:low_fridge",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_low_fridge",
+            "representation": "procedural_proxy"
+          },
+          "recon_bath_light_0": {
+            "asset_id": "procedural_reference:bath_light",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_bath_shower_0": {
+            "asset_id": "procedural_reference:bath_shower",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_bath_toilet_0": {
+            "asset_id": "procedural_reference:bath_toilet",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_bath_vanity_0": {
+            "asset_id": "procedural_reference:bath_vanity",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_bathroom_door": {
+            "asset_id": "procedural_opening:bathroom_door",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_bathroom_east_wall": {
+            "asset_id": "procedural_structure:bathroom_east_wall",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_bathroom_south_wall": {
+            "asset_id": "procedural_structure:bathroom_south_wall",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_cooktop_0": {
+            "asset_id": "procedural_reference:cooktop",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_east_wall": {
+            "asset_id": "procedural_structure:east_wall",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_entry_door": {
+            "asset_id": "procedural_opening:entry_door",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_kitchen_counter_0": {
+            "asset_id": "procedural_reference:kitchen_counter",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_kitchen_sink_0": {
+            "asset_id": "procedural_reference:kitchen_sink",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_main_light_0": {
+            "asset_id": "procedural_reference:main_light",
+            "identity_provenance": "researcher_reconstruction_not_historical",
+            "representation": "procedural_proxy"
+          },
+          "recon_north_wall": {
+            "asset_id": "procedural_structure:north_wall",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_south_wall": {
+            "asset_id": "procedural_structure:south_wall",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_south_window": {
+            "asset_id": "procedural_opening:south_window",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "recon_west_wall": {
+            "asset_id": "procedural_structure:west_wall",
+            "identity_provenance": "researcher_reconstruction_not_historical"
+          },
+          "sofa_0": {
+            "asset_id": "4979cfe2e691ac484078b909543db3f21b80462f",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_sofa",
+            "representation": "mesh"
+          },
+          "storage_a_0": {
+            "asset_id": "procedural_reference:storage_a",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_storage_a",
+            "representation": "procedural_proxy"
+          },
+          "storage_b_0": {
+            "asset_id": "procedural_reference:storage_b",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_storage_b",
+            "representation": "procedural_proxy"
+          },
+          "table_0": {
+            "asset_id": "5d70cc76c99acee4513ec5f7fad497d2baebca9e",
+            "created_by": "native_add_furniture_to_scene_tool",
+            "identity_provenance": "new_instance_from_reconstructed_source_asset_not_historical_identity",
+            "registry_id": "catalog_construct_table",
+            "representation": "mesh"
+          }
+        },
+        "asset_catalog": [
+          {
+            "asset_id": "catalog_construct_bed",
+            "bbox_max": [
+              0.8,
+              1.0,
+              0.5
+            ],
+            "bbox_min": [
+              -0.8,
+              -1.0,
+              0.0
+            ],
+            "description": "Labelled reconstruction: procedural_proxy",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "bed",
+            "source_asset_id": "procedural_reference:bed"
+          },
+          {
+            "asset_id": "catalog_construct_sofa",
+            "bbox_max": [
+              0.9007576107978821,
+              0.47884635627269745,
+              0.9072695106367306
+            ],
+            "bbox_min": [
+              -0.9007576107978821,
+              -0.47884635627269745,
+              0.0
+            ],
+            "description": "Labelled reconstruction: mesh",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "sofa",
+            "source_asset_id": "4979cfe2e691ac484078b909543db3f21b80462f"
+          },
+          {
+            "asset_id": "catalog_construct_table",
+            "bbox_max": [
+              0.4750000089406967,
+              0.47239792346954346,
+              0.7107922434806825
+            ],
+            "bbox_min": [
+              -0.4750000089406967,
+              -0.47239792346954346,
+              0.0
+            ],
+            "description": "Labelled reconstruction: mesh",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "table",
+            "source_asset_id": "5d70cc76c99acee4513ec5f7fad497d2baebca9e"
+          },
+          {
+            "asset_id": "catalog_construct_chair_west",
+            "bbox_max": [
+              0.225,
+              0.225,
+              0.85
+            ],
+            "bbox_min": [
+              -0.225,
+              -0.225,
+              0.0
+            ],
+            "description": "Labelled reconstruction: procedural_proxy",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "chair_west",
+            "source_asset_id": "procedural_reference:chair_west"
+          },
+          {
+            "asset_id": "catalog_construct_chair_east",
+            "bbox_max": [
+              0.225,
+              0.225,
+              0.85
+            ],
+            "bbox_min": [
+              -0.225,
+              -0.225,
+              0.0
+            ],
+            "description": "Labelled reconstruction: procedural_proxy",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "chair_east",
+            "source_asset_id": "procedural_reference:chair_east"
+          },
+          {
+            "asset_id": "catalog_construct_low_fridge",
+            "bbox_max": [
+              0.25,
+              0.3,
+              0.85
+            ],
+            "bbox_min": [
+              -0.25,
+              -0.3,
+              0.0
+            ],
+            "description": "Labelled reconstruction: procedural_proxy",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "low_fridge",
+            "source_asset_id": "procedural_reference:low_fridge"
+          },
+          {
+            "asset_id": "catalog_construct_storage_a",
+            "bbox_max": [
+              0.4,
+              0.2,
+              2.2
+            ],
+            "bbox_min": [
+              -0.4,
+              -0.2,
+              0.0
+            ],
+            "description": "Labelled reconstruction: procedural_proxy",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "storage_a",
+            "source_asset_id": "procedural_reference:storage_a"
+          },
+          {
+            "asset_id": "catalog_construct_storage_b",
+            "bbox_max": [
+              0.4,
+              0.2,
+              2.2
+            ],
+            "bbox_min": [
+              -0.4,
+              -0.2,
+              0.0
+            ],
+            "description": "Labelled reconstruction: procedural_proxy",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "storage_b",
+            "source_asset_id": "procedural_reference:storage_b"
+          },
+          {
+            "asset_id": "catalog_construct_storage_c",
+            "bbox_max": [
+              0.4,
+              0.2,
+              2.2
+            ],
+            "bbox_min": [
+              -0.4,
+              -0.2,
+              0.0
+            ],
+            "description": "Labelled reconstruction: procedural_proxy",
+            "limitations": [
+              "Original procedural proxies remain proxies; a derived GLB is not a real product.",
+              "Construction order and coordinates are researcher labels, not original architect actions."
+            ],
+            "name": "storage_c",
+            "source_asset_id": "procedural_reference:storage_c"
+          }
+        ],
+        "design_request": "研究者重建任务：两人居住的6米×5米房间已有固定厨卫设施。保留房壳、开口、操作台及其上的灶台和水槽、三件卫浴设施，使用所给目录完成床、沙发、桌子、两把椅子、小冰箱和三件柜体的家具布置。需要睡眠、起居、两人吃饭、厨房与卫生间接近、窗前接近和可取放收纳，并尽量保有连续起居空间。不得删掉必需角色或缩放资产；未测功能请保留未知。这里的尺寸、人数、设施与目录均为研究者设定，不是住户原始任务或原项目精确平面。",
+        "objects": {
+          "bed_0": {
+            "bbox_max": [
+              0.8,
+              1.0,
+              0.5
+            ],
+            "bbox_min": [
+              -0.8,
+              -1.0,
+              0.0
+            ],
+            "immutable": false,
+            "name": "bed",
+            "object_id": "bed_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.9999987285919549,
+                0.0,
+                0.0,
+                0.0015946204793732567
+              ],
+              "translation": [
+                1.8511553648722587,
+                -1.1985827532615256,
+                0.0
+              ]
+            }
+          },
+          "chair_east_0": {
+            "bbox_max": [
+              0.225,
+              0.225,
+              0.85
+            ],
+            "bbox_min": [
+              -0.225,
+              -0.225,
+              0.0
+            ],
+            "immutable": false,
+            "name": "chair_east",
+            "object_id": "chair_east_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.9999998880779453,
+                0.0,
+                0.0,
+                -0.0004731216511097393
+              ],
+              "translation": [
+                1.7987723555177433,
+                0.29909703350876515,
+                0.0
+              ]
+            }
+          },
+          "chair_west_0": {
+            "bbox_max": [
+              0.225,
+              0.225,
+              0.85
+            ],
+            "bbox_min": [
+              -0.225,
+              -0.225,
+              0.0
+            ],
+            "immutable": false,
+            "name": "chair_west",
+            "object_id": "chair_west_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.9999994942046556,
+                0.0,
+                0.0,
+                -0.0010057785208178354
+              ],
+              "translation": [
+                0.1999454428087652,
+                0.2999969846737693,
+                0.0
+              ]
+            }
+          },
+          "low_fridge_0": {
+            "bbox_max": [
+              0.25,
+              0.3,
+              0.85
+            ],
+            "bbox_min": [
+              -0.25,
+              -0.3,
+              0.0
+            ],
+            "immutable": false,
+            "name": "low_fridge",
+            "object_id": "low_fridge_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.9999997904432064,
+                0.0,
+                0.0,
+                -0.0006473897923798641
+              ],
+              "translation": [
+                2.6499615428056047,
+                0.8004030028253113,
+                0.0
+              ]
+            }
+          },
+          "recon_bath_light_0": {
+            "bbox_max": [
+              0.15,
+              0.15,
+              0.08
+            ],
+            "bbox_min": [
+              -0.15,
+              -0.15,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_light",
+            "object_id": "recon_bath_light_0",
+            "object_type": "ceiling_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -2.0,
+                1.7,
+                2.52
+              ]
+            }
+          },
+          "recon_bath_shower_0": {
+            "bbox_max": [
+              0.4,
+              0.4,
+              0.12
+            ],
+            "bbox_min": [
+              -0.4,
+              -0.4,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_shower",
+            "object_id": "recon_bath_shower_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -2.5,
+                2.0,
+                0.0
+              ]
+            }
+          },
+          "recon_bath_toilet_0": {
+            "bbox_max": [
+              0.25,
+              0.25,
+              0.55
+            ],
+            "bbox_min": [
+              -0.25,
+              -0.25,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_toilet",
+            "object_id": "recon_bath_toilet_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -2.45,
+                1.25,
+                0.0
+              ]
+            }
+          },
+          "recon_bath_vanity_0": {
+            "bbox_max": [
+              0.3,
+              0.225,
+              0.8
+            ],
+            "bbox_min": [
+              -0.3,
+              -0.225,
+              0.0
+            ],
+            "immutable": true,
+            "name": "bath_vanity",
+            "object_id": "recon_bath_vanity_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -1.45,
+                2.15,
+                0.0
+              ]
+            }
+          },
+          "recon_bathroom_door": {
+            "bbox_max": [
+              0.01,
+              0.4,
+              1.0
+            ],
+            "bbox_min": [
+              -0.01,
+              -0.4,
+              -1.0
+            ],
+            "immutable": true,
+            "name": "bathroom_door",
+            "object_id": "recon_bathroom_door",
+            "object_type": "wall_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -1.0,
+                1.4,
+                1.0
+              ]
+            }
+          },
+          "recon_bathroom_east_wall": {
+            "bbox_max": [
+              0.01,
+              0.8,
+              1.3
+            ],
+            "bbox_min": [
+              -0.01,
+              -0.8,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "bathroom_east_wall",
+            "object_id": "recon_bathroom_east_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -1.0,
+                1.7,
+                1.3
+              ]
+            }
+          },
+          "recon_bathroom_south_wall": {
+            "bbox_max": [
+              1.0,
+              0.01,
+              1.3
+            ],
+            "bbox_min": [
+              -1.0,
+              -0.01,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "bathroom_south_wall",
+            "object_id": "recon_bathroom_south_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -2.0,
+                0.9,
+                1.3
+              ]
+            }
+          },
+          "recon_cooktop_0": {
+            "bbox_max": [
+              0.275,
+              0.24,
+              0.04
+            ],
+            "bbox_min": [
+              -0.275,
+              -0.24,
+              0.0
+            ],
+            "immutable": true,
+            "name": "cooktop",
+            "object_id": "recon_cooktop_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                1.25,
+                2.05,
+                0.9
+              ]
+            }
+          },
+          "recon_east_wall": {
+            "bbox_max": [
+              0.01,
+              2.5,
+              1.3
+            ],
+            "bbox_min": [
+              -0.01,
+              -2.5,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "east_wall",
+            "object_id": "recon_east_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                3.0,
+                0.0,
+                1.3
+              ]
+            }
+          },
+          "recon_entry_door": {
+            "bbox_max": [
+              0.45,
+              0.01,
+              1.0
+            ],
+            "bbox_min": [
+              -0.45,
+              -0.01,
+              -1.0
+            ],
+            "immutable": true,
+            "name": "entry_door",
+            "object_id": "recon_entry_door",
+            "object_type": "wall_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                2.5,
+                1.0
+              ]
+            }
+          },
+          "recon_kitchen_counter_0": {
+            "bbox_max": [
+              1.0,
+              0.3,
+              0.9
+            ],
+            "bbox_min": [
+              -1.0,
+              -0.3,
+              0.0
+            ],
+            "immutable": true,
+            "name": "kitchen_counter",
+            "object_id": "recon_kitchen_counter_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                1.8,
+                2.05,
+                0.0
+              ]
+            }
+          },
+          "recon_kitchen_sink_0": {
+            "bbox_max": [
+              0.3,
+              0.24,
+              0.08
+            ],
+            "bbox_min": [
+              -0.3,
+              -0.24,
+              0.0
+            ],
+            "immutable": true,
+            "name": "kitchen_sink",
+            "object_id": "recon_kitchen_sink_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                2.3,
+                2.05,
+                0.9
+              ]
+            }
+          },
+          "recon_main_light_0": {
+            "bbox_max": [
+              0.25,
+              0.25,
+              0.08
+            ],
+            "bbox_min": [
+              -0.25,
+              -0.25,
+              0.0
+            ],
+            "immutable": true,
+            "name": "main_light",
+            "object_id": "recon_main_light_0",
+            "object_type": "ceiling_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.5,
+                0.0,
+                2.52
+              ]
+            }
+          },
+          "recon_north_wall": {
+            "bbox_max": [
+              3.0,
+              0.01,
+              1.3
+            ],
+            "bbox_min": [
+              -3.0,
+              -0.01,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "north_wall",
+            "object_id": "recon_north_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                2.5,
+                1.3
+              ]
+            }
+          },
+          "recon_south_wall": {
+            "bbox_max": [
+              3.0,
+              0.01,
+              1.3
+            ],
+            "bbox_min": [
+              -3.0,
+              -0.01,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "south_wall",
+            "object_id": "recon_south_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                -2.5,
+                1.3
+              ]
+            }
+          },
+          "recon_south_window": {
+            "bbox_max": [
+              0.9,
+              0.005,
+              0.7
+            ],
+            "bbox_min": [
+              -0.9,
+              -0.005,
+              -0.7
+            ],
+            "immutable": true,
+            "name": "south_window",
+            "object_id": "recon_south_window",
+            "object_type": "wall_mounted",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                0.0,
+                -2.5,
+                1.55
+              ]
+            }
+          },
+          "recon_west_wall": {
+            "bbox_max": [
+              0.01,
+              2.5,
+              1.3
+            ],
+            "bbox_min": [
+              -0.01,
+              -2.5,
+              -1.3
+            ],
+            "immutable": true,
+            "name": "west_wall",
+            "object_id": "recon_west_wall",
+            "object_type": "wall",
+            "transform": {
+              "rotation_wxyz": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "translation": [
+                -3.0,
+                0.0,
+                1.3
+              ]
+            }
+          },
+          "sofa_0": {
+            "bbox_max": [
+              0.9007576107978821,
+              0.47884635627269745,
+              0.9072695106367306
+            ],
+            "bbox_min": [
+              -0.9007576107978821,
+              -0.47884635627269745,
+              0.0
+            ],
+            "immutable": false,
+            "name": "sofa",
+            "object_id": "sofa_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.7070363192844313,
+                0.0,
+                -0.0,
+                -0.707177236067963
+              ],
+              "translation": [
+                -1.1996964034307664,
+                -0.19928524456249397,
+                0.0
+              ]
+            }
+          },
+          "storage_a_0": {
+            "bbox_max": [
+              0.4,
+              0.2,
+              2.2
+            ],
+            "bbox_min": [
+              -0.4,
+              -0.2,
+              0.0
+            ],
+            "immutable": false,
+            "name": "storage_a",
+            "object_id": "storage_a_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.7069874351406708,
+                0.0,
+                -0.0,
+                -0.7072261070925024
+              ],
+              "translation": [
+                -2.699312648258669,
+                -1.84899086117331,
+                0.0
+              ]
+            }
+          },
+          "storage_b_0": {
+            "bbox_max": [
+              0.4,
+              0.2,
+              2.2
+            ],
+            "bbox_min": [
+              -0.4,
+              -0.2,
+              0.0
+            ],
+            "immutable": false,
+            "name": "storage_b",
+            "object_id": "storage_b_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.7063758285737457,
+                0.0,
+                -0.0,
+                -0.7078369789766245
+              ],
+              "translation": [
+                -2.6999710396942884,
+                -0.9494102683507244,
+                0.0
+              ]
+            }
+          },
+          "table_0": {
+            "bbox_max": [
+              0.4750000089406967,
+              0.47239792346954346,
+              0.7107922434806825
+            ],
+            "bbox_min": [
+              -0.4750000089406967,
+              -0.47239792346954346,
+              0.0
+            ],
+            "immutable": false,
+            "name": "table",
+            "object_id": "table_0",
+            "object_type": "furniture",
+            "transform": {
+              "rotation_wxyz": [
+                0.9999994911835846,
+                0.0,
+                0.0,
+                0.0010087777612639447
+              ],
+              "translation": [
+                0.9999125669212383,
+                0.3002491401107897,
+                0.0
+              ]
+            }
+          }
+        },
+        "original_request": null,
+        "physical_unknowns": [
+          "This is a 6x5x2.6m research reconstruction with a northwest bathroom and one window, not surveyed source geometry or a resident brief.",
+          "Six fixed installed kitchen/bath fixtures are procedural proxies; their installation and operation are unverified.",
+          "Seven catalogue entries are procedural envelope proxies; sofa and table are cached mesh substitutes.",
+          "Door leaves, hinges, storage internals/capacity, light, comfort and physical handling are unverified.",
+          "All generated object instances are new; no original historical identity is claimed."
+        ],
+        "recent_actual_tool_receipts": [
+          {
+            "after_sha256": "28cd052f32d9558e784110a1e0248d37216ccf2aaf314d8fc3d73eb2381cebf0",
+            "before_sha256": "d0dcc7d793a4ad7944b21b0d09da6cf9fec599e7587d7b9e97d2be8c09fe489e",
+            "results": [
+              {
+                "name": "add_furniture_to_scene_tool",
+                "output": {
+                  "asset_id": "catalog_construct_storage_a",
+                  "error_type": null,
+                  "has_geometry": true,
+                  "message": "Successfully placed asset 'storage_a' as object 'storage_a_0'. Use object_id 'storage_a_0' for remove/move operations.",
+                  "object_id": "storage_a_0",
+                  "position": {
+                    "x": -2.699312648258669,
+                    "y": -1.84899086117331,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "pitch": 0.0,
+                    "roll": 0.0,
+                    "yaw": -90.0193392228117
+                  },
+                  "success": true,
+                  "suggested_action": null
+                }
+              }
+            ],
+            "step_idx": 7,
+            "tool_calls": [
+              {
+                "arguments": {
+                  "asset_id": "catalog_construct_storage_a",
+                  "x": -2.7,
+                  "y": -1.85,
+                  "yaw": 270
+                },
+                "name": "add_furniture_to_scene_tool"
+              }
+            ]
+          },
+          {
+            "after_sha256": "542fe5c807add2932dd588cf3d16a49f9f324122cc38a5938806b76fed5a4bf8",
+            "before_sha256": "28cd052f32d9558e784110a1e0248d37216ccf2aaf314d8fc3d73eb2381cebf0",
+            "results": [
+              {
+                "name": "add_furniture_to_scene_tool",
+                "output": {
+                  "asset_id": "catalog_construct_storage_b",
+                  "error_type": null,
+                  "has_geometry": true,
+                  "message": "Successfully placed asset 'storage_b' as object 'storage_b_0'. Use object_id 'storage_b_0' for remove/move operations.",
+                  "object_id": "storage_b_0",
+                  "position": {
+                    "x": -2.6999710396942884,
+                    "y": -0.9494102683507244,
+                    "z": 0.0
+                  },
+                  "rotation": {
+                    "pitch": 0.0,
+                    "roll": 0.0,
+                    "yaw": -90.11839480039045
+                  },
+                  "success": true,
+                  "suggested_action": null
+                }
+              }
+            ],
+            "step_idx": 8,
+            "tool_calls": [
+              {
+                "arguments": {
+                  "asset_id": "catalog_construct_storage_b",
+                  "x": -2.7,
+                  "y": -0.95,
+                  "yaw": 270
+                },
+                "name": "add_furniture_to_scene_tool"
+              }
+            ]
+          }
+        ],
+        "request_provenance": "adapted"
+      },
+      "supervision_class": "ordinary_executed_action",
+      "reason_scope": "First cabinet addition anchors a source-linked three-cabinet sequence; later steps remain ordinary actions.",
+      "task_revision_scope": "Research-authored demonstration relabeling; no new execution or model success claimed."
+    },
+    "study_origin": {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-CURATE-v1_20261105T212407Z/dataset/episodes/storage_build_09/shared/episode.json",
+      "sha256": "47267f14aa609c08e6018ffdd6d165e87a499be80e7f20d18e54db5e8513e6dd"
+    },
+    "decision_scope": "First cabinet addition anchors a source-linked three-cabinet sequence; later steps remain ordinary actions."
+  },
+  "turns": [
+    {
+      "role": "assistant",
+      "content": "",
+      "images": [
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SBUILD-v1_20261105T143623Z/native/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_008.topdown.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SBUILD-v1_20261105T143623Z/native/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_008.south.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SBUILD-v1_20261105T143623Z/native/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_008.east.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SBUILD-v1_20261105T143623Z/native/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_008.west.png",
+        "/data/wyh/scene_cvpr_20261020/design_decisions_920/runtime/P920-SBUILD-v1_20261105T143623Z/native/house/room_guilbault_storage_transfer_v2/rollout_furniture/step_008.north.png"
+      ],
+      "tool_calls": [
+        {
+          "name": "add_furniture_to_scene_tool",
+          "arguments": {
+            "asset_id": "catalog_construct_storage_c",
+            "x": -2.7,
+            "y": -0.05,
+            "yaw": 270
+          }
+        }
+      ]
+    }
+  ]
+}
