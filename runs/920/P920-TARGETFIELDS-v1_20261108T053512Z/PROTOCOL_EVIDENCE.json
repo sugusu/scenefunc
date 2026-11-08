@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-11-08T05:41:36.497498+00:00",
+  "sources": [
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/agent_rollout_decoupled.py",
+      "file_sha256": "4dfcaa1f3f91aa72762a8b89d7c3ebc411358b8ef65971ade444610d81dcbc91",
+      "start_line": 398,
+      "end_line": 406,
+      "excerpt": "        if not tool_calls:\n            print(f\"[{env.stage}] step {step_idx}: no <tool_call> — stage done\",\n                  file=sys.stderr)\n            rollout_log.append({\"step\": step_idx, \"think\": think,\n                                \"tool_calls\": [], \"tool_results\": []})\n            io_entry[\"stop_reason\"] = \"no_tool_call\"\n            io_log.append(io_entry)\n            break\n\n",
+      "excerpt_sha256": "8417c8f43ed2eac47a9faabd847edda88574792beec518366b65e418e59f759f"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/resources/full_runtime_20261104/Scene-Designer/src/sft_dataset.py",
+      "file_sha256": "9e4d18f67e746af16f830d7e8d0da714964a43bfa320ef091a0092b3e9bb2569",
+      "start_line": 267,
+      "end_line": 278,
+      "excerpt": "    assistant_msg: dict[str, Any] = {\n        \"role\": \"assistant\",\n        \"content\": \"\" if no_thinking else f\"<think>\\n{s.assistant_content}\\n</think>\",\n    }\n    if s.tool_calls:\n        assistant_msg[\"tool_calls\"] = [\n            {\"type\": \"function\",\n             \"function\": {\"name\": tc[\"name\"], \"arguments\": tc.get(\"arguments\") or {}}}\n            for tc in s.tool_calls\n        ]\n\n    full = [\n",
+      "excerpt_sha256": "363b58872f8e1fde1ccd79afdbb68f15db5736768b5f2ac031d845ac5b79e371"
+    },
+    {
+      "path": "/data/wyh/scene_cvpr_20261020/design_decisions_920/scenefunc/scripts/920/materialize_terminal_candidates.py",
+      "file_sha256": "8f1cd0aaaa7fb3adab64e385121f56a325430d2599de698e2dc9741f5ff441be",
+      "start_line": 69,
+      "end_line": 87,
+      "excerpt": "        target = dict(requested_mode=case['mode'],\n            measured_scope='Declared object identity, fixed geometry, assigned tabletop places and proxy access checks for the current activity.',\n            unmet_in_measured_scope=[], unknowns=context['unknowns'], whole_room_success='unknown')\n        content = terminal_text(target)\n        require(content not in json.dumps(request, ensure_ascii=False), 'Target leaked to input')\n        doc_ref = old['documents']['action_only']\n        require(sha(doc_ref['path']) == doc_ref['sha256'], 'Template changed')\n        doc = read(doc_ref['path'])\n        doc['task_context']['scene_description'] = json.dumps(context, ensure_ascii=False)\n        doc['turns'] = [dict(role='assistant', content=content, tool_calls=[], images=args['images'])]\n        doc.pop('evaluation_only', None)\n        doc['provenance'] = dict(family_id=old['family_id'],\n            kind='researcher_measured_scope_terminal_policy', original_designer_action=False,\n            source_decision_target=False, new_professional_decisions=0, training_authorized=False,\n            serialization='terminal-control-v1', official_ota_serialization_overridden=True)\n        folder = out/case['id']\n        for name, value in [('inputs.json', args), ('request.json', request), ('target.json', target), ('episode.json', doc)]:\n            write(folder/name, value)\n        require(build_executed_request(**read(folder/'inputs.json'))[0] == request, 'Request roundtrip differs')\n",
+      "excerpt_sha256": "ab7a42666cea054d092f419879368e92d5b35f41b813ea152dc39e092710a66c"
+    }
+  ],
+  "interpretation": "Upstream OTA uses normal assistant template and rollout stops without parsed tool calls; our historical terminal-control-v1 deliberately overrode serialization. Prospective strict malformed/truncated-output handling is an evaluation requirement, not a guarantee already supplied by upstream.",
+  "new_model_calls": 0,
+  "new_training_updates": 0
+}
