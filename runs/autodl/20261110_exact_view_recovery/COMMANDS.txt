@@ -1,0 +1,12 @@
+Working directory: /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+All commands below were actually run. For repeats use NEW output directories/files.
+
+python -B scripts/autodl/recover_archived_training_views.py --prior runs/autodl/20261110_multimodal_material/source_image_lookup/image_availability.json --output runs/autodl/20261110_exact_view_recovery/recovery_v1 --network-bytes 100663296
+python -B scripts/autodl/audit_training_rollout_inputs.py --availability runs/autodl/20261110_exact_view_recovery/recovery_v1/image_availability.json --output runs/autodl/20261110_exact_view_recovery/training_rollout_inputs_v2.json
+python -B scripts/autodl/check_archived_view_pixels.py --inputs runs/autodl/20261110_exact_view_recovery/training_rollout_inputs.json --availability runs/autodl/20261110_exact_view_recovery/recovery_v1/image_availability.json --output runs/autodl/20261110_exact_view_recovery/pixel_v1
+
+The pixel run read v1 rows only; the erroneous v1 aggregate field is unused. v2 retains the same rows and corrects labels/conclusion. For a new replay use v2 as --inputs.
+
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/check_recovered_vision_tensors.py --equivalence runs/autodl/20261110_exact_view_recovery/pixel_v1/pixel_equivalence.json --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --scene-observation /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py --output runs/autodl/20261110_exact_view_recovery/pixel_v1/vision_tensors.json
+
+No corpus mutation, model inference, gradient updates, paid API or native scene executions.
