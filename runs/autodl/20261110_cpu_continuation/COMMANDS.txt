@@ -1,0 +1,23 @@
+Existing AutoDL work base: /root/autodl-tmp/agent_method_preparation_20261027/work
+Use hsm_cpu/bin/python with OPENBLAS_NUM_THREADS=1, OMP_NUM_THREADS=1,
+PYTHONDONTWRITEBYTECODE=1 and the existing support_backend_probe_20261019/deps PYTHONPATH.
+
+CPU native replay (new output directory; no API):
+python scripts/autodl/cpu_continuation.py --work-base <WORK> --output <NEW_CPU_OUTPUT>
+If native terminals are ALREADY complete but the outer process stopped, validate
+both dispatcher receipts first, run the missing audit_scene.py only, then use
+--finish-existing. It refuses different sources/calls and never reruns native actions.
+
+Processor-only preflight (actually completed in this delivery):
+python scripts/autodl/bounded_trajectory.py --phase prepare --work-base <WORK> --cpu-replay <CPU_OUTPUT> --output <NEW_PREFLIGHT>
+
+One bounded real base trajectory (NOT executed in current 2GiB/no-GPU container):
+python scripts/autodl/bounded_trajectory.py --phase run --work-base <WORK> --cpu-replay <CPU_OUTPUT> --output <NEW_MODEL_RUN>
+This command never enables cloud resources. Existing local model runtime and
+weights are required. Conservative gate 24GiB host and 26GiB free VRAM. Max four
+attempts / one move per attempt, 200s/model subprocess, total 1200s; no auto retry.
+No CPU weight load or fallback. Final state is evaluated under both fixed briefs.
+
+This is an AutoDL-local continuation using pre-existing read-only native source
+and geometry. It is not a standalone fresh-machine complete generator. For the
+portable earlier package use paris/README.md. New GPU path is not yet executed.
