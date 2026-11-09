@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-10",
+  "scope": "Targeted nearest-neighbor and source audit, not an exhaustive field review",
+  "papers": [
+    {
+      "title": "ThinkBLOX: 3D Indoor Scene Generation with Progressive Reasoning",
+      "url": "https://arxiv.org/html/2607.13539v1",
+      "read": ["Abstract and introduction", "Section III methods", "Section IV data construction", "Section V experiments including Tables I-III", "Section VI limitations"],
+      "finding": "State-conditioned progressive reasoning followed by structured placement, rationale/action SFT and reasoning-action consistency rewards are already explicit. The candidate contribution cannot be reason-then-act alone.",
+      "not_done": ["Visual inspection of all figures", "Supplementary reading", "Author implementation execution", "Full reproduction"],
+      "code_search": "No official executable repository established by the bounded search; this is not a claim that none exists"
+    },
+    {
+      "title": "Edit-As-Act: Goal-Regressive Planning for Open-Vocabulary 3D Indoor Scene Editing",
+      "url": "https://arxiv.org/html/2603.17583v1",
+      "read": ["Sections 3-4 problem and method", "Section 5 principal experiments, ablations and failure discussion"],
+      "finding": "Goal regression, explicit action effects and geometric/semantic validation are direct prior art. The current two-step witness does not establish a new planning algorithm.",
+      "not_done": ["Full supplement reading", "Running the official planner", "Independent reproduction of reported scores"]
+    }
+  ],
+  "official_code": {
+    "repository": "https://github.com/SeongRaeNoh/Edit-As-Act",
+    "commit": "f7c817012839f7b6faede92e57726311f48dcca1",
+    "hash_index": "edit_as_act_source_index.json",
+    "coverage": [
+      {"path": "planners/regression_planner.py", "sections": ["Function inventory", "Lines 160-260", "Lines 339-421"], "finding": "Planner applies geometry and semantic checks. Parser exceptions and no-progress handling need scrutiny before treating this implementation as a certified verifier."},
+      {"path": "validators/geom_checker.py", "sections": ["Function inventory", "Lines 357-427"], "finding": "Numeric move feasibility is checked; some missing/symbolic cases are permissive. Unsupported is not independently established as valid."},
+      {"path": "runner/execute_plan.py", "sections": ["Lines 33-125"], "finding": "Geometry execution and symbolic effects have distinct paths, including fallback handling. Runtime correctness was not tested."}
+    ],
+    "license_note": "No license file established from the retrieved tree. Full source was not vendored in this batch.",
+    "boundary": "These are bounded source observations, not evidence that the paper's reported experiments were invalid."
+  },
+  "local_source": {
+    "pin": "75fc783f86d4fea78714639e110fbe77476ee106",
+    "fully_read_for_this_audit": ["scripts/920/preflight_sourced_trajectory.py", "scripts/920/conditional_room_metrics.py", "scripts/920/nesting_room_metrics.py", "scripts/920/measure_room_access.py"],
+    "targeted_read": ["scripts/920/inspect_native_mesh_contacts.py: world transform and object bounds"],
+    "finding": "Archived aggregate predicates and ordinary box/access computations are separable from model reasoning. Open-door structural geometry is not fully represented by a single public wall box; access predictions were not fabricated from that approximation.",
+    "execution": "No native engine, SDF raycast, access-grid rerun, model inference or training in this batch"
+  }
+}

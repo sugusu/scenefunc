@@ -1,0 +1,8 @@
+Run from the repository root. Output directories are immutable and must not exist before each audit command; choose new names for a rerun.
+
+python scripts/autodl/audit_prospective_guard.py --effects runs/autodl/20261110_executed_effects/actual_v2 --output runs/autodl/20261110_supervision_horizon/guard_v1
+python scripts/autodl/audit_prospective_guard.py --effects runs/autodl/20261110_executed_effects/actual_v2 --output runs/autodl/20261110_supervision_horizon/guard_v2
+python scripts/autodl/audit_supervision_horizon.py --output runs/autodl/20261110_supervision_horizon/segments_v2
+python scripts/autodl/verify_supervision_horizon.py --effects runs/autodl/20261110_executed_effects/actual_v2 --audit runs/autodl/20261110_supervision_horizon
+
+guard_v1 preceded per-instance/pair outcome accounting; guard_v2 is the current result from the checked-in script. segments_v1 failed with a GitInputs attribute typo before writing results; failure preserved. segments_v2 fixes that typo only. Commands do not run a model, train, or edit a native scene.

@@ -1,0 +1,220 @@
+[
+  {
+    "mode": "joined_four_place_hosting",
+    "action_ids": [
+      "waterloo_edit_01",
+      "waterloo_edit_02"
+    ],
+    "reason_supervision_positions": [
+      2
+    ],
+    "recorded_calls": [
+      [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_chair_b_0",
+            "x": 0.12,
+            "y": -0.45,
+            "yaw": 0
+          }
+        }
+      ],
+      [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_b_0",
+            "x": 0.12,
+            "y": 0.5,
+            "yaw": 0
+          }
+        }
+      ]
+    ],
+    "states": [
+      {
+        "state": "initial",
+        "source_state_sha256": "8dc8e3d6626d74b50e67774fc65fdfdf31f8a81cf5500947cdd0aa207df8abad",
+        "current_mode": "joined_four_place_hosting",
+        "requested_mode_available": false,
+        "required_seat_alignment": {
+          "recon_chair_a_0": true,
+          "recon_chair_b_0": true,
+          "recon_guest_a_0": true,
+          "recon_guest_b_0": false
+        },
+        "required_seat_approaches": true,
+        "fixed_access_counts": [
+          7,
+          7,
+          7
+        ],
+        "endpoint_geometry_clear": true,
+        "scoped_goal_available": false
+      },
+      {
+        "state": "step_1",
+        "source_state_sha256": "eeaae9d44257a12eba049ca09ea2e758ce2f29d190e4eda8ded1b5fa79e5af7d",
+        "current_mode": "joined_four_place_hosting",
+        "requested_mode_available": false,
+        "required_seat_alignment": {
+          "recon_chair_a_0": true,
+          "recon_chair_b_0": false,
+          "recon_guest_a_0": true,
+          "recon_guest_b_0": false
+        },
+        "required_seat_approaches": true,
+        "fixed_access_counts": [
+          7,
+          7,
+          7
+        ],
+        "endpoint_geometry_clear": true,
+        "scoped_goal_available": false
+      },
+      {
+        "state": "step_2",
+        "source_state_sha256": "9ba5bb2c8822568c19a99a8e26a5d93fec530db12788397fd0603f060c3d3f0f",
+        "current_mode": "joined_four_place_hosting",
+        "requested_mode_available": true,
+        "required_seat_alignment": {
+          "recon_chair_a_0": true,
+          "recon_chair_b_0": true,
+          "recon_guest_a_0": true,
+          "recon_guest_b_0": true
+        },
+        "required_seat_approaches": true,
+        "fixed_access_counts": [
+          7,
+          7,
+          7
+        ],
+        "endpoint_geometry_clear": true,
+        "scoped_goal_available": true
+      }
+    ],
+    "first_action_loses_required_seat_alignment": [
+      "recon_chair_b_0"
+    ],
+    "observed_prefix_to_complete_goal": 2,
+    "hypothetical_per_step_no_regression_filter_accepts_first": false,
+    "two_action_recorded_endpoint_meets_scoped_goal": true,
+    "hard_geometry_clear_at_every_recorded_endpoint": true,
+    "fixed_access_counts_preserved": true,
+    "original_instances_preserved_count": 27,
+    "oracle_uses_observed_future": true,
+    "training_admission": false,
+    "limitations": [
+      "Does not prove two actions are necessary or shortest over all legal plans.",
+      "Does not license temporary collisions, deletion, or access loss.",
+      "Endpoint geometry does not certify continuous motion or human use."
+    ]
+  },
+  {
+    "mode": "separate_work",
+    "action_ids": [
+      "waterloo_edit_03",
+      "waterloo_edit_04"
+    ],
+    "reason_supervision_positions": [
+      1
+    ],
+    "recorded_calls": [
+      [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_table_b_0",
+            "x": 1.1,
+            "y": 0.5,
+            "yaw": 0
+          }
+        }
+      ],
+      [
+        {
+          "name": "move_furniture_tool",
+          "arguments": {
+            "object_id": "recon_chair_b_0",
+            "x": 1.1,
+            "y": -0.45,
+            "yaw": 0
+          }
+        }
+      ]
+    ],
+    "states": [
+      {
+        "state": "step_2",
+        "source_state_sha256": "9ba5bb2c8822568c19a99a8e26a5d93fec530db12788397fd0603f060c3d3f0f",
+        "current_mode": "separate_work",
+        "requested_mode_available": false,
+        "required_seat_alignment": {
+          "recon_chair_a_0": true,
+          "recon_chair_b_0": true
+        },
+        "required_seat_approaches": true,
+        "fixed_access_counts": [
+          7,
+          7,
+          7
+        ],
+        "endpoint_geometry_clear": true,
+        "scoped_goal_available": false
+      },
+      {
+        "state": "step_3",
+        "source_state_sha256": "cfdfd77bbca4f3d2cfe0624f5a0b308a481f0b4fa3ae90aa5cfb189a6842822a",
+        "current_mode": "separate_work",
+        "requested_mode_available": false,
+        "required_seat_alignment": {
+          "recon_chair_a_0": true,
+          "recon_chair_b_0": false
+        },
+        "required_seat_approaches": true,
+        "fixed_access_counts": [
+          7,
+          7,
+          7
+        ],
+        "endpoint_geometry_clear": true,
+        "scoped_goal_available": false
+      },
+      {
+        "state": "after",
+        "source_state_sha256": "4e62011841df7d61c5924d59b05b6274333e3f82d75b8c416c2c6f02be43b0ac",
+        "current_mode": "separate_work",
+        "requested_mode_available": true,
+        "required_seat_alignment": {
+          "recon_chair_a_0": true,
+          "recon_chair_b_0": true
+        },
+        "required_seat_approaches": true,
+        "fixed_access_counts": [
+          7,
+          7,
+          7
+        ],
+        "endpoint_geometry_clear": true,
+        "scoped_goal_available": true
+      }
+    ],
+    "first_action_loses_required_seat_alignment": [
+      "recon_chair_b_0"
+    ],
+    "observed_prefix_to_complete_goal": 2,
+    "hypothetical_per_step_no_regression_filter_accepts_first": false,
+    "two_action_recorded_endpoint_meets_scoped_goal": true,
+    "hard_geometry_clear_at_every_recorded_endpoint": true,
+    "fixed_access_counts_preserved": true,
+    "original_instances_preserved_count": 27,
+    "oracle_uses_observed_future": true,
+    "training_admission": false,
+    "limitations": [
+      "Does not prove two actions are necessary or shortest over all legal plans.",
+      "Does not license temporary collisions, deletion, or access loss.",
+      "Endpoint geometry does not certify continuous motion or human use."
+    ]
+  }
+]
