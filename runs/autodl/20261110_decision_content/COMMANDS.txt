@@ -1,0 +1,21 @@
+Run from the repository root. These commands document the completed CPU diagnostic. They are not automatic execution or training approval.
+Runtime: /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python
+Environment: PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES= HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
+
+1. scripts/autodl/audit_decision_content.py --source runs/autodl/20261110_material_routing/actual/prospective_components.jsonl --coverage runs/autodl/20261110_conditional_evidence/actual/condition_coverage.json --tokenizer /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --output <NEW_OUTPUT_DIRECTORY>
+Authoritative existing output: runs/autodl/20261110_decision_content/actual_v4
+Earlier actual, actual_v2 and actual_v3 attempts retained. Do not overwrite them.
+
+2. scripts/autodl/verify_decision_content.py --audit runs/autodl/20261110_decision_content/actual_v4/audit.json --variants runs/autodl/20261110_decision_content/actual_v4/oracle_prefixes.jsonl --availability runs/autodl/20261110_multimodal_material/source_image_lookup/image_availability.json --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --scene-observation /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py --output <NEW_RECEIPT_PATH>
+Authoritative existing receipt: runs/autodl/20261110_decision_content/verification_v2.json
+This loads a processor, not language-model weights. Missing original image paths remain explicit.
+
+3. scripts/autodl/check_decision_objective_theory.py --output <NEW_RESULT_PATH>
+Authoritative existing result: runs/autodl/20261110_decision_content/theory_counterexample.json
+This is a finite probability check, not an experiment on a language model.
+
+4. Review Git: git ls-remote origin 'refs/heads/*'; git show 75fc783f86d4fea78714639e110fbe77476ee106:<PATH>
+Recompute EVALFIX from LEARNING_RESULTS.csv, MATCHEDROLL from SUMMARY.json rows, and inspect STOPDATA TRAINING_RESULT.json and LEARN START_RECEIPT.json/TRAIN_PLAN.json.
+Do not infer live process status from committed status snapshots.
+
+No paid API, policy generation, scene execution, CUDA initialization, training update, weight download, or permission change was performed by these diagnostics.

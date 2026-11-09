@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "before": {
+    "decision_probabilities": [
+      0.1,
+      0.9
+    ],
+    "valid_action_given_decision": [
+      0.5,
+      0.9
+    ],
+    "teacher_D_nll": 2.3025850929940455,
+    "teacher_A_nll": 0.6931471805599453,
+    "teacher_joint_nll": 2.995732273553991,
+    "marginal_valid_action_probability": 0.8600000000000001,
+    "teacher_joint_probability": 0.05,
+    "teacher_path_lower_bound_holds": true
+  },
+  "after": {
+    "decision_probabilities": [
+      0.2,
+      0.8
+    ],
+    "valid_action_given_decision": [
+      0.9,
+      0.1
+    ],
+    "teacher_D_nll": 1.6094379124341003,
+    "teacher_A_nll": 0.10536051565782628,
+    "teacher_joint_nll": 1.7147984280919266,
+    "marginal_valid_action_probability": 0.26,
+    "teacher_joint_probability": 0.18000000000000002,
+    "teacher_path_lower_bound_holds": true
+  },
+  "positive_weight_examples": [
+    {
+      "D": 1,
+      "A": 1,
+      "before": 2.995732273553991,
+      "after": 1.7147984280919266
+    },
+    {
+      "D": 0.1,
+      "A": 1,
+      "before": 0.9234056898593499,
+      "after": 0.2663043069012363
+    },
+    {
+      "D": 1,
+      "A": 0.1,
+      "before": 2.37189981105004,
+      "after": 1.619973963999883
+    },
+    {
+      "D": 3,
+      "A": 7,
+      "before": 11.759785542901753,
+      "after": 5.5658373469070845
+    }
+  ],
+  "interpretation": "A better teacher path is a better lower bound but need not improve the full deployed mixture. This logical counterexample does not predict degradation from the actual training data.",
+  "scope": "Ordinary probability identities and a constructed two-decision example, not a novel theorem or empirical 3D result.",
+  "actual_objective_boundary": "The repository uses token/family/component weighted CE. Do not identify its scalar loss with unweighted sequence joint NLL or a marginal likelihood bound without undoing those weights.",
+  "inference_boundary": "Stochastic mixture differs from greedy two-stage decoding. Neither teacher-path loss nor the mixture alone certifies greedy complete-scene success.",
+  "model_calls": 0,
+  "training_updates": 0,
+  "scene_edits": 0
+}

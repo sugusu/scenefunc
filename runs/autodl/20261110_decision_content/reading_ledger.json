@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Scene-Designer",
+    "url": "https://arxiv.org/html/2610.23121v1",
+    "scope": "This review: abstract and targeted method/OTA scope; earlier project audits are separately recorded. Not a full-paper reread or full reproduction.",
+    "implication": "Observation–Thought–Action training and critic-guided generation are already present. Adding reasons alone is not a distinctive contribution."
+  },
+  {
+    "title": "Distilling Step-by-Step",
+    "url": "https://aclanthology.org/2023.findings-acl.507.pdf",
+    "scope": "Targeted method §§3.1–3.2, PDF pp.2–4. Official model_utils.py fully read; train_utils.py lines 50–111 and run.py lines 132–153 inspected. No third-party training executed.",
+    "code_pin": "ef944263c9ddfd40a9888557f3e7d17513fd1a7e",
+    "implication": "Separate rationale and prediction tasks are an established strong control; the original T5 implementation is not a Qwen 3D reproduction."
+  },
+  {
+    "title": "Training Chain-of-Thought via Latent-Variable Inference / TRICE",
+    "url": "https://arxiv.org/html/2312.02179v1",
+    "scope": "Abstract, introduction and §2 marginal objective/algorithm. Not full derivation, experiments, appendices or implementation reproduction.",
+    "implication": "Marginalizing rationales and learning latent rationale distributions have direct prior art. The finite counterexample here is ordinary probability, not a new theorem."
+  },
+  {
+    "title": "Answer-Conditioned Chains of Thought Degrade Verifiable-Reasoning Distillation",
+    "url": "https://arxiv.org/html/2607.14552v1",
+    "scope": "Earlier in this diagnostic: abstract/introduction, targeted §§3,6 and Appendix A limitations; prompts.py, corpus.py and signature.py fully read; train_sft.py targeted lines 97–175. Not all experiments/appendices.",
+    "code_pin": "43ef4fda92d4c523a6d3f9e83829e930bb40ce3c",
+    "implication": "Answer visibility and instructions to rationalize must be distinguished. Its task-specific findings do not prove that a 3D action plan harms learning. Do not directly transfer its literal-string early-answer metric to tool JSON. Do not claim a clean code length-control result without resolving the scope wording."
+  }
+]
