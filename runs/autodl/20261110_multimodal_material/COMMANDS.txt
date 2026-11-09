@@ -1,0 +1,24 @@
+Working directory:
+/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+Actual CPU run (completed; use NEW output/cache paths for a repeat):
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/encode_routed_material.py --repo . --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --scene-observation /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py --availability runs/autodl/20261110_multimodal_material/source_image_lookup/image_availability.json --output runs/autodl/20261110_multimodal_material/encoded --tensor-cache /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/routed_multimodal_tensors_20261110
+
+Report and independent tensor/target/hash verification:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_multimodal_material.py
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/verify_multimodal_material.py
+
+Exact-source image discovery (implemented; this run first used a bounded broad lookup, then source-run lookup):
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/resolve_training_views.py --repo . --cache /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/multimodal_views_20261110 --output NEW_LOOKUP_OUTPUT --source-images-only
+The initial broad lookup in images/image_availability.json is an exploratory retrieval receipt.
+It used source-run ordering, before filename-priority was introduced; it is not a fixed experiment or generated-scene result.
+The second lookup reused the exact hashes/cached bytes, and completed the declared original-source-run search.
+No claim that all other Git-run aliases or the source-host runtime were searched.
+
+Source-host export (NOT run on AutoDL; these source paths are on the 920 host):
+python scripts/autodl/export_missing_training_views.py --manifest runs/autodl/20261110_multimodal_material/REQUIRED_REMOTE_EXPORT.json --output /tmp/scenefunc_missing_views.tar --check-only
+After checking, omit --check-only to create only the SHA-locked image archive.
+This command does not transfer files, load weights, render substitutions, train, or make API calls.
+
+No training command is authorized or started by this deliverable.
+64 fixed components remain the denominator. The 16 encoded components are not a replacement training set.
