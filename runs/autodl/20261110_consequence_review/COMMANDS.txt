@@ -1,0 +1,39 @@
+2026-11-10 consequence and Git evidence review
+
+Run from the repository root. Python standard library only; no model, GPU,
+geometry engine, network request or paid API is used by these commands.
+
+Reproduce and verify the archived candidate labels and ordinary controls:
+
+python scripts/autodl/verify_consequence_review.py \
+  --bundle runs/autodl/20261110_consequence_review \
+  --scratch /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/verification_runs
+
+For another checkout, change --scratch to a writable evidence directory.
+The verifier keeps derivation output and a verification.json there. It does
+not overwrite the published evidence. It verifies source hashes, rebuilds
+the small record bundle, checks measured/unknown masks and evaluates the
+same scoped admission contract for all 49 candidates.
+
+Direct derivation, with a fresh output directory:
+
+python scripts/autodl/build_consequence_evidence.py \
+  --source-bundle runs/autodl/20261110_consequence_review/source_bundle \
+  --output /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/new_consequence_derivation
+
+Expected scope: one old Paris development parent, 48 geometric previews plus
+one no-op, 98 condition records, 31 observed targets and 67 unknown targets.
+Nine candidates pass the limited geometric/planar contract; zero complete
+rooms are certified. These are neither 98 independent training examples nor
+49 new scene executions. The original source files remain unchanged.
+
+Reading: algorithm_and_evidence.html and reading_ledger.json.
+Current Git assessment: git_progress_review.html and git_progress_review.json.
+Yaw-unit correction: yaw_unit_correction.json. The corrected processor-only
+receipt has 3261 input tokens, 768.39 MiB peak RSS and 24.70 s elapsed. It did
+not load model weights or generate model output. Earlier receipts are retained.
+
+No training, GPU run, new model download or additional experiment batch is
+authorized or launched by this package. A learned consequence predictor has
+not been implemented/trained; consequence_contract.py supplies ordinary shared
+scoring and conditional mathematics for a possible controlled comparison.

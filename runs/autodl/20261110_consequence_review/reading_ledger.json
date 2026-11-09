@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Scene-Designer",
+    "url": "https://arxiv.org/html/2610.23121v1",
+    "read": "§3.1–3.2、§4测试时Critic、E.2分支案例；本轮定向阅读",
+    "finding": "执行多个候选后进行分支排序与父子改善奖励已经存在；记录后果再打分不能单独作为新增机制。",
+    "not_read": "未本轮通读全部提示与补充图表，未复现官方训练"
+  },
+  {
+    "title": "Function2Scene",
+    "url": "https://arxiv.org/html/2605.30819v1",
+    "read": "§4.2约束评估、局部修订及终止规则",
+    "finding": "已有按用途检查、按优先级修复及保护更高优先级约束；一般功能保留不是新能力。",
+    "not_read": "未本轮通读其余实验或运行官方系统"
+  },
+  {
+    "title": "Successor Features and Generalised Policy Improvement",
+    "url": "https://arxiv.org/html/1901.10964",
+    "read": "§2.1–2.2、§3概述、附录A定理1与误差假设",
+    "finding": "分解后果/奖励并随任务重组具有已有理论背景；不能照搬其长期策略保证到未校准三维预测器。",
+    "not_read": "未逐项审核所有证明及实验"
+  },
+  {
+    "title": "Improving Context-Aware Preference Modeling",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/82acbbc04435f6c1e7f656b1cbe4ad82-Abstract-Conference.html",
+    "data_url": "https://huggingface.co/datasets/microsoft/rpr",
+    "read": "正式论文摘要检索结果及官方RPR说明；HTML/PDF获取失败已记录",
+    "finding": "同候选、上下文变化的反转标签不是新样本结构。",
+    "not_read": "本轮未取得PDF，不能声称全文核对"
+  },
+  {
+    "title": "Haisor",
+    "url": "https://orca.cardiff.ac.uk/id/eprint/165315/",
+    "read": "作者机构公开摘要与发表记录；PDF下载403",
+    "finding": "人体功能与动作序列优化已有直接近邻。",
+    "not_read": "本轮未读完整方法和代码，不基于摘要断言更细机制重复"
+  },
+  {
+    "title": "Pinned upstream critic selection",
+    "url": "https://github.com/ZJU-OmniAI/Scene-Designer/blob/a0565e50ed7d32c0e09132b9311c0b9b91165405/src/train_grpo.py",
+    "read": "本地固定文件Critic分支与命令行默认值，约774–810、1000–1015行",
+    "finding": "critic-frozen-v7默认True、优先复用ref_model；不能将本地公开Scene-Builder探针称为论文完整Critic结果。",
+    "sha256": "2c4eba6af647abfe7bbb22ecb2d124b14dbc28c7d544caffdb43e3d460b6f479"
+  },
+  {
+    "title": "Conditional material dataset",
+    "url": "https://github.com/sugusu/scenefunc/blob/75fc783f86d4fea78714639e110fbe77476ee106/scripts/920/conditional_material_dataset.py",
+    "read": "完整component_batch与EqualMaterialExamples",
+    "finding": "目标mask与家庭权重清楚区分理由/动作；不能由数据构造正确推出已训练有效。"
+  },
+  {
+    "title": "Existing ordinary geometry search",
+    "local": "/root/autodl-tmp/agent_method_preparation_20261027/work/joint_use_feedback_20261104/ordinary_control.py",
+    "read": "完整run执行路径，30–135行",
+    "finding": "先边界，再网格，再有限台面见证；28条用途标签由筛选产生缺失，非随机缺失。"
+  }
+]

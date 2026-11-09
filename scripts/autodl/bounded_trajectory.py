@@ -27,7 +27,7 @@ translation/rotation through the following native tool is available in this
 bounded diagnostic. Do not claim unavailable operations or unknown uses succeed.
 Return at most ONE <tool_call>{"name":"move_furniture_tool","arguments":
 {"object_id":"existing ID","x":0.0,"y":0.0,"yaw":0.0}}</tool_call> per turn.
-Coordinates are world XY metres, Z is up, yaw is radians. Tool x/y follow the
+Coordinates are world XY metres, Z is up, yaw is in DEGREES. Tool x/y follow the
 native object transform, not necessarily world bounding-box centre. You may
 include <think>reasoning</think>. If no available edit is appropriate, explain
 remaining limitations without a tool call. No tool call ends the trajectory;
