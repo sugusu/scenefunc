@@ -1,0 +1,64 @@
+[
+  {
+    "title": "3D-Layout-R1",
+    "version": "2603.22279v1",
+    "url": "https://arxiv.org/html/2603.22279v1",
+    "pdf": "https://arxiv.org/pdf/2603.22279v1",
+    "read": [
+      "Introduction",
+      "Methods 3.1–3.3",
+      "Experiments 4.1–4.5 and tables",
+      "Conclusion",
+      "Supplement 1–3 and Figure 7 extracted prompt text"
+    ],
+    "finding": "Structured scene-graph edits, CoT-SFT and GRPO are direct prior capabilities; room-editing uses target-layout and reference-distance supervision. This does not establish the proposed functional prediction method as novel.",
+    "open_question": "Main text 3.2, appendix 2 and Figure 7 differ in how target graph visibility is described. No implementation acquired to resolve this; no allegation of test leakage.",
+    "not_read": [
+      "References not individually audited",
+      "No successful figure visual inspection",
+      "No training/evaluation reproduction"
+    ],
+    "access_failure": "PDF p12 screenshot timed out; PDF text accessible."
+  },
+  {
+    "title": "Scene-Designer",
+    "url": "https://github.com/ZJU-OmniAI/Scene-Designer",
+    "pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "read": "Official README/USAGE and source functions recorded in source_index.json. Method/experiment reading was recorded in the prior review.",
+    "finding": "Annotation rationale is conditioned on target action; runtime branch Critic evaluates executed branches; training rollout randomly continues a branch and global advantage is broadcast.",
+    "limits": "Not all source files or prompts read. No execution of annotations, inference or GRPO; these are not the latest 920 SFT objective."
+  },
+  {
+    "title": "Haisor",
+    "url": "https://orca.cardiff.ac.uk/id/eprint/165315/",
+    "pdf": "https://orca.cardiff.ac.uk/id/eprint/165315/1/HAISOR_TOG.pdf",
+    "read": "After earlier failures, accessed the indexed primary PDF text; read overview 3, representations 4, interaction/rewards 5, Q-network/training/MCTS 6, data/baselines/metrics/experiments/personalization 7, and conclusions/limitations 8. Tables 1–3 read as extracted text.",
+    "finding": "A two-level graph Q-network already predicts action value before execution, guides MCTS expansion/simulation, and combines human manipulation and free-space rewards. Hard wall filtering is explicit. Pre-execution learned scoring plus verification alone is not novel.",
+    "not_read": [
+      "Separate supplementary material",
+      "Full implementation",
+      "Visual inspection of figures and table typography",
+      "Reproduction of model/results"
+    ],
+    "access_failure": "Earlier PDF fetch restrictions/403 remained historical failures; later indexed primary PDF text became accessible. No claim that all source artifacts were downloaded."
+  },
+  {
+    "title": "Function2Scene",
+    "url": "https://function2scene.github.io/",
+    "paper": "https://arxiv.org/html/2605.30819v1",
+    "read": "Official project capability description plus previously recorded targeted method section 4.2; existing source-recovery record reviewed.",
+    "finding": "Priority-based functional checking and repair already exist. Recovered public generated layouts are not independently approved human preference labels.",
+    "not_read": [
+      "No new full-paper read",
+      "No current official execution",
+      "No complete source-code audit"
+    ]
+  },
+  {
+    "title": "sugusu/scenefunc published 920 supervision",
+    "url": "https://github.com/sugusu/scenefunc/tree/75fc783f86d4fea78714639e110fbe77476ee106",
+    "read": "Pinned source, equal-material manifest, training plan and archived progress review.",
+    "finding": "Current planned arms action_only and paired do not isolate material-matched pairing; separate is prepared. Family/component objective derived and counts recomputed.",
+    "limits": "Remote tensors not loaded; no live 920 access; latest published START_RECEIPT is not a final result."
+  }
+]

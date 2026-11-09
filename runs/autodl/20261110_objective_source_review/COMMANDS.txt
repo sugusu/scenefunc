@@ -1,0 +1,19 @@
+本轮全部是已有数据重算与数学检查。以下命令不加载模型、不训练、不调用 API、不执行场景。
+Python 标准库即可；不要为这份审计开启 GPU。
+
+cd /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+# calculation/ 是已保存的首次实际执行结果；复算选择新的目录，不覆盖旧产物。
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/audit_learning_targets.py \
+  --material runs/autodl/20261110_objective_source_review/material_manifest.json \
+  --plan runs/autodl/20261110_objective_source_review/train_plan.json \
+  --pool runs/autodl/20261110_consequence_review/candidate_pool.json \
+  --output runs/autodl/20261110_objective_source_review/recomputed_new
+
+# 使用同一实现重新计算，并核对交付文件/依赖哈希；不等于独立物理验证。
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/verify_objective_review.py \
+  --package runs/autodl/20261110_objective_source_review \
+  --receipt runs/autodl/20261110_objective_source_review/recheck_new.json
+
+若上面的新目录/收据已存在，改用另一个新名称。旧结果保持不变。
+源码来源以 source_index.json 的仓库、固定提交和哈希为准；没有复制发布第三方完整源码。
