@@ -1,0 +1,8 @@
+Run from repository root. No model weights or API needed. Existing output directories are immutable; choose a fresh name for a rerun.
+
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/check_bounded_reason_scoring.py --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --out runs/autodl/20261110_bounded_reason_scoring/actual_v2
+
+python scripts/autodl/report_bounded_reason_scoring.py --root runs/autodl/20261110_bounded_reason_scoring
+
+actual_v1: first completed boundary/core-utility/source audit.
+actual_v2: same checks plus finite-penalty counterexample and explicit all-invalid marginal sampling control. No v1 results overwritten.
