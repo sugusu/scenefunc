@@ -1,0 +1,30 @@
+{
+  "commit": "54f9356974cc138cd39ef79ec93eb9a421d5976f",
+  "source_files_verified": 8,
+  "sft_penalty_default": 0,
+  "active_example_overrides_sft_penalty": false,
+  "loss_expression": "rloo_loss + args.sft_penalty * sft_loss",
+  "loss_expression_line": 333,
+  "scalar_loss_gradient": [
+    {
+      "sft_penalty": 0,
+      "gradient": [
+        -0.851114966376682,
+        0.0
+      ]
+    },
+    {
+      "sft_penalty": 1.0,
+      "gradient": [
+        -0.851114966376682,
+        -0.598687660112452
+      ]
+    }
+  ],
+  "qualified_conclusion": "The published default/example weights the explicit answer-likelihood gradient by zero. Set the coefficient explicitly to reproduce the two-term paper objective. Actual published experiment commands and checkpoints were not verified.",
+  "shared_parameter_limit": "Zero explicit action term does not mean action probabilities cannot change via shared weights.",
+  "paper_replication": false,
+  "upstream_trainer_executed": false,
+  "model_calls": 0,
+  "optimizer_updates": 0
+}

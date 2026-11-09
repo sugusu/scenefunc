@@ -1,0 +1,55 @@
+{
+  "scope": "Targeted missing-rationale objectives and public implementation review; no field-wide novelty clearance or upstream training reproduction.",
+  "entries": [
+    {
+      "title": "Reweighted Wake-Sleep",
+      "url": "https://arxiv.org/html/1406.2751v4",
+      "read": "Introduction; sections 2.1–2.4, equations 1–5 and Algorithm 1; beginning of experiments. No complete experimental/appendix review.",
+      "finding": "Likelihood importance estimates and self-normalized gradient estimates have different bias properties. The latter is generally biased at finite K; proposals require support and known probabilities. This is an ordinary baseline for unannotated decisions."
+    },
+    {
+      "title": "Language Models are Hidden Reasoners: Unlocking Latent Reasoning Capabilities via Self-Rewarding",
+      "url": "https://arxiv.org/html/2411.04282v2",
+      "read": "Sections 3–4.3, equations 2–4 and Algorithm 1; section 5.1 configuration and section 6 limitations. No complete tables, appendices or image review.",
+      "finding": "LaTRO uses expected answer log likelihood and a reference KL with a reason score-function term plus an explicit answer-likelihood derivative. This differs from log marginal answer likelihood. Its published core already covers learning without annotated reasons.",
+      "code": "source/manifest.json pins SalesforceAIResearch/LaTRO@54f9356974cc138cd39ef79ec93eb9a421d5976f",
+      "code_read": {
+        "README.md": "complete",
+        "LaTRO/trainer/latro_trainer.py": "complete 1–393, especially sampling 100–107, rewards and RLOO 142–283, loss 287–339",
+        "LaTRO/trainer/trainer_config.py": "complete",
+        "LaTRO/utils/trainer_utils.py": "forward/generate, truncation return, padding rearrangement and complete get_logprob_reward; not every helper",
+        "LaTRO/trainer/base_trainer.py": "configuration references and constructor through model/reference setup; not all evaluation code",
+        "scripts/training.py": "complete",
+        "scripts/training.sh": "complete including active command and commented alternatives",
+        "LICENSE.txt": "Apache-2.0 identity and redistribution terms"
+      },
+      "not_done": "No upstream import/training, no original checkpoint or experiment-command verification. Only the scalar loss AST is evaluated on two synthetic numbers."
+    },
+    {
+      "title": "Training Chain-of-Thought via Latent-Variable Inference",
+      "url": "https://arxiv.org/html/2312.02179v1",
+      "read": "Targeted re-read of section 2, Algorithm 1 and section 2.1; earlier complete notebook review is linked in observation_alignment, not repeated here.",
+      "finding": "TRICE's parameter-independent answer checker differs from a learned action likelihood; replacing it requires including both parameter derivatives. A reference action is not the set of all valid 3D actions."
+    },
+    {
+      "title": "Importance Weighted Autoencoders",
+      "url": "https://arxiv.org/html/1509.00519v4",
+      "read": "Abstract, background and section 3 lower-bound statement/Theorem 1; not complete training derivation or experiments.",
+      "finding": "Expected log importance estimates define a lower-bound objective; they should not be confused with an unbiased marginal-likelihood gradient. No IWAE reproduction claimed."
+    },
+    {
+      "title": "STaR: Bootstrapping Reasoning With Reasoning",
+      "url": "https://arxiv.org/html/2203.14465v2",
+      "read": "Abstract/introduction, opening method discussion and stated rationalization procedure; no complete paper or repository read.",
+      "finding": "Generating target-conditioned explanations is established training-data construction. Such text is a generated candidate, not an independently verified professional design rationale."
+    }
+  ],
+  "source_access": {
+    "coordination_thread_title": "继续推进研究分析",
+    "thread_id": "01a0e308-4273-74d3-9022-73b198ee0ab9",
+    "observed_user_context": "920 machine temporarily unavailable; continue on AutoDL",
+    "meaning": "Historical user-provided context explains why no final remote receipt is available here. Not a live process probe, and not proof of training termination.",
+    "messages_sent": 0,
+    "remote_jobs_started": 0
+  }
+}

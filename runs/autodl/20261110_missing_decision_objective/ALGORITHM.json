@@ -1,0 +1,44 @@
+{
+  "status": "Executable CPU loss controls and corpus routing; not an admitted training plan",
+  "novel_algorithm": false,
+  "input": "X is current scene views/state, user requirements, available knowledge and native tool schemas. A* is an existing reference action, not a unique optimal action. D is a public proposed decision record.",
+  "observed_reason_units": {
+    "count": 10,
+    "loss": "-cD log p_theta(D*|X) - cA log p_theta(A*|X,D*)",
+    "coefficient_rule": "Retain original per-token coefficients. Each current component is constant-weight, so c times sequence log probability reproduces its original sum."
+  },
+  "missing_reason_units": {
+    "count": 14,
+    "marginal_control": "-cA log sum_D p_theta(D|X) p_theta(A*|X,D)",
+    "RWS_estimator": "Sample IID D_k from a known frozen proposal mu with full support. w_k proportional to p_theta(D_k|X)p_theta(A*|X,D_k)/mu(D_k). Use detached normalized w_k times both log-probability scores. Finite K is biased; K=1 from the current prior has zero expected reason-only score signal.",
+    "expected_log_control": "-cA E_{D~p_theta}[log p_theta(A*|X,D) - beta log(p_theta(D|X)/p0(D|X))]",
+    "LaTRO_estimator": "For K>=2 IID on-policy reasons, use detached leave-one-out advantages from action log likelihood minus reference KL, times grad log p_theta(D|X), plus grad log p_theta(A*|X,D). K samples average within the original unit; never upweight its original action target K times.",
+    "not_equivalent": "Expected log likelihood and log marginal likelihood can rank policies differently. A finite-sample unbiased gradient of the former is not an unbiased gradient of the latter."
+  },
+  "execution_sequence": [
+    "Resolve all frozen inputs and views; preserve 24 units and both annotated/unannotated membership. Missing views currently prevent this on AutoDL.",
+    "For observed D units, use current phase-specific encoder and ordinary fixed-weight supervision.",
+    "For missing D units, generate K reasons from the decision phase at a recorded parameter version; retain original action targets only for training likelihood scoring, never in the generation prompt.",
+    "Score the full reason probability under the actual sampler and the action target under the action phase prefixed by that reason. Existing phase prompts differ, so their probabilities must be scored under their own contexts.",
+    "Apply exactly one declared objective. Accumulate original unit/family coefficients; retain sampling, reference-model and scoring costs. Do not silently replace rejected samples or use greedy/top-k proposals as IID prior samples.",
+    "At deployment generate D from current observations, then execute the model's action via the common native host. Refresh actual observations after execution. Never substitute the teacher action or teacher reason.",
+    "Compare whole-room requirements, completeness, preserved functions, geometry, unknowns and total cost against same-knowledge base, direct action and auxiliary-reason baselines. Evaluate both required edits and already-satisfied states on independent projects."
+  ],
+  "compute_structure_per_complete_corpus_pass": {
+    "legacy_paired_teacher_components": 34,
+    "latent_K2": {"reason_generations": 28, "action_scores": 38, "reason_scores": 38, "reference_reason_scores_if_beta_positive": 28},
+    "latent_K4": {"reason_generations": 56, "action_scores": 66, "reason_scores": 66, "reference_reason_scores_if_beta_positive": 56},
+    "scope": "Logical sequence counts, not GPU time or peak memory. Some passes may share computation; no resource estimate measured for an actual model."
+  },
+  "unresolved_before_runtime_integration": [
+    "15 full original/equivalent view sets still missing locally; no target subset training authorized",
+    "Choose a bounded reason-generation distribution including malformed/truncated outputs. Positive-finite numerical kernels reject zero likelihood rather than silently dropping failures. A finite penalty would change the expected-log objective and needs explicit treatment.",
+    "Native multimodal sampling/scoring and full-corpus Trainer accumulation for this new loss have not run",
+    "Existing 24 references are development demonstrations, not all independently certified professional design actions",
+    "No existing independent project split or whole-room benefit established"
+  ],
+  "attribution": "Adding latent training on the 14 missing-reason states changes the training objective as well as action conditioning. Compare the previous partial-conditioning arm separately; do not call this a pure prefix-only ablation.",
+  "selection": "Retain as ordinary controls for the missing-label problem. Do not promote them to the 3D contribution or silently replace the current study.",
+  "training_authorized": false,
+  "gpu_requested": false
+}
