@@ -1,0 +1,211 @@
+{
+  "status": "host_failure",
+  "arm": "paired_phase_v3",
+  "rounds": [
+    {
+      "turn": 0,
+      "before_sha256": "29c1f03a0bacf180b054a498de1ec3b73dd7bc60807c0c085423bd7d4515decd",
+      "context_sha256": "a0f6ab422afc3490075795f388fb69fa7d37ac85880a79f3e58ce221d872f874",
+      "policy": {
+        "arm": "paired_phase_v3",
+        "state_sha256": "29c1f03a0bacf180b054a498de1ec3b73dd7bc60807c0c085423bd7d4515decd",
+        "stages": [
+          {
+            "stage": "decision",
+            "decision_visible_to_action": false,
+            "output_budget": 128,
+            "status": "returned",
+            "elapsed_seconds": 0.01288406178355217,
+            "output_ids": [
+              151667,
+              50925,
+              46637,
+              13940,
+              17590,
+              12507,
+              11,
+              537,
+              264,
+              1614,
+              5480,
+              13,
+              151668
+            ],
+            "input_tokens": 3578,
+            "scope": "scripted token fixture; input count is text-only, NOT multimodal inference cost",
+            "classification": {
+              "kind": "decision",
+              "raw": "<think>Predetermined CPU integration fixture, not a model decision.</think>",
+              "framed_prefix": "<think>Predetermined CPU integration fixture, not a model decision.</think>\n",
+              "semantics_verified": false
+            }
+          },
+          {
+            "stage": "action",
+            "decision_visible_to_action": true,
+            "output_budget": 384,
+            "status": "returned",
+            "elapsed_seconds": 0.06098708510398865,
+            "output_ids": [
+              151657,
+              4913,
+              16370,
+              22317,
+              9852,
+              842,
+              3252,
+              26516,
+              4138,
+              1310,
+              62,
+              17,
+              2198,
+              87,
+              788,
+              15,
+              13,
+              17,
+              20,
+              1335,
+              88,
+              788,
+              15,
+              13,
+              20,
+              20,
+              1335,
+              98586,
+              788,
+              15,
+              51193,
+              606,
+              3252,
+              718,
+              761,
+              24578,
+              2346,
+              37296,
+              22785,
+              9207,
+              151658,
+              151645
+            ],
+            "input_tokens": 3578,
+            "scope": "scripted token fixture; input count is text-only, NOT multimodal inference cost",
+            "classification": {
+              "kind": "tool_proposed",
+              "raw": "<tool_call>{\"arguments\":{\"asset_id\":\"office_chair_2\",\"x\":0.25,\"y\":0.55,\"yaw\":0},\"name\":\"add_furniture_to_scene_tool\"}</tool_call><|im_end|>",
+              "call": {
+                "arguments": {
+                  "asset_id": "office_chair_2",
+                  "x": 0.25,
+                  "y": 0.55,
+                  "yaw": 0
+                },
+                "name": "add_furniture_to_scene_tool"
+              },
+              "native_validation_required": true
+            }
+          }
+        ],
+        "generation_attempts": 2,
+        "output_tokens": 55,
+        "input_tokens": 7156,
+        "tool_calls": [
+          {
+            "arguments": {
+              "asset_id": "office_chair_2",
+              "x": 0.25,
+              "y": 0.55,
+              "yaw": 0
+            },
+            "name": "add_furniture_to_scene_tool"
+          }
+        ],
+        "raw": "<tool_call>{\"arguments\":{\"asset_id\":\"office_chair_2\",\"x\":0.25,\"y\":0.55,\"yaw\":0},\"name\":\"add_furniture_to_scene_tool\"}</tool_call><|im_end|>",
+        "think": null,
+        "full_scene_success": null,
+        "paid_api_calls": 0,
+        "status": "tool_proposed",
+        "host_contract": "Validate actual state/schema before dispatch; EOS proposes termination, never room success.",
+        "elapsed_seconds": 0.07447879575192928,
+        "generated_decision_for_audit_only": "<think>Predetermined CPU integration fixture, not a model decision.</think>"
+      },
+      "execution": {
+        "turn": 0,
+        "call": {
+          "arguments": {
+            "asset_id": "office_chair_2",
+            "x": 0.25,
+            "y": 0.55,
+            "yaw": 0
+          },
+          "name": "add_furniture_to_scene_tool"
+        },
+        "before_sha256": "29c1f03a0bacf180b054a498de1ec3b73dd7bc60807c0c085423bd7d4515decd",
+        "kind": "native_execution",
+        "tool_results": [
+          {
+            "name": "add_furniture_to_scene_tool",
+            "output": {
+              "asset_id": "office_chair_2",
+              "error_type": null,
+              "has_geometry": true,
+              "message": "Successfully placed asset 'office_chair' as object 'office_chair_0'. Use object_id 'office_chair_0' for remove/move operations.",
+              "object_id": "office_chair_0",
+              "position": {
+                "x": 0.25,
+                "y": 0.55,
+                "z": 0.0
+              },
+              "rotation": {
+                "pitch": 0.0,
+                "roll": 0.0,
+                "yaw": 0.0
+              },
+              "success": true,
+              "suggested_action": null
+            }
+          }
+        ],
+        "elapsed_seconds": 33.05987444706261,
+        "after_sha256": "53bf09e9e8c1bf4bcbee7a99bf29f871e972fb05d158751c3c1c2cf8dfd8f94f"
+      }
+    }
+  ],
+  "generation_attempts": 2,
+  "input_tokens": 7156,
+  "output_tokens": 55,
+  "tool_attempts": 1,
+  "native_calls": 1,
+  "accounting_complete": true,
+  "budget": {
+    "turns": 2,
+    "generation_attempts": 4,
+    "tool_attempts": 1,
+    "output_tokens": 1024,
+    "wall_seconds": 3000
+  },
+  "full_scene_success": null,
+  "initial_state_sha256": "29c1f03a0bacf180b054a498de1ec3b73dd7bc60807c0c085423bd7d4515decd",
+  "elapsed_seconds": 317.2919384855777,
+  "error": "RuntimeError: render failed; no automatic retry",
+  "final_state_sha256": "53bf09e9e8c1bf4bcbee7a99bf29f871e972fb05d158751c3c1c2cf8dfd8f94f",
+  "acceptance": {
+    "state_sha256": "53bf09e9e8c1bf4bcbee7a99bf29f871e972fb05d158751c3c1c2cf8dfd8f94f",
+    "full_scene_success": null,
+    "native_object_count": 9,
+    "initial_object_count": 8,
+    "removed_original_ids": [],
+    "new_ids": [
+      "office_chair_0"
+    ],
+    "unverified": [
+      "semantic identity after re-addition",
+      "physical validity",
+      "original user requirements",
+      "function and aesthetics"
+    ],
+    "scope": "identity/count accounting only; not a scene acceptance oracle"
+  }
+}

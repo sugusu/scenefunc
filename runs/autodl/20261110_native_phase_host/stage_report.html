@@ -1,0 +1,22 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>两阶段策略接入原生家具执行</title>
+<style>body{max-width:1050px;margin:36px auto;padding:0 22px;font:17px/1.75 system-ui;color:#192734}td,th{border:1px solid #ccd4dc;padding:9px}table{border-collapse:collapse;width:100%}a{color:#175b96}code{background:#edf1f5}</style>
+<h1>宿主接口与原生工具分段核验，尚未运行学习策略</h1>
+<p>本轮实现可包装 Scene-Designer 家具 driver 的两阶段策略接口；其他阶段委托原 driver 的分支仅用回调夹具验证，未运行完整 main_async。实际 CPU 测试选择加载原 ToolEnvironment.step 与记忆处理器，使用检查点场景门面和真实网格视图覆盖 observation；没有启动原 SDK 服务或原完整提示构造。原生增删不再受旧 920 编辑入口的固定对象集合限制。这个连接是实验基础，不是新算法。</p>
+<p>实际 CPU 验证使用已有巴黎场景副本：9 件家具 → 移除一件后 8 件 → 使用已有资产重新加入后 9 件。动作是明确的脚本夹具，6 次后端调用都是预定 token 输出；真实模型调用、训练更新、新生成房间均为 0。不能从“恢复数量”推出恢复了全部身份、用途或设计要求。</p>
+<table><tr><th>实际内容</th><th>结果与边界</th></tr>
+<tr><td>原生工具</td><td>2 次真实 remove/add，使用只读直接内核桥。ToolEnvironment.step 与记忆 handler 函数体保留；未启动完整 SDK 服务。</td></tr>
+<tr><td>新观察</td><td>实际修改后的两套五视图完成，保留网格导入轴向／顶点检查、原相机和采样设置。两次渲染中断后显式续接；不是一次无中断轨迹，未以旧图代替新状态。</td></tr>
+<tr><td>失败计费</td><td>无效 D、后端失败、未授权工具、过期观察、错误 schema 均不冒充 STOP；D+A 累计计数，未知部分 token 记为不完整。</td></tr>
+<tr><td>整屋成功</td><td>始终未知。阶段结束、工具成功、物体数量恢复不是完整生成成功。</td></tr></table>
+<h2>首次失败与有边界的续接</h2>
+<p>首次移除已经执行成功，渲染包装进程退出码 -9（SIGKILL）。原因未确认为 OOM。原包装在保留 Blender 几何准备状态时启动第二个 Blender；新适配仅把这两个过程串行执行，没有改相机、图像分辨率、24 samples 或场景坐标。失败目录未覆盖，已完成的移除没有重跑。</p>
+<p>恢复被移除状态的五视图耗时 796.72 秒。加入后，串行准备／渲染仍在第三方向收到 SIGKILL，故不能宣称第一次适配已解决资源问题。第二次明确恢复保留已完成两图，将缺失方向分进程运行，最后用原入口完成俯视；耗时 546.68 秒。最后仅观察终态并输出脚本 STOP，耗时 2.49 秒，没有第三次几何动作。各中断点状态哈希一致。累计原生宿主分段与两次恢复实测 1720.57 秒，包含失败开销；这不是算法效率成绩。</p>
+<p>另实测两个新观察、三种部署前缀共 6 次 CPU 多模态编码，各条件的视觉张量一致，耗时 4.73 秒。没有模型前向或训练。这只证明新观察可编码，仍不证明新旧训练提示分布匹配。8 件非目标家具的序列化状态逐项未变。22 条旧动作均通过原生参数 schema，另有 2 条停止；参数合法仍不证明动作能完成设计。</p>
+<h2>训练与部署还不能直接画等号</h2>
+<p>逐条核对当前 24 单元：10 个动作在训练时有 D 前缀，14 个没有；部署的配对策略则每轮都先生成 D 再生成 A。它是部分理由监督下的部署，并非全部材料都做了相同形式的条件训练。这不证明策略无效，但必须保留分母，并实际测试自由生成的 D；不能按测试时教师理由是否存在来路由。</p>
+<p>新宿主使用原生观察＋实际对象状态＋真实执行反馈，尚未验证它与旧 920 训练请求匹配。之前的前缀检查只支持旧请求格式。下一次同材料训练前，必须用共同构造器明确输入，不能把此工程接入宣称为已经完成匹配实验。</p>
+<p>理论上，<a href="https://proceedings.mlr.press/v15/ross11a.html">DAgger</a> 已研究由策略自身行动引起的状态分布变化，并在明确假设下给出保证。这里据此要求评价模型自己造成的后续状态，不能在动作改变后接回教师轨迹。当前加权 token 损失与真实任务代价的对应、纠正专家及优化保证均未建立，不能直接套用该定理或宣称新理论。</p>
+<h2>研究位置与后续</h2>
+<p>候选仍是检验自生成理由对真实设计行动的额外价值。现有辅助理由监督、普通规则／搜索及同知识底座必须保留。任何新训练还需要已有 LEARN 终态、完整输入及独立场景；当前没有必要因宿主接口通过就立即开 GPU。</p>
+<p>本轮读取了原生四阶段源码与记忆／执行／渲染路径，未做新一轮全面论文排重。没有重新定义 CVPR 成果，也没有证明相同监督下配对方式有效。</p>
+<p><a href="summary.json">实际汇总</a> · <a href="reading_ledger.json">源码阅读范围</a> · <a href="method_difference.json">方法和工程边界</a> · <a href="deployment_coverage_v2/units.csv">24 单元覆盖</a> · <a href="actual_v1/native_stage/phase_host/result.json">首次失败</a> · <a href="actual_v2_resume/native_stage/phase_host/result.json">加入后中断</a> · <a href="actual_v3_stop/native_stage/phase_host/result.json">终态观察与脚本 STOP</a> · <a href="processor_v1/summary.json">真实 CPU 编码</a> · <a href="failures_v2/summary.json">失败路径检查</a></p></html>

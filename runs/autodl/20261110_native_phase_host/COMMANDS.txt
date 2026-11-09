@@ -1,0 +1,49 @@
+Work directory:
+/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+All commands in this receipt are CPU diagnostics. No language model weights are loaded;
+scripted token fixtures are NOT model decisions. Original source/assets remain read-only.
+The two native tool actions run on new checkpoint copies. No new room is generated.
+All output directories are single-use: commands refuse to overwrite an existing run.
+For reproduction choose NEW output names and keep the predecessor references explicit.
+
+Host/processor Python:
+/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python
+Geometry Python (called by fixture):
+/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python
+Render Python (called by fixture):
+/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python
+
+1. Earlier actual_v1 ran check_native_phase_host.py from its pre-ActionRejected source.
+   It completed REMOVE, then the old render_state wrapper exited -9. Its receipt and
+   source hashes are retained. That historical command does NOT represent current source.
+
+2. Recover that exact 8-object checkpoint with current sequential renderer:
+python scripts/autodl/render_native_sequential.py --source /root/autodl-tmp/agent_method_preparation_20261027/work/paris_local_run_results_20261104/render_state.py --source-sha256 93656de6efce05bdc91c478a7e5ce6914864c0d82881a1438cfc706fb7f310c6 --scene runs/autodl/20261110_native_phase_host/actual_v1/native_000/tools/partial_scene.glb --out runs/autodl/20261110_native_phase_host/recovered_observation_v1 --render-python /root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python
+
+3. Actual resumed ADD (completed); rendering then exited -9. No automatic retry:
+PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/check_native_phase_host.py --work-base /root/autodl-tmp/agent_method_preparation_20261027/work --output runs/autodl/20261110_native_phase_host/actual_v2_resume --resume-fixture runs/autodl/20261110_native_phase_host/actual_v1 --initial-views runs/autodl/20261110_native_phase_host/recovered_observation_v1/receipt.json
+
+4. Retain two valid views; run each missing native direction in a fresh process:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/finish_native_views.py --failed-views runs/autodl/20261110_native_phase_host/actual_v2_resume/native_000/views --renderer-root /root/autodl-tmp/agent_method_preparation_20261027/work/native_observation_bridge_20261104/source --python /root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python --out runs/autodl/20261110_native_phase_host/recovered_observation_v2
+
+5. Consume the actual 9-object state and fresh views; scripted STOP only, ZERO native actions:
+PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/check_native_phase_host.py --work-base /root/autodl-tmp/agent_method_preparation_20261027/work --output runs/autodl/20261110_native_phase_host/actual_v3_stop --resume-fixture runs/autodl/20261110_native_phase_host/actual_v2_resume --resume-step after_add --initial-views runs/autodl/20261110_native_phase_host/recovered_observation_v2/receipt.json
+
+6. CPU processor encodes the two actual observations in three deployment conditions:
+PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/encode_native_host_requests.py --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --observation-source /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py --host-run runs/autodl/20261110_native_phase_host/actual_v2_resume/native_stage/phase_host --host-run runs/autodl/20261110_native_phase_host/actual_v3_stop/native_stage/phase_host --out runs/autodl/20261110_native_phase_host/processor_v1
+
+7. Derive reports only after steps 4-6 really complete:
+python scripts/autodl/report_native_phase_host.py --root runs/autodl/20261110_native_phase_host --work-base /root/autodl-tmp/agent_method_preparation_20261027/work
+python scripts/autodl/review_git_progress.py --source-ref 75fc783f86d4fea78714639e110fbe77476ee106 --out runs/autodl/20261110_native_phase_host
+
+Production integration boundary:
+phase_host.furniture_driver wraps an already configured native module's driver_loop.
+Caller provides phase policy, common tool allowlist, real image loader and measured
+acceptance callback. Floor/wall/ceiling delegation was checked using callbacks only.
+The real four-stage SDK boot, service/model configuration and free-policy generation
+have NOT been validated or authorized here. This file is not a model-launch command.
+
+Large GLB, .blend and PNG files stay in local result directories and are gitignored.
+Git stores their paths, source hashes, receipts and readable evidence. Reproducing a
+native action requires the pinned pre-existing runtime and licensed assets.

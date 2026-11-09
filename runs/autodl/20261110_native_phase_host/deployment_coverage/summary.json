@@ -1,0 +1,28 @@
+{
+  "units": 24,
+  "D_supervised_units": 10,
+  "paired_training_actions_with_D": 10,
+  "paired_training_actions_without_D": 14,
+  "paired_deployment_actions_always_with_generated_D": 24,
+  "new_native_prompt_matches_archived_920_requests": false,
+  "interpretation": "Partial-rationale training with always-reasoning deployment; not uniformly reason-conditioned supervision on all 24 units.",
+  "not_implied": [
+    "training is invalid",
+    "model must fail",
+    "new empirical advantage",
+    "test-time teacher rationale is available"
+  ],
+  "required_reporting": [
+    "Keep the 14 no-D training units in the denominator and state their direct-action supervision.",
+    "Do not route test examples using whether their teacher rationale exists.",
+    "Evaluate self-generated D followed by actual execution, including unsupported/no-edit states.",
+    "Do not claim native prompt alignment from previous archived-prefix equality checks.",
+    "Construct training/deployment inputs with the same shared native formatter before any new matched-prompt trial."
+  ],
+  "sources": {
+    "runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl": "8c987f616edf6107bba68115136fd02f8a2389cfb2ca0a728f4e0f917164e7ac",
+    "scripts/autodl/phase_policy.py": "eec22cb4cdda42371edc5d71515c9cfe9613582de3a063d4bfaddc7ad83975de"
+  },
+  "training_updates": 0,
+  "model_calls": 0
+}

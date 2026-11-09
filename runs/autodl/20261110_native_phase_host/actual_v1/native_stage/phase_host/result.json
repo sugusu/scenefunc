@@ -1,0 +1,174 @@
+{
+  "status": "host_failure",
+  "arm": "paired_phase_v3",
+  "rounds": [
+    {
+      "turn": 0,
+      "before_sha256": "f3ec0e4f879367648db7a050e5f398fbdafd3b3fa4f920b92343242b3a42a2a1",
+      "context_sha256": "c299ab586b6b0b9a45e6d9d2360eebd90ca3d3ce5b18c74d875f9401b4754588",
+      "policy": {
+        "arm": "paired_phase_v3",
+        "state_sha256": "f3ec0e4f879367648db7a050e5f398fbdafd3b3fa4f920b92343242b3a42a2a1",
+        "stages": [
+          {
+            "stage": "decision",
+            "decision_visible_to_action": false,
+            "output_budget": 128,
+            "status": "returned",
+            "elapsed_seconds": 0.006273260340094566,
+            "output_ids": [
+              151667,
+              50925,
+              46637,
+              13940,
+              17590,
+              12507,
+              11,
+              537,
+              264,
+              1614,
+              5480,
+              13,
+              151668
+            ],
+            "input_tokens": 1749,
+            "scope": "scripted token fixture; input count is text-only, NOT multimodal inference cost",
+            "classification": {
+              "kind": "decision",
+              "raw": "<think>Predetermined CPU integration fixture, not a model decision.</think>",
+              "framed_prefix": "<think>Predetermined CPU integration fixture, not a model decision.</think>\n",
+              "semantics_verified": false
+            }
+          },
+          {
+            "stage": "action",
+            "decision_visible_to_action": true,
+            "output_budget": 384,
+            "status": "returned",
+            "elapsed_seconds": 0.003569403663277626,
+            "output_ids": [
+              151657,
+              4913,
+              16370,
+              22317,
+              1700,
+              842,
+              3252,
+              26516,
+              4138,
+              1310,
+              62,
+              15,
+              58640,
+              606,
+              3252,
+              5399,
+              761,
+              24578,
+              22785,
+              9207,
+              151658,
+              151645
+            ],
+            "input_tokens": 1749,
+            "scope": "scripted token fixture; input count is text-only, NOT multimodal inference cost",
+            "classification": {
+              "kind": "tool_proposed",
+              "raw": "<tool_call>{\"arguments\":{\"object_id\":\"office_chair_0\"},\"name\":\"remove_furniture_tool\"}</tool_call><|im_end|>",
+              "call": {
+                "arguments": {
+                  "object_id": "office_chair_0"
+                },
+                "name": "remove_furniture_tool"
+              },
+              "native_validation_required": true
+            }
+          }
+        ],
+        "generation_attempts": 2,
+        "output_tokens": 35,
+        "input_tokens": 3498,
+        "tool_calls": [
+          {
+            "arguments": {
+              "object_id": "office_chair_0"
+            },
+            "name": "remove_furniture_tool"
+          }
+        ],
+        "raw": "<tool_call>{\"arguments\":{\"object_id\":\"office_chair_0\"},\"name\":\"remove_furniture_tool\"}</tool_call><|im_end|>",
+        "think": null,
+        "full_scene_success": null,
+        "paid_api_calls": 0,
+        "status": "tool_proposed",
+        "host_contract": "Validate actual state/schema before dispatch; EOS proposes termination, never room success.",
+        "elapsed_seconds": 0.010400377213954926,
+        "generated_decision_for_audit_only": "<think>Predetermined CPU integration fixture, not a model decision.</think>"
+      },
+      "execution": {
+        "turn": 0,
+        "call": {
+          "arguments": {
+            "object_id": "office_chair_0"
+          },
+          "name": "remove_furniture_tool"
+        },
+        "before_sha256": "f3ec0e4f879367648db7a050e5f398fbdafd3b3fa4f920b92343242b3a42a2a1",
+        "kind": "native_execution",
+        "tool_results": [
+          {
+            "name": "remove_furniture_tool",
+            "output": {
+              "attempted_position": null,
+              "attempted_rotation": null,
+              "current_position": null,
+              "current_rotation": null,
+              "error_type": null,
+              "message": "Successfully removed office_chair from scene",
+              "object_id": "office_chair_0",
+              "success": true,
+              "suggested_action": null
+            }
+          }
+        ],
+        "elapsed_seconds": 31.00472748465836,
+        "after_sha256": "29c1f03a0bacf180b054a498de1ec3b73dd7bc60807c0c085423bd7d4515decd"
+      }
+    }
+  ],
+  "generation_attempts": 2,
+  "input_tokens": 3498,
+  "output_tokens": 35,
+  "tool_attempts": 1,
+  "native_calls": 1,
+  "accounting_complete": true,
+  "budget": {
+    "turns": 3,
+    "generation_attempts": 6,
+    "tool_attempts": 2,
+    "output_tokens": 1536,
+    "wall_seconds": 1500
+  },
+  "full_scene_success": null,
+  "initial_state_sha256": "f3ec0e4f879367648db7a050e5f398fbdafd3b3fa4f920b92343242b3a42a2a1",
+  "elapsed_seconds": 59.082683611661196,
+  "error": "RuntimeError: render failed; no automatic retry",
+  "final_state_sha256": "29c1f03a0bacf180b054a498de1ec3b73dd7bc60807c0c085423bd7d4515decd",
+  "acceptance": {
+    "state_sha256": "29c1f03a0bacf180b054a498de1ec3b73dd7bc60807c0c085423bd7d4515decd",
+    "full_scene_success": null,
+    "native_object_count": 8,
+    "initial_object_count": 9,
+    "removed_original_ids": [
+      "office_chair_0"
+    ],
+    "new_ids": [],
+    "unverified": [
+      "semantic identity after re-addition",
+      "physical validity",
+      "original user requirements",
+      "function and aesthetics"
+    ],
+    "scope": "identity/count accounting only; not a scene acceptance oracle"
+  }
+}
