@@ -1,0 +1,68 @@
+{
+  "status": "prospective_fair_control_not_established_novel_method",
+  "variables": {
+    "I": "Original task, current object/asset state, available measurements, ordered five views, tool receipts.",
+    "D": "Public supervised proposed-decision text; not a verified receipt or access to private model reasoning.",
+    "A": "One allowed tool call or assistant EOS proposing STOP.",
+    "E": "Actual executor and independent declared-requirement checks.",
+    "Y": "Environment/task correctness, not the policy output itself."
+  },
+  "training": {
+    "same_material_separate": "L_D(D|I,phase=D)+L_A(A|I,phase=A)",
+    "same_material_paired": "L_D(D|I,phase=D)+L_A(A|I,D,phase=A)",
+    "objective": "Sum over original source tokens t: w_t * -log p_theta(token_t | causal prefix_t). w_t=1/(6*N_original_family,original_component).",
+    "phase_repartition": "Keep each original token once, including the two terminal records now assigned to D and EOS/newline to A. Never renormalize by the new stage lengths.",
+    "missing_annotations": "14 edit states have no D target. Do not fabricate D labels or exclude them from A training.",
+    "implementation": "scripts/autodl/phase_objective.py; actual causal shift and coefficient-gradient oracle passed. Full Trainer accumulation integration remains unexecuted.",
+    "not_claimed": "Equal targets/coefficients do not imply equal logits, gradients, training compute or deployment performance; prompts/prefixes differ."
+  },
+  "deployment": [
+    "Use identical observation and tool access for all conditions. Count every generated token and model invocation.",
+    "For the two-stage matched compute comparison, generate D from I in both arms; stop at the closing delimiter. Keep failures in denominator, no teacher lookup or free repair.",
+    "Separate arm calls A on I only; paired arm calls A on I plus its actual generated D. D is never treated as a tool receipt.",
+    "Execute the same permitted action, or verify measured scope on EOS. EOS alone is not completion. Record unknowns and preservation checks.",
+    "Refresh observation from each arm’s own resulting state and repeat within one predeclared budget. Do not splice archived downstream model outputs after feedback changes.",
+    "Also report efficient direct-action separate deployment; do not conceal the wasted D pass of the compute-matched diagnostic."
+  ],
+  "theory": [
+    "For fixed theta and D_hat=g_theta(I,epsilon) with epsilon independent of Y conditional on I, P(Y,D_hat|I)=P(Y|I)P(D_hat|I), hence I(Y;D_hat|I)=0. This is a no-new-environment-information statement, not a no-computation-benefit claim.",
+    "A teacher D constructed from (I,A*) can carry target information beyond I; reduced teacher-forced NLL is not deployment evidence. Source supervision is legitimate, but the test prefix must be generated without A*.",
+    "H=f(X) gives I(Y;H)<=I(Y;X), not equality without sufficiency. General chain identity subtracts I(Y;C|H). Since it is nonnegative, I(Y;H)<=H(C)+I(Y;H|C) remains valid.",
+    "Changing an intermediate record can demonstrate behavioral dependence; it does not establish physical correctness or the hidden internal causal computation.",
+    "Changing actual task/geometry can require a different valid action; changing only a false draft should not authorize violations. Irrelevant paraphrases should not require preference reversal.",
+    "Multiple valid layouts form a set. Exact tool-string imitation is a fitting check; post-execution requirements, object preservation, unsupported aspects and total cost determine scene utility."
+  ],
+  "interventions": [
+    {
+      "change": "Task changes, scene fixed",
+      "claim_tested": "Conditional design adaptation",
+      "outcome": "Recompute valid requirements; allow same valid action, different action, tie or unknown. No automatic flip label."
+    },
+    {
+      "change": "Scene geometry changes, task fixed",
+      "claim_tested": "Spatial applicability of a decision",
+      "outcome": "Use independently checked actual geometry; no template-only label."
+    },
+    {
+      "change": "Only D is contradicted or paraphrased",
+      "claim_tested": "Draft dependence and robustness",
+      "outcome": "Fixed physical/task truth. Report violations separately from action-change rate; diagnostic, not human preference."
+    }
+  ],
+  "necessary_controls": [
+    "Frozen base with full task/tools and same knowledge retrieval",
+    "Action-only adaptation",
+    "Same-material separated tasks",
+    "Same-material paired tasks",
+    "Ordinary declared-rule check and bounded geometric/search tools"
+  ],
+  "scientific_gate": "Multiple independent project families with full-room endpoint improvements beyond ordinary controls; current data are development reconstructions and do not meet this gate.",
+  "training_ready": false,
+  "remaining": [
+    "52/68 prospective components lack complete original views locally.",
+    "Full Trainer scaling/accumulation and actual two-stage model deployment not run.",
+    "No new independent project validation, professional blind evaluation or full-room improvement.",
+    "Latest 920 training final result not in current Git snapshot; do not relaunch based on old status."
+  ],
+  "resource_decision": "Continue source/material work. Do not request GPU or expand training on this evidence alone."
+}

@@ -1,0 +1,31 @@
+Run from the repository root. These commands do NOT load a policy, train, call
+an API, or execute a scene. The five-view check requires the already recovered
+local original images and processor; missing views are retained as missing.
+Do not interpret this as a complete Trainer or deployment validation.
+
+PY=/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python
+PROC=/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only
+SOURCE=/root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py
+CACHE=/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/phase_source_reading_20261110
+OUT=runs/autodl/20261110_decision_phase_study/reproduction_$(date -u +%Y%m%dT%H%M%SZ)
+mkdir -p "$OUT"
+export PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
+
+"$PY" scripts/autodl/audit_decision_phase_support.py --source runs/autodl/20261110_material_routing/actual/prospective_components.jsonl --tokenizer "$PROC" --output "$OUT/material"
+"$PY" scripts/autodl/verify_phase_material.py --material "$OUT/material/prospective_phase_components.jsonl" --availability runs/autodl/20261110_multimodal_material/source_image_lookup/image_availability.json --processor "$PROC" --scene-observation "$SOURCE" --output "$OUT/encoding_and_loss.json"
+"$PY" scripts/autodl/check_phase_objective_and_reference.py --reference-source "$CACHE/frodo_frodo.py" --reference-manifest "$CACHE/source_manifest.json" --material "$OUT/material/prospective_phase_components.jsonl" --output "$OUT/reference_check.json"
+python scripts/autodl/audit_declared_stop_gate.py --repo . --output "$OUT/ordinary_stop_gate.json"
+python scripts/autodl/audit_information_claims.py --output "$OUT/theory_checks.json"
+
+Existing published package verification (does not rerun encoding):
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/verify_decision_phase_study.py
+
+Phase source audit first attempt failed on a guessed scene_observation cache
+path, before torch/image processing. The retry corrected only the path and
+verified the original source hash. Both the earlier v2 partition output and
+the phase-v3 changes are retained; no old study scores were replaced.
+
+External source recovery: use source_manifest.json URLs and SHA256 values.
+The 2026 FRODO demonstration source is not asserted to be the 2024 experiment
+implementation. Third-party source and tokenizer/model weights are not
+republished in this package.

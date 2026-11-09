@@ -1,0 +1,12 @@
+{
+  "attempt": 1,
+  "status": "failed_before_writing_components",
+  "operation": "move the existing tool-separator newline from D to the beginning of A",
+  "error": "ValueError: Phase tokenization boundary differs",
+  "cause": "In the separate arm, a leading target newline meets the assistant-generation prefix newline; canonical tokenization merges the two, violating exact inherited target token identity.",
+  "resolution": "Preserve the original eight D targets and their separator tokens. Split only existing terminal records at </think>, and explicitly record the one host framing newline in the paired terminal input.",
+  "source_targets_changed": false,
+  "model_calls": 0,
+  "optimizer_updates": 0,
+  "note": "Packing failure, not an experimental quality result. The failed output directory was left empty; revised output uses a new path."
+}

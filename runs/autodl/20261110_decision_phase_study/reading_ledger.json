@@ -1,0 +1,30 @@
+[
+  {
+    "title": "SCOTT: Self-Consistent Chain-of-Thought Distillation",
+    "url": "https://aclanthology.org/2023.acl-long.304v2.pdf",
+    "read": "Prior pass: abstract, introduction, methods 3.1–3.2 (Eq.1–5), experimental setup 4.1–4.4. This pass: exact official factual/counterfactual CE training loop.",
+    "finding": "Reason-conditioned answers and counterfactual coupling are established controls, not a new contribution here.",
+    "not_read": "Complete results/appendix and visual figures; no reproduction."
+  },
+  {
+    "title": "Making Reasoning Matter: Measuring and Improving Faithfulness of Chain-of-Thought Reasoning (FRODO)",
+    "url": "https://aclanthology.org/2024.findings-emnlp.882.pdf",
+    "read": "Abstract, introduction, §2 interventions, §3.1–3.2 and Eq.1–4; §4 datasets, metrics and baselines. Pinned author-linked January 2026 source sections in source_manifest.",
+    "finding": "DPO rationales plus correct/counterfactual answer losses and ranking. Current illustrative source has an NLL sign issue and duplicate positive CE branches in the probed methods.",
+    "not_read": "Complete experimental results/appendix or visual figures. No evidence this 2026 demonstration source produced 2024 paper results; no paper-performance conclusion."
+  },
+  {
+    "title": "When Must Faithful Chain-of-Thought Fail? An Information-Theoretic Bound and Its Empirical Limits",
+    "url": "https://aclanthology.org/2026.emnlp-main.1823.pdf",
+    "read": "Abstract, introduction, related work, §3 definitions and §4 main statements/limitations. No full appendix proofs or empirical reproduction.",
+    "finding": "Capacity claims require explicit assumptions. Our finite checks distinguish deterministic encoding from sufficient encoding and use the full mutual-information identity. The basic capacity inequality survives these corrections.",
+    "not_read": "Full experiments, appendix proofs, visual figures. No claim that 3D decisions exceed a proven capacity limit."
+  },
+  {
+    "title": "Scene-Designer official tool branches and objective",
+    "url": "https://github.com/ZJU-OmniAI/Scene-Designer/tree/a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "read": "Pinned client, server and training sections listed individually in source_manifest.",
+    "finding": "Inference ranks executed branches; server commits cached scene/memory state. Training continues one random sibling and broadcasts its global trajectory advantage to the sibling group.",
+    "not_read": "All external SceneSmith snapshot internals or side-effect semantics; no full native execution. Broadcast is not a measured counterfactual final return for each sibling."
+  }
+]
