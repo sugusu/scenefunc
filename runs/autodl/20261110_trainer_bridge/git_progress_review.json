@@ -1,0 +1,96 @@
+{
+  "observed_at": "2026-11-09T19:20:17.746186+00:00",
+  "remote_heads_reviewed": {
+    "main": "531bd1a207fa8e80371859b486f5efd25a096dd3",
+    "runs/920": "75fc783f86d4fea78714639e110fbe77476ee106",
+    "runs/autodl": "bdac97794f0835700485cfb286b868ba538d4ebf"
+  },
+  "recommendation": "Continue one bounded causal-mechanism study after recovering the already-started run. Do not scale training or claim a novel algorithm/whole-room improvement yet.",
+  "completed_training": {
+    "run": "P920-STOPDATA-v1_20261107T102628Z",
+    "updates_per_adapter": 8,
+    "adapters": 2
+  },
+  "recomputed_eval": {
+    "run": "P920-EVALFIX-v1_20261107T130916Z",
+    "trajectories": 12,
+    "activity_pass": {
+      "base": 3,
+      "action": 2,
+      "decision_action": 2
+    },
+    "denominator_per_arm": 4,
+    "improvement_without_new_harm_per_arm": 0,
+    "whole_room_success": "unknown",
+    "independent_development_families": 1
+  },
+  "recomputed_matched": {
+    "run": "P920-MATCHEDROLL-v1_20261108T062940Z",
+    "ready_state_valid_preservation": {
+      "base": "1/2",
+      "action": "1/2",
+      "decision_action": "2/2"
+    },
+    "deficit_repair": {
+      "base": "0/2",
+      "action": "0/2",
+      "decision_action": "0/2"
+    },
+    "training_exposed_families": 1
+  },
+  "latest_920_run": {
+    "run": "P920-LEARN-v1_20261108T075646Z",
+    "last_status_at": "2026-11-08T09:21:30.344037+00:00",
+    "published_status": "training_running",
+    "final_training_or_evaluation_result_in_git": false,
+    "current_live_process_state": "not_inspected",
+    "arms": [
+      "action_only",
+      "paired"
+    ],
+    "not_equal_material_mechanism_comparison": true
+  },
+  "cpu_bridge": {
+    "gradient_cases": 6,
+    "real_scalar_backward_calls": 204,
+    "optimizer_updates": 0,
+    "language_model_calls": 0,
+    "gradient_probe_seconds": 0.8048134986311197,
+    "prefix_counts": {
+      "prefix_equal": 14,
+      "no_paired_decision_target": 2,
+      "missing_original_views": 52
+    },
+    "prefix_seconds": 31.096059257164598,
+    "peak_rss_mib": 813.07421875
+  },
+  "boundaries": [
+    "Numerical oracle only, no neural-policy training or optimizer step.",
+    "Saved D used only as a prefix encoding fixture, never as a test-time model response.",
+    "Fourteen source states lack a D target; paired action there sees a different context at deployment. Missing D was not fabricated.",
+    "52/68 new phase components lack locally recovered original views. This does not establish absence on the 920 source machine.",
+    "Full Trainer.train loop, CUDA, generation stop control, and native two-stage scene rollout remain unverified.",
+    "Old 920 weights already compensate accumulation; no assertion that past training was misnormalized."
+  ],
+  "failure_preserved": "gradient_probe_v1/receipt.json: old arm names matched zero phase-v3 rows; corrected consumer names only, immutable input unchanged.",
+  "literature_review_this_turn": [
+    {
+      "url": "https://arxiv.org/html/2610.23121v1",
+      "scope": "Abstract and targeted method/OTA construction passages; not full rereading."
+    },
+    {
+      "url": "https://arxiv.org/html/2610.28280v1",
+      "scope": "Targeted agent pipeline and evaluation distinction."
+    },
+    {
+      "url": "https://arxiv.org/html/2602.09153v2",
+      "scope": "Targeted stage memory and checkpoint/rollback passages."
+    }
+  ],
+  "next_sequence": [
+    "Recover final receipts from the existing authorized 920 run before restarting any training.",
+    "Complete immutable image/input transfer and validate native generated-D to action execution.",
+    "Compare identical-material separate vs paired supervision with shared observations, tools, budget, ordinary rules and same-knowledge feedback.",
+    "Use complete task trajectories and untouched project families; do not expand on explanation or local-stop gains alone."
+  ]
+}
