@@ -1,0 +1,16 @@
+Working directory:
+/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+Actual target audit and task-tagged component serialization (completed; output must be new):
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python -u scripts/autodl/audit_material_routing.py --tokenizer /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --output runs/autodl/20261110_material_routing/actual
+
+Report and pinned public-source verification (no model calls; public HTTP reads only):
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_material_routing.py
+
+Seal once and verify artifacts (completed):
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/verify_material_routing.py --seal
+
+Subsequent verification:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/verify_material_routing.py
+
+The prospective JSONL retains remote original image paths and records training_ready=false. It is not a request to start training. Use another new output directory inside this work repository for reruns. Historical inputs and results remain unchanged. Local tokenizer files are byte-identical to the tokenizer listed in the pinned 920 training plan; model weights and remote tensors are not loaded.

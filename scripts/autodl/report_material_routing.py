@@ -1,0 +1,116 @@
+"""Assemble the measured routing audit, analytical qualification and sources."""
+import argparse
+import csv
+import hashlib
+import html
+import json
+from pathlib import Path
+import subprocess
+import urllib.request
+
+
+def read(p):
+    return json.loads(p.read_text())
+
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def write(p,x):
+    p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+
+
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('--repo',type=Path,default=Path('.'))
+    a=ap.parse_args();repo=a.repo.resolve();out=repo/'runs/autodl/20261110_material_routing'
+    r=read(out/'actual/result.json');conflicts=read(out/'actual/routing_conflicts.json')
+    source=read(out/'actual/source_manifest.json');pin=source['pin']
+    # These source files are read, never imported or executed.
+    important=['scripts/920/edit_supervision.py','scripts/920/conditional_material_dataset.py',
+               'scripts/920/prepare_equal_material.py','scripts/920/materialize_native_completion.py',
+               'scripts/920/shared_action_contract_v2.py']
+    pinned=[]
+    for p in important:
+        raw=subprocess.check_output(['git','show',f'{pin}:{p}'],cwd=repo)
+        pinned.append({'path':p,'sha256':hashlib.sha256(raw).hexdigest(),
+                       'url':f'https://github.com/sugusu/scenefunc/blob/{pin}/{p}',
+                       'read_scope':'Full file; source only, no old training/encoding execution.'})
+    dss_pin='ef944263c9ddfd40a9888557f3e7d17513fd1a7e'
+    tree_url=f'https://api.github.com/repos/google-research/distilling-step-by-step/git/trees/{dss_pin}?recursive=1'
+    with urllib.request.urlopen(tree_url,timeout=25) as f:tree=json.load(f)
+    blobs={x['path']:x['sha'] for x in tree['tree'] if x['type']=='blob'}
+    external=[]
+    for p in ['run.py','model_utils.py']:
+        url=f'https://raw.githubusercontent.com/google-research/distilling-step-by-step/{dss_pin}/{p}'
+        with urllib.request.urlopen(url,timeout=25) as f:raw=f.read()
+        blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+        if blob!=blobs[p]:raise ValueError('External source blob changed')
+        external.append({'url':url,'sha256':hashlib.sha256(raw).hexdigest(),
+                         'git_blob_sha1':blob,'git_tree_match':True,
+                         'read_scope':'Full file as primary text; no model/data download or execution.'})
+    write(out/'reading_ledger.json',{
+        'paper':{'title':'Distilling Step-by-Step! Outperforming Larger Language Models with Less Training Data and Smaller Model Sizes',
+                 'url':'https://aclanthology.org/2023.findings-acl.507.pdf',
+                 'read':'Abstract, introduction, related work, method 3.1–3.2 and experiment setup on extracted PDF pages 0–4.',
+                 'not_read':'Complete experiments, appendix, figure visual inspection or results reproduction.',
+                 'finding':'Rationale and label multitask supervision uses explicit task prefixes; it is a direct ordinary baseline for separate material learning.'},
+        'official_code_pin':dss_pin,'official_code':external,'project_code_pin':pin,'project_code':pinned,
+        'failed_accesses':['Guessed train.py URL returned 404; actual files located through official Git tree.',
+                           'GitHub HTML tree fetch failed; raw pinned files and official API tree succeeded.']})
+    with (out/'routing_summary.csv').open('w',newline='') as f:
+        columns=['unit_id','family_id','decision_first_token_id','action_first_token_id',
+                 'isolated_optimal_decision_branch_probability','isolated_minimum_weighted_nll']
+        writer=csv.DictWriter(f,fieldnames=columns,lineterminator='\n');writer.writeheader()
+        writer.writerows({k:x[k] for k in columns} for x in conflicts)
+    table=''.join('<tr><td>'+html.escape(x['unit_id'])+'</td><td>'+str(x['decision_first_token_id'])+'</td><td>'+str(x['action_first_token_id'])+'</td><td>'+f"{x['isolated_optimal_decision_branch_probability']:.3f}"+'</td></tr>' for x in conflicts)
+    content=f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>同材料学习对照：任务区分与实际编码</title>
+<style>body{{max-width:1060px;margin:45px auto;padding:0 22px;font:17px/1.75 system-ui;color:#20303b;background:#fafafa}}h1,h2{{line-height:1.4}}h2{{margin-top:2em}}table{{border-collapse:collapse;width:100%;font-size:15px}}td,th{{border:1px solid #ccc;padding:9px;text-align:left}}pre{{padding:15px;background:#eee;white-space:pre-wrap}}.note{{border-left:4px solid #417a99;background:#edf5f9;padding:14px}}a{{color:#24658d}}</style>
+<h1>同材料还不够：需要明确模型当前要输出什么</h1>
+<p>本轮实际编码时间：{html.escape(r['recorded_at_utc'])}。来源固定在 <code>runs/920@75fc783</code>；没有改动旧实验、调用模型或启动训练。</p>
+<p class="note">上一轮确认了 separate 与 paired 的目标材料相同，本轮进一步发现：原 separate 的 8 个理由样本与对应动作样本使用完全相同的输入，却在首 token 上要求不同输出。它可以作为一种无任务区分的混合监督，但不能直接替代明确区分任务的强多任务对照。应修订上一轮“准备好的 separate 可以直接检验配对作用”的建议。</p>
+<h2>1. 事实与推断分开</h2>
+<p>从固定 Git 读取全部 24 个样本的两组原文，使用与原训练计划哈希相同的本地 tokenizer 重建 48 份目标序列。全部动作和理由 token 与原 MATERIAL_MANIFEST 的哈希一致；没有加载模型权重或远端训练张量。</p>
+<p>在 8 个存在理由监督的样本中，同一输入前缀分别监督 <code>&lt;think&gt;</code>（token 151667）与 <code>&lt;tool_call&gt;</code>（token 151657）。数据加载器未添加任务标记。paired 的动作损失则在完整理由之后计算，因此没有这处同前缀的两任务竞争。</p>
+<table><tr><th>真实样本</th><th>理由首 token</th><th>动作首 token</th><th>仅此位置的最优理由分支概率</th></tr>{table}</table>
+<p>这不是说“一种输入不能对应多个合法输出”。模型可以学习混合分布。问题是：若 separate 推理时生成了理由，它没有在该理由之后受到动作续写监督；若直接生成动作，又不是同一条推理链。比较结果会同时受到任务选择、续写条件与空间知识利用的影响。</p>
+<p><strong>这个因素目前只影响对未执行的 separate 对照的解释。</strong>已发布的旧实验没有运行这组材料，不能用本发现解释其 0/2 修复，也不能推断修正后会提高场景质量。</p>
+<h2>2. 理论：增加了什么不可区分性</h2>
+<p>在某个相同前缀 I 上，设理由首 token 的权重为 w_D、动作首 token 的权重为 w_A。忽略其他 token 及参数共享时，两项交叉熵为：</p>
+<pre>L_start = -w_D log p(think|I) - w_A log p(tool|I)
+p*(think|I) = w_D / (w_D + w_A)
+min L_start = (w_D+w_A) H(w_D/(w_D+w_A)).</pre>
+<p>项目按家族与组件 token 数归一化，因此 w_D=1/(6N_D)、w_A=1/(6N_A)，概率为 N_A/(N_A+N_D)。8 个位置的这项最低加权损失合计 {r['isolated_branch_nll_lower_bound']:.9f}。这是局部目标的解析性质，数值很小；不代表实际模型的分支概率、总损失、训练稳定性或功能成功率。其作用是指出对照中多了一个因素，而非宣布发现训练失败的唯一原因。</p>
+<p>给两项任务明确不同的输入标记后，不再要求同一个条件分布同时兼顾这两个首 token。paired 与 separate 随后仍可能存在真实差异：动作是否读取理由、读取的是教师理由还是部署时的模型草稿。这些应分别记录，不能用训练损失的降低代替真实执行收益。</p>
+<h2>3. 已实现的普通强对照</h2>
+<p>实现位于 <code>scripts/autodl/audit_material_routing.py</code>，已经逐样本运行。两组都使用相同的任务标记、原始场景与五视图路径；只在 paired 的动作阶段增加理由前缀。保留全部原目标 token 和家族权重，没有增加新的专业决定或坐标答案。</p>
+<table><tr><th>条件</th><th>理由任务</th><th>动作任务</th></tr>
+<tr><td>separate_tagged</td><td>p(D|I, DECISION_RECORD)</td><td>p(A|I, SCENE_ACTION)</td></tr>
+<tr><td>paired_tagged</td><td>p(D|I, DECISION_RECORD)</td><td>p(A|I, SCENE_ACTION, D)</td></tr></table>
+<p>每组仍为 32 个监督组件，1643 个动作 token、1332 个理由 token。paired 多读 1332 个理由前缀 token；输入任务标记也有成本，不能声称总算力完全相同。理由任务沿用原闭合标签停止，不加入新的 EOS 监督。终止样本仍属于动作／控制目标，不冒充专业理由。</p>
+<p>部署时 paired 只能读取模型刚生成的决定草稿，不能从评测答案检索教师理由。为了分离额外计算，应同时保留“两组都生成草稿，separate 丢弃它”的等调用比较，以及 separate 直接生成动作的低成本结果。任何失败草稿、未闭合输出与超限都计入预算；不能免费反复重试。实现中的 action_prefix 接口区分这些边界，但本轮没有运行推理循环。</p>
+<p>本轮检查的是文本模板、分词边界、目标哈希与观察内容保持。完整多模态像素展开、label mask 接入实际 Trainer、部署两阶段协议和独立场景结果仍未完成，<code>training_ready=false</code>。不把这批材料称为已验证的学习方法。</p>
+<h2>4. 直接相关的已有方法</h2>
+<p><a href="https://aclanthology.org/2023.findings-acl.507.pdf">Distilling Step-by-Step（ACL 2023）</a>已用理由与标签作多任务监督，并明确通过任务前缀区分输出。官方固定代码的 <code>run.py</code>使用 <code>predict:</code> 与 <code>explain:</code>，<code>model_utils.py</code>分别前向后加权损失。因此，这次任务区分修正属于普通强基线建设，不构成三维算法创新。</p>
+<p>原文只读了摘要、引言、相关工作、方法和实验设置；上述两个源码文件完整读取并与固定 Git blob 核对，未执行官方训练。详见<a href="reading_ledger.json">实际阅读与源码记录</a>。</p>
+<h2>5. 与实际场景失败的关系</h2>
+<p>重新查看 MATCHEDROLL 原始审阅与解析记录，确认 35 次输出中 24 次结构拒绝、9 次合法终止、2 次工具调用；2 次调用里只有一次改动，且引入损害。旧报告已公开这些事实，本轮不把重复统计包装为新实验。后续在第一次解析路径分歧后的输出依赖原来的反馈，不能离线拼接成另一种 Agent 成绩。</p>
+<p>因此当前有两个独立问题：旧结果存在解析／执行与需求判断混杂；拟议同材料对照还存在任务区分因素。解决它们能让下一次实验有解释力，尚不能证明空间推理会提高。上一轮普通几何已解开的 Paris 案例也不能变成这套训练的效果证据。</p>
+<h2>6. 下一次投入应回答的研究问题</h2>
+<p>可检验的窄问题是：在同样的场景证据、目标材料、工具与预算下，显式决定记录供动作阶段读取，能否改善实际要求完成，并超过带任务区分的普通多任务学习？如果只改进格式、停止或复述原则，收益应归到相应层面。只有在未参与开发的房间中改善完整生成／编辑结果，才有依据讨论更大的三维贡献。</p>
+<p>这不是已经确定的 CVPR 方法。当前没有必要为本轮准备开启 GPU；下一步先完成多模态与部署协议的一致性，再结合已有运行的完整结果决定是否值得有限训练。不能仅因这个普通修正完成，就继续扩大样本或模型规模。</p>
+<p>实际处理 {r['elapsed_seconds']:.2f} 秒（含本地读取 Git 与 tokenizer），峰值 RSS {r['peak_rss_kib']/1024:.1f} MiB。无新模型调用、训练、网格修改或付费资源。</p>
+<p><a href="actual/result.json">实际执行结果</a> · <a href="routing_summary.csv">8 个位置与理论量</a> · <a href="actual/prospective_components.jsonl">64 条前瞻组件记录</a> · <a href="actual/source_manifest.json">固定源文件与 tokenizer</a> · <a href="COMMANDS.txt">命令</a> · <a href="verification_receipt.json">交付核验</a></p></html>'''
+    (out/'stage_report.html').write_text(content)
+    write(out/'continuation_decision.json',{
+        'previous_turn':'progress: actual mesh domain measurement and ordinary control committed as b908a77',
+        'this_turn':'progress: reconstructed 48 real targets, found an unisolated baseline factor, implemented and ran prospective routing control',
+        'corrects_prior_recommendation':'Do not treat the untagged separate material view as the only strong multitask baseline.',
+        'no_empirical_benefit_claim':True,'no_training_authorization_inferred':True,
+        'next':'Verify exact multimodal/deployment consumption before any future paid-resource request.',
+        'goal_complete':False})
+    print(json.dumps({'report':str(out/'stage_report.html'),'project_source_files':len(pinned),
+                      'official_source_files':len(external)},ensure_ascii=False))
+
+
+if __name__=='__main__':main()
