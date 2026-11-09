@@ -1,0 +1,19 @@
+All commands run from:
+/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+Actual CPU measurement (completed; output directory must not already exist):
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/measure_eligible_joint_pool.py --work-base /root/autodl-tmp/agent_method_preparation_20261027/work --output runs/autodl/20261110_joint_representation/measured
+
+Actual ordinary exact-domain analysis (completed; output directory must not already exist):
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/analyze_joint_domains.py --measured runs/autodl/20261110_joint_representation/measured --output runs/autodl/20261110_joint_representation/analysis
+
+Assemble reading records, label update and HTML (completed):
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/build_joint_review.py --sceneteract /root/autodl-tmp/scene_generation_next_20261016/work/functional_verifier_review_20261016/vendor
+
+Seal once and verify delivery:
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/verify_joint_review.py --seal
+
+Subsequent verification (does not regenerate meshes or change the manifest):
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/verify_joint_review.py
+
+For a numerical rerun, use a different new output directory inside this repository. Preserve the committed measured/ and analysis/ snapshots. The mesh measurement depends on the historical local paths whose hashes are recorded in measured/summary.json. The compact-query analysis runs from the delivered NPZ domains without original meshes. No model API, downloads, GPU or training are part of these commands.

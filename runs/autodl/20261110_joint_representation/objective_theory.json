@@ -1,0 +1,23 @@
+{
+  "source_reward_correct_infeasible": 3,
+  "source_reward_correct_feasible": 2,
+  "correctness_only_failure_posterior_threshold": "2/5",
+  "assumed_original_failure_prior": "1/4",
+  "assumed_rebalanced_failure_prior": "2/5",
+  "class_prior_odds_multiplier": "2",
+  "implied_original_distribution_threshold": "1/4",
+  "equations": [
+    "choose infeasible iff 3q > 2(1-q)",
+    "q=2p/(1+p)",
+    "equivalent p>1/4"
+  ],
+  "assumptions": [
+    "Equal format rewards; exclude keyword and optional length bonus",
+    "Only class prior changes; class-conditionals fixed",
+    "Ideal expected correctness reward maximization, not a claim about finite GRPO dynamics"
+  ],
+  "source_default_target_false_ratio": 0.0,
+  "interpretation": "Failure-sensitive utility is not a calibrated probability. The paper sampling recipe requires an explicit configuration; it is not the default source setting.",
+  "our_920_sft_objective_is_different": true,
+  "training_executed": false
+}
