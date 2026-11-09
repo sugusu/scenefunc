@@ -1,0 +1,58 @@
+{
+  "status": "implemented_control_materials_not_a_trained_or_novel_method",
+  "scope": "Complete indoor scene generation remains the endpoint; current evidence is a small development trajectory corpus.",
+  "variables": {
+    "X": "Task, current actual scene, available knowledge, ordered views and tool receipts",
+    "D": "Public annotated or model-produced decision proposal, not private reasoning or execution truth",
+    "A": "Allowed action or termination proposal",
+    "m_i": "Whether unit i has a supervised D: 10/24; 8 sourced applications plus 2 termination statements"
+  },
+  "losses": {
+    "separate": "sum_i L_A(A_i|X_i) + sum_{i:m_i=1} L_D(D_i|X_i)",
+    "paired": "sum_{i:m_i=1} [L_A(A_i|X_i,D_i)+L_D(D_i|X_i)] + sum_{i:m_i=0} L_A(A_i|X_i)",
+    "coefficient_contract": "Each L is the weighted sum of original causal target-token NLLs. Repartitioning does not renormalize coefficients by new stage length or duplicate target mass.",
+    "both_keep_correct_scene_reason_binding": true,
+    "primary_estimand": "Effect of auxiliary reason prediction versus explicit reason-conditioned action training and their deployment policies, not a pure correct-pairing effect.",
+    "optional_mixed": "For annotated action states, 0.5*L_A(A|X,D)+0.5*L_A(A|X); all D and unannotated A targets retain original mass.",
+    "optional_estimand": "After actual training, fixed-parameter generated-D versus direct-action deployment on supported contexts; not measured here.",
+    "optional_limit": "Adds forward compute, does not remove teacher-to-generated D shift, and does not annotate the 14 missing-D states."
+  },
+  "ordinary_baselines": [
+    "Frozen base with identical task, available source knowledge and tools",
+    "Action-only supervised adaptation",
+    "Same-material auxiliary rationale supervision, informed by Distilling Step-by-Step",
+    "Declared-rule validation and bounded geometry/search using the same tools and budget"
+  ],
+  "evaluation_contract": [
+    "Primary execution uses the model's own generated proposal, never a teacher prefix.",
+    "Both arms share initial scene, assets, legal operations, source knowledge and task checks.",
+    "Refresh observations from each arm's own actual post-action state; do not splice archived downstream responses.",
+    "Report direct-action efficiency as well as any two-pass compute-matched diagnostic. Count failed generation and tool attempts.",
+    "An action change under D intervention does not by itself establish correct physical behavior or causal faithfulness.",
+    "Measure full trajectory and complete-room requirements, preservation, unknowns and cost; no claim from teacher-forced NLL alone."
+  ],
+  "data_views": {
+    "original_open_book": "All six cards are available; legitimate knowledge-assisted task, not unseen source text.",
+    "source_filtered": "Remove held-source cards from BOTH train and evaluation, use identical canonical serialization in both compared conditions. Does not certify removal of all source cues or pretraining knowledge.",
+    "source_and_template_grouped": "Group source families sharing exact supplied structural bounds/transforms. This proxy does not assert full geometric equivalence.",
+    "known_principle_new_space": "Requires independent application conditions; the five supervised principles currently each have one application family only.",
+    "development_only": "All current units have already been inspected. No new sealed test set is created by repartitioning."
+  },
+  "theory_limits": [
+    "Self-generated D from fixed X and independent sampling randomness provides no new environmental observation conditional on X; it can still change effective computation and actions.",
+    "Teacher D may contain target-action information. Lower conditional NLL is not evidence of improved free execution.",
+    "Both arms may learn the same knowledge from auxiliary supervision. Explicitly conditioning on D is not guaranteed to help and may amplify a mistaken proposal.",
+    "Unseen project names do not imply unseen geometry, unseen source principles or independent semantic supervision.",
+    "Multiple valid scenes may satisfy the task. Exact action imitation is a fitting check, not the final utility objective."
+  ],
+  "supersedes_stale_status_only": {
+    "previous_algorithm_file": "../20261110_decision_phase_study/algorithm_and_theory.json",
+    "trainer_accumulation": "Later CPU integration was validated in ../20261110_trainer_bridge/; old 'unexecuted' status is historical.",
+    "visual_material": "Explicit pixel recovery now supports 9/24 complete units; original missing-view counts are historical.",
+    "loss_definition": "This revision makes missing-D states explicit and corrects the interpretation of the actual intervention."
+  },
+  "new_training_authorized_by_this_artifact": false,
+  "gpu_requested": false,
+  "new_model_inference": 0,
+  "new_scene_generations": 0
+}

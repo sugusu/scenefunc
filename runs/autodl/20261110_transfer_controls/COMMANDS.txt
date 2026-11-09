@@ -1,0 +1,13 @@
+Run from the repository root. No command below invokes a model API or training.
+Outputs are immutable: for a rerun, replace the output destination with a new directory.
+
+python -B scripts/autodl/audit_conditioning_attribution.py --output runs/autodl/20261110_transfer_controls/conditioning
+python -B scripts/autodl/audit_project_knowledge_splits.py --output runs/autodl/20261110_transfer_controls/actual_v3
+python -B scripts/autodl/export_project_control.py --coverage runs/autodl/20261110_transfer_controls/actual_v3/coverage.json --fold 'source_and_structural_template:budapest_airbnp_position_collective_2015,paris_30m2_richard_guilbault_2015' --unit clothing_build_07 --output runs/autodl/20261110_transfer_controls/export_example
+
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/encode_transfer_control.py --material runs/autodl/20261110_transfer_controls/conditioning/optional_mixed_components.jsonl --equivalence runs/autodl/20261110_exact_view_recovery/pixel_v1/pixel_equivalence.json --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --scene-observation /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py --output runs/autodl/20261110_transfer_controls/conditioning/actual_encoding.json
+
+python -B scripts/autodl/verify_transfer_controls.py --root runs/autodl/20261110_transfer_controls --output runs/autodl/20261110_transfer_controls/verification.json
+
+Actual runs: attribution 0.21s; first source/template audit 3.01s; canonicalization audit approximately 7.8s process wall time; actual optional-material processor 34.23s, peak 828920KiB. These exclude source reading and review, and are not model efficiency claims.
+The example fold/unit is the first existing source-order unit, not selected by model outcome. All 11 folds were exercised on all 24 requests. Original image references remain archived; the explicit image recovery manifest is necessary for subsequent loading. No full training or model deployment command is claimed runnable until remaining material and authorized runtime are available.
