@@ -1,0 +1,9 @@
+Repository root is the working directory. No model or renderer is needed.
+
+python scripts/autodl/audit_executed_effects.py --pin 75fc783f86d4fea78714639e110fbe77476ee106 --output <NEW_DIRECTORY>
+
+python scripts/autodl/score_effect_predictions.py --transitions runs/autodl/20261110_executed_effects/actual_v2/transitions.jsonl --persistence --output <NEW_RESULT_JSON>
+
+Use --predictions <JSON> instead of --persistence for actual model outputs; each fixed decision ID maps to every declared requirement with boolean or null value. No missing IDs/requirements are silently dropped.
+
+actual is the first run (149.19 seconds including lazy Git downloads); actual_v2 fixes unparsed action guard labels only (1.61 seconds with cached records). It does not rerun scenes or alter measurements.

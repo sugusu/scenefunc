@@ -1,0 +1,40 @@
+{
+  "status": "evaluation_diagnostic_only_not_training_admitted",
+  "unit": "observed current scene and task, proposed action, measured pre/post requirement vector",
+  "input": [
+    "pre-action original request and observations",
+    "current requirement values and declared thresholds",
+    "candidate action"
+  ],
+  "targets": [
+    "per-requirement repair / damage / stable-pass / stable-fail; unknown masked",
+    "post-state vector and explicit coverage"
+  ],
+  "forbidden_input": [
+    "future feedback",
+    "post-state measurements",
+    "teacher-selected winning action",
+    "held-out reference layout"
+  ],
+  "mandatory_controls": [
+    "ordinary persistence prediction",
+    "ordinary user-rule action guard",
+    "existing exact geometric evaluation/search with identical information and budgets",
+    "same-knowledge untrained base"
+  ],
+  "mandatory_metrics": [
+    "exact whole requirement vector",
+    "repair precision/recall",
+    "damage precision/recall",
+    "unknown and abstention coverage",
+    "full trajectory requirements and total model/tool cost"
+  ],
+  "loss_family": "Ordinary masked multiclass CE on measured transitions; no new objective claimed and no optimization run",
+  "not_identifiable_here": [
+    "effects of unexecuted actions",
+    "long-horizon action value from a one-step comparison",
+    "whole-room functionality or expert preference from geometric proxies",
+    "cross-project generalization from one development family"
+  ],
+  "same_material_trial": "Keep reason/action pairing study separate. Effect prediction is a diagnostic of what those models learn; adding a new loss would be a separate ablation with matched data, not an explanation of pairing gains."
+}
