@@ -1,0 +1,108 @@
+{
+  "source_commit": "327292dbf5cb5d64315d65336beba66ea7529b52",
+  "matched_source_expression": [
+    {
+      "line": 184,
+      "expression": "F.cross_entropy(mask_outputs, labels, label_smoothing=args.label_smoothing_no_inference)"
+    }
+  ],
+  "epsilon_from_official_run_script": 0.1,
+  "synthetic_loss_calculations": [
+    {
+      "choices": 2,
+      "synthetic_predicted_correct_probability": 0.99,
+      "objectives": [
+        {
+          "epsilon": 0.0,
+          "loss": 0.010050335853501506,
+          "correct_class_target": 1.0,
+          "correct_logit_gradient": -0.010000000000000009,
+          "analytic_gradient_max_error": 5.204170427930421e-18,
+          "correct_class_still_argmax": true
+        },
+        {
+          "epsilon": 0.1,
+          "loss": 0.23980632836023097,
+          "correct_class_target": 0.9500000000000001,
+          "correct_logit_gradient": 0.039999999999999925,
+          "analytic_gradient_max_error": 6.938893903907228e-18,
+          "correct_class_still_argmax": true
+        }
+      ]
+    },
+    {
+      "choices": 4,
+      "synthetic_predicted_correct_probability": 0.99,
+      "objectives": [
+        {
+          "epsilon": 0.0,
+          "loss": 0.010050335853501725,
+          "correct_class_target": 1.0,
+          "correct_logit_gradient": -0.010000000000000231,
+          "analytic_gradient_max_error": 2.220446049250313e-16,
+          "correct_class_still_argmax": true
+        },
+        {
+          "epsilon": 0.1,
+          "loss": 0.4370802462637042,
+          "correct_class_target": 0.925,
+          "correct_logit_gradient": 0.06499999999999972,
+          "analytic_gradient_max_error": 2.220446049250313e-16,
+          "correct_class_still_argmax": true
+        }
+      ]
+    },
+    {
+      "choices": 5,
+      "synthetic_predicted_correct_probability": 0.99,
+      "objectives": [
+        {
+          "epsilon": 0.0,
+          "loss": 0.010050335853501725,
+          "correct_class_target": 1.0,
+          "correct_logit_gradient": -0.010000000000000231,
+          "analytic_gradient_max_error": 2.220446049250313e-16,
+          "correct_class_still_argmax": true
+        },
+        {
+          "epsilon": 0.1,
+          "loss": 0.48856347275386014,
+          "correct_class_target": 0.92,
+          "correct_logit_gradient": 0.06999999999999973,
+          "analytic_gradient_max_error": 2.220446049250313e-16,
+          "correct_class_still_argmax": true
+        }
+      ]
+    },
+    {
+      "choices": 8,
+      "synthetic_predicted_correct_probability": 0.99,
+      "objectives": [
+        {
+          "epsilon": 0.0,
+          "loss": 0.010050335853500847,
+          "correct_class_target": 1.0,
+          "correct_logit_gradient": -0.009999999999999454,
+          "analytic_gradient_max_error": 5.551115123125783e-16,
+          "correct_class_still_argmax": true
+        },
+        {
+          "epsilon": 0.1,
+          "loss": 0.5823904607826175,
+          "correct_class_target": 0.9125,
+          "correct_logit_gradient": 0.07750000000000024,
+          "analytic_gradient_max_error": 2.220446049250313e-16,
+          "correct_class_still_argmax": true
+        }
+      ]
+    }
+  ],
+  "interpretation": "Label smoothing reduces overconfident predictions toward its softened target; it does not force the wrong class or establish worse accuracy. Draft dependence is not identical to correct environment action.",
+  "three_dimensional_inference": "If only an untrusted draft changes, physical task truth does not. Evaluate actual requirement violations, not a reward for action flipping. New verified measurements must enter the observation explicitly.",
+  "real_data_used_for_loss_example": false,
+  "model_calls": 0,
+  "optimizer_updates": 0,
+  "new_method": false,
+  "new_scene_results": 0,
+  "torch_version": "2.7.0+cu128"
+}

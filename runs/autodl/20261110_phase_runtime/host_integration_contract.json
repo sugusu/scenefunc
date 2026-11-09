@@ -1,0 +1,44 @@
+{
+  "status": "policy_adapter_implemented_full_native_host_not_yet_connected",
+  "policy_module": "scripts/autodl/phase_policy.py",
+  "public_call": "PhasePolicy.generate(obs)",
+  "observation": {
+    "messages": "Fresh native request built from task, actual state, validated measurements and real execution history",
+    "images": "Five decoded current RGB views in the native ordered convention",
+    "state_sha256": "Canonical current native state hash verified by the host, not a model claim"
+  },
+  "preconditions": [
+    "Identical assets, permissions, task checks and per-condition budgets",
+    "Explicit local model and adapter loading with preserved values/dtype, no network fallback",
+    "Native host owns GPU locks and hard subprocess timeout",
+    "Source-consistent processor/image budget; model forced_eos disabled",
+    "Old native classifier must not reclassify the new EOS-only action target as an empty invalid completion"
+  ],
+  "after_policy": [
+    "Catch PhaseOutcomeError and persist its receipt as a failed attempt, not a successful termination or zero-cost retry.",
+    "For tool_proposed, recheck scene hash and build the current native action/schema contract. Do not let the policy's draft authorize permissions.",
+    "Record rejection or actual native tool receipt, checkpoint actual result, then refresh measurements and views before the next turn.",
+    "For stop_proposed, run actual task acceptance. Unsupported requirements remain unknown; EOS is not full-scene success.",
+    "Never insert generated_decision_for_audit_only into tool execution receipts. Policy-visible history must use the agreed request builder.",
+    "Maintain original independent scene/test denominators and do not splice saved downstream answers after changed actions."
+  ],
+  "accounting": {
+    "logical_scene_turns": "One policy decision, possibly comprising two generation attempts",
+    "actual_generation_attempts": "Sum stage attempts, including failed calls; do not reuse the old +=1 per scene turn accounting",
+    "tokens": "Sum both stages' actual input/output tokens; unknown partial output after backend death must be marked incomplete, not asserted zero",
+    "time": "Outer wall time includes loading, processing, inference, validation, execution and rendering; inner max_time is soft",
+    "direct_control": "Keep efficient direct S alongside any deliberately compute-matched two-stage S diagnostic"
+  },
+  "validated_now": [
+    "Real saved target token boundaries for 34 components",
+    "Four actual CPU multimodal phase prefixes for an archived complete-view unit",
+    "Budget and malformed-boundary test doubles, with no model or scene execution"
+  ],
+  "not_validated_now": [
+    "Free D/A generation from a trained policy",
+    "Native tool dispatch through this new adapter",
+    "Outer host exception/accounting integration",
+    "Complete room outcomes or generalization"
+  ],
+  "automatic_execution_authorized_by_file": false
+}

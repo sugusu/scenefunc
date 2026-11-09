@@ -1,0 +1,14 @@
+Run from the repository root. Outputs are immutable; use a fresh output directory for reruns.
+
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/check_phase_policy.py --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --scene-observation /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py --output runs/autodl/20261110_phase_runtime/actual_v3
+
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python scripts/autodl/check_rationale_confidence_objective.py --source-directory runs/autodl/20261110_phase_runtime/source_read --source-manifest runs/autodl/20261110_phase_runtime/pinto_source_manifest.json --output runs/autodl/20261110_phase_runtime/objective_implication.json
+
+The three PINTO source files were fetched as text from the commit-pinned URLs in pinto_source_manifest.json. Each is capped at 128KiB and SHA256-verified by the objective script. No external code entrypoint is imported or run. Source cache is ignored in Git.
+
+The real-policy adapter is a Python interface accepting an already-loaded model. This stage does not supply or claim a validated full native training/rollout CLI. Follow host_integration_contract.json before actual integration, including stage-level accounting and PhaseOutcomeError handling.
+
+actual_v1: initial target/host fixture run.
+actual_v2: rerun after rejecting forced EOS and invalid tool JSON.
+actual_v3: rerun after rejecting role-control tokens in D; this is the final source version.
+All three use a clearly marked archived-token test double. They are not independent model trials or generated scenes.
