@@ -1,0 +1,43 @@
+{
+  "reading_kind": "targeted methods and implementation; not a full new literature survey",
+  "sources": [
+    {
+      "title": "TRICE",
+      "url": "https://arxiv.org/html/2312.02179v1",
+      "read": "Abstract, introduction, Algorithm 1, section 2.1 through gradient subsampling, Appendix A; supplementary variance derivation only partially inspected",
+      "not_done": "Original experiments, complete tables, all appendices and rationale examples not replicated or fully re-audited",
+      "finding": "Marginal answer likelihood and rationale posterior; main derivation uses parameter-independent deterministic answer extraction. Nondeterministic extension does not create a validated 3D success oracle."
+    },
+    {
+      "title": "TRICE reference notebook",
+      "url": "https://github.com/google-research/cascades/blob/2b627dd6cbea422fcd437e202a4bd3be54ff1236/cascades/examples/notebooks/trice.ipynb",
+      "local": "source/trice.ipynb",
+      "read": "All 16 markdown/code cells, with AST examination of backend stubs and subsampling argument",
+      "not_done": "No notebook cells, LLM backend, JAX/TFP sampler or optimizer executed; stored notebook outputs not treated as new evidence",
+      "finding": "Four backend methods are NotImplementedError stubs. Cell 9 supplies log_softmax(nonnegative weights), whose exponential is not weights/sum(weights). Finite expectation discrepancy retained; no claim about authors original experiments."
+    },
+    {
+      "title": "TensorFlow Probability resample_systematic",
+      "url": "https://www.tensorflow.org/probability/api_docs/python/tfp/experimental/mcmc/resample_systematic",
+      "read": "Signature, log_probs contract, categorical marginal description",
+      "not_done": "Runtime sampler not executed",
+      "finding": "Input is normalized log probabilities; systematic draws have these marginals."
+    },
+    {
+      "title": "Local native host and phase encoder",
+      "paths": [
+        "scripts/autodl/phase_host.py",
+        "scripts/autodl/routed_multimodal.py",
+        "scripts/autodl/phase_deployment.py",
+        "scripts/autodl/scene_evidence.py"
+      ],
+      "read": "Observation projection, evidence appending, actual label boundary and available source-state blocks",
+      "finding": "v1 duplicated object/schema data; v2 relocates only verified structured blocks, preserves source extra fields and prose, and leaves unsupported state/task differences explicit."
+    }
+  ],
+  "source_hashes": {
+    "runs/autodl/20261110_observation_alignment/source/trice.ipynb": "af5093d6a3c53e2d16ad9c95c27bfdcc6e546c978d07959012d0553bbd36ec3e",
+    "scripts/autodl/phase_host.py": "3782ecc7e1e99de63d49603efd71d6a1fd7f6e3b776e2ca88eb32c29f9db5b47",
+    "scripts/autodl/scene_evidence.py": "1514c44d53722e2dc9e11ab51a9ada93e46442c87b771ec1404b0ddb8d5705a4"
+  }
+}

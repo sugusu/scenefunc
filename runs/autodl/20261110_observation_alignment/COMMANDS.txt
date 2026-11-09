@@ -1,0 +1,36 @@
+Working directory:
+/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+Host Python:
+/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python
+
+These commands perform material processing, cached observation formatting and
+finite probability calculations. No experiment model, paid API, optimizer step,
+native scene action or renderer is started. Use NEW output paths to reproduce;
+all commands refuse to overwrite existing results. PYTHONDONTWRITEBYTECODE=1,
+OPENBLAS_NUM_THREADS=1, OMP_NUM_THREADS=1, CUDA_VISIBLE_DEVICES='' were used for
+processor, failure and mathematical checks.
+
+1. Initial append-only envelope (previous continuation, retained):
+python scripts/autodl/materialize_host_evidence.py --source runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl --out runs/autodl/20261110_observation_alignment/material_v1
+
+2. Canonical single-copy structured inputs (actual):
+python scripts/autodl/materialize_host_evidence.py --source runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl --out runs/autodl/20261110_observation_alignment/material_v2 --format canonical_v2
+
+3. Actual processor run (host Python above):
+python scripts/autodl/encode_host_material.py --material runs/autodl/20261110_observation_alignment/material_v2/components.jsonl --equivalence runs/autodl/20261110_exact_view_recovery/pixel_v1/pixel_equivalence.json --processor /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only --scene-observation /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py --out runs/autodl/20261110_observation_alignment/encoding_v2
+The same encoder previously produced encoding_v1 from material_v1. Keep both.
+
+4. Cached observations, source-value recovery and conflict rejection:
+python scripts/autodl/check_host_observation_alignment.py --source runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl --material runs/autodl/20261110_observation_alignment/material_v2/components.jsonl --native-root runs/autodl/20261110_native_phase_host --out runs/autodl/20261110_observation_alignment/alignment_v2
+
+5. Existing host failure paths, new format (host Python):
+python scripts/autodl/check_phase_host_failures.py --work-base /root/autodl-tmp/agent_method_preparation_20261027/work --output runs/autodl/20261110_observation_alignment/failures_v2 --evidence-format canonical_v2
+
+6. Mathematical and reference-expression check (host Python):
+python scripts/autodl/check_latent_objective.py --notebook runs/autodl/20261110_observation_alignment/source/trice.ipynb --out runs/autodl/20261110_observation_alignment/theory_v1
+
+Native integration requires constructing NativeRoomPort(...,
+evidence_format='canonical_v2') explicitly for BOTH arms. The historical default
+remains append_v1. Full native SDK prompts and multi-stage generation were not
+run here. This file is NOT an authorization or complete command for training.

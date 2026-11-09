@@ -1,0 +1,119 @@
+{
+  "status": "host_failure",
+  "arm": "paired_phase_v3",
+  "rounds": [
+    {
+      "turn": 0,
+      "before_sha256": "e70fa138e451512ffc8351b30ece490124b38ba4270551897949a5e6ca19a6e1",
+      "context_sha256": "b8d0bdcb7f0f3c8bae5911b21a5a58b7cbb4978406aecded74a079593d11b084",
+      "policy": {
+        "arm": "paired_phase_v3",
+        "state_sha256": "e70fa138e451512ffc8351b30ece490124b38ba4270551897949a5e6ca19a6e1",
+        "stages": [
+          {
+            "stage": "decision",
+            "decision_visible_to_action": false,
+            "output_budget": 96,
+            "status": "returned",
+            "elapsed_seconds": 0.0037548858672380447,
+            "output_ids": [
+              151667,
+              50925,
+              46637,
+              13940,
+              17590,
+              12507,
+              11,
+              537,
+              264,
+              1614,
+              5480,
+              13,
+              151668
+            ],
+            "input_tokens": 1928,
+            "scope": "scripted token fixture; input count is text-only, NOT multimodal inference cost",
+            "classification": {
+              "kind": "decision",
+              "raw": "<think>Predetermined CPU integration fixture, not a model decision.</think>",
+              "framed_prefix": "<think>Predetermined CPU integration fixture, not a model decision.</think>\n",
+              "semantics_verified": false
+            }
+          },
+          {
+            "stage": "action",
+            "decision_visible_to_action": true,
+            "output_budget": 160,
+            "status": "returned",
+            "elapsed_seconds": 0.0035057812929153442,
+            "output_ids": [
+              151657,
+              4913,
+              16370,
+              788,
+              6257,
+              1335,
+              606,
+              3252,
+              712,
+              5483,
+              9207,
+              151658,
+              151645
+            ],
+            "input_tokens": 1928,
+            "scope": "scripted token fixture; input count is text-only, NOT multimodal inference cost",
+            "classification": {
+              "kind": "tool_proposed",
+              "raw": "<tool_call>{\"arguments\":{},\"name\":\"permitted\"}</tool_call><|im_end|>",
+              "call": {
+                "arguments": {},
+                "name": "permitted"
+              },
+              "native_validation_required": true
+            }
+          }
+        ],
+        "generation_attempts": 2,
+        "output_tokens": 26,
+        "input_tokens": 3856,
+        "tool_calls": [
+          {
+            "arguments": {},
+            "name": "permitted"
+          }
+        ],
+        "raw": "<tool_call>{\"arguments\":{},\"name\":\"permitted\"}</tool_call><|im_end|>",
+        "think": null,
+        "full_scene_success": null,
+        "paid_api_calls": 0,
+        "status": "tool_proposed",
+        "host_contract": "Validate actual state/schema before dispatch; EOS proposes termination, never room success.",
+        "elapsed_seconds": 0.007521150633692741,
+        "generated_decision_for_audit_only": "<think>Predetermined CPU integration fixture, not a model decision.</think>"
+      }
+    }
+  ],
+  "generation_attempts": 2,
+  "input_tokens": 3856,
+  "output_tokens": 26,
+  "tool_attempts": 1,
+  "native_calls": 0,
+  "accounting_complete": true,
+  "budget": {
+    "turns": 1,
+    "generation_attempts": 3,
+    "tool_attempts": 2,
+    "output_tokens": 512,
+    "wall_seconds": 60
+  },
+  "full_scene_success": null,
+  "initial_state_sha256": "e70fa138e451512ffc8351b30ece490124b38ba4270551897949a5e6ca19a6e1",
+  "elapsed_seconds": 0.02033216319978237,
+  "error": "SchemaError: 'not-a-JSON-schema-type' is not valid under any of the given schemas\n\nFailed validating 'anyOf' in metaschema['allOf'][3]['properties']['type']:\n    {'anyOf': [{'$ref': '#/$defs/simpleTypes'},\n               {'type': 'array',\n                'items': {'$ref': '#/$defs/simpleTypes'},\n                'minItems': 1,\n                'uniqueItems': True}]}\n\nOn schema['type']:\n    'not-a-JSON-schema-type'",
+  "final_state_sha256": "e70fa138e451512ffc8351b30ece490124b38ba4270551897949a5e6ca19a6e1",
+  "acceptance": {
+    "state_sha256": "e70fa138e451512ffc8351b30ece490124b38ba4270551897949a5e6ca19a6e1",
+    "full_scene_success": null
+  }
+}

@@ -32,7 +32,8 @@ async def run(args):
         env.step = forbidden
         env.observation = lambda: {'messages': [{'role': 'system', 'content': 'Host failure fixture'}], 'step_idx': 0}
         port = NativeRoomPort(env, allowed_tools=('permitted',), load_images=lambda _: loaded,
-                              acceptance=lambda _: {'state_sha256': digest(mutable), 'full_scene_success': None})
+                              acceptance=lambda _: {'state_sha256': digest(mutable), 'full_scene_success': None},
+                              evidence_format=args.evidence_format)
 
         class FailureBackend(ScriptedBackend):
             def generate(self, messages, images, **kw):
@@ -88,4 +89,5 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('--work-base', type=Path, required=True)
     ap.add_argument('--output', type=Path, required=True)
+    ap.add_argument('--evidence-format', choices=['append_v1', 'canonical_v2'], default='append_v1')
     asyncio.run(run(ap.parse_args()))

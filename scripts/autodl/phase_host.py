@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from phase_policy import PhaseOutcomeError
+from scene_evidence import append_host_evidence, canonical_host_evidence, visible_scene_state
 
 
 class ActionRejected(ValueError):
@@ -29,24 +30,6 @@ def canonical(value):
 
 def digest(value):
     return hashlib.sha256(canonical(value).encode()).hexdigest()
-
-
-def visible_scene_state(state):
-    """Expose every live object's basic facts, not checkpoint files/mesh hashes.
-
-    Boxes are LOCAL asset bounds; transforms are native world poses. Native
-    observation/memory still supplies stage-specific surfaces and room facts.
-    No object is omitted to fit a token budget; overflow remains an error.
-    """
-    source = state['objects']
-    objects = list(source.values()) if isinstance(source, dict) else source
-    fields = ('object_id', 'object_type', 'name', 'description', 'transform',
-              'bbox_min', 'bbox_max', 'immutable', 'scale_factor', 'placement_info')
-    projected = [{k: copy.deepcopy(o[k]) for k in fields if k in o} for o in objects]
-    if len({o['object_id'] for o in projected}) != len(projected):
-        raise ValueError('Duplicate live object identity')
-    return {'objects': projected, 'bounds_convention': 'local asset metres',
-            'pose_convention': 'native world transform; tool yaw follows native advertised units'}
 
 
 def write(path, value):
@@ -82,7 +65,7 @@ class NativeRoomPort:
     native permission checks and execution remain the original tool's job.
     acceptance must return measured evidence, not model claims.
     """
-    def __init__(self, env, *, allowed_tools, load_images, acceptance):
+    def __init__(self, env, *, allowed_tools, load_images, acceptance, evidence_format='append_v1'):
         if env.stage != 'furniture' or env.scene is None:
             raise ValueError('This adapter is qualified for the furniture stage only')
         self.env = env
@@ -91,6 +74,9 @@ class NativeRoomPort:
             raise ValueError('Explicit nonempty unique tool allowlist required')
         self.load_images = load_images
         self.acceptance = acceptance
+        if evidence_format not in ('append_v1', 'canonical_v2'):
+            raise ValueError('Unknown observation format')
+        self.evidence_format = evidence_format
 
     def schemas(self):
         schemas = {}
@@ -119,11 +105,9 @@ class NativeRoomPort:
         # Both arms get identical executable tools and real host feedback. D is
         # deliberately absent here. This is a NEW native deployment prompt;
         # it is not claimed token-identical to the archived 920 edit requests.
-        feedback = {'executable_tools': schemas, 'actual_scene_state': visible_scene_state(self.state()),
-                    'host_execution_history': history}
-        messages.append({'role': 'user', 'content': [
-            {'type': 'text', 'text': 'Current host evidence (not task completion):\n' +
-             canonical(feedback)}]})
+        formatter = canonical_host_evidence if self.evidence_format == 'canonical_v2' else append_host_evidence
+        messages = formatter(messages, schemas=schemas,
+                             before_state=self.state(), host_history=history)
         images = self.load_images(messages)
         if len(images) != 5:
             raise ValueError('Five current native views required')
