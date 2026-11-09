@@ -1,0 +1,57 @@
+{
+  "recorded_at": "2026-11-09T19:05:58.162558+00:00",
+  "entries": [
+    {
+      "title": "GALA: Geometry-Aware Language Model for Controllable Object Arrangement",
+      "url": "https://arxiv.org/html/2610.28280v1",
+      "read": "Abstract, introduction, §§2–3.4, §4.1 and the beginning of §4.2; targeted code ranges listed separately.",
+      "not_read": "Full experimental tables, all appendices and prompts; no model execution.",
+      "finding": "Learns numeric 6D insertion from point clouds and relation instructions using ordinary autoregressive likelihood; planner and instruction generator provide a generation loop. Its primary quantitative task is insertion, not professional activity-dependent whole-home preference.",
+      "method_implication": "Point-cloud grounding, geometry-conditioned placement and plan/place/verify are existing capabilities. Our hypothesis must concern when a design decision applies, beyond better pose prediction.",
+      "source_pin": "ab280a08ccffffe14f54e44132dc22d87873071e",
+      "code_read": {
+        "agent/pipeline.py": [
+          "640–1085"
+        ],
+        "agent/placement_validator.py": [
+          "87–152",
+          "322–361"
+        ],
+        "dataset_pipeline/generation/01_generate_training_data.py": [
+          "1–58"
+        ],
+        "utils/message.py": [
+          "396–410"
+        ],
+        "third_party/LLaMA-Factory/examples/train_full/qwen3-0_6b/3dish_separate_pointcloud_331k_train/base.yaml": [
+          "complete"
+        ]
+      }
+    },
+    {
+      "title": "Scene layout via conceptual design",
+      "url": "https://xccelephant.github.io/assets/pdf/scene-layout-via-conceptual-design.pdf",
+      "read": "§§3–6 (PDF pp. 3–6), related-work passage and beginning of §7; equation/algorithm text.",
+      "not_read": "All quantitative results, supplement, implementation, figures as images.",
+      "finding": "Hierarchical requirements become geometric constraints. ComputeIIS-derived modification plans are explained semantically and an LLM selects a conflict resolution; forced constraint removal supports termination.",
+      "method_implication": "Selecting a constraint or upstream decision to change after feedback already has direct scene-layout precedent. Termination by removing constraints must not be confused with retaining all user requirements."
+    },
+    {
+      "title": "Scene-Designer: Learning Design Intelligence for Agentic 3D Scene Generation",
+      "url": "https://arxiv.org/html/2610.23121v1",
+      "read": "This turn: targeted §3.1 paragraphs on trajectory consolidation, action-conditioned reasoning and perturbation supervision. Earlier wider reads are not claimed again.",
+      "not_read": "No new full-paper or full-repository re-read, no native execution.",
+      "finding": "The published method already uses observation–reasoning–action supervision; reasoning is constructed with the retained target action available.",
+      "method_implication": "Legitimate teacher supervision is not test-time evidence. Merely adding a reason before a tool action is insufficient differentiation."
+    },
+    {
+      "title": "DesignAgent3D: Interactive 3D Scene Editing via Designer-like Multimodal Reasoning",
+      "url": "https://arxiv.org/html/2608.21438v1",
+      "read": "Abstract, introduction and related-work overview.",
+      "not_read": "Full method, experiments, code and publication status verification.",
+      "finding": "The stated task is interactive, geometry-preserving appearance editing of reconstructed scenes, using clarification and object grounding.",
+      "method_implication": "Relevant for intent grounding, but this overview does not establish it as a direct trained furniture-layout decision baseline."
+    }
+  ],
+  "scope": "Targeted primary-source review, not exhaustive novelty clearance; public Git metadata/code downloads are not paid model calls."
+}
