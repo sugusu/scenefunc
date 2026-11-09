@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-10",
+  "scope": "Targeted official-code and local-evidence reading; not a new exhaustive literature survey",
+  "official_repository": "https://github.com/ZJU-OmniAI/Scene-Designer",
+  "commit": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "files": [
+    {
+      "path": "trajectory_compression/engine.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/trajectory_compression/engine.py",
+      "sha256": "9d4d2a264c72c7a990c167e16b7f704824a5ffc0bc74f2f54ea13742d5d016b6",
+      "lines": 164,
+      "bytes": 11537,
+      "read_line_ranges": [
+        "1-164"
+      ],
+      "coverage": "complete file",
+      "execution": "read only; not instantiated",
+      "finding": "Already checks recorded state continuity, action math, stale observations, protected boundaries and whole stage endpoints. Requires four stages. No independent whole-room quality guarantee."
+    },
+    {
+      "path": "trajectory_compression/candidates.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/trajectory_compression/candidates.py",
+      "sha256": "82f3f703d8e9c19822cb86d1b39b877c53d9b90ea38916d77027b580d8eabb3a",
+      "lines": 135,
+      "bytes": 7136,
+      "read_line_ranges": [
+        "1-135"
+      ],
+      "coverage": "complete file",
+      "execution": "candidate extraction actually executed on 72 archived decisions",
+      "finding": "Only bounded same-object correction intervals; protects first/last mutations and context barriers. Candidate detection does not establish quality."
+    },
+    {
+      "path": "trajectory_compression/quality.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/trajectory_compression/quality.py",
+      "sha256": "5e285b67db88b1a16119fa9fb8984015383847da15e698426406bc7757004b4d",
+      "lines": 121,
+      "bytes": 8485,
+      "read_line_ranges": [
+        "1-121"
+      ],
+      "coverage": "complete file",
+      "execution": "read only; full-scene quality audit not run",
+      "finding": "Checks file, transcript, numeric feedback and deletion dependencies. Its scope explicitly excludes full physics and visual quality."
+    },
+    {
+      "path": "trajectory_compression/offline_check.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/trajectory_compression/offline_check.py",
+      "sha256": "5724e07375d84bcbedc7bd62a7f3c0a643eb31e9524bb6b6699859240c5d5482",
+      "lines": 251,
+      "bytes": 15073,
+      "read_line_ranges": [
+        "1-251"
+      ],
+      "coverage": "complete file across targeted reads",
+      "execution": "check_segment actually executed for 4 bounded deletion trials",
+      "finding": "Pure arithmetic helper supports limited absolute operations, requires matching receipts and flags NO_MOVEMENT/stale retained inputs. Default pose tolerances were retained."
+    },
+    {
+      "path": "trajectory_compression/review.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/trajectory_compression/review.py",
+      "sha256": "d1c8dc1361fe9d1d4e21e603d4f032ef8fa00b8609059771f6746be0db4785dd",
+      "lines": 229,
+      "bytes": 13707,
+      "read_line_ranges": [
+        "1-65",
+        "145-229"
+      ],
+      "coverage": "partial; middle prompt not fully read",
+      "execution": "not imported; no model reviewer call",
+      "finding": "A model may propose deletions only inside the allowed set; final arithmetic acceptance is separate. No reviewer instantiated here."
+    },
+    {
+      "path": "tools/rewrite_cot_gpt.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/tools/rewrite_cot_gpt.py",
+      "sha256": "16b95fb94606fd66bfb29aa9f1aac2fb09d89a289054ff95594b307e611d5d03",
+      "lines": 962,
+      "bytes": 63618,
+      "read_line_ranges": [
+        "1-220",
+        "390-475",
+        "539-709"
+      ],
+      "coverage": "targeted reading; some long output truncated, not all 962 lines read",
+      "execution": "not executed",
+      "finding": "Fixed action is given for supervised rationale annotation. Current evidence, intent and measured effect are distinguished; faithful rationale is not proof that target action is useful."
+    },
+    {
+      "path": "src/train_sft.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/src/train_sft.py",
+      "sha256": "e78178d624d430ea492934f3579329f22451f30dc357d3638b85512db018f32d",
+      "lines": 251,
+      "bytes": 11319,
+      "read_line_ranges": [
+        "1-245"
+      ],
+      "coverage": "partial; final entry lines not reviewed",
+      "execution": "not executed",
+      "finding": "Ordinary token cross-entropy via Trainer, optional LoRA. This entry does not supply a novel reason-action pairing loss."
+    },
+    {
+      "path": "src/grpo_objective.py",
+      "url": "https://raw.githubusercontent.com/ZJU-OmniAI/Scene-Designer/a0565e50ed7d32c0e09132b9311c0b9b91165405/src/grpo_objective.py",
+      "sha256": "ceea6b9832276709425b33051bc2a225a11bb146a78dc61c63db78d0ea6128de",
+      "lines": 21,
+      "bytes": 1106,
+      "read_line_ranges": [
+        "1-21"
+      ],
+      "coverage": "complete file",
+      "execution": "not executed",
+      "finding": "Clipped policy surrogate with scalar advantage and separate reference KL. Not a justification that self-generated reasons improve actions."
+    }
+  ],
+  "not_done": [
+    "Official full four-stage compression",
+    "Upstream model reviewer or rationale annotation",
+    "New SFT/GRPO training",
+    "New full-room generation",
+    "Independent human quality judgment"
+  ],
+  "source_distribution": "Raw upstream source remains an ignored local cache. No root license was established from the retrieved tree. Pinned URLs, hashes and small fetch script are published for reproduction.",
+  "local_scope": "All 24 matched corpus units retained; all eight rationale targets and referenced outcome records inspected; all 72 saved decisions included in helper extraction.",
+  "prior_nearest_neighbor_reading": "../20261110_supervision_horizon/reading_ledger.json"
+}

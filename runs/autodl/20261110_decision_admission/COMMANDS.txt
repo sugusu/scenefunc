@@ -1,0 +1,12 @@
+Run from the repository root. Python stdlib only; no model API, weights or native scene execution.
+
+# Verify/recover the pinned upstream source cache (8 small files).
+python -B scripts/autodl/fetch_decision_audit_sources.py --index runs/autodl/20261110_decision_admission/upstream_sources.json --output runs/autodl/20261110_decision_admission/source_read
+
+# Repeat in a new output directory; existing run folders are not overwritten.
+python -B scripts/autodl/audit_decision_admission.py --output runs/autodl/20261110_decision_admission/reproduction --upstream-source runs/autodl/20261110_decision_admission/source_read --upstream-index runs/autodl/20261110_decision_admission/upstream_sources.json
+
+# Validate the saved v3 evidence (actually run).
+python -B scripts/autodl/verify_decision_admission.py --audit runs/autodl/20261110_decision_admission/actual_v3 --output runs/autodl/20261110_decision_admission/validation.json
+
+Actual v1/v2/v3 audit commands used the corresponding output directories above. v3 CPU wall time: 0.790 seconds, excluding source acquisition and reading. Fetch verification during delivery reused all 8 local cached files; network fresh-download path was not re-tested in that call.

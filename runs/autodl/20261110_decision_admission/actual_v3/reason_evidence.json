@@ -1,0 +1,335 @@
+[
+  {
+    "id": "clothing_build_07",
+    "family_id": "budapest_airbnp_position_collective_2015",
+    "source_decision_id": "airbnp_open_clothing_access_for_short_stays",
+    "source_knowledge": {
+      "condition": "为两位旅客短期住宿设计的紧凑布达佩斯公寓，衣物需要方便、快速取用。",
+      "decision_id": "airbnp_open_clothing_access_for_short_stays",
+      "principle": "在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。"
+    },
+    "input_path": "runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/clothing_build_07.json",
+    "episode_path": "runs/920/P920-NATIVESTOP-v1_20261108T054754Z/corpus/clothing_build_07/decision_action/episode.json",
+    "decision": {
+      "current_condition": "两位短住者已具有主要生活家具，还需常用衣物取放。",
+      "principle_applicability": {
+        "source_decision_id": "airbnp_open_clothing_access_for_short_stays",
+        "sourced_principle": "在两人短期住宿的条件下，开放挂杆能方便快速取用经常使用的衣物，不必将所有衣物收进封闭柜内。"
+      },
+      "proposed_decision": {
+        "description": "增加开放挂杆；不替换已有生活家具。",
+        "object_or_asset_references": "catalog_construct_open_clothes_rail"
+      },
+      "expected_cost_and_unknowns": "需检查挂杆两侧取用与通行；承重、容量和封闭储物偏好未知。"
+    },
+    "calls": [
+      {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_construct_open_clothes_rail",
+          "x": 2.4490002368452943,
+          "y": -0.0006494827931256097,
+          "yaw": 0.03140364494624525
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-ABUILD-v1_20261105T165434Z/SUMMARY.json",
+      "sha256": "d5f4b2e6d61f0650e0f9e7c85a62bbc7ba1c66e7a511e645db5d681e34f9aa32",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  },
+  {
+    "id": "storage_build_07",
+    "family_id": "paris_30m2_richard_guilbault_2015",
+    "source_decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+    "source_knowledge": {
+      "condition": "年轻伴侣的约30平方米住宅原先分为四个昏暗房间，改造同时追求明亮起居、私密空间与收纳。",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "principle": "在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。"
+    },
+    "input_path": "runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/storage_build_07.json",
+    "episode_path": "runs/920/P920-NATIVESTOP-v1_20261108T054754Z/corpus/storage_build_07/decision_action/episode.json",
+    "decision": {
+      "current_condition": "主要生活家具已放入紧凑房间，还需补充收纳并保留连续起居空间。",
+      "principle_applicability": {
+        "source_decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+        "sourced_principle": "在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。"
+      },
+      "proposed_decision": {
+        "description": "开始将新增柜体沿边界集中组织；后续柜体属于同一重建序列。",
+        "object_or_asset_references": "catalog_construct_storage_a"
+      },
+      "expected_cost_and_unknowns": "集中储物仍可能占用窗前或柜前空间；完整集成墙的技术功能未复现。"
+    },
+    "calls": [
+      {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_construct_storage_a",
+          "x": -2.7,
+          "y": -1.85,
+          "yaw": 270
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-SBUILD-v1_20261105T143623Z/SUMMARY.json",
+      "sha256": "7be4f2dfd9b369e73e2b22df666e21bb62178730e2206bb6652ad7fbc2f9f70c",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  },
+  {
+    "id": "paper_table_modes_build_08",
+    "family_id": "milan_paper_paper_associates",
+    "source_decision_id": "paper_table_mobility_for_overnight_guest",
+    "source_knowledge": {
+      "condition": "同一生活区需吃饭、聚会并偶尔容纳留宿者。",
+      "decision_id": "paper_table_mobility_for_overnight_guest",
+      "principle": "同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。"
+    },
+    "input_path": "runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/paper_table_modes_build_08.json",
+    "episode_path": "runs/920/P920-NATIVESTOP-v1_20261108T054754Z/corpus/paper_table_modes_build_08/decision_action/episode.json",
+    "decision": {
+      "current_condition": "当前活动从日常用餐转为需要让出访客预留区，仍需保留餐桌。",
+      "principle_applicability": {
+        "source_decision_id": "paper_table_mobility_for_overnight_guest",
+        "sourced_principle": "同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。"
+      },
+      "proposed_decision": {
+        "description": "将现有桌移到临时停放位置，保留同一实例。",
+        "object_or_asset_references": "mobile_table_0"
+      },
+      "expected_cost_and_unknowns": "日常用餐布置暂时改变；需要检查停放处与厨房、通路冲突，客床展开未验证。"
+    },
+    "calls": [
+      {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "mobile_table_0",
+          "x": 0.75,
+          "y": -1.55,
+          "yaw": 0
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-PAPER-v2_20261105T182424Z/SUMMARY.json",
+      "sha256": "2121353bfbbcd7ed0dd3b91970ba9e55007bd7f4a4529a451ee3f4735985e228",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  },
+  {
+    "id": "paper_table_modes_build_09",
+    "family_id": "milan_paper_paper_associates",
+    "source_decision_id": "paper_table_mobility_for_overnight_guest",
+    "source_knowledge": {
+      "condition": "同一生活区需吃饭、聚会并偶尔容纳留宿者。",
+      "decision_id": "paper_table_mobility_for_overnight_guest",
+      "principle": "同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。"
+    },
+    "input_path": "runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/paper_table_modes_build_09.json",
+    "episode_path": "runs/920/P920-NATIVESTOP-v1_20261108T054754Z/corpus/paper_table_modes_build_09/decision_action/episode.json",
+    "decision": {
+      "current_condition": "当前活动已从访客预留转回日常用餐。",
+      "principle_applicability": {
+        "source_decision_id": "paper_table_mobility_for_overnight_guest",
+        "sourced_principle": "同一餐厨起居区需要在日常用餐、待客和偶尔留宿之间转换时，可移动的桌子便于按活动腾出空间。"
+      },
+      "proposed_decision": {
+        "description": "移动同一桌实例恢复日常桌面位置；随后仍需归位坐凳。活动改变后，不将腾空访客区域作为永久目标。",
+        "object_or_asset_references": "mobile_table_0"
+      },
+      "expected_cost_and_unknowns": "恢复餐桌将占用访客预留区；仍需归位坐凳并检查两餐位及移动路径。沙发床展开和真实睡眠尚未知，不能仅凭端点位置承诺完整物理搬运可行。"
+    },
+    "calls": [
+      {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "mobile_table_0",
+          "x": -1.8,
+          "y": 0,
+          "yaw": 0
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-PAPER-v2_20261105T182424Z/SUMMARY.json",
+      "sha256": "2121353bfbbcd7ed0dd3b91970ba9e55007bd7f4a4529a451ee3f4735985e228",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  },
+  {
+    "id": "storage_edit_01",
+    "family_id": "paris_30m2_richard_guilbault_2015",
+    "source_decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+    "source_knowledge": {
+      "condition": "年轻伴侣的约30平方米住宅原先分为四个昏暗房间，改造同时追求明亮起居、私密空间与收纳。",
+      "decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+      "principle": "在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。"
+    },
+    "input_path": "runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/storage_edit_01.json",
+    "episode_path": "runs/920/P920-NATIVESTOP-v1_20261108T054754Z/corpus/storage_edit_01/decision_action/episode.json",
+    "decision": {
+      "current_condition": "已有柜体需要保留，当前要求连续起居、柜前及窗前接近。",
+      "principle_applicability": {
+        "source_decision_id": "guilbault_consolidated_storage_for_continuous_living_space",
+        "sourced_principle": "在紧凑住宅中集中组织储物与技术需求，可以为连续的起居空间释放位置。"
+      },
+      "proposed_decision": {
+        "description": "选择移动已有柜体 recon_storage_a_0，作为集中收纳布局的首个重建动作；这不是用户指定的柜体选择。",
+        "object_or_asset_references": "recon_storage_a_0"
+      },
+      "expected_cost_and_unknowns": "须逐步检查其他柜体、餐位、窗前和厨卫通行；不预先承诺全屋改善。"
+    },
+    "calls": [
+      {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_storage_a_0",
+          "x": -2.7,
+          "y": -1.85,
+          "yaw": 270
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-STORAGE-v2_20261105T062810Z/SUMMARY.json",
+      "sha256": "b391fb70fc893951baf9445c0b931a8ebee4d416a3ab97d4bf301e7d75576152",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  },
+  {
+    "id": "waterloo_edit_02",
+    "family_id": "singapore_waterloo_street_dess_chew",
+    "source_decision_id": "waterloo_separable_tables_for_changing_activities",
+    "source_knowledge": {
+      "condition": "住户重视可变配置，不希望固定在单一家具布置中。",
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "principle": "住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。"
+    },
+    "input_path": "runs/920/P920-MATCHEDINPUT-v1_20261108T055328Z/corpus/waterloo_edit_02/inputs.json",
+    "episode_path": "runs/920/P920-MATCHEDINPUT-v1_20261108T055328Z/corpus/waterloo_edit_02/decision_action/episode.json",
+    "decision": {
+      "current_condition": "当前需要共享活动工作面；已有两张桌可以重新组合。",
+      "principle_applicability": {
+        "source_decision_id": "waterloo_separable_tables_for_changing_activities",
+        "sourced_principle": "住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。"
+      },
+      "proposed_decision": {
+        "description": "移动第二张桌，形成共享桌面的重建方案，保留原桌身份。",
+        "object_or_asset_references": "recon_table_b_0"
+      },
+      "expected_cost_and_unknowns": "独立工作位模式暂时改变；须检查坐席和通路，移动阻力、拼缝及稳定性未知。"
+    },
+    "calls": [
+      {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 0.12,
+          "y": 0.5,
+          "yaw": 0
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-WATERLOO-v1_20261105T074801Z/SUMMARY.json",
+      "sha256": "e07e6c81878883d493358e397d3ba6ed4b45beb537a07d01837ea6d7f5342f35",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  },
+  {
+    "id": "waterloo_edit_03",
+    "family_id": "singapore_waterloo_street_dess_chew",
+    "source_decision_id": "waterloo_separable_tables_for_changing_activities",
+    "source_knowledge": {
+      "condition": "住户重视可变配置，不希望固定在单一家具布置中。",
+      "decision_id": "waterloo_separable_tables_for_changing_activities",
+      "principle": "住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。"
+    },
+    "input_path": "runs/920/P920-MATCHEDINPUT-v1_20261108T055328Z/corpus/waterloo_edit_03/inputs.json",
+    "episode_path": "runs/920/P920-MATCHEDINPUT-v1_20261108T055328Z/corpus/waterloo_edit_03/decision_action/episode.json",
+    "decision": {
+      "current_condition": "共享待客阶段结束，当前需要恢复两人同时独立工作。",
+      "principle_applicability": {
+        "source_decision_id": "waterloo_separable_tables_for_changing_activities",
+        "sourced_principle": "住户需要灵活改变家具配置时，两张可分可合的桌子允许空间随不同活动重新组织。"
+      },
+      "proposed_decision": {
+        "description": "将第二张桌从组合布局移开，保留桌实例；随后调整第二把椅子，恢复独立工作模式。可分可合的经验在这里支持分开。",
+        "object_or_asset_references": "recon_table_b_0"
+      },
+      "expected_cost_and_unknowns": "分开桌面将暂时失去共享围坐布局；还需调整第二把椅子并检查两人工位和通路。桌宽扰动、拼缝、轮载与实际搬运未知。"
+    },
+    "calls": [
+      {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "recon_table_b_0",
+          "x": 1.1,
+          "y": 0.5,
+          "yaw": 0
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-WATERLOO-v1_20261105T074801Z/SUMMARY.json",
+      "sha256": "e07e6c81878883d493358e397d3ba6ed4b45beb537a07d01837ea6d7f5342f35",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  },
+  {
+    "id": "lifecycle_01",
+    "family_id": "paris_michelet_nomadic",
+    "source_decision_id": "michelet_adapt_family_lifecycle",
+    "source_knowledge": {
+      "condition": "家庭成员长大、居住安排会变化。",
+      "decision_id": "michelet_adapt_family_lifecycle",
+      "principle": "住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。"
+    },
+    "input_path": "runs/920/P920-EXECINPUT-v1_20261107T075321Z/corpus_phase/inputs/lifecycle_01.json",
+    "episode_path": "runs/920/P920-NATIVESTOP-v1_20261108T054754Z/corpus/lifecycle_01/decision_action/episode.json",
+    "decision": {
+      "current_condition": "研究任务已明确不再需要原儿童床，同时需要新的办公用途。",
+      "principle_applicability": {
+        "source_decision_id": "michelet_adapt_family_lifecycle",
+        "sourced_principle": "住户生活阶段变化后，可将原卧室调整为新的用途；Michelet报道原长子卧室后来改为办公室。"
+      },
+      "proposed_decision": {
+        "description": "移除该床以开始用途转换，保留仍需的主床和其他房间功能。",
+        "object_or_asset_references": "former_child_bed_0"
+      },
+      "expected_cost_and_unknowns": "损失该床实例和原睡眠位置；仅在该睡眠需求已解除时适用，搬运处置及办公舒适度未知。"
+    },
+    "calls": [
+      {
+        "name": "remove_furniture_tool",
+        "arguments": {
+          "object_id": "former_child_bed_0"
+        }
+      }
+    ],
+    "authorship": "Only the sourced principle is attributed; state application, plan and costs are researcher annotations",
+    "evidence_for_action_quality": {
+      "path": "runs/920/P920-LIFECYCLE-v1_20261105T221829Z/CONSEQUENCES.json",
+      "sha256": "1037af9231591d5ed736d4508f5e12e23695a7417c05d774140358d37edb4932",
+      "scope": "Record/episode consequences, not proof this one action caused every reported improvement."
+    },
+    "reason_is_not_a_positive_quality_label": true
+  }
+]
