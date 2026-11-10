@@ -1,0 +1,148 @@
+"""Report measured feedback information controls; no learned scene result."""
+import argparse
+import csv
+import hashlib
+import html
+import json
+from pathlib import Path
+import zipfile
+
+
+THEORY='''反馈中的动作回显、执行结果和监督位置：算法与理论边界
+
+1. 继续研究的任务
+输出仍是从原始文字生成完整、可编辑的室内三维场景。候选主张是：来源设计知识与实际执行证据能否帮助策略作更合适的设计决定，超过普通计划、反馈和搜索。
+本轮只实现这项研究必须有的信息对照和监督位置；不把它们包装成新的优化算法。
+现有19轮策略记录来自一个未完整完成的卧室开发运行，不是19个独立房间。35个工具结果与4次工具角色模型请求也不是新增成功训练样本。
+
+2. 本轮实际发现
+35份反馈都重复对应工具名；19个调用的反馈含有非空、非布尔、非零的原参数叶子完全相同值，共33个原参数叶子匹配。
+这证明某些字段重叠，不能证明模型复制了答案、复制导致收益，或所有反馈只是动作回显。
+工具调用本体包含1657个token；其余2467个token包含原生成理由、文字及结束边界。不能把4124个token的全回复监督称作纯工具参数学习。
+95份教师条件输入实际经过CPU图像编码及原库mRoPE位置函数。没有teacher logits、模型forward或训练。
+一个重要修正：教师重做的是动作前的同一决定。事后报告不能被写成已经替换原始视图/记忆的当前场景。新版共同提示明确了这个时间参照；初版保留。
+
+3. 五个信息条件已实现
+X包含原任务、原动作前记忆及同一批真实图像；y_beta是原策略实际产生的整段回复，A_beta是从中解析出的已提交动作列表，F_beta是相应真实返回记录。
+所有条件对相同y_beta和相同因果token位置评分，不再采样新回复，也不把旧回复续接到改变过的场景。
+C0：教师只读X；CG：增加普通重新检查提示；CE：只增加A_beta；CF：只增加F_beta；CEF：同时增加A_beta、F_beta。
+CE不提供正确替代动作，包含原策略自己的动作及其错误。它是动作回显诊断；不是部署时可获得的正确答案。
+CG不宣称已知错误或成功，只要求依据原任务重新考虑。否则会额外引入错误类别标签。
+非空上下文使用同一个包装与相同角色位置；C0没有额外消息。长度仍不同，实际输入token和编码成本必须分别记录。
+执行报告中的success是原生标志；4份历史physics报告未得到独立几何确认；墙面部分失败仍保留，不当作布局不可行证明。
+原停止轮没有后续反馈，其presence mask在五组中均为0。反馈存在mask不能改称teacher正确mask。
+
+4. 普通的固定前缀蒸馏目标
+冻结教师phi，固定本轮采集分布beta，原回复前缀为u_j=y_beta,<j。令q_c,j=pi_phi(.|X,C_c,u_j)，p_theta,j=pi_theta(.|X,u_j)。
+对共同mask m_j，普通目标是
+ L_c(theta;beta,phi)=E_beta[sum_j m_j KL(p_theta,j || stopgrad q_c,j)/sum_j m_j]。
+空mask不形成优化样本。当前只是离线缓存前缀；没有刷新为当前student的on-policy采样。
+把输入上下文固定后求梯度，不等于对包含历史/采样分布导数的整个在线期望求无偏梯度。
+q_CF与q_CE的差异只能先作诊断。log q_CF-log q_CE本身不是概率分布，更不是正确性分数；若用基分布加权、归一化为PMI式目标，是已有方法范畴，不能另起名字宣称新损失。
+详细反馈比CG有效，仍可能由动作/状态回显解释；比CE有效，也不自动证明空间推理，因为上下文长度、表述及字段相互作用仍不同。
+初始KL或目标动作似然不能给教师优劣下结论。需要执行其实际建议，在原始要求、几何、保留项和成本上比较。
+
+5. 监督位置与错误归因分开
+已为35个调用建立半开token区间，包括原tool delimiters；逐调用mask只选择对应区间，原完整回复仍是因果输入。
+没有将任何调用自动标为错误原因。后面发现的问题可以是先前决策的后果；一个返回失败的服务请求也可能是基础设施错误。
+HinT-SD已经做了全轨迹事后选择与选择性蒸馏；其当前代码在选中step中保留整段completion token。我们的工具调用细分不是它的完整复现，也不是一个新的归因器。
+原生批次在模型生成结束后才逐调用执行。后续调用token只条件于之前生成的token，不曾读取批次内前几个调用的返回值。不能给候选模型这种额外中途反馈，却仍称同一原生流程。
+调用mask不含D/文字/EOS；若以后使用它训练，要单独声明结束符监督和各原始系数，不能以减少token数量冒充等目标实验。
+
+6. 标准条件KL推导：特权越多不保证越好
+以下是有限词表、严格正概率、固定历史h和特权分布mu(z|h)下的普通恒等式，不是新定理或三维泛化保证。
+记q_z(a)=q_phi(a|h,z)，bar_q(a)=E_z q_z(a)。对任何公共student分布p：
+ E_z KL(q_z||p)=E_z KL(q_z||bar_q)+KL(bar_q||p)。
+证明：在log(q_z/p)中加入并减去log bar_q，再对z求期望；第二项利用E_z q_z=bar_q。
+第一项可解释为构造的teacher联合分布mu(z)q_z(a)中的I_Q(A;Z|h)，不是真实任务正确标签的条件互信息。
+反向KL则令g(a)=exp E_z log q_z(a)，Z_g=sum_a g(a)，q_geo=g/Z_g，有
+ E_z KL(p||q_z)=KL(p||q_geo)-log Z_g，且Jensen给出Z_g<=1。
+因此两种KL分别趋向不同teacher聚合；它们不保证复制每个特权状态下的动作，更不保证实际场景质量。若z完全由h决定，此处也没有隐藏状态歧义可推断。
+动作回显若只让teacher高概率复述A_beta，可能主要巩固采集策略自己的行为。不能从降低蒸馏损失推出新的设计知识。
+
+7. 实际源码阻止了一个错误推论
+四个add返回位置与请求略有差异，但原placement_noise并不是每次重新抽取独立全局噪声；它由输入变换计算固定seed，再创建局部RNG。
+用原natural_profile常数和未修改原函数，4/4个保存姿态在1e-12分量误差内复现。没有调参数、移动场景物体或运行完整add工具。
+因此不能把这些差异当作student无法观察的独立随机未来信息；也不能据此宣布所有隐藏状态都可恢复或物理检查正确。
+teacher的no_grad只隔离梯度，不等于关闭dropout、冻结adapter选择或保证tool角色不受训练影响。源码阅读没有替代实际PEFT角色隔离验证。
+
+8. 来源方法与新主张的区别
+SDPO已有反馈教师；HinT-SD已有全轨迹目标选择；Fin-SD已有通用提示对照；What Should a Self-Teacher See已有语义抽象和answer-only对照；Purified OPSD已有reference-only去捷径目标。
+因此“只蒸馏有问题步骤”“换个教师上下文”“作log-ratio差分”均不能直接当作新的三维算法。
+候选贡献仍须落到可执行三维设计：来源原则在具体几何中是否适用，真实执行证据是否使策略选择更合适的上游决定，并在完整生成中超过同信息、同操作和同预算的普通方法。
+若回显/普通提示已解释收益，收紧主张；若详细执行证据仍带来跨房间收益，再研究如何学习与使用它。两种情况都不靠丢弃失败或将unknown当成功得分。
+
+9. 下一轮模型工作不能跳过的证据
+先在相同冻结teacher、相同原生观察和同一父状态检验实际提议，而不是直接拿这些缓存跑训练并解释为贡献。
+教师内容比较先固定监督位置；监督位置比较再固定教师内容。混在一起无法区分哪里产生收益。
+教师应在各上下文中使用相同eval/随机层设置；相同的采集/teacher生命周期、候选资产、工具与执行后检查。声明未验证类别/材质和物理项。
+完整正场景仍未取得；当前卧室和已有24个开发单元都不能当独立测试集。学习后必须自由生成新完整场景，不能只报缓存token拟合。
+95份条件若全存FP32全词表teacher logits，算术体积为12531681280字节，未含模型、激活或其他缓存。应流式使用，不能把这个算术值叫训练显存测量或直接向数据盘写满。
+本轮不新增模型、训练、计费资源或整场成功；资源需求须在实际实验规模与实现明确后再判断。研究目标仍保持进行中。
+'''
+
+
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def dump(p,x):p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+
+
+def main(repo,out):
+    read=lambda name:json.loads((out/name).read_text())
+    audit=read('audit_v2/result.json');inputs=read('multimodal_v2/result.json');poses=read('pose_reports_v1/result.json')
+    assert audit['source_calls_and_outputs']==35 and inputs['actual_processor_encodes']==95 and poses['total']==4
+    (out/'algorithm_and_theory.txt').write_text(THEORY)
+    contract=dict(task='Text-to-complete-editable-indoor-scene generation',
+        candidate_question='Does source-design/actual-execution evidence add utility beyond the same ordinary plan, feedback and search?',
+        new_result='Five report-information contexts and exact per-call ownership; no automatic blame or new learning algorithm',
+        fixed_source='One archived incomplete bedroom;19 policy turns,35 outputs,55 input-image references',
+        implemented_controls=audit['conditions'],
+        observed_report_overlap=dict(calls_with_exact_nontrivial_argument_leaf_overlap=19,argument_leaves=33,copying_proven=False),
+        first_comparison='Hold teacher checkpoint, collected prefix, response and loss positions fixed while varying teacher-only information',
+        second_comparison='Hold teacher information fixed while varying explicitly selected response positions',
+        original_pose_utility_replay=dict(matched=poses['matched'],cases=4,does_not_restore_whole_scene=True),
+        new_model_forwards=0,new_training_updates=0,new_complete_scene_successes=0,
+        teacher_quality_proven=False,causal_selector_implemented=False,full_trainer_qualified=False,goal_complete=False)
+    dump(out/'algorithm_contract.json',contract)
+    rows=[('source_rooms',1,'incomplete development room, not independent evaluation'),
+          ('source_policy_turns',19,'same fixed archive'),('source_calls_and_outputs',35,'all preserved'),
+          ('exact_call_span_tokens',1657,'ownership, not causal blame'),('other_response_tokens',2467,'not deleted from causal input'),
+          ('calls_with_literal_argument_overlap',19,'no model copying inference'),('exact_argument_leaf_matches',33,'excludes null/bool/empty/numeric zero'),
+          ('teacher_context_conditions',5,'no probability/effect measured'),('actual_CPU_encodes',95,'native images retained'),
+          ('original_input_images',55,'source references, same tensor hashes'),
+          ('maximum_combined_tokens',inputs['maximum_combined_prompt_response_tokens'],'no truncation'),
+          ('deterministic_pose_report_matches',poses['matched'],'of4; original utility, not scene/tool replay'),
+          ('released_bytecode_cache_bytes',read('cache_cleanup.json')['released_bytes'],'regenerable .pyc only; no weight/source deletion'),
+          ('new_model_forwards',0,'no teacher probabilities'),('new_optimizer_updates',0,'not a training experiment'),
+          ('new_complete_scene_successes',0,'not inferred from encoding or source checks')]
+    with (out/'summary.csv').open('w',newline='') as f:
+        w=csv.writer(f,lineterminator='\n');w.writerow(['measure','value','scope']);w.writerows(rows)
+    table=''.join('<tr>'+''.join('<td>'+html.escape(str(x))+'</td>' for x in r)+'</tr>' for r in rows)
+    paragraphs=[
+      '本轮把反馈提供的执行信息，与策略自己提交动作的回显、普通提示和监督位置分开。已实现五个条件；它们处理同一19轮原始观察、同一回复和同一55个图像引用。没有取得teacher概率或训练效果。',
+      '35个调用中19个反馈含原参数非平凡叶子完全相同值，共33个。它支持加入动作回显对照，不能证明模型确实利用了复制捷径。',
+      '已对35个调用建立精确token归属。工具本体1657个token，其他回复2467个token；所有原始因果输入仍保留，没有把工具失败标志自动变成错误原因。',
+      '新版共同提示明确：报告描述历史尝试，当前决策仍针对原动作前场景。初版结果保留；最终五条件完成95次CPU多模态编码与原生位置函数执行，最大合并长度4165，无截断。',
+      '原代码的placement_noise由输入变换确定seed。未修改原函数和natural_profile即复现4/4个保存姿态；这消除了将其误说成独立未来随机噪声的风险，不证明物理正确或完整状态恢复。',
+      '补读HinT-SD和What Should a Self-Teacher See的方法及指定源码，并重新对照Purified OPSD。选择性蒸馏、教师语义抽象和去reference捷径已有直接前作；本轮把它们作为强对照，研究贡献仍须由完整三维结果证明。',
+      '清除了683个源文件仍在的可再生.pyc缓存，实测释放约13.7MiB；没有删除模型、原始证据或研究源码。579个保护旧文件重新计算哈希一致。当前没有新增模型/API/训练或整场成功。']
+    links=[('算法、推导与判别标准','algorithm_and_theory.txt'),('已实现与尚未证明','algorithm_contract.json'),
+           ('实际阅读范围','reading_ledger.json'),('逐调用token与字段证据','audit_v2/call_token_ownership.json'),
+           ('95份真实CPU编码结果','multimodal_v2/result.json'),('原确定性变换重放','pose_reports_v1/result.json'),
+           ('旧文件哈希','source_before_after.json'),('缓存清理清单','cache_cleanup.json'),('汇总表','summary.csv')]
+    body=''.join('<p>'+html.escape(p)+'</p>' for p in paragraphs)+'<table><tr><th>指标</th><th>值</th><th>范围</th></tr>'+table+'</table>'
+    body+='<ul>'+''.join('<li><a href="'+p+'">'+html.escape(label)+'</a></li>' for label,p in links)+'</ul>'
+    body+='<p>直接来源：<a href="https://arxiv.org/html/2605.17873v2">HinT-SD</a>；<a href="https://arxiv.org/html/2609.25623v1">What Should a Self-Teacher See?</a>；<a href="https://arxiv.org/html/2607.02234v1">Purified OPSD</a>。未声称整篇/全代码复现，逐项范围见阅读记录。</p>'
+    (out/'stage_report.html').write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>反馈信息与训练信号实审</title><style>body{max-width:1060px;margin:32px auto;font:17px/1.7 system-ui;padding:0 20px;color:#17202a}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccc;padding:8px;text-align:left}a{color:#1456a0}</style><h1>反馈信息与训练信号：实际数据、源码和强对照</h1>'+body+'</html>')
+    scripts=['native_feedback_controls.py','audit_native_feedback_controls.py','prepare_native_feedback_control_inputs.py','audit_native_pose_reports.py','report_native_feedback_controls.py']
+    dump(out/'code_manifest.json',[dict(path=str(repo/'scripts/autodl'/s),sha256=sha(repo/'scripts/autodl'/s)) for s in scripts])
+    bundle=out/'evidence.zip';files=[p for p in out.rglob('*') if p.is_file() and p.name not in ('evidence.zip','manifest.json','delivery_verification.json')]
+    with zipfile.ZipFile(bundle,'w',compression=zipfile.ZIP_DEFLATED) as z:
+        for p in files:z.write(p,p.relative_to(out).as_posix())
+        for s in scripts:z.write(repo/'scripts/autodl'/s,'code/'+s)
+    dump(out/'manifest.json',dict(files=[dict(path=p.relative_to(out).as_posix(),bytes=p.stat().st_size,sha256=sha(p)) for p in files],evidence_zip=dict(bytes=bundle.stat().st_size,sha256=sha(bundle))))
+    print(json.dumps(dict(report=str(out/'stage_report.html'),bundle_bytes=bundle.stat().st_size,goal_complete=False)))
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
+    a=p.parse_args();main(a.repo.resolve(),a.out.resolve())
