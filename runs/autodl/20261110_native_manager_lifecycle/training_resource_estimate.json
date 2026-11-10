@@ -1,0 +1,88 @@
+{
+  "status": "checkpoint_header_resource_estimate_no_weights_loaded",
+  "stored_distinct_tensor_elements": 8767123696,
+  "tensor_names": 750,
+  "non_weight_bias_tensor_names": [],
+  "tie_word_embeddings": false,
+  "files": [
+    {
+      "path": "model-00001-of-00004.safetensors",
+      "bytes": 4905357176,
+      "header_bytes": 9072,
+      "header_sha256": "eeeb0cdba65b5e38d7bb753b1a2d108fe489e69770a15612838e40ebf8fd90d2",
+      "elements": 2452674048,
+      "elements_by_dtype": {
+        "BF16": 2452674048
+      },
+      "file_stat_unchanged": true
+    },
+    {
+      "path": "model-00002-of-00004.safetensors",
+      "bytes": 4915962456,
+      "header_bytes": 18512,
+      "header_sha256": "288ad795b1604322fdad351692b643008f719f032f598655aa5a4c24629e359e",
+      "elements": 2457971968,
+      "elements_by_dtype": {
+        "BF16": 2457971968
+      },
+      "file_stat_unchanged": true
+    },
+    {
+      "path": "model-00003-of-00004.safetensors",
+      "bytes": 4974674312,
+      "header_bytes": 18304,
+      "header_sha256": "87aa3bb79c037b7325249deef3455caccb45ced887466b65c373c4ab0151ee8c",
+      "elements": 2487328000,
+      "elements_by_dtype": {
+        "BF16": 2487328000
+      },
+      "file_stat_unchanged": true
+    },
+    {
+      "path": "model-00004-of-00004.safetensors",
+      "bytes": 2738345504,
+      "header_bytes": 46136,
+      "header_sha256": "8fa753f683c3d9e78380ff8ac6d14313e28260dd3ed558a8bdee2a0b0536c82f",
+      "elements": 1369149680,
+      "elements_by_dtype": {
+        "BF16": 1369149680
+      },
+      "file_stat_unchanged": true
+    }
+  ],
+  "memory_assumptions": "Unsharded full update with FP16 model parameters and gradients plus two FP32 Adam moments. No offload, activation/workspace accounting or optimizer compression. Stored elements are a storage-derived estimate, not a claim of allocator peak.",
+  "full_update_base_bytes": {
+    "FP16_weights": 17534247392,
+    "FP16_gradients": 17534247392,
+    "two_FP32_Adam_moments": 70136989568,
+    "sum_without_FP32_master": 105205484352,
+    "optional_FP32_master_extra": 35068494784
+  },
+  "full_update_base_GiB": 97.98024255037308,
+  "LoRA_decoder_qkvo_only": [
+    {
+      "rank": 8,
+      "estimated_adapter_parameters": 7667712,
+      "FP16_frozen_weight_GiB": 16.33004042506218,
+      "adapter_params_grads_two_FP32_moments_GiB": 0.085693359375,
+      "activation_workspace_training_peak": "Not measured; no fit/quality guarantee. Rank/targets are scenarios, not a selected training plan.",
+      "adapter_dtype_assumption": "FP16 adapter parameters/gradients for the12-byte scenario; actual PEFT adapter dtype has not been selected or tested.",
+      "FP32_adapter_param_grad_two_FP32_moments_GiB": 0.1142578125
+    },
+    {
+      "rank": 16,
+      "estimated_adapter_parameters": 15335424,
+      "FP16_frozen_weight_GiB": 16.33004042506218,
+      "adapter_params_grads_two_FP32_moments_GiB": 0.17138671875,
+      "activation_workspace_training_peak": "Not measured; no fit/quality guarantee. Rank/targets are scenarios, not a selected training plan.",
+      "adapter_dtype_assumption": "FP16 adapter parameters/gradients for the12-byte scenario; actual PEFT adapter dtype has not been selected or tested.",
+      "FP32_adapter_param_grad_two_FP32_moments_GiB": 0.228515625
+    }
+  ],
+  "interpretation": "The32GiB V100 is not a sufficient allocation for the assumed unsharded full-parameter Adam update. Existing inference peak does not establish LoRA training readiness. Do not launch training just because inference runs.",
+  "seconds": 0.004211911931633949,
+  "model_calls": 0,
+  "optimizer_updates": 0,
+  "weight_tensor_payload_read": false,
+  "cuda_initialized": false
+}

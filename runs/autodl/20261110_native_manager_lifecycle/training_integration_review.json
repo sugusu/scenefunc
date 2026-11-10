@@ -1,0 +1,32 @@
+{
+  "status": "existing_real_backward_oracle_revalidated_by_source_hash",
+  "old_receipt_path": "runs/autodl/20261110_trainer_bridge/gradient_probe_v2/receipt.json",
+  "old_receipt_sha256": "3a17b318e31b21c3804569a40e44e6a3a1999f731d1ee1aa7ca326016d66f44d",
+  "source_hash_matches": {
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/lib/python3.12/site-packages/transformers/trainer.py": true,
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/native_local_inference_20261104/deps/accelerate/accelerator.py": true,
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/check_phase_trainer.py": true,
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/phase_trainer.py": true,
+    "runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl": true
+  },
+  "actual_old_backward_cases": 6,
+  "maximum_old_gradient_error": 1.3877787807814457e-17,
+  "new_backward_calls": 0,
+  "new_optimizer_updates": 0,
+  "what_was_already_executed": "Actual Trainer.training_step -> Accelerator.backward on a scalar2-class projection oracle with every original coefficient, including short final accumulation windows; no language-model images, optimizer or parameter change.",
+  "source_read_this_turn": {
+    "transformers_4.57.1_trainer.py": [
+      "2590-2640",
+      "4046-4077",
+      "5450-5528"
+    ],
+    "accelerate_1.10.1_accelerator.py": [
+      "2700-2744"
+    ],
+    "phase_trainer.py": "Complete",
+    "check_phase_trainer.py": "Complete"
+  },
+  "scaling_derivation": "For a current K-microbatch window, adapter returns K*l_i, Trainer divides by K, Accelerator GAS=1; accumulated gradient is sum_i grad(l_i). If unmodified l_i is supplied, this Trainer path divides the original sum by K. This is existing adapter behavior, not a newly discovered old-run error.",
+  "old_920_limit": "Old EditExamples already multiplied coefficients by dataset length. This audit does not show old920 training was misnormalized.",
+  "remaining": "No real Qwen multimodal Trainer.train/optimizer loop, no learning gain or full-room benefit established. Generic phrasing that all accumulation behavior was untested would be too broad."
+}

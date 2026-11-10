@@ -1,0 +1,134 @@
+"""Build the lifecycle, training-source and resource report without execution."""
+import csv
+import hashlib
+import html
+import json
+from pathlib import Path
+import shutil
+import zipfile
+
+ROOT=Path(__file__).resolve().parent
+REPO=ROOT.parents[2]
+
+
+def read(p):return json.loads(Path(p).read_text())
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def dump(p,d):Path(p).write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+
+
+def main():
+    runs=[read(ROOT/f'import_v{i}/result.json') for i in (1,2,3)]
+    passed=runs[-1]
+    assert passed['status']=='native_full_module_constructed_and_asset_restored'
+    assert not passed['AST_isolated_classes'] and passed['registry_objects']==1
+    assert all(not r['network_or_subprocess_attempts'] and r['source_unchanged'] for r in runs)
+    sources=read(ROOT/'source_manifest.json')
+    assert all(sha(ROOT/'source'/r['path'])==r['sha256'] for r in sources['files'])
+    training=read(ROOT/'training_integration_review.json')
+    assert all(training['source_hash_matches'].values())
+    estimate=read(ROOT/'training_resource_estimate.json')
+    imported=read(ROOT/'import_deps/receipt.json');lxml=read(ROOT/'lxml_dep/receipt.json')
+    deps=imported['packages']+lxml['packages']
+    summary={
+        'status':'full_native_asset_manager_imported_constructed_and_restored',
+        'previous_goal_turn':'progress: actual1local physics response and native SDF/registry/Drake published91226f7',
+        'this_goal_turn':'progress: whole module and normal constructor exercised, missing real import dependencies isolated, original Trainer evidence/source revalidated and stored-weight resource bounds derived',
+        'native_source_files_verified':len(sources['files']),
+        'native_source_bytes':sources['total_source_bytes'],
+        'native_modules_actually_loaded':passed['native_modules_loaded'],
+        'constructor_successful_runs':1,'import_attempts':3,
+        'import_failures':['missing pygltflib','missing lxml'],
+        'successful_import_constructor_seconds':passed['seconds'],
+        'all_import_bodies_seconds':sum(r['seconds'] for r in runs),
+        'parent_peak_rss_mib':max(r['parent_peak_rss_mib'] for r in runs),
+        'new_locked_import_packages':len(deps),
+        'downloaded_locked_wheel_bytes':sum(r['size'] for r in deps),
+        'old_SDK_packages_reused':len(imported['reused_verified_old_sdk']),
+        'source_archive':'Selected291source/config files complete and hash-verified; archive tail transfer capped32MiB, no complete archive or assets/weights saved.',
+        'old_sources_or_results_changed':False,'full_manager_AST_isolation':False,
+        'real_hssd_client':True,'real_router':True,'asset_registry_objects':1,
+        'new_model_calls':0,'new_paid_api_calls':0,'new_training_updates':0,
+        'new_backward_calls':0,'new_complete_scene_generations':0,
+        'training_accumulation_old_evidence':'Actual scalar-oracle Trainer/Accelerate backward already existed; source hashes still match. No full multimodal training claimed.',
+        'stored_weight_bias_elements':estimate['stored_distinct_tensor_elements'],
+        'assumed_full_Adam_base_GiB':estimate['full_update_base_GiB'],
+        'training_fit_measured':False,'full_runtime_ready':False,'learned_gain_established':False,
+        'free_data_directory_bytes':shutil.disk_usage(ROOT).free}
+    dump(ROOT/'summary.json',summary)
+    rows=[['native source/config',len(sources['files']),'Verified selected code, not291files all read'],
+          ['whole normal module import',passed['native_modules_loaded'],'No AST-isolated stand-in classes'],
+          ['real constructor and registry restore',1,'Explicit common image absence; actual clients/router objects'],
+          ['native acquisition/model/server operations',0,'No fresh retrieval or whole generation'],
+          ['new backward/optimizer/model updates',0,'Old scalar numerical evidence separately identified'],
+          ['stored weight/bias elements',estimate['stored_distinct_tensor_elements'],'Header only; no tensor payload or GPU load'],
+          ['assumed full Adam base GiB',estimate['full_update_base_GiB'],'Unsharded16bit params/grads +twoFP32moments; excludes activations'],
+          ['complete room generation',0,'Endpoint not achieved']]
+    with (ROOT/'summary.csv').open('w',newline='') as f:
+        w=csv.writer(f,lineterminator='\n');w.writerow(['component','value','scope']);w.writerows(rows)
+    dump(ROOT/'reading_ledger.json',{
+        'scope':'Actual whole-module lifecycle plus selected original training-stack source, not new full-field literature clearance.',
+        'native_source_pin':'e888297a8b0a2f3acbb8634edf9def59cceab836',
+        'native_read':[
+            ['asset_manager.py','1-374,427-527,1009-1065 and prior canonical/SDF/registry branches. Whole module normally imported; full constructor executed. Not every generation backend executed.'],
+            ['asset_router/router.py','1-209,410-515,1349-1513 selected configuration, analysis and HSSD dispatch. Constructor executed, analyze/validation/model calls not executed.'],
+            ['image_generation.py','Module imports, provider constructors and complete factory; explicit missing image capability binding, no provider client created.'],
+            ['utils/logging.py','Base/ConsoleLogger constructors read and executed; lxml is real locked dependency.'],
+            ['source_manifest.json','291code/config files verified against cached Git tree blob hashes; this is assembly, not complete source reading.']],
+        'training_primary_sources':[
+            {'local':'scripts/autodl/phase_trainer.py','read':'Complete','finding':'Original token-mass compensation; constrained single-process supported path, not a new objective.'},
+            {'local':'scripts/autodl/check_phase_trainer.py','read':'Complete','finding':'Earlier numerical oracle used actual Trainer/Accelerate backward, no optimizer or language model. Source/receipt revalidated, not re-executed.'},
+            {'url':'https://github.com/huggingface/transformers/blob/v4.57.1/src/transformers/trainer.py','local':'training_integration_review.json','read':'Actual installed source2590-2640,4046-4077,5450-5528','finding':'Current microbatch-window K normalization and Accelerator construction.'},
+            {'url':'https://github.com/huggingface/accelerate/blob/v1.10.1/src/accelerate/accelerator.py','read':'Actual installed2700-2744','finding':'Additional Accelerator GAS scaling is1on validated path; unvalidated launcher changes must still be rejected.'}],
+        'algorithm_status':'Previous algorithm_and_theory.json remains an identified comparison, not established novelty. This lifecycle/resource evidence does not add a new learning mechanism or establish an effect.'})
+    dump(ROOT/'full_runtime_admission.json',{
+        'full_stage_assets':False,'tool_side_no_paid_api':False,'common_evaluation':False,'common_action_scope':False,
+        'qualified_normal_manager_construction':True,'qualified_prior_one_asset_SDF_path':True,
+        'not_qualified':['actual live manager retrieval/generation lifecycle','all-stage required assets/materials','all model/context/SDK paths through same local service','complete generation and cost-matched ordinary search','trained policy benefit'],
+        'scope':'Normal construction replaces a previous AST-only limitation. It does not enable general image generation; global full-generation guards remain unchanged.'})
+    dump(ROOT/'handoff.json',{
+        'completed':'Real full AssetManager import/constructor and actual prior asset restoration; exact locked code dependencies, old Trainer source/evidence and resource bound.',
+        'next':'Connect the now-normal-importable manager to real service objects and full scene driver, keeping acquisition coverage and all local model paths explicit. Do not equate a constructor with callable providers or start training.',
+        'source_root_notice':'This source tree is pristine native pin without6previous author integration patches; it has NOT replaced the existing rendering runtime. Combine versions explicitly before a common full-generation run.',
+        'research_notice':'Auxiliary/direct versus self-generated conditional D/A is a fair comparison question, not a new reasoning-action algorithm. Independent complete-room benefit remains required.',
+        'resource_notice':'No GPU inference or training needed for this turn. Full Adam lower-bound scenario~98GiB does not fit one32GiBV100. LoRA/header scenarios are not measured training-fit evidence.',
+        'goal_complete':False})
+    table=''.join('<tr>'+''.join('<td>'+html.escape(str(c))+'</td>' for c in row)+'</tr>' for row in rows)
+    text='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>正常资产管理器与训练准备复核</title>
+<style>body{max-width:1060px;margin:38px auto;font:17px/1.7 system-ui;color:#203044}td,th{border:1px solid #cbd4df;padding:8px}table{border-collapse:collapse;width:100%}pre{white-space:pre-wrap;background:#f1f5f8;padding:14px}</style>
+<h1>从抽取方法推进到正常模块：共同后端新增一项实际证据</h1>
+<p>本轮不是新增几个方盒或碰撞例子：正常导入原生AssetManager整模块并执行其真实构造函数，使用真实HSSD、路由、材料与可动对象客户端类，成功恢复上一轮已经实际生成并由Drake读取的床头柜。没有AST替代类、模型回答、训练或场景质量成绩。旧结果保持只读。</p>
+<table><tr><th>项目</th><th>实际量</th><th>范围</th></tr>'''+table+'''</table>
+<h2>实际执行及明确边界</h2>
+<p>前两次正常导入分别缺pygltflib和lxml，日志均保留。补齐锁定版本依赖后，第三次完成导入、构造与注册表恢复，耗时19.053秒；三次导入执行体共52.007秒，包含失败。父进程峰值约796.93MiB，运行时整容器内存仍为25GiB，不能从此推导全生成只需1GiB。</p>
+<p>网络连接、DNS、数据报发送和子进程启动由审计钩子禁止，三次均没有记录尝试。真实本地VLM服务对象被构造，但处理器及权重未载入。HSSD、可动对象与材料客户端有真实Python实例，并不代表对应服务已经启动或数据完整。新恢复资产是既有SDF，不是又生成了一个新房间。</p>
+<p>原生图像构造器在显式HSSD配置下通过已有共同适配器表示为None，构造后恢复。路由、可动对象及薄覆盖策略仍启用，仅关闭生成纹理回退和上下文生图。缺少生图能力不会被伪装成本地生成器，整体生成准入仍保持未通过。</p>
+<h2>代码与依赖来源</h2>
+<p>固定SceneSmith e888297的291个选定代码/配置文件（约3.66MB）逐文件核对Git blob与SHA。流式代码归档在尾部触及32MiB传输上限时终止，但全部选定代码已提取并核验；整个归档未完成、未保存，没有提取模型或资产。不是宣称291个文件均已精读。</p>
+<p>从原生uv.lock提取17个缺失的小型依赖，轮子总计约'''+str(round(sum(r['size'] for r in deps)/1024**2,3))+'''MiB；15个已有SDK包先逐文件校验后只读复用。所有新增依赖隔离保存，没有改写全局环境或下载模型。新源码树未叠加之前6项作者渲染适配补丁，也没有替换旧运行目录；将来组合时必须明确版本，不能笼统称所有原生运行已贯通。</p>
+<h2>训练准备的准确状态</h2>
+<p>核对了真实安装的Transformers4.57.1、Accelerate1.10.1和OriginalMassTrainer。原先已有的梯度记录与当前5项源码/材料哈希一致。记录使用真实Trainer.training_step和Accelerator.backward，通过二分类标量数值模型验证所有原始目标系数；没有优化器、参数更新、真实视觉输入或语言模型。因此“所有累积行为都尚未验证”过于宽泛，“已经训练成功”也不成立。</p>
+<pre>原始加权目标：L = Σ_i l_i
+本实现compute_loss在训练路径返回 K*l_i；
+Trainer按当前窗口K除回；Accelerator在该受限路径GAS=1；
+所以累积梯度为 Σ_i ∇l_i，包含不足整窗口的情况。
+若绕过本适配而直接交原始l_i，这条Trainer路径会把它除以K。</pre>
+<p>这不是发现旧920训练有误：此前EditExamples已经按数据集长度补偿，不能用此推翻旧结果。真实Qwen多模态完整Trainer.train、优化器和整场效果仍未验证。本轮没有为了增加检查数量重复运行标量验证。</p>
+<h2>为什么不能因推理可跑就启动训练</h2>
+<p>只读safetensors头部，统计得到8,767,123,696个不同的已存储weight/bias元素；没有其他buffer名称，配置不绑定词嵌入。未读取权重张量内容、初始化GPU或创建训练模型。以这些元素估算：未分片全参数更新若用16位参数、16位梯度和两份32位Adam矩，仅这四项就约97.98GiB；尚未包括激活、工作区或可选主权重。因此单张32GiBV100不能承载这一明确假设下的全参数Adam方案。</p>
+<p>另外列出仅解码器q/k/v/o的LoRA秩8/16资源情景，区分16位与32位适配器，但没有选择训练方案或声称会装得下。冻结权重能载入、推理峰值较低，都不能上界多图长上下文反传的内存。当前没有理由为训练先扩大资源；先完成共同整场生成及普通强对照，观察到需要学习的独立收益后才值得做真实训练内存试跑。</p>
+<h2>研究主张保持严格</h2>
+<p>“决策文字再接动作”的同监督对照仍是识别问题，不是已确认的新算法。本轮的导入、依赖与资源证据减少工程不确定性，不增加CVPR新颖性。目标仍为完整可编辑室内场景；不能把恢复一件已有资产、成功构造客户端、或局部数值梯度准确当作整场能力。完整资产覆盖、所有本地调用路径、共同评价与动作预算都还需实跑证明。</p>
+<p><a href="summary.json">汇总</a> · <a href="summary.csv">逐项表</a> · <a href="import_v3/result.json">正常导入构造记录</a> · <a href="training_integration_review.json">训练源码与旧证据</a> · <a href="training_resource_estimate.json">权重头部内存估算</a> · <a href="reading_ledger.json">阅读范围</a> · <a href="evidence.zip">证据包</a></p></html>'''
+    (ROOT/'stage_report.html').write_text(text)
+    skip={'artifact_manifest.json','evidence.zip','delivery_check.json'}
+    files=[p for p in sorted(ROOT.rglob('*')) if p.is_file() and p.name not in skip and '__pycache__' not in p.parts and not ('runtime' in p.relative_to(ROOT).parts and any(x in p.parts for x in ('import_deps','lxml_dep')))]
+    files.append(REPO/'scripts/autodl/import_native_manager.py')
+    dump(ROOT/'artifact_manifest.json',{'files':[{'path':str(p.relative_to(REPO)),'bytes':p.stat().st_size,'sha256':sha(p)} for p in files],
+        'dependencies_local_only':['import_deps/runtime/','lxml_dep/runtime/'],
+        'dependency_file_hashes':['import_deps/receipt.json','lxml_dep/receipt.json']})
+    with zipfile.ZipFile(ROOT/'evidence.zip','w',zipfile.ZIP_DEFLATED) as z:
+        for p in files+[ROOT/'artifact_manifest.json']:z.write(p,str(p.relative_to(REPO)))
+    print(json.dumps({'status':summary['status'],'metadata_and_source_files':len(files),'archive_bytes':(ROOT/'evidence.zip').stat().st_size}))
+
+
+if __name__=='__main__':main()

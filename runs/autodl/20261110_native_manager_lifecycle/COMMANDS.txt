@@ -1,0 +1,25 @@
+Run from the repository root. No model, API, training or full scene is launched.
+
+Normal whole-module qualification (published import_v3 exists; use a NEW out):
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' \
+PYTHONPATH=<stage>/lxml_dep/runtime:<stage>/import_deps/runtime:<old SDK>/runtime:<existing observation deps>:<collision deps>:<mesh deps>:<existing support deps> \
+/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B \
+ scripts/autodl/import_native_manager.py --stage runs/autodl/20261110_native_manager_lifecycle \
+ --out NEW_OUTPUT_DIRECTORY --construct
+
+Import_v1 missing pygltflib; import_v2 missing lxml. Both kept.
+Only ordinary locked code dependencies were added in isolated directories.
+Public SDK code import does not mean any provider/client was invoked.
+The real constructor is wrapped only by existing explicit HSSD/no-images binding.
+No dummy native modules/classes or AST-only manager class are used in import_v3.
+
+Source selection291 files is verified against upstream Git blob IDs. The32MiB
+archive transfer cap was reached after selected files were already received;
+whole archive not complete/saved. No models/assets extracted, no second archive.
+
+Metadata-only rebuild (does not import native services or initialize CUDA):
+python -B runs/autodl/20261110_native_manager_lifecycle/build_report.py
+
+Training review only revalidates the previous real backward oracle by hashes.
+No Trainer.train, optimizer, new backward call or parameter update this turn.
+Resource estimate reads safetensors headers only; it is not a training run/fit test.
