@@ -1,0 +1,41 @@
+{
+  "pin": "e2daa314bc9398e3a180bef241d45535812b7c97",
+  "paths": [
+    {
+      "input": "published B200 launcher",
+      "chain": [
+        "script/RL/run_grpo_B200.sh custom_reward_function=scene_reward.compute_score",
+        "B200 interaction config -> verl.interactions.scene_editing_interaction.SceneEditingInteraction",
+        "calculate_score: stage-specific component weights; judge enabled; textual feedback master disabled"
+      ],
+      "status": "Static path and scalar subfunctions inspected; launch not run"
+    },
+    {
+      "input": "ToolAgentLoop when selected",
+      "chain": [
+        "interaction.generate_response returns reward",
+        "ToolAgentLoop._handle_interacting_state appends to turn_scores",
+        "ToolAgentLoop.run adds turn_scores to output.extra_fields",
+        "AgentLoopWorker async reward path passes tool_extra_fields",
+        "experimental naive reward loop merges tool_extra_fields into extra_info",
+        "scene_reward.compute_score empty rollout_reward_scores + turn_scores -> final-only for n>2"
+      ],
+      "status": "Conditional source path, not confirmation that released dataset selected this agent or that this path produced paper numbers"
+    },
+    {
+      "input": "rollout_reward_scores.user_turn_rewards present",
+      "chain": [
+        "traditional naive manager injects reward_scores into extra_info.rollout_reward_scores",
+        "compute_score dict path -> 0.6 last +0.4 preceding mean for n>2"
+      ],
+      "status": "Scalar path executed; actual published RL rollout provenance not acquired"
+    }
+  ],
+  "route_ambiguities": [
+    "rollout default_agent_loop is single_turn_agent when dataset lacks agent_name",
+    "published RL parquet and run logs unavailable here, so agent selection cannot be inferred from shell alone",
+    "rm_scores path bypasses naive custom scoring; no unconditional end-to-end attribution",
+    "Intermediate reward existence is not proof it reached a particular optimizer objective"
+  ],
+  "not_a_paper_error_claim": true
+}

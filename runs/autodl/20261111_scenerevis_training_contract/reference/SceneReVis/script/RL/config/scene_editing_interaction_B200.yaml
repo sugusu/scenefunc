@@ -1,0 +1,64 @@
+interaction:
+  - name: "scene_editing"
+    class_name: "verl.interactions.scene_editing_interaction.SceneEditingInteraction"
+    config:
+      verbose: true
+      output_dir: "./rl_output_scene_editing/debug"
+      physics_mode: trimesh
+      use_objaverse: true
+      
+      # ========== Interaction Turn Configuration ==========
+      max_turns: 7  # Maximum number of interaction turns
+      
+      # ========== Feedback Injection Configuration ==========
+      # Controls whether to inject physics/VLM feedback into the next turn's input
+      # If the model exhibits OOD behavior on feedback (e.g., empty tool calls), disable these switches
+      feedback_injection:
+        enabled: false                    # Master switch: whether to enable feedback injection
+        physics_feedback_enabled: true   # Whether to inject physics feedback (collision, out-of-bounds info)
+        layout_feedback_enabled: true    # Whether to inject VLM layout feedback
+      
+      # ========== VLM Judge Configuration ==========
+      vlm_judge_enabled: true
+      vlm_judge_url: "http://localhost:8000/v1/chat/completions"
+      vlm_judge_model: "Qwen/Qwen3-VL-235B-A22B-Instruct"
+      vlm_judge_timeout: 60
+      
+      # ========== Unified Path Configuration ==========
+      # When migrating to a new server, only these paths need to be updated
+      # Priority: config file values > environment variables > default hardcoded paths
+      paths:
+        # Objaverse asset path configuration
+        objaverse:
+          # Base directory (contains subdirectories like glbs/, 2023_09_23/, etc.)
+          base_dir: "/path/to/data/datasets/objathor-assets"
+          
+          # GLB cache directory (optional, defaults to base_dir/glbs)
+          glb_cache_dir: "/path/to/data/datasets/objathor-assets/glbs"
+          
+          # Asset version
+          assets_version: "2023_09_23"
+          
+          # Holodeck version (for THOR assets)
+          holodeck_version: "2023_09_23"
+        
+        # 3D-FUTURE asset path configuration (used in non-Objaverse mode)
+        3d_future:
+          # Model directory (contains subdirectories for each model ID)
+          models_dir: "/path/to/data/datasets/3d-front/3D-FUTURE-model"
+          
+          # Metadata file paths
+          metadata_json: "/path/to/workspace/llmscene/metadata/model_info_3dfuture_assets.json"
+          metadata_scaled_json: "/path/to/workspace/llmscene/metadata/model_info_3dfuture_assets_scaled.json"
+          embeddings_pkl: "/path/to/workspace/llmscene/metadata/model_info_3dfuture_assets_embeds.pickle"
+        
+        # Blender configuration
+        blender:
+          # Blender executable path (usually installed in user directory on Azure clusters)
+          executable: /root/.local/blender/blender-4.0.2-linux-x64/blender  # Use auto-detection, or set to a specific path like "/home/user/.local/bin/blender"
+          
+          # Additional Blender search paths
+          candidates: []
+        
+        # Log directory
+        logs_dir: "/path/to/data/logs"
