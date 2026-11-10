@@ -123,6 +123,8 @@ async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True):
     error=None
     try:
         await run_native_trial(module,native_args,runtime_admission=admission,
+            service_preflight=lambda *_: events.append(dict(event='fixture_service_preflight',
+                scope='Service double only; not real configuration qualification')),
             phase_settings=dict(arm=arm,total_output_tokens=128,decision_output_tokens=64,
                 action_output_tokens=64,total_seconds=10),stage_budget=StageBudget(1,2,1,128,30),
             allowed_tools=('move_furniture_tool',),load_images=lambda _: [ImageReference() for _ in range(5)],

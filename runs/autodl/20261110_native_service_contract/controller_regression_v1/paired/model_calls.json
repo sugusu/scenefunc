@@ -1,0 +1,165 @@
+{
+  "model_calls": 5,
+  "calls": [
+    {
+      "stage": "floor_plan",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 1.02166086435318e-05
+    },
+    {
+      "stage": "furniture",
+      "adapter_enabled": true,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 6,
+      "output_cap": 64,
+      "wall_seconds": 1.0991469025611877e-05
+    },
+    {
+      "stage": "furniture",
+      "adapter_enabled": true,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 64,
+      "wall_seconds": 7.154420018196106e-06
+    },
+    {
+      "stage": "wall",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 7.072463631629944e-06
+    },
+    {
+      "stage": "ceiling",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 6.819143891334534e-06
+    }
+  ],
+  "stages": [
+    {
+      "stage": "floor_plan",
+      "status": "returned",
+      "first_model_call": 0,
+      "wall_seconds": 0.0007659122347831726,
+      "model_calls": 1
+    },
+    {
+      "stage": "furniture",
+      "status": "returned",
+      "first_model_call": 1,
+      "wall_seconds": 0.003501053899526596,
+      "model_calls": 2
+    },
+    {
+      "stage": "wall",
+      "status": "returned",
+      "first_model_call": 3,
+      "wall_seconds": 0.0008947961032390594,
+      "model_calls": 1
+    },
+    {
+      "stage": "ceiling",
+      "status": "returned",
+      "first_model_call": 4,
+      "wall_seconds": 0.000873815268278122,
+      "model_calls": 1
+    }
+  ],
+  "lifecycle": [
+    {
+      "operation": "native_service_preflight",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 3.948807716369629e-06
+    },
+    {
+      "operation": "session_start",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 4.630535840988159e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "floor_plan",
+      "status": "returned",
+      "wall_seconds": 4.9173831939697266e-06
+    },
+    {
+      "operation": "floor_plan_handover",
+      "stage": null,
+      "status": "returned",
+      "accepted": true,
+      "wall_seconds": 4.630535840988159e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "furniture",
+      "status": "returned",
+      "wall_seconds": 4.867091774940491e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "furniture",
+      "status": "returned",
+      "wall_seconds": 3.4458935260772705e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "wall",
+      "status": "returned",
+      "wall_seconds": 3.848224878311157e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "wall",
+      "status": "returned",
+      "wall_seconds": 3.460794687271118e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "ceiling",
+      "status": "returned",
+      "wall_seconds": 2.730637788772583e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "ceiling",
+      "status": "returned",
+      "wall_seconds": 2.0992010831832886e-06
+    },
+    {
+      "operation": "session_close",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 4.215165972709656e-06
+    }
+  ],
+  "trial": {
+    "status": "native_stages_returned_quality_unassessed",
+    "all_stage_finalizers_returned": true,
+    "returned_finalizers": [
+      "floor_plan",
+      "furniture",
+      "wall",
+      "ceiling"
+    ],
+    "wall_seconds": 0.014518320560455322
+  },
+  "accounting_complete": true,
+  "known_input_tokens": 160,
+  "known_output_tokens": 10,
+  "full_scene_success": null,
+  "scope": "Policy model.generate only; tool-side model calls and GPU kernel time are not measured. Driver wall times include observation/tool work. Finalizers and session lifecycle are timed separately. Returned finalizers do not prove scene quality."
+}

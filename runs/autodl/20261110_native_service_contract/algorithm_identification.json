@@ -1,0 +1,54 @@
+{
+  "status": "Identification analysis grounded in actual configuration; no novel loss or performance theorem",
+  "current_candidate": "A furniture policy predicts D from current public multimodal state X, then emits executable A conditioned on its own D. All other required stages and tool models are common across arms.",
+  "controls": [
+    {
+      "name": "equal_material_direct",
+      "training": "Same original D and A labels, source weights and missing-D units; D(X) auxiliary task and A(X) direct action",
+      "deployment": "A(X); no teacher D",
+      "identifies": "Whether conditioning execution on the predicted decision adds value beyond the same supervision"
+    },
+    {
+      "name": "base_plus_search",
+      "training": "Frozen common base",
+      "deployment": "Ordinary multi-operation search with the same legal assets, actions, observations and cumulative budget",
+      "identifies": "Whether learned decision selection improves on ordinary computation"
+    },
+    {
+      "name": "paired_decision_action",
+      "training": "D(X), A(X,D) where original D exists; missing-D treatment must be declared and shared data retained",
+      "deployment": "D_hat sampled from actual X, then A(X,D_hat), native tool feedback updates X",
+      "identifies": "End-to-end self-conditioned policy under actual accumulated errors"
+    }
+  ],
+  "full_task_success": {
+    "event": "S = conjunction of original mandatory scene requirements at final exported state",
+    "stage_factorization": "For actual stage-success events E_1,...,E_K, P(all E_k)=product_k P(E_k | E_1,...,E_{k-1}); independence is not assumed.",
+    "limit": "All-stage-finalizer return is a control-flow event, not E_k. A missing required object stage cannot be counted as success merely because the executable loop ends.",
+    "current_contradiction": "The composed config contains manipuland_agent, but the inspected driver executes only floor_plan/furniture/wall/ceiling and floor-only furniture generation. Required surface-object tasks are not qualified."
+  },
+  "teacher_to_self_conditioning": {
+    "fixed_action_policy_assumption": "For a fixed public state x and fixed downstream policy/tool environment, let v_x(d) be the probability of task success, in [0,1].",
+    "bound": "|E_q[v_x(D)] - E_p[v_x(D)]| <= TV(q,p). Here q is a reference decision distribution and p is the deployed predicted distribution.",
+    "meaning": "Teacher-conditioned action accuracy does not establish deployed scene success when predicted decisions differ. This is the ordinary total-variation expectation bound, not a new theorem.",
+    "evidence_limit": "Current single source annotations do not identify q or TV. No numeric guarantee or claimed improvement follows; measure actual self-generated trajectories instead."
+  },
+  "cost_identification": {
+    "include": [
+      "decision inference",
+      "action inference",
+      "tool-side VLM",
+      "image generation if present",
+      "retrieval",
+      "geometry generation",
+      "rendering",
+      "failed candidate execution",
+      "training cost reported separately"
+    ],
+    "confound_observed": "Local policy + local VLM binding does not cover eager image backend construction and generated-image/texture paths. Different fallback settings alter asset availability and cannot be treated as a decision-only ablation.",
+    "resolution": "Fix the common runnable service and task contract first. Do not let one arm use paid image models or remove surface-object requirements to obtain apparent parity."
+  },
+  "result_required": "Independent description families; actual complete scenes, original requirement denominators, preserved relations, unknown coverage, and quality versus all-in budget. No claim from number of audits or token-format compliance.",
+  "current_evidence": "No additional full-scene generation or learned benefit in this turn.",
+  "next_source_work": "Trace and reuse upstream manipuland execution and asset acquisition in the common runtime. Do not invent a scene-specific fill tool or train a replacement generator."
+}

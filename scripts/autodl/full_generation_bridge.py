@@ -15,6 +15,7 @@ import time
 
 from phase_host import furniture_driver
 from phase_policy import PhasePolicy, TorchPhaseBackend
+from native_service_contract import preflight_native_services
 
 
 class GenerationLedger:
@@ -244,7 +245,8 @@ def shared_model_driver(native_module, *, phase_settings, stage_budget,
         ledger.save()
 
 
-async def run_native_trial(native_module, args, *, runtime_admission, **bridge):
+async def run_native_trial(native_module, args, *, runtime_admission,
+                           service_preflight=preflight_native_services, **bridge):
     """Execute only an explicitly qualified runtime; not a static readiness test.
 
     Qualification must cover tool-side services, not just this local model.
@@ -263,6 +265,11 @@ async def run_native_trial(native_module, args, *, runtime_admission, **bridge):
     ledger.trial.update(status='running')
     ledger.save()
     try:
+        # The prior four booleans do not cover the eager image-generator
+        # constructor or image/texture fallback. Compose the actual config
+        # before main_async can start servers or load model weights.
+        with ledger.operation('native_service_preflight'):
+            service_preflight(native_module, args)
         with shared_model_driver(native_module,**bridge):
             await native_module.main_async(args)
         # Native main_async catches floor geometry exceptions and returns;

@@ -1,0 +1,38 @@
+{
+  "read_scope": [
+    {
+      "file": "configurations/*.yaml",
+      "scope": "All 13 parsed by actual Hydra composition; selected model/service fields inspected, not every numerical parameter manually audited"
+    },
+    {
+      "file": "scenesmith/agent_utils/asset_router/router.py",
+      "scope": "Constructor, request-analysis entry, generated thin-covering fallback, generation/validation call locations; not whole file read"
+    },
+    {
+      "file": "scenesmith/agent_utils/image_generation.py",
+      "scope": "Abstract API, OpenAI/Gemini constructors, factory, image-edit call and extraction helpers; not whole file read"
+    },
+    {
+      "file": "scenesmith/agent_utils/material_generator.py",
+      "scope": "Constructor and generate_material first image call; remaining seamless texture processing not audited"
+    },
+    {
+      "file": "scenesmith/furniture_agents/stateful_furniture_agent.py",
+      "scope": "Constructor, designer tool assembly, portions of add_furniture and context methods"
+    },
+    {
+      "file": "scenesmith/furniture_agents/tools/furniture_tools.py",
+      "scope": "Asset request closure with explicit FURNITURE type and complete exported tool dictionary"
+    },
+    {
+      "file": "inputs/driver/agent_rollout_decoupled.py",
+      "scope": "Imports, session.start, room handover, make_roomscene_env, driver loop, finalize_stage, main_async and CLI"
+    },
+    {
+      "file": "inputs/asset_manager.py",
+      "scope": "Previously read eager constructor, retrieval and physics conversion; this turn AST locates unconditional image factory"
+    }
+  ],
+  "new_papers_read": 0,
+  "literature_claim": "No new novelty claim. This turn verifies actual execution assumptions underlying the existing method comparison."
+}
