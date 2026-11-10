@@ -1,0 +1,13 @@
+{"status": "failed", "renderer_calls": 0, "model_calls": 0, "error": "ModuleNotFoundError: No module named 'src_critic.perturb'", "seconds": 4.9897890742868185, "training_admitted": false, "original_pixel_equivalence": "not established", "full_scene_success": null}
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/finish_paper_native_observation.py", line 65, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/finish_paper_native_observation.py", line 46, in main
+    ns['annotate_live_topdown'](scene,paths[0]);validate_scene_views(paths)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "runs/autodl/20261110_native_observation_export/source/src/render_observation.py", line 59, in annotate_live_topdown
+    annotate_topdown(path, scene=Scene(Path(scene.scene_dir), room, objects),
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_observation_export/source/src_critic/pil_annotate.py", line 537, in annotate_topdown
+    from .perturb import _is_decorative_floor as _is_floor
+ModuleNotFoundError: No module named 'src_critic.perturb'

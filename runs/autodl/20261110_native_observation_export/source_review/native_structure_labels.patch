@@ -1,0 +1,85 @@
+diff --git a/src/render_observation.py b/src/render_observation.py
+index b65e578..856e1fa 100644
+--- a/src/render_observation.py
++++ b/src/render_observation.py
+@@ -56,5 +56,26 @@ def annotate_live_topdown(scene, path):
+             *transform['translation'][:2], _quat_to_yaw_deg(transform['rotation_wxyz']),
+             tuple(obj['bbox_min']), tuple(obj['bbox_max'])))
+     metadata = json.loads(Path(str(path)+'.meta.json').read_text())
++    wall_items = None
++    omitted = []
++    if getattr(scene, '_scenefunc_structure_labels', False):
++        wall_items = []
++        for wall in scene.room_geometry.walls:
++            bounds = wall.compute_world_bounds()
++            if bounds is None:
++                omitted.append(str(wall.object_id))
++                continue
++            lo, hi = bounds
++            xy = (lo + hi)[:2] / 2
++            axis = 'h' if hi[0] - lo[0] >= hi[1] - lo[1] else 'v'
++            inward = 1 if xy[1 if axis == 'h' else 0] < center[1 if axis == 'h' else 0] else -1
++            xy[1 if axis == 'h' else 0] += 0.25 * inward
++            wall_items.append((str(wall.object_id), xy.tolist(), axis))
++        Path(str(path)+'.annotations.json').write_text(json.dumps({
++            'wall_items': wall_items, 'walls_without_bounds': omitted,
++            'source': 'actual_native_wall_objects',
++            'limitation': 'Axis-aligned label sliding; nonrectangular framing is not validated.',
++        }, indent=2) + '\n')
+     annotate_topdown(path, scene=Scene(Path(scene.scene_dir), room, objects),
+-                     camera_meta=metadata['camera'], highlight_ids=[], out_path=path)
++                     camera_meta=metadata['camera'], highlight_ids=[], out_path=path,
++                     wall_items=wall_items)
+diff --git a/src_critic/pil_annotate.py b/src_critic/pil_annotate.py
+index e1ae38b..f3fa9ff 100644
+--- a/src_critic/pil_annotate.py
++++ b/src_critic/pil_annotate.py
+@@ -361,7 +361,7 @@ def _draw_openings(draw, font, project, room, blockers, sx_px, sy_px):
+         blockers.append(rect)
+ 
+ 
+-def _draw_walls(draw, font, project, room, blockers, sx_px, sy_px):
++def _draw_walls(draw, font, project, room, blockers, sx_px, sy_px, wall_items=None):
+     """Place wall-surface labels with the ability to slide along the wall.
+     Walls are LOW priority — if no candidate fits, we drop the label entirely."""
+     cx_w = (room.x_min + room.x_max) / 2.0
+@@ -373,6 +373,8 @@ def _draw_walls(draw, font, project, room, blockers, sx_px, sy_px):
+         ("east_wall",  (room.x_max - inset, cy_w), "v"),
+         ("west_wall",  (room.x_min + inset, cy_w), "v"),
+     ]
++    if wall_items is not None:
++        items = wall_items
+     for label, (wx, wy), axis in items:
+         px, py = project(wx, wy)
+         tw, th = _measure(draw, font, label)
+@@ -385,9 +387,13 @@ def _draw_walls(draw, font, project, room, blockers, sx_px, sy_px):
+                 if axis == "h":
+                     dx = s * sx_px
+                     dy = io * sy_px * (-1 if "north" in label else 1)
++                    if wall_items is not None:
++                        dy = io * sy_px * (1 if wy >= cy_w else -1)
+                 else:
+                     dy = s * sy_px
+                     dx = io * sx_px * (-1 if "east" in label else 1)
++                    if wall_items is not None:
++                        dx = io * sx_px * (-1 if wx >= cx_w else 1)
+                 offsets.append((dx, dy))
+         rect, _ = _place_with_offsets(
+             anchor_px=(px, py),
+@@ -487,6 +493,7 @@ def annotate_topdown(
+     highlight_ids: list[str] | None = None,
+     rotation_highlight_ids: list[str] | None = None,
+     out_path: str | Path | None = None,
++    wall_items: list | None = None,
+ ) -> Path:
+     png_path = Path(png_path)
+     out_path = Path(out_path or png_path)
+@@ -608,7 +615,7 @@ def annotate_topdown(
+     # orientation cue.
+ 
+     # Pass 4 — wall-surface labels (LOW priority; dropped if no slot).
+-    _draw_walls(draw, font_label, project, scene.room, blockers, sx_px, sy_px)
++    _draw_walls(draw, font_label, project, scene.room, blockers, sx_px, sy_px, wall_items)
+ 
+     # Pass 3: layout + draw object_id labels OUTSIDE each footprint, with a
+     # short grey leader line back to the object centre.

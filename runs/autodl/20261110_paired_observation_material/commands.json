@@ -1,0 +1,142 @@
+{
+  "cwd": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "environment": {
+    "PYTHONPATH": "runs/autodl/20261110_native_observation_export/deps:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "CUDA_VISIBLE_DEVICES": "",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "commands": [
+    {
+      "stage": "export_08",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/export_paper_native_blend.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1/imported",
+        "--out",
+        "runs/autodl/20261110_paired_observation_material/state_08/export",
+        "--state-ledger",
+        "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+        "--unit",
+        "paper_table_modes_build_08",
+        "--checkpoint-labels",
+        "--disk-headroom-mib",
+        "24"
+      ]
+    },
+    {
+      "stage": "render_08",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/render_paper_native_views.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--export",
+        "runs/autodl/20261110_paired_observation_material/state_08/export",
+        "--out",
+        "runs/autodl/20261110_paired_observation_material/state_08/views"
+      ]
+    },
+    {
+      "stage": "annotation_08",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/finish_paper_native_observation.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1/imported",
+        "--export",
+        "runs/autodl/20261110_paired_observation_material/state_08/export",
+        "--views",
+        "runs/autodl/20261110_paired_observation_material/state_08/views",
+        "--checkpoint-labels",
+        "--receipt-name",
+        "annotation_result_v2.json"
+      ]
+    },
+    {
+      "stage": "export_09",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/export_paper_native_blend.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1/imported",
+        "--out",
+        "runs/autodl/20261110_paired_observation_material/state_09/export",
+        "--state-ledger",
+        "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+        "--unit",
+        "paper_table_modes_build_09",
+        "--checkpoint-labels",
+        "--disk-headroom-mib",
+        "24"
+      ]
+    },
+    {
+      "stage": "render_09",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/render_paper_native_views.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--export",
+        "runs/autodl/20261110_paired_observation_material/state_09/export",
+        "--out",
+        "runs/autodl/20261110_paired_observation_material/state_09/views"
+      ]
+    },
+    {
+      "stage": "annotation_09",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/finish_paper_native_observation.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1/imported",
+        "--export",
+        "runs/autodl/20261110_paired_observation_material/state_09/export",
+        "--views",
+        "runs/autodl/20261110_paired_observation_material/state_09/views",
+        "--checkpoint-labels",
+        "--receipt-name",
+        "annotation_result.json"
+      ]
+    },
+    {
+      "stage": "encode",
+      "argv": [
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+        "-B",
+        "scripts/autodl/build_rebuilt_observation_material.py",
+        "--material",
+        "runs/autodl/20261110_observation_alignment/material_v2/components.jsonl",
+        "--registry",
+        "runs/autodl/20261110_paired_observation_material/registry.json",
+        "--state-ledger",
+        "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+        "--processor",
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+        "--scene-observation",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer/src/scene_observation.py",
+        "--out",
+        "runs/autodl/20261110_paired_observation_material/material_v1"
+      ]
+    }
+  ],
+  "rerun_note": "Output directories are immutable and must be new. Remap registry export/annotation locations consistently when selecting a new run directory. Source/dependency preparation is recorded in the preceding native observation export batch. Transient blend intermediates may be removed only after final view receipt hashes pass.",
+  "execution_receipts_authoritative": true
+}

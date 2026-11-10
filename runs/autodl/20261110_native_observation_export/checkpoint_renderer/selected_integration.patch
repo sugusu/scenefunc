@@ -1,0 +1,162 @@
+--- a/scenesmith/agent_utils/blender/canonicalization.py
++++ b/scenesmith/agent_utils/blender/canonicalization.py
+@@ -90,9 +90,15 @@
+         f"(up={up_axis}, front={front_axis}, type={object_type})"
+     )
+ 
+-    # Clear scene.
+-    bpy.ops.object.select_all(action="SELECT")
+-    bpy.ops.object.delete()
++    # Clear scene. Remove via the data API rather than
++    # select_all(action="SELECT") + ops.object.delete(): the operator only acts
++    # on objects that are visible and selectable in the current view layer, so
++    # anything hidden or hide_select (e.g. room walls left behind by an earlier
++    # request in this long-lived BlenderServer session) survived the clear and,
++    # since the export below is use_selection=False, got baked into the exported
++    # asset — inflating its bbox to room size and shrinking the real object.
++    for leftover in list(bpy.data.objects):
++        bpy.data.objects.remove(leftover, do_unlink=True)
+ 
+     # Import GLTF (Blender converts Y-up → Z-up automatically).
+     bpy.ops.import_scene.gltf(filepath=str(input_path))
+@@ -235,10 +241,14 @@
+     bpy.ops.object.select_all(action="DESELECT")
+     for obj in bpy.context.scene.objects:
+         if obj.type == "MESH":
++            # Ensure object is visible before selecting — hidden objects cannot
++            # enter Edit Mode (bpy.ops.object.mode_set.poll() would fail).
++            obj.hide_viewport = False
++            obj.hide_set(False)
+             obj.select_set(True)
+             bpy.context.view_layer.objects.active = obj
+ 
+-    if bpy.context.selected_objects:
++    if bpy.context.selected_objects and bpy.context.view_layer.objects.active:
+         bpy.ops.object.mode_set(mode="EDIT")
+         bpy.ops.mesh.select_all(action="SELECT")
+         bpy.ops.mesh.remove_doubles(threshold=0.0001)
+--- a/scenesmith/agent_utils/blender/mesh_conversion.py
++++ b/scenesmith/agent_utils/blender/mesh_conversion.py
+@@ -57,9 +57,13 @@
+ 
+     console_logger.info(f"Converting {input_path.suffix} to GLTF: {output_path}")
+ 
+-    # Clear existing scene.
+-    bpy.ops.object.select_all(action="SELECT")
+-    bpy.ops.object.delete()
++    # Clear existing scene. Remove via the data API: select_all + ops.delete()
++    # skips objects that are hidden or hide_select, leaving them in this
++    # long-lived BlenderServer session (see canonicalize_mesh_impl, where the
++    # same pattern leaked room walls into exported assets). The use_selection
++    # export below happens to hide that here, but the leftovers still pile up.
++    for leftover in list(bpy.data.objects):
++        bpy.data.objects.remove(leftover, do_unlink=True)
+ 
+     # Import GLB/GLTF file.
+     bpy.ops.import_scene.gltf(filepath=str(input_path))
+--- a/scenesmith/agent_utils/blender/renderer.py
++++ b/scenesmith/agent_utils/blender/renderer.py
+@@ -4,10 +4,17 @@
+ 
+ from pathlib import Path
+ 
+-import bpy
++try:
++    import bpy
++    from mathutils import Matrix, Vector
++except ImportError:
++    # Allow renderer.py to be imported in spawned subprocesses that don't
++    # run inside Blender (e.g. floor_plan worker spawned via multiprocessing).
++    # Any function that actually calls bpy will fail at runtime, but module-
++    # level constants and class definitions that don't use bpy are safe.
++    bpy = None  # type: ignore[assignment]
++    Matrix = Vector = None  # type: ignore[assignment]
+ import numpy as np
+-
+-from mathutils import Matrix, Vector
+ from omegaconf import DictConfig, OmegaConf
+ from PIL import Image
+ 
+@@ -320,6 +327,8 @@
+         start_azimuth_degrees: float = 0.0,
+         show_coordinate_frame: bool = True,
+         taa_samples: int = EEVEE_ASSET_VALIDATION_SAMPLES,
++        render_engine: str = "eevee",
++        cycles_samples: int = 8,
+     ) -> list[Path]:
+         """Render a mesh from multiple views for VLM physics analysis.
+ 
+@@ -365,11 +374,19 @@
+             # Clear existing scene.
+             bpy.ops.wm.read_factory_settings(use_empty=True)
+ 
+-            # Set up rendering with EEVEE for speed (6x faster than CYCLES).
+             scene = bpy.context.scene
+-            scene.render.engine = "BLENDER_EEVEE_NEXT"
+-            scene.eevee.taa_render_samples = taa_samples
+-            _apply_eevee_speed_settings(scene)
++            normalized_engine = render_engine.strip().lower()
++            if normalized_engine in {"cycles", "cycles_cpu"}:
++                scene.render.engine = "CYCLES"
++                scene.cycles.device = "CPU"
++                scene.cycles.samples = cycles_samples
++                scene.cycles.use_denoising = True
++            elif normalized_engine == "eevee":
++                scene.render.engine = "BLENDER_EEVEE_NEXT"
++                scene.eevee.taa_render_samples = taa_samples
++                _apply_eevee_speed_settings(scene)
++            else:
++                raise ValueError(f"Unsupported analysis render engine: {render_engine}")
+             scene.render.resolution_x = width
+             scene.render.resolution_y = height
+             # Use transparent background for VLM analysis.
+--- a/scenesmith/agent_utils/blender/server_app.py
++++ b/scenesmith/agent_utils/blender/server_app.py
+@@ -620,6 +620,8 @@
+                 show_coordinate_frame = show_coord_frame.lower() == "true"
+                 taa_samples_str = form.get("taa_samples")
+                 taa_samples = int(taa_samples_str) if taa_samples_str else None
++                render_engine = form.get("render_engine", "eevee")
++                cycles_samples = int(form.get("cycles_samples", "8"))
+             except (ValueError, TypeError) as e:
+                 flask.abort(400, description=f"Invalid parameter: {e}")
+ 
+@@ -637,6 +639,8 @@
+                 "light_energy": light_energy,
+                 "start_azimuth_degrees": start_azimuth_degrees,
+                 "show_coordinate_frame": show_coordinate_frame,
++                "render_engine": render_engine,
++                "cycles_samples": cycles_samples,
+             }
+             if taa_samples is not None:
+                 render_kwargs["taa_samples"] = taa_samples
+--- a/scenesmith/agent_utils/blender/server_manager.py
++++ b/scenesmith/agent_utils/blender/server_manager.py
+@@ -451,6 +451,8 @@
+         start_azimuth_degrees: float = 0.0,
+         show_coordinate_frame: bool = True,
+         taa_samples: int | None = None,
++        render_engine: str = "eevee",
++        cycles_samples: int = 8,
+     ) -> list[Path]:
+         """Render multiview images for VLM validation via HTTP request.
+ 
+@@ -508,6 +510,8 @@
+                 "height": str(height),
+                 "start_azimuth_degrees": str(start_azimuth_degrees),
+                 "show_coordinate_frame": str(show_coordinate_frame).lower(),
++                "render_engine": render_engine,
++                "cycles_samples": str(cycles_samples),
+             }
+             if light_energy is not None:
+                 data["light_energy"] = str(light_energy)
+--- a/scenesmith/utils/network_utils.py
++++ b/scenesmith/utils/network_utils.py
+@@ -16,6 +16,7 @@
+     """
+     try:
+         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
++            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+             sock.bind((host, port))
+         return True
+     except OSError:
