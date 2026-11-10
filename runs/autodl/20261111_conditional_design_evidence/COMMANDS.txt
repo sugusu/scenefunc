@@ -1,0 +1,14 @@
+在仓库根目录，使用系统Python即可复算来源与动作链接审阅；不需要GPU、权重、模型API或第三方代码执行。
+
+env PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/qualify_conditional_design_evidence.py --repo . --source-root /dev/shm/conditional_design_sources_20261111 --output runs/autodl/20261111_conditional_design_evidence/reproduction_new
+
+输出路径必须不存在。最终实际记录是actual_v2/result.json，首次失败及其来源覆盖问题另见execution_attempts.json。new_project_source_reports=3指来源报道，不是三次完整生成；8个旧链接也不是新示范。
+
+source-root需包含primary_sources_manifest.json及batipin.html、compact_living.html、tm8.html。URL与本轮实际字节哈希随报告交付；原始HTML只留RAM。网页将来可能变化，新下载的不同哈希必须视为新来源版本，不能声称逐字复现旧响应。TM8的web reader完整项目说明与直接HTTP获取的部分正文属于不同表示，后者的缺失定位词不得改成True。
+
+报告构建使用：
+env PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_conditional_design_evidence.py --repo . --source-root /dev/shm/conditional_design_sources_20261111
+
+构建器只用于本次尚未存在交付文件的阶段；为保留既有记录，已有JSON不覆盖。convertible2020.pdf及其页文字、book/page_9.txt至page_28.txt来自本轮实际阅读，不能把重新提取文本或运行构建器当作重新阅读全文。论文文件与项目图片不纳入Git证据包。
+
+本轮没有新增偏好/拒用/动作训练标签，没有运行神经网络或完整场景试验，不自动开启训练或旧生成额度。
