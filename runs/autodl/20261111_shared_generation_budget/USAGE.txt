@@ -1,0 +1,28 @@
+Explicit future integration example; NOT a launch command or generation authorization.
+
+from shared_generation_budget import SharedGenerationBudget, budgeted_native_services
+
+# roles and processor must ALREADY exist. The unchanged role controller requires
+# one shared model/processor/RLock and the supported unmerged PEFT adapters.
+# approved_inference_caps, phase_settings and tool_settings are caller inputs;
+# this file deliberately provides no new inference quota or model loader.
+budget = SharedGenerationBudget(ledger_path=new_run / "shared_generation.json",
+                                **approved_inference_caps)
+with budgeted_native_services(roles, processor, generation_budget=budget,
+        normalize_messages=normalizer, phase_settings=phase_settings,
+        tool_settings=tool_settings) as services:
+    # services.generate is the existing native phase backend interface;
+    # services.create_completion is the existing native VLM service interface.
+    # Wire BOTH to the native driver. Scope must cover all such generation.
+    # Binding to a live full native application/HTTP host is NOT implemented
+    # or qualified by the CPU callback check.
+    pass
+
+The caller still owns native stage handover, finalizers, SDK tool-call cap,
+assets/cold branch state, original requirement evaluation and hard subprocess
+timeout. Model loading, raw teacher-forward/training and outside-scope export
+costs need separate records. The shared ledger counts admissions; it does not
+certify neural execution, model identity, image numerics or full scene quality.
+Existing backend limits are preserved and may stop before remaining aggregate
+resources can be fully used. This is a conservative common control, not a
+learned or optimal resource allocator.

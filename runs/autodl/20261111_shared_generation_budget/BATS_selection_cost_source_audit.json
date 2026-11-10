@@ -1,0 +1,59 @@
+{
+  "source_sha256": "2153a58994831eb2b2b99ead3480ab6292f9bd1d3dbd4591b31b7c114e0d2c1f",
+  "pin": "37d23f66c512734db476313cf436a506edbec9e0",
+  "scope": "Static AST/source inspection, no imported author clients or judges",
+  "functions": [
+    {
+      "function": "evaluate_one_sampling",
+      "lines": [
+        100,
+        120
+      ],
+      "recorded_calls": [
+        {
+          "line": 113,
+          "callee": "llm_text_gen",
+          "assignment_targets": [
+            "(response, _)"
+          ]
+        }
+      ],
+      "new_entry_assigned_fields": [],
+      "assigns_all_token_counts": false
+    },
+    {
+      "function": "select_one_async",
+      "lines": [
+        123,
+        213
+      ],
+      "recorded_calls": [
+        {
+          "line": 155,
+          "callee": "evaluate_one_sampling",
+          "assignment_targets": [
+            "(score, eval_response)"
+          ]
+        },
+        {
+          "line": 186,
+          "callee": "llm_text_gen",
+          "assignment_targets": [
+            "(response, _)"
+          ]
+        }
+      ],
+      "new_entry_assigned_fields": [
+        "'all_sampling_stat'",
+        "'eval/score'",
+        "'select/id'",
+        "'select/pass_score'",
+        "'select/response'",
+        "'select/score'"
+      ],
+      "assigns_all_token_counts": false
+    }
+  ],
+  "conclusion": "This selection implementation discards returned usage values and does not add selector/evaluator token use to copied all_token_counts. Published cost totals cannot be audited from this function alone; no claim about actual paper undercount magnitude.",
+  "no_inference_or_evaluation_calls": true
+}

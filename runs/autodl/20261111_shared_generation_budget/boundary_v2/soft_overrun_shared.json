@@ -1,0 +1,32 @@
+{
+  "caps": {
+    "generate_requests": 3,
+    "input_tokens": 40,
+    "output_tokens": 20,
+    "wall_seconds": 0.05
+  },
+  "generate_requests_admitted": 1,
+  "known_input_tokens": 4,
+  "known_output_tokens": 3,
+  "elapsed_wall_seconds": 0.1,
+  "active": false,
+  "closed_reason": "Generation failed or exceeded shared limits; no automatic retry",
+  "output_accounting_complete": true,
+  "records": [
+    {
+      "role": "policy_eval",
+      "admitted": true,
+      "status": "raised_closed_both_roles",
+      "input_tokens": 4,
+      "requested_output_cap": 5,
+      "output_tokens": 3,
+      "local_soft_seconds": 2,
+      "admitted_soft_seconds": 0.05,
+      "error_type": "GenerationBudgetExceeded",
+      "generation_boundary_seconds": 0.1
+    }
+  ],
+  "model_identity_or_neural_execution_verified": false,
+  "scope": "Bound local shared-model generation only; not raw model.forward, training, other model objects/processes/clients, FLOPs, or complete scene quality",
+  "time_limit_is_soft": true
+}

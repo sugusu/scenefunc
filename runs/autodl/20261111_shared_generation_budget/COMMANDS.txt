@@ -1,0 +1,9 @@
+CPU recording-callback check; choose a fresh output directory:
+
+R=/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python "$R/scripts/autodl/check_shared_generation_budget.py" --out /dev/shm/shared_generation_budget_recheck_20261111
+
+Read-only historical accounting:
+PYTHONDONTWRITEBYTECODE=1 python "$R/scripts/autodl/reconcile_native_generation_costs.py" --repo "$R" --output /dev/shm/native_generation_cost_recheck_20261111.json
+
+Neither command loads or invokes a pretrained model, changes old source labels, starts native scene execution, or calls an API. Final authority for the boundary fixture is boundary_v2/result.json; v1 is retained and not added as independent samples. Exact author code revision and scopes: reading_ledger.json and BATS_source_manifest.json.
