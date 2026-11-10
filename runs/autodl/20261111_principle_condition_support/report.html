@@ -1,0 +1,54 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>原则适用性监督与用途条件对照</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:1060px;margin:32px auto;padding:0 24px;background:#f5f8fc;color:#1b2c43}section{padding:20px 26px;margin:20px 0;background:white;border:1px solid #d9e2ee;border-radius:10px}h1{font-size:28px}h2{font-size:21px}table{width:100%;border-collapse:collapse;font-size:14px}td,th{border:1px solid #d9e2ee;padding:9px;text-align:left;vertical-align:top}pre{white-space:pre-wrap;padding:16px;background:#edf2f8}a{color:#075ba9}</style><body><h1>现有数据能否支持“学会应用设计原则”</h1><p>2026-11-11 · 固定24个原开发单元 · 无模型、训练或新生成</p>
+<section><h2>实际结果及下一步影响</h2><p>8条原则应用记录、2条限定范围STOP、14条无D全部保留。5个有应用标签的原则各仅对应一个项目族，因此当前训练拟合无法充分区分“按场景条件选原则”和“记住项目与原则的对应”。这不是断言无法学习，而是不能把拟合作为迁移证据。</p><p>同时发现两组有用的条件变化：已提供物体、量测、历史及图像路径相同，只有当前活动要求改变，参考行为随之在编辑/保持之间变化。它们是有效的开发对照线索；普通共同量测规则已解释相关标签，不能据此声称原则学习有收益。</p></section>
+<section><h2>穷举276对后的全部相同objects记录</h2><table><tr><th>记录对</th><th>变化的状态字段</th><th>仅条件变化的已提供描述</th><th>普通规则输出</th></tr><tr><td>paper_table_modes_build_08 / paper_table_modes_build_10</td><td>activity_context, current_activity_request, previous_observed_everyday_table_and_chairs</td><td>False</td><td>unknown / unknown</td></tr><tr><td>waterloo_edit_01 / waterloo_initial_work_stop</td><td>current_activity_request, current_requested_mode</td><td>True</td><td>edit_required / stop_with_scoped_unknowns</td></tr><tr><td>waterloo_edit_03 / waterloo_joined_host_stop</td><td>current_activity_request, current_requested_mode</td><td>True</td><td>edit_required / stop_with_scoped_unknowns</td></tr></table><p>Paper对还改变了历史/此前日常位置等信息，不能当作严格用途单变量对照。两个Waterloo对尚未重新核验图像字节、模拟器、资产版本或随机状态，故不声称完整环境等价。所有3组均报告，未只保留符合故事的两组。</p><p>原普通gate仅输入公开state，不读动作目标、D或oracle assistant_prefix。6个支持单元与参考编辑/STOP标签一致，18个保留unknown。这是既有开发规则重跑，既不生成坐标，也不代表新模型或独立场景成绩。STOP始终不被转写为“原则不适用”。</p></section>
+<section><h2>训练目标与理论的具体修订</h2><p>仍检验共同来源知识下的“适用条件→设计决定→工具动作”。直接动作、原生连续理由/动作、独立D/A、只有计划、去原则字段、完整D与普通反馈/搜索必须共用输入、权限与总预算。</p><p>经验数据中项目→原则标签确定时，能识别项目的预测器可能与语义适用性预测器在所有已观察标签上等价。后续应分别检验已知原则在新几何/新条件下的应用和来源项目留出，避免把二者混成一个泛化指标。负适用标签不是从STOP自动推导，也不要求用途一变就翻转选择。</p><p>最终证据仍须是完整生成：必需实例、语义、明确关系、保留项、几何、unknown及总成本。当前24个重建动作不能包装为完整专家轨迹或终局正样本。</p></section>
+<section><h2>补读的直接近邻</h2><p><a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/00991.pdf">SEK，ECCV2024</a>已学习将场景关系知识与草图条件结合用于三维场景扩散生成。本轮实际阅读方法3/4及指定实验段落；未复现或读完整补充材料。它足以要求我们放弃笼统的“首次外部知识用于三维学习”主张。</p><p><a href="https://graphics.stanford.edu/projects/furniture/">Interactive Furniture Layout，SIGGRAPH2011原项目</a>已有设计指南密度项、受用户约束的MonteCarlo布局建议与设计师评审。已读项目说明；全文下载失败，未声称全文精读。设计指南与取舍本身也不是新概念。</p><p><a href="reading_ledger.json">实际阅读、失败与边界记录</a>包含原始来源、PDF哈希和未验证内容。2011全文、全书及穷尽领域查新仍未完成。</p></section>
+<section><h2>详尽算法与理论依据</h2><pre>条件化设计学习：现有监督支持什么，尚不能识别什么
+
+一、本轮保留的任务与实际进展
+目标始终是从原始文字生成完整、可编辑的室内场景。当前工作不是把局部编辑变成终点；它检验此前计划使用的D/A监督能否支持所声称的设计能力。
+已运行24个固定动作单元的结构化审计，穷举276对，没有移除缺D、STOP或普通规则可解释的记录。没有新模型、训练、几何查询、坐标修改或正负偏好标签。
+8条D声称应用来源原则，2条D是限定量测范围的STOP，14条无D。8条所用的5个原则各只属于一个项目族，不能把8条应用当成8个独立项目，更不是8条完整设计轨迹。
+
+二、真正存在的条件变化及其限度
+找到3组完全相同的已提供objects描述。Paper08与10还有历史/此前日常位置等输入差别，不能当作只改用途的严格配对。
+Waterloo01/initial_stop和Waterloo03/hosting_stop两组则只有current_activity_request与current_requested_mode两个状态字段不同；系统、状态外文本、量测与有序图像路径一致。
+这支持有限的当前用途敏感性测试，不支持完整模拟器等价。未重验原图字节、渲染器/资产版本、随机状态或完整物理状态；不能声称全部实际观察完全相同。
+原有普通gate读取共同量测而不读动作标签、D或assistant_prefix，6个支持单元均与编辑/STOP参考相符，其余18个返回unknown。这是既有开发规则的重跑及新配对分析，不是新的独立成绩。
+因此，这两个对照能揭示忽视用途的策略，却不能区分来源原则学习与普通要求解释。它也不会生成正确坐标，不能据此宣布完整场景问题已解决。
+STOP不等于原则不适用。同一可分可合原则在分桌、合桌、已经满足需求时都可能有意义。未新增或推断任何负适用性标签。
+
+三、可识别性推导：标准数据支持问题，不是新定理
+记项目族F、当前条件C、几何G、来源知识K、选中原则R和动作A。当前8条有R监督的记录满足R=f(F)，每个原则只出现于一个族。
+在能够识别这些已提供项目的模型类中，记住项目→原则的预测器与按实际条件判断适用性的预测器，可能在所有已观察R标签上完全相同。因此，仅观察这些样本的经验损失不能区分这两种解释。
+这不是声称某模型已作弊，也不是负例缺失导致绝不可能泛化。预训练先验、隐含条件、多样监督仍可能帮助。结论仅是数据本身尚不能支撑所声称的迁移鉴别。
+同状态两种活动下编辑/保持不同，证明条件可以影响合法行为集合；但如果共同公开量测已给出充分规则，额外D的收益仍需独立比较。
+记D=f_theta(X,U)，X中已包含相同来源知识和量测，独立U不带来新的外部任务信息；D仍可能改变有限模型利用信息的方式。应比较部署后的实际完成与成本，而非将D存在解释为新增知识。
+
+四、训练目标和评测轴据此收紧
+继续使用普通D/A条件监督，明确D是研究者合成的原则应用记录。现有材料不能改称人类设计思维轨迹，也不增加一个貌似新颖的损失。
+动作监督缺D的14个单元仍保留；STOP保留unknown。不得将未完成旧卧室轨迹自动当正示范，也不得从工具success推出完整任务完成。
+原则适用性与是否现在需要动作应分开：原则可能适用但当前已满足，也可能信息不足不能断定。新数据若标注这些状态，须记录来源/标注者或可核验任务依据，不能由本方法自己生成再当独立真值。
+评测至少分两个轴：(a)来源原则已知、房间与条件新的应用；(b)来源/项目族留出。当前每原则仅一项目，二者容易混在一起；不把项目留出直接解释为纯几何泛化。
+保留应改变、不应改变、等价改述与信息不足情形，不预设用途一变就必须反转。多种有效布局用满足要求的动作集合评价，不以唯一坐标字符串定义正确。
+
+五、具体候选算法与强对照不变，主张更窄
+共同X=(原任务、当前真实状态/视图、历史、同一检索K)。策略可产生来源、条件、现场证据、拟改决定和计划D，再由A读取其自身D，执行同一原生工具批次，接收真实反馈并继续完成房间。
+直接动作、原生连续理由+动作、独立D/A、只有普通计划、去原则字段、完整D，以及普通反馈/搜索共享观察、知识、权限和累计预算。控制现有量测信息，不能只给候选组正确任务解析或额外几何答案。
+先在原始任务终局检查必需实例、语义、关系、保留项、几何、unknown和总成本；不是仅比较是否选对原则或是否STOP。
+若只有计划或量测规则已解释收益，应承认；若原则条件应用在新项目/新房间中提高完整终局且减少无效尝试，才进一步检验学习贡献。现在没有这种实验证据。
+
+六、补查近邻后仍不能宣称首次
+SEK(ECCV2024)已将外部物体关系知识与草图条件一起学习用于场景扩散生成；知识来自场景统计，非自然语言来源原则，但足以否定笼统的首次把外部设计知识用于三维学习。
+Interactive Furniture Layout(SIGGRAPH2011)的原项目说明已经把设计指南变为密度项并用MonteCarlo建议布局。因此功能/视觉指南与设计取舍也不能整体当作新提出。
+SceneReVis与Scene-Designer已有诊断理由/工具SFT；已有反馈蒸馏/选择算法边界仍有效。本轮没有因此切换新名词或否定整个方向。
+需要形成的具体贡献仍是：学习在具体空间和当前用途下何时、如何使用来源知识，并在完整生成中胜过普通方法。当前CPU结果澄清可用对照和数据缺口，没有代替后续自由生成。
+
+七、实际执行与保存
+原68条阶段组件只读，脚本取paired arm的24个动作单元和10个D，不将两个arm重复计样本。公共gate只接收state，读取参考标签在gate返回之后。oracle assistant_prefix不输入gate。
+已提供对象描述使用排序JSON哈希严格比较，不引入位置阈值或舍入。条件配对记录全部3组，不只展示符合目标故事的2组。
+清理仅删除118个有对应源代码的可再生pyc，约3.43MB逻辑大小；保留删除前字节哈希、源文件哈希和实际空间变化。不删除权重、环境、场景或旧研究证据。
+PDF与临时阅读器均在RAM，不将30MB论文复制进数据盘。论文下载/提取失败均在阅读记录保留；2011全文没有取得，不声称全文精读。
+本轮成果是已执行的数据支持检查与收紧后的算法依据。训练、完整正场景和CVPR级贡献依旧未证明，研究继续进行。
+</pre></section>
+<section><h2>交付与完整性</h2><p><a href="summary.csv">全部24条关系/监督表</a> · <a href="matched_pairs.csv">全部配对</a> · <a href="condition_support.json">逐项证据</a> · <a href="commands.txt">复跑命令</a> · <a href="cache_cleanup.json">可再生缓存清理明细</a> · <a href="protected_source_verification.json">579项原文件核验</a> · <a href="evidence.zip">证据包</a></p><p>本轮只删除有匹配源代码的118个pyc；未删除模型、源码、环境或场景。论文PDF与临时阅读器放RAM。研究继续进行；没有新增完整场景或CVPR级方法证明。</p></section></body></html>
