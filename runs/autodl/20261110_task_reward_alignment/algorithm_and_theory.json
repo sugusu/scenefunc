@@ -1,0 +1,85 @@
+{
+  "status": "Executable objective diagnostics and ordinary controls; no independent algorithmic benefit claimed",
+  "endpoint": "Complete editable indoor generation from original text, with original required instances, attributes and relations; not local proxy optimization alone",
+  "new_observation": {
+    "source_functions": [
+      {
+        "name": "length_reward",
+        "start_line": 211,
+        "end_line": 221
+      },
+      {
+        "name": "objcount_reward",
+        "start_line": 224,
+        "end_line": 234
+      }
+    ],
+    "diagnostic_archive": "12 fixed trajectories, 72 decisions, one source-room family",
+    "result": "All length+count diagnostic sums2.0; all12 terminal states have failed recorded checks",
+    "limits": "Offline diagnostic of exact scalar source functions with archived native furniture-type counts and decision counts. Not the upstream loader, rollout, local Critic, total reward, training gradient, author performance or a new method experiment."
+  },
+  "task_definition": {
+    "C_U": "Fixed set of original user-required instances/attributes/relations, including unresolved clauses; model hypotheses do not replace it",
+    "v_c": "true/false/unknown per original clause, with evidence and verifier coverage",
+    "verified_completion": "G_V=1 iff every original clause is covered and verified true under the declared assessment; unknown is not a verified success and is not relabeled false",
+    "success_objective": "Maximize E[G_V(S_T,U)] under a shared total execution budget, while separately reporting false and unknown coverage, actual costs and collateral damage",
+    "important_limit": "This is success under the specified verifier. Unsound/incomplete semantic or physical checks cannot certify real-world full completion."
+  },
+  "ordinary_shaping_control": {
+    "formula": "r_t^Phi = r_t + gamma*Phi_{t+1}(S_{t+1},U)-Phi_t(S_t,U)",
+    "identity": "sum_{t=0}^{T-1} gamma^t*r_t^Phi = sum_{t=0}^{T-1} gamma^t*r_t - Phi_0(S_0,U) + gamma^T*Phi_T(S_T,U)",
+    "finite_horizon_condition": "Set Phi_T=0 on every terminal status, including budget exhaustion/failure, if the original episodic objective ends there. If time-limit truncation is a continuing task, bootstrap instead; do not confuse truncation and termination.",
+    "gamma_one": "With gamma1 and Phi_T0 the entire shaped return differs only by the initial-state constant. This preserves the original undiscounted success objective.",
+    "gamma_below_one": "The identity preserves that discounted base objective, which already prefers earlier reward. It is not a guarantee of equivalence to undiscounted success/cost.",
+    "scope_of_guarantee": "Pathwise returns for fixed state/task and terminal rules, with bounded potential. It does not prove identical finite stochastic gradients, clipping/KL behavior, data coverage, exploration or convergence.",
+    "not_valid_substitutes": [
+      "Reward only positive progress and ignore undoing it",
+      "Treat each intermediate improvement as independently cumulative success",
+      "Leave a geometry/completeness potential at STOP and claim original-objective invariance",
+      "Use a large but arbitrary weighted soft score and assert hard feasibility"
+    ],
+    "implemented_diagnostic": "fixed original proxy-check denominator, no new truth labels, gamma1/.99;24 finite-path identities, maximum residual recorded in summary",
+    "not_a_novel_method": true
+  },
+  "training_and_decision_algorithm": [
+    "Preserve source tasks, original instance identities and unresolved clauses. Keep a model decision/proposal separate from observed execution and from original user requirements.",
+    "Keep native base asset/tool models frozen across policy arms; policy updates must not silently alter physics, retrieval validation or routing services.",
+    "Use the same original family/component-weighted supervision for action-only, D-auxiliary direct action and self-generated D-conditioned action. Missing D/views are retained, not synthesized from answers.",
+    "If testing a geometric goal H, label it desired/proposed, not measured future. Give the direct-action auxiliary control the same eligible H targets. No privileged future or teacher H at deployment.",
+    "All arms receive the same actual state and operation rights. Use ordinary known geometry previews/search as a common baseline. Allow bounded joint candidates when an intermediate move must temporarily worsen a proxy.",
+    "Native asset generation/acquisition, placement, multi-stage continuation and original-task verification remain necessary. An add from a supplied registry is not proof of learning how to acquire missing assets.",
+    "During any later authorized RL comparison, distinguish actual original source reward, explicit terminal task reward, and terminal-correct potential shaping. Changing the reward is a control and must be applied consistently across representation arms.",
+    "Execute each policy on its own actual states, maintain candidate rollback, and score whole descriptions under fixed budget. Charge all model/tool-side VLM, renderer, failed and rejected candidates."
+  ],
+  "strong_controls": [
+    "Common native backend + ordinary state/geometry/search, no learned decision mediator",
+    "Original D auxiliary supervision with direct actions, same labels as D-conditioned arm",
+    "Self-generated D-conditioned action under exactly the same task reward",
+    "If testing geometry: same-data geometry auxiliary direct-action control",
+    "If testing rewards: terminal completion alone vs ordinary potential shaping; keep representation/data/operations fixed"
+  ],
+  "reused_corpus_coverage": {
+    "source": "runs/autodl/20261110_native_phase_host/summary.json",
+    "sha256": "19208986eb869ed3a167c9ce045f93cb897047af0442cb55d77f96c09637da53",
+    "counts": {
+      "add_furniture_to_scene_tool": 6,
+      "move_furniture_tool": 15,
+      "remove_furniture_tool": 1,
+      "EOS_STOP": 2
+    },
+    "interpretation": "24 original single-step targets; six add-existing-registry,15 move,one remove,two stop. No target for acquisition/floor-plan/wall/ceiling/manipuland stages. This does not prove the base model cannot do them; it limits what this training corpus demonstrates.",
+    "this_turn_inventory_rerun": false
+  },
+  "novelty": {
+    "not_claimed": [
+      "Dependency graph plus transaction rollback",
+      "Intent graph to ordinary constraints",
+      "Reason then act alone",
+      "Potential shaping or changing count rewards alone"
+    ],
+    "candidate_remains": "Whether a learned, requirement-grounded decision representation improves full generation beyond same-source auxiliary labels and equal-budget ordinary search, under a shared native backend and properly aligned task assessment",
+    "current_evidence": "No new trained advantage established; scalar/source diagnostics narrow the valid comparison rather than establish CVPR novelty"
+  },
+  "resource_decision": "No further GPU/RAM/large downloads needed for these source and CPU objective checks. Training readiness still requires complete observations, validated task outcomes and a separately measured adapter-training memory envelope.",
+  "goal_achieved": false
+}

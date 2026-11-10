@@ -1,0 +1,57 @@
+{
+  "status": "Pinned reward-function sensitivity audit completed",
+  "source_repository": "ZJU-OmniAI/Scene-Designer",
+  "source_pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "source_sha256": "2c4eba6af647abfe7bbb22ecb2d124b14dbc28c7d544caffdb43e3d460b6f479",
+  "source_definitions_executed": [
+    {
+      "name": "length_reward",
+      "start_line": 211,
+      "end_line": 221
+    },
+    {
+      "name": "objcount_reward",
+      "start_line": 224,
+      "end_line": 234
+    }
+  ],
+  "defaults_from_actual_config_AST": {
+    "len_full": 20,
+    "len_zero": 38,
+    "obj_full": 8,
+    "obj_zero": 3
+  },
+  "trajectories": 12,
+  "decisions": 72,
+  "source_families": 1,
+  "recorded_decision_count_range": [
+    6,
+    6
+  ],
+  "native_furniture_count_range": [
+    10,
+    12
+  ],
+  "diagnostic_reward_values": [
+    2.0
+  ],
+  "diagnostic_global_std": 0.0,
+  "all_diagnostic_global_advantages_zero": true,
+  "trajectories_with_failed_recorded_check": 12,
+  "full_scene_success_labels_created": 0,
+  "shaping_path_identities_checked": 24,
+  "shaping_max_abs_identity_residual": 2.220446049250313e-16,
+  "new_model_calls": 0,
+  "paid_API_calls": 0,
+  "optimizer_updates": 0,
+  "new_native_executions": 0,
+  "new_room_generations": 0,
+  "scope": "Offline diagnostic of exact scalar source functions with archived native furniture-type counts and decision counts. Not the upstream loader, rollout, local Critic, total reward, training gradient, author performance or a new method experiment.",
+  "count_bridge_limit": "Native furniture-type counts are supplied diagnostic covariates. The author helper counts placed_furniture through its own exporter/loader, which was read but not called here; identity with that loader is not assumed.",
+  "length_bridge_limit": "Archived decision count is not claimed equal to original GRPO buffer.traj_len. Counts from zero through the observed six decisions all lie below the default full-score threshold.",
+  "source_comment_limit": "make_reward_critic docstring discusses a different gate default/global legality location; actual module and CLI default the local legality gate ON, global loop sums length and object-count rewards. Do not substitute comments for these branches.",
+  "no_claim_that_total_training_signal_is_zero": true,
+  "no_claim_of_policy_invariance_for_the_complete_implemented_GRPO_surrogate": true,
+  "wall_seconds": 0.05339081026613712,
+  "peak_rss_kib": 274588
+}
