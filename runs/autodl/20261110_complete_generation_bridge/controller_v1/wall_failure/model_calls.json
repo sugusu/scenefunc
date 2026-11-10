@@ -1,0 +1,71 @@
+{
+  "model_calls": 4,
+  "calls": [
+    {
+      "stage": "floor_plan",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 7.636845111846924e-06
+    },
+    {
+      "stage": "furniture",
+      "adapter_enabled": true,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 6,
+      "output_cap": 64,
+      "wall_seconds": 7.66851007938385e-06
+    },
+    {
+      "stage": "furniture",
+      "adapter_enabled": true,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 64,
+      "wall_seconds": 6.2175095081329346e-06
+    },
+    {
+      "stage": "wall",
+      "adapter_enabled": false,
+      "status": "raised",
+      "input_tokens": 32,
+      "output_tokens": null,
+      "output_cap": 128,
+      "error": "RuntimeError",
+      "wall_seconds": 1.2351199984550476e-05
+    }
+  ],
+  "stages": [
+    {
+      "stage": "floor_plan",
+      "status": "returned",
+      "first_model_call": 0,
+      "wall_seconds": 0.052996691316366196,
+      "model_calls": 1
+    },
+    {
+      "stage": "furniture",
+      "status": "returned",
+      "first_model_call": 1,
+      "wall_seconds": 0.0029332246631383896,
+      "model_calls": 2
+    },
+    {
+      "stage": "wall",
+      "status": "raised",
+      "first_model_call": 3,
+      "error": "RuntimeError",
+      "wall_seconds": 0.00047938525676727295,
+      "model_calls": 1
+    }
+  ],
+  "accounting_complete": false,
+  "known_input_tokens": 128,
+  "known_output_tokens": 8,
+  "full_scene_success": null,
+  "scope": "Policy model.generate only; tool-side model calls and GPU kernel time are not measured. Stage wall times include observation/tool work."
+}

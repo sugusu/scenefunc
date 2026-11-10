@@ -1,0 +1,91 @@
+{
+  "case": "ceiling_finalize_failure",
+  "status": "passed",
+  "model_constructions": 1,
+  "arm": "paired_phase_v3",
+  "fixture_generate_calls": 5,
+  "stage_order": [
+    "floor_plan",
+    "furniture",
+    "wall",
+    "ceiling"
+  ],
+  "trial": {
+    "status": "incomplete_or_failed",
+    "all_stage_finalizers_returned": false,
+    "error": "RuntimeError: deliberate finalizer failure",
+    "wall_seconds": 0.013593336567282677
+  },
+  "error": "RuntimeError: deliberate finalizer failure",
+  "restored_native_bindings": true,
+  "events": [
+    {
+      "event": "fixture_start"
+    },
+    {
+      "event": "fixture_adapter_attached"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "floor_plan",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "floor_plan"
+    },
+    {
+      "event": "fixture_handover"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "furniture",
+      "adapter_enabled": true
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "furniture",
+      "adapter_enabled": true
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "furniture"
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "furniture"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "wall",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "wall"
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "wall"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "ceiling",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "ceiling"
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "ceiling"
+    },
+    {
+      "event": "fixture_close"
+    }
+  ],
+  "actual_language_model_calls": 0,
+  "actual_native_scene_actions": 0,
+  "actual_generated_scenes": 0
+}

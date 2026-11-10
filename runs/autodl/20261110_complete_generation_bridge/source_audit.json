@@ -1,0 +1,1534 @@
+{
+  "scope": "Static source reading and call-site inventory; not a transitive dependency proof or actual provider billing.",
+  "sources": [
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_execution_inventory_20261104/source/src/agent_rollout_decoupled.py",
+      "sha256": "4dfcaa1f3f91aa72762a8b89d7c3ebc411358b8ef65971ade444610d81dcbc91",
+      "functions": [
+        {
+          "function": "driver_loop",
+          "start": 369,
+          "end": 427,
+          "calls": [
+            {
+              "line": 375,
+              "function": "range"
+            },
+            {
+              "line": 422,
+              "function": "(env.steps_dir / 'rollout.json').write_text"
+            },
+            {
+              "line": 424,
+              "function": "(env.steps_dir / 'turns_io.json').write_text"
+            },
+            {
+              "line": 426,
+              "function": "print"
+            },
+            {
+              "line": 376,
+              "function": "env.observation"
+            },
+            {
+              "line": 379,
+              "function": "print"
+            },
+            {
+              "line": 380,
+              "function": "policy.generate"
+            },
+            {
+              "line": 384,
+              "function": "print"
+            },
+            {
+              "line": 407,
+              "function": "enumerate"
+            },
+            {
+              "line": 414,
+              "function": "rollout_log.append"
+            },
+            {
+              "line": 417,
+              "function": "io_log.append"
+            },
+            {
+              "line": 419,
+              "function": "print"
+            },
+            {
+              "line": 423,
+              "function": "json.dumps"
+            },
+            {
+              "line": 425,
+              "function": "json.dumps"
+            },
+            {
+              "line": 383,
+              "function": "(think or '(no <think>)').replace"
+            },
+            {
+              "line": 399,
+              "function": "print"
+            },
+            {
+              "line": 401,
+              "function": "rollout_log.append"
+            },
+            {
+              "line": 404,
+              "function": "io_log.append"
+            },
+            {
+              "line": 408,
+              "function": "json.dumps"
+            },
+            {
+              "line": 410,
+              "function": "print"
+            },
+            {
+              "line": 413,
+              "function": "env.step"
+            },
+            {
+              "line": 408,
+              "function": "tc.get"
+            },
+            {
+              "line": 409,
+              "function": "len"
+            },
+            {
+              "line": 411,
+              "function": "tc.get"
+            }
+          ]
+        },
+        {
+          "function": "main_async",
+          "start": 430,
+          "end": 478,
+          "calls": [
+            {
+              "line": 431,
+              "function": "datetime.now().strftime"
+            },
+            {
+              "line": 433,
+              "function": "scene_dir.mkdir"
+            },
+            {
+              "line": 434,
+              "function": "time.perf_counter"
+            },
+            {
+              "line": 435,
+              "function": "datetime.now().strftime"
+            },
+            {
+              "line": 436,
+              "function": "print"
+            },
+            {
+              "line": 438,
+              "function": "RolloutSession"
+            },
+            {
+              "line": 440,
+              "function": "session.start"
+            },
+            {
+              "line": 441,
+              "function": "ModelPolicy"
+            },
+            {
+              "line": 443,
+              "function": "session.make_floor_plan_env"
+            },
+            {
+              "line": 457,
+              "function": "ConsoleLogger"
+            },
+            {
+              "line": 471,
+              "function": "print"
+            },
+            {
+              "line": 478,
+              "function": "session.close"
+            },
+            {
+              "line": 431,
+              "function": "datetime.now"
+            },
+            {
+              "line": 435,
+              "function": "datetime.now"
+            },
+            {
+              "line": 444,
+              "function": "driver_loop"
+            },
+            {
+              "line": 447,
+              "function": "env.finalize_stage"
+            },
+            {
+              "line": 454,
+              "function": "session.handover_after_floor_plan"
+            },
+            {
+              "line": 463,
+              "function": "session.make_roomscene_env"
+            },
+            {
+              "line": 474,
+              "function": "write_run_metrics"
+            },
+            {
+              "line": 449,
+              "function": "print"
+            },
+            {
+              "line": 450,
+              "function": "print"
+            },
+            {
+              "line": 467,
+              "function": "env.finalize_stage"
+            },
+            {
+              "line": 469,
+              "function": "env.cleanup"
+            },
+            {
+              "line": 476,
+              "function": "print"
+            },
+            {
+              "line": 465,
+              "function": "driver_loop"
+            }
+          ]
+        },
+        {
+          "function": "finalize_stage",
+          "start": 138,
+          "end": 180,
+          "calls": [
+            {
+              "line": 141,
+              "function": "floor_plans_dir.mkdir"
+            },
+            {
+              "line": 142,
+              "function": "self.agent._generate_all_room_geometries"
+            },
+            {
+              "line": 148,
+              "function": "hl_path.write_text"
+            },
+            {
+              "line": 150,
+              "function": "print"
+            },
+            {
+              "line": 161,
+              "function": "_flush_furniture_json"
+            },
+            {
+              "line": 162,
+              "function": "print"
+            },
+            {
+              "line": 169,
+              "function": "print"
+            },
+            {
+              "line": 175,
+              "function": "_save_roomscene_blend"
+            },
+            {
+              "line": 176,
+              "function": "print"
+            },
+            {
+              "line": 180,
+              "function": "str"
+            },
+            {
+              "line": 148,
+              "function": "json.dumps"
+            },
+            {
+              "line": 178,
+              "function": "print"
+            },
+            {
+              "line": 148,
+              "function": "self.agent.layout.to_dict"
+            }
+          ]
+        },
+        {
+          "function": "handover_after_floor_plan",
+          "start": 263,
+          "end": 295,
+          "calls": [
+            {
+              "line": 274,
+              "function": "print"
+            },
+            {
+              "line": 275,
+              "function": "derive_room_scene"
+            },
+            {
+              "line": 266,
+              "function": "print"
+            },
+            {
+              "line": 271,
+              "function": "print"
+            },
+            {
+              "line": 285,
+              "function": "from_house_layout_dict"
+            },
+            {
+              "line": 285,
+              "function": "layout.to_dict"
+            },
+            {
+              "line": 287,
+              "function": "print"
+            },
+            {
+              "line": 290,
+              "function": "print"
+            },
+            {
+              "line": 293,
+              "function": "print"
+            },
+            {
+              "line": 272,
+              "function": "sorted"
+            },
+            {
+              "line": 288,
+              "function": "len"
+            }
+          ]
+        },
+        {
+          "function": "make_roomscene_env",
+          "start": 297,
+          "end": 355,
+          "calls": [
+            {
+              "line": 345,
+              "function": "print"
+            },
+            {
+              "line": 346,
+              "function": "ToolEnvironment"
+            },
+            {
+              "line": 300,
+              "function": "BaseExperiment.build_furniture_agent"
+            },
+            {
+              "line": 328,
+              "function": "agent._extract_wall_surfaces"
+            },
+            {
+              "line": 335,
+              "function": "agent._create_designer_tools"
+            },
+            {
+              "line": 306,
+              "function": "BaseExperiment.build_wall_agent"
+            },
+            {
+              "line": 332,
+              "function": "RuntimeError"
+            },
+            {
+              "line": 339,
+              "function": "agent._extract_room_bounds"
+            },
+            {
+              "line": 340,
+              "function": "agent._create_designer_tools"
+            },
+            {
+              "line": 342,
+              "function": "agent._create_designer_tools"
+            },
+            {
+              "line": 316,
+              "function": "BaseExperiment.build_ceiling_agent"
+            },
+            {
+              "line": 324,
+              "function": "ValueError"
+            },
+            {
+              "line": 345,
+              "function": "len"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_execution_inventory_20261104/source/Designer/replay_chained.py",
+      "sha256": "c182278936c384285b75ed80eff723496561a035d89f5d542712103b58b2bf68",
+      "functions": [
+        {
+          "function": "compose_full_cfg",
+          "start": 79,
+          "end": 112,
+          "calls": [
+            {
+              "line": 87,
+              "function": "str"
+            },
+            {
+              "line": 111,
+              "function": "OmegaConf.create"
+            },
+            {
+              "line": 88,
+              "function": "initialize_config_dir"
+            },
+            {
+              "line": 89,
+              "function": "compose"
+            },
+            {
+              "line": 102,
+              "function": "open_dict"
+            },
+            {
+              "line": 103,
+              "function": "defaults_map.items"
+            },
+            {
+              "line": 111,
+              "function": "relocate_scene_config"
+            },
+            {
+              "line": 112,
+              "function": "OmegaConf.to_container"
+            },
+            {
+              "line": 108,
+              "function": "str"
+            },
+            {
+              "line": 111,
+              "function": "OmegaConf.to_container"
+            },
+            {
+              "line": 91,
+              "function": "datetime.now"
+            }
+          ]
+        },
+        {
+          "function": "start_all",
+          "start": 139,
+          "end": 142,
+          "calls": [
+            {
+              "line": 140,
+              "function": "self._start_geometry"
+            },
+            {
+              "line": 141,
+              "function": "self._start_hssd"
+            },
+            {
+              "line": 142,
+              "function": "self._start_articulated"
+            }
+          ]
+        },
+        {
+          "function": "_start_geometry",
+          "start": 146,
+          "end": 178,
+          "calls": [
+            {
+              "line": 161,
+              "function": "self.cfg.furniture_agent.asset_manager.get"
+            },
+            {
+              "line": 169,
+              "function": "print"
+            },
+            {
+              "line": 171,
+              "function": "GeometryGenerationServer"
+            },
+            {
+              "line": 176,
+              "function": "self.geometry_server.start"
+            },
+            {
+              "line": 177,
+              "function": "self.geometry_server.wait_until_ready"
+            },
+            {
+              "line": 178,
+              "function": "print"
+            },
+            {
+              "line": 148,
+              "function": "print"
+            },
+            {
+              "line": 157,
+              "function": "print"
+            },
+            {
+              "line": 166,
+              "function": "str"
+            },
+            {
+              "line": 167,
+              "function": "str"
+            }
+          ]
+        },
+        {
+          "function": "_start_hssd",
+          "start": 182,
+          "end": 206,
+          "calls": [
+            {
+              "line": 183,
+              "function": "any"
+            },
+            {
+              "line": 192,
+              "function": "_get_retrieval_gpu_device"
+            },
+            {
+              "line": 193,
+              "function": "print"
+            },
+            {
+              "line": 196,
+              "function": "HssdRetrievalServer"
+            },
+            {
+              "line": 204,
+              "function": "self.hssd_server.start"
+            },
+            {
+              "line": 205,
+              "function": "self.hssd_server.wait_until_ready"
+            },
+            {
+              "line": 206,
+              "function": "print"
+            },
+            {
+              "line": 188,
+              "function": "print"
+            },
+            {
+              "line": 199,
+              "function": "str"
+            },
+            {
+              "line": 200,
+              "function": "str"
+            },
+            {
+              "line": 184,
+              "function": "getattr"
+            }
+          ]
+        },
+        {
+          "function": "_start_articulated",
+          "start": 210,
+          "end": 232,
+          "calls": [
+            {
+              "line": 211,
+              "function": "any"
+            },
+            {
+              "line": 220,
+              "function": "_get_retrieval_gpu_device"
+            },
+            {
+              "line": 221,
+              "function": "print"
+            },
+            {
+              "line": 224,
+              "function": "ArticulatedRetrievalServer"
+            },
+            {
+              "line": 230,
+              "function": "self.articulated_server.start"
+            },
+            {
+              "line": 231,
+              "function": "self.articulated_server.wait_until_ready"
+            },
+            {
+              "line": 232,
+              "function": "print"
+            },
+            {
+              "line": 216,
+              "function": "print"
+            },
+            {
+              "line": 212,
+              "function": "getattr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_room_bridge_20261104/source/scenesmith/agent_utils/asset_manager.py",
+      "sha256": "a046c5b67a30e2aeb8e0612cab56d8bd3ecaf1d1829118a176a9ce25b52fd72a",
+      "functions": [
+        {
+          "function": "_retrieve_hssd_assets",
+          "start": 486,
+          "end": 693,
+          "calls": [
+            {
+              "line": 504,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 509,
+              "function": "self._create_asset_paths"
+            },
+            {
+              "line": 538,
+              "function": "self.hssd_client.retrieve_objects"
+            },
+            {
+              "line": 691,
+              "function": "AssetGenerationResult"
+            },
+            {
+              "line": 498,
+              "function": "RuntimeError"
+            },
+            {
+              "line": 500,
+              "function": "RuntimeError"
+            },
+            {
+              "line": 516,
+              "function": "config.sdf_dir.mkdir"
+            },
+            {
+              "line": 520,
+              "function": "HssdRetrievalServerRequest"
+            },
+            {
+              "line": 527,
+              "function": "zip"
+            },
+            {
+              "line": 544,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 554,
+              "function": "Path"
+            },
+            {
+              "line": 579,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 582,
+              "function": "analyze_mesh_orientation_and_material"
+            },
+            {
+              "line": 593,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 600,
+              "function": "MeshPhysicsAnalysis"
+            },
+            {
+              "line": 611,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 616,
+              "function": "canonicalize_mesh"
+            },
+            {
+              "line": 626,
+              "function": "self._generate_collision_geometry"
+            },
+            {
+              "line": 629,
+              "function": "load_mesh_as_trimesh"
+            },
+            {
+              "line": 632,
+              "function": "generate_drake_sdf"
+            },
+            {
+              "line": 650,
+              "function": "np.array"
+            },
+            {
+              "line": 653,
+              "function": "np.array"
+            },
+            {
+              "line": 664,
+              "function": "self._create_scene_object"
+            },
+            {
+              "line": 677,
+              "function": "successful_objects.append"
+            },
+            {
+              "line": 679,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 505,
+              "function": "len"
+            },
+            {
+              "line": 524,
+              "function": "str"
+            },
+            {
+              "line": 551,
+              "function": "ValueError"
+            },
+            {
+              "line": 559,
+              "function": "server_mesh_path.suffix.lower"
+            },
+            {
+              "line": 561,
+              "function": "server_mesh_path.with_suffix"
+            },
+            {
+              "line": 562,
+              "function": "self.blender_server.convert_glb_to_gltf"
+            },
+            {
+              "line": 567,
+              "function": "server_mesh_path.unlink"
+            },
+            {
+              "line": 659,
+              "function": "np.minimum"
+            },
+            {
+              "line": 660,
+              "function": "np.maximum"
+            },
+            {
+              "line": 684,
+              "function": "console_logger.error"
+            },
+            {
+              "line": 687,
+              "function": "failed_assets.append"
+            },
+            {
+              "line": 523,
+              "function": "tuple"
+            },
+            {
+              "line": 688,
+              "function": "FailedAsset"
+            },
+            {
+              "line": 546,
+              "function": "len"
+            },
+            {
+              "line": 688,
+              "function": "str"
+            }
+          ]
+        },
+        {
+          "function": "generate_assets",
+          "start": 1009,
+          "end": 1041,
+          "calls": [
+            {
+              "line": 1021,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1030,
+              "function": "self._generate_assets_with_router"
+            },
+            {
+              "line": 1034,
+              "function": "self._retrieve_hssd_assets"
+            },
+            {
+              "line": 1036,
+              "function": "self._retrieve_objaverse_assets"
+            },
+            {
+              "line": 1023,
+              "function": "len"
+            },
+            {
+              "line": 1038,
+              "function": "self._generate_assets_with_model"
+            },
+            {
+              "line": 1041,
+              "function": "ValueError"
+            }
+          ]
+        },
+        {
+          "function": "_generate_assets_with_router",
+          "start": 1043,
+          "end": 1227,
+          "calls": [
+            {
+              "line": 1092,
+              "function": "enumerate"
+            },
+            {
+              "line": 1115,
+              "function": "min"
+            },
+            {
+              "line": 1117,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1197,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1203,
+              "function": "self._generate_items_with_validation"
+            },
+            {
+              "line": 1223,
+              "function": "AssetGenerationResult"
+            },
+            {
+              "line": 1069,
+              "function": "len"
+            },
+            {
+              "line": 1069,
+              "function": "len"
+            },
+            {
+              "line": 1070,
+              "function": "ValueError"
+            },
+            {
+              "line": 1075,
+              "function": "len"
+            },
+            {
+              "line": 1075,
+              "function": "len"
+            },
+            {
+              "line": 1076,
+              "function": "ValueError"
+            },
+            {
+              "line": 1093,
+              "function": "zip"
+            },
+            {
+              "line": 1107,
+              "function": "len"
+            },
+            {
+              "line": 1107,
+              "function": "len"
+            },
+            {
+              "line": 1108,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1115,
+              "function": "len"
+            },
+            {
+              "line": 1122,
+              "function": "ThreadPoolExecutor"
+            },
+            {
+              "line": 1132,
+              "function": "as_completed"
+            },
+            {
+              "line": 1185,
+              "function": "console_logger.warning"
+            },
+            {
+              "line": 1186,
+              "function": "AssetGenerationResult"
+            },
+            {
+              "line": 1210,
+              "function": "ModificationInfo"
+            },
+            {
+              "line": 1095,
+              "function": "tuple"
+            },
+            {
+              "line": 1100,
+              "function": "duplicate_indices[desc].append"
+            },
+            {
+              "line": 1124,
+              "function": "executor.submit"
+            },
+            {
+              "line": 1118,
+              "function": "len"
+            },
+            {
+              "line": 1129,
+              "function": "unique_requests.items"
+            },
+            {
+              "line": 1135,
+              "function": "future.result"
+            },
+            {
+              "line": 1151,
+              "function": "self.router.validate_item_types"
+            },
+            {
+              "line": 1164,
+              "function": "all_items.extend"
+            },
+            {
+              "line": 1198,
+              "function": "len"
+            },
+            {
+              "line": 1199,
+              "function": "len"
+            },
+            {
+              "line": 1211,
+              "function": "', '.join"
+            },
+            {
+              "line": 1071,
+              "function": "len"
+            },
+            {
+              "line": 1072,
+              "function": "len"
+            },
+            {
+              "line": 1077,
+              "function": "len"
+            },
+            {
+              "line": 1078,
+              "function": "len"
+            },
+            {
+              "line": 1109,
+              "function": "len"
+            },
+            {
+              "line": 1110,
+              "function": "len"
+            },
+            {
+              "line": 1127,
+              "function": "list"
+            },
+            {
+              "line": 1138,
+              "function": "console_logger.warning"
+            },
+            {
+              "line": 1141,
+              "function": "failed_assets.append"
+            },
+            {
+              "line": 1153,
+              "function": "console_logger.warning"
+            },
+            {
+              "line": 1156,
+              "function": "failed_assets.append"
+            },
+            {
+              "line": 1168,
+              "function": "original_descriptions.append"
+            },
+            {
+              "line": 1177,
+              "function": "console_logger.error"
+            },
+            {
+              "line": 1180,
+              "function": "failed_assets.append"
+            },
+            {
+              "line": 1142,
+              "function": "FailedAsset"
+            },
+            {
+              "line": 1157,
+              "function": "FailedAsset"
+            },
+            {
+              "line": 1172,
+              "function": "all_discarded_manipulands.extend"
+            },
+            {
+              "line": 1181,
+              "function": "FailedAsset"
+            },
+            {
+              "line": 1213,
+              "function": "unique_items.values"
+            },
+            {
+              "line": 1181,
+              "function": "str"
+            }
+          ]
+        },
+        {
+          "function": "_generate_images",
+          "start": 1595,
+          "end": 1623,
+          "calls": [
+            {
+              "line": 1607,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1608,
+              "function": "console_logger.debug"
+            },
+            {
+              "line": 1612,
+              "function": "time.time"
+            },
+            {
+              "line": 1613,
+              "function": "self.image_generator.generate_images"
+            },
+            {
+              "line": 1620,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1619,
+              "function": "time.time"
+            },
+            {
+              "line": 1607,
+              "function": "len"
+            },
+            {
+              "line": 1621,
+              "function": "len"
+            }
+          ]
+        },
+        {
+          "function": "_convert_mesh_to_simulation_asset",
+          "start": 1784,
+          "end": 1962,
+          "calls": [
+            {
+              "line": 1828,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1836,
+              "function": "self.blender_server.convert_glb_to_gltf"
+            },
+            {
+              "line": 1843,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1844,
+              "function": "remove_mesh_floaters"
+            },
+            {
+              "line": 1861,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1865,
+              "function": "analyze_mesh_orientation_and_material"
+            },
+            {
+              "line": 1877,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1886,
+              "function": "canonicalize_mesh"
+            },
+            {
+              "line": 1924,
+              "function": "self._generate_collision_geometry"
+            },
+            {
+              "line": 1927,
+              "function": "load_mesh_as_trimesh"
+            },
+            {
+              "line": 1931,
+              "function": "generate_drake_sdf"
+            },
+            {
+              "line": 1949,
+              "function": "np.array"
+            },
+            {
+              "line": 1950,
+              "function": "np.array"
+            },
+            {
+              "line": 1958,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1824,
+              "function": "RuntimeError"
+            },
+            {
+              "line": 1903,
+              "function": "console_logger.info"
+            },
+            {
+              "line": 1907,
+              "function": "scale_mesh_uniformly_to_dimensions"
+            },
+            {
+              "line": 1921,
+              "function": "canonical_path.rename"
+            },
+            {
+              "line": 1954,
+              "function": "np.minimum"
+            },
+            {
+              "line": 1955,
+              "function": "np.maximum"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "runs/autodl/20261110_complete_generation_bridge/primary_source/model_utils.py",
+      "sha256": "757c9f8e422806b1b426c983e61dfe2f986f2b4d5541e553c26b87544de3846a",
+      "functions": [
+        {
+          "function": "__call__",
+          "start": 27,
+          "end": 39,
+          "calls": [
+            {
+              "line": 28,
+              "function": "pd.DataFrame"
+            },
+            {
+              "line": 29,
+              "function": "features_df.loc[:, ~features_df.columns.isin(['aux_labels', 'expl_input_ids', 'expl_attention_mask'])].to_dict"
+            },
+            {
+              "line": 30,
+              "function": "features_df.loc[:, ~features_df.columns.isin(['labels', 'input_ids', 'attention_mask'])].rename(columns={'aux_labels': 'labels', 'expl_input_ids': 'input_ids', 'expl_attention_mask': 'attention_mask'}).to_dict"
+            },
+            {
+              "line": 33,
+              "function": "super().__call__"
+            },
+            {
+              "line": 34,
+              "function": "super().__call__"
+            },
+            {
+              "line": 30,
+              "function": "features_df.loc[:, ~features_df.columns.isin(['labels', 'input_ids', 'attention_mask'])].rename"
+            },
+            {
+              "line": 33,
+              "function": "super"
+            },
+            {
+              "line": 34,
+              "function": "super"
+            },
+            {
+              "line": 29,
+              "function": "features_df.columns.isin"
+            },
+            {
+              "line": 30,
+              "function": "features_df.columns.isin"
+            }
+          ]
+        },
+        {
+          "function": "compute_loss",
+          "start": 49,
+          "end": 55,
+          "calls": [
+            {
+              "line": 50,
+              "function": "model"
+            },
+            {
+              "line": 51,
+              "function": "model"
+            }
+          ]
+        },
+        {
+          "function": "prediction_step",
+          "start": 58,
+          "end": 78,
+          "calls": [
+            {
+              "line": 66,
+              "function": "super().prediction_step"
+            },
+            {
+              "line": 68,
+              "function": "super().prediction_step"
+            },
+            {
+              "line": 66,
+              "function": "super"
+            },
+            {
+              "line": 68,
+              "function": "super"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "runs/autodl/20261110_complete_generation_bridge/primary_source/run.py",
+      "sha256": "0653a7026c24b04f1c6acad1b7bd028604e65acac53bc0dd47c4b23fba28005c",
+      "functions": [
+        {
+          "function": "run",
+          "start": 26,
+          "end": 200,
+          "calls": [
+            {
+              "line": 129,
+              "function": "AutoTokenizer.from_pretrained"
+            },
+            {
+              "line": 200,
+              "function": "train_and_evaluate"
+            },
+            {
+              "line": 29,
+              "function": "CQADatasetLoader"
+            },
+            {
+              "line": 44,
+              "function": "dataset_loader_svamp.load_from_json"
+            },
+            {
+              "line": 45,
+              "function": "dataset_loader_asdiv.load_from_json"
+            },
+            {
+              "line": 46,
+              "function": "DatasetDict"
+            },
+            {
+              "line": 51,
+              "function": "dataset_loader.load_from_json"
+            },
+            {
+              "line": 74,
+              "function": "datasets['train'].add_column"
+            },
+            {
+              "line": 75,
+              "function": "datasets['test'].add_column"
+            },
+            {
+              "line": 76,
+              "function": "datasets['train'].add_column"
+            },
+            {
+              "line": 77,
+              "function": "datasets['test'].add_column"
+            },
+            {
+              "line": 92,
+              "function": "datasets['valid'].add_column"
+            },
+            {
+              "line": 93,
+              "function": "datasets['valid'].add_column"
+            },
+            {
+              "line": 95,
+              "function": "datasets['train'].train_test_split"
+            },
+            {
+              "line": 97,
+              "function": "DatasetDict"
+            },
+            {
+              "line": 125,
+              "function": "datasets.rename_column"
+            },
+            {
+              "line": 132,
+              "function": "datasets.map"
+            },
+            {
+              "line": 174,
+              "function": "datasets.map"
+            },
+            {
+              "line": 180,
+              "function": "datasets.map"
+            },
+            {
+              "line": 31,
+              "function": "SVAMPDatasetLoader"
+            },
+            {
+              "line": 80,
+              "function": "datasets['train'].train_test_split"
+            },
+            {
+              "line": 113,
+              "function": "print"
+            },
+            {
+              "line": 114,
+              "function": "print"
+            },
+            {
+              "line": 116,
+              "function": "datasets['train'].remove_columns"
+            },
+            {
+              "line": 117,
+              "function": "datasets['train'].add_column"
+            },
+            {
+              "line": 124,
+              "function": "datasets.remove_columns"
+            },
+            {
+              "line": 140,
+              "function": "tokenizer"
+            },
+            {
+              "line": 141,
+              "function": "tokenizer"
+            },
+            {
+              "line": 189,
+              "function": "compute_metrics_text_aux"
+            },
+            {
+              "line": 191,
+              "function": "compute_metrics_equation_aux"
+            },
+            {
+              "line": 195,
+              "function": "compute_metrics_text"
+            },
+            {
+              "line": 197,
+              "function": "compute_metrics_equation"
+            },
+            {
+              "line": 33,
+              "function": "ESNLIDatasetLoader"
+            },
+            {
+              "line": 47,
+              "function": "concatenate_datasets"
+            },
+            {
+              "line": 58,
+              "function": "dataset_loader_svamp.load_llm_preds"
+            },
+            {
+              "line": 59,
+              "function": "dataset_loader_asdiv.load_llm_preds"
+            },
+            {
+              "line": 63,
+              "function": "dataset_loader_svamp.load_llm_preds"
+            },
+            {
+              "line": 65,
+              "function": "dataset_loader.load_llm_preds"
+            },
+            {
+              "line": 66,
+              "function": "dataset_loader.load_llm_preds"
+            },
+            {
+              "line": 68,
+              "function": "dataset_loader.load_gpt_preds"
+            },
+            {
+              "line": 69,
+              "function": "dataset_loader.load_gpt_preds"
+            },
+            {
+              "line": 86,
+              "function": "dataset_loader.load_llm_preds"
+            },
+            {
+              "line": 107,
+              "function": "compute_text_acc"
+            },
+            {
+              "line": 108,
+              "function": "compute_text_acc"
+            },
+            {
+              "line": 110,
+              "function": "compute_equation_acc"
+            },
+            {
+              "line": 111,
+              "function": "compute_equation_acc"
+            },
+            {
+              "line": 145,
+              "function": "tokenizer.as_target_tokenizer"
+            },
+            {
+              "line": 146,
+              "function": "tokenizer"
+            },
+            {
+              "line": 147,
+              "function": "tokenizer"
+            },
+            {
+              "line": 156,
+              "function": "tokenizer"
+            },
+            {
+              "line": 35,
+              "function": "ANLI1DatasetLoader"
+            },
+            {
+              "line": 88,
+              "function": "dataset_loader.load_gpt_preds"
+            },
+            {
+              "line": 133,
+              "function": "tokenizer.eos_token.join"
+            },
+            {
+              "line": 162,
+              "function": "tokenizer.as_target_tokenizer"
+            },
+            {
+              "line": 163,
+              "function": "tokenizer"
+            },
+            {
+              "line": 37,
+              "function": "SVAMPDatasetLoader"
+            },
+            {
+              "line": 38,
+              "function": "SVAMPDatasetLoader"
+            },
+            {
+              "line": 39,
+              "function": "ASDivDatasetLoader"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "finding": "Native floor geometry errors can be caught and followed by a normal return; zero exit is not four-stage completion.",
+      "source": "agent_rollout_decoupled.main_async"
+    },
+    {
+      "finding": "Native main constructs its own policy once, after starting services. A separate already-loaded furniture model would duplicate model ownership.",
+      "source": "agent_rollout_decoupled.main_async"
+    },
+    {
+      "finding": "Router-enabled asset acquisition invokes request analysis before strategy execution.",
+      "source": "AssetManager._generate_assets_with_router"
+    },
+    {
+      "finding": "Router-disabled HSSD retrieval still invokes VLM mesh orientation/material analysis.",
+      "source": "AssetManager._retrieve_hssd_assets"
+    },
+    {
+      "finding": "Generated asset paths invoke image generation and subsequent VLM mesh analysis.",
+      "source": "AssetManager._generate_images and _convert_mesh_to_simulation_asset"
+    },
+    {
+      "finding": "The auxiliary rationale baseline has an official implementation with separate prediction and explanation inputs and weighted task losses.",
+      "source": "Distilling step-by-step model_utils.py and run.py"
+    }
+  ],
+  "qualification": {
+    "real_shared_adapter_runtime": "NOT VERIFIED: local reviewed Python has torch 2.7.0+cu128 / transformers 4.57.1 but no PEFT installation; controller uses explicit doubles.",
+    "tool_side_no_paid_api": "NOT VERIFIED: model-capable paths remain; configuration alone does not establish provider use/cost.",
+    "complete_scene_quality": "NOT EVALUATED: no new scene generated.",
+    "next_concrete_work": "Resolve a common asset/service path with attributable metadata and zero paid requests; then run the actual shared-adapter runtime. Do not weaken all-stage or quality criteria to pass."
+  },
+  "config": {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_execution_inventory_20261104/source/integration/scene_designer.yaml",
+    "sha256": "20ac4866781f629a50e7cf1bc30eb96c262ec554a512cdd50450925717ad6a75",
+    "coverage": "Entire integration overlay read; effective composed upstream defaults not fully audited.",
+    "meaning": "Local top-level policy does not establish that asset/tool-side model calls are local. No API call was made."
+  }
+}

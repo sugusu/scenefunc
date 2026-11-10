@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>整场生成接入与方法边界</title>
+<style>body{font:17px/1.65 system-ui;max-width:1050px;margin:40px auto;padding:0 20px;color:#17212b}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:8px}code{background:#eee}a{color:#145eb0}</style>
+<h1>整场流程有了接入，但仍未证明方法收益</h1>
+<p>本轮实现共享模型的原生四阶段接入：只有家具阶段启用实验适配器，其他阶段恢复共同基座；两种方法均记录实际策略生成调用。完整生成质量仍未得到验证，没有新模型推理、训练、场景生成或付费调用。</p>
+<h2>这次具体修正</h2><p>原生 main_async 在地面几何失败时捕获异常并正常返回。新接入逐阶段记录最终保存与交接，不能再把正常退出当作整场完成。最终保存返回也只代表执行经过该步骤，物体、关系和几何是否正确仍须独立验收。</p>
+<table><tr><th>控制流程例</th><th>记录状态</th><th>替身生成调用</th></tr><tr><td>paired</td><td>native_stages_returned_quality_unassessed</td><td>5</td></tr><tr><td>direct</td><td>native_stages_returned_quality_unassessed</td><td>4</td></tr><tr><td>wall_failure</td><td>incomplete_or_failed</td><td>4</td></tr><tr><td>floor_finalize_failure</td><td>incomplete_or_failed</td><td>1</td></tr><tr><td>handover_failure</td><td>incomplete_or_failed</td><td>1</td></tr><tr><td>ceiling_finalize_failure</td><td>incomplete_or_failed</td><td>5</td></tr><tr><td>unqualified</td><td>not_started</td><td>0</td></tr></table>
+<p>这些例子运行原生控制函数，但模型、服务、场景均为显式替身。它们不进入研究效果表。PEFT 未安装，真实适配器开关与模型运行仍未验证。</p>
+<h2>零付费并非只替换主 Agent</h2><p>源码中资产路由会分析请求；关闭路由、直接使用 HSSD 仍会做 VLM 朝向和材质分析；生成资产还有图像生成路径。配置只能说明调用可能性，不能证明实际收费。这些工具侧调用不在当前策略计时器内。下一步须落实共同资产与服务路径，不能仅关闭分析后声称复现相同后端。</p>
+<h2>方法应当怎样区别于已有工作</h2><p><a href="https://arxiv.org/html/2607.13539v1">ThinkBLOX</a> 已有三维渐进推理与动作监督；<a href="https://aclanthology.org/2023.findings-acl.507/">Distilling step-by-step</a> 已有解释作为辅助任务的方案。本轮固定并完整读取后者的两份官方实现文件。因此，分两个阶段生成，或增加解释交叉熵，都不能单独作为新算法。</p>
+<p>保留的实验问题是：相同监督与工具下，自生成决策是否改善最终整场结果，且超过直接动作与普通搜索使用同等计算的结果？它目前是机制对照，尚未形成有证据的三维特有方法。不能把现有 24 条家具单元包装成完整生成训练集。</p>
+<p>数值反例另外说明：多层奖励标准化不自动保证硬约束；先贪心选决策、再选动作也不保证获得边缘分布中的最佳动作。这些只是基础数学边界，不是新定理，也不是场景实验。</p>
+<h2>接下来需要的实际证据</h2><p>先接通可追踪的共同资产/服务和真实共享模型，再完成固定描述的四阶段生成。随后比较基础模型、辅助监督直接动作、自生成决策后动作，以及等预算普通搜索。主要记录完整要求、缺项、破坏原正确关系、未知项和全流程成本。当前不据此要求开 GPU；尚有不依赖 GPU 的运行依赖工作。</p>
+<p><a href="summary.json">结果范围</a> · <a href="source_audit.json">源码与依赖</a> · <a href="theory_and_method_difference.json">方法与数学边界</a> · <a href="reading_ledger.json">阅读记录</a> · <a href="commands.json">复核命令</a> · <a href="controller_v2/summary.json">七项原始结果</a></p></html>

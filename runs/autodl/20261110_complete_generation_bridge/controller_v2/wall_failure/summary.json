@@ -1,0 +1,73 @@
+{
+  "case": "wall_failure",
+  "status": "passed",
+  "model_constructions": 1,
+  "arm": "paired_phase_v3",
+  "fixture_generate_calls": 4,
+  "stage_order": [
+    "floor_plan",
+    "furniture",
+    "wall"
+  ],
+  "trial": {
+    "status": "incomplete_or_failed",
+    "all_stage_finalizers_returned": false,
+    "error": "RuntimeError: deliberate backend failure",
+    "wall_seconds": 0.0624170433729887
+  },
+  "error": "RuntimeError: deliberate backend failure",
+  "restored_native_bindings": true,
+  "events": [
+    {
+      "event": "fixture_start"
+    },
+    {
+      "event": "fixture_adapter_attached"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "floor_plan",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "floor_plan"
+    },
+    {
+      "event": "fixture_handover"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "furniture",
+      "adapter_enabled": true
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "furniture",
+      "adapter_enabled": true
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "furniture"
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "furniture"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "wall",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "wall"
+    },
+    {
+      "event": "fixture_close"
+    }
+  ],
+  "actual_language_model_calls": 0,
+  "actual_native_scene_actions": 0,
+  "actual_generated_scenes": 0
+}

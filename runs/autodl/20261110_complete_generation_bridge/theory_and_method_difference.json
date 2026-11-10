@@ -1,0 +1,67 @@
+{
+  "status": "Elementary counterexamples and experiment implications, not new theorems or scene results.",
+  "soft_tiers_are_not_feasibility": {
+    "raw_rewards": {
+      "hard": [
+        -0.001,
+        0.0
+      ],
+      "soft": [
+        1.0,
+        0.0
+      ],
+      "consistency": [
+        1.0,
+        0.0
+      ]
+    },
+    "illustrative_weights": {
+      "hard": 1.0,
+      "soft": 1.0,
+      "consistency": 1.0
+    },
+    "standardized_rewards": {
+      "hard": [
+        -1.0,
+        1.0
+      ],
+      "soft": [
+        1.0,
+        -1.0
+      ],
+      "consistency": [
+        1.0,
+        -1.0
+      ]
+    },
+    "combined_advantage": [
+      1.0,
+      -1.0
+    ],
+    "result": "The violating candidate gets the higher weighted score in this example. Positive affine final normalization preserves ordering.",
+    "boundary": "Not a reproduction of ThinkBLOX results or its selected weights; normalization and tier names alone give no strict feasibility guarantee.",
+    "consequence": "Keep actual required-object/geometry checks separate from learned or weighted scores; unknown checks remain unknown."
+  },
+  "greedy_reasoning_is_not_marginal_decision": {
+    "decision_probabilities": [
+      0.6,
+      0.4
+    ],
+    "action_0_given_decision": [
+      0.51,
+      0.01
+    ],
+    "marginal_action_0": 0.31,
+    "marginal_action_1": 0.69,
+    "result": "Greedy decision then greedy action selects action 0; the marginal action mode is action 1.",
+    "boundary": "Does not show that more reasoning harms our model. It blocks a universal guarantee from the factorization alone."
+  },
+  "source_to_method_difference": {
+    "auxiliary_control": "Official Distilling step-by-step separates label and rationale tasks. Our action/decision weighted causal objective is an adaptation, not an exact T5 reproduction or a new loss.",
+    "reason_then_act": "ThinkBLOX already trains progressive 3D reason-and-place sequences. Furniture D-to-A conditioning is not itself new.",
+    "candidate_estimand": "Final full-room quality at fixed total cost, or cost to matched quality, for self-generated D conditioning versus auxiliary-D/direct-A learning with the same original supervision.",
+    "important_control": "Direct-A plus additional ordinary candidate search must receive the saved inference budget; identical output caps alone do not imply equal cost.",
+    "data_limit": "24 units / 6 development families / 10 original decisions; 14 action-only units do not train the conditioned pathway. No new labels created or units deleted.",
+    "not_yet_identified": "No established three-dimensional inductive bias beyond ordinary rationale supervision/conditioning; a positive tiny pilot would justify investigation, not a CVPR novelty claim."
+  }
+}

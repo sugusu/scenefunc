@@ -1,0 +1,24 @@
+{
+  "scope": "Targeted methods/source review; not exhaustive nearest-neighbor clearance.",
+  "papers": [
+    {
+      "title": "ThinkBLOX",
+      "url": "https://arxiv.org/html/2607.13539v1",
+      "read_this_turn": "Method III-A/III-B and reward equations 1–3 rechecked; earlier reading ledger covers other main-text sections. No new full-text/figure/official-code reproduction.",
+      "finding": "Progressive 3D reasoning-action supervision is already present. Tier-wise normalized rewards remain a weighted objective; that formulation alone is not a hard feasibility constraint."
+    },
+    {
+      "title": "Distilling step-by-step",
+      "url": "https://aclanthology.org/2023.findings-acl.507.pdf",
+      "read_this_turn": "Abstract/introduction rechecked; §3 method read previously. This turn fully read official model_utils.py and run.py at ef944263c9ddfd40a9888557f3e7d17513fd1a7e.",
+      "finding": "Independent rationale and prediction tasks are a necessary established control. Did not run the official training."
+    }
+  ],
+  "code_scope": {
+    "native_controller": "main_async/driver_loop and selected finalize/handover paths",
+    "replay_chained": "configuration and server startup branches, not full file",
+    "asset_manager": "selected acquisition/router/analysis methods, not all 2190+ lines",
+    "new_bridge": "complete implementation and controller tests",
+    "peft": "not installed; actual adapter runtime not tested"
+  }
+}
