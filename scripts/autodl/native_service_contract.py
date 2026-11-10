@@ -71,7 +71,7 @@ def reject_known_external_images(cfg, *, active_stages):
 def preflight_native_services(native_module, args):
     """Use the native composition function before main_async creates services.
 
-    This is the known four-stage driver contract, not coverage of manipulands.
+    Check all five configured stages, including the common manipuland callback.
     Config composition itself loads no model and starts no service in the
     audited native source. A missing composer is not treated as qualification.
     """
@@ -79,5 +79,4 @@ def preflight_native_services(native_module, args):
     if not callable(composer):
         raise ValueError('Native config composer unavailable before startup')
     cfg, _ = composer(args.config, args.results_dir)
-    return reject_known_external_images(cfg,
-        active_stages=('floor_plan', 'furniture', 'wall', 'ceiling'))
+    return reject_known_external_images(cfg, active_stages=STAGES)

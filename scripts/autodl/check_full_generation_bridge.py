@@ -1,4 +1,4 @@
-"""Run the exact native controller with explicit model/service test doubles.
+"""Run native four-stage and adapted five-stage controllers with explicit doubles.
 
 Verifies stage/model ownership and cost recording, NOT 3D generation. No weights,
 SDK servers, renderers, assets or model calls are used. Token counts are fixture
@@ -29,7 +29,7 @@ class ImageReference:
     def copy(self):return self
 
 
-async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True):
+async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True, completion=False):
     out=args.out/name;out.mkdir(parents=True,exist_ok=False)
     events=[];loads=[];models=[]
     tokenizer=Tokenizer(args.tokenizer)
@@ -121,8 +121,18 @@ async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True):
                for k in ('full_stage_assets','tool_side_no_paid_api','common_evaluation','common_action_scope')}
     if not admitted:admission['tool_side_no_paid_api']['verified']=False
     error=None
+    async def complete(native,session,policy,arguments):
+        assert not any(e['event']=='fixture_close' for e in events)
+        events.append(dict(event='fixture_manipuland_before_close'))
+        policy.generate(dict(stage='manipuland'))
+        if fail_stage=='manipuland_finalizer':
+            raise RuntimeError('deliberate manipuland finalizer failure')
+        return dict(status='fixture_returned',full_scene_success=None)
     try:
         await run_native_trial(module,native_args,runtime_admission=admission,
+            required_stages=('floor_plan','furniture','wall','ceiling')+(
+                ('manipuland',) if completion else ()),
+            completion_driver=complete if completion else None,
             service_preflight=lambda *_: events.append(dict(event='fixture_service_preflight',
                 scope='Service double only; not real configuration qualification')),
             phase_settings=dict(arm=arm,total_output_tokens=128,decision_output_tokens=64,
@@ -145,6 +155,7 @@ async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True):
             if e['event']=='fixture_model_generate':
                 assert e['adapter_enabled']==(with_adapter and e['stage']=='furniture')
         expected=['floor_plan','furniture','wall','ceiling']
+        if completion:expected.append('manipuland')
         if fail_stage=='wall':expected=expected[:3]
         if fail_stage in ('floor_plan_finalizer','handover'):expected=expected[:1]
         assert [r['stage'] for r in data['stages']]==expected
@@ -158,6 +169,7 @@ async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True):
         assert data['lifecycle'][-1]['operation']=='session_close'
         assert data['lifecycle'][-1]['status']=='returned'
     result=dict(case=name,status='passed',model_constructions=len(loads),arm=arm,
+        entrypoint='adapted_five_stage' if completion else 'original_four_stage',
         fixture_generate_calls=len(data['calls']),stage_order=[r['stage'] for r in data['stages']],
         trial=data['trial'],
         error=error,restored_native_bindings=True,events=events,
@@ -175,13 +187,15 @@ async def main(a):
                    ('floor_finalize_failure','paired_phase_v3',True,'floor_plan_finalizer',True),
                    ('handover_failure','paired_phase_v3',True,'handover',True),
                    ('ceiling_finalize_failure','paired_phase_v3',True,'ceiling_finalizer',True),
-                   ('unqualified','paired_phase_v3',False,None,False)]:
+                   ('unqualified','paired_phase_v3',False,None,False),
+                   ('complete_five_stages','paired_phase_v3',True,None,True,True),
+                   ('manipuland_failure','paired_phase_v3',True,'manipuland_finalizer',True,True)]:
         rows.append(await case(a,*params))
     summary=dict(status='passed',cases=[{k:v for k,v in r.items() if k!='events'} for r in rows],
         native_controller_source=str(a.native_source),
         native_controller_sha256=hashlib.sha256(a.native_source.read_bytes()).hexdigest(),
         seconds=time.monotonic()-start,actual_language_model_calls=0,
-        actual_generated_scenes=0,scope='Exact native main_async/driver_loop control flow with explicit service/model doubles; NOT a model, native SDK or full-scene experiment.')
+        actual_generated_scenes=0,scope='Original four-stage main/driver and adapted five-stage entrypoint with explicit service/model doubles; NOT a model, native SDK or full-scene experiment.')
     (a.out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     print(json.dumps(summary))
 

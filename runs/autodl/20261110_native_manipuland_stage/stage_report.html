@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>原生小物件阶段接入</title><h1>已实现第五阶段接入，尚未完成真实整场验证</h1><p>复用原生家具选择、支撑面提取、放置工具和后处理。新增统一的本地模型回调与五阶段入口，原有四阶段入口不能再默认代表完整流程。</p><p>原生函数会跳过无支撑面的家具、捕获局部错误后继续。现在记录这些情况，并保留后处理返回的新场景实例供最终导出，避免把正常返回当成成功。</p><p>本地回调根据当前图像、真实状态、原始要求和工具回执逐步提议；图像不再通过通用 str() 路径丢失结构。实现使用已加载的 LocalToolVLMBackend，不创建付费客户端。原生 SDK 规划／设计／评价循环被共同单策略替换，这是公开的基线改动。</p><p>CPU 实际执行了上游阶段函数体的正常、部分失败、空选择路径，五阶段生命周期与失败回归，以及已有真实 PNG 的解码。模型、工具和几何执行使用明确替身：没有新增模型推理、场景或训练，也没有证明方法有效。</p><p>下一步只补实际 SDK/资产路径验证，不训练、不请求 GPU。最终仍需完整任务与强对照，不能以这批接入检查作为论文成绩。</p><pre>{
+  &quot;previous_goal_turn&quot;: &quot;progress: actual native config audit and production external-image preflight committed&quot;,
+  &quot;this_goal_turn&quot;: &quot;progress: native small-object source read; reusable runner/local policy/five-stage controller implemented and exercised under explicit doubles&quot;,
+  &quot;actual_hydra_composition&quot;: true,
+  &quot;actual_image_decoding&quot;: true,
+  &quot;actual_language_model_calls&quot;: 0,
+  &quot;paid_api_calls&quot;: 0,
+  &quot;new_complete_scenes&quot;: 0,
+  &quot;training_updates&quot;: 0,
+  &quot;actual_sdk_tools_executed&quot;: false,
+  &quot;full_runtime_ready&quot;: false,
+  &quot;training_ready&quot;: false,
+  &quot;novel_algorithm_established&quot;: false,
+  &quot;gpu_requested&quot;: false,
+  &quot;goal_complete&quot;: false,
+  &quot;regression_seconds&quot;: 9.26799851283431,
+  &quot;disk_available_bytes&quot;: 5372366848
+}</pre>

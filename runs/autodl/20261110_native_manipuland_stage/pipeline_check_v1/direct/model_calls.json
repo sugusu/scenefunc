@@ -1,0 +1,162 @@
+{
+  "model_calls": 4,
+  "calls": [
+    {
+      "stage": "floor_plan",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 8.080154657363892e-06
+    },
+    {
+      "stage": "furniture",
+      "adapter_enabled": true,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 64,
+      "wall_seconds": 7.74487853050232e-06
+    },
+    {
+      "stage": "wall",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 6.411224603652954e-06
+    },
+    {
+      "stage": "ceiling",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 6.407499313354492e-06
+    }
+  ],
+  "stages": [
+    {
+      "stage": "floor_plan",
+      "status": "returned",
+      "first_model_call": 0,
+      "wall_seconds": 0.000677919015288353,
+      "model_calls": 1
+    },
+    {
+      "stage": "furniture",
+      "status": "returned",
+      "first_model_call": 1,
+      "wall_seconds": 0.002315377816557884,
+      "model_calls": 1
+    },
+    {
+      "stage": "wall",
+      "status": "returned",
+      "first_model_call": 2,
+      "wall_seconds": 0.0008202232420444489,
+      "model_calls": 1
+    },
+    {
+      "stage": "ceiling",
+      "status": "returned",
+      "first_model_call": 3,
+      "wall_seconds": 0.0008225888013839722,
+      "model_calls": 1
+    }
+  ],
+  "lifecycle": [
+    {
+      "operation": "native_service_preflight",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 3.771856427192688e-06
+    },
+    {
+      "operation": "session_start",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 4.552304744720459e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "floor_plan",
+      "status": "returned",
+      "wall_seconds": 3.816559910774231e-06
+    },
+    {
+      "operation": "floor_plan_handover",
+      "stage": null,
+      "status": "returned",
+      "accepted": true,
+      "wall_seconds": 5.3960829973220825e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "furniture",
+      "status": "returned",
+      "wall_seconds": 3.5781413316726685e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "furniture",
+      "status": "returned",
+      "wall_seconds": 3.125518560409546e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "wall",
+      "status": "returned",
+      "wall_seconds": 3.213062882423401e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "wall",
+      "status": "returned",
+      "wall_seconds": 2.600252628326416e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "ceiling",
+      "status": "returned",
+      "wall_seconds": 3.1962990760803223e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "ceiling",
+      "status": "returned",
+      "wall_seconds": 2.47173011302948e-06
+    },
+    {
+      "operation": "session_close",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 8.122995495796204e-06
+    }
+  ],
+  "trial": {
+    "status": "native_stages_returned_quality_unassessed",
+    "all_stage_finalizers_returned": true,
+    "required_stages": [
+      "floor_plan",
+      "furniture",
+      "wall",
+      "ceiling"
+    ],
+    "returned_finalizers": [
+      "floor_plan",
+      "furniture",
+      "wall",
+      "ceiling"
+    ],
+    "wall_seconds": 0.06496233679354191
+  },
+  "accounting_complete": true,
+  "known_input_tokens": 128,
+  "known_output_tokens": 4,
+  "full_scene_success": null,
+  "scope": "Policy model.generate only; tool-side model calls and GPU kernel time are not measured. Driver wall times include observation/tool work. Finalizers and session lifecycle are timed separately. Returned finalizers do not prove scene quality."
+}

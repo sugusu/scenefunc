@@ -1,0 +1,266 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "paired",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 5,
+      "stage_order": [
+        "floor_plan",
+        "furniture",
+        "wall",
+        "ceiling"
+      ],
+      "trial": {
+        "status": "native_stages_returned_quality_unassessed",
+        "all_stage_finalizers_returned": true,
+        "required_stages": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling"
+        ],
+        "returned_finalizers": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling"
+        ],
+        "wall_seconds": 0.0148247592151165
+      },
+      "error": null,
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "direct",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "separate_direct_v3",
+      "fixture_generate_calls": 4,
+      "stage_order": [
+        "floor_plan",
+        "furniture",
+        "wall",
+        "ceiling"
+      ],
+      "trial": {
+        "status": "native_stages_returned_quality_unassessed",
+        "all_stage_finalizers_returned": true,
+        "required_stages": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling"
+        ],
+        "returned_finalizers": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling"
+        ],
+        "wall_seconds": 0.06496233679354191
+      },
+      "error": null,
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "wall_failure",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 4,
+      "stage_order": [
+        "floor_plan",
+        "furniture",
+        "wall"
+      ],
+      "trial": {
+        "status": "incomplete_or_failed",
+        "all_stage_finalizers_returned": false,
+        "error": "RuntimeError: deliberate backend failure",
+        "wall_seconds": 0.009977558627724648
+      },
+      "error": "RuntimeError: deliberate backend failure",
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "floor_finalize_failure",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 1,
+      "stage_order": [
+        "floor_plan"
+      ],
+      "trial": {
+        "status": "incomplete_or_failed",
+        "all_stage_finalizers_returned": false,
+        "required_stages": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling"
+        ],
+        "returned_finalizers": [],
+        "error": "RuntimeError: Native controller returned before all stage finalizers completed",
+        "wall_seconds": 0.0033441483974456787
+      },
+      "error": "RuntimeError: Native controller returned before all stage finalizers completed",
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "handover_failure",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 1,
+      "stage_order": [
+        "floor_plan"
+      ],
+      "trial": {
+        "status": "incomplete_or_failed",
+        "all_stage_finalizers_returned": false,
+        "required_stages": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling"
+        ],
+        "returned_finalizers": [
+          "floor_plan"
+        ],
+        "error": "RuntimeError: Native controller returned before all stage finalizers completed",
+        "wall_seconds": 0.003849498927593231
+      },
+      "error": "RuntimeError: Native controller returned before all stage finalizers completed",
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "ceiling_finalize_failure",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 5,
+      "stage_order": [
+        "floor_plan",
+        "furniture",
+        "wall",
+        "ceiling"
+      ],
+      "trial": {
+        "status": "incomplete_or_failed",
+        "all_stage_finalizers_returned": false,
+        "error": "RuntimeError: deliberate finalizer failure",
+        "wall_seconds": 0.06611549481749535
+      },
+      "error": "RuntimeError: deliberate finalizer failure",
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "unqualified",
+      "status": "passed",
+      "model_constructions": 0,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 0,
+      "stage_order": [],
+      "trial": {
+        "status": "not_started",
+        "all_stage_finalizers_returned": false
+      },
+      "error": "ValueError: Full runtime has not been qualified; no native startup performed",
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "complete_five_stages",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 6,
+      "stage_order": [
+        "floor_plan",
+        "furniture",
+        "wall",
+        "ceiling",
+        "manipuland"
+      ],
+      "trial": {
+        "status": "native_stages_returned_quality_unassessed",
+        "all_stage_finalizers_returned": true,
+        "required_stages": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling",
+          "manipuland"
+        ],
+        "returned_finalizers": [
+          "floor_plan",
+          "furniture",
+          "wall",
+          "ceiling",
+          "manipuland"
+        ],
+        "wall_seconds": 0.069291727617383
+      },
+      "error": null,
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    },
+    {
+      "case": "manipuland_failure",
+      "status": "passed",
+      "model_constructions": 1,
+      "arm": "paired_phase_v3",
+      "fixture_generate_calls": 6,
+      "stage_order": [
+        "floor_plan",
+        "furniture",
+        "wall",
+        "ceiling",
+        "manipuland"
+      ],
+      "trial": {
+        "status": "incomplete_or_failed",
+        "all_stage_finalizers_returned": false,
+        "error": "RuntimeError: deliberate manipuland finalizer failure",
+        "wall_seconds": 0.5867920462042093
+      },
+      "error": "RuntimeError: deliberate manipuland finalizer failure",
+      "restored_native_bindings": true,
+      "actual_language_model_calls": 0,
+      "actual_native_scene_actions": 0,
+      "actual_generated_scenes": 0
+    }
+  ],
+  "native_controller_source": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_execution_inventory_20261104/source/src/agent_rollout_decoupled.py",
+  "native_controller_sha256": "4dfcaa1f3f91aa72762a8b89d7c3ebc411358b8ef65971ade444610d81dcbc91",
+  "seconds": 9.26799851283431,
+  "actual_language_model_calls": 0,
+  "actual_generated_scenes": 0,
+  "scope": "Exact native main_async/driver_loop control flow with explicit service/model doubles; NOT a model, native SDK or full-scene experiment."
+}

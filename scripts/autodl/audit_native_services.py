@@ -87,7 +87,8 @@ async def main(a):
     declarations = {k:dict(verified=True, evidence='Deliberately optimistic fixture declaration')
         for k in ('full_stage_assets','tool_side_no_paid_api','common_evaluation','common_action_scope')}
     try:
-        await run_native_trial(module, args, runtime_admission=declarations, ledger=ledger)
+        await run_native_trial(module, args, runtime_admission=declarations, ledger=ledger,
+            required_stages=('floor_plan','furniture','wall','ceiling'))
     except ValueError as exc:
         error = str(exc)
     else:

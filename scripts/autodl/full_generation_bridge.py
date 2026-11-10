@@ -246,7 +246,9 @@ def shared_model_driver(native_module, *, phase_settings, stage_budget,
 
 
 async def run_native_trial(native_module, args, *, runtime_admission,
-                           service_preflight=preflight_native_services, **bridge):
+                           service_preflight=preflight_native_services,
+                           required_stages=('floor_plan','furniture','wall','ceiling','manipuland'),
+                           completion_driver=None, **bridge):
     """Execute only an explicitly qualified runtime; not a static readiness test.
 
     Qualification must cover tool-side services, not just this local model.
@@ -261,6 +263,10 @@ async def run_native_trial(native_module, args, *, runtime_admission,
         raise ValueError('Full runtime has not been qualified; no native startup performed')
     if args.skip_furniture or args.skip_wall or args.skip_ceiling:
         raise ValueError('Full-generation trial cannot silently skip room stages')
+    implemented=('floor_plan','furniture','wall','ceiling')+(
+        ('manipuland',) if completion_driver is not None else ())
+    if tuple(required_stages)!=implemented:
+        raise ValueError('Required stages are not implemented by this entrypoint; no startup performed')
     ledger=bridge['ledger'];tick=time.monotonic()
     ledger.trial.update(status='running')
     ledger.save()
@@ -271,13 +277,19 @@ async def run_native_trial(native_module, args, *, runtime_admission,
         with ledger.operation('native_service_preflight'):
             service_preflight(native_module, args)
         with shared_model_driver(native_module,**bridge):
-            await native_module.main_async(args)
+            if completion_driver is None:
+                await native_module.main_async(args)
+            else:
+                from complete_native_pipeline import complete_native_pipeline
+                await complete_native_pipeline(native_module,args,
+                    completion_driver=completion_driver,ledger=ledger)
         # Native main_async catches floor geometry exceptions and returns;
         # a zero process exit / normal return is therefore not completion.
         finalized=[r['stage'] for r in ledger.lifecycle
                    if r['operation']=='finalize' and r['status']=='returned']
-        complete=finalized==['floor_plan','furniture','wall','ceiling']
+        complete=finalized==list(required_stages)
         ledger.trial.update(all_stage_finalizers_returned=complete,
+                            required_stages=list(required_stages),
                             returned_finalizers=finalized)
         if not complete:
             raise RuntimeError('Native controller returned before all stage finalizers completed')

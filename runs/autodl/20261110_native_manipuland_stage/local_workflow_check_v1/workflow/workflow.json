@@ -1,0 +1,218 @@
+{
+  "turns": [
+    {
+      "parent_id": "fixture_parent",
+      "step": 0,
+      "status": "rejected",
+      "request_sha256": "38a5b194a333038cfd714e6bc469c71182b8840c4d328c0fe363e5ea65ad316a",
+      "public_context": {
+        "original_room_request": "Fixture workflow; not a generated scene",
+        "current_parent_id": "fixture_parent",
+        "actual_state": {
+          "fixture_moves": 0
+        },
+        "native_selection_proposal": {
+          "suggested_items": [],
+          "prompt_constraints": "fixture only",
+          "style_notes": ""
+        },
+        "previous_execution_feedback": [
+          {
+            "rejection": "ValueError: Invalid common-policy action schema"
+          },
+          {
+            "tool": "fixture_move",
+            "arguments": {},
+            "result": {
+              "success": true,
+              "scope": "Integer fixture mutation only"
+            }
+          }
+        ]
+      },
+      "tool_schema_sha256": "1e14c928119397d152403e0598322c6cec65d5dec01e05061d1e3b9e8dadb9bb",
+      "raw_response": "{\"stop\":\"wrong-type\"}",
+      "error": "ValueError: Invalid common-policy action schema"
+    },
+    {
+      "parent_id": "fixture_parent",
+      "step": 1,
+      "status": "action_returned",
+      "request_sha256": "0c578056c2ed6ff4e586d818345f15cb14d45b0bd9396b22f64da93c5eb7a983",
+      "public_context": {
+        "original_room_request": "Fixture workflow; not a generated scene",
+        "current_parent_id": "fixture_parent",
+        "actual_state": {
+          "fixture_moves": 0
+        },
+        "native_selection_proposal": {
+          "suggested_items": [],
+          "prompt_constraints": "fixture only",
+          "style_notes": ""
+        },
+        "previous_execution_feedback": [
+          {
+            "rejection": "ValueError: Invalid common-policy action schema"
+          },
+          {
+            "tool": "fixture_move",
+            "arguments": {},
+            "result": {
+              "success": true,
+              "scope": "Integer fixture mutation only"
+            }
+          }
+        ]
+      },
+      "tool_schema_sha256": "1e14c928119397d152403e0598322c6cec65d5dec01e05061d1e3b9e8dadb9bb",
+      "raw_response": "{\"stop\": false, \"reason\": \"fixture edit\", \"tool\": \"fixture_move\", \"arguments\": {}}"
+    },
+    {
+      "parent_id": "fixture_parent",
+      "step": 2,
+      "status": "policy_stop",
+      "request_sha256": "1331c9599a9e7cbbb0b4fa22b951bfbd5fe16dd8459d72397dcb8ed00af24d22",
+      "public_context": {
+        "original_room_request": "Fixture workflow; not a generated scene",
+        "current_parent_id": "fixture_parent",
+        "actual_state": {
+          "fixture_moves": 1
+        },
+        "native_selection_proposal": {
+          "suggested_items": [],
+          "prompt_constraints": "fixture only",
+          "style_notes": ""
+        },
+        "previous_execution_feedback": [
+          {
+            "rejection": "ValueError: Invalid common-policy action schema"
+          },
+          {
+            "tool": "fixture_move",
+            "arguments": {},
+            "result": {
+              "success": true,
+              "scope": "Integer fixture mutation only"
+            }
+          }
+        ]
+      },
+      "tool_schema_sha256": "1e14c928119397d152403e0598322c6cec65d5dec01e05061d1e3b9e8dadb9bb",
+      "raw_response": "{\"stop\": true, \"reason\": \"fixture stop\", \"tool\": null, \"arguments\": {}}"
+    }
+  ],
+  "tool_calls": [
+    {
+      "index": 0,
+      "name": "observe_scene",
+      "arguments": {},
+      "status": "returned",
+      "output": [
+        {
+          "type": "image_url",
+          "sha256": "3c5d1915fe16ec4b6a2f845d6e14279cefa76767b3cd459a57e3591ecd2b52b4"
+        },
+        {
+          "type": "text",
+          "text": "Previously rendered image used for codec testing only"
+        }
+      ],
+      "seconds": 0.0686076171696186
+    },
+    {
+      "index": 1,
+      "name": "get_current_scene_state",
+      "arguments": {},
+      "status": "returned",
+      "output": {
+        "fixture_moves": 0
+      },
+      "seconds": 3.219582140445709e-05
+    },
+    {
+      "index": 2,
+      "name": "observe_scene",
+      "arguments": {},
+      "status": "returned",
+      "output": [
+        {
+          "type": "image_url",
+          "sha256": "3c5d1915fe16ec4b6a2f845d6e14279cefa76767b3cd459a57e3591ecd2b52b4"
+        },
+        {
+          "type": "text",
+          "text": "Previously rendered image used for codec testing only"
+        }
+      ],
+      "seconds": 0.0713166743516922
+    },
+    {
+      "index": 3,
+      "name": "get_current_scene_state",
+      "arguments": {},
+      "status": "returned",
+      "output": {
+        "fixture_moves": 0
+      },
+      "seconds": 4.203431308269501e-05
+    },
+    {
+      "index": 4,
+      "name": "fixture_move",
+      "arguments": {},
+      "status": "returned",
+      "output": {
+        "success": true,
+        "scope": "Integer fixture mutation only"
+      },
+      "seconds": 4.967302083969116e-05
+    },
+    {
+      "index": 5,
+      "name": "observe_scene",
+      "arguments": {},
+      "status": "returned",
+      "output": [
+        {
+          "type": "image_url",
+          "sha256": "3c5d1915fe16ec4b6a2f845d6e14279cefa76767b3cd459a57e3591ecd2b52b4"
+        },
+        {
+          "type": "text",
+          "text": "Previously rendered image used for codec testing only"
+        }
+      ],
+      "seconds": 0.020751716569066048
+    },
+    {
+      "index": 6,
+      "name": "get_current_scene_state",
+      "arguments": {},
+      "status": "returned",
+      "output": {
+        "fixture_moves": 1
+      },
+      "seconds": 3.660470247268677e-05
+    },
+    {
+      "index": 7,
+      "name": "observe_scene",
+      "arguments": {},
+      "status": "returned",
+      "output": [
+        {
+          "type": "image_url",
+          "sha256": "3c5d1915fe16ec4b6a2f845d6e14279cefa76767b3cd459a57e3591ecd2b52b4"
+        },
+        {
+          "type": "text",
+          "text": "Previously rendered image used for codec testing only"
+        }
+      ],
+      "seconds": 0.018684865906834602
+    }
+  ],
+  "full_scene_success": null,
+  "tool_call_limit": 8,
+  "scope": "Common local surface-object policy. Backend ledger includes actual generation/token costs; observations/tool calls count against this shared stage budget."
+}

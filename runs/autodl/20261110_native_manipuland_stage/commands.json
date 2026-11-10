@@ -1,0 +1,29 @@
+{
+  "cwd": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "python": "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "commands": [
+    [
+      "scripts/autodl/check_native_manipuland_runner.py",
+      "--source",
+      "runs/autodl/20261110_native_manipuland_stage/source/scenesmith/manipuland_agents/stateful_manipuland_agent.py",
+      "--out",
+      "NEW_NATIVE_BODY_OUTPUT"
+    ],
+    [
+      "scripts/autodl/check_local_manipuland_workflow.py",
+      "--image",
+      "runs/autodl/20261110_native_observation_export/views_v2/step_006.topdown.png",
+      "--out",
+      "NEW_WORKFLOW_OUTPUT"
+    ]
+  ],
+  "pipeline_regression": {
+    "python": "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+    "script": "scripts/autodl/check_full_generation_bridge.py",
+    "arguments": "--native-source runs/autodl/20261110_native_service_contract/inputs/driver/agent_rollout_decoupled.py --tokenizer /root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only/tokenizer.json --out NEW_OUTPUT_DIRECTORY"
+  },
+  "production_status": "Do not launch yet: local asset and SDK paths are not qualified."
+}

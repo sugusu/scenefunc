@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8"><title>原生服务与阶段核查</title><h1>整场生成尚未具备执行资格：实际配置核查</h1><p>Hydra 已真实展开默认配置与 Scene-Designer 覆盖。四类资产代理均配置 generated/SAM3D/OpenAI 图像；三个启用图像材质回退。已有本地 VLM 绑定不覆盖图像生成。即使切换 HSSD，AssetManager 仍先构造图像客户端。</p><p>当前驱动遍历 floor_plan、furniture、wall、ceiling；配置中的 manipuland 没有驱动入口。家具生成工具明确只生成落地家具。不能把四阶段结束等同于包含指定桌面物体的完整生成。</p><p>已把实际配置预检接入生产包装器，在服务启动之前拒绝这些路径。没有创建模型、调用 API 或生成场景。这修正实验资格判断，不构成新算法，也不证明更改配置就能完成任务。</p><h2>对算法比较的影响</h2><p>决定条件化、等材料辅助监督直出动作、普通搜索必须共用真实完整能力；不能让某组缺少小物件生成或让其他组使用未计费的图像模型。下一步应复用上游的小物件阶段与明确的本地资产路径，先验证完整输入的必需实例与关系，不能删除要求换取运行。</p><h2>实际记录</h2><pre>{
+  &quot;configuration&quot;: &quot;Scene-Designer overlay + pinned SceneSmith defaults&quot;,
+  &quot;pinned_source_files_verified&quot;: 21,
+  &quot;actual_hydra_composition&quot;: true,
+  &quot;actual_service_startups&quot;: 0,
+  &quot;actual_model_calls&quot;: 0,
+  &quot;paid_api_calls&quot;: 0,
+  &quot;actual_scenes_generated&quot;: 0,
+  &quot;training_updates&quot;: 0,
+  &quot;startup_tripwire_reached&quot;: false,
+  &quot;production_preflight_rejection&quot;: &quot;Native image service is not locally qualified; eager construction is outside the local VLM binding: [{\&quot;asset_source\&quot;: \&quot;generated\&quot;, \&quot;backend\&quot;: \&quot;openai\&quot;, \&quot;stage\&quot;: \&quot;furniture\&quot;}, {\&quot;asset_source\&quot;: \&quot;generated\&quot;, \&quot;backend\&quot;: \&quot;openai\&quot;, \&quot;stage\&quot;: \&quot;wall\&quot;}, {\&quot;asset_source\&quot;: \&quot;generated\&quot;, \&quot;backend\&quot;: \&quot;openai\&quot;, \&quot;stage\&quot;: \&quot;ceiling\&quot;}, {\&quot;asset_source\&quot;: \&quot;generated\&quot;, \&quot;backend\&quot;: \&quot;openai\&quot;, \&quot;stage\&quot;: \&quot;manipuland\&quot;}]&quot;,
+  &quot;retrieval_counterexample_rejection&quot;: &quot;Native image service is not locally qualified; eager construction is outside the local VLM binding: [{\&quot;asset_source\&quot;: \&quot;hssd\&quot;, \&quot;backend\&quot;: \&quot;openai\&quot;, \&quot;stage\&quot;: \&quot;furniture\&quot;}, {\&quot;asset_source\&quot;: \&quot;hssd\&quot;, \&quot;backend\&quot;: \&quot;openai\&quot;, \&quot;stage\&quot;: \&quot;wall\&quot;}, {\&quot;asset_source\&quot;: \&quot;hssd\&quot;, \&quot;backend\&quot;: \&quot;openai\&quot;, \&quot;stage\&quot;: \&quot;ceiling\&quot;}]&quot;,
+  &quot;controller_stages&quot;: [
+    &quot;floor_plan&quot;,
+    &quot;furniture&quot;,
+    &quot;wall&quot;,
+    &quot;ceiling&quot;
+  ],
+  &quot;full_runtime_ready&quot;: false,
+  &quot;task_with_required_manipulands_qualified&quot;: false,
+  &quot;seconds&quot;: 1.3961069695651531,
+  &quot;scope&quot;: &quot;Configuration execution and production preflight, not native scene generation or provider inference.&quot;
+}</pre>
