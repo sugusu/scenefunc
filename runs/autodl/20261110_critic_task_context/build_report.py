@@ -89,10 +89,10 @@ def main():
         ['Ordinary search', 'Same upstream operations, task evidence and cumulative budget',
          'Required decision/search control', 'Existing preview evidence reused; not rerun here']]
     with (ROOT / 'method_differences.csv').open('w', newline='') as f:
-        w = csv.writer(f); w.writerow(['method', 'difference', 'research_status', 'evidence'])
+        w = csv.writer(f, lineterminator='\n'); w.writerow(['method', 'difference', 'research_status', 'evidence'])
         w.writerows(differences)
     with (ROOT / 'input_summary.csv').open('w', newline='') as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator='\n')
         w.writerow(['condition', 'images', 'task_present', 'input_tokens', 'model_calls', 'scope'])
         for r in rows:
             w.writerow([r['name'], r['image_count'], r['contains_original_task'],
