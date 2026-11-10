@@ -1,0 +1,15 @@
+{
+  "status": "failed_no_model_or_service_start",
+  "model_calls": 0,
+  "services_started": 0,
+  "paid_API_calls": 0,
+  "new_rooms_generated": 0,
+  "scope": "Whole-module import, normal native floor-agent/tool construction and local materials only",
+  "error": "RuntimeError: No network or process startup in native controller CPU probe",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/probe_remote_native_controller.py\", line 96, in main\n    agent, tools, logger, materials_server = module.build_floor_plan_agent_tools(\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/Designer/loop.py\", line 90, in build_agent_and_tools\n    agent = StatefulFloorPlanAgent(cfg=fp_cfg, logger=logger)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/native_source/scenesmith/floor_plan_agents/stateful_floor_plan_agent.py\", line 128, in __init__\n    self.blender_server.start()\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/native_source/scenesmith/agent_utils/blender/server_manager.py\", line 180, in start\n    self._server_process = subprocess.Popen(cmd, text=True, env=env)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/subprocess.py\", line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/subprocess.py\", line 1823, in _execute_child\n    sys.audit(\"subprocess.Popen\", executable, args, cwd, env)\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/probe_remote_native_controller.py\", line 68, in audit\n    raise RuntimeError('No network or process startup in native controller CPU probe')\nRuntimeError: No network or process startup in native controller CPU probe\n",
+  "seconds": 18.640310583636165,
+  "blocked_operations": [
+    "subprocess.Popen"
+  ],
+  "parent_peak_rss_mib": 824.0546875
+}

@@ -1,0 +1,21 @@
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[osa] scene_dir = /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/native_joint_actual_v1/floor_plan
+[osa] floor_plan_agent: mode=room use_retrieval_server=False
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/run_native_joint_admission.py", line 183, in <module>
+    else:asyncio.run(run(args.stage.resolve()))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/run_native_joint_admission.py", line 133, in run
+    assert materials is None and not agent.layout.rooms
+                                     ^^^^^^^^^^^^^^^^^^
+AttributeError: 'HouseLayout' object has no attribute 'rooms'. Did you mean: 'doors'?
