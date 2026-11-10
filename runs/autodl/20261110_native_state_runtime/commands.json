@@ -1,0 +1,10 @@
+{
+  "cwd": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "commands": [
+    "python -B scripts/autodl/fetch_native_state_source.py --output runs/autodl/20261110_native_state_runtime/source",
+    "PYTHONPATH=/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/load_paper_native_state.py --bundle runs/autodl/20261110_native_resource_closure/checkpoint_v1/bundle --source runs/autodl/20261110_native_state_runtime/source --output runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1",
+    "PYTHONPATH=/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES='' /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/inspect_paper_native_geometry.py --imported runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1/imported --source runs/autodl/20261110_native_state_runtime/source --output runs/autodl/20261110_native_state_runtime/geometry_parse_v1"
+  ],
+  "reproduction": "Use fresh output directories and change downstream paths consistently. Existing restored resource bundle and existing Drake dependency path are required. No service or model bootstrap.",
+  "source_copy_note": "Only pinned source manifest and license committed; run fetcher to recover unchanged upstream modules. Asset binaries remain local/ignored."
+}

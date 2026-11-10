@@ -1,0 +1,78 @@
+{
+  "scope": "Targeted paper mechanisms and actual state-loader source; no claim of whole literature or all paper figures read.",
+  "papers": [
+    {
+      "title": "Scene-Designer",
+      "url": "https://arxiv.org/html/2610.23121v1",
+      "read_this_turn": "Abstract and 3.1; D.1 text, D.2 full text through trajectory replay, D.3 construction and perturbation definitions. Figure captions visible, not images.",
+      "implication": "OTA already uses action-conditioned teacher reasoning. Sequence shortening preserves the accepted endpoint and explicitly keeps necessary intermediate edits; neither a reason prefix nor endpoint-preserving replay alone distinguishes our proposed method.",
+      "not_done": "No new RL implementation run or complete reread of experiments/appendices."
+    },
+    {
+      "title": "GALA",
+      "url": "https://arxiv.org/html/2610.28280v1",
+      "read_this_turn": "Appendix C reference selection and D object order; E metrics; H-L text and tables, following earlier main-method reading. M planning prompt beginning only.",
+      "implication": "Training references can use target pose; rollout uses dependencies, anchors and recency. Supplied-context placement and complete free generation must be evaluated separately. Detailed geometry and the evaluation domain matter.",
+      "not_done": "No weights, training or GALA inference executed; unseen-asset results are authors reports, not our replication."
+    },
+    {
+      "title": "Distilling Step-by-Step",
+      "url": "https://aclanthology.org/2023.findings-acl.507/",
+      "read_this_turn": "Official abstract/metadata and locally pinned full model_utils.py; earlier method reading retained separately.",
+      "implication": "Auxiliary rationale prediction with direct label prediction is an existing strong comparison."
+    }
+  ],
+  "code": [
+    {
+      "path": "scripts/autodl/phase_trainer.py",
+      "scope": "Complete: immutable per-token weights, selected logits and accumulation compensation; no new model update."
+    },
+    {
+      "path": "scripts/autodl/phase_objective.py",
+      "scope": "Complete: phase task descriptions and ordinary weighted causal cross entropy."
+    },
+    {
+      "path": "scripts/autodl/phase_deployment.py",
+      "scope": "Complete: actual generated decision prefix only, no gold target at inference."
+    },
+    {
+      "path": "scripts/autodl/phase_host.py",
+      "scope": "NativeRoomPort and execution loop beginning; not a new complete source reread."
+    },
+    {
+      "path": "source/scenesmith/agent_utils/house.py",
+      "scope": "Imports and HouseScene restore/serialize/assemble/combined-directive methods; remaining methods not fully read. Unmodified module actually imported."
+    },
+    {
+      "path": "source/scenesmith/agent_utils/room.py",
+      "scope": "Imports and targeted serialization/restoration references; entire module loaded, not fully read."
+    },
+    {
+      "path": "source/scenesmith/agent_utils/sceneeval_exporter.py",
+      "scope": "Imports and exporter interface viewed; unmodified module executed during native export, not all method text read."
+    },
+    {
+      "path": "source/scenesmith/agent_utils/support_surface_extraction.py",
+      "scope": "Imports/config fields viewed; loaded dependency, extraction not invoked."
+    },
+    {
+      "path": "source/scenesmith/utils/material.py",
+      "scope": "Initial dataclass/path/texture lookup methods inspected; no texture generation."
+    },
+    {
+      "path": "source/scenesmith/utils/geometry_utils.py",
+      "scope": "Imports and coordinate conversion methods inspected; no assertion of full mathematical review."
+    },
+    {
+      "path": "source/scenesmith/utils/sdf_utils.py",
+      "scope": "Imports, pose/scale parser and transform serialization references inspected."
+    }
+  ],
+  "not_claimed": [
+    "New training objective or theorem",
+    "Current-state sufficiency of every task",
+    "Native model quality or simulation stability",
+    "Exact old image recovery",
+    "Full Scene-Designer server process started"
+  ]
+}

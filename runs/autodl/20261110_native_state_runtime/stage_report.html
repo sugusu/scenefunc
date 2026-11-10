@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>原生场景载入与算法边界</title><style>body{max-width:1000px;margin:35px auto;padding:0 22px;font:17px/1.75 sans-serif;color:#20303c}table{border-collapse:collapse;width:100%}td,th{border:1px solid #cad3dc;padding:9px;text-align:left}code{overflow-wrap:anywhere}a{color:#175881}</style>
+<h1>Paper 房间已实际进入原生场景与几何后端</h1>
+<p>本轮在 CPU 上完成真实 HouseScene 载入、原生整房导出及 Drake 模型解析。资源文件能够进入执行后端；这不是新生成结果，也没有证明算法收益。</p>
+<table><tr><th>实际运行</th><th>结果</th></tr><tr><td>原生类载入</td><td>15个对象记录，9件家具；4.18秒</td></tr><tr><td>整房导出及Drake解析</td><td>10个模型、11个刚体、54个几何实例，其中视觉27、碰撞表示27；4.64秒</td></tr><tr><td>资源与数值</td><td>原输入文件未变；4处四元数重新序列化差异，最大1.11e-16。同一本地Drake下的矩阵和位置比较误差为0</td></tr><tr><td>资源消耗</td><td>记录峰值约268.3 MiB；下载固定源码244087字节。不是全模型推理的内存要求</td></tr></table>
+<p>本地 Drake 1.47.0 与旧运行1.49.0不同，且没有重新渲染。原始序列化哈希与运行时哈希分开保存；不能把相同矩阵推导为相同图像或把旧图强行绑定到新哈希。仍缺15个单元的完整原图。</p>
+<p>仅删除了一份已经被精确恢复版本替代的失败资源副本，释放8540160字节。原始实验、正确资源包、全部失败原因与哈希记录保留；数据盘仍守5 GiB预留线。</p>
+<h2>论文和代码对照后的取舍</h2>
+<p>当前明确检验：同样的知识、目标和判断监督下，让动作读取自己生成的空间判断，是否比直接动作预测改善整场要求或成本。这里使用普通条件交叉熵，没有新增损失函数或性能保证。</p>
+<p><a href="https://arxiv.org/html/2610.23121v1">Scene-Designer §3.1、D.2</a> 已有观察—思考—动作监督，也保留有后续作用的中间操作。因此新增判断文字、压缩轨迹不能独立承担创新。<a href="https://aclanthology.org/2023.findings-acl.507/">Distilling Step-by-Step</a> 提供辅助判断学习的强对照依据。</p>
+<p><a href="https://arxiv.org/html/2610.28280v1#A3">GALA 附录C</a> 明确区分训练时利用已知目标姿态选参考物体与生成时的代理选择。这个边界提醒我们：教师给定上下文中的动作拟合，不能直接当成自由生成的效果；本文贡献和我们的机制也不相同。</p>
+<p>下一次模型对照的关键仍是：使用各组自己的真实后续场景，比较必需物体、用途关系、已满足要求保持和全部运行成本。保留同知识基座、普通规则/搜索以及相同判断监督的直接动作组；不能只用动作监督较少的弱组证明“判断有用”。当前全部材料属于开发数据，停止决策的小信号不足以支持CVPR主张。</p>
+<h2>这轮没有做的事</h2>
+<p>没有模型调用、参数更新、物理仿真、碰撞质量评分、图像重渲染或完整模型自主生成；也没有原生服务会话续跑。原生模块完整载入不等于其每行源码都读过，实际阅读范围另列。恢复代码不参与方法优越性的计分。</p>
+<p><a href="summary.json">实际结果</a> · <a href="checkpoint_restore_v1/state_differences.json">四处数值差异</a> · <a href="geometry_parse_v1/native_models.json">原生模型列表</a> · <a href="state_binding.json">状态来源绑定</a> · <a href="algorithm_boundary.json">算法与理论边界</a> · <a href="reading_ledger.json">阅读记录</a> · <a href="commands.json">复现命令</a></p></html>

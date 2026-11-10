@@ -1,0 +1,107 @@
+directives:
+- add_frame:
+    name: house_frame
+    X_PF:
+      base_frame: world
+      translation: [0, 0, 0]
+- add_frame:
+    name: room_paper_shared_living_reconstruction_frame
+    X_PF:
+      base_frame: house_frame
+      translation: [3.2, 2.2, 0]
+- add_model:
+    name: room_geometry_paper_shared_living_reconstruction
+    file: package://scene/room_paper_shared_living_reconstruction/room.sdf
+- add_model:
+    name: paper_shared_living_reconstruction_kitchen_counter_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/kitchen_counter/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [1.6, 1.85, 0.0]
+        rotation: !AngleAxis
+          angle_deg: 180.0
+          axis: [-0.0, -0.0, -1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_cooktop_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/cooktop/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [1.0, 1.85, 0.9]
+        rotation: !AngleAxis
+          angle_deg: 180.0
+          axis: [-0.0, -0.0, -1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_kitchen_sink_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/kitchen_sink/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [2.2, 1.85, 0.9]
+        rotation: !AngleAxis
+          angle_deg: 180.0
+          axis: [-0.0, -0.0, -1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_sofa_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/sofa/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [-1.801003281091984, 1.2994332827101351, 0.0]
+        rotation: !AngleAxis
+          angle_deg: 0.053451922744995474
+          axis: [0.0, 0.0, -1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_low_fridge_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/low_fridge/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [2.7990930443424333, 0.8507026562902197, 0.0]
+        rotation: !AngleAxis
+          angle_deg: 90.05020548888662
+          axis: [0.0, 0.0, 1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_pantry_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/pantry/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [2.800695269684565, -0.5509049095831968, 0.0]
+        rotation: !AngleAxis
+          angle_deg: 90.11301820988031
+          axis: [0.0, 0.0, 1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_chair_left_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/chair_left/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [-2.8486077179442564, 0.0009783324974907575, 0.0]
+        rotation: !AngleAxis
+          angle_deg: 0.011203539459161504
+          axis: [0.0, 0.0, -1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_chair_right_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/chair_right/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [-0.7511511289227555, 0.000400019047252164, 0.0]
+        rotation: !AngleAxis
+          angle_deg: 0.1390541637079178
+          axis: [0.0, 0.0, 1.0]
+- add_model:
+    name: paper_shared_living_reconstruction_mobile_table_0
+    file: package://scene/room_paper_shared_living_reconstruction/objects/mobile_table/object.sdf
+    default_free_body_pose:
+      body:
+        base_frame: room_paper_shared_living_reconstruction_frame
+        translation: [-1.8007986239887728, -0.0006217367932862324, 0.0]
+        rotation: !AngleAxis
+          angle_deg: 0.0649702118535031
+          axis: [0.0, 0.0, 1.0]
+- add_weld:
+    parent: room_paper_shared_living_reconstruction_frame
+    child: room_geometry_paper_shared_living_reconstruction::room_geometry_body_link
