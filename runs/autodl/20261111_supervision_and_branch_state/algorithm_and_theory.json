@@ -1,0 +1,73 @@
+{
+  "status": "Falsifiable conditional-supervision study; not a verified novel method or a trained result",
+  "target": "Full editable indoor3D generation from unchanged original text, with actual assets and independently evaluated required objects, relations and usability; not box repair or next-token accuracy alone.",
+  "research_question": "With the same source knowledge, action examples, observations and execution budget, does correctly paired decision supervision improve the student policy on new full-room tasks beyond auxiliary supervision and existing joint reasoning-action training?",
+  "novelty_boundary": "Reason-then-act, whole-trajectory SFT/DPO, memory, rollback, ordinary ID references, tri-state label admission and source provenance all have existing precedents. They are common controls or research hygiene here. No new loss or CVPR-level contribution claimed.",
+  "observations": "X_t=(original_task, current_scene_graph, actual_multi_views, historical_tool_receipts, available_tools_and_assets, remaining_budget). An authored or generated rationale is not measured scene evidence.",
+  "state": "Full simulator state includes scene objects, asset files, registry, relevant caches/RNG/workers. Current byte/registry reset is empirically qualified only for rescale on existing registered furniture. SceneJSON alone is insufficient; do not claim general Markov sufficiency from the finite probe.",
+  "actions": "Composite output (D_t,A_t); D is self-generated deliberation, A is an executable native call or explicit completion. Native runtime feedback is produced by a shared frozen tool kernel kappa_0.",
+  "estimand": "J(theta;kappa_0,B)=E[1{normal task termination AND every frozen original requirement AND common geometry/usability validity has sound true evidence before budget B}]. Unknown/unsupported checks and runtime deadlines remain in the evaluation denominator, never fabricated positive or preferred labels.",
+  "costs": "Shared B=(forward_calls, generated_tokens, native_tool/candidate_attempts, elapsed_time). Report all dimensions. A scalar time penalty defines a different estimand unless its exchange rate is prospectively fixed. Data acquisition/training and test-time costs are separate.",
+  "data_actual": {
+    "status": "actual_receipts_and_original_components_audited",
+    "native_tool_calls": 35,
+    "native_call_outcomes": {
+      "native_success": 30,
+      "no_boolean_success_certificate": 4,
+      "native_failure": 1
+    },
+    "local_units": 24,
+    "families": 6,
+    "source_supported_rationale_units": 8,
+    "existing_local_decision_targets": 10,
+    "missing_local_decision_targets": 14,
+    "complete_positive_rooms_admitted": 0,
+    "licensed_SceneChain_samples_acquired": 0,
+    "heldout_critique_benchmark_used_for_training": false,
+    "unknown_not_converted_to_preference_negatives": true,
+    "paid_API_calls": 0,
+    "model_forwards": 0,
+    "training_updates": 0,
+    "source_files": {
+      "runs/autodl/20261110_supervision_horizon/segments_v2/corpus_ledger.json": "a429d77af000b2594441e6f352798805aea61a782e566a45d091d311ceb5b95a",
+      "runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl": "8c987f616edf6107bba68115136fd02f8a2389cfb2ca0a728f4e0f917164e7ac",
+      "runs/autodl/20261110_complete_native_runtime/required_instances_review.csv": "3fa8976c276bda2455cf4985859b4ced04da7bc156d902e0cd216c5c6949f365"
+    },
+    "native_rationale_turns": 19
+  },
+  "arms": {
+    "A": "Same action targets, ordinary action-only CE.",
+    "AUX": "Same action CE plus same supported D targets predicted from X independently. Actions do not consume D. This isolates extra source-text supervision.",
+    "J": "Original same-source joint autoregressive D then A in one response. It is a strong existing reason-action baseline, not omitted.",
+    "P": "Generate own D in a separate pass, then produce A conditioned on that D. Extra forward/prefix/token costs charged. If token conditioning is identical to J, this is an execution factorization, not an independent new learning principle.",
+    "T": "Whole-trajectory SFT/DPO objective as a strong prior. Original SceneOrchestra uses SceneWeaver idea-level tools, while this host uses native typed calls and runtime IDs. Adaptation is an explicitly labeled mechanism control, not paper reproduction; all arms share the ordinary reference binder.",
+    "F": "Frozen base + equal source retrieval, actual feedback and bounded ordinary search using the same tools. Shared snapshot qualification applies to all branches."
+  },
+  "losses": {
+    "A": "L_A=-sum_i w_i^A log pi_theta(A_i*|X_i)",
+    "AUX": "L_AUX=L_A-lambda sum_{i:original D present} w_i^D log pi_theta(D_i*|X_i)",
+    "J": "L_J=-sum_{i:D present}[w_i^A log pi_theta(A_i*|X_i,D_i*)+lambda w_i^D log pi_theta(D_i*|X_i)] plus original no-D action targets. Token/family masses retained; missing D never authored from scoring answers.",
+    "P": "Same component losses as the existing phase contract; different real prefixes must be reported. Teacher forcing uses D*, deployment uses sampled D; oracle D at evaluation is privileged input.",
+    "T": "Existing stepwise and whole-trajectory CE/DPO on the SAME admitted task set; scalar composition-score preferences retain that label identity and are never called independently verified full-task preferences."
+  },
+  "actual_new_implementations": [
+    "NativeEditSnapshot: normal scene/registry aliases plus mutable SDF/auto-save bytes and render-cache reset; actual SDK rescaleAB/BA probe.",
+    "trajectory_supervision_contract: common original-clause denominator and terminal label admission with unknown evidence preserved.",
+    "audit_actual_training_admission: real35call ledger,24local-unit provenance and original10decision-target availability.",
+    "native_trajectory_references: literal references into only earlier successful output receipts, exercised on all35archived calls;17calls reference returnedIDs.",
+    "exercise_sceneorchestra_targets: unmodified pinned lightweight builders executed on explicitly synthetic boundary witnesses."
+  ],
+  "not_done": [
+    "No learned policy comparison or optimizer step in this stage.",
+    "No new model-predicted full plan, native new room or reference-based full simulator execution.",
+    "No complete positive room admitted from the audited new native bedroom.",
+    "No author training dataset rows downloaded; reconstructed24units are not OTA35K or real architect tool trajectories.",
+    "No general asset-acquisition, move/add/snap/remove or worker/RNG reset qualification.",
+    "No claim that the sampled references/label rule are new3D algorithms."
+  ],
+  "decision_rule": "P/J must improve actual original-task completion or quality-cost frontier on held-out room/source families beyond A/AUX/F/T. Better teacher-forced CE, more fluent D, successful SDK replies or more audit checks alone do not suffice. If AUX or existing J/T explains the effect, revise the claim instead of relabeling it.",
+  "next_action_without_paid_API": "Use the now-audited common host/data contract to prepare actual rollout qualification and training-data acquisition separately. Do not silently reopen closed inference budgets or start training. Data-gate failure is optional, not a whole-project termination.",
+  "goal_achieved": false,
+  "training_updates": 0,
+  "paid_API_calls": 0
+}

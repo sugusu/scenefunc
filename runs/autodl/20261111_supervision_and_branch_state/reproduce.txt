@@ -1,0 +1,12 @@
+Run from /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+Use fresh output paths; existing results are never overwritten.
+
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/audit_actual_training_admission.py --repo . --out /dev/shm/native_admission_reproduction_NEW
+
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/exercise_sceneorchestra_targets.py --stage runs/autodl/20261111_supervision_and_branch_state --out /dev/shm/sceneorchestra_builder_reproduction_NEW
+
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/compile_native_reference_replay.py --repo . --out /dev/shm/native_reference_reproduction_NEW
+
+Native SDK probe requires native_python and native_dependency_paths from the prior ENVIRONMENT.json; command below reproduces7tool calls, normal CPU native workers, no model.
+
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$(python -c 'import json; print(":".join(json.load(open("runs/autodl/20261110_complete_native_runtime/ENVIRONMENT.json"))["native_dependency_paths"]))')" /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/probe_native_registry_branches.py --stage runs/autodl/20261111_supervision_and_branch_state --out /dev/shm/native_sdk_reproduction_NEW

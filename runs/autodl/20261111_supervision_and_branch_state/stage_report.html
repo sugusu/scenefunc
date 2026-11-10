@@ -1,0 +1,62 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>监督与分支状态研究记录</title><style>body{max-width:1000px;margin:40px auto;padding:20px;font:16px/1.65 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:7px}pre{white-space:pre-wrap;background:#f5f5f5;padding:20px}a{overflow-wrap:anywhere}</style><h1>完整场景决策学习：监督、训练目标与原生分支的证据</h1>
+<p>结论：继续有明确反证的学习比较；尚未证明一种新方法有效。此次完成了原生SDK分支反例、共同回滚、真实监督来源审计、公开原版数据构造器验证和完整轨迹对照所需的动态ID接口。没有训练、新模型推理或新生成房间。</p>
+<h2>直接前作怎样改变对照</h2>
+<p>SceneOrchestra已经做局部及整条工具轨迹学习；ThinkBLOX已有reason-then-act和一致性奖励；SceneReVis已有诊断推理、工具动作和多轮学习。因此，仅添加理由、回滚或规划不构成区别。逐项阅读范围与未做复现见阅读记录；没有把源码阅读写成模型复现。</p>
+<h2>实际原生分支</h2>
+<p>在新RAM副本中按正常原生构造创建工具与注册表，经ToolEnvironment执行7次缩放，保持场景与注册表对象别名。JSON恢复后逻辑scale正确，但资产SDF和注册表仍受前一分支污染；字节和注册表恢复能复现本例A/B。仅资格化已有资产的rescale，不外推到所有工具、随机数或工作进程状态。</p>
+<h2>实际监督可用范围</h2>
+<p>35条真实工具调用中30条有成功标志，4条是没有布尔成功证书的检查文本，1条是失败的资产生成批次（其中仍有部分资产生成）。19次决策文本不是19次成功设计。24条本地单元来自6个来源族的项目重建；10条有D目标，其中8条有资料支持，2条为局部终止控制。14条缺失D不补写。SceneChain只读到公开元数据，没有拿到训练行；评价基准未混入训练。</p>
+<h2>共同接口和强基线</h2>
+<p>整条计划不能预知原生工具稍后才返回的ID。普通literal引用适配器在35条真实存档调用上复原了原参数，其中17条引用先前返回的ID。它拒绝未来/失败结果引用，不执行任意代码；尚未让模型预测计划或重新执行整场。原始SceneOrchestra使用另一套工具，此处不能称其论文配置复现。</p>
+<h2>理论与可否证算法</h2>
+<p>主要比较A、AUX、J、P，加入普通反馈/检索/搜索F与完整轨迹学习T。资料、动作目标、工具权限、观察与预算一致；P必须消费自己生成的D。链式分解不提供新颖性或成功率保证。只有在未参与开发的新房间上改善原始要求完成或质量成本前沿，且AUX/J/T解释不了时，才支持继续扩大候选机制。</p>
+<h2>运行证据</h2><table><tr><th>指标</th><th>值</th><th>范围</th></tr><tr><td>native_SDK_rescale_calls</td><td>7</td><td>actual original SDK, not generated rooms</td></tr><tr><td>native_SDK_seconds</td><td>40.08450624719262</td><td>includes normal CPU worker startup</td></tr><tr><td>JSON_only_asset_leak</td><td>True</td><td>diagnostic</td></tr><tr><td>full_restore_order_invariant</td><td>True</td><td>rescale only</td></tr><tr><td>actual_native_saved_calls</td><td>35</td><td>old model rollout, audited this stage</td></tr><tr><td>calls_success_flag</td><td>30</td><td>not semantic task completion</td></tr><tr><td>local_units</td><td>24</td><td>project reconstructions, not author teacher trajectories</td></tr><tr><td>local_decision_targets</td><td>10</td><td>8 sourced rationale +2 local terminal controls</td></tr><tr><td>complete_positive_rooms_admitted</td><td>0</td><td>audited native bedroom only</td></tr><tr><td>archived_call_bindings_replayed</td><td>35</td><td>argument replay, no tool execution</td></tr><tr><td>calls_using_returned_ID_references</td><td>17</td><td>same ordinary binder for all policy arms</td></tr><tr><td>new_model_forwards</td><td>0</td><td>previous closed budgets stay closed</td></tr><tr><td>new_training_updates</td><td>0</td><td>no optimizer</td></tr><tr><td>paid_API_calls</td><td>0</td><td>no new paid API</td></tr></table><h2>推导与限制</h2><pre>算法、识别条件与可否证结论（本轮无训练）
+
+1. 比较的到底是什么
+X为当时可用的真实输入，D为模型自己生成的决策文本，A为可执行动作。
+pi(D,A|X)=pi(D|X)pi(A|X,D)只是概率链式分解，不是新损失。
+在容量不受限、动作策略类相同的理想情况下，任意q(A|X)都可以用常量D和pi(A|X,D)=q(A|X)表示。
+因此，插入D本身没有普遍提高最优可达成功率的定理。有限数据、优化、表示与计算分配可能改变实际表现，必须实验。
+如果D只从X生成、没有另查外部信息，那么在固定模型下，它不是新观测到的房间真相。
+训练时给正确D、测试时用自己生成D是分布变化。必须用自己的D闭环执行，不能把teacher-forced准确率当成功率。
+拆成两次调用若保持完全相同的条件分布，只是同一联合策略的采样分解；前缀、位置或预算不同时须披露。
+
+2. 可识别的监督作用
+A对AUX检验额外决策文本监督；AUX对J检验动作是否消费匹配D；J对P检验两阶段执行机制。
+F控制普通检索/反馈/搜索；T控制已有完整轨迹学习。各对照不是可以任意省去的弱基线。
+同一项目的不同视角、同一布局变换和同源动作不能跨训练/测试泄漏。应按来源项目、房间及资产关系分组。
+当前24条只覆盖6个本地重建来源族；10条有本地原始D目标，其中8条标有公开资料依据，2条是局部终止控制文本。
+没有D的14条不能凭评分答案补写。保留既有token与来源族权重，不能通过复制理由改变有效数据量。
+这不构成足够的整场学习样本量，也不把重建动作说成原设计师操作记录。
+
+3. 工具是否也是学习策略的一部分
+固定工具kernel kappa_0时，轨迹score包括每个生成的D和A的log概率。
+若同一可训练模型也改变检索/工具VLM，正确联合梯度还含工具输出log kappa_theta；只算policy项识别不了共享模型的总效果。
+若研究policy适配，应在工具角色明确禁用adapter并验证；本轮未训练，未验证adapter切换。
+状态包括JSON之外的可变资产。实际同一个JSON父状态，文件/注册表未恢复时，下一次.95缩放的SDFscale为.4809375；干净分支为.534375。
+这是实际原生SDK反例。普通字节/注册表恢复能纠正此有限分支；不能称为新算法，也不能外推到未测试的生成、缓存与RNG。
+
+4. 哪种终止标签可信
+设原始任务有m个固定子句c_j，结果标签v_j属于true/false/unknown。
+若验证器对其已验证结论可靠且覆盖全部原始子句，所有v_j=true与正常终止可作为整场正样本的充分证据。
+unknown不等于真实false，不能用于偏好负标签；但评测时未证明完成的尝试不能被计作成功，截止与拒绝也留在分母。
+如果有一个可靠false子句，完整任务指标区间为[0,0]；全部可靠true为[1,1]；其余为[0,1]。
+只有第一个结果的下界大于另一个上界时，这些证据才足以决定完整任务指标的严格偏好。
+这里的区间是逻辑可识别范围，不是统计置信区间，也不是完整审美排序。
+当前原生卧室五条原始要求复核仍unknown；共同几何有效性与功能可用性也各保留为unknown，不能只查名字就算整场正例。
+v2明确区分原文五项与共同有效性两项；v1保留为范围较窄的历史记录，没有把旧结果改好。
+所以没有新整场正样本，也没有把未证实的质量强行标成偏好负例。
+
+5. 代理分数和原始目标
+SceneOrchestra的组合分数同时考虑物体数、物理检查、视觉评分和累计时间。其原版构造器按门槛保留截断前缀并补成功终止。
+本轮实际运行原版代码，构造清楚标记的逻辑边界例：给定分数8可通过7.5门槛，即使另一个原始要求尚未证实。
+这只证明门槛规则不逻辑蕴含逐项完成；没有测其真实失败率，也未复现其效果。
+保留其原始标签作强对照，不能偷偷替它换规则后仍宣称论文原样复现。
+对象数量或无碰撞率增加不等于原始要求完成。不能用额外摆件替代缺少的主要家具，不能用名字代替类别/功能证据。
+
+6. 当前能下的结论与下一步
+已有共同基线可用的rescale回滚、动态ID绑定和真实数据来源账本；现有J/T等直接前作使“思考再行动/训练工具规划”不能单独承担创新。
+仍值得检验的是：相同资料与同等预算下，匹配的、依据当前状态作出的设计决策监督，是否在新房间的实际完成中产生AUX/J/T不能解释的收益。
+目前没有这个效果证据，不声称已找到CVPR主创新。即使文字损失更好，也必须回到完整三维场景闭环验证。
+旧截止预算保持关闭；本轮没有新推理、训练、付费API或大模型下载。数据访问支线不影响继续做现有源代码与数据准备。
+</pre><h2>交付文件</h2><ul><li><a href="algorithm_and_theory.json">algorithm_and_theory.json</a></li><li><a href="theory_notes.txt">theory_notes.txt</a></li><li><a href="reading_ledger.json">reading_ledger.json</a></li><li><a href="summary.csv">summary.csv</a></li><li><a href="native_sdk_v1/result.json">native_sdk_v1/result.json</a></li><li><a href="native_sdk_v1/measured_branches.json">native_sdk_v1/measured_branches.json</a></li><li><a href="training_admission_v2/result.json">training_admission_v2/result.json</a></li><li><a href="training_admission_v2/native_calls.jsonl">training_admission_v2/native_calls.jsonl</a></li><li><a href="training_admission_v2/local_units_provenance.json">training_admission_v2/local_units_provenance.json</a></li><li><a href="training_admission_v2/terminal_admission.json">training_admission_v2/terminal_admission.json</a></li><li><a href="native_reference_replay_v1/result.json">native_reference_replay_v1/result.json</a></li><li><a href="native_reference_replay_v1/archived_symbolic_plans.json">native_reference_replay_v1/archived_symbolic_plans.json</a></li><li><a href="upstream_target_boundary_v1/result.json">upstream_target_boundary_v1/result.json</a></li><li><a href="source_before_after.json">source_before_after.json</a></li><li><a href="sceneorchestra_source/source_manifest.json">sceneorchestra_source/source_manifest.json</a></li><li><a href="storage_cleanup_receipt.json">storage_cleanup_receipt.json</a></li><li><a href="reproduce.txt">reproduce.txt</a></li><li><a href="evidence.zip">evidence.zip</a></li></ul><p>来源：<a href="https://arxiv.org/html/2604.19907v2">SceneOrchestra</a>；<a href="https://arxiv.org/html/2607.13539v1">ThinkBLOX</a>；<a href="https://arxiv.org/html/2602.09432v1">SceneReVis</a>。未改变旧结果、未删除唯一原始证据。删除的仅是未在当前环境使用的旧NumPy安装，已保留逐文件哈希和安装元信息。</p></html>

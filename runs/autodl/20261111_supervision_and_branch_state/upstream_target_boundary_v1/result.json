@@ -1,0 +1,341 @@
+{
+  "pinned_source": "c3471592f29866738539ae0e2e6ecfe584d65b18",
+  "synthetic": true,
+  "interpretation": "Logical target-construction boundary; no inference about real failure frequency.",
+  "upstream_trajectory_SFT": [
+    {
+      "prompt": "Instruction: Place one bed and one wardrobe in a bedroom.\n\nAvailable tools and typical usage:\n- init_gpt(ideas, roomtype): initialize a scene with a flexible GPT-designed base layout.\n- init_metascene(ideas, roomtype): initialize by loading a realistic MetaScene layout.\n- init_physcene(ideas, roomtype): initialize with a physics-oriented scene generator.\n- add_gpt(ideas): add objects using GPT guidance.\n- add_acdc(ideas): add retrieved small objects or tabletop assets.\n- add_crowd(ideas): add human actors or a crowd.\n- remove_object(ideas): remove specified objects.\n- update_layout(ideas): move objects to improve placement, spacing, or collisions.\n- update_rotation(ideas): adjust object orientations.\n- update_size(ideas): adjust object scales.\n- add_relation(ideas): add spatial relations between objects and supports.\n- terminate(status=\"success\"): finish when the scene meets the instruction.\n\nOutput rules:\n1. Output only numbered tool calls, one call per line.\n2. Use Python keyword arguments with literal string/number/bool/list/dict values.\n3. The first call must be an initializer and the last call must be terminate.\n4. Do not use tools outside the list above.\n\nBased on the instruction and available tools above, generate the complete tool-call trajectory.",
+      "response": "1. init_gpt(ideas=\"Place one bed and one wardrobe in a bedroom.\", roomtype=\"bedroom\")\n2. terminate(status=\"success\")"
+    }
+  ],
+  "upstream_stepwise_DPO": [
+    {
+      "prompt": "synthetic same-context comparison",
+      "chosen": "1. init_physcene(ideas=\"Place one bed and one wardrobe in a bedroom.\", roomtype=\"bedroom\")",
+      "rejected": "1. init_gpt(ideas=\"Place one bed and one wardrobe in a bedroom.\", roomtype=\"bedroom\")"
+    }
+  ],
+  "explicit_task_admission": {
+    "eligible_complete_positive": false,
+    "terminal_reason": "task_complete",
+    "execution_errors": 0,
+    "missing_clause_ids": [],
+    "unknown_or_unverified_ids": [
+      "wardrobe"
+    ],
+    "verified_false_ids": [],
+    "disallowed_change": false,
+    "evaluation_failure": 1,
+    "note": "Unverified is an unsuccessful evaluated attempt, not a verified negative quality label."
+  },
+  "score_object_count_sensitivity": [
+    {
+      "object_count": 4.0,
+      "out_of_bounds": 0.0,
+      "collisions": 0.0,
+      "realism": 8.0,
+      "functionality": 8.0,
+      "layout": 8.0,
+      "completeness": 8.0,
+      "cumulative_minutes": 1.0,
+      "physical": 4.0,
+      "visual": 8.0,
+      "quality": 8.4,
+      "composition": 8.35
+    },
+    {
+      "object_count": 14.0,
+      "out_of_bounds": 0.0,
+      "collisions": 0.0,
+      "realism": 8.0,
+      "functionality": 8.0,
+      "layout": 8.0,
+      "completeness": 8.0,
+      "cumulative_minutes": 1.0,
+      "physical": 14.0,
+      "visual": 8.0,
+      "quality": 9.4,
+      "composition": 9.35
+    }
+  ],
+  "exhaustive_clause_cases": [
+    {
+      "values": [
+        "true",
+        "true",
+        "true"
+      ],
+      "admitted": true
+    },
+    {
+      "values": [
+        "true",
+        "true",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "true",
+        "true",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "true",
+        "false",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "true",
+        "false",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "true",
+        "false",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "true",
+        "unknown",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "true",
+        "unknown",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "true",
+        "unknown",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "true",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "true",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "true",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "false",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "false",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "false",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "unknown",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "unknown",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "false",
+        "unknown",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "true",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "true",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "true",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "false",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "false",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "false",
+        "unknown"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "unknown",
+        "true"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "unknown",
+        "false"
+      ],
+      "admitted": false
+    },
+    {
+      "values": [
+        "unknown",
+        "unknown",
+        "unknown"
+      ],
+      "admitted": false
+    }
+  ],
+  "cutoff_with_true_clauses": {
+    "eligible_complete_positive": false,
+    "terminal_reason": "actor_deadline",
+    "execution_errors": 0,
+    "missing_clause_ids": [],
+    "unknown_or_unverified_ids": [],
+    "verified_false_ids": [],
+    "disallowed_change": false,
+    "evaluation_failure": 1,
+    "note": "Unverified is an unsuccessful evaluated attempt, not a verified negative quality label."
+  },
+  "training_updates": 0,
+  "model_forwards": 0,
+  "paid_API_calls": 0,
+  "executed_source_files": [
+    {
+      "path": "src/sceneorchestra/datasets.py",
+      "URL": "https://raw.githubusercontent.com/yunhe24/sceneorchestra/c3471592f29866738539ae0e2e6ecfe584d65b18/src/sceneorchestra/datasets.py",
+      "git_blob": "c4c68720b35651017a77d50f48f80d124cd04b9a",
+      "sha256": "fd8311289d887c7b2745425d364f3704b7d2dc1f8ffe752e542edb6ca9fc9c51",
+      "bytes": 10838,
+      "seconds": 1.7408717218786478
+    },
+    {
+      "path": "src/sceneorchestra/records.py",
+      "URL": "https://raw.githubusercontent.com/yunhe24/sceneorchestra/c3471592f29866738539ae0e2e6ecfe584d65b18/src/sceneorchestra/records.py",
+      "git_blob": "41c7abeb4e31ca930d4a65a29da22369c62d2ced",
+      "sha256": "03844eb1ecae7a30d5c6bef88046d9240fc68623ae827d6c2f4b63862719048c",
+      "bytes": 3327,
+      "seconds": 1.6481812465935946
+    },
+    {
+      "path": "src/sceneorchestra/trajectory.py",
+      "URL": "https://raw.githubusercontent.com/yunhe24/sceneorchestra/c3471592f29866738539ae0e2e6ecfe584d65b18/src/sceneorchestra/trajectory.py",
+      "git_blob": "63ad599d623d84233a0e7df77af220d1cce7b9dd",
+      "sha256": "1a28d6ca0ab5d2255cc9a36d9a83b156b0ec1f7b826c7265feb12ddd816f04cf",
+      "bytes": 4265,
+      "seconds": 1.530720330774784
+    },
+    {
+      "path": "src/sceneorchestra/scoring.py",
+      "URL": "https://raw.githubusercontent.com/yunhe24/sceneorchestra/c3471592f29866738539ae0e2e6ecfe584d65b18/src/sceneorchestra/scoring.py",
+      "git_blob": "adc70d7b6e98ead4ec6cde1640eb73057bd68800",
+      "sha256": "74af7d632b5f41c9164cad7389115a5b4ce3c1c962dfebd0950a5c355ba869c7",
+      "bytes": 3294,
+      "seconds": 2.2524790801107883
+    },
+    {
+      "path": "src/sceneorchestra/constants.py",
+      "URL": "https://raw.githubusercontent.com/yunhe24/sceneorchestra/c3471592f29866738539ae0e2e6ecfe584d65b18/src/sceneorchestra/constants.py",
+      "git_blob": "4f3f66b75abfc752f25ace235165a92b8abc9d00",
+      "sha256": "52326edc510f3b0bedaca34f28e4ee0b07f7298cb7207b55aadecb8f1c296588",
+      "bytes": 2059
+    },
+    {
+      "path": "src/sceneorchestra/prompts.py",
+      "URL": "https://raw.githubusercontent.com/yunhe24/sceneorchestra/c3471592f29866738539ae0e2e6ecfe584d65b18/src/sceneorchestra/prompts.py",
+      "git_blob": "151975004cc8c89b811505f39b4cd67343ece3be",
+      "sha256": "e8a27557ce0b33209583da923bb3078f248c2b1753b1938945137e99d184c2fe",
+      "bytes": 1264
+    }
+  ]
+}

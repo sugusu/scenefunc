@@ -1,0 +1,61 @@
+[
+  {
+    "title": "SceneOrchestra",
+    "URL": "https://arxiv.org/html/2604.19907v2",
+    "version": "v2, 2026-08-22",
+    "read": "HTML abstract, introduction, related work, complete method, experiment setup/results/ablations, supplementary sections6-13. References traversed as text, not every cited paper read.",
+    "figures": "Captions read; figures/PDF not visually inspected this stage.",
+    "code_pin": "c3471592f29866738539ae0e2e6ecfe584d65b18",
+    "code_read": [
+      "constants.py",
+      "prompts.py",
+      "records.py",
+      "trajectory.py",
+      "scoring.py",
+      "datasets.py",
+      "sceneweaver.py",
+      "interleaved.py",
+      "README.md",
+      "NOTICE",
+      "LICENSE"
+    ],
+    "code_executed": "Original lightweight trajectory/SFT/DPO/score builders only, with clearly synthetic boundary records. No SceneWeaver scene generation or training.",
+    "difference": "Already learns local and full tool trajectories; mandatory strong prior for any learned planning claim. Scalar score-selected prefixes are not independent certificates of every original task clause.",
+    "data": "Public code expects private/user-provided S1/S2/S3 instruction files and externally acquired SceneWeaver. No original full training trajectories acquired."
+  },
+  {
+    "title": "ThinkBLOX",
+    "URL": "https://arxiv.org/html/2607.13539v1",
+    "read": "This stage: abstract and targeted methodology III through III-B, including reasoning-action consistency and normalization equations. Earlier reading is linked in prior stages; no new full-paper claim.",
+    "code_executed": false,
+    "figures": "Not visually inspected.",
+    "difference": "Already trains reason-then-act placement and reasoning-action consistency. Such components alone cannot identify a new contribution."
+  },
+  {
+    "title": "SceneReVis",
+    "URL": "https://arxiv.org/html/2602.09432v1",
+    "read": "This stage: abstract and method3.1-3.4; exact original training rows not read because dataset access remains unacquired.",
+    "code_executed": false,
+    "figures": "Not visually inspected.",
+    "difference": "Already has joint diagnostic reasoning/tool SFT and multi-turn GRPO. POMDP formulation is prior art, not a new claim.",
+    "data_card_URL": "https://huggingface.co/datasets/runder1/SceneChain-12K",
+    "dataset_revision": "3fdc902027659d256aae4dc507b40dcd7e5b601d",
+    "gate": "Public metadata confirms auto-gate and identity/research terms; no form submitted or identity invented. No dataset rows acquired. Optional data branch only."
+  },
+  {
+    "title": "Scene-Designer native dispatch and SceneSmith tools",
+    "URL": "https://github.com/ZJU-OmniAI/Scene-Designer",
+    "dispatch_pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "native_pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+    "read": "Actual ToolEnvironment dispatch, memory/reset, normal agent/manager construction; AssetRegistry serialization/loading/scaling and furniture add/move/remove/rescale/snap paths.",
+    "actual_executed": "Seven original SDK rescale calls through normal ToolEnvironment, restored real room assets and registry, no model.",
+    "qualification": "Scene and registry aliases retained; rescale snapshot verified only. No new full-tool/RNG/worker-state qualification.",
+    "dataset": "Publisher API currently lists Scene-OTC-Bench evaluation dataset; no OTA35K training download acquired. Evaluation-only dataset never used as training."
+  },
+  {
+    "title": "AI-Agents-in-Depth-zh-CN.pdf",
+    "read": "No additional pages read this stage. Earlier exact reading boundaries remain in prior ledgers; no claim of full312-page reading.",
+    "pages_previous": "1-6,223-230,239-243,248-256; other earlier targeted reading only as already recorded.",
+    "consequence": "Do not infer new3D novelty from SFT/RL, OPD, memory or checkpoint terminology."
+  }
+]
