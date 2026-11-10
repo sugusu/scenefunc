@@ -115,7 +115,7 @@ U=max(0,min_i{a+_i-b-_i,b+_i-a-_i})。
         ('training_updates',0,'none'),('paid_API_calls',0,'none'),
         ('new_verified_full_rooms',0,'partial bedroom remains incomplete')]
     with (stage/'summary.csv').open('w',newline='') as f:
-        w=csv.writer(f);w.writerow(['metric','value','qualification']);w.writerows(rows)
+        w=csv.writer(f,lineterminator='\n');w.writerow(['metric','value','qualification']);w.writerows(rows)
     commands = '''All outputs must use fresh directories; do not run into original result paths.
 Native Python and PYTHONPATH must come from runs/autodl/20261110_complete_native_runtime/ENVIRONMENT.json.
 No entrypoint below loads a model, runs training, downloads assets or calls a paid API.

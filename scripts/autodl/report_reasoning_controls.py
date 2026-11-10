@@ -134,7 +134,7 @@ IL3D固定8项是静态合成活动室、69实例，没有原始全任务或理�
           ['new_VLM_forwards',0,'none'],['optimizer_updates',0,'none'],['paid_API_calls',0,'none'],
           ['new_verified_full_scenes',0,'not inferred from arithmetic checks']]
     with (stage/'summary.csv').open('w',newline='') as f:
-        w=csv.writer(f);w.writerow(['metric','value','scope']);w.writerows(rows)
+        w=csv.writer(f,lineterminator='\n');w.writerow(['metric','value','scope']);w.writerows(rows)
     (stage/'reproduce.txt').write_text('''Run from REPOSITORY. Every result output must be fresh.
 
 Original RED source is NOT redistributed. The pinned file URLs and SHA256 are in RED_source_manifest.json. Internal evaluation must respect the author license; use unmodified source and its original dependencies, not copied/relicensed snippets.
