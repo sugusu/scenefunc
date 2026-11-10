@@ -1,0 +1,111 @@
+[server] skip geometry_server (no agent uses 'generated')
+[server] skip articulated_server (no agent enables it)
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[floor_plan] geometries + house_layout.json written
+[chained] proceeding with room 'bedroom'
+[derive] RoomScene room_id=bedroom prompt='A bedroom with a bed, two nightstands, and a wardrobe in the corner of the room.' walls=4
+[handover] room_summary block: 371 chars
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - Logging to file: /dev/shm/complete_native_trial_sh43he6s/scene/room_bedroom/room.log
+[ConvexDecomp Server] INFO - OMP_NUM_THREADS set to 2
+[ConvexDecomp Server] INFO - Convex decomposition server initialized
+[ConvexDecomp Server] INFO - Starting convex decomposition server on 127.0.0.1:7421
+ * Serving Flask app 'convex_decomposition_server'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:7421
+[ConvexDecomp Server] INFO - [33mPress CTRL+C to quit[0m
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [10/Nov/2026 23:48:29] "GET /health HTTP/1.1" 200 -
+[furniture] agent ready (13 tools)
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 23:49:23] "POST /retrieve_objects HTTP/1.1" 200 -
+23:49:23 | INFO: Data are loaded, start creating Blender stuff
+23:49:23 | INFO: Blender create Mesh node geometry_0
+23:49:23 | INFO: glTF import finished in 0.03s
+ERROR Draco mesh compression is not available because library could not be found at /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/native_source/4.2/python/lib/python3.11/site-packages/libextern_draco.so
+23:49:23 | INFO: Starting glTF 2.0 export
+23:49:23 | INFO: Extracting primitive: geometry_0
+23:49:24 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+23:49:24 | INFO: Primitives created: 1
+23:49:24 | INFO: Finished glTF 2.0 export in 0.32971787452697754 s
+
+23:49:35 | INFO: Data are loaded, start creating Blender stuff
+23:49:35 | INFO: Blender create Mesh node geometry_0
+23:49:35 | INFO: glTF import finished in 0.12s
+Info: Removed 47497 vertices
+23:49:36 | INFO: Starting glTF 2.0 export
+23:49:36 | INFO: Extracting primitive: geometry_0.001
+23:49:36 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+23:49:36 | INFO: Primitives created: 1
+23:49:36 | INFO: Finished glTF 2.0 export in 0.3105783462524414 s
+[ConvexDecomp Server] INFO - Processing mesh: queen_bed.gltf (method=vhacd)
+[ConvexDecomp Server] INFO - VHACD decomposition complete: 128 pieces from 57206 vertices in 6.43s
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [10/Nov/2026 23:49:42] "POST /generate_collision HTTP/1.1" 200 -
+
+23:49:43 | INFO: Data are loaded, start creating Blender stuff
+23:49:43 | INFO: Blender create Mesh node geometry_0
+23:49:43 | INFO: glTF import finished in 0.01s
+23:49:43 | INFO: Starting glTF 2.0 export
+23:49:43 | INFO: Extracting primitive: geometry_0.002
+23:49:43 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+23:49:43 | INFO: Primitives created: 1
+23:49:43 | INFO: Finished glTF 2.0 export in 0.024587631225585938 s
+
+23:49:51 | INFO: Data are loaded, start creating Blender stuff
+23:49:51 | INFO: Blender create Mesh node geometry_0.002
+23:49:51 | INFO: glTF import finished in 0.02s
+Info: Removed 2488 vertices
+23:49:51 | INFO: Starting glTF 2.0 export
+23:49:51 | INFO: Extracting primitive: geometry_0.001
+23:49:51 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+23:49:51 | INFO: Primitives created: 1
+23:49:51 | INFO: Finished glTF 2.0 export in 0.02510523796081543 s
+[ConvexDecomp Server] INFO - Processing mesh: nightstand.gltf (method=vhacd)
+[ConvexDecomp Server] INFO - VHACD decomposition complete: 128 pieces from 3625 vertices in 2.96s
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [10/Nov/2026 23:49:54] "POST /generate_collision HTTP/1.1" 200 -
+
+23:49:54 | INFO: Data are loaded, start creating Blender stuff
+23:49:54 | INFO: Blender create Mesh node geometry_0
+23:49:54 | INFO: glTF import finished in 0.01s
+23:49:54 | INFO: Starting glTF 2.0 export
+23:49:54 | INFO: Extracting primitive: geometry_0
+23:49:55 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+23:49:55 | INFO: Primitives created: 1
+23:49:55 | INFO: Finished glTF 2.0 export in 0.29607367515563965 s
+
+23:50:06 | INFO: Data are loaded, start creating Blender stuff
+23:50:06 | INFO: Blender create Mesh node geometry_0
+23:50:06 | INFO: glTF import finished in 0.01s
+Info: Removed 1300 vertices
+23:50:06 | INFO: Starting glTF 2.0 export
+23:50:06 | INFO: Extracting primitive: geometry_0.001
+23:50:06 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+23:50:06 | INFO: Primitives created: 1
+23:50:06 | INFO: Finished glTF 2.0 export in 0.3044722080230713 s
+[ConvexDecomp Server] INFO - Processing mesh: wardrobe.gltf (method=vhacd)
+[ConvexDecomp Server] INFO - VHACD decomposition complete: 125 pieces from 1700 vertices in 3.32s
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [10/Nov/2026 23:50:09] "POST /generate_collision HTTP/1.1" 200 -
+[osa] scene_dir = /dev/shm/complete_native_trial_sh43he6s/scene
+[osa] floor_plan_agent: mode=room use_retrieval_server=False
+{"status": "failed_no_restart", "stages": [{"stage": "floor_plan", "status": "native_stage_finalizer_returned", "stop_reason": "native_policy_stop", "seconds": 169.38396373577416}, {"stage": "furniture", "status": "started"}], "paid_API_calls": 0, "training_steps": 0, "complete_scene_success": null, "learned_method_comparison": false, "continuation_not_independent_from_empty": true, "error": "ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=57273): Max retries exceeded with url: /native_policy (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f90111a7350>: Failed to establish a new connection: [Errno 111] Connection refused'))", "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connection.py\", line 198, in _new_conn\n    sock = connection.create_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/util/connection.py\", line 85, in create_connection\n    raise err\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/util/connection.py\", line 73, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connectionpool.py\", line 493, in _make_request\n    conn.request(\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connection.py\", line 494, in request\n    self.endheaders()\n  File \"/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/http/client.py\", line 1346, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/http/client.py\", line 1106, in _send_output\n    self.send(msg)\n  File \"/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/http/client.py\", line 1044, in send\n    self.connect()\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connection.py\", line 325, in connect\n    self.sock = self._new_conn()\n                ^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connection.py\", line 213, in _new_conn\n    raise NewConnectionError(\nurllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f90111a7350>: Failed to establish a new connection: [Errno 111] Connection refused\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/adapters.py\", line 667, in send\n    resp = conn.urlopen(\n           ^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connectionpool.py\", line 841, in urlopen\n    retries = retries.increment(\n              ^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/util/retry.py\", line 519, in increment\n    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=57273): Max retries exceeded with url: /native_policy (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f90111a7350>: Failed to establish a new connection: [Errno 111] Connection refused'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/run_complete_native_trial.py\", line 148, in main\n    entry['stop_reason']=await drive(env,cap)\n                         ^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/run_complete_native_trial.py\", line 116, in drive\n    proposal=policy.generate(obs)\n             ^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/remote_native_control.py\", line 72, in generate\n    reply = self.binding['client'].policy(obs['messages'], self.max_new_tokens)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/remote_native_control.py\", line 29, in policy\n    response = self.session.post(self.base + '/native_policy', json={\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/sessions.py\", line 637, in post\n    return self.request(\"POST\", url, data=data, json=json, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/adapters.py\", line 700, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=57273): Max retries exceeded with url: /native_policy (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f90111a7350>: Failed to establish a new connection: [Errno 111] Connection refused'))\n", "seconds": 524.8648657612503, "native_tool_attempts": 17, "owned_processes": [{"pid": 25661, "exit_code": -15}, {"pid": 25738, "exit_code": -15}, {"pid": 25943, "exit_code": -15}, {"pid": 26053, "exit_code": -15}, {"pid": 26056, "exit_code": 0}, {"pid": 26286, "exit_code": 0}, {"pid": 26592, "exit_code": 0}, {"pid": 26819, "exit_code": 0}, {"pid": 27002, "exit_code": 0}, {"pid": 27226, "exit_code": 0}, {"pid": 27406, "exit_code": 0}, {"pid": 27636, "exit_code": 0}, {"pid": 27825, "exit_code": 0}, {"pid": 28056, "exit_code": 0}], "blocked_operations": []}
+Traceback (most recent call last):
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/run_complete_native_trial.py", line 235, in <module>
+    asyncio.run(main(p.parse_args().stage))
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt

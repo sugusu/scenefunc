@@ -1,0 +1,71 @@
+{
+  "header_only": true,
+  "headers": [
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/critic_public_runtime_20261104/checkpoint/model-00001-of-00004.safetensors",
+      "header_sha256": "eeeb0cdba65b5e38d7bb753b1a2d108fe489e69770a15612838e40ebf8fd90d2"
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/critic_public_runtime_20261104/checkpoint/model-00002-of-00004.safetensors",
+      "header_sha256": "288ad795b1604322fdad351692b643008f719f032f598655aa5a4c24629e359e"
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/critic_public_runtime_20261104/checkpoint/model-00003-of-00004.safetensors",
+      "header_sha256": "87aa3bb79c037b7325249deef3455caccb45ced887466b65c373c4ab0151ee8c"
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/critic_public_runtime_20261104/checkpoint/model-00004-of-00004.safetensors",
+      "header_sha256": "8fa753f683c3d9e78380ff8ac6d14313e28260dd3ed558a8bdee2a0b0536c82f"
+    }
+  ],
+  "scenarios": [
+    {
+      "targets": "decoder_qkvo",
+      "rank": 8,
+      "target_matrices": 144,
+      "adapter_parameters": 7667712,
+      "FP32_adapter_params_grads_two_FP32_moments_GiB": 0.1142578125,
+      "base_FP16_weight_GiB": 16.33004042506218,
+      "activation_and_training_peak": "not measured",
+      "V100_training_fit_proven": false
+    },
+    {
+      "targets": "decoder_attention_and_MLP",
+      "rank": 8,
+      "target_matrices": 252,
+      "adapter_parameters": 21823488,
+      "FP32_adapter_params_grads_two_FP32_moments_GiB": 0.3251953125,
+      "base_FP16_weight_GiB": 16.33004042506218,
+      "activation_and_training_peak": "not measured",
+      "V100_training_fit_proven": false
+    },
+    {
+      "targets": "decoder_qkvo",
+      "rank": 16,
+      "target_matrices": 144,
+      "adapter_parameters": 15335424,
+      "FP32_adapter_params_grads_two_FP32_moments_GiB": 0.228515625,
+      "base_FP16_weight_GiB": 16.33004042506218,
+      "activation_and_training_peak": "not measured",
+      "V100_training_fit_proven": false
+    },
+    {
+      "targets": "decoder_attention_and_MLP",
+      "rank": 16,
+      "target_matrices": 252,
+      "adapter_parameters": 43646976,
+      "FP32_adapter_params_grads_two_FP32_moments_GiB": 0.650390625,
+      "base_FP16_weight_GiB": 16.33004042506218,
+      "activation_and_training_peak": "not measured",
+      "V100_training_fit_proven": false
+    }
+  ],
+  "model_weights_loaded": false,
+  "optimizer_updates": 0,
+  "vision_embedding_lmhead_not_selected": true,
+  "inference_peak_is_not_training_peak": true,
+  "pinned_original_GRPO_two_independent_BF16_weight_copies_GiB": 32.66008085012436,
+  "two_copies_alone_exceed_V10032GiB": true,
+  "original_GRPO_source": "train_grpo.py:711-727 creates distinct policy and frozen reference before optimizer",
+  "no_claim_that_Adam_memory_estimate_describes_the_source_Adafactor_optimizer": true
+}

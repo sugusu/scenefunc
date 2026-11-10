@@ -1,0 +1,23 @@
+[server] skip geometry_server (no agent uses 'generated')
+[server] skip articulated_server (no agent enables it)
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[chained] proceeding with room 'bedroom'
+[derive] RoomScene room_id=bedroom prompt='A bedroom with a bed, two nightstands, and a wardrobe in the corner of the room.' walls=4
+[handover] room_summary block: 371 chars
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - Logging to file: /dev/shm/native_whole_services_0ikb7dp8/bundle/actual_floor_geometry_v1/scene/room_bedroom/room.log
+[ConvexDecomp Server] INFO - OMP_NUM_THREADS set to 2
+[ConvexDecomp Server] INFO - Convex decomposition server initialized
+[ConvexDecomp Server] INFO - Starting convex decomposition server on 127.0.0.1:7129
+ * Serving Flask app 'convex_decomposition_server'
+ * Debug mode: off
+[ConvexDecomp Server] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:7129
+[ConvexDecomp Server] INFO - [33mPress CTRL+C to quit[0m
+[ConvexDecomp Server] INFO - 127.0.0.1 - - [10/Nov/2026 23:29:21] "GET /health HTTP/1.1" 200 -
+[furniture] agent ready (13 tools)
+[osa] scene_dir = /dev/shm/native_whole_services_0ikb7dp8/normal_session
+[osa] floor_plan_agent: mode=room use_retrieval_server=False
+{"status": "normal_native_services_furniture_tools_and_five_views_returned", "LLM_forwards": 0, "CLIP_query_forwards": 0, "paid_API_calls": 0, "training_steps": 0, "new_complete_scenes": 0, "full_scene_success": null, "actual_native_session_class": "src.agent_rollout_decoupled.RolloutSession", "actual_furniture_agent_class": "scenesmith.furniture_agents.stateful_furniture_agent.StatefulFurnitureAgent", "actual_room_objects": 4, "room_summary": "## ROOM SUMMARY (from floor_plan stage):\n- Room: bedroom, 4.8m wide × 4m deep.\n- Wall A (north): 4.8m long; no openings.\n- Wall B (south): 4.8m long; no openings.\n- Wall C (east): 4m long; no openings.\n- Wall D (west): 4m long; no openings.\n- World coords centered on room: x∈[-2.4, +2.4], y∈[-2, +2]. (Width spans the north/south walls; depth spans the east/west walls.)", "model_service_instances_prepared": 1, "image_generation_service_absent": true, "LLM_requests_sent": false, "whole_runtime_ready": false, "remaining": "Actual policy/tool requests, mounted stages, surface workflow and final task evaluation", "seconds": 143.03959772735834, "parent_peak_rss_mib": 8337.015625, "owned_processes": [{"pid": 24312, "exit_code": -15}, {"pid": 24400, "exit_code": -15}, {"pid": 24484, "exit_code": -15}, {"pid": 24487, "exit_code": 0}, {"pid": 24683, "exit_code": 0}], "blocked_operations": [], "heavy_scratch_in_RAM_removed": true, "old_results_modified": false}

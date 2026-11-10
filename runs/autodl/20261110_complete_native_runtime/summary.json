@@ -1,0 +1,118 @@
+{
+  "status": "bounded_native_generation_executed_partial_scene_cold_verified",
+  "previous_goal_turn": "verified wait: actual PIDs and changing inference ledger were inspected",
+  "this_goal_turn": "progress: real terminal execution, persisted complete evidence, native geometry/state diagnostics and source-level objective correction",
+  "task": "A bedroom with a bed, two nightstands, and a wardrobe in the corner of the room.",
+  "default_admission_task_not_heldout_benchmark": true,
+  "corrected_continuation": {
+    "forwards": 23,
+    "output_tokens": 4553,
+    "policy_forwards": 19,
+    "tool_VLM_forwards": 4,
+    "native_tool_attempts": 35,
+    "fresh_CLIP_queries": 8,
+    "seconds": 959.2460800874978,
+    "forward_body_seconds": 266.61152274534106,
+    "model_loads": 1,
+    "same_frozen_model_for_policy_and_tools": true,
+    "peak_CUDA_allocated_GiB": 17.175209045410156,
+    "termination": "owned actor hit the prospectively fixed900s deadline, exit124; not a 32-forward or output-token exhaustion",
+    "original_trial_outcome": "failed_no_restart"
+  },
+  "setup_invalid_attempt": {
+    "forwards": 15,
+    "output_tokens": 2379,
+    "cause": "resume wrapper replaced HouseLayout while native tool closures retained the original instance",
+    "quality_evidence": false
+  },
+  "prior_first_floor_step_cost": {
+    "forwards": 1,
+    "output_tokens": 141
+  },
+  "new_stage_forwards": 38,
+  "including_prior_first_step_forwards": 39,
+  "stages": [
+    {
+      "stage": "floor_plan",
+      "status": "native_stage_finalizer_returned",
+      "stop_reason": "native_policy_stop",
+      "seconds": 177.12188740447164
+    },
+    {
+      "stage": "furniture",
+      "status": "native_stage_finalizer_returned",
+      "stop_reason": "stage_turn_cap_reached",
+      "seconds": 599.5519771873951
+    },
+    {
+      "stage": "wall",
+      "status": "started"
+    }
+  ],
+  "floor_geometry_actual": true,
+  "placed_furniture": 4,
+  "required_object_names_bound": 4,
+  "independent_semantic_completion_not_proven": true,
+  "actual_partial_GLB": {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_complete_native_runtime/partial_artifact_v1/partial_scene.glb",
+    "sha256": "b20b2ed5c7b3e4636d4e13ef8d97d40ce488d72757057e5525cc6c90de00d678",
+    "bytes": 43556284,
+    "cold_geometry_count": 17,
+    "exporter_exit_code": -11
+  },
+  "namespace_diagnostic": {
+    "status": "same_scene_namespace_comparison_executed",
+    "model_forwards": 0,
+    "paid_API_calls": 0,
+    "training_steps": 0,
+    "scene_coordinates_modified": false,
+    "whole_scene_success": null,
+    "before": {
+      "shape_types": {
+        "Box": 6,
+        "Mesh": 509
+      },
+      "raw_pairs": 53,
+      "native_reported_pairs": 3,
+      "maximum_raw_penetration": 2.9372212723629043
+    },
+    "after": {
+      "shape_types": {
+        "Box": 6,
+        "Convex": 509
+      },
+      "raw_pairs": 53,
+      "native_reported_pairs": 3,
+      "maximum_raw_penetration": 2.9372212723629043
+    },
+    "changed_SDF_files": 4,
+    "expanded_XML_preserved": true,
+    "source_trial_reclassified_as_success": false,
+    "not_a_method_quality_comparison": true,
+    "seconds": 15.896294925361872,
+    "blocked_operations": []
+  },
+  "half_space_certificate": {
+    "status": "same_state_half_space_evidence_computed",
+    "floor_pairs": 35,
+    "certified_disjoint_interiors": 29,
+    "certified_with_native_distance_below_minus_1mm": 10,
+    "zero_Z_extent_parts": 0,
+    "input_frame_SHA256": "15d07104e4e8afe58d30a88ea323e3e040fa04404d7d8487c3ff10a53e63b29c",
+    "original_score_changed": false,
+    "new_success_labels_created": false,
+    "scene_coordinates_modified": false,
+    "other_collisions_not_certified": true,
+    "whole_scene_success": null
+  },
+  "mutable_asset_JSON_only_rollback_reproduced": true,
+  "all_original_native_sources_unchanged": 308,
+  "all_frozen_trial_code_unchanged": 271,
+  "paid_API_calls": 0,
+  "training_updates": 0,
+  "whole_scene_success": null,
+  "learned_advantage_verified": false,
+  "independent_method_comparison_runs": 0,
+  "goal_achieved": false,
+  "all_owned_trial_processes_terminal": true
+}

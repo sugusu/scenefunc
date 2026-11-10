@@ -1,0 +1,64 @@
+{
+  "status": "falsifiable learning comparison, not an established novel method",
+  "target": "Complete editable indoor3D generation from the unchanged original description, independently useful beyond ordinary search/feedback",
+  "state": {
+    "X": "actual task, observations and history",
+    "D": "self-generated decision proposal, never a measured fact",
+    "S": "physical/scene state INCLUDING mutable asset files, registry and relevant runtime state",
+    "actual_new_counterexample": "Same exact restored SceneJSON and next native rescale action give different SDF geometry after unrolled file mutations; JSON alone is not a sufficient branch checkpoint",
+    "qualified_fix": "Byte restoration of the one mutated SDF was actually checked; entire registry/cache rollback remains unqualified"
+  },
+  "objective": "J(theta;psi0,B)=E[1{all original clauses independently verified true at termination} | shared fixed tool backend psi0 and shared total cost budget B]",
+  "termination": "budget expiration is an incomplete/failed episode, never a successful STOP; preserve all unknown clauses and failed calls in denominator",
+  "conditional_factorization": "p(D,A|X)=p(D|X)*p(A|X,D) is a chain-rule identity, not a new algorithm or performance theorem",
+  "supervised_arms": {
+    "A": "action CE only",
+    "AUX": "same original D and A targets, separately conditioned on X; A does not consume generated D",
+    "J": "original autoregressive joint think+action, already a strong native baseline",
+    "P": "generate own D then execute A conditioned on own D; extra forward/prefix/token cost charged"
+  },
+  "loss_contract": {
+    "action": "L_A = sum_i w_i^A CE(A_i* | X_i)",
+    "auxiliary": "L_AUX = L_A + lambda sum_{i with original D} w_i^D CE(D_i* | X_i)",
+    "joint": "L_J = sum_{i with original D} [w_i^A CE(A_i* | X_i,D_i*) + lambda w_i^D CE(D_i* | X_i)] + sum_{i without D} w_i^A CE(A_i* | original no-D protocol prefix); source masks and family masses preserved, missing D not fabricated",
+    "deployment": "Conditional arms consume their own generated D. A teacher D supplied at evaluation is privileged-input scoring, not closed-loop policy performance.",
+    "separate_pass": "P uses the existing phase-training component/mask contract; merely splitting a mathematically identical prefix is not a new loss. No claim that different actual prompts are identical.",
+    "reference": "runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl and scripts/autodl/phase_trainer.py"
+  },
+  "equal_data": "Reuse original unit/family/component masses. Do not synthesize the14 missing D or5 missing original views from scoring answers. Current24 local units are not35K complete success trajectories.",
+  "controls": [
+    "ordinary native tools and bounded search",
+    "same-source auxiliary D with direct actions",
+    "original joint reasoning-action policy",
+    "same measured geometry available to all arms if a new geometric representation is introduced"
+  ],
+  "tools": "Current trial has one frozen base model for both policy and tool VLM. A future policy adapter must be disabled for all tool calls, with role state verified, to identify a policy effect.",
+  "trajectory_gradient": "If policy AND tool distributions are changed: grad J=E[R*sum_t(grad log p_theta(D_t,A_t|H_t)+grad log kappa_theta(omega_t|H_t,D_t,A_t))] when reward has no direct theta dependence. The joint score includes both generated D and executable A; only a properly marginalized action policy permits omitting an explicit D score. Omitting mutable tool terms is not this shared-model estimand.",
+  "runtime_budget": "B is the shared budget vector (model forwards/output tokens, tool/candidate attempts, elapsed time), not an invented conversion of unlike costs. Treat varying tool/model duration and remaining budget as part of a budgeted/semi-Markov decision process. A fixed per-step discount and wall-clock success probability are not automatically equivalent.",
+  "branching_scope": "Current v2 was sequential inference. The separately executed JSON-only branch counterexample qualifies a future common GRPO/search host, not a claimed cause of the current deadline.",
+  "reward_evidence": {
+    "original_metric_retained": true,
+    "floor_contact_reports_unreliable_in_this_case": true,
+    "native_flat_group": "Pinned grpo_loss_for_group returns a literal detached-from-model zero leaf before calling its KL objective when both local and global advantages vanish; CPU control flow actually executed",
+    "not_generalized": "Other objectives can retain KL/auxiliary gradients. NaNs require rejection, not zero-signal interpretation.",
+    "no_new_training_successes": true
+  },
+  "why_not_immediate_RL": [
+    "No independently verified complete positive room from this trial",
+    "Two native floor-body collision reports conflict with geometric separation evidence",
+    "JSON-only branch reset omits mutable asset bytes",
+    "Available asset subset and category verification constrain interpretation",
+    "32GB inference success is not a real multimodal backward/optimizer memory test"
+  ],
+  "theory_limits": [
+    "Teacher-forced target loss is not closed-loop success on policy-induced scenes",
+    "Ordinary potential shaping needs the correct terminal potential; it cannot repair an unsound verifier",
+    "A generated fluent D does not prove action correctness or a causal mechanism",
+    "OPD supplies teacher guidance on student prefixes but requires a reliable teacher and actual3D state transitions; teacher prose cannot stand in for executed geometry"
+  ],
+  "novelty": "Reasoning, memory, rollback, same-source auxiliary learning, reverse-KL distillation and ordinary search all have direct prior art. No CVPR-level contribution or improvement is claimed yet.",
+  "actual_this_turn": "Real native generation continuation, saved partial3D artifact and exact tool/state/GRPO diagnostics; no new training",
+  "next_work_boundary": "Do not tune289/404, add samples, alter thresholds or label this partial room successful. Consolidate shared native execution and actual available expert supervision before any authorized learned comparison.",
+  "training_updates": 0,
+  "goal_achieved": false
+}

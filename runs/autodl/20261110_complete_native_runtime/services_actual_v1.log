@@ -1,0 +1,68 @@
+[server] skip geometry_server (no agent uses 'generated')
+[server] skip articulated_server (no agent enables it)
+ * Serving Flask app 'scenesmith_blender_render'
+ * Debug mode: off
+[chained] proceeding with room 'bedroom'
+[derive] RoomScene room_id=bedroom prompt='A bedroom with a bed, two nightstands, and a wardrobe in the corner of the room.' walls=4
+[handover] room_summary block: 371 chars
+[osa] scene_dir = /dev/shm/native_whole_services_a5z3xbfz/normal_session
+[osa] floor_plan_agent: mode=room use_retrieval_server=False
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/probe_complete_native_services.py", line 153, in <module>
+    main(p.parse_args().stage)
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/probe_complete_native_services.py", line 102, in main
+    env=session.make_roomscene_env('furniture',None,logger)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_complete_native_runtime/runtime/src/agent_rollout_decoupled.py", line 274, in make_roomscene_env
+    agent = BaseExperiment.build_furniture_agent(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/native_source/scenesmith/experiments/base_experiment.py", line 150, in build_furniture_agent
+    return compatible_agents[agent_name](
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/native_source/scenesmith/furniture_agents/stateful_furniture_agent.py", line 75, in __init__
+    BaseFurnitureAgent.__init__(
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/native_source/scenesmith/furniture_agents/base_furniture_agent.py", line 84, in __init__
+    self.blender_server.wait_until_ready()
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remote_native_controller/runtime/native_source/scenesmith/agent_utils/blender/server_manager.py", line 423, in wait_until_ready
+    response = requests.get(f"{self.get_url()}/", timeout=5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connection.py", line 494, in request
+    self.endheaders()
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/http/client.py", line 1346, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/http/client.py", line 1106, in _send_output
+    self.send(msg)
+  File "/root/autodl-tmp/layout_experience_pilot/envs/eval/lib/python3.11/http/client.py", line 1044, in send
+    self.connect()
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/probe_complete_native_services.py", line 60, in audit
+    if not ok:blocked.append(dict(event=event,argument=str(args[1])));raise RuntimeError('Unadmitted external service/process')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Unadmitted external service/process
