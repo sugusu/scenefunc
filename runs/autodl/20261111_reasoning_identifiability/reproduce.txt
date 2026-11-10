@@ -1,0 +1,18 @@
+Run from REPOSITORY; all output paths must be fresh.
+
+1. Reacquire the pinned small prior source into a local research cache (no install):
+python scripts/autodl/fetch_pinned_reasoning_helpers.py --manifest runs/autodl/20261111_reasoning_identifiability/faithful_cot_source/targeted_source_manifest.json --out /dev/shm/faithful_cot_reproduction_NEW
+
+2. Mask probe (CPU torch only, no model). Use a fresh stage containing the recorded faithful_cot_source manifest, and the exact original components under the repository:
+PYTHONDONTWRITEBYTECODE=1 /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/probe_reasoning_mask_boundaries.py --repo . --stage NEW_STAGE --source /dev/shm/faithful_cot_reproduction_NEW/train/verl/utils/cot_masking.py
+
+3. Static layout range reader: NEW_STAGE must contain public_data/il3d_minimal.json and il3d_tree.json copied unchanged. Never reuse existing results or replace preselected samples:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/read_public_layout_sample.py --stage NEW_STAGE
+The saved first attempt had a terminal SSL EOF after3of8. Its same8transport continuation used:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/read_public_layout_sample.py --stage runs/autodl/20261111_reasoning_identifiability --resume-from runs/autodl/20261111_reasoning_identifiability/il3d_static_layout_sample_v1
+This command already completed; do not rerun into that stage.
+
+4. The input/support analyzer consumes the saved complete8sample receipt plus the original components and asset inventory:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/audit_layout_schema_and_support.py --repo . --stage NEW_STAGE_WITH_SAVED_INPUTS
+
+No command starts model inference, training, a paidAPI or a billed instance.

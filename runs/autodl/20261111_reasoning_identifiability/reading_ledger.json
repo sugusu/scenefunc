@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Faithfulness as Information Flow: Evaluating and Training Faithful Chain-of-Thought Reasoning",
+    "URL": "https://arxiv.org/html/2605.24286v1",
+    "read": "HTML abstract, introduction/related work, sections3-5,6.1-6.4; AppendixA-D including implementation costs and limitations. Figure captions read; no PDF/figure visual audit.",
+    "source_pin": "f9e1f29564fcd8d3a50507766e028547cdbbbd23",
+    "source_scope": "cot_masking.py lines1-331 completely; dp_actor.py targeted mask dispatch, old-log-prob override and policy-update lines379-448,748-838,944-1077. README overview. Not every actor function or transformer patch read.",
+    "executed": "Original three standalone mask helpers via AST extraction on actual archived assistant-prefix/target IDs with an explicitly synthetic leading prompt. No model, backward or training.",
+    "consequence": "A preexisting structural-training baseline. Cannot rename prompt/CoT routing as a new mechanism. Forward masks and backward restrictions make different claims; no generic deployment independence follows.",
+    "code_distribution": "Targeted unmodified source remains a read-only RAM research copy; only URLs/hashes and original analysis redistributed. Reacquisition helper provided."
+  },
+  {
+    "title": "The Observability Gap: Why Output-Level Human Feedback Fails for LLM Coding Agents",
+    "URL": "https://arxiv.org/html/2603.26942v1",
+    "read": "Complete short HTML main text through limitations. Source code link found; code not run or independently audited. No figure visual audit.",
+    "scope": "CHI2026 workshop per arXiv comments; single Blender house/trees/cars task, not an indoor generation benchmark or general theorem.",
+    "consequence": "Existing evidence that output symptoms need not identify code/state failure causes; diagnostic code intervention is not itself a learned solution. Our native registry failure remains separately measured evidence."
+  },
+  {
+    "title": "IL3D: A Large-Scale Indoor Layout Dataset for LLM-Driven3D Scene Generation",
+    "URL": "https://arxiv.org/abs/2510.12095",
+    "project": "https://wenxuzhou.github.io/project/IL3D/",
+    "dataset": "https://huggingface.co/datasets/WenxuZhou/IL3D",
+    "read": "Paper abstract, official project and dataset card; no new full-paper claim. Complete official sft_dataset.py read; targeted create_scene/coordinate/export paths in get_usda_rooms.py read.",
+    "actual_acquisition": "Fixed first8lexicographic static layouts, HTTP-range ZIP extraction, CRC checked. One SSL EOF after3samples retained; same8continued with a bounded transport retry and fixed traffic cap. No full archive, HSSD,3D-FRONT geometry or model downloaded.",
+    "empirical_scope": "All8are Synthetic Data / RecreationRoom by original tag.69instances,1has an ID matching a currently local HSSD mesh. No full description, rationale, tool trajectory or established training split in these raw8files.",
+    "source_coordinate_contract": "Y-up and metres from official SFT prompt; original USD export multiplies translations by100. Do not silently mix with native Z-up.",
+    "consequence": "Original static dataset evidence replaces speculation about availability, but does not supply the missing reason/action supervision or whole-room acceptance labels."
+  },
+  {
+    "title": "SCOTT: Self-Consistent Chain-of-Thought Distillation",
+    "URL": "https://aclanthology.org/2023.acl-long.304/",
+    "read": "This stage: primary abstract and method3.2 excerpt reconfirmed; earlier exact reading recorded separately. No new full implementation reproduction.",
+    "consequence": "Counterfactual rationale-conditioning is existing work. Following a deliberately wrong rationale is not a desirable3D task-completion target."
+  },
+  {
+    "title": "Measuring Faithfulness in Chain-of-Thought Reasoning",
+    "URL": "https://arxiv.org/abs/2307.13702",
+    "read": "This stage: primary abstract and intervention overview only. No new full-paper claim or execution.",
+    "consequence": "Reasoning perturbation tests are prior art; distinguish sensitivity from correctness and monitorability from full3D success."
+  },
+  {
+    "title": "ThinkBLOX public-data lookup",
+    "URL": "https://arxiv.org/abs/2607.13539",
+    "read": "Existing method reading retained from previous stage; this stage checked paper/project links and public dataset searches.",
+    "empirical_scope": "HFsearches ThinkBLOX and ThinkBLOX-Data-200K returned empty lists at access time. This is not proof that no release exists elsewhere. No original ThinkBLOX reasoning rows acquired."
+  }
+]
