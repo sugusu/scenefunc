@@ -1,0 +1,51 @@
+{
+  "python": "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "commands": [
+    [
+      "scripts/autodl/check_stage_evidence_route.py",
+      "--source",
+      "runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl",
+      "--material",
+      "runs/autodl/20261110_observation_alignment/material_v2/components.jsonl",
+      "--out",
+      "runs/autodl/20261110_stage_alignment_review/legacy_route_v2",
+      "--legacy-route",
+      "--legacy-host-source",
+      "runs/autodl/20261110_stage_alignment_review/phase_host_before.py"
+    ],
+    [
+      "scripts/autodl/repair_observation_identity.py",
+      "--original",
+      "runs/autodl/20261110_observation_alignment/material_v2/components.jsonl",
+      "--rebuilt",
+      "runs/autodl/20261110_paired_observation_material/material_v1/components.jsonl",
+      "--bindings",
+      "runs/autodl/20261110_paired_observation_material/material_v1/observation_bindings.json",
+      "--out",
+      "runs/autodl/20261110_stage_alignment_review/material_v2"
+    ],
+    [
+      "scripts/autodl/check_stage_evidence_route.py",
+      "--source",
+      "runs/autodl/20261110_decision_phase_study/actual_v3/prospective_phase_components.jsonl",
+      "--material",
+      "runs/autodl/20261110_stage_alignment_review/material_v2/components.jsonl",
+      "--bindings",
+      "runs/autodl/20261110_paired_observation_material/material_v1/observation_bindings.json",
+      "--out",
+      "runs/autodl/20261110_stage_alignment_review/explicit_route_v2"
+    ],
+    [
+      "scripts/autodl/audit_stage_corpus.py",
+      "--material",
+      "runs/autodl/20261110_stage_alignment_review/material_v2/components.jsonl",
+      "--out",
+      "runs/autodl/20261110_stage_alignment_review/corpus_audit"
+    ]
+  ],
+  "encoder": "encoding_v2/command.json preserves actual builder arguments and tmpfs execution receipt; choose a new output directory for reruns",
+  "rerun_note": "Output directories are immutable. Substitute new output paths; do not overwrite existing artifacts. No model is loaded by these commands."
+}

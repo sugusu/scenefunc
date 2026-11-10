@@ -1,0 +1,56 @@
+{
+  "scope": "Targeted primary-source review, not exhaustive novelty clearance",
+  "readings": [
+    {
+      "title": "Distilling Step-by-Step",
+      "url": "https://aclanthology.org/2023.findings-acl.507.pdf",
+      "coverage": "Rechecked abstract and §3.1–3.2, equations 1–4, task prefixes; experiments and appendices not reread this turn.",
+      "finding": "Rationale generation as an auxiliary task while predicting the label directly at deployment is established. The paper also distinguishes rationale-conditioned prediction. Current weighted cross entropy and task routing are controls, not a new loss.",
+      "not_established": "Any transfer gain on our 3D data."
+    },
+    {
+      "title": "SPHERE",
+      "url": "https://arxiv.org/html/2610.02023v1",
+      "coverage": "Read §2.1–2.3 methods, §3 study design, reported primary results and §6–7 limitations. No figure-by-figure review or reproduction.",
+      "finding": "Uses Holodeck, post-session preference memory from edits and terminal geometry, hierarchical spatial constraints, and reward-updated retrieval rerankers. The controlled profiles and lack of explicit conflict relaxation limit general personalization claims. Memory, functional abstraction and user-conditioned constraints are overlapping ideas.",
+      "code_check": "https://github.com/hyeonmin11/SPHERE currently displays README only and says implementation will be released; not an executable control verified here."
+    },
+    {
+      "title": "RoomWright",
+      "url": "https://arxiv.org/html/2608.18840v1",
+      "coverage": "Read method overview, Algorithm 1, task-centric expansion, interaction induction, layout/critic pipeline, usage-facing orientation, main evaluation protocol/table, appendices E–G. Not full appendix A prompts/C formulas or all experiments/figures.",
+      "finding": "Already combines usage-driven object/support/interaction planning, executable asset code, geometric layout solving, visual critique and physical validation. Its task scope includes interaction behavior absent from our current furniture targets. Adding a usage rationale before geometric tools is not enough to distinguish a method.",
+      "not_established": "Author implementation availability, reproduced results or direct superiority over our system."
+    }
+  ],
+  "source_code_read": [
+    {
+      "path": "scripts/autodl/phase_host.py",
+      "coverage": "Full host loop and furniture-stage wrapper; patched and exercised"
+    },
+    {
+      "path": "scripts/autodl/scene_evidence.py",
+      "coverage": "Full shared envelope implementation; identity refresh added"
+    },
+    {
+      "path": "scripts/autodl/build_rebuilt_observation_material.py",
+      "coverage": "Full file; actual rebuilt-state field replacement traced and fixed"
+    },
+    {
+      "path": "scripts/autodl/phase_objective.py",
+      "coverage": "Full objective/task-prefix file"
+    },
+    {
+      "path": "scripts/autodl/phase_trainer.py",
+      "coverage": "Full supported single-process weighted CE implementation"
+    },
+    {
+      "path": "scripts/autodl/phase_deployment.py",
+      "coverage": "Full prefix/stop contract"
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_execution_inventory_20261104/source/src/agent_rollout_decoupled.py",
+      "coverage": "main_async four-stage order, finalization and failure/cleanup path; not a new full-service execution"
+    }
+  ]
+}

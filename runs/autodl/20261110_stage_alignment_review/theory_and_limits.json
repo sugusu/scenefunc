@@ -1,0 +1,32 @@
+{
+  "status": "Elementary derivations and experimental consequences; not new theorems",
+  "items": [
+    {
+      "claim": "Self-generated D is additional computation, not an independent spatial observation.",
+      "assumptions": "Fixed theta; given X, D uses randomness independent of hidden scene truth Z; no new sensor/tool/retrieval result between X and D.",
+      "derivation": "p(D|X,Z,theta)=p(D|X,theta), so I(Z;D|X,theta)=0.",
+      "meaning": "No impossibility of bounded-compute benefit follows. D can reorganize computation. If a tool is queried, its evidence and cost must be included in all appropriate controls."
+    },
+    {
+      "claim": "Teacher-conditioned evaluation does not establish deployed policy utility.",
+      "assumptions": "Fix state/request x and the same action kernel p(A|x,d). Let q(d|x) be the teacher-decision distribution on that input and r(d|x) the deployed generated-decision distribution. For downstream utility U(A,x) in [0,1], define g(d)=E[U(A,x)|x,d].",
+      "derivation": "|E_q g-E_r g| <= TV(q,r), because 0<=g<=1. On a finite support, write signed q-r as positive and negative parts, each with mass TV; maximizing the bounded expectation difference selects the positive part.",
+      "meaning": "An oracle-rationale score can differ substantially from self-generated deployment. No small TV, no guarantee. Our data does not estimate this TV; the inequality is an elementary analysis, not a new result. Teacher annotation that saw A can make oracle action accuracy particularly easy."
+    },
+    {
+      "claim": "Training conditioned and unconditioned paths does not imply equal compute.",
+      "derivation": "For conditioned execution p(A|X)=sum_D p(D|X)p(A|X,D). Greedy D followed by greedy A need not maximize that marginal. Two sequential calls and a longer action prefix consume additional prefill/decode compute.",
+      "meaning": "Compare fixed-supervision and cost-quality experiments separately. Never count only A tokens or exclude invalid D calls."
+    },
+    {
+      "claim": "A common geometric preview proves only the predicates it computes.",
+      "derivation": "If a preview computes C(T(S,A)) exactly for its own transition and predicates C, it can reject C-violations before execution. It says nothing about unmodeled semantics, path feasibility or errors in T/C.",
+      "meaning": "The prior ordinary-search result supports explicit endpoint constraints on procedural boxes only. It neither validates all native execution noise nor makes a complete-room certificate."
+    },
+    {
+      "claim": "Furniture-stage supervision can support a full-generation contribution without training every stage.",
+      "derivation": "Hold the other generation stages and resources common, replace only furniture policy, then compare final room outcomes under paired independent tasks.",
+      "meaning": "This is a valid experimental design, not evidence already obtained. Scoring only furniture-stage endpoints would establish a narrower result."
+    }
+  ]
+}

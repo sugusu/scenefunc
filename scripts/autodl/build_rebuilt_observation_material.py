@@ -17,7 +17,7 @@ from native_state_override import canonical
 from phase_deployment import deployment_input
 from phase_objective import PHASE_MODE, attach_objective_weights
 from routed_multimodal import encode_component, tensor_digest
-from scene_evidence import HOST_MARKER, text_slots, visible_scene_state
+from scene_evidence import HOST_MARKER, text_slots, visible_scene_state, refresh_visible_evidence
 
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -83,7 +83,7 @@ def main():
         old=evidence['actual_scene_state'];new=visible_scene_state(state)
         old_ids={o['object_id'] for o in old['objects']};new_ids={o['object_id'] for o in new['objects']}
         if old_ids!=new_ids:raise ValueError('Source observation identity differs')
-        evidence['actual_scene_state']=new
+        evidence=refresh_visible_evidence(evidence,state)
         slot[key]=HOST_MARKER+json.dumps(evidence,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
         index=0
         for message in out['messages']:

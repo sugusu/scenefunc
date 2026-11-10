@@ -43,6 +43,39 @@ def visible_scene_state(state):
             'pose_convention': 'native world transform; tool yaw follows native advertised units'}
 
 
+def refresh_visible_evidence(evidence, before_state):
+    """Version a measured observation without misbinding archived context.
+
+    Runtime deserialization may change object order. Source extras and dict
+    keys belong to object IDs, not to their list positions. Retained context
+    is still archived task/asset metadata, not newly measured runtime metadata.
+    Call this on a valid old envelope, never one already partially overwritten.
+    """
+    out = copy.deepcopy(evidence)
+    old_ids = [o['object_id'] for o in out['actual_scene_state']['objects']]
+    new = visible_scene_state(before_state)
+    new_ids = [o['object_id'] for o in new['objects']]
+    if len(set(old_ids)) != len(old_ids) or set(old_ids) != set(new_ids):
+        raise ValueError('Observation refresh must preserve unique object identities')
+    context = out.get('source_context')
+    if context is not None:
+        extras = context['object_extra_fields']
+        if len(extras) != len(old_ids):
+            raise ValueError('Archived extras are not aligned with source objects')
+        index = {uid: i for i, uid in enumerate(old_ids)}
+        context['object_extra_fields'] = [extras[index[uid]] for uid in new_ids]
+        layout = context['object_layout']
+        if layout['kind'] == 'dict':
+            keys = layout['keys']
+            if len(keys) != len(old_ids) or len(set(keys)) != len(keys):
+                raise ValueError('Invalid archived object-key mapping')
+            layout['keys'] = [keys[index[uid]] for uid in new_ids]
+        elif layout['kind'] != 'list':
+            raise ValueError('Unknown archived object layout')
+    out['actual_scene_state'] = new
+    return out
+
+
 def append_host_evidence(messages, *, schemas, before_state, host_history):
     """Preserve base prompts, all views and source memory; append the shared block.
 

@@ -112,6 +112,7 @@ class NativeRoomPort:
         if len(images) != 5:
             raise ValueError('Five current native views required')
         return {'messages': messages, 'images': images,
+                'evidence_format': self.evidence_format,
                 'state_sha256': digest(self.state()), 'context_sha256': before,
                 'native_step_idx': observation['step_idx']}
 
@@ -145,6 +146,7 @@ async def run_phase_stage(*, port, policy, budget, output):
     output.mkdir(parents=True, exist_ok=False)
     start = time.monotonic()
     result = {'status': 'running', 'arm': policy.arm, 'rounds': [],
+              'evidence_format': getattr(port, 'evidence_format', None),
               'generation_attempts': 0, 'input_tokens': 0, 'output_tokens': 0,
               'tool_attempts': 0, 'native_calls': 0, 'accounting_complete': True,
               'budget': vars(budget), 'full_scene_success': None,
@@ -180,6 +182,7 @@ async def run_phase_stage(*, port, policy, budget, output):
             turn_dir.mkdir()
             write(turn_dir / 'request.json', obs['messages'])
             row = {'turn': turn, 'before_sha256': obs['state_sha256'],
+                   'evidence_format': obs.get('evidence_format'),
                    'context_sha256': obs['context_sha256']}
             result['rounds'].append(row)
             bounded = copy.copy(policy)
@@ -269,20 +272,25 @@ async def run_phase_stage(*, port, policy, budget, output):
 
 @contextmanager
 def furniture_driver(native_module, *, policy, budget, allowed_tools,
-                     load_images, acceptance):
+                     load_images, acceptance, evidence_format):
     """Temporarily connect to native main_async's existing four-stage path.
 
     The caller owns session/model configuration and all resource authorization.
     Other stages use the original driver and supplied common base policy. This
     does not instantiate services or silently skip floor/wall/ceiling stages.
+    The experiment must explicitly choose its observation representation; a
+    canonical training corpus must not silently deploy with append formatting.
     """
+    if evidence_format not in ('append_v1', 'canonical_v2'):
+        raise ValueError('Unknown observation format')
     original = native_module.driver_loop
 
     async def driver(*, env, policy: object, max_steps):
         if env.stage != 'furniture':
             return await original(env=env, policy=policy, max_steps=max_steps)
         port = NativeRoomPort(env, allowed_tools=allowed_tools,
-                              load_images=load_images, acceptance=acceptance)
+                              load_images=load_images, acceptance=acceptance,
+                              evidence_format=evidence_format)
         limited = StageBudget(min(max_steps, budget.turns), budget.generation_attempts,
                               budget.tool_attempts, budget.output_tokens, budget.wall_seconds)
         result = await run_phase_stage(port=port, policy=phase_policy,

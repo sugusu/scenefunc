@@ -1,0 +1,67 @@
+{
+  "status": "Candidate comparison specified; not a new method claim or authorized training run",
+  "question": "Does conditioning an executable furniture action on its own generated decision improve the final full-room result or reduce total cost relative to the same supervision used only as an auxiliary task, with ordinary search available to both?",
+  "variables": {
+    "X": "Original user request, actual current scene, current views, common tools and actual past execution receipts; no teacher action, teacher rationale or future scene.",
+    "D": "Generated decision record; unverified until tool execution.",
+    "A": "One native furniture add/move/remove action or proposed STOP.",
+    "I_D": "10 source units with original D; 14 other action units remain without fabricated D."
+  },
+  "exact_objectives": {
+    "auxiliary": "L_aux = sum_i sum_t w_Ait [-log p_theta(A_it | X_i,A_i,<t)] + sum_i_in_I_D sum_t w_Dit [-log p_theta(D_it | X_i,D_i,<t)]",
+    "conditioned": "L_cond = sum_i_in_I_D sum_t w_Ait [-log p_theta(A_it | X_i,D_i,A_i,<t)] + sum_i_not_in_I_D sum_t w_Ait [-log p_theta(A_it | X_i,A_i,<t)] + sum_i_in_I_D sum_t w_Dit [-log p_theta(D_it | X_i,D_i,<t)]",
+    "weights": "Use archived ORIGINAL token coefficients, not newly normalized per phase. Family/component weighting, target tokens, images and training update count must be common.",
+    "limitation": "14 action examples do not train D-conditioned action inputs. Keep them and report the original-D subset separately. Neither new annotations nor dropping 14 examples is authorized by this audit."
+  },
+  "runtime_algorithm": [
+    "Run the same native floor-plan stage and stage handover. Use identical asset resources and generation policy outside furniture.",
+    "At each furniture turn obtain fresh X through explicit canonical_v2 formatting. Every arm sees the same available observation types and tool schemas.",
+    "Auxiliary-trained direct policy generates A immediately. Conditioned policy first generates D until a valid closing delimiter, then generates A with that actual D. Do not inject teacher D.",
+    "Apply the same tool/schema validation and ordinary pre-execution checks, with the same cumulative tool, model-token and time accounting. Unknown physical/semantic checks stay unknown.",
+    "Execute native actions, including additions/removals, and obtain the actual next state. Invalid outputs consume the common budget; STOP is a proposal and not a success certificate.",
+    "Finalize furniture and run the common wall/ceiling stages. Evaluate the final full scene, including required assets, supported semantics, geometry, retained constraints and unresolved checks."
+  ],
+  "controls": [
+    {
+      "name": "ordinary search",
+      "question": "Can explicit task constraints and shared tools explain the gain?",
+      "status": "Executed only for two same-room numerical activity tasks. The current search is NOT a general full-generation baseline; rotations, addition and removal are outside its implementation."
+    },
+    {
+      "name": "frozen base + same tools",
+      "question": "Does any learned model improve on the pretrained policy?",
+      "status": "Old model results exist; not a matched run with the revised inputs."
+    },
+    {
+      "name": "auxiliary D supervision, direct A",
+      "question": "Is the extra supervision useful without generating D at deployment?",
+      "status": "Objective/encoder/adapter implemented; no new aligned training completed."
+    },
+    {
+      "name": "same-supervision self-generated D then A",
+      "question": "Is test-time decision conditioning useful beyond auxiliary learning?",
+      "status": "Objective/encoder/host implemented; no new aligned model rollout."
+    },
+    {
+      "name": "direct A with additional candidates",
+      "question": "Does ordinary search using the saved reasoning cost explain the effect?",
+      "status": "Requires measured cost-matched closed-loop evaluation. Do not force the direct arm to waste tokens generating unused D."
+    }
+  ],
+  "full_generation_evaluation": {
+    "unit": "Independent room/task family, not tokens, tool calls, camera views or repeated source steps. Current six development families are not held-out proof.",
+    "causal_contrast": "Same supervision but different inference factorization. Run both quality-at-fixed-budget and cost-to-matched-quality; do not call identical target tokens equal compute.",
+    "primary": "Joint required-object/relationship completion with geometry and existing-requirement preservation; missing objects and failed/unexecuted episodes remain in denominator.",
+    "secondary": "Supported-check coverage, unknowns, added/removed objects, actual wall time, GPU time, model input/output tokens, candidate executions and changed geometry.",
+    "stop_rule": "If the common ordinary methods explain the improvements, or only parser/format corrections cause the gain, revise the mechanism claim. Do not tune the old room until D wins.",
+    "current_missing": "No independent complete-room rollout under this aligned contract; full input/asset/semantic coverage remains incomplete."
+  },
+  "not_claimed": [
+    "New loss",
+    "New theorem",
+    "Append-only vs overwrite tested",
+    "Human preference learned",
+    "Complete room generated this turn",
+    "Confirmed CVPR-level contribution"
+  ]
+}

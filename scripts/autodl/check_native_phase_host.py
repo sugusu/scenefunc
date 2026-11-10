@@ -254,7 +254,8 @@ async def main(args):
         return ['untouched_common_base_stage']
     module = SimpleNamespace(driver_loop=original_driver)
     with furniture_driver(module, policy=policy, budget=budget, allowed_tools=allowed,
-                          load_images=images, acceptance=acceptance):
+                          load_images=images, acceptance=acceptance,
+                          evidence_format='append_v1'):
         for stage in ('floor_plan', 'wall', 'ceiling'):
             assert await module.driver_loop(env=SimpleNamespace(stage=stage), policy=object(), max_steps=1) == ['untouched_common_base_stage']
         rows = await module.driver_loop(env=env, policy=object(), max_steps=len(actions))
