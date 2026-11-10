@@ -1,0 +1,174 @@
+{
+  "fixture_kind": "synthetic audit rows using actual frozen 32-check plan; no mesh or judge executed",
+  "numeric_cases": [
+    {
+      "changed_check": "N24",
+      "status": "satisfied",
+      "official_numeric_output": {
+        "status": "measured",
+        "score": 1.0,
+        "counts": {
+          "satisfied": 32
+        },
+        "checks": 32,
+        "missing_checks": [],
+        "unresolved": []
+      },
+      "extra_required_conjunction": true,
+      "algebraic_total_if_vlm_and_detail_equal_one": 0.9999999999999999,
+      "not_a_scene_result": true
+    },
+    {
+      "changed_check": "N24",
+      "status": "violated",
+      "official_numeric_output": {
+        "status": "measured",
+        "score": 0.96875,
+        "counts": {
+          "satisfied": 31,
+          "violated": 1
+        },
+        "checks": 32,
+        "missing_checks": [],
+        "unresolved": []
+      },
+      "extra_required_conjunction": false,
+      "algebraic_total_if_vlm_and_detail_equal_one": 0.990625,
+      "not_a_scene_result": true
+    },
+    {
+      "changed_check": "N24",
+      "status": "partial",
+      "official_numeric_output": {
+        "status": "measured",
+        "score": 0.96875,
+        "counts": {
+          "satisfied": 31,
+          "partial": 1
+        },
+        "checks": 32,
+        "missing_checks": [],
+        "unresolved": [
+          "N24"
+        ]
+      },
+      "extra_required_conjunction": null,
+      "algebraic_total_if_vlm_and_detail_equal_one": 0.990625,
+      "not_a_scene_result": true
+    },
+    {
+      "changed_check": "N24",
+      "status": "observed",
+      "official_numeric_output": {
+        "status": "measured",
+        "score": 0.96875,
+        "counts": {
+          "satisfied": 31,
+          "observed": 1
+        },
+        "checks": 32,
+        "missing_checks": [],
+        "unresolved": [
+          "N24"
+        ]
+      },
+      "extra_required_conjunction": null,
+      "algebraic_total_if_vlm_and_detail_equal_one": 0.990625,
+      "not_a_scene_result": true
+    },
+    {
+      "changed_check": "N24",
+      "status": "not_measurable",
+      "official_numeric_output": {
+        "status": "not_measurable",
+        "score": null,
+        "counts": {
+          "satisfied": 31,
+          "not_measurable": 1
+        },
+        "checks": 32,
+        "missing_checks": [
+          "N24"
+        ],
+        "unresolved": [
+          "N24"
+        ]
+      },
+      "extra_required_conjunction": null,
+      "algebraic_total_if_vlm_and_detail_equal_one": null,
+      "not_a_scene_result": true
+    }
+  ],
+  "rejected_invalid_rows": [
+    {
+      "case": "missing",
+      "error": "Numeric audit does not match the frozen checks"
+    },
+    {
+      "case": "duplicate",
+      "error": "Numeric audit does not match the frozen checks"
+    },
+    {
+      "case": "wrong_case",
+      "error": "Accepted native numeric audit required"
+    },
+    {
+      "case": "unknown_status",
+      "error": "Unknown numeric audit status"
+    }
+  ],
+  "detail_minimum": {
+    "method": "continuous-visual-subset-minimum-v1",
+    "status": "measured",
+    "score": 0.5,
+    "selected_variant": "seed-1/native",
+    "values_by_variant": {
+      "primary/native": 1.0,
+      "seed-0/native": 0.8,
+      "seed-1/native": 0.5,
+      "seed-2/native": 0.9
+    },
+    "measurements": [
+      {
+        "id": "shape",
+        "method": "visual_coverage_deviation",
+        "weight": 1.0,
+        "value": 0.5,
+        "selected_variant": "seed-1/native"
+      }
+    ],
+    "criterion_ids": [
+      "shape"
+    ],
+    "missing_measurements": []
+  },
+  "missing_detail": {
+    "method": "continuous-visual-subset-minimum-v1",
+    "status": "not_measurable",
+    "score": null,
+    "selected_variant": null,
+    "values_by_variant": {
+      "primary/native": 1.0,
+      "seed-0/native": 0.8,
+      "seed-1/native": null,
+      "seed-2/native": 0.9
+    },
+    "measurements": [
+      {
+        "id": "shape",
+        "method": "visual_coverage_deviation",
+        "weight": 1.0,
+        "value": null,
+        "selected_variant": null
+      }
+    ],
+    "criterion_ids": [
+      "shape"
+    ],
+    "missing_measurements": [
+      "seed-1/native:shape"
+    ]
+  },
+  "full_finalizer_executed": false,
+  "official_benchmark_scores_produced": 0
+}

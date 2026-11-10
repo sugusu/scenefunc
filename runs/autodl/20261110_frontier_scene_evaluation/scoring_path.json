@@ -1,0 +1,15 @@
+{
+  "pin": "1462133985213af9bae14344d2b938e18868350b",
+  "extension_path": [
+    "benchmark/engine.py:evaluate -> manifest harness_status",
+    "tools/experiment_additions.py:evaluate -> numeric, baseline, detail, finalize",
+    "tools/finalize_effort_addition.py:finalize -> level 2 dispatch",
+    "tools/finalize_effort_addition_l2.py:finalize -> Brief2Scene dispatch",
+    "tools/finalize_effort_addition_brief.py:finalize -> numeric_data_score and 0.6/0.3/0.1 blend"
+  ],
+  "numeric_evidence": "tools/measure_effort_addition_numeric.py invokes a judge-backed run_codex using native catalogue and registered measurements. It is not wholly deterministic geometry scoring.",
+  "legacy_caution": "src/evaluator/l2.py and l2_quality_scoring.py alone do not define the final release score.",
+  "real_execution": "Only pure numeric_data_score and detail_from_criteria executed; full finalizer not executed.",
+  "missing_policy": "Official numeric not_measurable blocks score, partial/observed retain zero credit in fixed denominator; invalid input population rejected.",
+  "assets": "No meshes, LFS assets, model weights or external image references acquired."
+}

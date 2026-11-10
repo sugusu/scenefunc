@@ -1,0 +1,25 @@
+{
+  "status": "Candidate hypothesis and identification limits; no new theorem of improvement and no new loss claimed",
+  "state": "X_t contains original request, actual current scene observations, previous executed outcomes and same permitted evidence. D_t is a predicted design decision, not an executed fact. A_t is a tool action/stop.",
+  "candidate": "D_t ~ pi_phi(D|X_t); A_t ~ pi_theta(A|X_t,D_t); actual native tool execution produces X_{t+1}. Never inject teacher D at evaluation or reset to a saved correct state.",
+  "primary_control": "Same-source auxiliary training of D(X) and A(X), with direct A(X) deployment. Retain identical source token weights and missing-D action units. The separate-unused-D deployment is only a diagnostic.",
+  "search_control": "Base policy plus ordinary multi-operation search has the same tools, assets, observations, edits and cumulative cost limits. Full-generation version still incomplete.",
+  "supervision_limit": "24 units / 6 families, 10 original D labels, 14 missing; all furniture stage. Other stages stay common base. This does not establish general interior-design learning.",
+  "information_argument": {
+    "assumptions": "Condition on trained parameters; D generated using X and randomness independent of target Y conditional on X, without fresh external observations.",
+    "statement": "Y -> X -> D is Markov, so I(Y;D|X)=0. D cannot add external target information under these assumptions.",
+    "scope": "It can change finite-compute search/representation and thus empirical action quality. The information statement neither proves futility nor guarantees benefit. If D queries external tools, equal access and full costs must be controlled."
+  },
+  "objective_identification": "Equal-material conditioned-vs-auxiliary comparison estimates a training/deployment intervention. Rationale removal/substitution may be distribution shift; sensitivity alone is not utility or faithful causal explanation.",
+  "complete_task_metric": {
+    "definition": "F(S,u)=AND_j c_j(S,u) over a prospectively frozen mandatory requirement set; false if a known violation, unknown if no known violation but unresolved checks; only all verified true yields pass.",
+    "official_score": "Preserve published Q and all components separately. Our conjunction is a companion, not a replacement Frontier3DBench score.",
+    "counterexample": "For actual task 013 with 32 numeric checks, one violated check gives R=31/32. If V=D=1, Q=0.990625 but the numeric conjunction is false. This is a synthetic algebra check, not an observed visual judgment or benchmark defect.",
+    "general_bound": "For weighted mean R=sum_j w_j c_j, a single failed j yields 1-w_j; near-one average does not imply conjunction. This elementary fact is not a novel algorithm.",
+    "trajectory_risk": "For properly defined failure events E_t, P(any E_t)<=sum_t P(E_t) by union bound, no independence needed. We do not have calibrated event probabilities, so this is not a safety guarantee or a learned constraint."
+  },
+  "testable_claim": "At matched meaningful total cost, conditioned decisions improve full-room mandatory satisfaction and preservation over direct-action auxiliary learning and base+search, across independent description families.",
+  "disconfirmation": "Stop scaling this conditioning mechanism if common search explains gains, gains only occur in trained room families, or rationale quality improves without executed scene gains.",
+  "scope_retained": "Complete indoor scene generation remains the endpoint; no switch to outdoor/robot benchmark engineering merely to obtain a new score.",
+  "next_actual_gate": "One full native generation with common local services and physical metadata, then the shared ordinary search on that same output. Only after this is executable and observations are complete can the equal-material learning comparison be qualified."
+}

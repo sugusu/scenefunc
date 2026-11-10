@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>完整场景评价与机制边界复核</title>
+<style>body{font-family:system-ui;max-width:1050px;margin:36px auto;line-height:1.75;color:#19242e}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd3d8;padding:10px;text-align:left}code{background:#eef1f5}a{color:#125b91}</style>
+<h1>完整场景评价与机制边界复核</h1><p>2026-11-10。本轮完成公开任务接入、官方评分计算复核与近邻方法阅读；没有新增场景、模型调用、训练或付费服务。目标仍是完整室内三维生成。</p>
+<h2>这轮实际增加了什么</h2><p>固定 Frontier3D 提交 1462133，获取全部20条 Brief2Scene 原文及元数据，保留任务和评分资料隔离。输入导出器逐字保留原文和哈希，不将评价规则或答案注入生成器。20份输入已构建校验，013导出命令已实际执行。</p>
+<table><tr><th>证据</th><th>结果与含义</th></tr><tr><td>公开任务审阅</td><td>001–010是室外场景；011–020要求静态机器人几何与接触，不能删去这些要求来适配家具模型。</td></tr><tr><td>当前接入资格</td><td>没有任务已证明可由现有完整入口执行；这不是证明这些任务不可能完成。当前不启动新机器人或室外生成支线。</td></tr><tr><td>官方数值聚合函数</td><td>真实013评分计划有32项检查，5种状态及缺项/重复/错身份/非法状态已执行；缺测保留空值，未伪造场景测量。</td></tr><tr><td>官方细节聚合函数</td><td>构造四个变体的测量值，核实取最小变体；缺少一个变体则无总值。未运行渲染或视觉评审。</td></tr></table>
+<h2>评分事实改变了什么</h2><p>官方最终文字场景分数采用视觉、要求、细节加权；extension数值检查也需要模型辅助读取已登记的原生测量，不是零API的纯几何流程。已从公开入口追踪到最终分支，不能用旧 l2.py 的默认值代替最终发布规则。</p>
+<p>构造反例：013的通路项N24失败，其余31项满足，则数值分31/32。若视觉与细节各为1，总分为0.990625，但必需数值要求没有全部完成。这是公式层面的反例，不是对实际模型场景的评分，更不是指控视觉评审会忽略通路。我们保留官方分数，同时报告固定要求的合取结果、未知项和成本。</p>
+<h2>算法与理论：保留候选，收紧可证主张</h2><p>候选机制仍是从相同当前证据X生成决定D，再生成动作A，并接受真实工具反馈。强学习对照使用相同来源、相同目标token权重，分别学习D(X)和A(X)，部署直接执行A(X)；普通搜索具有相同操作、观察和累计预算。推理时必须使用自生成D，不能给教师答案。</p>
+<p>给定训练后参数，若D只来自X及独立随机性，它不增加X以外的目标信息；可能的收益是有限计算下的表示与搜索。这个事实不意味着D无用，也不给出改善保证。损失下降、理由更像教师或打乱理由后性能下降，都不能代替整场收益。</p>
+<p>当前24个单元全部在家具阶段，14个缺原始决定；完整普通搜索仍未接通。因此不能把新输入/评分接入称为已具备开训条件。完整公式、假设、控制条件与否定条件见 <a href="algorithm_and_theory.json">算法与理论记录</a>。</p>
+<h2>近邻限制</h2><p><a href="https://arxiv.org/html/2605.19587v1">SceneCode</a> 已有显式对象计划与执行修复；我们不能以“有计划、有状态记录”作为贡献。<a href="https://arxiv.org/html/2610.37326v1">ScIntBench</a> 区分交互能力缺失与执行可靠性，不能给生成结果补物理属性后再称原生成成功。本轮均为指定章节阅读，不是全文或代码复现。</p>
+<p><a href="https://arxiv.org/html/2611.09017v1">Frontier3DBench</a> 的人工核查范围是参考保真度，不能移作室内功能偏好认证。公开任务也是新接触过的开发材料，不自动成为我们的未见封存测试集。</p>
+<h2>可运行交付</h2><p><code>PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/frontier_task_audit.py --task 13 --out /tmp/frontier_public_013.json</code> 导出纯公开输入，拒绝覆盖。<code>--audit</code> 运行本轮算术审计，固定输出已存在会拒绝覆盖。重建需先运行 acquire_frontier_review.py 及其 --supplement。源码、原文按源清单核验；源任务本地保留，发布包不重复分发全部任务正文。</p>
+<p><a href="audit_v1/task_coverage.csv">20条完整覆盖表</a> · <a href="audit_v1/official_score_semantics.json">官方函数实际运行结果</a> · <a href="reading_ledger.json">阅读边界</a> · <a href="scoring_path.json">最终评分调用路径</a> · <a href="method_differences.json">方法区别</a> · <a href="summary.json">本轮摘要</a></p>
+<p>下一实质门槛仍是原有室内生成器的一次完整真实执行及其共同普通搜索，不是继续增加本页检查数，也不是启动20场机器人任务。论文贡献尚未成立，目标保持进行中。</p></html>

@@ -1,0 +1,30 @@
+[
+  {
+    "command": "python scripts/autodl/acquire_frontier_review.py",
+    "result": "61 files / 268683 bytes / 0 model calls"
+  },
+  {
+    "command": "python scripts/autodl/acquire_frontier_review.py --supplement",
+    "result": "32 files / 122082 bytes / 0 model calls; final source population 93"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/frontier_task_audit.py --audit",
+    "result": "completed; audit_v1 records source population 92 before the final dispatch file was added"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/frontier_task_audit.py --task 13 --out runs/autodl/20261110_frontier_scene_evaluation/audit_v1/public_task_013.json",
+    "result": "completed; exact public input, not generated scene"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_frontier_audit.py",
+    "result": "completed"
+  },
+  {
+    "command": "Final byte verification and git diff --check",
+    "result": "93 source files verified; all 20 public inputs exact; changed expected hash rejected; 4 old authoritative artifacts unchanged"
+  },
+  {
+    "command": "Staged whitespace validation",
+    "result": "Initial check flagged CRLF in new CSV and byte-preserved upstream CSV. Own CSV writer changed to LF; scoped attributes preserve upstream bytes and recognize CRLF. No evaluator or thresholds changed."
+  }
+]
