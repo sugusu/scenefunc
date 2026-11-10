@@ -1,0 +1,31 @@
+The single native/model request is already terminal. Its one-call budget is CLOSED.
+Do not rerun the live request merely to regenerate reports. A fresh output directory
+and separately scoped protocol are necessary for any future inference experiment.
+
+Read-only/report operations actually executed from the repository root:
+  python -B scripts/autodl/finalize_live_manager_request.py
+
+Original live entrypoint (historical reference, NOT a current instruction to rerun):
+  /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/run_native_manager_request.py --stage runs/autodl/20261110_live_manager_request
+
+The parent uses the isolated native Python3.11 dependencies, not the GPU inference
+Python3.12 environment. The source snapshot is inserted by the entrypoint.
+Parent PYTHONPATH components, in order:
+  runs/autodl/20261110_native_manager_lifecycle/lxml_dep/runtime
+  runs/autodl/20261110_native_manager_lifecycle/import_deps/runtime
+  runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime
+  runs/autodl/20261110_native_observation_export/deps
+  runs/autodl/20261110_native_collision_path/deps
+  runs/autodl/20261110_corpus_state_recovery/dependency/import
+  /root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps
+Use absolute paths when reconstructing an environment. The source dependencies,
+assets, CLIP archives, and local checkpoint are not bundled in evidence.zip.
+
+The child actor uses protocol.model_python; the entrypoint explicitly removes
+the parent's PYTHONPATH and CUDA_VISIBLE_DEVICES for that child. HF/Transformers
+are offline; only owned loopback services are admitted. Native provider labels
+and reasoning/verbosity settings are metadata, not equivalent local semantics.
+
+The normal native non-router manager path is qualified for this one old query.
+The router, arbitrary new CLIP text, complete scene, training, dynamic stability,
+mass truth, material truth and functional front are NOT qualified by this run.

@@ -1,0 +1,45 @@
+{
+  "scope": "Targeted objective/tool-source review; not complete field novelty clearance",
+  "papers": [
+    {
+      "title": "Memory Augmented Policy Optimization for Program Synthesis and Semantic Parsing",
+      "url": "https://arxiv.org/html/1807.02322v3",
+      "conference_pdf": "https://papers.neurips.cc/paper_files/paper/2018/file/f4e369c0a468d3aeeda0593ba90b5e55-Paper.pdf",
+      "read": "arXiv v3 sections2-4.4 (equations1-8, algorithms1-2), 5.1 and 5.2 methodological comparison; no complete appendix/figure review",
+      "version_boundary": "The acquired conference PDF and arXiv v3 have different wording/configuration numbers. No experimental number is mixed between them.",
+      "source_pin": "a03ff05228cfebcc818b6a901c4d7b0ed459fa7c",
+      "code_read": {
+        "nsm/agent_factory.py": "105-242,366-510: probability weights, train, good-trajectory buffer admission/replay",
+        "table/experiment.py": "195-234,850-929: flags, inside/outside weighting and rejection membership"
+      },
+      "not_done": "No TensorFlow2/Python2 upstream runtime, benchmark or training reproduction. model_factory acquired but not fully reviewed."
+    },
+    {
+      "title": "From Language to Programs: Bridging Reinforcement Learning and Maximum Marginal Likelihood",
+      "url": "https://aclanthology.org/P17-1097.pdf",
+      "read": "Abstract/introduction; section4 objectives/gradient/exploration; complete section5 including equation11; opening section6 setup. Not all tables or appendices.",
+      "finding": "Several successful programs and spurious programs are prior problems; randomized search and meritocratic weighting are established controls."
+    },
+    {
+      "title": "SceneSmith source",
+      "url": "https://github.com/nepfaff/scenesmith",
+      "pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+      "read": {
+        "asset_manager.py": "148-195,486-695,1009-1042",
+        "furniture_agents/tools/furniture_tools.py": "60-118,273-382,480-694",
+        "placement_noise.py": "1-93 including pose-derived seed",
+        "configurations/furniture_agent/base_furniture_agent.yaml": "345-370"
+      },
+      "finding": "Native success is a subsystem receipt; placement noise is deterministic from pose. Do not infer stochasticity merely from default_rng."
+    }
+  ],
+  "existing_review_reused_not_newly_read": [
+    "../20261110_native_physics_qualification/algorithm_and_theory.json",
+    "../20261110_missing_decision_objective/reading_ledger.json",
+    "../20261110_complete_generation_bridge/theory_and_method_difference.json"
+  ],
+  "access_failures_preserved": [
+    "GitHub API tree403; README raw SSL error; guessed replay_buffer.py404; shell pdftotext unavailable"
+  ],
+  "fallback": "Resolved actual master pin through git ls-remote and fetched bounded raw files; read papers through primary HTML/PDF tool. Download does not count as full reading."
+}

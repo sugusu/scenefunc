@@ -1,0 +1,18 @@
+Run from the repository root. CPU stdlib only; no model or native scene execution.
+
+Actual observed-support audit (actual_v1 already exists; do not overwrite):
+  python -B scripts/autodl/audit_execution_supervision.py --transitions runs/autodl/20261110_executed_effects/actual_v2/transitions.jsonl --out runs/autodl/20261110_execution_supervision_review/actual_v1
+
+To independently repeat the read-only audit, choose a fresh --out directory.
+The input remains evaluation-only. No output is training-admitted.
+
+Render the objective/source review:
+  python -B scripts/autodl/report_execution_supervision_review.py
+
+Paper/source acquisition failures are retained in manifests. Paper PDFs are local
+reading material, excluded from Git/evidence ZIP. Only pinned Apache-2.0 MAPO
+source files and their LICENSE, metadata, original audit outputs and report ship.
+
+This stage does not train or estimate an MML objective: no complete verified
+success buffer is available. It supplies the established baseline definition,
+the actual data coverage audit, and the fixed tool/policy training boundary.

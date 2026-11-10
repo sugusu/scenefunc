@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><title>原生资产请求实际运行</title>
+<style>body{max-width:1000px;margin:36px auto;font:17px/1.7 sans-serif}pre{white-space:pre-wrap}td,th{border:1px solid #aaa;padding:8px}table{border-collapse:collapse}</style>
+<h1>正常 AssetManager 公开入口完成一次真实资产请求</h1>
+<p>实际运行的是原生完整模块和非 router 分支：真实 HTTP 检索、既有本地8B模型 RPC、Blender、V-HACD、SDF、注册、Drake 冷读。未用 AST 拼接管理器，未人工填写物理结果，没有质量重试。</p>
+<p>固定描述是“a wooden nightstand”。检索只回放这一旧描述的真实向量，并先筛选本地可用资产；没有当前 CLIP 权重，没有新文本编码。原始全库索引映射仍未完成溯源，不能宣称任意新描述和完整生成已经准备好。</p>
+<p>这次由检索选出84815c…，与之前人工固定的1e1c18…不同。模型预测材质plastic，原请求要求wooden；材质真值未核验，不能把名称绑定当作语义合格。SDF 可解析、惯性合法，也不证明真实质量、功能正面或完整场景成功。router已关闭，未测试原生router开启时的语义检查。</p>
+<h2>实际记录与成本</h2><pre>{
+  &quot;status&quot;: &quot;normal_native_manager_completed_real_asset_request&quot;,
+  &quot;real_local_VLM_calls&quot;: 1,
+  &quot;input_tokens&quot;: 1621,
+  &quot;output_tokens&quot;: 102,
+  &quot;model_body_seconds&quot;: 36.91967951133847,
+  &quot;manager_request_seconds&quot;: 45.39689350128174,
+  &quot;service_body_seconds&quot;: 59.84338292479515,
+  &quot;timing_exclusion&quot;: &quot;Initial native module import, preparation, review and report writing are outside service-body clock&quot;,
+  &quot;peak_cuda_allocated_bytes_after_load_reset&quot;: 17983361536,
+  &quot;parent_peak_rss_mib_not_process_tree&quot;: 1191.5703125,
+  &quot;retrieval_mode&quot;: &quot;One exact historical embedding replay; available local IDs before top-K&quot;,
+  &quot;router_enabled&quot;: false,
+  &quot;raw_source_AST_isolation&quot;: false,
+  &quot;drake_collision_geometries&quot;: 128,
+  &quot;drake_visual_geometries&quot;: 1,
+  &quot;fresh_text_retrieval_ready&quot;: false,
+  &quot;full_runtime_ready&quot;: false,
+  &quot;new_complete_scenes&quot;: 0,
+  &quot;whole_scene_success&quot;: null,
+  &quot;paid_api_calls&quot;: 0,
+  &quot;training_updates&quot;: 0,
+  &quot;goal_achieved&quot;: false,
+  &quot;retired_environment_free_byte_delta&quot;: 117137408,
+  &quot;cleanup_scope&quot;: &quot;Only broken, unused Python3.10 hsm_gpu environment; old scenes/results/assets and active weights excluded&quot;
+}</pre>
+<p>59.84秒是服务执行体时间，含启动、真实请求与清理，未包含前面的正常模块导入，也不代表整段实例计费时长。17.98GB显存为模型载入后重置统计的生成峰值；1,191.6MiB是父进程RSS，不是整个进程树峰值。GPU现已空闲，三个子进程均结束。零付费API不等于零GPU成本。</p>
+<h2>清理与只读范围</h2><p>按已有清理授权，仅删除已失效、解释器断链且无活进程引用的旧Python3.10 hsm_gpu环境。删除前记录4,852个文件的大小和哈希、包版本及链接。实测空闲字节变化见summary；旧研究结果、资产、当前CPU环境和模型权重保留。这个规模不足以恢复约4GB的CLIP权重。</p>
+<h2>结论</h2><p>此前逐段拼接的资产链已接上正常公开管理器入口。这是共同后端的工程证据，不是算法创新，也不是新房间成绩。下一步训练目标分析见相邻execution_supervision_review目录；不能自动启动训练、模型重试或整场批次。</p>
+<p><a href="postrun_audit.json">运行后核验</a> · <a href="asset_metadata.json">语义边界</a> · <a href="reading_ledger.json">实际源码阅读</a> · <a href="summary.csv">指标</a> · <a href="retired_environment_cleanup.json">清理凭证</a></p>

@@ -1,0 +1,58 @@
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Preloading HSSD retriever and CLIP model...
+INFO:scenesmith.agent_utils.hssd_retrieval.config:HSSD config initialized:
+  data_path: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models
+  preprocessed_path: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/vendor/hsm/data/preprocessed
+  top_k: 5
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loading HSSD preprocessed data from /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/vendor/hsm/data/preprocessed
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded 10969 HSSD entries: 2220 with orientation data (20.2%), 8749 without (79.8%)
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded CLIP embeddings: shape=(14099, 1024), dtype=float32
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded 481 WordNet categories, 14098 mesh embeddings, 4 object categories
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:HSSD retriever initialized (clip_device=cpu)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retriever preloaded in 1.33s (includes CLIP model)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Starting HSSD retrieval processing thread
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retrieval processing started
+INFO:scenesmith.agent_utils.blender.server_manager:Found available port 18403 in range (18400, 18410)
+INFO:scenesmith.agent_utils.blender.server_manager:Starting Blender server on 127.0.0.1:18403
+INFO:scenesmith.agent_utils.blender.server_manager:BlenderServer logs → /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/actual_v1/blender.log
+INFO:scenesmith.agent_utils.blender.server_manager:Server process started with PID 9819
+INFO:scenesmith.agent_utils.convex_decomposition_server.server_manager:Found available port 18430 in range (18420, 18430)
+INFO:scenesmith.agent_utils.convex_decomposition_server.server_manager:Starting convex decomposition server on 127.0.0.1:18430
+INFO:scenesmith.agent_utils.convex_decomposition_server.server_manager:Convex decomposition server started with PID 9893
+INFO:scenesmith.agent_utils.asset_registry:Initialized AssetRegistry with auto-save to /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/actual_v1/manager/generated_assets/furniture/asset_registry.json
+INFO:scenesmith.agent_utils.asset_manager:Initializing HSSD retrieval client
+INFO:scenesmith.agent_utils.asset_manager:Initializing articulated retrieval client
+INFO:scenesmith.agent_utils.asset_manager:Initializing materials retrieval client
+INFO:scenesmith.agent_utils.asset_manager:Starting furniture asset acquisition for 1 items using 'hssd' source. Router is disabled.
+INFO:scenesmith.agent_utils.asset_manager:Retrieving 1 assets from HSSD server
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from single_native_manager_qualification: a wooden nightstand
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a wooden nightstand', type=furniture, dimensions=[0.5  0.6  0.45]
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a wooden nightstand' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('93e258bf', '0.360'), ('1e1c18c6', '0.356'), ('84815c44', '0.326'), ('7be32a2a', '0.309'), ('0ea4b671', '0.299')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Returning 1 candidates (sorted by bbox_score)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Returning 1 candidates for 'a wooden nightstand'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 19:38:43] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.asset_manager:Processing HSSD response 1/1: 'a wooden nightstand'
+INFO:scenesmith.agent_utils.asset_manager:Running VLM analysis for HSSD material/mass: nightstand
+INFO:scenesmith.agent_utils.mesh_physics_analyzer:Analyzing mesh physics for /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/actual_v1/manager/generated_assets/furniture/sdf/nightstand_1794310720/84815c44d0b7569cd2c023b75d6f11d21bdb7505.gltf
+INFO:scenesmith.agent_utils.mesh_physics_analyzer:Rendered 4 multi-view images to /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/actual_v1/manager/generated_assets/furniture/debug/nightstand
+INFO:scenesmith.agent_utils.mesh_physics_analyzer:Mesh analysis response (84815c44d0b7569cd2c023b75d6f11d21bdb7505): {'material': 'plastic', 'mass_range_kg': [0.5, 1.5], 'mass_kg': 0.8, 'mass_source': 'estimated', 'canonical_orientation': {'up_axis': 'z', 'front_view_image_index': 1, 'front_view_reasoning': 'the front view shows the open storage area with visible shelves, indicating the side intended for access and use'}}
+INFO:scenesmith.agent_utils.mesh_physics_analyzer:VLM analysis complete: material=plastic, mass=0.8kg, up=+Z, front=+Y
+INFO:scenesmith.agent_utils.mesh_physics_analyzer:VLM analysis complete in 39.47 seconds
+INFO:scenesmith.agent_utils.asset_manager:VLM analysis complete: material=plastic, mass=0.8kg, front=+Y
+INFO:scenesmith.agent_utils.asset_manager:Canonicalizing HSSD mesh: up=+Z, front=+Y → +Y
+INFO:scenesmith.agent_utils.mesh_canonicalization:Canonicalizing GLTF via BlenderServer: /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/actual_v1/manager/generated_assets/furniture/sdf/nightstand_1794310720/84815c44d0b7569cd2c023b75d6f11d21bdb7505.gltf (up=+Z, front=+Y, type=furniture)
+INFO:scenesmith.agent_utils.convex_decomposition_server.client:VHACD decomposition: 128 pieces in 3.12s
+INFO:scenesmith.agent_utils.sdf_generator:Generating Drake SDF for 'nightstand' with 128 collision pieces
+INFO:scenesmith.agent_utils.sdf_generator:Generated Drake SDF: /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/actual_v1/manager/generated_assets/furniture/sdf/nightstand_1794310720/nightstand.sdf
+INFO:scenesmith.agent_utils.asset_registry:Registered asset nightstand_0 (nightstand)
+INFO:scenesmith.agent_utils.asset_registry:Saved 1 assets to /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/actual_v1/manager/generated_assets/furniture/asset_registry.json
+INFO:scenesmith.agent_utils.asset_manager:HSSD asset retrieved successfully: nightstand
+INFO:scenesmith.agent_utils.blender.server_manager:Stopping Blender server...
+INFO:scenesmith.agent_utils.blender.server_manager:Server stopped and cleaned up
+INFO:scenesmith.agent_utils.convex_decomposition_server.server_manager:Stopping convex decomposition server...
+INFO:scenesmith.agent_utils.convex_decomposition_server.server_manager:Convex decomposition server stopped
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Stopping HSSD retrieval processing thread
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retrieval processing thread stopped
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Cleaning up GPU memory (CLIP model)...
