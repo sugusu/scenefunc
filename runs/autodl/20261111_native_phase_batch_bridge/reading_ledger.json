@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Beyond On-Policy vs. Off-Policy: At What Level Should LLM Agent Distillation Follow the Student?",
+    "URL": "https://arxiv.org/html/2610.31918v1",
+    "read_scope": "Abstract, complete method2.1-2.2.3, setup3.1-3.3 and related-work7. Not all results/appendix, not figures or author-code execution.",
+    "actual_finding": "History-source and within-action-prefix source are separate axes; teacher target frozen, collected contexts detached. Student-history/teacher-prefix supervision and mixture pairing already have a direct agent prior.",
+    "three_D_limit": "No editable indoor-scene result established by our reading.",
+    "new_author_model_or_trainer_executed": false
+  },
+  {
+    "title": "How Much Does the Hint Matter? Scope Conditions for Hindsight Self-Distillation in Financial Reasoning",
+    "URL": "https://arxiv.org/html/2610.36082v1",
+    "read_scope": "Abstract/introduction, complete method3.1-3.5 including Algorithm1, result5.3 and limitation7; not all results/figures or full reproduction.",
+    "actual_finding": "Generic feedback is an existing necessary control for detailed-hint attribution. The first-error location and truncation remain shared privileged machinery; a content control does not remove that information.",
+    "three_D_limit": "Finance domains and in-domain overlap; no transfer/effect size inferred for indoor generation.",
+    "source_pin": "f6f268f33af9162a04b0374cada20eaa09b07fd1",
+    "code_read": [
+      "configs/finsd.env complete",
+      "configs/placebo.env complete",
+      "pipeline/loss_script.py1-168: full forward and reverse KL functions, teacher detach",
+      "pipeline/state_finder_script.py1-210: quote alignment, head fallback and local truncation gate; no function executed",
+      "pipeline/hint_script.py135-156,260-330: vague mode, system assembly, ground-truth-conditioned hint request and JSON parsing; model/API path not run"
+    ],
+    "source_fetch_only_not_full_read": [
+      "pipeline/prompts.py",
+      "pipeline/inference_script.py",
+      "remaining hint/loss source sections"
+    ],
+    "actual_author_algorithm_executed": false
+  },
+  {
+    "title": "Native Scene-Designer execution and memory",
+    "source_pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "read_scope": [
+      "runtime/src/agent_rollout_decoupled.py1-362",
+      "runtime/Designer/agent_rollout.py28-153",
+      "runtime/src/memory.py initial schema, stage handlers, render_memory; additional snippets only",
+      "scripts/autodl/run_complete_native_trial.py1-200",
+      "scripts/autodl/remote_native_control.py complete",
+      "scripts/autodl/local_manipuland_workflow.py120-185",
+      "scripts/autodl/phase_policy.py complete"
+    ],
+    "actual_execution": "Original AST ToolEnvironment.step plus pure memory handlers with saved dispatch outputs. No original SDK dispatcher, physical world or stage finalizers.",
+    "boundaries": "Separate surface workflow unchanged; ceiling declared but unobserved."
+  },
+  {
+    "title": "Previously read book and source design projects",
+    "source": "../20261111_decision_source_value/reading_ledger.json",
+    "read_scope": "No new full-book/full-field-review claim. Earlier explicit reading scope remains unchanged."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "case": "insufficient_batch_budget",
+    "rejected_before_dispatch": true
+  },
+  {
+    "case": "stale_step_counter",
+    "rejected_before_dispatch": true
+  },
+  {
+    "case": "actual_response_without_terminal_EOS",
+    "invalid_not_STOP": true
+  },
+  {
+    "case": "truncated_tag_<tool_call",
+    "invalid_not_STOP": true
+  },
+  {
+    "case": "truncated_tag_</tool_call",
+    "invalid_not_STOP": true
+  },
+  {
+    "case": "over_cap_saved_output",
+    "rejected_not_silently_truncated": true,
+    "original_replayed_length_accounted": true
+  },
+  {
+    "case": "interrupted_batch_accounting",
+    "reserved_calls": 4,
+    "actual_attempts": null
+  }
+]
