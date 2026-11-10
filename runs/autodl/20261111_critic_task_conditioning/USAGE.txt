@@ -1,0 +1,41 @@
+Current actual zero-model command (repository root):
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/audit_critic_supervision.py --repository . --source /dev/shm/scene_supervision_review_20261111/designer --benchmark /dev/shm/scene_supervision_review_20261111/public_bench --output runs/autodl/20261111_critic_task_conditioning/actual_audit_v4
+
+That output directory already exists. To reproduce, supply a NEW output directory.
+No archived-request RAM cache is needed: only two selected JSON blobs are read from the existing immutable compressed archive. No assets/images are extracted.
+
+If the source/benchmark RAM cache is absent, recreate the small, pinned public inputs (261551 bytes total) with this Python command. It downloads source/metadata only; it does not load a model, open a client, obtain gated data or start GPU resources:
+
+python - <<'REPRO'
+from pathlib import Path
+import json, hashlib, urllib.request
+repo = Path('/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository')
+manifest = json.loads((repo/'runs/autodl/20261111_critic_task_conditioning/reproduction_inputs.json').read_text())
+root = Path('/dev/shm/critic_supervision_reproduction_20261111')
+root.mkdir(exist_ok=False)
+for item in manifest['files']:
+    with urllib.request.urlopen(item['url'], timeout=25) as response:
+        data = response.read(manifest['per_file_maximum_bytes'] + 1)
+    if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest() != item['sha256']:
+        raise ValueError('Pinned input mismatch: ' + item['destination'])
+    path = root/item['destination']
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+print(root)
+REPRO
+
+Then use --source /dev/shm/critic_supervision_reproduction_20261111/source and --benchmark /dev/shm/critic_supervision_reproduction_20261111/benchmark in the audit command, with a new --output path.
+
+Ordinary inference adapter API:
+  OriginalTask(request_id: str, text: str)
+  with_original_task(base_prompt: str, task: OriginalTask) -> str
+  rank_with_original_task(base_ranker, default_prompt_factory,
+      model=already_qualified_model, processor=matching_processor,
+      image_paths=actual_filtered_candidates, task=original_task,
+      method='borda', ...)
+
+This adapter is an input correction, NOT a new learned method. The ranker is supplied by the caller. It was NOT invoked this stage. Complete trainer/native role/budget integration and actual8B inference still require their existing qualification and authorization. Apply common legality filtering before building the candidate-count-specific prompt; do not pass the outer filtering wrapper as base_ranker. All main method comparisons must receive the same original task. Missing-task scoring is a diagnostic only.
+
+Pure-string source execution: the audit compiles only the reviewed native literal constants and build_default_user_text function. It never imports the complete original module, model, judge, render tool, or trainer.
+
+Retained revisions: v1 failed due to request-boundary path mismatch; v2 and v3 used a verified RAM cache; v4 read original archive blobs directly. All successful revisions audit the SAME149questions, not additional independent data or model runs.

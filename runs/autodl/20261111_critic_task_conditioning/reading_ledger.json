@@ -1,0 +1,219 @@
+[
+  {
+    "title": "Scene-Designer Critic training/data source",
+    "url": "https://github.com/ZJU-OmniAI/Scene-Designer/tree/a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "pin_changed_since_prior_reading": false,
+    "new_source_read": [
+      {
+        "path": "src_critic/build_dataset.py",
+        "read_line_ranges": [
+          [
+            1,
+            158
+          ],
+          [
+            388,
+            738
+          ],
+          [
+            931,
+            1005
+          ],
+          [
+            1205,
+            1444
+          ],
+          [
+            1530,
+            1560
+          ]
+        ],
+        "sha256": "a7fcd61bc5060c01b1c00083d330c2bcd5a0811a23e968a61cf2fd4f379011b1",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src_critic/judge.py",
+        "read_line_ranges": [
+          [
+            37,
+            145
+          ],
+          [
+            239,
+            351
+          ]
+        ],
+        "sha256": "907dae3a56f9e82315abc4b0e3f174edb4d8ec32015b3fdc65ea9983cfd56131",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src_critic/critic_reward.py",
+        "read_line_ranges": [
+          [
+            1,
+            230
+          ]
+        ],
+        "sha256": "ebfe6242e287e88845bd80df56974d0bfccdb5637793bf1ed87ff4cbf5a1ba26",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src_critic/grpo_advantage.py",
+        "read_line_ranges": [
+          [
+            45,
+            96
+          ],
+          [
+            142,
+            170
+          ],
+          [
+            253,
+            353
+          ],
+          [
+            382,
+            459
+          ]
+        ],
+        "sha256": "9243154a236f61db27f2dc673c6a77381f02c1c3b4b9906ba16eacf4d637afe6",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src/train_grpo.py",
+        "read_line_ranges": [
+          [
+            272,
+            410
+          ]
+        ],
+        "sha256": "2c4eba6af647abfe7bbb22ecb2d124b14dbc28c7d544caffdb43e3d460b6f479",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src_critic/generate_image_grounded_reason.py",
+        "read_line_ranges": [
+          [
+            1,
+            132
+          ],
+          [
+            232,
+            325
+          ]
+        ],
+        "sha256": "21400f354abf7346f33968fa268ad752542e3b63b6666a99bc78aa23a8af6ca4",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src_critic/build_multitarget_pairwise.py",
+        "read_line_ranges": [
+          [
+            1,
+            270
+          ]
+        ],
+        "sha256": "494cfcdb8f63d261f27d9b74d48ac0118b9454e9334a3b0b2049a17571feae15",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src_critic/split_dataset.py",
+        "read_line_ranges": [
+          [
+            36,
+            121
+          ]
+        ],
+        "sha256": "9d7c1700b174d12b15dfe329f468ac4f2e7169b69d37062f162d9bc0fdd6f498",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "tools/convert_otc_to_sft.py",
+        "read_line_ranges": [
+          [
+            1,
+            63
+          ]
+        ],
+        "sha256": "ac9623e4a5bd452c07fc0d7417ce4244feef68e07ad9bb6108b70f41c622cbb4",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      },
+      {
+        "path": "src/runtime.py",
+        "read_line_ranges": [
+          [
+            1,
+            19
+          ]
+        ],
+        "sha256": "db13141a49835be6bcfd00b30d7f034a7cacc92d8ed07a6f26394c3a7d40196d",
+        "note": "Ranges reaching beyond file end mean all available lines in that range"
+      }
+    ],
+    "downloaded_but_not_fully_read": [
+      "src_critic/perturb.py",
+      "src_critic/scene_io.py",
+      "src_critic/validate_sft.py",
+      "src/infer_step.py"
+    ],
+    "source_execution": "Only selected literal constants and pure build_default_user_text function; no module imports, clients, rankers, rendering or training",
+    "conclusion": "Three reviewed local Critic calls omit original task text despite supported API; binary target fixes original as winner, nway paths have specified exceptions. Label-conditioned annotation is not independent preference validation."
+  },
+  {
+    "title": "Scene-Designer paper",
+    "url": "https://arxiv.org/html/2610.23121v1",
+    "read": "This stage complete3.2 andD.3 extracted HTML text/tables/captions; no new full-paper or visual-figure claim",
+    "paper_hash": {
+      "url": "https://arxiv.org/html/2610.23121v1",
+      "sha256": "bf3327cb3b3369d4e7d82e6b2ecb1892e883761ecf5d83cbb77cc8cd06e43465",
+      "bytes": 450618
+    },
+    "conclusion": "Already includes physical,functional,layout judgments and role-sensitive perturbations. Do not describe it as collision-only. Wording about corresponding instruction does not by itself establish the runtime input of every release path."
+  },
+  {
+    "title": "Scene-OTC-Bench public annotation/card",
+    "url": "https://huggingface.co/datasets/XuanyuLiu/Scene-OTC-Bench",
+    "revision": "e50788bdbe74644d98e62929cd24218c9110e812",
+    "read": "All149annotation rows; card data/evaluation description; full published SHA256SUMS list",
+    "not_done": "No image files downloaded/hashed/viewed; no original training records acquired; no trained Critic or baseline model evaluated",
+    "conclusion": "Four-field strictranking evaluation; no per-row task text. Publisher-hash sharing is not independent-room identification; release-order label diagnostic is not paper-result reproduction."
+  },
+  {
+    "title": "Improving Context-Aware Preference Modeling for Language Models",
+    "url": "https://papers.nips.cc/paper_files/paper/2024/file/82acbbc04435f6c1e7f656b1cbe4ad82-Paper-Conference.pdf",
+    "publication": "NeurIPS2024mainconference fromofficialproceedings",
+    "read": "Abstract/introduction via primary text; PDF4–8,23–24 complete extracted text: formalism/bounds,paired-data construction,setup,presented tables2/3 and training/data-composition AppendixC opening/table7",
+    "not_read": "All35pages,AppendixBsyntheticpipeline/humanvalidation,allfigures,ororiginaltrainingcode; no numerical reproduction",
+    "manifest": {
+      "url": "https://papers.nips.cc/paper_files/paper/2024/file/82acbbc04435f6c1e7f656b1cbe4ad82-Paper-Conference.pdf",
+      "sha256": "e7b17c30138d19a63c8dd2c0ea625b2b8594d95fd364626fa8d3a2f9efaf834f",
+      "bytes": 546681
+    },
+    "conclusion": "Contextsupervision,error decomposition,preference reversal andsingle/two-sidedtraining are direct priors, not new3D algorithms or guarantees for our D/A policy."
+  },
+  {
+    "title": "microsoft/rpr actual public examples",
+    "url": "https://huggingface.co/datasets/microsoft/rpr",
+    "metadata_revision": "ae256f4aecbce50694d13ec6b5a1726fe3c4972b",
+    "card_read": "Dataset card structure,construction scope,limitations andlicense",
+    "actual_rows_read": {
+      "row_indices": [
+        0,
+        1
+      ],
+      "record_ids": [
+        11312,
+        31048
+      ],
+      "fields": "Prompt, both responses,criteriaX/Y,scenariosX/Y",
+      "viewer_url": "https://datasets-server.huggingface.co/rows?dataset=microsoft/rpr&config=default&split=train&offset=0&length=2",
+      "viewer_response_sha256": "fef6be97cd3f1ae81be5e346ee435b92c56a2cdd3a3aa5fdc309a3bc60f5f377",
+      "viewer_response_bytes": 6644,
+      "viewer_response_cryptographically_bound_to_metadata_revision": false
+    },
+    "used_for_training": false,
+    "not_claimed": "All11167pairedrowsread,realhumanpreferences,3Ddata,ortrainedconditionalmodel"
+  }
+]

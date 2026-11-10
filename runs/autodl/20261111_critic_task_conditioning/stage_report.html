@@ -1,0 +1,25 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>Critic需求输入与监督来源复核</title><style>body{font:16px/1.7 system-ui,sans-serif;max-width:1080px;margin:36px auto;padding:0 24px;color:#1f2b35;background:#fbfcfd}h1{font-size:28px}h2{margin-top:30px;font-size:21px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #cbd5df;padding:10px;text-align:left;vertical-align:top}th{background:#edf2f6}.note{padding:17px;border-left:4px solid #4b7998;background:#edf5fa}a{color:#1d618c}code,pre{overflow-wrap:anywhere}pre{white-space:pre-wrap;font:14px/1.6 ui-monospace,monospace}</style>
+<h1>将原始需求显式接入普通Critic对照，核清训练理由的来源</h1><p>2026-11-11 · 固定源码与公开元数据 · 没有运行模型、训练或重新生成场景</p>
+<div class="note">本轮完成一项会影响方法解释的普通输入修正：三处公开局部Critic评分调用未传原始需求，底层接口却支持。已实现显式任务输入的调用适配器，并从真实归档输入准备对应提示。这属于共同基线完善；尚未自动接入完整trainer，也没有神经Critic评分结果。</div>
+<h2>为什么这会改变下一轮对照</h2><p>如果候选方法看到用途，而普通Critic只看到通用布置评分提示，差异可能来自输入。后续全部主方法都应获得相同原始需求。未传需求的旧提示保留为通路诊断；先检验普通条件提示，再讨论是否需要学习用途和空间条件下的原则选择。</p>
+<p>来源为Scene-Designer固定提交<code>a0565e50ed7d32c0e09132b9311c0b9b91165405</code>。这一版本没有变化，本轮新增重点是此前未完整审阅的Critic样本构造与局部奖励输入；不把版本重复确认算作新进展。</p>
+<table><tr><th>make_reward_critic调用</th><th>源码行</th><th>显式传入自定义文本</th></tr><tr><td>advantage_from_critic</td><td>318</td><td>False</td></tr><tr><td>advantage_from_critic_with_legality</td><td>368</td><td>False</td></tr><tr><td>advantage_from_critic</td><td>375</td><td>False</td></tr></table>
+<p>该结论只覆盖读到的公开路径。不能据此宣称整个策略、所有奖励、论文全部私有实验或所有部署都没有用户要求。<a href="https://github.com/ZJU-OmniAI/Scene-Designer/blob/a0565e50ed7d32c0e09132b9311c0b9b91165405/src/train_grpo.py">原始调用路径</a>与<a href="https://github.com/ZJU-OmniAI/Scene-Designer/blob/a0565e50ed7d32c0e09132b9311c0b9b91165405/src_critic/grpo_advantage.py">底层可选文本接口</a>。</p>
+<p>原公开基准评测通用场景质量排序，没有逐条用途字段本身并不构成它的任务错误。显式用途输入是我们拟议任务需要的普通对照，不能将两种任务的定义差异直接当作模型缺陷。</p><h2>实际读了哪些数据</h2><table><tr><th>项目</th><th>核查结果</th><th>限制</th></tr>
+<tr><td>公开评价注释</td><td>149条全部解析；94二元、55四元；注释文件哈希匹配发布者校验表</td><td>评价集，没有用于训练</td></tr>
+<tr><td>每条字段</td><td>id、numimages、images、ranking_best_to_worst</td><td>没有单独的使用需求字段；不证明模型加需求后仍不能判断</td></tr>
+<tr><td>候选共享</td><td>408个图像位置；发布者校验值对应260个内容哈希、148个重复位置、11个共享分量</td><td>未重新下载/哈希图像；分量不是独立房间数，更不是训练泄漏结论</td></tr>
+<tr><td>发布顺序诊断</td><td>固定AB为66/94；固定ABCD为1/55</td><td>事后描述性规则，不是模型或三维能力，也不能替代论文可能采用的顺序随机化</td></tr>
+<tr><td>实际神经前向/训练/新整场成功</td><td>0 / 0 / 0</td><td>没有把元数据统计当作效果实验</td></tr></table>
+<p>后续应分别报告二元与四元任务，候选顺序随机化时同步改写参考标签；不能把149题当作149个独立房间。发布版本、原始校验值来源与解释边界见<a href="public_benchmark_manifest.json">数据清单</a>和<a href="actual_audit_v4/result.json">实际审计结果</a>。<a href="https://huggingface.co/datasets/XuanyuLiu/Scene-OTC-Bench">作者数据页</a>。</p>
+<h2>监督信号的来源需要分层</h2><p>读到的二元构造先把原场景设为优胜；部分软扰动遇到裁判分歧会丢弃，部分其他分歧退回规则理由。N路路径存在允许裁判调整排序的例外，不能概括全部训练标签。排序固定后，再给教师图像、扰动摘要和参考答案生成解释，属于有监督标注，而不是看不到答案的独立设计裁决。</p>
+<p>公开划分代码已经按场景分组；本轮没有私有训练集，不能声称检查了实际训练/测试重叠。另读到二元多目标转换提示与“候选均受扰动”的假设不一致，以及旧单字母答案与完整排序解析的兼容边界。它们首先是工程和协议问题，没有据此推算15K数据的错误率，也未扩大修复范围。源码阅读行段与未读部分见<a href="reading_ledger.json">阅读记录</a>。</p>
+<h2>算法与理论的修订</h2><p>候选仍是依据用途、真实空间与来源证据作出原则适用性及动作选择。普通直接动作、理由辅助、连续CoT、自生成D后生成A，以及检索/反馈/搜索，共享原始需求、工具、资产与预算。本轮保持已有标准加权CE，不增加新loss、专家标签或训练准入。</p>
+<p>RPR在NeurIPS2024已经提出条件偏好和上下文误差分解。它还比较了单侧/双侧训练，因而“同一对候选在不同条件下反转”不能承担新算法。读取了原论文PDF4–8、23–24页及公开数据前两条文本记录；没有读完35页或复现训练。<a href="https://papers.nips.cc/paper_files/paper/2024/file/82acbbc04435f6c1e7f656b1cbe4ad82-Paper-Conference.pdf">原论文</a>、<a href="https://huggingface.co/datasets/microsoft/rpr">原数据说明</a>。</p>
+<p>新增理论说明区分了“不传条件”和“不理解条件”：在其余可见输入完全相同且用途未传入时，确定性评分不能随用途变化。但这不适用于没有用途对照标签的公开基准。还区分边缘偏好概率与平均效用：<code>E[sigmoid(Δu)]</code>通常不等于<code>sigmoid(E[Δu])</code>。现有Borda奖励、D/A行为策略也不自动满足RPR奖励分解的假设，不能借其理论保证本项目跨场景泛化。</p>
+<p><a href="algorithm_revision_and_theory.txt">完整算法修订与理论</a>写明了前提、强对照、未识别的量和停止扩大某项解释的条件；这不是已经确认的CVPR贡献。</p>
+<h2>实现、运行与尚未完成的部分</h2><p>新适配器不加载模型：它把带ID和哈希的原始任务加入调用者提供的基础ranker提示。合法性过滤应先完成，再按实际候选数生成提示。真实旧卧室需求已从归档恢复并核对字节；只生成了输入文本，未调用ranker。首次请求路径解析失败保留；最终版直接读取原归档两份JSON，无需RAM请求缓存，耗时45.206秒。</p>
+<p>原书本轮读完PDF129–148页文本，累计170/312页；第五章尚未读完，未逐图检查。没有执行其中的示例命令、审批流程或子Agent指令。书中“模型自报依据”与“独立数据校验”的区别用于约束训练标签解释。</p>
+<p>后续仍需真实三维决策/执行效果的合格监督、实际8B多模态链路资格和完整场景强对照。公开149条排序、教师解释及两条RPR文本样本都不替代这些证据。当前工作无需新GPU实例，不因单份数据未取得而停止其他可做的研究。</p>
+<h2>交付与证据</h2><p><a href="algorithm_contract.json">共同算法/对照合同</a> · <a href="actual_audit_v4/source_call_routing.json">三处实际调用</a> · <a href="actual_audit_v4/benchmark_question_coverage.json">149条完整字段审阅</a> · <a href="actual_audit_v4/task_routing_example.json">真实输入出处</a> · <a href="reading_ledger.json">逐文件/论文阅读边界</a> · <a href="book_reading_ledger.json">书本阅读范围与页哈希</a> · <a href="USAGE.txt">可复现命令与适配器接口</a> · <a href="summary.csv">汇总</a> · <a href="revision_history.json">失败及修订记录</a> · <a href="protected_source_verification.json">受保护源文件核验</a> · <a href="delivery_verification.json">交付校验</a> · <a href="evidence.zip">证据包</a></p>
+<p>原始第三方源码留在RAM，仓库保存固定URL、版本和哈希；未重新分发原训练数据、测试图像或模型。旧实验只读，没有删除现用权重。</p></html>
