@@ -1,0 +1,44 @@
+[
+  {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_execution_inventory_20261104/source/Designer/replay_chained.py",
+    "sha256": "c182278936c384285b75ed80eff723496561a035d89f5d542712103b58b2bf68",
+    "read_scope": "derive_room_scene",
+    "observed_flow": "RoomSpec.prompt when nonempty, else house_prompt -> RoomScene.text_description"
+  },
+  {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_execution_inventory_20261104/source/src/agent_rollout_decoupled.py",
+    "sha256": "4dfcaa1f3f91aa72762a8b89d7c3ebc411358b8ef65971ade444610d81dcbc91",
+    "read_scope": "RolloutSession.make_roomscene_env",
+    "observed_flow": "furniture/wall/ceiling ToolEnvironment receives session.room_prompt"
+  },
+  {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/source/scenesmith/agent_utils/scene_analyzer.py",
+    "sha256": "562af4b7987a3e4193bb62e937474482d5c26ca10576d41d4301e34bfc010c72",
+    "read_scope": "analyze_furniture_for_manipulands",
+    "observed_flow": "scene.text_description -> scene_description in parent-selection prompt"
+  },
+  {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/source/scenesmith/manipuland_agents/stateful_manipuland_agent.py",
+    "sha256": "cb088badde4b12c7379a5c189943c1c90fb47d77c3c1591cc8f937d0d3c37448",
+    "read_scope": "add_manipulands",
+    "observed_flow": "parent selection precedes context selection and per-parent workflows"
+  },
+  {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_live_manager_request/source/scenesmith/manipuland_agents/base_manipuland_agent.py",
+    "sha256": "11e430b1e4430fafdf879cec42c3f68fffb1151cdf86de805a55d81174d8e5cb",
+    "read_scope": "__init__",
+    "observed_flow": "normal constructor creates SceneAnalyzer"
+  },
+  {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/local_manipuland_workflow.py",
+    "sha256": "137be5f8c5b19878d5a3f2a26ab49812964bb1f01abb19334d2ec7550d9995e2",
+    "read_scope": "__call__",
+    "observed_flow": "old original_room_request field actually reads scene.text_description"
+  },
+  {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/complete_native_pipeline.py",
+    "sha256": "653120248685d24ba05de6589c9ebb0dfbc14ef941d6bd27cc257da2e7834af5",
+    "read_scope": "common_manipuland_driver",
+    "observed_flow": "old callback does not explicitly pass args.prompt to LocalManipulandWorkflow"
+  }
+]

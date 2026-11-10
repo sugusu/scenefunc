@@ -1,0 +1,8 @@
+Existing guarded full-generation call may explicitly use:
+  from task_grounded_completion import task_grounded_manipuland_driver
+  completion_driver = task_grounded_manipuland_driver(tool_vlm_binding)
+  # Supply it as run_native_trial(... completion_driver=completion_driver).
+Do not bypass service preflight or claim the full runtime is qualified.
+This callback passes args.prompt before native parent selection and to the
+ordinary per-parent workflow. The caller must preserve args.prompt provenance.
+Native construction/exports and full model calls were NOT run in this stage.

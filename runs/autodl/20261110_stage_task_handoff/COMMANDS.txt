@@ -1,0 +1,9 @@
+From repository root; use the isolated native Python3.11 dependency path
+recorded in ../20261110_live_manager_request/COMMANDS.txt. No weight load:
+  python -B scripts/autodl/audit_stage_task_handoff.py \
+    --out runs/autodl/20261110_stage_task_handoff/actual_NEW \
+    --state runs/autodl/20261110_native_observation_export/export_v2/actual_room_state.json \
+    --scene-root runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1/imported/room_paper_shared_living_reconstruction \
+    --image runs/autodl/20261110_native_observation_export/checkpoint_views_v1/step_006.topdown.png
+Output must be new. Keep --scene-root separate from JSON export directory.
+  python -B runs/autodl/20261110_stage_task_handoff/verify_stage.py
