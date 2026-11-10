@@ -1,0 +1,27 @@
+{
+  "question": "Can the common available catalogue be served through real native retrieval before testing learned furniture policies in complete scenes?",
+  "actual": "Pinned native retrieval, scoring, size ranking, queue, HTTP endpoints/client and mesh export. Cached vectors supply only three exact descriptions. Full CLIP imports omitted in v2, using two exact original function definitions; all other exercised native retrieval modules imported in full.",
+  "policies": {
+    "native": "argmin dimension_L1 over Load(topK(similarity(query), C_full))",
+    "available_first": "argmin dimension_L1 over topK(similarity(query), C_full intersect C_local)",
+    "difference": "Filtering after top-K and filtering before top-K are different selection policies. Availability policy changes candidate identities even when both return an asset. It must be fixed and shared across model/search arms."
+  },
+  "findings": [
+    "Bed and nightstand identities changed under available-first; wardrobe became retrievable. No semantic superiority follows from returning a mesh.",
+    "All returned metadata lacked up/front. Alignment function executed its no-transform branch. Subsequent VLM orientation/material estimation, Blender conversion, convex collision geometry and SDF construction are still required by native AssetManager.",
+    "Native source-size ranking follows CLIP filtering. It can choose a lower CLIP score with a closer bounding-box size. This is the existing retriever, not Agent reasoning.",
+    "The old index offset audit was rediscovered and read, not rerun as a new achievement. No hypothetical index remap applied."
+  ],
+  "nearest_work": {
+    "url": "https://arxiv.org/html/2602.09153v2",
+    "sections": "4.1, B.7, M.1.2, O.1/O.4 relevant passages",
+    "bounded_paraphrase": "SceneSmith already evaluates an HSSD retrieval ablation, and its retrieved-asset validator is more permissive about appearance and minor structure. Our cache restriction is not an independent new method. Native validation acceptance must remain distinct from original-task semantic satisfaction."
+  },
+  "scientific_claim": "No new algorithm established. This closes part of the shared execution environment so future effects are not confounded by hidden asset-policy differences.",
+  "not_admitted": [
+    "Unseen text descriptions without actual CLIP inference",
+    "Simulation-ready SceneObject without native physics/collision conversion",
+    "Asset category/material/count correctness based only on a name or CLIP score",
+    "Whole scene success from successful HTTP replies"
+  ]
+}

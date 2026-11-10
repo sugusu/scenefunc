@@ -1,0 +1,177 @@
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Preloading HSSD retriever and CLIP model...
+INFO:scenesmith.agent_utils.hssd_retrieval.config:HSSD config initialized:
+  data_path: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models
+  preprocessed_path: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/vendor/hsm/data/preprocessed
+  top_k: 5
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loading HSSD preprocessed data from /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/vendor/hsm/data/preprocessed
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded 10969 HSSD entries: 2220 with orientation data (20.2%), 8749 without (79.8%)
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded CLIP embeddings: shape=(14099, 1024), dtype=float32
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded 481 WordNet categories, 14098 mesh embeddings, 4 object categories
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:HSSD retriever initialized (clip_device=cpu)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retriever preloaded in 2.41s (includes CLIP model)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Starting HSSD retrieval processing thread
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retrieval processing started
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 13:41:53] "GET /health HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fixed_archive_replay: a double bed
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a double bed', type=FURNITURE, dimensions=[1.8 1.1 2.1]
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a double bed' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('033ec086', '0.320'), ('ffb44e74', '0.320'), ('02e22ed5', '0.319'), ('16100ba2', '0.316'), ('8614bb6b', '0.313')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh 033ec086c23a6d39fb37df87e6748c413bf80e29: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/0/033ec086c23a6d39fb37df87e6748c413bf80e29.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/0/033ec086c23a6d39fb37df87e6748c413bf80e29.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh ffb44e74fd5223fe28edce2117e26f841c8c9448: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/f/ffb44e74fd5223fe28edce2117e26f841c8c9448.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/f/ffb44e74fd5223fe28edce2117e26f841c8c9448.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh 8614bb6b771e098ed3d9d9a9a9fd2c144af79496: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/8/8614bb6b771e098ed3d9d9a9a9fd2c144af79496.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/8/8614bb6b771e098ed3d9d9a9a9fd2c144af79496.glb
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Returning 1 candidates (sorted by bbox_score)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Returning 1 candidates for 'a double bed'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 13:42:04] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fixed_archive_replay: a wooden nightstand
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a wooden nightstand', type=FURNITURE, dimensions=[0.5  0.6  0.45]
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a wooden nightstand' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('93e258bf', '0.360'), ('1e1c18c6', '0.356'), ('8ae8c09d', '0.356'), ('cb73b8d7', '0.356'), ('2f2b94fd', '0.354')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh 8ae8c09d6a2293f578abe129f16114d6b877fc11: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/8/8ae8c09d6a2293f578abe129f16114d6b877fc11.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/8/8ae8c09d6a2293f578abe129f16114d6b877fc11.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh cb73b8d7a7eba06c5070a71263b39705724e9f7b: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/c/cb73b8d7a7eba06c5070a71263b39705724e9f7b.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/c/cb73b8d7a7eba06c5070a71263b39705724e9f7b.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh 2f2b94fd61b77ab8cb3d352347ff10d74db8d70c: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/2/2f2b94fd61b77ab8cb3d352347ff10d74db8d70c.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/2/2f2b94fd61b77ab8cb3d352347ff10d74db8d70c.glb
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Returning 1 candidates (sorted by bbox_score)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Returning 1 candidates for 'a wooden nightstand'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 13:42:12] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fixed_archive_replay: a wooden wardrobe
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a wooden wardrobe', type=FURNITURE, dimensions=[1.2 2.  0.6]
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a wooden wardrobe' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('5596617b', '0.337'), ('97162e91', '0.337'), ('d5d3d6b8', '0.329'), ('4e0a645f', '0.329'), ('f9aecdea', '0.328')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh 5596617b6e256dd94a6af0aaf0a70dd0121262f0: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/5/5596617b6e256dd94a6af0aaf0a70dd0121262f0.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/5/5596617b6e256dd94a6af0aaf0a70dd0121262f0.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh 97162e912362bae3a0ca0d385f9dab8e43360108: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/9/97162e912362bae3a0ca0d385f9dab8e43360108.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/9/97162e912362bae3a0ca0d385f9dab8e43360108.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh d5d3d6b8376d50b96e2c1f4333847dcbd4724b59: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/d/d5d3d6b8376d50b96e2c1f4333847dcbd4724b59.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/d/d5d3d6b8376d50b96e2c1f4333847dcbd4724b59.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh 4e0a645fa6515ad09308a5243cd77e3975e4c4da: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/4/4e0a645fa6515ad09308a5243cd77e3975e4c4da.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/4/4e0a645fa6515ad09308a5243cd77e3975e4c4da.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:Failed to load mesh f9aecdeacbd79cb2d5025786210f20e2dd38ea11: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/f/f9aecdeacbd79cb2d5025786210f20e2dd38ea11.glb
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 223, in retrieve_multiple
+    mesh = self._load_and_process_mesh(mesh_id, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_retrieval_path/source/scenesmith/agent_utils/hssd_retrieval/retrieval.py", line 108, in _load_and_process_mesh
+    mesh_path = construct_hssd_mesh_path(self.config.data_path, mesh_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py", line 205, in construct_hssd_mesh_path
+    raise FileNotFoundError(f"HSSD mesh not found: {mesh_path}")
+FileNotFoundError: HSSD mesh not found: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/f/f9aecdeacbd79cb2d5025786210f20e2dd38ea11.glb
+WARNING:scenesmith.agent_utils.hssd_retrieval.retrieval:No valid candidates found after mesh loading
+ERROR:scenesmith.agent_utils.hssd_retrieval_server.server_app:Request from fixed_archive_replay [0] failed: No candidates found for 'a wooden wardrobe'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 13:42:15] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fixed_archive_replay: a double bed
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a double bed', type=FURNITURE, dimensions=[1.8 1.1 2.1]
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a double bed' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('02e22ed5', '0.319'), ('16100ba2', '0.316'), ('bf0d188b', '0.306'), ('55675aab', '0.297'), ('00e879c1', '0.211')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Returning 1 candidates (sorted by bbox_score)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Returning 1 candidates for 'a double bed'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 13:42:25] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fixed_archive_replay: a wooden nightstand
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a wooden nightstand', type=FURNITURE, dimensions=[0.5  0.6  0.45]
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a wooden nightstand' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('93e258bf', '0.360'), ('1e1c18c6', '0.356'), ('84815c44', '0.326'), ('7be32a2a', '0.309'), ('0ea4b671', '0.299')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
