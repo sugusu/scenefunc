@@ -1,0 +1,128 @@
+<!doctype html><meta charset="utf-8"><title>原任务与 Critic 输入</title>
+<style>body{max-width:1050px;margin:36px auto;font:16px/1.7 system-ui;padding:0 20px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:8px;text-align:left}pre{white-space:pre-wrap;background:#f4f5f6;padding:20px}small{color:#555}</style>
+<h1>原始要求已经进入普通 Critic 对照；这不是新算法</h1>
+<p>实际执行固定奖励源码调用，到本地 Qwen 处理器图文编码为止。原生三条路径均未带原任务，透传三条均保留原任务；合法性筛选后的图片标签正确。六份输入不是六个房间，没有调用模型、训练或产生偏好结论。</p>
+<table><tr><th>输入条件</th><th>图片数</th><th>原任务</th><th>实际编码 token</th><th>模型调用</th></tr><tr><td>native_siblings</td><td>3</td><td>False</td><td>870</td><td>0</td></tr><tr><td>native_legal_subset</td><td>2</td><td>False</td><td>608</td><td>0</td></tr><tr><td>native_parent_child</td><td>2</td><td>False</td><td>608</td><td>0</td></tr><tr><td>task_siblings</td><td>3</td><td>True</td><td>1000</td><td>0</td></tr><tr><td>task_legal_subset</td><td>2</td><td>True</td><td>738</td><td>0</td></tr><tr><td>task_parent_child</td><td>2</td><td>True</td><td>738</td><td>0</td></tr></table>
+<p>成功编码用时 11.139 秒，不含阅读、实现及第一次失败。v1 因检查器将含换行原文与 JSON 字符串作字面比较而终止，保留原记录；v2 修正检查器。三候选只复用两幅旧真实场景图，合法性布尔值为接口夹具；未重跑几何检查。</p>
+<p>论文将 Critic 写成接收指令 U；本次验证固定公开代码的实际输入，不能据此断言论文训练缺少任务。旧八次任务提示诊断未重复。现在的科学比较仍是同原始标签的直接动作、辅助决策和自生成决策后动作，全部共用相同任务信息、工具与成本口径。</p>
+<h2>算法、推导及停止误判的条件</h2><pre>原始要求、评价上下文与可学习决策：源代码接入后的算法边界
+2026-11-10。范围：完整可编辑室内三维生成；本轮不训练、不调用模型。
+
+1. 本轮确实改变了什么
+
+固定 Scene-Designer 提交 a0565e50ed7d32c0e09132b9311c0b9b91165405 的
+collect_episode(prompt) 把 prompt 传给 tree_furniture_rollout(room_prompt)，后者
+建立 GRPORolloutBuffer(prompt=room_prompt)。生成策略确实能读取要求。训练奖励
+工厂的三个 Critic 调用却没有传 user_text，最终使用通用场景排序提示。
+这一结论只覆盖保存的固定源文件和本轮执行到的输入构造，不能外推作者历史实验。
+论文附录 B、C 的公式 (7)、(10)、(12) 则将指令 U 列为 Critic 输入：
+https://arxiv.org/html/2610.23121v1
+这支持把任务透传视为合理的普通对照，不支持把它称为新方法。
+
+新增 critic_task_context.py 将 buffer.prompt 以保留原文的 JSON 字符串传给最终
+排序调用。先让原生合法性分支选定图片，再按实际数量构造 A.. 标签。因此三候选
+中过滤掉一个后，提示与两张图片仍一致。原生奖励工厂和合法性函数复用相同 code
+对象，只通过私有导入命名空间注入参数适配；不写入旧模块，不修改奖励算式。
+绑定时会快照工厂全局配置；更改训练标志后必须重新绑定。
+
+本轮实际运行的是 CPU AutoProcessor 图文编码，模型 sentinel 未被访问。三条
+路径分别为兄弟分支、合法子集、独立调用原生父子比较闭包。对照前后三组共六份
+输入；不是六个生成任务，也没有生成排序答案。三分支运输例重复使用了两份真实
+场景图中的一份，合法性标记是接口夹具，没有运行物理判断。
+
+11 月 4 日已有八次真实 Critic 调用，包含加入原任务与测量的普通提示条件。
+本轮只引用这些记录，没有重新推理，也不把普通条件提示说成首次提出。
+
+2. 必须分别定义的学习量
+
+U：原始任务与用户明确的取舍条件；不能被模型的计划替代。
+H_t：当前实际场景、允许的观察、已执行工具和历史，含未验证项。
+Z：用户偏好存在歧义时的外部用途/上下文解释，真值并不自动可得。
+D：策略自己生成的决策提议。D 可能错，不能作为已经发生的几何事实。
+A：可执行动作或停止提议。T 是冻结共同工具后端。
+C_phi(U, I_1,...,I_K)：条件排序器；Q_U(S) 是想评价的任务质量。
+G_V(U,S)：在声明检查范围内，全部原始要求均被覆盖且验证为真。
+
+Z 与 D 不是同一个随机变量。RPR 研究的是给定/推断偏好上下文后的条件评价；
+一个策略先写 D 再行动，不会因此自动获得正确的用户偏好解释。
+更好的条件排序准确率，也不等于生成器已经提出了可行的完整房间。
+
+3. 从相关论文能可靠使用的理论，以及不能推出的结论
+
+RPR 的上下文分解是普通的加减同一项和三角不等式。设偏好效用差为 Delta_z，
+估计为 hatDelta_z，真实/估计上下文分布为 p_z、hatp_z，则
+
+ |sum_z p_z Delta_z - sum_z hatp_z hatDelta_z|
+ &lt;= sum_z p_z |Delta_z-hatDelta_z|
+    + sum_z |hatDelta_z| |p_z-hatp_z|.
+
+如果另外有 |hatDelta_z| &lt;= M，第二项才可进一步界为 2M TV(p,hatp)。
+这不是无需假设的统一误差保证；没有标定效用差尺度、没有真实上下文、没有验证
+条件评价误差时，不能把这个式子代入数字宣称三维生成的性能下界。
+来源：RPR §3；本轮阅读 §3–5、附录 C 和 D.1 的指定部分，未声称读完全部 35 页。
+https://papers.nips.cc/paper_files/paper/2024/file/82acbbc04435f6c1e7f656b1cbe4ad82-Paper-Conference.pdf
+
+另一个直接决定实验设计的普通分解是候选覆盖与排序误差。令 S* 为允许空间中
+最优场景，S*_B 为固定有限候选池 B 中最优场景，hatS 为用估计质量在 B 内选出的
+场景。如果对 B 中每个候选都有 |Q_U(S)-hatQ_U(S)| &lt;= epsilon，则
+
+ Q_U(S*)-Q_U(hatS)
+ = [Q_U(S*)-Q_U(S*_B)] + [Q_U(S*_B)-Q_U(hatS)]
+ &lt;= delta_B + 2 epsilon.
+
+证明第二项：依次加减 hatQ_U(S*_B)、hatQ_U(hatS)，中间项因 hatS 最大化估计
+质量而非正，两侧各至多 epsilon。若选择器只达到估计最优 eta 以内，再加 eta。
+本轮未估计 epsilon、delta_B、eta；对部分几何代理的保证不能替代整场 Q。
+这说明：仅改 Critic 无法补回候选池里根本没有的正确房间；只增加候选而不解决
+错误用途解释，也可能稳定选错。该分解是标准有限集合选优分析，不是新定理。
+
+4. 现在可研究、且不把普通基线削弱的算法
+
+输入冻结为原任务 U、建筑和候选资产身份；所有方法共享真实原生工具 T。
+从同一初始场景开始，执行完整五阶段生成，而不只对已摆家具移动坐标。
+执行失败和未知项保留，资产少放不能通过删掉分母得到高完成率。
+
+政策比较沿用同来源控制：
+ A0：直接动作，原始动作标签；可以把省下的推理预算用于普通候选搜索。
+ A1：增加相同原始 D 的辅助训练，但部署仍直接动作。
+ A2：相同原始 D/A 标签，部署先生成自己的 D，再基于 U、H_t、D 产生 A。
+三组都使用相同的任务透传 Critic，或都使用相同原生 Critic；不能只给 A2 补上下文。
+同一组表示实验内不同时改变终态奖励、动作权限、资产池或工具模型权重。
+
+对完整轨迹可以写
+ pi_theta(D_t,A_t|U,H_t)
+ = pi_theta(D_t|U,H_t) pi_theta(A_t|U,H_t,D_t).
+教师 D 的条件交叉熵只是训练目标；部署时必须用自己的 D，不能喂入事后正确解释。
+源数据缺少 D 的样本仍按既有动作目标处理，不编造推理标签。原始家族/组件权重
+沿用已验证的 phase_objective，不按重分阶段后的长度偷偷改权重。
+
+每一步：观察当前真实状态；直接提议动作或先写决策；在场景副本中执行有界单项/
+联合候选；保存原生工具返回；检查原始要求、身份与副作用；提交允许候选并继续。
+普通搜索获得相同上游修改和回滚权限，不能只给 Agent 多步行动。停止仅是一个
+动作提议；通过完整任务检查才记为验证成功，未知不是成功，也不充当偏好平局。
+
+如果以后比较条件 Critic 训练，普通条件 pairwise logistic loss 就是必要基线：
+ L = log(1 + exp(-y [q_phi(U,S_a)-q_phi(U,S_b)]))。
+只使用具有相应来源与适用范围的可靠标签。RPR 已覆盖条件反转的数据结构；不能
+把“场景替换回答”命名为新算法。未知、平局、格式失败分别保留。
+
+5. 要识别的收益、当前证据和下一步决策
+
+可检验的候选仍是：学到的决策表征是否帮助系统选择适当的可变上游决定，并在
+完整生成中以相同总成本取得更好的原始任务完成度，且超过同标签辅助训练和普通
+搜索。D-&gt;A、任务透传、图像排序、GRPO、回滚单独都不是新贡献。
+
+先用公共候选池区分排序能力与候选覆盖；这是诊断，不替代各政策自己连续执行
+整场。最后按新房间/描述来源隔离，记录完整要求、未知覆盖、几何、改动规模、
+总模型 token、工具侧 VLM、检索、渲染、失败候选和实际耗时。
+
+现有 24 条单步监督、72 个开发决策的来源和覆盖限制沿用旧审计，不重新包装为
+本轮数据扩展。没有新增完整场景成功标签或独立人工偏好标签，尚无训练收益。
+无需为本轮编码检查新增资源；本轮也不构成大规模训练已就绪的声明。
+
+值得继续的是完整后端上的同源、同信息、同预算机制检验。本轮补齐了一个会混淆
+结论的普通控制，但不能据此承诺 CVPR 创新或将目标缩成提示接口项目。
+</pre>
+<h2>本轮实际阅读</h2><ul><li><a href="https://papers.nips.cc/paper_files/paper/2024/file/82acbbc04435f6c1e7f656b1cbe4ad82-Paper-Conference.pdf">Improving Context-Aware Preference Modeling for Language Models</a>: §3 theory, §4 construction, §5 setup/results, appendix C and selected D.1; 35-page official PDF available; not all appendix pages read</li><li><a href="https://arxiv.org/html/2610.23121v1">Scene-Designer</a>: Targeted §3.2, appendix B/C critic equations and D.3 instruction wording</li><li><a href="https://github.com/ZJU-OmniAI/Scene-Designer/tree/a0565e50ed7d32c0e09132b9311c0b9b91165405">Pinned public reward and rollout source</a>: make_reward_critic including nested helpers; default prompt, direct ranker, legality wrapper; collect_episode prompt flow and rollout buffer creation</li><li><a href="local:/root/autodl-tmp/agent_method_preparation_20261027/work/critic_scope_bridge_20261104">Existing 2026-11-04 local context probe</a>: Reused ALGORITHM_AND_THEORY.txt and actual request-construction script</li></ul>
+<p><a href="input_summary.csv">完整输入表</a> · <a href="method_differences.csv">方法差异</a> · <a href="input_capture_v2/capture.json">实际编码证据</a> · <a href="source_flow.json">源码传递链</a> · <a href="COMMANDS.txt">运行命令</a> · <a href="summary.json">边界与状态</a></p>
+<p>完整生成成功和独立训练收益仍未建立；未请求扩资源、未下载新权重，目标保持继续。</p>

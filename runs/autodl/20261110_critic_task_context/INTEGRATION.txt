@@ -1,0 +1,30 @@
+后续授权训练/推理时的接入方式；本轮不执行模型调用
+
+from critic_task_context import make_task_conditioned_reward
+from src import train_grpo
+from src_critic import grpo_advantage
+
+# 原入口先完成所有 CLI/全局配置解析，再建立本轮工厂。
+reward_fn = make_task_conditioned_reward(
+    train_grpo.make_reward_critic, grpo_advantage,
+    critic_model, critic_processor, is_policy=False, audit=critic_input_audit)
+# reward_fn(buffer) 会实际调用 Critic；本轮仅做 capture，未执行这一行。
+
+要求：
+1. buffer.prompt 必须由原始 collect_episode prompt 流入，禁止用事后正确解释代替。
+2. 在每个训练 worker 内独立绑定；全局标志变化后重新绑定。工厂全局值是浅快照。
+3. 传入固定 Critic 及处理器。训练政策的 adapter 不得悄悄用于共同工具侧 VLM。
+4. 这不改变原生 format/Borda/improvement/global 奖励公式、合法性或分支继续策略。
+   固定源随机继续分支、之后再计奖励的行为此前已经核查；此适配没有将它改成
+   论文描述的在线选最高分分支。不要称为论文配置完整复现。
+5. 原生 user_text 为 None 的调用才适用。已有自定义提示不会被静默覆盖；非原生
+   A.. 标签被拒绝。内部合法子集照原生规则重新映射，按最终图片数构造提示。
+6. 任何政策表示比较都同用任务透传或同用原生默认输入。不得只给候选方法任务。
+7. audit 只记录任务/提示哈希与图片路径，不是执行真值或偏好标签。模型调用、
+   tokenizer 与像素预算、具体模型/adapter 哈希、原始返回仍需真实运行日志。
+8. 本轮六份编码只覆盖普通冻结 Critic 的输入路径。没有测试可变 self-critic 的
+   训练模式切换、实际 GRPO 梯度、物理合法性、模型输出及完整五阶段房间生成。
+
+当前不用新资源：完成的是现有本地处理器 CPU 编码和标准库源码检查。完整训练
+仍需补齐真实观察、来源明确的完整任务结果与单独测量的训练内存预算；不能以
+本次输入检查通过宣称大规模训练准备齐全。

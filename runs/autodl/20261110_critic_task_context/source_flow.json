@@ -1,0 +1,42 @@
+{
+  "source_pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "train": {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/context_credit_source_review_20261103/sources/train_grpo.py",
+    "sha256": "2c4eba6af647abfe7bbb22ecb2d124b14dbc28c7d544caffdb43e3d460b6f479",
+    "collect_episode_to_rollout_line": 641,
+    "factory_calls": [
+      {
+        "line": 318,
+        "function": "advantage_from_critic",
+        "explicit_user_text": false,
+        "positional_arguments": 3
+      },
+      {
+        "line": 368,
+        "function": "advantage_from_critic_with_legality",
+        "explicit_user_text": false,
+        "positional_arguments": 4
+      },
+      {
+        "line": 375,
+        "function": "advantage_from_critic",
+        "explicit_user_text": false,
+        "positional_arguments": 3
+      }
+    ]
+  },
+  "rollout": {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/critic_scope_bridge_20261104/sources/src/grpo_rollout.py",
+    "sha256": "0e15f1dd771d2c3b382e78a65b0c1f87050242fba36e36bf076095981102796e",
+    "original_prompt_to_buffer_line": 310
+  },
+  "advantage": {
+    "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/critic_scope_bridge_20261104/sources/src_critic/grpo_advantage.py",
+    "sha256": "9243154a236f61db27f2dc673c6a77381f02c1c3b4b9906ba16eacf4d637afe6",
+    "optional_user_text_line": 257,
+    "default_prompt_line": 283
+  },
+  "factory_body_same_code_object_in_private_namespace": true,
+  "meaning": "Original task reaches native buffer; selected Critic callers omit it. Only local fixed source execution is established. No author training run audited.",
+  "remote_verification": "This turn train_grpo.py official pinned SHA matched; advantage raw re-fetch failed (record retained). Local advantage is fixed by recorded SHA, not a new remote match."
+}

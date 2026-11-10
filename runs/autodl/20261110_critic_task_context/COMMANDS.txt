@@ -1,0 +1,4 @@
+From repository root (existing local processor and two archived views required):
+PYTHONDONTWRITEBYTECODE=1 TRANSFORMERS_OFFLINE=1 HF_HUB_OFFLINE=1 OMP_NUM_THREADS=2 /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/capture_critic_task_inputs.py --output runs/autodl/20261110_critic_task_context/input_capture_NEW
+# Output path must be new. Does not load model weights or generate rankings.
+PYTHONDONTWRITEBYTECODE=1 python runs/autodl/20261110_critic_task_context/verify_stage.py
