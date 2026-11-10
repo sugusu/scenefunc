@@ -1,0 +1,63 @@
+[
+  {
+    "title": "GeomVLA: Unifying Scene, Motion, and Action in 3D",
+    "url": "https://arxiv.org/html/2609.13812v1",
+    "version": "v1, 2026-09-12",
+    "read_scope": [
+      "Abstract/introduction/related work",
+      "3.1–3.4 method and training",
+      "4.1 setup fairness and 4.2 ablations",
+      "4.3–4.4 selected matched comparisons",
+      "5 limitations",
+      "Appendix lifting and scene-trajectory encoder opening"
+    ],
+    "not_claimed": [
+      "All appendix equations/tables read",
+      "All figures viewed",
+      "Author implementation read or run",
+      "Robot demonstrations downloaded"
+    ],
+    "method_note": "Calibrated 3D scene/motion/action coordinates. Motion-token conditioning uses one initial velocity evaluation, not execution of a fully predicted future. First train trajectory pseudo-labels with frozen VLM; joint stage uses action loss, not the trajectory loss.",
+    "control_note": "Its five-task RoboTwin comparison does not use identical training sets for all variants; the paper states this. Shared rigid-frame ablation does not establish a unique advantage of the robot origin.",
+    "repository": "https://github.com/ziyin-xiong/GeomVLA",
+    "availability": "Project links this URL; web and GitHub API returned 404. git ls-remote failed TLS. No source availability beyond this observation is inferred."
+  },
+  {
+    "title": "From Predictive Geometry to Action: Learning Complementary Predictive Representations for Embodied Manipulation",
+    "url": "https://arxiv.org/html/2610.28164v1",
+    "version": "v1, 2026-10-20",
+    "read_scope": [
+      "Abstract/introduction/related work",
+      "3.1–3.2 all method equations",
+      "Experiment setup",
+      "A.3 representation/pretraining objective comparisons through Table 9",
+      "B.1 data mixture, B.2 curriculum opening",
+      "D limitations"
+    ],
+    "not_claimed": [
+      "Full appendix read",
+      "All figure pixels viewed",
+      "Model implementation read or run"
+    ],
+    "method_note": "Pretraining combines reconstruction, masked-slot and latent-transition objectives with action supervision for a separate motor representation. Post-training uses future-informed frozen targets; deployment uses current observations only. The written latent-transition predictor is conditioned on current latent geometry, not a supplied candidate action.",
+    "code_pin": "f2982a37ed685ecbde33a98b323216fe791aa0f2",
+    "repository": "https://github.com/xuxiaoxxxx/CPR",
+    "availability": "Exact recursive tree is not truncated: README.md, asset/, asset/main.png. No model/loss/training Python source at this pin. README fully read; no weights/image downloaded."
+  },
+  {
+    "title": "SceneSmith qualified native implementation",
+    "repository": "https://github.com/nepfaff/scenesmith",
+    "code_pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+    "read_scope": [
+      "RoomScene object add/remove/get/move and surrounding ID methods, lines 825–925",
+      "FurnitureTools add 405–511, move 551–708, remove 709–795, generate 883–956",
+      "AssetManager HSSD acquisition 487–690 and dispatch/router entry 1009–1100",
+      "placement_noise.py full file"
+    ],
+    "not_claimed": [
+      "Complete router branch reviewed this turn",
+      "New native tool runs this turn"
+    ],
+    "source_contract_receipt": "native_branch_contract.json"
+  }
+]

@@ -1,0 +1,118 @@
+{
+  "scope": "Applicability and identified controls; not a new architecture, trained model, or verified CVPR contribution",
+  "variables": {
+    "S": "Actual exposed native object state, registry/config where available",
+    "U": "Original user requirements, retaining ambiguity and unsupported clauses",
+    "A": "A proposed executable action with exact identities and arguments",
+    "Y": "Measured post-action geometry or a supported check vector",
+    "mu": "Archived behavior policy, not an expert by default",
+    "H": "A proposed desired geometric/relational subgoal, not a measured future"
+  },
+  "claims": [
+    {
+      "name": "Known transition is not a novel world model",
+      "formula": "For fixed supported deterministic T and checker F, Y=F(T(S,A),U). Given S,A,T,F, H(Y|S,A)=0 for discrete Y.",
+      "assumptions": [
+        "Exact state/config/identity",
+        "Correct supported transition and checker",
+        "No unobserved stage, model output or physical interaction"
+      ],
+      "not_implied": [
+        "A neural policy can choose a good A",
+        "Representation learning cannot help finite models",
+        "All native stages are deterministic",
+        "Proxy success equals complete-scene success"
+      ],
+      "evidence": "Previously published ordinary-control 823/823 comparisons, reused without new predictor calls; native source contracts separately read"
+    },
+    {
+      "name": "Descriptive future and desired future differ",
+      "formula": "p_mu(Y|S,U)=sum_A p(Y|S,U,A) mu(A|S,U). Training to this mixture does not identify an optimal-task future distribution.",
+      "assumptions": [
+        "Observed actions belong to the logged behavior distribution"
+      ],
+      "not_implied": [
+        "Bad outcomes cannot train an action-conditioned dynamics/negative-outcome model",
+        "Multi-modal future prediction is inherently invalid",
+        "MSE ambiguity proves CPR or GeomVLA fails"
+      ],
+      "evidence": "New 72-row role audit, 25/35 native moves with recorded damage, no independent desired-future labels"
+    },
+    {
+      "name": "Prediction loss can average behavior, not solve the task",
+      "formula": "For squared error and fixed target coordinates, argmin_g E||Y-g(X)||^2=E[Y|X]; conditional variance is the irreducible risk for that X. SmoothL1 has a different estimating equation, not generally this mean.",
+      "assumptions": [
+        "This is a mathematical population statement for a fixed X and fixed target, not an estimate of model generalization"
+      ],
+      "not_implied": [
+        "The extracted state/task X contains full model history",
+        "The empirical table is a learned model",
+        "Zero in-sample X,A risk identifies deterministic population dynamics",
+        "A target mean must correspond to a feasible scene or useful action",
+        "A flexible latent representation cannot avoid this fixed-coordinate loss geometry"
+      ],
+      "evidence": "10/41 state-task groups have different measured check vectors; native-move-only restriction still has 2/25 groups"
+    },
+    {
+      "name": "Information and computation are separate",
+      "formula": "A deterministic feature of available X has zero conditional information I(A;f(X)|X), but may change approximation, optimization or computation of a bounded model.",
+      "assumptions": [
+        "Same actual X and deterministic feature, no hidden labels supplied"
+      ],
+      "not_implied": [
+        "An auxiliary geometry feature is useless",
+        "Any improvement is automatically a new method"
+      ],
+      "control": "Compare explicit native-state/ordinary-lookahead inputs, pose auxiliary supervision and equal-budget direct-action search before attributing benefit to predictive geometry."
+    }
+  ],
+  "target_roles": [
+    {
+      "role": "current-state reconstruction",
+      "data": "Original audited current object geometry/available views",
+      "meaning": "Perception/representation auxiliary control",
+      "known_gap": "Views missing on 5/24 original units; no replacement view fabrication"
+    },
+    {
+      "role": "executed effect conditioned on S,A",
+      "data": "Archived after-state/check receipts",
+      "meaning": "Descriptive transition or negative outcome, not desired arrangement",
+      "known_gap": "72 rows remain evaluation-only; ordinary control covers supported checks; no independent room/operator coverage"
+    },
+    {
+      "role": "desired goal H conditioned on S,U",
+      "data": "Must be anchored to original requirements and verified candidates or independent demonstrations",
+      "meaning": "Goal proposal/action selection",
+      "known_gap": "No such independently established labels added by this audit; do not copy all behavior futures"
+    },
+    {
+      "role": "complete trajectory value",
+      "data": "Native complete-room outcomes plus full-task assessment",
+      "meaning": "Long-horizon task success/cost",
+      "known_gap": "Local changes, name binding and unknown checks cannot be promoted to whole-room success"
+    }
+  ],
+  "next_algorithm_comparison": {
+    "primary": "Original same-source action-only, D-auxiliary direct-action, and self-generated D-conditioned action comparison remains the identified supervised question; geometric future prediction is a control, not a replacement claim.",
+    "source_specification": "../20261110_execution_supervision_review/algorithm_specification.json",
+    "complete_generation_contract": [
+      "Begin from the original text and common native backend; preserve required instance identities and all unmet/unknown clauses.",
+      "Let all policies query the same actual state and use the same asset, add, move, remove and supported relation operations.",
+      "For known transition/checks, use the same ordinary preview in all compared arms rather than call one arm a world model.",
+      "If testing H, explicitly tag it as desired subgoal. Shared original H labels must also train an auxiliary-H direct-action control; no teacher H/future observations at deployment.",
+      "Decode the action, execute on a candidate copy, obtain actual results and continue from that actual state. Do not use frozen teacher trajectories as end-to-end policy execution.",
+      "Score full original requirements, semantic unknowns, instance completeness, geometric/function limits, collateral edits and all model/tool/render costs."
+    ],
+    "required_controls": [
+      "Direct action + common native state/ordinary endpoint check/search",
+      "Direct action + original D auxiliary labels (same data as D-conditioned arm)",
+      "Self-generated D -> action (no supplied teacher D at inference)",
+      "If geometry is introduced: same geometry labels as ordinary auxiliary head with direct action",
+      "If future-goal H is introduced: H auxiliary vs H-conditioned action with identical valid labels, model budget and candidate operations"
+    ],
+    "novelty_boundary": "HSM/SceneSmith already combine generation, structured state and feedback; NaLA has explicit layout geometry. D conditioning, future auxiliary prediction, ordinary search and rollback are not independently new contributions.",
+    "escalation_rule": "No new large teacher/robot data download. First show a full-room, held-out benefit beyond ordinary state/geometry/auxiliary controls, or revise the mechanism. This audit provides no such benefit yet."
+  },
+  "no_new_training_or_paid_api": true,
+  "goal_achieved": false
+}
