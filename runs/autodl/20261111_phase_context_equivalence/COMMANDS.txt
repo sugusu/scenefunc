@@ -1,0 +1,14 @@
+本轮只运行CPU tokenizer、图像processor、mRoPE和静态源码/数据审计。
+没有加载神经权重、调用generate、更新参数、渲染或调用付费API。
+
+在仓库根目录复算；输出须为不存在的新路径，旧结果不覆盖：
+
+env CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/audit_phase_context_equivalence.py --repo . --checkpoint /root/autodl-tmp/agent_method_preparation_20261027/work/critic_public_runtime_20261104/checkpoint --output runs/autodl/20261111_phase_context_equivalence/reproduction_new --processor-check --image-budget-source /root/autodl-tmp/agent_method_preparation_20261027/work/memory_replay_source_20261103/src/scene_observation.py
+
+若只核对24单元的文本条件，删除--processor-check及--image-budget-source两个选项；不得将其说成多模态验证。原视图必须按先前availability记录的哈希验证，不替换缺图。五组可用、十九组缺图是本次实际现状，不是允许删掉十九组的实验协议。
+
+最终实际结果为actual_v4/result.json。v2/v3为同一输入上的实现修订，不是独立样例。代码和外部公开源码的固定版本/URL/SHA分别见code_manifest.json和external_source_manifest.json；源代码仅下载到RAM、没有执行其数据生成器或模型。report_phase_context_equivalence.py负责本次报告和最初证据包构建，其JSON不覆盖既有输出；不能把报告构建当作新的研究实验。
+
+independent_delivery_check.json来自第二条独立复核路径：直接比较每个正token前完整token列表，不调用被审计代码的measure()函数；没有神经梯度。该检查和本说明在初始证据包之后形成，最终打包时一并纳入。evidence.zip中的manifest.json描述包内审计与阅读/理论文件，delivery_verification.json描述ZIP本身，不在ZIP内部循环引用其自身哈希。
+
+训练和新推理依然未准入。此命令不触发GPU工作、模型下载、原生生成或之前关闭的32次试跑额度。
