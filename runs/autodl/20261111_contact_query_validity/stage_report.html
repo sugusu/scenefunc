@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>原生反馈与分支证据资格</title><style>body{max-width:1050px;margin:40px auto;padding:20px;font:16px/1.7 system-ui}pre{white-space:pre-wrap}td,th{border:1px solid #aaa;padding:7px}table{border-collapse:collapse}a{overflow-wrap:anywhere}</style><h1>真实工具反馈与历史版本：已执行结果</h1><p>保守共同修正排除已证明达不到原阈值的候选，保留墙—床真实待处理报告。新文件版本能恢复所测字节，但不是完整模拟器快照。本轮没有新增完整生成或学习效果，旧结果均保留。</p><table><tr><th>指标</th><th>值</th><th>适用范围</th></tr><tr><td>two_body_engine_queries</td><td>20</td><td>controlled copies, fixed actual component</td></tr><tr><td>two_body_seconds</td><td>11.431954447180033</td><td>CPU diagnostic, not generation speed</td></tr><tr><td>point_replacement_seconds</td><td>15.382064882665873</td><td>replacement NOT admitted as equivalent reward</td></tr><tr><td>guarded_report_seconds</td><td>13.863739047199488</td><td>same original whole-room state</td></tr><tr><td>guarded_raw_candidates_removed</td><td>35</td><td>original53; unchanged1mm threshold</td></tr><tr><td>whole_room_reported_pairs_before</td><td>3</td><td>original native reporter</td></tr><tr><td>whole_room_reported_pairs_after</td><td>1</td><td>retained original wall-bed record exactly</td></tr><tr><td>historical_snapshots</td><td>10</td><td>no historical replay or reward recomputation</td></tr><tr><td>historical_asset_refs</td><td>36</td><td>15knownscale-versionconflicts</td></tr><tr><td>historical_known_scale_conflicts</td><td>15</td><td>v1count24superseded; absentexplicitScaleisnotconflict</td></tr><tr><td>actual_version_helper_calls</td><td>4</td><td>twoinitialcalls+twoboundeddiagnosticcalls; no automatic retry</td></tr><tr><td>v2_stored_asset_versions</td><td>3</td><td>SDF/registry bytes + native SceneJSON subset</td></tr><tr><td>native_JSON_bitwise_roundtrip</td><td>False</td><td>wall order changes; unique-ID contents agree</td></tr><tr><td>protected_source_hashes_unchanged</td><td>579</td><td>integrity, not scene quality</td></tr><tr><td>new_model_forwards</td><td>0</td><td>no loaded policy/model</td></tr><tr><td>training_updates</td><td>0</td><td>none</td></tr><tr><td>paid_API_calls</td><td>0</td><td>none</td></tr><tr><td>new_verified_full_rooms</td><td>0</td><td>partial bedroom remains incomplete</td></tr></table><h2>推导与研究影响</h2><pre>本轮的结论和边界
+
+一、固定真实几何揭示了哪一类错误
+固定先前证书中的第一个实际床部件，保持原始网格和姿态来源，在两物体诊断副本中检查五个明确的竖直偏移。
+Mesh和Convex两种表示均复现：精确接触时signed distance约-0.965米；向上或向下0.1毫米时返回相应间距或穿透。
+这是所安装Drake1.47.0查询路径上的零接触边界异常。没有审查数值求解器内核，不宣称已定位FCL内部根因或所有Drake查询均错误。
+这些偏移仅发生在显式诊断副本，原始整场姿态和旧得分均未改变。
+
+二、为什么没有直接更换为point penetration
+同一原始整场中，point查询使原生报告3对变1对，但剩余北墙—床深度从约0.046米变成约0.455米。
+原生API的近接触过滤和精度有其限定。不能把“少报两对”当作数值等价，所以不把该替换接入奖励基线。
+
+三、共同基线采用何种有限修正
+设真实形状被世界坐标AABB A=[a-,a+]、B=[b-,b+]包围。取
+U=max(0,min_i{a+_i-b-_i,b+_i-a-_i})。
+沿选中的有向坐标轴平移U加任意正的小量，可以使包围盒分离，因而也使其中形状分离。
+故U是最小平移穿透量的上界，而不是碰撞下界；U&gt;0不能证明形状相交。包含关系不能误用“交集宽度”。
+实际实现逐次浮点乘加均向外舍入，对已表示的有限顶点和变换构造包围盒；无法构造的类型保留原报告并标未知。
+仅在上界严格小于原有1毫米报告阈值时剔除候选。等于阈值保留，原有地板5厘米和支撑2厘米容差未修改。
+同一整场53条原始候选中剔除35条，最终报告3对变1对；剩余墙—床记录和原深度逐字段一致。
+固定二物体的真实2毫米穿透保留。该修正不计算精确距离、不保证其余报告正确，也不证明整场任务成功。
+
+四、为什么历史JSON不能直接用于分支学习
+10个历史家具状态共36个对象引用，其中15个逻辑缩放与最终存档文件版本冲突。
+初版把没有显式mesh scale的衣柜误算为冲突，得到24；该初版保留并明确作废，正确版本为15。
+早期SDF字节没有保存就不能反推成“真实历史文件”，不能用最终SDF替代历史状态来重算奖励或制造偏好。
+新版本存储只是普通内容寻址文件记录。两个实际原生缩放调用后，中间和父版本的SDF/注册表字节、所测资产逻辑缩放能恢复。
+原生反序列化会按objects字典重建walls列表：按唯一wall ID比较后内容相同，但原始JSON列表顺序不同。
+重复读取同一父版本一致。仍不宣称所有顺序消费者、渲染缓存、工作进程或随机状态均已恢复。
+
+五、对学习机制的影响
+这些属于所有方法共享的执行与奖励基线，不是append-only新算法，不验证记忆胜过状态表。
+下一次生成必须使用前瞻文件版本记录，不能把旧不完整状态包装成可重放的反事实分支。
+现有A/AUX/J/P及普通反馈F、完整轨迹T的比较仍需要真实同条件完整生成；本轮没有新增整场正样本、模型前向、梯度或训练。
+决策监督的作用不能从流畅理由、teacher-forced损失或工程修正后的碰撞数推断。没有证据宣布CVPR级创新成立。
+</pre><h2>证据和复现</h2><ul><li><a href="algorithm_and_limits.txt">algorithm_and_limits.txt</a></li><li><a href="reading_ledger.json">reading_ledger.json</a></li><li><a href="summary.csv">summary.csv</a></li><li><a href="two_body_v1/result.json">two_body_v1/result.json</a></li><li><a href="two_body_v1/query_records.json">two_body_v1/query_records.json</a></li><li><a href="same_room_control_v1/result.json">same_room_control_v1/result.json</a></li><li><a href="point_backend_depth_check.json">point_backend_depth_check.json</a></li><li><a href="same_room_veto_v1/result.json">same_room_veto_v1/result.json</a></li><li><a href="same_room_veto_v1/backend_receipts.json">same_room_veto_v1/backend_receipts.json</a></li><li><a href="bound_certificates_v1/result.json">bound_certificates_v1/result.json</a></li><li><a href="historical_asset_versions_v1/STATUS.json">historical_asset_versions_v1/STATUS.json</a></li><li><a href="historical_asset_versions_v2/result.json">historical_asset_versions_v2/result.json</a></li><li><a href="asset_version_store_v1/result.json">asset_version_store_v1/result.json</a></li><li><a href="asset_version_store_v2/result.json">asset_version_store_v2/result.json</a></li><li><a href="asset_version_store_v2/wall_order_diagnosis.json">asset_version_store_v2/wall_order_diagnosis.json</a></li><li><a href="source_before_after.json">source_before_after.json</a></li><li><a href="reproduce.txt">reproduce.txt</a></li><li><a href="evidence.zip">evidence.zip</a></li></ul></html>

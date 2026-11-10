@@ -1,0 +1,40 @@
+{
+  "source_result": "runs/autodl/20261110_complete_native_runtime/trial_actual_v2/result.json",
+  "source_result_sha256": "b82ccfe42108c2ad775ec6cf30e3a8c03f62e2f3eb8e608b28c68040ce9654d5",
+  "metering_source": "scripts/autodl/complete_native_model_host.py",
+  "metering_source_sha256": "698e008b046c8856e7ef480563ec5bd28de0bc349ac4228e402f64896f5770e8",
+  "source_locations": [
+    {
+      "line": 67,
+      "text": "original = self._model.generate"
+    },
+    {
+      "line": 78,
+      "text": "forwards.append(row);incomplete=True;save()"
+    },
+    {
+      "line": 102,
+      "text": "self._model.generate = metered"
+    }
+  ],
+  "historical_field_name": "model_ledger.forwards",
+  "measured_quantity": "One invocation of patched model.generate, not one internal neural forward.",
+  "sequence_generation_requests": 23,
+  "roles": {
+    "native_joint_policy": 19,
+    "native_tool": 4
+  },
+  "completed_sequence_output_tokens": 4553,
+  "sequence_input_tokens": 46377,
+  "internal_model_forward_invocations": null,
+  "internal_forward_measurement": "Not instrumented in this historical run; do not fabricate a token-to-forward exact equivalence.",
+  "old_results_rewritten": false,
+  "future_comparison_costs": [
+    "sequence generation requests by policy/tool role",
+    "actual prefill/decode forward invocations and token positions",
+    "input and generated tokens in both RED contexts",
+    "native tool attempts and search candidates",
+    "total elapsed time and peak RAM/VRAM",
+    "training and data-acquisition costs separately"
+  ]
+}

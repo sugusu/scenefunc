@@ -1,0 +1,48 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>三维决策学习强对照与理论</title><style>body{max-width:1050px;margin:40px auto;padding:20px;font:16px/1.7 system-ui}pre{white-space:pre-wrap}td,th{border:1px solid #aaa;padding:7px}table{border-collapse:collapse}</style><h1>从“理由会被读取”到完整任务效果</h1><p>补齐LSS训练期表示对齐和RED解码对照，实际执行原版概率合并，并纠正历史成本字段含义。不是新损失或完整生成成绩；没有启动训练或新模型推理。</p><table><tr><th>指标</th><th>值</th><th>范围</th></tr><tr><td>RED_original_arithmetic_cases</td><td>8</td><td>fixed mathematical scores, not model outputs</td></tr><tr><td>RED_arithmetic_seconds</td><td>6.677692340686917</td><td>includes original module import; not generation latency</td></tr><tr><td>historical_generate_requests</td><td>23</td><td>not internal neural-forward count</td></tr><tr><td>historical_output_tokens</td><td>4553</td><td>old model run, not new cost</td></tr><tr><td>checkpoint_parameters</td><td>8767123696</td><td>existing weights, headers only</td></tr><tr><td>rank8_language_LoRA_parameters</td><td>21823488</td><td>252target modules, proposed ordinaryLoRA</td></tr><tr><td>rank8_static_base_adapter_GiB</td><td>16.65523573756218</td><td>excludes activations/workspaces; not training-fit measurement</td></tr><tr><td>new_VLM_forwards</td><td>0</td><td>none</td></tr><tr><td>optimizer_updates</td><td>0</td><td>none</td></tr><tr><td>paid_API_calls</td><td>0</td><td>none</td></tr><tr><td>new_verified_full_scenes</td><td>0</td><td>not inferred from arithmetic checks</td></tr></table><h2>算法与推导</h2><pre>可以继续检验的算法，以及它不能声称的理论
+
+1. 核心变量与研究主张
+X_t是原文、当时真实场景/视图、已执行工具结果、资产及剩余预算。D_t是模型提出的设计决策，A_t是原生工具调用。
+问题仍是：相同资料与总预算下，正确对应的设计决策监督能否改善新房间完整生成，超过额外文本、已有联合训练和普通工具方法？
+这是一项经验假设。没有“增加D一定提升最优成功率”的定理；链式分解pi(D,A|X)=pi(D|X)pi(A|X,D)也不是新算法。
+本轮不把LSS、RED、文件版本或AABB修正改名为贡献。
+
+2. 实际准备的学习目标
+A使用固定来源/族/目标token权重的动作CE。AUX保留同样D目标，但动作不读D；J让后续A消费同一响应中的D；P生成自己的D后以新上下文执行动作。
+缺少D的14条原始动作继续保留，不能补写理由来凑监督。10条已有D中只有8条标有来源依据，另2条是本地终止控制文字。
+LSS式对照把D当冻结向量监督，不当动作输入；它不是AUX的另一种叫法。当前只实现并核验公式核，尚无可用的场景语义向量及phase标签。
+若采用不同文本编码器、不同动作特征位置或新的场景阶段映射，必须标为迁移对照，不能称原论文复现。
+尤其对自回归工具调用，必须记录对齐的是预测当前目标之前的状态，还是已消费金标准动作后的表示；二者信息不同。
+相同辅助损失变小不能证明动作学会了理由，投影头本身拟合也不能代替闭环行为证据。
+
+3. 为什么还需要RED类强对照
+对于相同输出前缀a_&lt;t，RED分布为q(a_t)正比于p_visual(a_t)*p_reason(a_t)^lambda。
+原版函数把原始logits加权后softmax；与分别log_softmax再相加，在有限固定logits下只差一个与词元无关的常数，最终分布一致。
+已运行8个固定向量例子，包含lambda=0；误差约为浮点精度。不能据此声称双上下文模型的padding、position或KV-cache路径也正确。
+设beta=1/lambda，F(q)=E_q[log p_reason]-beta KL(q||p_visual)。q*为上述分布时，F(q*)-F(q)=beta KL(q||q*)。
+这是已有KL正则化最优解的核验，不是新理论；其奖励是理由条件似然，未等同于原文完成或几何合法。
+明确的抽象反例：合法/非法两动作的视觉概率为(0.9,0.1)，理由概率为(0.01,0.99)，lambda=1时组合概率约为(0.0833,0.9167)。
+组合更服从错误理由，反而选非法动作。这是构造的数学例子，不是观察到某个模型或真实房间失败。
+因此，评测必须保留真实几何与原任务，不能把D敏感性本身作为要最大化的三维质量标签。
+
+4. 共同工具与实际计量
+所有条件共享同一修正后的原生反馈。原阈值、原始要求和失败分母保留；不让候选独享正确工具。
+旧23条forwards实为23次model.generate：19次policy、4次tool，共4553输出token、46377输入token。
+它们不是已测量的逐token神经forward数。RED每个输出位置计算两个上下文，P额外做一次前缀编码，都不能用旧字段隐去。
+以后并列记录generate请求、顶层模型prefill/decode调用及各上下文token、原生工具/候选、总耗时、RAM/VRAM。只比较“调用次数”不足以称等计算。
+同一可训练模型若也改变工具VLM，则目标梯度还含工具输出概率的score；欲只检验policy监督，必须冻结工具角色或验证adapter隔离。
+当前没有训练adapter，也没有把基线共享文件快照宣称完整worker/RNG恢复。
+
+5. 能运行之前还缺的证据
+现有24条动作来自6个本地重建来源族，不是作者OTA原轨迹。原生卧室仍是未完成开发尝试；没有新增可核验完整正房间。
+IL3D固定8项是静态合成活动室、69实例，没有原始全任务或理由；不能拿来冒充专家轨迹。
+无需等待整场正例才能做所有动作级学习，但“原生调用success”只说明该工具报告成功，不是正确设计决策或偏好标签。
+若用部分监督训练，只能按原来已支持的动作/理由身份解释；是否改善完整房间仍由独立原文、几何、功能评价决定。
+不因当前缺完整标签而宣称方向失败；也不为了开训练，把unknown改成正例。当前阶段不启动训练或新增本地推理。
+
+6. 下一项实际实验的顺序
+先将共同反馈修正和前瞻文件版本记录接到新的真实生成中，原参数重放/回滚只在已资格化范围内使用；绝不重算未知旧SDF历史。
+然后在有相同原任务、状态和资产证据的新房间上运行A/AUX/J/P及F/T的闭环对照。LSS/RED只有各自真实接口与资料可用才进入，不能用公式检查冒充实跑。
+先报告可计算的原始要求覆盖、已证实满足/失败/未知、误改、运行截止和总成本；成功必须满足预先冻结的整场标准。
+若AUX/J/T或普通反馈解释全部收益，就修订学习主张；若P仅因多算而变好，需报告质量—成本曲线而非归因于“决策机制”。
+工程修正和原码算术验证现已形成可复核成果，但完整三维生成上的学习收益和CVPR贡献仍未被证明，研究目标继续保持。
+</pre><h2>证据</h2><ul><li><a href="algorithm_theory.txt">algorithm_theory.txt</a></li><li><a href="algorithm_contract.json">algorithm_contract.json</a></li><li><a href="strong_controls.json">strong_controls.json</a></li><li><a href="reading_ledger.json">reading_ledger.json</a></li><li><a href="arithmetic_v1/result.json">arithmetic_v1/result.json</a></li><li><a href="ENVIRONMENT_CORRECTION.json">ENVIRONMENT_CORRECTION.json</a></li><li><a href="arithmetic_v2/result.json">arithmetic_v2/result.json</a></li><li><a href="reason_correctness_counterexample.json">reason_correctness_counterexample.json</a></li><li><a href="actual_cost_semantics.json">actual_cost_semantics.json</a></li><li><a href="adapter_static_memory.json">adapter_static_memory.json</a></li><li><a href="RED_source_manifest.json">RED_source_manifest.json</a></li><li><a href="source_before_after.json">source_before_after.json</a></li><li><a href="summary.csv">summary.csv</a></li><li><a href="reproduce.txt">reproduce.txt</a></li><li><a href="evidence.zip">evidence.zip</a></li></ul><p>一手来源：<a href="https://arxiv.org/html/2609.04893v1">LSS</a>；<a href="https://arxiv.org/html/2507.07685v2">RED</a>；<a href="https://github.com/yshinya6/red">RED作者仓库</a>。源码许可、阅读范围和未实现项均单独保留。</p></html>

@@ -1,0 +1,58 @@
+[
+  {
+    "arm": "A",
+    "learning": "Original weighted action CE",
+    "deployment": "Actual state -> native action",
+    "isolates": "Base action imitation",
+    "implementation": "Existing encoder/trainer; no new trained result"
+  },
+  {
+    "arm": "AUX",
+    "learning": "Same D CE as J/P, independently predicted from X; action sees noD",
+    "deployment": "Actual state -> native action",
+    "isolates": "Additional textual source supervision",
+    "implementation": "Existing separate-phase material; Dgeneration unnecessary at deployment unless explicitly charged as a separate control"
+  },
+  {
+    "arm": "J",
+    "learning": "Same-source joint reason/action weighted CE",
+    "deployment": "Single autoregressive reason then action",
+    "isolates": "Existing reason-action supervision",
+    "implementation": "Existing joint serializer/deployment adapter; no new trained result"
+  },
+  {
+    "arm": "P",
+    "learning": "Same component CE; real prefixes differ and must be recorded",
+    "deployment": "Own D then fresh action pass over actual X,D",
+    "isolates": "Two-pass execution, not a new probability factorization",
+    "implementation": "Existing phase policy; no strict textual bottleneck or new learned comparison"
+  },
+  {
+    "arm": "LSS-control",
+    "learning": "Frozen rationale embedding aligned to action-state representations, plus same action CE",
+    "deployment": "Drop alignment head/teacher; same direct action graph",
+    "isolates": "Representation shaping without generated reasoning",
+    "implementation": "Independent cosine arithmetic checked only; no original T5, semantic embeddings or scene-phase annotation. Not an author reproduction and not training-ready"
+  },
+  {
+    "arm": "RED-control",
+    "learning": "No additional training",
+    "deployment": "Combine image/current-input and rationale-only next-token distributions",
+    "isolates": "Inference-time rationale utilization",
+    "implementation": "Original probability kernel actually exercised; dual-context model/cache/native decoder not integrated or measured"
+  },
+  {
+    "arm": "F",
+    "learning": "Frozen base",
+    "deployment": "Equal source retrieval and ordinary feedback/search",
+    "isolates": "Benefits of source access, feedback and search",
+    "implementation": "Common tools/thresholds; physical-query and saved-file-version corrections shared, not candidate-exclusive"
+  },
+  {
+    "arm": "T",
+    "learning": "Existing step/whole-trajectory SFT/DPO",
+    "deployment": "Whole-plan baseline with ordinary returned-ID references",
+    "isolates": "Existing full-trajectory learning",
+    "implementation": "Author builders and native references checked earlier; idea-level SceneWeaver vs native typed-call adaptation explicitly distinguished"
+  }
+]

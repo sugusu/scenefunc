@@ -1,0 +1,18 @@
+All outputs must use fresh directories; do not run into original result paths.
+Native Python and PYTHONPATH must come from runs/autodl/20261110_complete_native_runtime/ENVIRONMENT.json.
+No entrypoint below loads a model, runs training, downloads assets or calls a paid API.
+
+python scripts/autodl/probe_actual_contact_queries.py --help
+python scripts/autodl/compare_native_contact_feedback.py --help
+python scripts/autodl/check_contact_bound_certificates.py --help
+python scripts/autodl/audit_archived_asset_versions.py --help
+python scripts/autodl/check_native_asset_versions.py --help
+
+Executed contact report controls used --backend point and --backend conservative respectively.
+The version storage v2 evidence continuation used --out-name asset_version_store_v2 with the same two0.9 rescalings.
+The first failed evidence run remains asset_version_store_v1/result.json; do not erase or present it as success.
+Report consolidation (no simulator/model call):
+python scripts/autodl/report_contact_query_validity.py --repo REPOSITORY --stage STAGE
+
+Stored version records include the original owned scratch root. Direct cross-root restoration is intentionally refused.
+To reproduce runtime versions in a new root, restore original solid evidence first and rerun the qualified helper probe, not blindly overwrite paths.

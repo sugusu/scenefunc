@@ -1,0 +1,13 @@
+Run from REPOSITORY. Every result output must be fresh.
+
+Original RED source is NOT redistributed. The pinned file URLs and SHA256 are in RED_source_manifest.json. Internal evaluation must respect the author license; use unmodified source and its original dependencies, not copied/relicensed snippets.
+The completed original function probe used the existing transformers4.57.1 environment, no model load:
+CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/probe_reasoning_control_arithmetic.py --stage NEW_STAGE_WITH_MANIFEST --out-name NEW_RESULT
+First default-native-Python import failure is preserved in arithmetic_v1/result.json. One environment-only continuation completed arithmetic_v2; no source editing or model retry.
+
+Header-only resource calculation:
+python scripts/autodl/audit_adapter_static_memory.py --checkpoint EXISTING_CHECKPOINT --output NEW_RESULT.json
+
+Reports consolidate saved evidence only:
+python scripts/autodl/report_reasoning_controls.py --repo REPOSITORY --stage STAGE
+None of these commands runs a scene-generating VLM, optimization/training, a paidAPI or a new GPU instance.

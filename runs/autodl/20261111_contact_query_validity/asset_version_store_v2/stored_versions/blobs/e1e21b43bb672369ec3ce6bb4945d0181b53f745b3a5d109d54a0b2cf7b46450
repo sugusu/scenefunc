@@ -1,0 +1,141 @@
+<sdf xmlns:drake="drake.mit.edu" version="1.7">
+  <model name="room_geometry">
+    <link name="room_geometry_body_link">
+      <visual name="floor_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/floors/floor.gltf</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="floor_collision">
+        <geometry>
+          <box>
+            <size>4.8 4.0 0.1</size>
+          </box>
+        </geometry>
+        <pose>0 0 -0.05 0 0 0</pose>
+      </collision>
+      <visual name="north_wall_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/north_wall/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>0.0 1.975 0.0 0 0 0</pose>
+      </visual>
+      <collision name="north_wall_collision">
+        <geometry>
+          <box>
+            <size>4.8 0.05 2.5</size>
+          </box>
+        </geometry>
+        <pose>0.0 1.975 1.25 0 0 0</pose>
+      </collision>
+      <visual name="window_1_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/windows/window_1/window.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>-1.138468745760968 1.975 1.5 0 0 0</pose>
+      </visual>
+      <visual name="window_2_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/windows/window_2/window.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>0.935616534183962 1.975 1.5 0 0 0</pose>
+      </visual>
+      <visual name="north_wall_exterior_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/north_wall_exterior/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>0.0 2.025 0.0 0 0 0</pose>
+      </visual>
+      <visual name="south_wall_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/south_wall/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>0.0 -1.975 0.0 0 0 0</pose>
+      </visual>
+      <collision name="south_wall_collision">
+        <geometry>
+          <box>
+            <size>4.8 0.05 2.5</size>
+          </box>
+        </geometry>
+        <pose>0.0 -1.975 1.25 0 0 0</pose>
+      </collision>
+      <visual name="south_wall_exterior_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/south_wall_exterior/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>0.0 -2.025 0.0 0 0 0</pose>
+      </visual>
+      <visual name="east_wall_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/east_wall/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>2.375 0.0 0.0 0 0 1.5708</pose>
+      </visual>
+      <collision name="east_wall_collision">
+        <geometry>
+          <box>
+            <size>0.05 4.0 2.5</size>
+          </box>
+        </geometry>
+        <pose>2.375 0.0 1.25 0 0 0</pose>
+      </collision>
+      <visual name="east_wall_exterior_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/east_wall_exterior/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>2.425 0.0 0.0 0 0 1.5708</pose>
+      </visual>
+      <visual name="west_wall_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/west_wall/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>-2.375 0.0 0.0 0 0 1.5708</pose>
+      </visual>
+      <collision name="west_wall_collision_0">
+        <geometry>
+          <box>
+            <size>0.05 0.7902341515133193 2.5</size>
+          </box>
+        </geometry>
+        <pose>-2.375 -1.6048829242433404 1.25 0 0 0</pose>
+      </collision>
+      <collision name="west_wall_collision_1">
+        <geometry>
+          <box>
+            <size>0.05 2.3097658484866805 2.5</size>
+          </box>
+        </geometry>
+        <pose>-2.375 0.8451170757566597 1.25 0 0 0</pose>
+      </collision>
+      <visual name="west_wall_exterior_visual">
+        <geometry>
+          <mesh>
+            <uri>../floor_plans/bedroom/walls/west_wall_exterior/wall.gltf</uri>
+          </mesh>
+        </geometry>
+        <pose>-2.425 0.0 0.0 0 0 1.5708</pose>
+      </visual>
+    </link>
+  </model>
+</sdf>
