@@ -1,0 +1,8 @@
+{
+  "draft_requests": "audit_v1/turn_*/native_format_request.json",
+  "draft_status": "Do not use as a pure-format comparison against the old saved model run",
+  "reason": "Native renderer includes remembered pre-action poses. The old compact JSON current request omitted some of those earlier publicly observed poses.",
+  "corrected_requests": "input_v2/turn_*_direct.json and turn_*_native_format.json",
+  "correction": "Both future arms receive the same explicit past target poses from prior public requests, same current evidence, same system, same images. Native text is derived only from that common information. No future teacher action is added.",
+  "remaining_differences": "Native formatting has extra derived text/tokens; it remains a restricted custom system with raw unannotated views, not full official reproduction. No policy behavior has been measured on either new arm."
+}

@@ -1,0 +1,124 @@
+{
+  "status": "ordinary_shadow_and_same_information_cpu_controls_executed",
+  "new_model_calls": 0,
+  "new_training_updates": 0,
+  "new_paid_api_calls": 0,
+  "new_native_shadow_calls": 1,
+  "new_cpu_processor_encodings": 6,
+  "new_complete_scene_generations": 0,
+  "whole_scene_success": null,
+  "ordinary_rows": [
+    {
+      "turn": "turn_01",
+      "ordinary_decision": "reject_new_furniture_intersection",
+      "new_native_calls": 1,
+      "input_checkpoint": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/tools/checkpoint.json",
+      "input_sha256": "fbbda3343ccc3f9e3b88bab9e1d8a33f2fa77f532d01baae76836db4e783da9e",
+      "new_pairs": [
+        [
+          "dining_chair_0",
+          "queen_bed_0"
+        ]
+      ],
+      "candidate_pairs": [
+        [
+          "dining_chair_0",
+          "queen_bed_0"
+        ],
+        [
+          "dining_chair_0",
+          "sofa_0"
+        ],
+        [
+          "dining_table_0",
+          "queen_bed_0"
+        ],
+        [
+          "dining_table_0",
+          "sofa_0"
+        ],
+        [
+          "nightstand_0",
+          "queen_bed_0"
+        ],
+        [
+          "queen_bed_0",
+          "sofa_0"
+        ]
+      ],
+      "shadow_checkpoint": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_base_feedback_controls/audit_v1/turn_01/shadow/checkpoint.json",
+      "dispatch_seconds": 15.795474609360099,
+      "audit_seconds": 6.276907309889793,
+      "original_committed_checkpoint": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/tools/checkpoint.json",
+      "original_unchanged": true
+    },
+    {
+      "turn": "turn_02",
+      "ordinary_decision": "reject_exact_unchanged_pose",
+      "new_native_calls": 0,
+      "input_checkpoint": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_bounded_base_execution/recovery_v1/turn_01/tools/checkpoint.json",
+      "input_sha256": "07c23a7a01a1800d495c6f535dc8475e82d4398dae64c5ba27d2a9e952665a28"
+    },
+    {
+      "turn": "turn_03",
+      "ordinary_decision": "reject_exact_unchanged_pose",
+      "new_native_calls": 0,
+      "input_checkpoint": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_bounded_base_execution/recovery_v1/turn_02/tools/checkpoint.json",
+      "input_sha256": "62317df53dd5cfdb0908f59859911a32489bc66373efa9ea165919eb06546b66"
+    }
+  ],
+  "memory_rows": [
+    {
+      "turn": "turn_01",
+      "poses_match_actual_checkpoint": true,
+      "failed_call": false,
+      "recent_failed_entries": 0
+    },
+    {
+      "turn": "turn_02",
+      "poses_match_actual_checkpoint": true,
+      "failed_call": true,
+      "recent_failed_entries": 1
+    },
+    {
+      "turn": "turn_03",
+      "poses_match_actual_checkpoint": true,
+      "failed_call": true,
+      "recent_failed_entries": 2
+    }
+  ],
+  "input_token_rows": [
+    {
+      "unit": "turn_01",
+      "direct_input_tokens": 3269,
+      "native_format_input_tokens": 3534,
+      "same_image_tensors": true,
+      "direct_request_sha256": "d0dc2351c53fb16830347628752cd69c9420c856c4382cf62c68291011073b9d",
+      "native_request_sha256": "a91fcec7e9cdb34845b8a0a2b88df570f48c24eecda70e880f1d47f0b0c8e094"
+    },
+    {
+      "unit": "turn_02",
+      "direct_input_tokens": 3733,
+      "native_format_input_tokens": 4110,
+      "same_image_tensors": true,
+      "direct_request_sha256": "37880f9e55b02c1734255757030f95abd0ac79f986ce0f3a8856c6371ac95019",
+      "native_request_sha256": "ef323219583834ffc67a809eebf3a3a418645189b61696d1a271274bff733a84"
+    },
+    {
+      "unit": "turn_03",
+      "direct_input_tokens": 4122,
+      "native_format_input_tokens": 4600,
+      "same_image_tensors": true,
+      "direct_request_sha256": "53b73c99d922423b7e7b6af5360da5f296047613ccc483566c6b7bf15b701ed3",
+      "native_request_sha256": "290f4161b8b25d7e61ab7b69b30da4617c915e9a4f09f5ed0738ef322e251daa"
+    }
+  ],
+  "cpu_body_seconds": 34.10759384743869,
+  "timing_scope": "Two CPU process bodies, excludes manual reading/reporting; not policy efficiency or end-to-end generation time",
+  "original_sources_unchanged": true,
+  "scope": "Post-hoc recorded proposals; one native isolated execution and author-memory replay. No fresh model policy after rejection. Original committed scene kept.",
+  "old_model_trial_is_not_matched_format_control": true,
+  "format_arms_both_include_public_past_target_poses": true,
+  "native_format_controls_keep_custom_restricted_system_and_unannotated_views": true,
+  "next_action": "Preserve common safety/format controls; qualify whole-generation input/tool path and source-grounded decision material before requesting another model batch. Do not train on these wrong proposals."
+}
