@@ -1,0 +1,42 @@
+{
+  "status": "exact_CPU_reencoding_matches_actual_forward_inputs",
+  "input_lengths": {
+    "action": 8487,
+    "decision": 8459
+  },
+  "longest_common_prefix_tokens": 143,
+  "first_different_token": {
+    "action": {
+      "id": 7531,
+      "decoded": " SC"
+    },
+    "decision": {
+      "id": 42817,
+      "decoded": " DEC"
+    }
+  },
+  "input_tensor_sha256": {
+    "action": {
+      "input_ids": "80d056d361c74c6736e1073fd70600e8f6530e31347d5d1215fbaf588bf1417f",
+      "attention_mask": "622b4e108087caaaf382c996e3575cc618da03b883eaa4ccbee439a9b6ed546e",
+      "pixel_values": "264d017d913ec6afa538bf541d6d6901382f0bf84ebec82d6ef02176a7c1b7ea",
+      "image_grid_thw": "5b5ba9d15c0e50ca1b0993b3b6fdd287d6887c6b2362605f5b6e9fc24ab0b9d8"
+    },
+    "decision": {
+      "input_ids": "0eb5319fab59c29f0a577c72c9fec2f985647478fb66a998d0a8e0c7cda34088",
+      "attention_mask": "92f46f186a4cf30b70c974768155fd9566a0fd75bcfe2a9f4e511323bdf9f0f9",
+      "pixel_values": "264d017d913ec6afa538bf541d6d6901382f0bf84ebec82d6ef02176a7c1b7ea",
+      "image_grid_thw": "5b5ba9d15c0e50ca1b0993b3b6fdd287d6887c6b2362605f5b6e9fc24ab0b9d8"
+    }
+  },
+  "pixel_inputs_identical": true,
+  "whole_prefixes_identical": false,
+  "entire_decision_KV_valid_for_action_without_recompute": false,
+  "why": "System mode text differs before later observation tokens. Full D-stage causal KV is not the action-stage prefix. A valid shared-prefix optimization would need a separate proof/implementation; current backend starts fresh.",
+  "possible_reuse_not_measured": "Identical vision inputs/common token prefix may support separate optimizations, but no vision-feature or KV reuse is implemented here.",
+  "paired_action_actually_executed": false,
+  "teacher_or_synthetic_D_inserted": false,
+  "model_loaded": false,
+  "new_model_forwards": 0,
+  "limits": "Cost/serialization evidence only; does not prove learned decision benefit or full-scene quality."
+}

@@ -1,0 +1,14 @@
+This stage's inference budget is CLOSED (3 of at most4 forwards used).
+Do not rerun inference to regenerate the report. No prompt/sample repair retry.
+Read-only postprocessing actually executed:
+  python -B runs/autodl/20261110_shared_model_runtime/build_report.py
+  python -B runs/autodl/20261110_shared_model_runtime/verify_stage.py
+
+Historical entrypoints, NOT an instruction to reopen this protocol:
+  model-Python3.12: scripts/autodl/prepare_shared_model_probe.py --stage <new_stage>
+  native-Python3.11: scripts/autodl/run_shared_model_probe.py --stage <that_stage>
+The preparation verifies all4 checkpoint shard hashes, removes only the exact
+known action-mode suffix from the source observation, and encodes real inputs.
+Actor requests are loopback only. Policy actions were NOT dispatched.
+The token parser diagnostic uses local CPU tokenizer and exact native AST;
+it performs no additional model forwards and changes no parser thresholds.
