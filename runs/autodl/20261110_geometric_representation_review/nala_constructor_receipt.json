@@ -1,0 +1,36 @@
+{
+  "status": "pinned_config_and_inference_entrypoint_incompatible",
+  "source_constructor": "runs/autodl/20261110_geometric_representation_review/source_nala/src/nala/models/model7B.py:251",
+  "source_call": "runs/autodl/20261110_geometric_representation_review/source_nala/scripts/infer.py:96",
+  "native_signature": "(device: 'str', item_position_dim: 'int', pos_decoder_layer: 'int', pos_decoder_dim: 'List[int]', token_3D_start_end: 'bool', token_item_start_end: 'bool', hidden_size: 'int', special_tokens: 'Optional[Dict[str, str]]' = None, loss_weight: 'torch.FloatTensor' = None, load_model: 'bool' = None, asset_encoder_type: 'str' = 'pointbert', asset_encoder_ckpt_path: 'Optional[str]' = None)",
+  "actual_inference_kwargs": {
+    "device": "cuda",
+    "token_3D_start_end": true,
+    "token_item_start_end": true,
+    "hidden_size": 3584,
+    "item_position_dim": 5,
+    "pos_decoder_layer": 3,
+    "pos_decoder_dim": [
+      128,
+      64,
+      32
+    ],
+    "asset_encoder_type": "pointmae",
+    "asset_encoder_ckpt_path": null,
+    "lora_r": 64,
+    "lora_alpha": 128
+  },
+  "actual_error": "model_config.__init__() got an unexpected keyword argument 'lora_r'",
+  "source_hashes": {
+    "runs/autodl/20261110_geometric_representation_review/source_nala/src/nala/models/model7B.py": "c09e9cf2479ee64a97ecc864b07eff80f6ca7636ce1598aa904c507e4f8cedc7",
+    "runs/autodl/20261110_geometric_representation_review/source_nala/scripts/infer.py": "3b1315f92b4ee453133d4b8ffe6f90dbb015c98107e464e93e96da57f894dc20",
+    "runs/autodl/20261110_geometric_representation_review/source_nala/src/nala/eval_defaults.py": "db40e4ab1ce1ec4296d808d056a62ec0964b28468eb957d35151d61910c7732f"
+  },
+  "AST_isolation": "Only original model_config ClassDef, unmodified body; future annotation evaluation avoids imports. Caller kwargs/defaults are original literals.",
+  "full_upstream_import_tested": false,
+  "model_loads": 0,
+  "training_updates": 0,
+  "scene_generations": 0,
+  "not_inferred": "No claim about paper results, unreleased checkpoints, or whether another unpublished entrypoint resolves this mismatch",
+  "source_patched": false
+}

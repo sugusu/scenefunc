@@ -1,0 +1,52 @@
+{
+  "scope": "Targeted representation/objective/source reading, not full-field novelty clearance",
+  "entries": [
+    {
+      "title": "Imagine3D-LLM",
+      "url": "https://arxiv.org/html/2609.38177v1",
+      "read": "Sections3.1-3.3 and4.2; AppendixA, C.6, D andE. Selected setup/results text, not all tables/figures/appendices.",
+      "code_status": "cvlab-kaist/Imagine3D-LLM@5956eaef5c935e864f79fba848c878f711fea70b: fetched/read README; training and demo checklist unfilled. No implementation claimed read.",
+      "finding": "Geometry reconstruction and hidden-state scene summaries are established; comprehension results do not demonstrate complete-room generation."
+    },
+    {
+      "title": "NaLA",
+      "url": "https://arxiv.org/html/2606.29395v1",
+      "read": "Sections3-4.3,5.1-5.2; appendix0.D.2, selected metrics and0.E. Not every experiment/figure or appendix prompt.",
+      "source_pin": "ebf3ca1948c25fa2d5d3c01960257745647b3103",
+      "code_read": {
+        "src/nala/models/model7B.py": "1-203,251-358,471-585,620-645,933-978,1153-1280,1398-1562; remaining only relevant call-site searches",
+        "scripts/infer.py": "Complete",
+        "src/nala/eval_defaults.py": "Complete",
+        "src/nala/data/data_preprocess_new.py": "84-147,1098-1155; remaining only relevant field searches",
+        "docs/dataset.md": "Complete",
+        "README.md": "Complete",
+        "scripts/train.py": "Only144byte entrypoint; no complete trainer read"
+      },
+      "finding": "Point-cloud inputs and coarse/residual poses are direct scene-generation precedent; existing entrypoint and paper/source losses require version-specific qualification."
+    },
+    {
+      "title": "Existing native observation source",
+      "paths": [
+        "../20261110_native_observation_export/checkpoint_renderer/tools/render_cardinal_views.py",
+        "../20261110_native_observation_export/checkpoint_renderer/tools/render_five_views.py",
+        "../20261110_native_observation_export/checkpoint_renderer/src_critic/blender_render.py"
+      ],
+      "read": "Complete cardinal/five-view workers; top-camera setup, metadata and ceiling hiding in blender_render.",
+      "finding": "Original source plus recorded sidecars can recover conditional camera matrices; cutaways and overlays need a separate image-loss contract."
+    },
+    {
+      "title": "Related predictive geometry work search only",
+      "urls": [
+        "https://arxiv.org/abs/2610.28164",
+        "https://arxiv.org/abs/2609.13812",
+        "https://arxiv.org/abs/2606.04436"
+      ],
+      "read": "Search abstracts only; not method or code reading",
+      "use": "Candidate geometry/action claims still need overlap review; these results are not novelty clearance."
+    }
+  ],
+  "not_done": [
+    "No new model inference, rendering, training, independent projection check, NaLA benchmark or Gaussian teacher run",
+    "No demonstration of learned geometric representation, geometry certificate or independent full-room improvement"
+  ]
+}

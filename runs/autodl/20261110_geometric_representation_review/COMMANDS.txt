@@ -1,0 +1,25 @@
+All commands below use CPU/std-library only. No model, renderer or trainer starts.
+Run from the repository root.
+
+Actual read-only material extraction (output already exists; choose a fresh path
+for an independent repeat; do not overwrite actual_v1):
+  python -B scripts/autodl/audit_geometry_supervision.py --out runs/autodl/20261110_geometric_representation_review/actual_v1
+
+Actual source-only configuration qualification:
+  python -B scripts/autodl/check_nala_source_constructor.py --source runs/autodl/20261110_geometric_representation_review/source_nala --out runs/autodl/20261110_geometric_representation_review/nala_constructor_receipt.json
+
+Actual camera-candidate reconstruction (v1 metadata failure is preserved;
+v2 adds the already-published Git-blob proof for the oldest export schema):
+  python -B scripts/autodl/recover_source_camera_candidates.py --audit runs/autodl/20261110_geometric_representation_review/actual_v1 --out runs/autodl/20261110_geometric_representation_review/camera_candidates_v2.json
+
+Report/package only:
+  python -B runs/autodl/20261110_geometric_representation_review/build_report.py
+
+NaLA source is pinned and its MIT LICENSE included. Its weights, point encoders,
+datasets and optional physics cleanup were NOT downloaded/executed here.
+Imagine3D implementation was not available in the reviewed README-only commit;
+no decoder or teacher implementation is represented as reproduced.
+
+Extracted geometry is current engine state only. No expert preference, future
+outcome, or complete-scene success label is created. All24 original source units
+remain; the five units missing views are not dropped. No training admission.

@@ -1,0 +1,53 @@
+{
+  "scope": "Source-based experiment design and elementary bounds; no new learned method or theorem established",
+  "candidate_position": "Geometry supervision is an ORDINARY control for the existing decision-to-action study, not an automatically novel replacement mechanism",
+  "notions": {
+    "X": "actual common scene evidence/requirements/tool receipts",
+    "G": "predicted current object geometry keyed by stable object IDs",
+    "D": "proposed decision text",
+    "A": "native executable action",
+    "S": "actual full scene"
+  },
+  "supervision": {
+    "ordinary_geometric_auxiliary": "L_A(X,A) + lambda_G * sum_i m_i L_geom(G_hat_i(X), G_recorded_i)",
+    "geometry_conditioned_control": "Same labels/weights; deploy G_hat from current evidence, then A(X,G_hat); never reference G or future state injected only into this arm",
+    "actual_extracted": "actual_v1/current_state_geometry.jsonl: recorded state targets only, all24 units retained, no training admission",
+    "model_architecture_changed": false
+  },
+  "conditional_controls": [
+    "Same-source auxiliary D/direct A and self-generated D-conditioned A remain the primary identified comparison",
+    "If adding geometry targets, add identical geometric supervision and parameters to both policy arms; direct-A plus ordinary search gets equivalent total compute",
+    "Native current-state tool information must be equally accessible; never hide exact available positions/bounds from the ordinary baseline",
+    "A geometry-only head/auxiliary-label improvement does not prove the learned representation is used during decisions",
+    "Geometry reconstruction, action consequences, requirement satisfaction and professional design preference are different targets"
+  ],
+  "attention_path": {
+    "result": "For a causal sequence [images; Gaussian summaries; user text; action], summary states cannot attend to later user text or the ungenerated action. The later action can still attend directly to images.",
+    "consequence": "An image-conditioned current-state summary is not automatically a task-conditioned future-action model, nor a mandatory bottleneck for the action. Attention-mask or equivalent architecture/source evidence is needed for a stronger claim.",
+    "status": "Architecture inference from stated token order, not an audit of unreleased Imagine3D implementation"
+  },
+  "pose_to_occupancy_bound": {
+    "assumptions": "One fixed rigid asset K, local point norm<=r, true/predicted translations p,p_hat; nonnegative uniform scales s,s_hat; rotations R,R_hat with relative angle delta in[0,pi]. No asset-identity change.",
+    "result": "d_H(p+sRK, p_hat+s_hat R_hat K) <= ||p-p_hat|| + r*|s-s_hat| + 2*r*s_hat*sin(delta/2)",
+    "proof": "Pair each local point with itself. Split p-p_hat +(s-s_hat)Rv + s_hat(R-R_hat)v, use triangle inequality and ||R-R_hat||_2=2sin(delta/2); obtain both directed Hausdorff bounds.",
+    "collision_margin": "If eps_i,eps_j bound the two occupied-set errors, d(pred_i,pred_j)>eps_i+eps_j implies true sets are separated. The distance functional changes by at most eps_i+eps_j.",
+    "limit": "No eps has been calibrated or bounded for our model; mean pose loss, Gaussian covariance and photometric scores do not establish such a certificate. New asset shapes require a separate shape-error term. Bounds on source bboxes are not physical stability or function guarantees.",
+    "novel_theorem": false
+  },
+  "photometric_identifiability": {
+    "result": "Photometric reconstruction error alone does not uniformly bound collision/support geometry without further assumptions.",
+    "example_assumptions": "Opaque primary-ray renderer, fixed cameras/material/illumination, no indirect illumination. Changes wholly invisible from those cameras leave rendered images unchanged but can affect an unseen support/collision region.",
+    "scope": "Elementary existence example, not a claim of identical renders in our actual Cycles setup or a proof against learned priors",
+    "actual_material_issue": "Different cutaway masks and 2D overlays need explicit treatment. No claim that poses cannot be reconstructed from archived source; only the existing matrix/mask contract is incomplete."
+  },
+  "whole_generation_test": {
+    "endpoint": "original full scene request, all mandatory objects and relations, editable output; unknown checks separate",
+    "compare": "same common backend/assets/budget, own executed states; ordinary search, direct action, auxiliary supervision, predicted conditioning",
+    "readiness": "Not ready for escalation: no established independent full-room mechanism benefit, complete input24 still missing5 image units, arbitrary new CLIP retrieval still unavailable",
+    "why_no_gpu_request": "This review/extraction needs only CPU. No claim that untested new-head training fits32GB V100."
+  },
+  "new_model_calls": 0,
+  "training_updates": 0,
+  "new_complete_scenes": 0,
+  "goal_achieved": false
+}
