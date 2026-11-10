@@ -1,0 +1,67 @@
+{
+  "source_pin": "0d87088df3c6ffeafd352b0afd94201de10375df",
+  "paper": "https://arxiv.org/html/2611.09894v1",
+  "actual_our_inference_calls": 0,
+  "actual_our_training_updates": 0,
+  "actual_upstream_rollouts": 0,
+  "read_scope": {
+    "paper": "Sections3.1-3.3,4.1,4.3; primary HTML, not all appendix prompts/figures",
+    "README": "About/setup/training sections",
+    "task.py": "Complete",
+    "video_reward.py": "250-420 (config/scalar/gate/parsing),609-644 (score_rollout); remainder only function/call-site search",
+    "task_config_video_coder_video_reward_apptainer.yaml": "Complete"
+  },
+  "source_flow": [
+    {
+      "location": "task.py:80-84",
+      "branch": "Existing cached render path returns reward=accuracy=1 and skipped=True",
+      "boundary": "Observed source branch, not evidence that paper evaluation used this path or inflated a score"
+    },
+    {
+      "location": "task.py:86-103",
+      "branch": "Agent in sandbox returns accepted; preserve render/script when requested",
+      "boundary": "No complete harness/re-execution implementation audit or upstream execution"
+    },
+    {
+      "location": "task.py:105-141",
+      "branch": "Only accepted outputs invoke content scoring; on_error raises or sets video reward0",
+      "boundary": "External scoring failure is not our scene semantic truth"
+    },
+    {
+      "location": "task.py:142-150",
+      "branch": "Combine reward, optional faithfulness gate, return accuracy=float(accepted)",
+      "boundary": "accuracy is NOT the content score or full-scene completion"
+    },
+    {
+      "location": "video_reward.py:344-373",
+      "branch": "lambda=exp(-step/T) or1 without step; reward0 on nonaccept/gate, else lambda*accept_weight + video_weight*r",
+      "boundary": "Review of exact scalar source, not reproduction of GRPO optimization"
+    },
+    {
+      "location": "video_reward.py:609-644",
+      "branch": "render -> fixed video generator -> VLM comparison against reference video",
+      "boundary": "Objective is video quality, not editable complete indoor scene"
+    }
+  ],
+  "derivation": {
+    "assumptions": "Fixed group, all accepted, all pass faithfulness gate, same positive video weight alpha, nonzero within-group video-score standard deviation",
+    "reward": "R_i=lambda+alpha*r_i",
+    "centered": "R_i-mean(R)=alpha*(r_i-mean(r))",
+    "standardized": "A_i=(r_i-mean(r))/std(r) with epsilon-free group standardization",
+    "conclusion": "Execution annealing lambda cancels within this group; any fixed denominator epsilon does not change lambda cancellation. Changing alpha may affect magnitude with epsilon, unlike lambda.",
+    "not_claimed": "No conclusion that annealing is globally useless. Mixed acceptance/gate groups and resulting future policy distributions can differ. No empirical advantage or novel theorem."
+  },
+  "version_uncertainties": [
+    "Paper3.1 saysSFT6k/RL2k while4.1/conclusion say10k/4k; actual training sample count unresolved",
+    "Paper training GPU count and current README SFT launch differ; do not treat either as measured requirement for our8B/V100",
+    "Downloaded subproject LICENSE failed; source retained locally, no source redistribution"
+  ],
+  "method_consequence": [
+    "Execution/content reward combination and annealing already have direct code-driven3D precedent; cannot claim novelty from that alone",
+    "Our controls must report raw tool acceptance, final original-task completion, unknown checks and scoring failures separately",
+    "Freeze downstream tool models when comparing action learners; published video work explicitly freezes its video generator",
+    "Preserve failed/unfinished cases in reported denominators instead of interpreting accepted artifacts as complete scene success"
+  ],
+  "proposed_new_loss": false,
+  "goal_achieved": false
+}
