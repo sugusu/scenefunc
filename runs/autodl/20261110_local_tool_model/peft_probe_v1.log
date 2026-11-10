@@ -1,0 +1,17 @@
+{"status": "failed", "error": "ModuleNotFoundError: No module named 'accelerate'", "wall_seconds": 11.775661636143923, "peak_rss_kib": 616120, "language_model_calls": 0, "training_updates": 0, "pretrained_weights_loaded": false, "new_scene_generations": 0, "scope": "Actual PEFT on a 4x4 linear probe with explicitly assigned diagnostic constants; not actual Qwen/8B adapter validation."}
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/check_peft_base_isolation.py", line 81, in <module>
+    main(p.parse_args())
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/check_peft_base_isolation.py", line 21, in main
+    import peft,transformers
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/__init__.py", line 17, in <module>
+    from .auto import (
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/auto.py", line 31, in <module>
+    from .config import PeftConfig
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/config.py", line 24, in <module>
+    from .utils import CONFIG_NAME, PeftType, TaskType
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/utils/__init__.py", line 16, in <module>
+    from .loftq_utils import replace_lora_weights_loftq
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/utils/loftq_utils.py", line 25, in <module>
+    from accelerate.utils.memory import clear_device_cache
+ModuleNotFoundError: No module named 'accelerate'

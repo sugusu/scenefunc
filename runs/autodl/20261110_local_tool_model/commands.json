@@ -1,0 +1,37 @@
+{
+  "python": "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+  "working_directory": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "commands": [
+    [
+      "scripts/autodl/check_peft_base_isolation.py",
+      "--package",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps",
+      "--out",
+      "NEW_EMPTY_PROBE_DIRECTORY"
+    ],
+    [
+      "scripts/autodl/check_local_tool_vlm.py",
+      "--processor",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+      "--observation-source",
+      "runs/autodl/20261110_native_observation_export/checkpoint_renderer/src/scene_observation.py",
+      "--bindings",
+      "runs/autodl/20261110_stage_alignment_review/encoding_v2/observation_bindings.json",
+      "--vlm-source",
+      "runs/autodl/20261110_native_asset_contract/tool_source/vlm_service.py",
+      "--out",
+      "NEW_EMPTY_ENCODING_DIRECTORY"
+    ],
+    [
+      "scripts/autodl/summarize_generation_cost.py",
+      "--policy",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/actual_encoding_v3/fixture_policy_calls.json",
+      "--tool",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/actual_encoding_v3/fixture_tool_calls.json",
+      "--fixture",
+      "--out",
+      "NEW_COST_JSON"
+    ]
+  ],
+  "notes": "Set PYTHONDONTWRITEBYTECODE=1; reruns use new paths. Acquisition receipts pin two local probe packages; they are ignored, not committed. Images require existing licensed local resources."
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "source": "SceneSmith VLMService and mesh physics analysis",
+    "pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+    "local": "../20261110_native_asset_contract/tool_source/manifest.json",
+    "scope": "Re-read native completion conversion and mesh analysis request/response path; previous turn read all three preserved tool files.",
+    "implication": "Changing the tool model can change physical metadata even if policy is fixed. Same tool backend must be shared; numeric mass/material output is still an estimate."
+  },
+  {
+    "source": "PEFT 0.17.1",
+    "url": "https://github.com/huggingface/peft/blob/v0.17.1/src/peft/peft_model.py",
+    "scope": "disable_adapter and get_model_status path; LoRA layer.forward and enable/disable branch, not whole package.",
+    "implication": "Reject merged/irregular adapters; actual tiny forward confirms context restoration, not 8B equivalence."
+  },
+  {
+    "source": "Distilling step-by-step",
+    "url": "https://aclanthology.org/2023.findings-acl.507/",
+    "code": "https://github.com/google-research/distilling-step-by-step/blob/ef944263c9ddfd40a9888557f3e7d17513fd1a7e/model_utils.py",
+    "scope": "Re-read complete model_utils.py including separate prediction/explanation forwards. run.py fully read in preceding turn; no new full-paper reading claim.",
+    "implication": "Auxiliary rationale supervision is an existing baseline; causal LM adaptation is not the exact T5 reproduction."
+  },
+  {
+    "source": "Measuring Faithfulness in Chain-of-Thought Reasoning",
+    "url": "https://www-cdn.anthropic.com/827afa7dd36e4afbb1a49c735bfbb2c69749756e/measuring-faithfulness-in-chain-of-thought-reasoning.pdf",
+    "scope": "Abstract, introduction, methods 2.1–2.4 and table 2 in extracted text, PDF pages 1–5; no complete appendix/figure-image review.",
+    "implication": "Changes after intervention and performance gains are different quantities; neither textual plausibility nor sensitivity alone establishes useful scene design."
+  }
+]

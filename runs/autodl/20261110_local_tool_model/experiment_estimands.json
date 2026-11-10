@@ -1,0 +1,76 @@
+{
+  "status": "Prospective mechanism comparison, not a new learning objective or authorization to run",
+  "variables": {
+    "X": "original task, actual scene observation, same permitted evidence and tool results",
+    "D": "explicit generated decision proposal, not hidden reasoning or an executed fact",
+    "A": "native action or proposed stop",
+    "M": "source units with recorded D"
+  },
+  "objectives": {
+    "auxiliary": "L_aux = sum_i CE_w(A_i|X_i) + sum_{i in M} CE_v(D_i|X_i)",
+    "conditioned": "L_cond = sum_{i in M} CE_w(A_i|X_i,D_i) + sum_{i not in M} CE_w(A_i|X_i) + sum_{i in M} CE_v(D_i|X_i)",
+    "weights": "Same immutable source token coefficients in both objectives; split components must not be renormalized to equal weight.",
+    "not_claimed": "No new loss, no universal improvement theorem, no causal interpretation of plausible prose."
+  },
+  "arms": [
+    {
+      "name": "separate_direct_v3",
+      "training": "auxiliary",
+      "deployment": "A(X)",
+      "role": "Primary efficient learned control"
+    },
+    {
+      "name": "separate_phase_v3",
+      "training": "auxiliary",
+      "deployment": "generate D for audit, then A(X) without D",
+      "role": "Diagnostic only; intentionally unused D is not a strong efficiency baseline"
+    },
+    {
+      "name": "paired_phase_v3",
+      "training": "conditioned",
+      "deployment": "generate D, then A(X,D_hat)",
+      "role": "Candidate end-to-end mechanism"
+    },
+    {
+      "name": "base_plus_shared_search",
+      "training": "none",
+      "deployment": "base policy, same knowledge/evaluation/tools, ordinary multi-operation search",
+      "role": "Strong control, full-generation search not yet implemented"
+    }
+  ],
+  "identification": [
+    "Action-only versus rationale+action changes supervision quantity and conditioning; cannot identify the conditioning effect.",
+    "Conditioned versus auxiliary with same materials estimates a training-and-deployment treatment, not pure semantic causality of D.",
+    "A self-generated D may help finite computation even without new external information; factorization alone guarantees no gain.",
+    "Removing/replacing D is an off-distribution intervention and is supplementary evidence, not an alternative performance score.",
+    "If D is correct but A fails, distinguish grounding/action limitation; if A executes but room fails, distinguish metric/constraint coverage.",
+    "Do not silently replace generated D with teacher D or reset actual states to saved correct rollouts."
+  ],
+  "material_limit": {
+    "units": 24,
+    "families": 6,
+    "recorded_decision_units": 10,
+    "missing_decision_units": 14,
+    "all_targets_furniture": true,
+    "consequence": "Retain missing-D action units. No invented decisions or claims of full-stage training; conditioning exposure is incomplete."
+  },
+  "cost": {
+    "model_tokens": "policy D+A plus tool-side analyses, invalid responses and retries; input and output separately",
+    "local_time": "outer trial wall plus stage breakdown, never add nested stage time to outer wall",
+    "assets": "same catalogue/metadata and cache policy; report one-time preprocessing separately and amortization assumption",
+    "comparison": "quality against actual total cost and fixed limits; identical token caps do not equal identical latency or FLOPs",
+    "saved_compute": "ordinary search may spend saved reasoning budget through the same tools, not a single-action weakened control"
+  },
+  "quality": {
+    "primary": "all frozen mandatory instances and supported requirements satisfied simultaneously",
+    "also_report": [
+      "unknown/unsupported requirements",
+      "newly broken requirements",
+      "collisions and bounds",
+      "edit magnitude",
+      "whole-stage completion"
+    ],
+    "unit": "independent room/description family; seeds and views are nested, not independent samples"
+  },
+  "decision_rule": "Only expand after actual full-scene gains over auxiliary direct-action and common search, at matched meaningful cost, on independent descriptions. A positive pilot is not proof of CVPR novelty."
+}

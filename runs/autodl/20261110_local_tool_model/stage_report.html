@@ -1,0 +1,23 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>工具模型隔离、真实库验证与研究对照</title>
+<style>body{font:17px/1.7 system-ui;max-width:1060px;margin:40px auto;padding:0 20px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:9px}code{background:#eee}a{color:#165eb0}</style>
+<h1>把工具模型保持一致，才能检验设计决定的作用</h1>
+<p>本轮接通共享本地模型的工具服务绑定，完成真实图像编码和真实 PEFT 库的小型数值检查。没有语言模型推理、训练、完整场景生成或付费 API。前一轮 Git 审阅已确认研究未建立方法优势；本轮解决的是一项真实的实验混杂因素，不将工程修正称为创新。</p>
+<h2>实际执行与边界</h2>
+<table><tr><th>执行</th><th>结果</th><th>不能推出</th></tr>
+<tr><td>五张原生场景视图，真实 Qwen processor 编码</td><td>文件输入与内嵌图像输入的 token、像素张量和网格完全一致；17.90 秒，峰值约802.6 MiB</td><td>历史像素完全复原、模型看懂图像、真实物理分析成功</td></tr>
+<tr><td>PEFT 0.17.1 实际 LoRA，4×4 线性网络</td><td>关闭后精确恢复基座输出，嵌套与异常退出恢复状态；已合并适配器被接口拒绝</td><td>8B 权重/GPU配置和原生整场流程已验证</td></tr>
+<tr><td>原生控制函数的七个替身场景</td><td>控制流程回归通过；中途结束不冒充整场完成</td><td>七个真实生成成功</td></tr>
+<tr><td>调用成本汇总</td><td>三次脚本生成（含一次错误 JSON）均计入；缺失工具账本记未知</td><td>全系统成本已齐全或三次真实模型推理</td></tr></table>
+<p>首次 PEFT 导入缺 accelerate 的失败仍保留；补充固定小型依赖后才通过。未安装到旧环境。各版本结果均保留，最终数值见<a href="summary.json">汇总</a>与<a href="peft_probe_v3/summary.json">PEFT 原始记录</a>。</p>
+<h2>为什么这项接口影响研究结论</h2>
+<p>原生资产处理会用 VLM 判断朝向、材质和质量。若训练后连这个工具也换成带实验适配器的模型，比较同时改变了规划与执行环境。新绑定在原生服务构造前安装，在原生主模型载入后绑定同一实例；工具分析暂时关闭实验适配器。未知模型映射、外部图片、截断输出和预算耗尽均显式失败。模型替换必须记录，不能称为原作者模型的等价复现。</p>
+<p>覆盖仅限新构造的 VLMService；既有实例、Agents SDK、图像生成和其他客户端未被统一接管。图像编码是真实的，三次输出是固定脚本。全系统零付费路径、真实资产物理分析及8B共享实例仍未通过实际运行验证，因此 full_runtime_ready 继续为 false。</p>
+<h2>保留的算法问题与正确强对照</h2>
+<p>设 X 为任务与当前场景，D 为明确输出的设计决定，A 为实际动作。两组都使用同一来源的 D、A 与原 token 权重。辅助组学习 D|X 和 A|X；条件组学习 D|X 和 A|X,D。有 D 的来源才监督后一条件，缺少 D 的14个动作单元仍保留，不能补造理由或当作全部已配对。</p>
+<p>实际生成时条件组只能使用自己生成的 D；执行后依据真实新场景继续。主要效率对照是辅助组直接行动，并允许普通搜索使用省下的计算。辅助组先生成但不读取 D，只能作为机制诊断，不能当作被故意浪费预算的主要竞争方法。同材料条件对照识别的是“训练＋部署”的组合变化，不能单独证明理由的语义因果作用。</p>
+<p><a href="https://aclanthology.org/2023.findings-acl.507/">Distilling step-by-step</a> 的官方实现已分开计算预测与解释损失；这里的辅助目标不是新损失。<a href="https://www-cdn.anthropic.com/827afa7dd36e4afbb1a49c735bfbb2c69749756e/measuring-faithfulness-in-chain-of-thought-reasoning.pdf">Measuring Faithfulness</a> 用推理文本干预研究输出依赖，并区分依赖与性能。对我们而言，理由看似合理、动作对理由敏感、整场质量改善，是三项不同的证据。删除理由导致变化也可能来自输入分布改变，不能直接认定理由忠实或有用。</p>
+<h2>完整场景与成本必须同时落地</h2>
+<p>共同资产、工具模型、允许操作、未知项规则与评价保持一致。主要结果是必需实例和支持的要求同时完成，另报未验证项、碰撞、越界、损坏原正确关系和改动规模。停止或阶段保存成功不等于设计成功；房间家族才是独立统计单位。</p>
+<p>成本包括策略 D+A、工具侧模型、错误输出及重试、资产准备与渲染求解。输入/输出 token 分开，阶段时间不重复叠加到整场时钟。相同输出上限不等于相同 FLOPs 或耗时。本轮汇总器明确拒绝从局部账本推出全系统成本，见<a href="fixture_costs.json">脚本账本汇总</a>。</p>
+<p>这仍是值得做有限验证的机制，而非已确认的三维新方法。下一项有价值的证据应当是共同后端上的完整生成与强对照；当前还缺原始观察覆盖、可用仿真资产、真实工具推理与整场普通搜索。没有因本轮小检查通过就要求开启GPU，也没有开始扩充训练。</p>
+<p><a href="experiment_estimands.json">训练与部署对照的具体定义</a> · <a href="reading_ledger.json">阅读范围</a> · <a href="commands.json">复核命令</a> · <a href="source_check.json">源文件核对</a> · <a href="actual_encoding_v3/summary.json">最终编码与绑定检查</a></p></html>

@@ -185,7 +185,8 @@ class _ObservedSession(_ForwardingProxy):
 @contextmanager
 def shared_model_driver(native_module, *, phase_settings, stage_budget,
                         allowed_tools, load_images, acceptance, evidence_format,
-                        ledger, adapter_loader=None, backend_factory=TorchPhaseBackend):
+                        ledger, adapter_loader=None, backend_factory=TorchPhaseBackend,
+                        tool_vlm_binding=None):
     """Wrap native main_async without a second model constructor.
 
     adapter_loader, if supplied, attaches an already available local adapter to
@@ -210,6 +211,8 @@ def shared_model_driver(native_module, *, phase_settings, stage_budget,
                 raise ValueError('Unmerged adapter with reversible disable_adapter required')
         wrapper=BaseStagePolicy(policy,ledger,adapter_loader is not None)
         loaded.append(wrapper)
+        if tool_vlm_binding is not None:
+            tool_vlm_binding.bind(policy.model,policy.processor,adapter_loader is not None)
         return wrapper
 
     async def driver(*,env,policy,max_steps):
@@ -230,7 +233,10 @@ def shared_model_driver(native_module, *, phase_settings, stage_budget,
     native_module.driver_loop=driver
     native_module.RolloutSession=lambda *a,**kw: _ObservedSession(session_factory(*a,**kw),ledger)
     try:
-        yield
+        # Install before session.start creates service objects; bind only after
+        # native main loads its single model. Tool receipts are a separate ledger.
+        with tool_vlm_binding.scope() if tool_vlm_binding is not None else nullcontext():
+            yield
     finally:
         native_module.ModelPolicy=factory
         native_module.driver_loop=original_driver
