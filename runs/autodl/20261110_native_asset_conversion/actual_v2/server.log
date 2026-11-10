@@ -1,0 +1,33 @@
+2026-11-10 18:42:04,629 - __main__ - INFO - Using provided temp directory: /tmp/blender_server_esg7i1gd
+2026-11-10 18:42:04,629 - __main__ - INFO - Starting Blender server at 127.0.0.1:18204
+2026-11-10 18:42:04,629 - __main__ - INFO - Initializing Blender render app...
+2026-11-10 18:42:04,634 - __main__ - INFO - Starting Flask server (bpy requires main thread execution)...
+2026-11-10 18:42:04,640 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:18204
+2026-11-10 18:42:04,640 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-11-10 18:42:05,433 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2026 18:42:05] "GET / HTTP/1.1" 200 -
+2026-11-10 18:42:05,436 - scenesmith.agent_utils.blender.server_app - INFO - GLB to GLTF conversion request received
+2026-11-10 18:42:05,437 - scenesmith.agent_utils.blender.mesh_conversion - INFO - Converting .glb to GLTF: /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_asset_conversion/actual_v2/asset/nightstand.gltf
+2026-11-10 18:42:05,548 - glTFImporter - INFO - Data are loaded, start creating Blender stuff
+2026-11-10 18:42:05,549 - glTFImporter - INFO - Blender create Mesh node mig_00wood
+2026-11-10 18:42:05,559 - glTFImporter - INFO - Blender create Mesh node BlackGloss
+2026-11-10 18:42:05,566 - glTFImporter - INFO - glTF import finished in 0.02s
+2026-11-10 18:42:05,712 - glTFImporter - INFO - Starting glTF 2.0 export
+2026-11-10 18:42:05,713 - glTFImporter - INFO - Extracting primitive: mig_00wood
+2026-11-10 18:42:05,750 - glTFImporter - WARNING - More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+2026-11-10 18:42:05,794 - glTFImporter - INFO - Primitives created: 1
+2026-11-10 18:42:05,795 - glTFImporter - INFO - Extracting primitive: BlackGloss
+2026-11-10 18:42:05,801 - glTFImporter - INFO - Primitives created: 1
+2026-11-10 18:42:05,807 - glTFImporter - INFO - Finished glTF 2.0 export in 0.09514474868774414 s
+2026-11-10 18:42:05,807 - scenesmith.agent_utils.blender.mesh_conversion - INFO - Converted to GLTF with separate textures (Drake compatible): /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_asset_conversion/actual_v2/asset/nightstand.gltf
+2026-11-10 18:42:05,807 - scenesmith.agent_utils.blender.server_app - INFO - GLB to GLTF conversion completed in 0.37s: /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_asset_conversion/actual_v2/asset/nightstand.gltf
+2026-11-10 18:42:05,808 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2026 18:42:05] "POST /convert_glb_to_gltf HTTP/1.1" 200 -
+2026-11-10 18:42:07,152 - scenesmith.agent_utils.blender.server_app - INFO - Multiview render request received
+2026-11-10 18:42:07,159 - scenesmith.agent_utils.blender.renderer - INFO - Rendering 4 views for VLM analysis (512x512px)
+2026-11-10 18:42:07,289 - glTFImporter - INFO - Data are loaded, start creating Blender stuff
+2026-11-10 18:42:07,290 - glTFImporter - INFO - Blender create Mesh node BlackGloss
+2026-11-10 18:42:07,294 - glTFImporter - INFO - Blender create Mesh node mig_00wood
+2026-11-10 18:42:07,301 - glTFImporter - INFO - glTF import finished in 0.01s
+2026-11-10 18:42:58,527 - scenesmith.agent_utils.blender.renderer - INFO - Rendered 4 views to /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_asset_conversion/actual_v2/physics_views in 51.37s
+2026-11-10 18:42:58,528 - scenesmith.agent_utils.blender.server_app - INFO - Multiview rendering completed: 4 images (render: 51.37s, total: 51.38s)
+2026-11-10 18:42:58,530 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2026 18:42:58] "POST /render_multiview HTTP/1.1" 200 -

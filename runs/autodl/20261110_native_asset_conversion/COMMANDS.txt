@@ -1,0 +1,22 @@
+Run from the repository root. Existing code/results/assets remain read-only.
+No model generation, API or training is launched by these commands.
+
+Initial actual_v1 import failed before server construction: missing colorama.
+Preserve execution.stdout/execution.stderr and import_recovery_protocol.json.
+Recovery used the existing native_observation_export/deps path, no installation.
+
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' NO_PROXY=127.0.0.1,localhost \
+PYTHONPATH=$REPO/runs/autodl/20261110_native_observation_export/deps:$REPO/runs/autodl/20261110_native_observation_export/source:$REPO/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps \
+/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/execute_native_asset_conversion.py \
+ --stage runs/autodl/20261110_native_asset_conversion --out NEW_DIRECTORY
+
+The published actual_v2 already exists. Do not overwrite/retry for quality.
+CUDA visibility does not prevent Blender Eevee graphics use (see device record).
+
+Processor-only preparation (published physics_input_v1 already exists):
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' \
+/root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python -B \
+ runs/autodl/20261110_native_asset_conversion/prepare_native_physics_request.py
+
+Rebuild metadata only, does not restart services or load model:
+python -B runs/autodl/20261110_native_asset_conversion/build_report.py

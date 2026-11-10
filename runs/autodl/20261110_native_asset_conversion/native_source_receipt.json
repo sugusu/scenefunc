@@ -1,0 +1,55 @@
+{
+  "source_manifest": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_observation_export/source/manifest.json",
+  "source_manifest_sha256": "43c2b566b375a58f41d9dee74c442104d5c0a678dc60c44b37ada02edc9949b9",
+  "source_pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+  "author_integration_patches": [
+    {
+      "path": "scenesmith/agent_utils/blender/canonicalization.py",
+      "before_sha256": "021185731d405edd559a96bfe4872358299d04af20c393758b99d3f52613d21a",
+      "after_sha256": "592e37d7eb7c4707a8a24db247043c884fe677198a30224a08794f26c4eb3353",
+      "origin_patch_sha256": "da3fd89e64487514af7d3da02690c6490639011366486eb4b81b628e4f8d9051"
+    },
+    {
+      "path": "scenesmith/agent_utils/blender/mesh_conversion.py",
+      "before_sha256": "ad47a394b0d2346c583b87170fed62cd7913c6d38e772aca67650e879ffcb7e2",
+      "after_sha256": "bfb814f3060be811d2c63345a0c8d5bc2a0eb806e1fcfa439bd07327e0f0b8ae",
+      "origin_patch_sha256": "da3fd89e64487514af7d3da02690c6490639011366486eb4b81b628e4f8d9051"
+    },
+    {
+      "path": "scenesmith/agent_utils/blender/renderer.py",
+      "before_sha256": "ed212fbc88faa3b0c97da4792d33733c1b650952863c0f8cd3a646b2ab26dc3e",
+      "after_sha256": "d5aca0b61bdd3410c2a224af55ab38def62b7d312d6e54497b92f247fe55ba2a",
+      "origin_patch_sha256": "da3fd89e64487514af7d3da02690c6490639011366486eb4b81b628e4f8d9051"
+    },
+    {
+      "path": "scenesmith/agent_utils/blender/server_app.py",
+      "before_sha256": "33384f5901bb9e5e293f0766deb128093ac385edce4f52efc888fab1f350da33",
+      "after_sha256": "7af5235afd93bdea28f4e3a63ab1952bc5a2f76ed8a3a3734d953fdb5319aae3",
+      "origin_patch_sha256": "da3fd89e64487514af7d3da02690c6490639011366486eb4b81b628e4f8d9051"
+    },
+    {
+      "path": "scenesmith/agent_utils/blender/server_manager.py",
+      "before_sha256": "b9a3bfc233c795ef9c68ea1aeb33d02411fdc420aef4363134cbf522a30f80ef",
+      "after_sha256": "3e5558e242d0d3cc68cadb78c96227094958e3222d2f21a62bd5cb2764a94f4e",
+      "origin_patch_sha256": "da3fd89e64487514af7d3da02690c6490639011366486eb4b81b628e4f8d9051"
+    },
+    {
+      "path": "scenesmith/utils/network_utils.py",
+      "before_sha256": "c0285dfff5707d22c885ccb9d04b0ae58ad644d34b80599e26dbfb3ebebb7fb2",
+      "after_sha256": "4cc625e38789683907c94a65c2d58174ca75f7b8bbd90241a686beae002042da",
+      "origin_patch_sha256": "da3fd89e64487514af7d3da02690c6490639011366486eb4b81b628e4f8d9051"
+    }
+  ],
+  "verified_read_only_file_count": 49,
+  "original_hashes": "actual_v2/input_hashes.json",
+  "reading_scope": {
+    "blender/mesh_conversion.py": "Complete convert_glb_to_gltf_impl; full body executed by real HTTP route.",
+    "blender/server_manager.py": "1-150, 403-548, 581-645: startup, readiness, conversion and render request; native full module imported, no claim all retry branches were exercised.",
+    "blender/renderer.py": "317-465: setup and view construction, plus actual full native render function executed.",
+    "mesh_physics_analyzer.py": "1-380: request/parse path read; only request-building AST statements executed after real rendering. No VLM/parser execution or returned estimates.",
+    "prompts/data/mesh_physics/hssd.yaml": "Complete; source-verified original prompt, no template substitutions.",
+    "prompts/manager.py": "Complete; actual normal PromptManager import/get_prompt executed.",
+    "prompts/registry.py": "PromptEnum/Meta and MeshPhysicsPrompts read; complete module normally imported.",
+    "utils/openai.py": "Complete; actual JPEG encoding helper executed."
+  }
+}
