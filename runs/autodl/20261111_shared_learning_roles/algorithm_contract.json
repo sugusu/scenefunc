@@ -1,0 +1,33 @@
+{
+  "task": "Complete editable indoor3D generation",
+  "scope": "Common training/teacher/tool invariants, not a new method",
+  "implemented_roles": [
+    "student_train",
+    "policy_eval",
+    "teacher_eval",
+    "tool_eval"
+  ],
+  "actual_test": "Two real PEFT adapters on a small explicitly initialized CPU linear network",
+  "role_state_qualified": [
+    "active_adapter",
+    "standard Torch module training flags",
+    "requires_grad flags",
+    "CPU Torch RNG under eval roles",
+    "student gradient graph in stated fixture",
+    "optimizer parameter ownership"
+  ],
+  "not_qualified": [
+    "pretrained8B forward/backward or peak memory",
+    "full scene generation",
+    "original VLMService/host integration",
+    "distributed/quantized/compiled/offload modes",
+    "simulator/asset/RNG snapshots",
+    "teacher correctness or learning gain"
+  ],
+  "conditional_base_identity": "No shared-base/bias/extra-module updates, no merges or other writes, one common lock, same declared W0",
+  "new_VLM_forwards": 0,
+  "optimizer_updates": 0,
+  "new_complete_scene_successes": 0,
+  "paid_API_calls": 0,
+  "goal_complete": false
+}

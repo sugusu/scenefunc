@@ -1,0 +1,69 @@
+{
+  "status": "real_PEFT_two_adapter_mode_and_gradient_probe_completed_CPU_only",
+  "peft": "0.17.1",
+  "torch": "2.7.0+cu126",
+  "tiny_network": "8x8 linear; rank2 LoRA student+teacher",
+  "dropout_probability": 0.05,
+  "source_context_repetitions": 32,
+  "source_context_teacher_distinct_outputs": 4,
+  "source_context_scope": "Original HinT-SD _use_adapter AST with no_grad on this deliberately train-mode CPU fixture; not author checkpoint reproduction",
+  "controlled_teacher_distinct_outputs": 1,
+  "controlled_teacher_no_grad_and_eval": true,
+  "all_role_mode_trainability_and_active_adapter_states_restored": true,
+  "frozen_tool_output_exactly_equals_unadapted_fixture_base": true,
+  "teacher_and_policy_role_CPU_rng_restored": true,
+  "retained_student_graph_gradient_unchanged_by_intervening_role_switches": true,
+  "student_gradient_norms": [
+    21.262115478515625,
+    37.894737243652344
+  ],
+  "autograd_gradient_evaluations": 2,
+  "optimizer_parameter_ownership": {
+    "student_parameter_tensors": 2,
+    "teacher_or_base_parameter_tensors": 0,
+    "optimizer_step_executed": false
+  },
+  "real_optimizer_instance_created_without_step": true,
+  "teacher_contamination_and_missing_student_parameters_rejected": true,
+  "actual_small_linear_forward_calls": 72,
+  "all_main_fixture_parameter_hashes_unchanged": true,
+  "explicit_diagnostic_tensor_assignments_not_training": true,
+  "shared_bias_counterexample": {
+    "old_state_only_gate_accepts": true,
+    "base_changed_when_adapter_disabled": true,
+    "new_guard_rejects": "Adapted shared bias/modules/tokens/layers cannot be a common frozen tool base"
+  },
+  "source_hashes": [
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/peft_model.py",
+      "sha256": "2307ebeb101baff53b19ce5a0f109885d99b64ab147d67cba19719b6097c3e10"
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/tuners/tuners_utils.py",
+      "sha256": "d5b6a92d8f0b5325951519e81d2ed9debcba6ace1028e887958dd5e5188be66a"
+    },
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_local_tool_model/peft_runtime/deps/peft/tuners/lora/layer.py",
+      "sha256": "39e2f6908c9f3faf4d2de2b6ecfdf44c96d2cae67b8155ed1b51bc67fb25b734"
+    },
+    {
+      "path": "/dev/shm/feedback_information_sources_20261111/HINT-SD/src/train/trainer.py",
+      "sha256": "23e36f63a4a93e4b8d577f05cb165a36b98db766d45df30501e2a73bb00f6121"
+    }
+  ],
+  "original_hint_method_lines": [
+    199,
+    208
+  ],
+  "VLM_forwards": 0,
+  "model_generate_requests": 0,
+  "pretrained_weights_loaded": false,
+  "optimizer_updates": 0,
+  "paid_API_calls": 0,
+  "new_native_SDK_calls": 0,
+  "new_complete_scenes": 0,
+  "actual_8B_forward_or_memory_qualification": false,
+  "CUDA_initialized": false,
+  "role_controller_sha256": "5b66af4b959b6c63b092f66723569365f4d16862742dcad3415f126ea1b15631",
+  "wall_seconds": 9.48475394397974
+}

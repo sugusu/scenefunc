@@ -1,0 +1,125 @@
+"""Measured small-PEFT role results and conditional invariants, no scene claim."""
+import argparse
+import csv
+import hashlib
+import html
+import json
+from pathlib import Path
+import zipfile
+
+
+THEORY='''共享底模时的训练、教师与三维工具角色：实际实现与条件证明
+
+1. 为什么是研究准备的一部分
+任务仍是完整可编辑室内三维生成；待检验主张仍是来源设计知识/执行证据能否超过普通计划、反馈和搜索。
+如果候选策略训练时连资产分析工具的底模也改变，或者不同教师条件使用不同随机层状态，就无法把收益归给所声称的设计机制。
+本轮解决的是共同实验条件，不是一个新的三维方法或新损失。小网络结果不作为场景生成成绩。
+
+2. 新实现的四个角色
+一个已创建的单设备、未合并、标准双LoRA模型：共享底模W0，学生参数theta_s，教师参数theta_t。
+student_train：学生适配器激活，标准训练模式；仅学生适配器参数可训练。调用者须将forward、backward和optimizer放在同一共享锁内。
+policy_eval：学生适配器激活，eval+no_grad；用于后续策略部署，不提供教师信息。
+teacher_eval：教师适配器激活，eval+no_grad；教师参数不进入学生优化器。目标上下文和teacher参数生命周期仍需在实验中另外固定。
+tool_eval：全部适配器关闭，eval+no_grad；供三维工具的基础模型推理。它不保证这个基础模型的类别、方向或材质判断正确。
+所有角色必须经过同一个RLock；正常和异常退出恢复原active adapter、每个模块的training标志和每个参数的requires_grad标志。
+评估角色保存/恢复Torch RNG；训练角色保留自身正常消耗的随机状态。没有声称恢复numpy、模拟器、文件版本或工作进程。
+不支持嵌套角色、合并适配器、编译/量化/分布式/跨设备模型，或会改共享bias、模块、token与层结构的配置。这对应当前拟用普通单卡LoRA，不缩小最终三维任务。
+这不是完整host/Trainer接入：原生模型服务、总调用额度、8B adapter注入与整场执行仍未验证。
+
+3. 两个不同的“冻结”
+no_grad控制是否记录梯度；eval控制Dropout等模块行为；requires_grad控制参数是否要求梯度；冻结参数值还要约束优化器和显式更新。
+已读本地PEFT0.17.1源码：set_adapter会改变trainability。因此恢复旧requires_grad必须放在切回旧adapter之后。
+仅恢复model.training一个总开关不够：进入前可能存在混合子模块模式。本实现逐模块恢复已保存标志。
+优化器守卫检查真实参数对象ID：恰好包含学生适配器参数一次，不包含teacher/base，也不遗漏学生参数。requires_grad=False本身不会把参数从既有优化器组移走。
+教师初值复制、teacher EMA或固定初始teacher是独立算法选择，本控制器不偷偷更新teacher。各比较条件必须用相同的规则和已记录权重来源。
+
+4. 条件不变量，不是泛化定理
+在以下前提成立时：W0初始身份相同；标准未合并LoRA且共享bias/额外模块不被训练；优化器只拥有theta_s；teacher更新只写theta_t；所有模型操作遵守同一锁与角色；没有其他权重写入。
+则注册的学生更新只产生theta_s'=U(theta_s,grad L)，教师更新只产生theta_t'=G(theta_t,theta_s)，W0'=W0。
+在tool_eval中，适配器贡献为零，所以同样的输入、模型版本和eval模式下工具使用同一F(W0,x)。这是对工具底模身份的条件性结论，不是工具内容准确性的结论。
+策略使用F(W0+Delta(theta_s),x)，teacher使用F(W0+Delta(theta_t),x,c)。因此教师上下文的信息对照可以避免与工具参数更新混在一起。
+如果共享bias也更新，则实际是W0'不同，关闭LoRA并不能恢复F(W0,x)。本轮反例用显式诊断赋值展示这一点，没有训练任何场景模型。
+这些都是普通参数隔离和代数事实，不能单独作为CVPR贡献。真实8B模型还涉及数值、缓存、checkpoint重算、视觉输入与原生服务调用，不能由小网络外推证明。
+
+5. 实际执行了什么
+使用现有PEFT0.17.1、Torch2.7.0+cu126、Transformers4.57.1；不升级依赖、不加载预训练权重。
+在8x8线性层上创建rank2学生/教师LoRA，显式赋非零诊断矩阵、dropout0.05。非零teacher用于检验一个可能的适配后状态，不是学出来的参数。
+原HinT-SD _use_adapter未修改AST配合no_grad，在32个预置种子下得到4种小网络输出；新共同teacher_eval得到1种。
+这只说明该context manager没有替调用者设置eval；不证明HinT-SD论文训练出错，也不证明关闭随机层在所有训练任务更好。新共同比较选择确定性eval目标，必须明确这是实验设定。
+真实PEFT角色切换之后，同一保留学生计算图的两次autograd梯度完全一致。优化器对象被创建以检查参数归属，但从未调用step。
+适配器关闭后的工具输出与原始fixture底模一致；正常/异常退出的模块模式、参数trainability、active adapter及CPU RNG按声明范围恢复。
+主fixture全部参数哈希不变。独立共享bias反例的显式赋值不计训练；它验证旧“未合并”状态检查不足以证明原始底模身份，旧检查自己的文档本来就限定了这一范围。
+最终probe_v2有72次小线性网络forward、2次autograd取梯度、0次optimizer更新。v1同样成本保留，总144次小网络forward、4次取梯度，均非VLM/场景成绩。
+
+6. 静态资源边界
+已重新核对现有8B配置、索引和四个safetensors头部hash，没有读取/实例化权重张量。
+原rank8语言模块方案为252个模块、21823488个学生LoRA参数。假设冻结底模FP16，学生参数/梯度/两份Adam状态FP32，额外teacher只有FP32参数：
+ 17534247392 + 16*21823488 + 4*21823488 = 17970717152 bytes，约16.7365GiB。
+这不包含激活、反向临时量、视觉编码、注意力工作区、allocator、CPU载入缓冲或3D原生进程；不能据此断言V10032GB训练够用。
+语言LoRA不等于视觉编码器也训练。不得把这些静态存储数替代实际FP16稳定性、梯度和峰值显存测量。
+
+7. 与前两轮算法对照的连接
+上轮C0/普通提示/动作回显/原生报告/回显加报告五个条件，需要共享相同teacher参数、eval/RNG约定与工具W0。
+设计决定full/noR/plan及独立D/动作/原生连续基线，也要使用相同工具底模、输入知识与操作预算。隔离适配器不能弥补缺少原始图像、正确教师动作或独立场景评测。
+当前SDPO与HinT-SD官方main均核对未变；前者actor仍显式拒绝multimodal distillation。没有据此获得一个开箱即用的原生Qwen3-VL训练器。
+后续需要真实8B角色/梯度/显存剖面，再检验教师对可核验要求的实际建议；只有完整新场景的收益超过强对照，才有候选研究贡献。
+本轮不重开旧生成额度、不启动计费资源或模型推理；研究仍在进行。没有训练后优势、完整正场景或CVPR录用保证。
+'''
+
+
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def dump(path,value):path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
+
+
+def main(repo,out):
+    read=lambda name:json.loads((out/name).read_text())
+    result=read('probe_v2/result.json');storage=read('two_adapter_static_storage.json')
+    assert result['actual_small_linear_forward_calls']==72 and result['optimizer_updates']==0
+    (out/'algorithm_and_theory.txt').write_text(THEORY)
+    contract=dict(task='Complete editable indoor3D generation',scope='Common training/teacher/tool invariants, not a new method',
+        implemented_roles=['student_train','policy_eval','teacher_eval','tool_eval'],
+        actual_test='Two real PEFT adapters on a small explicitly initialized CPU linear network',
+        role_state_qualified=['active_adapter','standard Torch module training flags','requires_grad flags','CPU Torch RNG under eval roles','student gradient graph in stated fixture','optimizer parameter ownership'],
+        not_qualified=['pretrained8B forward/backward or peak memory','full scene generation','original VLMService/host integration','distributed/quantized/compiled/offload modes','simulator/asset/RNG snapshots','teacher correctness or learning gain'],
+        conditional_base_identity='No shared-base/bias/extra-module updates, no merges or other writes, one common lock, same declared W0',
+        new_VLM_forwards=0,optimizer_updates=0,new_complete_scene_successes=0,paid_API_calls=0,goal_complete=False)
+    dump(out/'algorithm_contract.json',contract)
+    rows=[('final_CPU_fixture_forwards',72,'not VLM or scene generation'),('all_CPU_fixture_forwards_v1_v2',144,'both attempts retained'),
+          ('final_autograd_gradient_evaluations',2,'no optimizer step'),('fixture_parameters_updated_by_optimizer',0,'explicit diagnostic initialization separately recorded'),
+          ('source_context_distinct_fixture_outputs',4,'32 predefined seeds; nonzero LoRA/dropout fixture'),
+          ('controlled_teacher_distinct_fixture_outputs',1,'same fixture, explicit common eval mode'),
+          ('old_files_rehashed_unchanged',579,'no original research source edited'),
+          ('prospective_rank8_student_parameters',21823488,'existing language-module header arithmetic'),
+          ('single_base_two_adapter_static_GiB',storage['combined_static_GiB'],'excludes activations; no training-fit claim'),
+          ('new_pretrained_VLM_forwards',0,'no weights loaded'),('new_training_updates',0,'no step'),('new_complete_scene_successes',0,'not inferred from role tests')]
+    with (out/'summary.csv').open('w',newline='') as f:
+        w=csv.writer(f,lineterminator='\n');w.writerow(['measure','value','scope']);w.writerows(rows)
+    paras=[
+      '本轮实现并实际检查了学生训练、学生部署、教师评分、冻结工具四种模型角色。它是完整三维方法对照的共同条件，不是新优化算法。',
+      '使用真实PEFT0.17.1和小型CPU线性网络。适配器切换、混合子模块模式、参数可训练性、CPU随机状态和异常退出均按声明范围恢复；保留学生计算图的梯度在中间切换teacher/tool后不变。没有加载8B模型。',
+      '两个反例澄清范围：no_grad不等于eval；适配器未合并也不证明未修改过共享bias。32个预置种子下的输出差异只属于诊断fixture，不能用于否定论文结果或声称三维收益。',
+      '优化器归属守卫要求恰好拥有学生适配器参数，排除teacher/base与漏项。实际创建了一个小SGD对象检查param_groups，没有调用step；主fixture权重哈希始终不变。',
+      '现有8B头部重新核验。一个FP16底模加rank8学生状态和额外FP32教师适配器，静态约16.74GiB；这未包含激活、视觉编码和原生3D进程，不能宣称32GB训练已足够。',
+      '579个保护旧文件重新计算哈希一致。当前官方SDPO/HinT-SD源码pin未变，SDPO多模态蒸馏限制仍在。下一阶段的真实8B剖面、完整训练器接入和完整新场景比较仍未完成。']
+    table=''.join('<tr>'+''.join('<td>'+html.escape(str(c))+'</td>' for c in r)+'</tr>' for r in rows)
+    links=[('完整算法与条件推导','algorithm_and_theory.txt'),('实现与未验证范围','algorithm_contract.json'),('最终CPU实测','probe_v2/result.json'),
+           ('逐角色事件','probe_v2/role_events.json'),('实际库版本','ENVIRONMENT.json'),('静态存储边界','two_adapter_static_storage.json'),
+           ('阅读记录','reading_ledger.json'),('旧源文件核验','protected_source_verification.json'),('可复现命令','COMMANDS.txt')]
+    body=''.join('<p>'+html.escape(p)+'</p>' for p in paras)+'<table><tr><th>指标</th><th>值</th><th>边界</th></tr>'+table+'</table>'
+    body+='<ul>'+''.join('<li><a href="'+p+'">'+label+'</a></li>' for label,p in links)+'</ul>'
+    body+='<p>版本对应的官方说明：<a href="https://huggingface.co/docs/peft/v0.17.0/en/package_reference/peft_model">PEFT model API</a>；<a href="https://huggingface.co/docs/peft/v0.17.0/en/package_reference/lora">LoRA bias与初始化</a>。原HinT-SD源码副本保持原样并附LICENSE；未导入/运行其完整trainer。</p>'
+    (out/'stage_report.html').write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>共享训练与工具角色</title><style>body{max-width:1040px;margin:32px auto;font:17px/1.7 system-ui;padding:0 20px;color:#17202a}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccc;padding:8px;text-align:left}</style><h1>共享训练与工具角色：实际PEFT检查及理论边界</h1>'+body+'</html>')
+    scripts=['shared_learning_roles.py','probe_shared_learning_roles.py','report_shared_learning_roles.py']
+    dump(out/'code_manifest.json',[dict(path=str(repo/'scripts/autodl'/s),sha256=sha(repo/'scripts/autodl'/s)) for s in scripts])
+    files=[p for p in out.rglob('*') if p.is_file() and p.name not in ('evidence.zip','manifest.json','delivery_verification.json')]
+    bundle=out/'evidence.zip'
+    with zipfile.ZipFile(bundle,'w',compression=zipfile.ZIP_DEFLATED) as z:
+        for p in files:z.write(p,p.relative_to(out).as_posix())
+        for s in scripts:z.write(repo/'scripts/autodl'/s,'code/'+s)
+    dump(out/'manifest.json',dict(files=[dict(path=p.relative_to(out).as_posix(),bytes=p.stat().st_size,sha256=sha(p)) for p in files],evidence_zip=dict(bytes=bundle.stat().st_size,sha256=sha(bundle))))
+    print(json.dumps(dict(report=str(out/'stage_report.html'),bundle_bytes=bundle.stat().st_size,goal_complete=False)))
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
+    a=p.parse_args();main(a.repo.resolve(),a.out.resolve())

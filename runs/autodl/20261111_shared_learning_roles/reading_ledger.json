@@ -1,0 +1,44 @@
+[
+  {
+    "title": "PEFT version0.17 model API",
+    "URL": "https://huggingface.co/docs/peft/v0.17.0/en/package_reference/peft_model",
+    "scope": "Versioned set_adapter and disable_adapter API documentation, plus installed0.17.1 source methods.",
+    "finding": "set_adapter changes parameter trainability; newer-main inference_mode signatures must not be assumed available in this local version."
+  },
+  {
+    "title": "PEFT version0.17 LoRA API",
+    "URL": "https://huggingface.co/docs/peft/v0.17.0/en/package_reference/lora",
+    "scope": "bias/modules_to_save/init_lora_weights configuration contracts; corresponding installed LoRA forward paths.",
+    "finding": "Disabling an adapter does not restore original unadapted outputs if shared bias was adapted; state-only unmerged checks do not prove checkpoint identity."
+  },
+  {
+    "title": "HinT-SD source and teacher lifecycle",
+    "URL": "https://github.com/wgcyeo/HINT-SD/tree/bc95b44192b06328a88773dbf3b345fa1c499093",
+    "paper": "https://arxiv.org/html/2605.17873v2",
+    "scope": "Earlier paper method/appendix scope retained. This turn original Trainer._use_adapter199-208 re-executed on two-adapter CPU fixture; selected teacher forward no_grad/EMA source re-inspected.",
+    "actual_execution": "Only original context manager AST with real PEFT on explicitly initialized8x8 linear model; neither original trainer/model nor published experiment reproduced.",
+    "limit": "A train-mode, nonzero-adapter fixture illustrates dropout sensitivity. No claim the paper training is erroneous or that deterministic eval universally improves learning."
+  },
+  {
+    "title": "Current SDPO actor source",
+    "URL": "https://github.com/lasgroup/SDPO/tree/7c457fc1b1f636ae794eb0362ba37d4743b06fbc",
+    "scope": "Currentmain commit rechecked unchanged; actor745-815 and eval/train/multimodal guards inspected. Prior detailed loss-source ledger remains in effect.",
+    "finding": "This revision still explicitly rejects multimodal distillation in the actor; no new ready-made Qwen3-VL trainer acquired.",
+    "actual_author_trainer_run": false
+  },
+  {
+    "title": "Installed Torch module modes",
+    "scope": "Actual torch.nn.Module.train/eval source2836-2877 read; package locations/hashes in ENVIRONMENT.json.",
+    "finding": "Module mode and gradient recording are different controls. CPU fixture confirms the stated scope; no VLM forward proof."
+  },
+  {
+    "title": "Existing local single-adapter check and weighted Trainer",
+    "scope": "check_peft_base_isolation.py and local_tool_vlm.py complete; phase_trainer.py complete.",
+    "finding": "The old probe covers one zero-dropout adapter and already states it does not establish base checkpoint identity. New work extends scope rather than overturning that result."
+  },
+  {
+    "title": "Earlier design/feedback mechanisms and book",
+    "source": "../20261111_feedback_information_control/reading_ledger.json",
+    "scope": "No new full-book or full-field-review claim. This turn strengthens common training/tool-state conditions, not the evidence of a novel3D method."
+  }
+]
