@@ -9,6 +9,13 @@ from routed_multimodal import encode_prefix, frame_completed_decision
 
 def deployment_input(processor, raw_messages, images, *, arm, stage,
                      generated_decision=None, max_length=16384):
+    if arm == 'joint_same_material_v1':
+        if stage != 'joint' or generated_decision is not None:
+            raise ValueError('Joint inference takes raw observations without a decision prefix')
+        batch = encode_prefix(processor, raw_messages, images)
+        if batch['input_ids'].shape[1] > max_length:
+            raise ValueError('Deployment prefix exceeds the frozen context limit')
+        return batch
     if arm not in ('separate_phase_v3', 'paired_phase_v3') or stage not in ('decision', 'action'):
         raise ValueError('Unknown phase or arm')
     if stage == 'decision' and generated_decision is not None:

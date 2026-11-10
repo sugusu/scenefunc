@@ -62,6 +62,7 @@ async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True, co
             self.model=model;self.processor=processor;self.eos_ids=[eos]
         def generate(self,messages,images,*,stage,token_limit,**kwargs):
             text='<think>Controller fixture only.</think>' if stage=='decision' else '<|im_end|>'
+            if stage=='joint':text='<think>Controller fixture only.</think><|im_end|>'
             ids=tokenizer.encode(text)
             self.model.generate(input_ids=Shape(32),max_new_tokens=token_limit,
                                 completion_ids=ids,stage='furniture')
@@ -136,7 +137,8 @@ async def case(args, name, arm, with_adapter, fail_stage=None, admitted=True, co
             service_preflight=lambda *_: events.append(dict(event='fixture_service_preflight',
                 scope='Service double only; not real configuration qualification')),
             phase_settings=dict(arm=arm,total_output_tokens=128,decision_output_tokens=64,
-                action_output_tokens=64,total_seconds=10),stage_budget=StageBudget(1,2,1,128,30),
+                action_output_tokens=64,total_seconds=10),
+            stage_budget=StageBudget(1,1 if arm=='joint_same_material_v1' else 2,1,128,30),
             allowed_tools=('move_furniture_tool',),load_images=lambda _: [ImageReference() for _ in range(5)],
             acceptance=lambda _:dict(state_sha256=digest(state),full_scene_success=None),
             evidence_format='canonical_v2',ledger=ledger,
@@ -189,6 +191,7 @@ async def main(a):
                    ('ceiling_finalize_failure','paired_phase_v3',True,'ceiling_finalizer',True),
                    ('unqualified','paired_phase_v3',False,None,False),
                    ('complete_five_stages','paired_phase_v3',True,None,True,True),
+                   ('joint_complete_five_stages','joint_same_material_v1',True,None,True,True),
                    ('manipuland_failure','paired_phase_v3',True,'manipuland_finalizer',True,True)]:
         rows.append(await case(a,*params))
     summary=dict(status='passed',cases=[{k:v for k,v in r.items() if k!='events'} for r in rows],

@@ -1,0 +1,102 @@
+{
+  "case": "direct",
+  "status": "passed",
+  "model_constructions": 1,
+  "arm": "separate_direct_v3",
+  "entrypoint": "original_four_stage",
+  "fixture_generate_calls": 4,
+  "stage_order": [
+    "floor_plan",
+    "furniture",
+    "wall",
+    "ceiling"
+  ],
+  "trial": {
+    "status": "native_stages_returned_quality_unassessed",
+    "all_stage_finalizers_returned": true,
+    "required_stages": [
+      "floor_plan",
+      "furniture",
+      "wall",
+      "ceiling"
+    ],
+    "returned_finalizers": [
+      "floor_plan",
+      "furniture",
+      "wall",
+      "ceiling"
+    ],
+    "wall_seconds": 0.08638270013034344
+  },
+  "error": null,
+  "restored_native_bindings": true,
+  "events": [
+    {
+      "event": "fixture_service_preflight",
+      "scope": "Service double only; not real configuration qualification"
+    },
+    {
+      "event": "fixture_start"
+    },
+    {
+      "event": "fixture_adapter_attached"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "floor_plan",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "floor_plan"
+    },
+    {
+      "event": "fixture_handover"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "furniture",
+      "adapter_enabled": true
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "furniture"
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "furniture"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "wall",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "wall"
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "wall"
+    },
+    {
+      "event": "fixture_model_generate",
+      "stage": "ceiling",
+      "adapter_enabled": false
+    },
+    {
+      "event": "fixture_finalize",
+      "stage": "ceiling"
+    },
+    {
+      "event": "fixture_cleanup",
+      "stage": "ceiling"
+    },
+    {
+      "event": "fixture_close"
+    }
+  ],
+  "actual_language_model_calls": 0,
+  "actual_native_scene_actions": 0,
+  "actual_generated_scenes": 0
+}

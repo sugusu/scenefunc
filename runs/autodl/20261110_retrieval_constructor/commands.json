@@ -1,0 +1,53 @@
+{
+  "cwd": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "constructor_python": "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+  "joint_python": "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+  "commands": [
+    [
+      "scripts/autodl/check_retrieval_constructor.py",
+      "--manager",
+      "runs/autodl/20261110_native_service_contract/inputs/asset_manager.py",
+      "--registry",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/native_room_bridge_20261104/source/scenesmith/agent_utils/asset_registry.py",
+      "--room",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/native_room_bridge_20261104/source/scenesmith/agent_utils/room.py",
+      "--router",
+      "runs/autodl/20261110_native_service_contract/source/scenesmith/agent_utils/asset_router/router.py",
+      "--factory",
+      "runs/autodl/20261110_retrieval_constructor/source/scenesmith/agent_utils/image_generation.py",
+      "--client",
+      "runs/autodl/20261110_retrieval_constructor/source/scenesmith/agent_utils/hssd_retrieval_server/client.py",
+      "--configs",
+      "runs/autodl/20261110_native_service_contract/source",
+      "--integration",
+      "runs/autodl/20261110_native_service_contract/inputs/integration",
+      "--out",
+      "NEW_CONSTRUCTOR_DIRECTORY"
+    ],
+    [
+      "scripts/autodl/build_joint_serialization_control.py",
+      "--material",
+      "runs/autodl/20261110_stage_alignment_review/material_v2/components.jsonl",
+      "--processor",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+      "--out",
+      "NEW_JOINT_DIRECTORY"
+    ],
+    [
+      "scripts/autodl/check_joint_multimodal_control.py",
+      "--material",
+      "runs/autodl/20261110_retrieval_constructor/joint_control_v2/components.jsonl",
+      "--equivalence",
+      "runs/autodl/20261110_exact_view_recovery/pixel_v1/pixel_equivalence.json",
+      "--bindings",
+      "runs/autodl/20261110_stage_alignment_review/encoding_v2/observation_bindings.json",
+      "--processor",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+      "--scene-observation",
+      "runs/autodl/20261110_native_observation_export/checkpoint_renderer/src/scene_observation.py",
+      "--out",
+      "NEW_JOINT_MULTIMODAL_DIRECTORY"
+    ]
+  ],
+  "environment": "Python -B; no model weights loaded, no paid API or GPU activation"
+}

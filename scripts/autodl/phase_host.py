@@ -166,7 +166,7 @@ async def run_phase_stage(*, port, policy, budget, output):
     save()
     try:
         for turn in range(budget.turns):
-            calls_needed = 1 if policy.arm == 'separate_direct_v3' else 2
+            calls_needed = 1 if policy.arm in ('separate_direct_v3','joint_same_material_v1') else 2
             seconds = budget.wall_seconds - (time.monotonic() - start)
             tokens = budget.output_tokens - result['output_tokens']
             if (seconds <= 0 or tokens <= 0 or

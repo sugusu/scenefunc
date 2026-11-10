@@ -70,13 +70,26 @@ def encode_component(processor, component, messages, images, max_length=16384):
     labels = full['input_ids'].clone()
     labels[:, :boundary] = -100
     full['labels'] = labels
+    kind = component['component']
+    if kind not in ('decision', 'action', 'joint'):
+        raise ValueError('Unknown supervision component')
     for name in ('decision', 'action'):
-        full[name + '_mask'] = (labels != -100) if component['component'] == name else torch.zeros_like(labels, dtype=torch.bool)
+        mask = torch.zeros_like(labels, dtype=torch.bool)
+        if kind == 'joint':
+            values = component[name + '_target_mask']
+            if len(values) != len(expected) or any(type(v) is not bool for v in values):
+                raise ValueError('Joint target masks must be explicit aligned booleans')
+            mask[0, boundary:] = torch.tensor(values, dtype=torch.bool)
+        elif kind == name:
+            mask = labels != -100
+        full[name + '_mask'] = mask
     # Includes image tokens, system tags, and (for paired A) the D prefill.
     if bool((labels[:, :boundary] != -100).any()):
         raise ValueError('Prompt unexpectedly supervised')
     if not torch.equal(full['action_mask'] | full['decision_mask'], labels != -100):
         raise ValueError('Objective masks do not partition the targets')
+    if (full['action_mask'] & full['decision_mask']).any():
+        raise ValueError('A target cannot receive both decision and action supervision')
     return full, boundary
 
 

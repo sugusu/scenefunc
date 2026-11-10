@@ -1,0 +1,83 @@
+{
+  "status": "Established autoregressive identity and implementation-specific consequences; not new algorithm/theorem",
+  "symbols": {
+    "X": "Frozen user request, actual scene views/state and allowed past tool results",
+    "D": "Recorded or self-generated explicit decision proposal",
+    "A": "Tool action or proposed STOP",
+    "w": "Original per-target-token coefficient; no per-stage reweighting"
+  },
+  "identity": {
+    "distribution": "p_theta(D,A|X)=p_theta(D|X)*p_theta(A|X,D)",
+    "weighted_objective": "L_joint=-sum_{i,t in D_i or A_i} w_it log p_theta(z_it|X_i,z_i,<t). Missing-D units contain only A.",
+    "derivation": "Partitioning the token sum into D and A terms does not create a new objective. For deterministic causal forwards, identical serialized prefixes, identical target coefficients and one common optimizer update, separate teacher-forced D and A forwards have the same total objective and gradient as the joined sequence. With stochastic layers equality requires matched stochastic computation or an appropriately stated expectation, not an unconditional per-run claim.",
+    "inference_conditions": "Stopping at D and resuming can preserve the autoregressive continuation only with exactly the same token/vision prefix and generation rule. A new system prompt, inserted host token, changed budgets/RNG or numerical cache behavior can change the result."
+  },
+  "current_code_evidence": {
+    "source": "phase_objective.PHASE_MODE, phase_deployment.deployment_input, routed_multimodal.frame_completed_decision; native agent_rollout.model_generate",
+    "all_24_action_prompts_change": true,
+    "additional_system_tokens_under_current_tokenizer": 84,
+    "host_only_newline_units": [
+      "waterloo_initial_work_stop",
+      "waterloo_joined_host_stop"
+    ],
+    "meaning": "Current split policy is not merely an equivalent scheduling refactor of native continuous generation. Results estimate a training+prompt+deployment treatment unless these components are controlled."
+  },
+  "comparison": [
+    {
+      "arm": "frozen base + actual feedback",
+      "purpose": "Whether learning is needed at all"
+    },
+    {
+      "arm": "ordinary multi-step search",
+      "purpose": "Whether shared geometry/tools and extra candidates explain gains; full-generation version still pending"
+    },
+    {
+      "arm": "auxiliary D supervision + direct A",
+      "purpose": "Extra source supervision without inference-time D conditioning"
+    },
+    {
+      "arm": "joint_same_material_v1",
+      "purpose": "Ordinary continuous D+A SFT/inference using identical recorded target tokens/weights, no new decisions"
+    },
+    {
+      "arm": "paired_phase_v3",
+      "purpose": "Explicit D stage followed by A conditioned on self-generated D; compared at actual total cost"
+    }
+  ],
+  "material_result": {
+    "units": 24,
+    "families": 6,
+    "recorded_decisions": 10,
+    "missing_decisions": 14,
+    "target_tokens": 2975,
+    "invented_labels": 0,
+    "joined_tokenizer_check": "passed",
+    "full_multimodal_encoding": "13/24 units encoded with actual five-view processor; 11 missing units retained; 8/10 decision-supervised units encoded",
+    "training": "not run",
+    "whole_rooms": "not run",
+    "native_joint_policy": "implemented in shared production backend; executed using archived-token replay, not model inference"
+  },
+  "interpretation": [
+    "A gain over direct-A but not ordinary joint-D+A supports ordinary rationale-conditioned learning, not the special two-stage mechanism.",
+    "A gain over joint-D+A must survive matched observations, ordinary search, full-room quality and total cost; it does not automatically establish novelty.",
+    "No loss function change or new name resolves the missing evidence of independent three-dimensional benefit."
+  ],
+  "primary_source": {
+    "ThinkBLOX": "https://arxiv.org/html/2607.13539v1#S3.SS1.SSS1",
+    "finding": "Its SFT already trains a continuous think/answer placement sequence using token-level CE. This limits claims that reason-before-placement or joint supervision alone are new."
+  },
+  "schedule": {
+    "ordinary_joint_components_per_corpus": 24,
+    "split_components_per_corpus": 34,
+    "target_tokens_each_arm": 2975,
+    "update_rule": "Accumulate original weighted CE over every component of the same complete corpus before one optimizer update; identical number of updates, not identical number of microbatches. OriginalMassTrainer compensation supports variable component counts; a new 24-unit full-data training run has not been executed.",
+    "incomplete_data": "Do not train the available 13-unit subset as though it were the frozen corpus.",
+    "after_eos": "All 24 serialized targets include tokens after native EOS. They remain part of the identical supervised material; inference replay terminates at first EOS. This formatting supervision is not a design-quality signal."
+  },
+  "deployment_treatment": {
+    "joint": "One continuous call on raw common observations; may output a recorded-style D then A or A alone. No forced D for missing-D units. No host separator or phase system instruction. Same total output/context/time budget; one call charged.",
+    "split": "Two calls, phase-specific instructions, host-framed D and stage caps. Paired inference always requests D even for 14 units without recorded D supervision.",
+    "causal_limit": "This comparison estimates a complete training/deployment protocol contrast. It cannot isolate semantic decision quality from prompts, phase boundaries, token allocation or missing-D support. A semantic-content claim additionally needs a same-format control without decision content; no fabricated D labels are introduced here.",
+    "scope": "Learned intervention is currently furniture-stage policy; floor, wall, ceiling and manipuland completion remain shared. Final output is required to be a complete room. This is not a claim of learning every generation stage."
+  }
+}

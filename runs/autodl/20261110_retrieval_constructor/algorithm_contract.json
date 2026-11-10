@@ -1,0 +1,36 @@
+{
+  "claim_status": "Ordinary joint autoregressive strong control, not a new method. Candidate split mechanism remains unproven.",
+  "input": "Original task, current native scene state, live common tool schema, five actual views, prior real tool receipts. No target D/A at deployment.",
+  "algorithm": [
+    "Build the same visible scene/tool evidence for all learned arms; preserve source view order and actual geometry.",
+    "Joint arm encodes raw messages and generates once up to native EOS, shared context/output/wall budget. Split arm generates D then A with its explicitly recorded protocol.",
+    "Parse at most one optional well-formed decision and one tool proposal, or EOS termination proposal. Incomplete output is a charged failed attempt. Decisions are proposals, never execution evidence.",
+    "Validate tool schema/IDs/permissions against current state through the common host. Apply real native tool; count errors and calls, save observed effects.",
+    "Re-observe actual changed scene and feedback before the next turn. STOP does not certify success; run the same independent requirement checks.",
+    "Run shared remaining generation stages and export all assets/unknowns. Report omissions, preserved requirements, geometric failures and full cost; no unsupported item counts as passed."
+  ],
+  "loss": {
+    "notation": "X_i is serialized visible input; D_i optional recorded decision; A_i recorded action/stop. z_i=D_i||A_i if recorded, else A_i. w_it inherited original token coefficients.",
+    "joint": "L_J(theta) = -sum_i sum_t w_it log p_theta(z_it | X_i,z_i,<t).",
+    "identity_proof": [
+      "Partition token indices of z_i into D and A. The D terms condition on X_i,D_i,<t; A terms condition on X_i,D_i,A_i,<t.",
+      "Their sum is identical to two forwards ONLY when all serialized prefixes, vision inputs, position/mask semantics, targets, weights and model parameters coincide.",
+      "Differentiation of equal finite sums gives equal gradients for deterministic causal computation. No optimizer step between partitions; stochastic realizations must match, or only an appropriately justified expectation can be compared.",
+      "The current split implementation does not satisfy the identical-prefix premise: system instructions and two host separators differ. Hence no unconditional equivalence claim for current implementations."
+    ],
+    "no_guarantee": "Chain rule and gradient identity do not imply learning improves design, generated decisions are correct, or greedy split decoding maximizes marginal action likelihood."
+  },
+  "comparison_interpretation": [
+    "If paired improves over direct but not same-material joint, ordinary conditional reasoning supervision explains the result; special phase control has no established added value.",
+    "If paired improves over joint, inspect matched full-room requirement outcomes and total cost. Prompt/serialization/allocation are part of the treatment; do not attribute exclusively to decision semantics.",
+    "If neither improves actual unmet requirements beyond base+feedback or ordinary search, do not expand training merely because loss or output validity improved.",
+    "Old development families remain development evidence. Independent room/task families and complete fixed requirements are necessary for a generalization claim."
+  ],
+  "not_ready": [
+    "11 fixed units lack verified five-view inputs",
+    "Complete real asset/physics workflow remains unqualified",
+    "Full-scene ordinary search baseline remains pending",
+    "No free-model rollout of joint control, no new training or scene-quality results"
+  ],
+  "next_useful_step": "Connect and execute actual retrieval/physics assets under the common restricted catalogue, and resolve missing training observations without inventing labels. No GPU request merely to rerun interface tests."
+}

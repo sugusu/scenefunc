@@ -197,7 +197,7 @@ def shared_model_driver(native_module, *, phase_settings, stage_budget,
     """
     if evidence_format not in ('append_v1','canonical_v2'):
         raise ValueError('Explicit known evidence format required')
-    if phase_settings.get('arm') not in ('paired_phase_v3','separate_direct_v3','separate_phase_v3'):
+    if phase_settings.get('arm') not in ('paired_phase_v3','separate_direct_v3','separate_phase_v3','joint_same_material_v1'):
         raise ValueError('Unknown phase condition')
     factory=native_module.ModelPolicy; original_driver=native_module.driver_loop
     session_factory=native_module.RolloutSession

@@ -1,0 +1,41 @@
+{
+  "scope": "Targeted acquisition/runtime and joint-vs-split training protocol; no new complete-field or complete-paper review",
+  "sources": [
+    {
+      "name": "SceneSmith source",
+      "pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+      "read": {
+        "HssdRetrievalClient": "complete including retries/stream parsing and health check",
+        "HSSD DTOs": "complete",
+        "image_generation.py": "create_image_generator and adjacent result extraction, not whole backend implementations",
+        "AssetManager": "constructor and HSSD dispatch re-read; exact constructor/class definitions executed without unused module imports",
+        "AssetRouter": "constructor; generate_with_validation and _try_generated_strategy selection branches; not full file",
+        "AssetRegistry": "constructor/register/list/size and retained prior code scope"
+      },
+      "finding": "HSSD uses an actual HTTP client; absent image service does not eliminate VLM physics, rendering, collision or retrieval needs. A strategy named generated can use HSSD, so disabling the router is not necessary for suppressing image creation."
+    },
+    {
+      "name": "Scene-Designer pinned local source",
+      "pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+      "read": "agent_rollout.model_generate and parser references; agent_rollout_decoupled ModelPolicy/RolloutSession.start; replay_chained BackendServers geometry/HSSD/articulated start and stop branches",
+      "finding": "Native policy already generates a continuous response. Server startup checks configured acquisition sources; HSSD configuration can skip the geometry-generation server without fake asset mode."
+    },
+    {
+      "name": "ThinkBLOX",
+      "url": "https://arxiv.org/html/2607.13539v1",
+      "read": "Online abstract, method overview and III-A.1 lines 104–119 targeted recheck; no new experiments/figures or code reproduction",
+      "finding": "Continuous think/answer sequences with token CE are an existing 3D baseline. Our joint control is an adaptation, not a reproduction of their whole pipeline."
+    },
+    {
+      "name": "Current authored policy/targets",
+      "read": "phase_policy.py generate/decoding; phase_deployment.py and phase_objective.py complete; routed_multimodal encode_prefix and frame_completed_decision; all 68 component records processed by the joint builder",
+      "finding": "24 action system prompts carry a stage-specific suffix; two terminal records add a host-only newline. Both are distinguished from the supervised source tokens."
+    },
+    {
+      "name": "Current joint implementation and trainer",
+      "read": "phase_trainer.py complete; routed_multimodal.py, phase_deployment.py, phase_policy.py complete; phase_host budget and full_generation_bridge policy binding; prior material/observation builders. ThinkBLOX III-A.1 and III-B online targeted reread.",
+      "finding": "The trainer computes ordinary source-weighted token CE and accepts a D/A partition; 24 joint vs 34 split microbatches require common full-corpus updates. Joint deployment and optional-D parsing now implemented; no special loss or new theorem.",
+      "limits": "No whole-field novelty review, no training/inference run of the 8B model, no claimed reproduction of ThinkBLOX."
+    }
+  ]
+}

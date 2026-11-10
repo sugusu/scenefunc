@@ -1,0 +1,161 @@
+{
+  "model_calls": 5,
+  "calls": [
+    {
+      "stage": "floor_plan",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 1.4867633581161499e-05
+    },
+    {
+      "stage": "furniture",
+      "adapter_enabled": true,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 6,
+      "output_cap": 64,
+      "wall_seconds": 7.675960659980774e-06
+    },
+    {
+      "stage": "furniture",
+      "adapter_enabled": true,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 64,
+      "wall_seconds": 6.077811121940613e-06
+    },
+    {
+      "stage": "wall",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 5.953013896942139e-06
+    },
+    {
+      "stage": "ceiling",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 6.061047315597534e-06
+    }
+  ],
+  "stages": [
+    {
+      "stage": "floor_plan",
+      "status": "returned",
+      "first_model_call": 0,
+      "wall_seconds": 0.053286271169781685,
+      "model_calls": 1
+    },
+    {
+      "stage": "furniture",
+      "status": "returned",
+      "first_model_call": 1,
+      "wall_seconds": 0.0036864876747131348,
+      "model_calls": 2
+    },
+    {
+      "stage": "wall",
+      "status": "returned",
+      "first_model_call": 3,
+      "wall_seconds": 0.0008956044912338257,
+      "model_calls": 1
+    },
+    {
+      "stage": "ceiling",
+      "status": "returned",
+      "first_model_call": 4,
+      "wall_seconds": 0.0008797477930784225,
+      "model_calls": 1
+    }
+  ],
+  "lifecycle": [
+    {
+      "operation": "native_service_preflight",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 2.864748239517212e-06
+    },
+    {
+      "operation": "session_start",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 3.3173710107803345e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "floor_plan",
+      "status": "returned",
+      "wall_seconds": 4.241243004798889e-06
+    },
+    {
+      "operation": "floor_plan_handover",
+      "stage": null,
+      "status": "returned",
+      "accepted": true,
+      "wall_seconds": 4.509463906288147e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "furniture",
+      "status": "returned",
+      "wall_seconds": 3.257766366004944e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "furniture",
+      "status": "returned",
+      "wall_seconds": 2.982094883918762e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "wall",
+      "status": "returned",
+      "wall_seconds": 2.816319465637207e-06
+    },
+    {
+      "operation": "cleanup",
+      "stage": "wall",
+      "status": "returned",
+      "wall_seconds": 2.644956111907959e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "ceiling",
+      "status": "raised",
+      "error": "RuntimeError",
+      "wall_seconds": 1.2764707207679749e-05
+    },
+    {
+      "operation": "cleanup",
+      "stage": "ceiling",
+      "status": "returned",
+      "wall_seconds": 2.898275852203369e-06
+    },
+    {
+      "operation": "session_close",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 3.293156623840332e-06
+    }
+  ],
+  "trial": {
+    "status": "incomplete_or_failed",
+    "all_stage_finalizers_returned": false,
+    "error": "RuntimeError: deliberate finalizer failure",
+    "wall_seconds": 0.06696445122361183
+  },
+  "accounting_complete": true,
+  "known_input_tokens": 160,
+  "known_output_tokens": 10,
+  "full_scene_success": null,
+  "scope": "Policy model.generate only; tool-side model calls and GPU kernel time are not measured. Driver wall times include observation/tool work. Finalizers and session lifecycle are timed separately. Returned finalizers do not prove scene quality."
+}

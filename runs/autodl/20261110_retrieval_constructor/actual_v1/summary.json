@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "actual_native_constructor_returns": 2,
+  "exact_definitions": [
+    "AssetManager",
+    "AssetRegistry",
+    "AssetRouter",
+    "ObjectType",
+    "AgentType",
+    "create_image_generator"
+  ],
+  "actual_hssd_client_objects": 2,
+  "model_calls": 0,
+  "paid_api_calls": 0,
+  "retrieval_requests": 0,
+  "assets_created": 0,
+  "new_complete_scenes": 0,
+  "old_sources_unchanged": true,
+  "source_hashes": {
+    "runs/autodl/20261110_native_service_contract/inputs/asset_manager.py": "a046c5b67a30e2aeb8e0612cab56d8bd3ecaf1d1829118a176a9ce25b52fd72a",
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/native_room_bridge_20261104/source/scenesmith/agent_utils/asset_registry.py": "e6d3967640d968063b16a4fa181dba97864f4bb18ae067e99c0e9f2a1d1a1d74",
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/native_room_bridge_20261104/source/scenesmith/agent_utils/room.py": "5e830e3d769af65709a5d488b1872422d64c2e5d80a68b09dbd1a874e27be9dd",
+    "runs/autodl/20261110_native_service_contract/source/scenesmith/agent_utils/asset_router/router.py": "f9f44271bfd46434ebe1295107090cec196faae128ce9d582e477aaad1e53591",
+    "runs/autodl/20261110_retrieval_constructor/source/scenesmith/agent_utils/image_generation.py": "6240f38848c7a7e4052716a075c71243acfaf981626887d176ced4041b9d8d4f"
+  },
+  "tests": [
+    {
+      "router_enabled": true,
+      "image_generator": null,
+      "client_type": "HssdRetrievalClient",
+      "client_url": "http://127.0.0.1:7001",
+      "registry_size": 0,
+      "directories_created": true
+    },
+    {
+      "router_enabled": false,
+      "image_generator": null,
+      "client_type": "HssdRetrievalClient",
+      "client_url": "http://127.0.0.1:7001",
+      "registry_size": 0,
+      "directories_created": true,
+      "physical_dependency_still_required": true
+    },
+    {
+      "rejected": "generated_source",
+      "error": "Explicit HSSD acquisition required; no text-to-3D substitution"
+    },
+    {
+      "rejected": "texture_fallback",
+      "error": "Generated-texture fallback must be explicitly disabled"
+    },
+    {
+      "native_failure": "NotADirectoryError",
+      "factory_restored": true
+    }
+  ],
+  "network_attempts": [],
+  "full_runtime_ready": false,
+  "seconds": 1.9731024391949177,
+  "peak_rss_kib": 274756,
+  "limitation": "Exact native class definitions loaded via AST; real client objects, no full-module import/server/render/geometry. Articulated and thin-covering services disabled in this constructor probe only. Shared VLM was not invoked."
+}

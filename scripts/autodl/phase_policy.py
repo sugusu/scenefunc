@@ -39,10 +39,25 @@ def classify_stage(tokenizer, ids, *, stage, eos_ids):
     EOS-only is the NEW action-stage STOP target. The legacy classifier's
     nonempty completion rule remains unchanged in the old experiments.
     """
-    if stage not in ('decision','action'):raise ValueError('Unknown phase')
+    if stage not in ('decision','action','joint'):raise ValueError('Unknown phase')
     if not ids or any(not isinstance(t,int) for t in ids):
         return {'kind':'invalid','reason':'Empty or noninteger generated sequence'}
     raw=tokenizer.decode(ids,skip_special_tokens=False)
+    if stage == 'joint':
+        # Ordinary continuous generation, without a host-added D/A separator.
+        # Missing-D training units remain valid action-only outputs. A malformed
+        # reasoning prefix must never fall through to a successful STOP.
+        close=tokenizer.convert_tokens_to_ids('</think>')
+        decision=None; action_ids=ids
+        if close in ids or '<think' in raw or '</think' in raw:
+            if ids.count(close)!=1:
+                return {'kind':'invalid','reason':'Unclosed or repeated joint decision','raw':raw}
+            boundary=ids.index(close)+1
+            d=classify_stage(tokenizer,ids[:boundary],stage='decision',eos_ids=eos_ids)
+            if d['kind']!='decision':return dict(d,raw=raw)
+            decision=d['raw'];action_ids=ids[boundary:]
+        action=classify_stage(tokenizer,action_ids,stage='action',eos_ids=eos_ids)
+        return dict(action,raw=raw,decision_raw=decision)
     if stage=='decision':
         close=tokenizer.convert_tokens_to_ids('</think>')
         if ids[-1]!=close or any(t in set(eos_ids)|{close} for t in ids[:-1]):
@@ -138,7 +153,7 @@ class PhasePolicy:
     """
     def __init__(self,backend,*,arm,total_output_tokens,decision_output_tokens,
                  action_output_tokens,total_seconds,seed=0):
-        if arm not in ('paired_phase_v3','separate_phase_v3','separate_direct_v3'):
+        if arm not in ('paired_phase_v3','separate_phase_v3','separate_direct_v3','joint_same_material_v1'):
             raise ValueError('Unknown prospective deployment condition')
         limits=(total_output_tokens,decision_output_tokens,action_output_tokens,total_seconds)
         if any(v<=0 for v in limits):raise ValueError('Positive finite budgets required')
@@ -160,12 +175,14 @@ class PhasePolicy:
         def fail(status):
             result['status']=status
             raise PhaseOutcomeError(result)
-        phases=['action'] if self.arm=='separate_direct_v3' else ['decision','action']
+        phases=(['joint'] if self.arm=='joint_same_material_v1' else
+                ['action'] if self.arm=='separate_direct_v3' else ['decision','action'])
         effective_arm='separate_phase_v3' if self.arm=='separate_direct_v3' else self.arm
         try:
             for stage in phases:
                 seconds=self.seconds-(time.monotonic()-start)
-                cap=min(self.total_tokens-used,self.d_cap if stage=='decision' else self.a_cap)
+                stage_cap=self.total_tokens if stage=='joint' else self.d_cap if stage=='decision' else self.a_cap
+                cap=min(self.total_tokens-used,stage_cap)
                 if seconds<=0 or cap<1:
                     fail('budget_exhausted_before_'+stage)
                 visible_draft=draft if stage=='action' and self.arm=='paired_phase_v3' else None
@@ -176,7 +193,7 @@ class PhasePolicy:
                 try:
                     generation=self.backend.generate(messages,images,arm=effective_arm,stage=stage,
                         decision=visible_draft,token_limit=cap,seconds_limit=seconds,
-                        seed=self.seed+(0 if stage=='decision' else 1))
+                        seed=self.seed+(0 if stage in ('decision','joint') else 1))
                 finally:receipt['elapsed_seconds']=time.monotonic()-tick
                 receipt.update(generation);ids=generation['output_ids'];used+=len(ids)
                 result['output_tokens']=used;result['input_tokens']+=generation['input_tokens']
@@ -187,7 +204,9 @@ class PhasePolicy:
                 if classified['kind']=='invalid':
                     fail('invalid_'+stage)
                 if stage=='decision':draft=classified['raw']
-                else:last=classified
+                else:
+                    last=classified
+                    if stage=='joint':draft=classified.get('decision_raw')
             result['raw']=last['raw'];result['status']=last['kind']
             if last['kind']=='tool_proposed':result['tool_calls']=[last['call']]
             result['host_contract']='Validate actual state/schema before dispatch; EOS proposes termination, never room success.'

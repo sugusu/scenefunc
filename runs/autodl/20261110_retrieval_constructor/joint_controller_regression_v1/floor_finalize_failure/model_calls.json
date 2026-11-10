@@ -1,0 +1,68 @@
+{
+  "model_calls": 1,
+  "calls": [
+    {
+      "stage": "floor_plan",
+      "adapter_enabled": false,
+      "status": "returned",
+      "input_tokens": 32,
+      "output_tokens": 1,
+      "output_cap": 128,
+      "wall_seconds": 8.286908268928528e-06
+    }
+  ],
+  "stages": [
+    {
+      "stage": "floor_plan",
+      "status": "returned",
+      "first_model_call": 0,
+      "wall_seconds": 0.000897139310836792,
+      "model_calls": 1
+    }
+  ],
+  "lifecycle": [
+    {
+      "operation": "native_service_preflight",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 3.497302532196045e-05
+    },
+    {
+      "operation": "session_start",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 3.596767783164978e-06
+    },
+    {
+      "operation": "finalize",
+      "stage": "floor_plan",
+      "status": "raised",
+      "error": "RuntimeError",
+      "wall_seconds": 1.4429911971092224e-05
+    },
+    {
+      "operation": "session_close",
+      "stage": null,
+      "status": "returned",
+      "wall_seconds": 3.034248948097229e-06
+    }
+  ],
+  "trial": {
+    "status": "incomplete_or_failed",
+    "all_stage_finalizers_returned": false,
+    "required_stages": [
+      "floor_plan",
+      "furniture",
+      "wall",
+      "ceiling"
+    ],
+    "returned_finalizers": [],
+    "error": "RuntimeError: Native controller returned before all stage finalizers completed",
+    "wall_seconds": 0.08091792277991772
+  },
+  "accounting_complete": true,
+  "known_input_tokens": 32,
+  "known_output_tokens": 1,
+  "full_scene_success": null,
+  "scope": "Policy model.generate only; tool-side model calls and GPU kernel time are not measured. Driver wall times include observation/tool work. Finalizers and session lifecycle are timed separately. Returned finalizers do not prove scene quality."
+}
