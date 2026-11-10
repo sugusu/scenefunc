@@ -1,0 +1,318 @@
+{
+  "status": "completed",
+  "completed": 5,
+  "planned": 5,
+  "rows": [
+    {
+      "unit_id": "storage_edit_01",
+      "export": "runs/autodl/20261110_storage_observation_recovery/views_v1/storage_edit_01/export/result.json",
+      "annotation": "runs/autodl/20261110_storage_observation_recovery/views_v1/storage_edit_01/views/annotation_result.json",
+      "state_sha256": "a6784ce27d5865c46d70a6dd797461295c74e748554fc39506a606c921b3d12f",
+      "images": 5,
+      "reused_completed": true
+    },
+    {
+      "unit_id": "storage_edit_02",
+      "export": "runs/autodl/20261110_storage_observation_recovery/views_v1/storage_edit_02/export/result.json",
+      "annotation": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_02/views/annotation_result.json",
+      "state_sha256": "95e612219e5eac2f8fec762ab55a15bf3d9e5dd4af3d6537902cceb56e9987c1",
+      "runtime_state_sha256": "2dde3504ddd3b3c10b5edd7e597826c9c8effb7b2153f369853ae0b64229215a",
+      "serialization_proof": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_02/state_serialization.json",
+      "images": 5
+    },
+    {
+      "unit_id": "storage_edit_03",
+      "export": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/export/result.json",
+      "annotation": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/views/annotation_result.json",
+      "state_sha256": "ff9acd80a730e18fafbc2f94552cd509e115f29f9edc2434c7011041317a9c6f",
+      "runtime_state_sha256": "5b279a1ad4b2f61bb5f1189b001eb92d9c3343ebf9a9f861f8a8889ab6f6363e",
+      "serialization_proof": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/state_serialization.json",
+      "images": 5
+    },
+    {
+      "unit_id": "storage_edit_04",
+      "export": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/export/result.json",
+      "annotation": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/views/annotation_result.json",
+      "state_sha256": "3264da75a7e7f588e9bba5544cf95a30b8b39b26d23c41b12f647b172bcace53",
+      "runtime_state_sha256": "5b93d1de98088069c9b35789a8b9345881a41adbee98e4e636d8dea883f95431",
+      "serialization_proof": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/state_serialization.json",
+      "images": 5
+    },
+    {
+      "unit_id": "storage_edit_05",
+      "export": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/export/result.json",
+      "annotation": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/views/annotation_result.json",
+      "state_sha256": "9dcaccc3153ad333e0c34aa5047b30b5a39bc769dbf9c02cf98806d372e8d28a",
+      "runtime_state_sha256": "bf8c448f0824407d8d57c1b85224bb1350e106b018100bbafb72492f4b0537f7",
+      "serialization_proof": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/state_serialization.json",
+      "images": 5
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/render_paper_native_views.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v1/storage_edit_02/export",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_02/views",
+        "--seconds",
+        "600"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_02/render.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 321.62871298752725
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/finish_paper_native_observation.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v1/storage_edit_02/export",
+        "--views",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_02/views",
+        "--checkpoint-labels"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_02/annotation.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 9.083391798660159
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/export_paper_native_blend.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/export",
+        "--state-ledger",
+        "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+        "--unit",
+        "storage_edit_03",
+        "--checkpoint-labels"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/export.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 32.44719657115638
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/render_paper_native_views.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/export",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/views",
+        "--seconds",
+        "600"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/render.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 315.8922334741801
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/finish_paper_native_observation.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/export",
+        "--views",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/views",
+        "--checkpoint-labels"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_03/annotation.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 9.399200351908803
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/export_paper_native_blend.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/export",
+        "--state-ledger",
+        "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+        "--unit",
+        "storage_edit_04",
+        "--checkpoint-labels"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/export.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 31.3207592908293
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/render_paper_native_views.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/export",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/views",
+        "--seconds",
+        "600"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/render.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 309.78024601750076
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/finish_paper_native_observation.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/export",
+        "--views",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/views",
+        "--checkpoint-labels"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_04/annotation.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 9.813793255016208
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/export_paper_native_blend.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/export",
+        "--state-ledger",
+        "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+        "--unit",
+        "storage_edit_05",
+        "--checkpoint-labels"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/export.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 32.61779632046819
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/render_paper_native_views.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/export",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/views",
+        "--seconds",
+        "600"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/render.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 318.79226821660995
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/finish_paper_native_observation.py",
+        "--source",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+        "--imported",
+        "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle",
+        "--export",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/export",
+        "--views",
+        "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/views",
+        "--checkpoint-labels"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/views_v2/storage_edit_05/annotation.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 9.958975277841091
+    }
+  ],
+  "elapsed_seconds": 1402.9818188082427,
+  "inputs_sha256": {
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/package.xml": "5400b20be3df9eb226f4cf4701a7dc4d30321189daabafe928cd899f30edd5d3",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/house_state.json": "0682fd5c81bf09dd196c891072cf851dd83fae2498f60ffa371b529532b0eba0",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/runtime.json": "bfe4a29d53c04919e26c4e3bba2e979dce39f4f0d8dc91bb3d4dede04746a13a",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/task.json": "44943222bba220fa02fd98fa23efb364fb5407cc08d81078a2adfc64e479ea43",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/provenance.json": "235adf1764a5506d841e9ede0f2a473f5fe18827a3bb79e741a6ad94ac545a08",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/manifest.json": "b95d0684489f75adc7065dc80513ca50324ddbe40f5ce3874fffb8629d5864e4",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/room.sdf": "365020cd659f2a7e58ebeccd500a4a46e85a50225a22ba4c2558555b0d026c51",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/bed/object.sdf": "862a1f3414999d0efb46a9dc1507dc4c0f5736482ff2d1b956b5a490ce6f8f5b",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/sofa/object.sdf": "44545c7078507e683dcec9bd81674312498de7e099394290f75a286607d370b4",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/table/object.sdf": "1c6824eca5673cb0cc8b0dd9001fefe1c1306d2dfaf080486436f349a62b04bc",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/chair_west/object.sdf": "44387455a7999fe0532a5f2d7b3d9ea8bb529e84691f19082b22f11e2080b44a",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/chair_east/object.sdf": "f48c6812a66f29e8fc1bb4575776f275a16674b82f39407260dbc3fbe7cb2f4f",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/kitchen_counter/object.sdf": "b5d6824dee9fef022845f21fc31cd3ce7ca230e524b4784f5802667b6fe8e322",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/low_fridge/object.sdf": "73a362b6364f8d9b6ee057659a2c645dd086c10f0ab95cb15fa9e169fbc9681e",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/bath_shower/object.sdf": "ce427e81c735b3d60a1411891ebb41312a300ba7d755330a23f33175730f2cb3",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/bath_toilet/object.sdf": "d7eef2c4017d5b809cebe3a32d3a519dc4a93802af19f1c5c02385932e470b85",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/bath_vanity/object.sdf": "f4b5d72904510b00c22db6f548b4637552381d56785ff3e47068d5e9ee83c231",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/main_light/object.sdf": "b5a65ae9530b8212b0b1fdb9866c60e0b4e534af8661ff1f3381e88e9a9a7628",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/bath_light/object.sdf": "212a8226838fe769ac9d69297a175f5926f44698d117476740747b5c8f09a22b",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/storage_a/object.sdf": "562c9e98d4389d57c5219d33c41dd2b2690bbc3bc4e82339ad95272890d795e2",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/storage_b/object.sdf": "c12a4c0e13b4550890b434ecb919ce37ba26c06a37522b9f680cf0b537d93af9",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/storage_c/object.sdf": "e8027ab1974fbaea0a5f43b3374e00653c4c2c328c2c3e7818885a8b8e70388d",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/cooktop/object.sdf": "7ccdf88f7d402713785ac7ee1cf6cf3eaa9f897a62d47197a0097906772a6552",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/objects/kitchen_sink/object.sdf": "6494714e24c345f44ad151bf95dff49a4d842d7f1c9ed43bf2b104d873174704",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/assets/4979cfe2e691ac484078b909543db3f21b80462f/canonical.glb": "31156199c9cdee218d036d307c20bede016902b00db9779c24474809221f7c7d",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/assets/4979cfe2e691ac484078b909543db3f21b80462f/gltf_buffer.bin": "6f580c6b919ccfcf550c126ad19d8ebc52a9b631b6ce670b695456c0d88ba1c4",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/assets/4979cfe2e691ac484078b909543db3f21b80462f/model.gltf": "1d7f8c95f3c6af11d85beb92ffbca32c3d600bfc78a4e129ebe9ab4d738d4f78",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/assets/5d70cc76c99acee4513ec5f7fad497d2baebca9e/canonical.glb": "e1e5031db3953b3958ba4df4ba5cf7edc819a9406461a33cb434b3ca4cfa1b88",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/assets/5d70cc76c99acee4513ec5f7fad497d2baebca9e/gltf_buffer.bin": "32fc4516d9d9d7062263e10020d0dbd7c5bfa089c52e190492fdadc8dab24dff",
+    "runs/autodl/20261110_storage_observation_recovery/native_v2/native_build/bundle/room_guilbault_storage_transfer_v2/assets/5d70cc76c99acee4513ec5f7fad497d2baebca9e/model.gltf": "27a797284201a37641c48261a97754b266a8fffd094dbba275bf71d05dab4139",
+    "runs/autodl/20261110_storage_observation_recovery/state_preflight.json": "73737c4438a97720b279e7f85e9ec4c161c9834114ff98fab7ddf48b326d11b0",
+    "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json": "c5acd29dd7716b4394536d7e2aa2eac694ebce36355dcc3de5083d326bc3daf0",
+    "runs/autodl/20261110_storage_observation_recovery/views_v1/result.json": "c7061c40bfc6163dce3e3f40069c3717ad5d3689243301068efd050798876cc5"
+  },
+  "model_calls": 0,
+  "training_updates": 0,
+  "new_scene_generations": 0,
+  "error": null,
+  "inputs_unchanged": true,
+  "training_ready": false,
+  "historical_pixels_equivalent": false
+}

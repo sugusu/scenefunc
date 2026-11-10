@@ -1,0 +1,94 @@
+{
+  "status": "completed",
+  "commands": [
+    {
+      "argv": [
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+        "-B",
+        "scripts/autodl/build_rebuilt_observation_material.py",
+        "--material",
+        "runs/autodl/20261110_remaining_observation_recovery/material_v3/components.jsonl",
+        "--registry",
+        "runs/autodl/20261110_storage_observation_recovery/registry.json",
+        "--state-ledger",
+        "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+        "--processor",
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+        "--scene-observation",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer/src/scene_observation.py",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/material_v4"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/encode_split.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 44.54183463193476
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+        "-B",
+        "scripts/autodl/build_joint_serialization_control.py",
+        "--material",
+        "runs/autodl/20261110_storage_observation_recovery/material_v4/components.jsonl",
+        "--processor",
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/joint_v4"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/build_joint.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 15.48942306265235
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+        "-B",
+        "scripts/autodl/check_joint_multimodal_control.py",
+        "--material",
+        "runs/autodl/20261110_storage_observation_recovery/joint_v4/components.jsonl",
+        "--equivalence",
+        "runs/autodl/20261110_exact_view_recovery/pixel_v1/pixel_equivalence.json",
+        "--bindings",
+        "runs/autodl/20261110_storage_observation_recovery/material_v4/observation_bindings.json",
+        "--reference-encoding",
+        "runs/autodl/20261110_storage_observation_recovery/material_v4/encoding_records.json",
+        "--processor",
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+        "--scene-observation",
+        "runs/autodl/20261110_native_observation_export/checkpoint_renderer/src/scene_observation.py",
+        "--out",
+        "runs/autodl/20261110_storage_observation_recovery/joint_multimodal_v4"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/encode_joint.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 39.805454241111875
+    },
+    {
+      "argv": [
+        "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python",
+        "-B",
+        "scripts/autodl/verify_storage_observation_recovery.py",
+        "--run",
+        "runs/autodl/20261110_storage_observation_recovery"
+      ],
+      "log": "runs/autodl/20261110_storage_observation_recovery/verify_final.log",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 0.8663636520504951
+    }
+  ],
+  "model_calls": 0,
+  "training_updates": 0,
+  "new_scene_generations": 0,
+  "paid_api_calls": 0,
+  "producer_pid": 40994,
+  "seconds": 761.1028108838946,
+  "producer_result_sha256": "5f7dedef925bf41fd24d93d5b4ec27fa97c73971ba99462f4c1732d89db6042a",
+  "input_material_sha256": "ce35718de4e498087942df359487ab67d7d42b05c3219a4a6736b8564c8959c7",
+  "training_ready": false,
+  "full_runtime_ready": false,
+  "scope": "Actual processor encoding and artifact checks; no free model output, optimization or generated scene"
+}

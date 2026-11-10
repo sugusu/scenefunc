@@ -1,0 +1,93 @@
+{
+  "accessed_utc": "2026-11-10T06:44:30.145478+00:00",
+  "scope": "Targeted primary methods and selected code paths. Not exhaustive paper review, author-code reproduction, or model evaluation.",
+  "papers": [
+    {
+      "title": "When Reasoning Helps Action: Monitoring and Steering Chain-of-Thought in Vision-Language-Action Policies",
+      "url": "https://arxiv.org/html/2610.00601v1",
+      "read_sections": [
+        "III value training and gated token steering",
+        "IV-C manipulation metrics",
+        "V-B task outcome",
+        "V-C reasoning substitution",
+        "VI limitations",
+        "Appendices A/B labeling and value model"
+      ],
+      "finding": "The paper separates reasoning correctness from intended behavioral effects. A learned prefix value steers a frozen policy; its substitution study includes corrected reasoning, semantic inversions, gibberish and no reasoning. This is prior art for reasoning-action intervention diagnostics, not evidence that our policy has the same failure. Its judge labels, domain and model differ.",
+      "not_read_or_run": [
+        "project page inaccessible",
+        "no implementation or weights inspected",
+        "no experiment reproduced"
+      ]
+    },
+    {
+      "title": "SceneReVis",
+      "url": "https://arxiv.org/html/2602.09432v1",
+      "read_sections": [
+        "3.1–3.4 observations, actions, SFT/RL, reverse construction",
+        "A.1 reverse-chain algorithm",
+        "A.2 opening and initial optimization steps",
+        "B.2.3/B.3 semantic and terminal terms"
+      ],
+      "finding": "The method already combines diagnostic reasoning, atomic scene edits, visual feedback and sequence SFT followed by multi-turn RL. Reverse construction supplies synthetic forward trajectories. Presence-based terms and before/after assessment do not directly establish preservation of every requested instance. Our explicit identity accounting is an evaluation choice, not by itself a new learning method.",
+      "not_read_or_run": [
+        "remaining appendix sections not fully reviewed",
+        "no official code or experiment reproduced"
+      ]
+    },
+    {
+      "title": "Function2Scene",
+      "url": "https://arxiv.org/html/2605.30819v1",
+      "read_sections": [
+        "C.2 selected multi-mode transformation/retention example",
+        "C.3 full tool signature and return-type list"
+      ],
+      "previous_coverage": "4.2 was already recorded in earlier turns; not counted as new here.",
+      "finding": "The appendix distinguishes numeric geometric tools from language-model judgments, including activity support and sightline obstruction. The listed signatures and docstrings are interface descriptions, not an inspected executable implementation. Multi-mode rules already include retained work access and transition requirements; generic preservation across activities is not a new claim.",
+      "not_read_or_run": [
+        "No official code execution",
+        "No full paper or supplementary reproduction",
+        "No direct preference labels adopted"
+      ]
+    }
+  ],
+  "code": [
+    {
+      "path": "scripts/autodl/phase_objective.py",
+      "sha256": "844240d707fd1cdf84ed1062e08a950b8c2b7b17275ff862723dba9f614374f6",
+      "scope": "full file"
+    },
+    {
+      "path": "scripts/autodl/phase_trainer.py",
+      "sha256": "73cac96a280735e78409b241b6f6e95b498d041a3a88e99b21e0dfc65e9d297f",
+      "scope": "full file"
+    },
+    {
+      "path": "scripts/autodl/phase_policy.py",
+      "sha256": "469a5e660944a6839449b17ae2acd054eef324cb07cb1380789a2d5e17446dd0",
+      "scope": "full file"
+    },
+    {
+      "path": "scripts/autodl/build_joint_serialization_control.py",
+      "sha256": "feaedf3e1265f1f06a1843506adda70463716f31dec39871773d9a2b83835da6",
+      "scope": "full file"
+    },
+    {
+      "path": "scripts/autodl/audit_decision_content.py",
+      "sha256": "8d9361823e103b45402a585c8610984f6f75cdd3345b9923bc36ca37c1580f1d",
+      "scope": "full file"
+    },
+    {
+      "path": "runs/autodl/20261110_native_service_contract/inputs/asset_manager.py",
+      "sha256": "a046c5b67a30e2aeb8e0612cab56d8bd3ecaf1d1829118a176a9ce25b52fd72a",
+      "scope": "_retrieve_hssd_assets 486–694"
+    },
+    {
+      "path": "runs/autodl/20261110_native_observation_export/checkpoint_renderer/scenesmith/agent_utils/room.py",
+      "sha256": "5e830e3d769af65709a5d488b1872422d64c2e5d80a68b09dbd1a874e27be9dd",
+      "scope": "SceneObject.from_dict transform restoration and transform serialization"
+    }
+  ],
+  "new_model_calls": 0,
+  "new_training": 0
+}
