@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "actual_sdk": true,
+  "versions": {
+    "openai-agents": "0.6.4",
+    "openai": "2.11.0",
+    "pydantic": "2.12.5",
+    "mcp": "1.13.1",
+    "griffe": "1.13.0"
+  },
+  "native_source_sha256": "030a97c584e21a4ae26dfc3cbf89675868fbcf79512293b2b231f2a8f87f2581",
+  "exact_native_method": "_create_tool_closures",
+  "tool_schemas": {
+    "observe_scene": {
+      "properties": {},
+      "title": "observe_scene_args",
+      "type": "object",
+      "additionalProperties": false,
+      "required": []
+    },
+    "check_physics": {
+      "properties": {},
+      "title": "check_physics_args",
+      "type": "object",
+      "additionalProperties": false,
+      "required": []
+    },
+    "context_echo": {
+      "properties": {
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "count"
+      ],
+      "title": "context_echo_args",
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "context_injection": [
+    {
+      "name": "context_echo",
+      "call_id": "manipuland_1",
+      "arguments": "{\"count\": 7}"
+    }
+  ],
+  "rejections": [
+    {
+      "case": "invalid_typed_argument",
+      "exception": "ModelBehaviorError"
+    },
+    {
+      "case": "file_id_only",
+      "exception": "ValueError"
+    },
+    {
+      "case": "text_only",
+      "exception": "ValueError"
+    },
+    {
+      "case": "opaque_string",
+      "exception": "TypeError"
+    },
+    {
+      "case": "sdk_requires_image_source",
+      "exception": "ValidationError"
+    }
+  ],
+  "actual_tool_invocations": 3,
+  "recorded_statuses": [
+    "returned",
+    "returned",
+    "raised"
+  ],
+  "native_observation_tool_invocations": 1,
+  "image": {
+    "slot": 0,
+    "sha256": "3bfd41aa7ab76e0543d44003cddc11d711985954b1bb6aa577018d64847a1a58",
+    "size": [
+      1024,
+      1024
+    ],
+    "requested_detail": "high"
+  },
+  "actual_render_calls": 0,
+  "actual_geometry_calls": 0,
+  "actual_model_calls": 0,
+  "paid_api_calls": 0,
+  "new_complete_scenes": 0,
+  "network_attempts": [],
+  "full_runtime_ready": false,
+  "seconds": 5.0126894023269415,
+  "peak_rss_kib": 274756,
+  "limitation": "Real SDK and original native closure, cached PNG replay only. No model, renderer, asset server or geometry executed."
+}

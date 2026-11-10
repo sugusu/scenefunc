@@ -1,0 +1,9 @@
+{
+  "python": "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+  "executed_scripts": [
+    "scripts/autodl/qualify_pinned_sdk_runtime.py --lock runs/autodl/20261110_sdk_asset_qualification/source/uv.lock --out runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1 [--resume after SSL EOF]",
+    "scripts/autodl/check_real_sdk_tool_boundary.py --runtime runs/autodl/20261110_sdk_asset_qualification/isolated_sdk_v1/runtime --source runs/autodl/20261110_native_manipuland_stage/source/scenesmith/manipuland_agents/tools/vision_tools.py --image runs/autodl/20261110_native_observation_export/views_v2/step_006.topdown.png --out runs/autodl/20261110_sdk_asset_qualification/actual_sdk_v1",
+    "scripts/autodl/audit_native_hssd_data.py --loader runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/data_loader.py --similarity runs/autodl/20261110_sdk_asset_qualification/source/scenesmith/agent_utils/hssd_retrieval/clip_similarity.py --data /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/vendor/hsm/data/preprocessed --meshes /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models --out runs/autodl/20261110_sdk_asset_qualification/native_data_v2"
+  ],
+  "note": "All Python executed with -B; runtime wheels ignored by Git, hashes and source manifests tracked."
+}

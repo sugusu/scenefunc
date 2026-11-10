@@ -1,0 +1,45 @@
+{
+  "turns": [],
+  "tool_calls": [
+    {
+      "index": 0,
+      "name": "observe_scene",
+      "arguments": {},
+      "status": "returned",
+      "output": [
+        {
+          "type": "image_url",
+          "sha256": "3c5d1915fe16ec4b6a2f845d6e14279cefa76767b3cd459a57e3591ecd2b52b4"
+        },
+        {
+          "type": "text",
+          "text": "Cached view replay for SDK integration only"
+        }
+      ],
+      "seconds": 0.02120327576994896
+    },
+    {
+      "index": 1,
+      "name": "context_echo",
+      "arguments": {
+        "count": 7
+      },
+      "status": "returned",
+      "output": "{\"count\": 7}",
+      "seconds": 0.00016774237155914307
+    },
+    {
+      "index": 2,
+      "name": "context_echo",
+      "arguments": {
+        "count": {}
+      },
+      "status": "raised",
+      "error": "ModelBehaviorError: Invalid JSON input for tool context_echo: 1 validation error for context_echo_args\ncount\n  Input should be a valid integer [type=int_type, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/int_type",
+      "seconds": 0.0002308972179889679
+    }
+  ],
+  "full_scene_success": null,
+  "tool_call_limit": 5,
+  "scope": "Common local surface-object policy. Backend ledger includes actual generation/token costs; observations/tool calls count against this shared stage budget."
+}

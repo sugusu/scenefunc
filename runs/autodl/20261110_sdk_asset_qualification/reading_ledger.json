@@ -1,0 +1,38 @@
+{
+  "scope": "Targeted native SDK and local asset acquisition source, not a new full-field literature review",
+  "entries": [
+    {
+      "source": "SceneSmith e888297a8b0a2f3acbb8634edf9def59cceab836",
+      "files": {
+        "pyproject.toml": "complete",
+        "uv.lock": "SDK dependency closure and wheel metadata only",
+        "clip_embeddings.py": "complete",
+        "hssd_retrieval/clip_similarity.py": "complete",
+        "hssd_retrieval/data_loader.py": "complete, executed unchanged loader",
+        "scripts/download_hssd_data.sh": "complete, not executed"
+      },
+      "finding": "Uses HSM release data; category lookup addresses indexed rows; similarity normalizes both query and candidates."
+    },
+    {
+      "source": "Pinned AssetManager",
+      "path": "../20261110_native_service_contract/inputs/asset_manager.py",
+      "read": "Imports, DTOs, constructor 1–355; complete direct HSSD retrieval 486–693; generate_assets 1009–1041. Other mesh conversion sections were read in prior turn, not newly claimed here.",
+      "finding": "Image backend constructed eagerly even for HSSD; direct HSSD route still performs VLM physics/orientation, Blender conversion, canonicalization, convex decomposition and SDF generation."
+    },
+    {
+      "source": "openai-agents 0.6.4 official hash-verified wheel",
+      "read": "tool.py through FunctionTool fields; complete tool_context.py/run_context.py; METADATA runtime requirements. Remaining package loaded/executed by Python, not manually read in full.",
+      "finding": "Real ToolOutputImage/Text and FunctionTool plus ToolContext work through the local adapter. No Runner or model tested."
+    },
+    {
+      "source": "HSM local embeddings.py",
+      "read": "complete",
+      "finding": "Loads index and embeddings independently and normalizes embeddings. Does not establish why there is one extra row."
+    },
+    {
+      "source": "https://github.com/3dlg-hcvc/hsm/blob/main/README.md",
+      "read": "Official online setup/data section; targeted search for index mismatch",
+      "finding": "Confirms release data and HSSD dependency. Search did not find authoritative explanation of the 14099/14098 mismatch; absence from search is not proof no explanation exists."
+    }
+  ]
+}
