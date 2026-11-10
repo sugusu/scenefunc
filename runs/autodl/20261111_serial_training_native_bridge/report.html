@@ -1,0 +1,47 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>串行SFT与原生工具角色连接</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:1060px;margin:30px auto;padding:0 24px;background:#f5f8fc;color:#1a2b42}section{background:white;border:1px solid #d9e2ed;border-radius:10px;padding:20px 26px;margin:20px 0}h1{font-size:28px}h2{font-size:21px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #d9e2ed;padding:9px;text-align:left;vertical-align:top}pre{white-space:pre-wrap;background:#edf2f7;padding:15px}a{color:#075ba9}</style><body><h1>串行SFT与完整生成工具分支：代码连接与验证边界</h1><p>2026-11-11 · 模型/反向/更新/API/SDK均为0 · 研究继续进行</p>
+<section><h2>实际改动</h2><p>新增RoleBoundNativeServices，将已有多阶段策略与资产分析completion接口接到共同角色锁：策略使用学生适配器，工具由外层tool_eval关闭适配器。新增RoleIsolatedMassTrainer，继承原加权损失，在整个Trainer.train范围保持串行student_train。</p><p>原Trainer的optimizer.step位于training_step之外，且裁剪可能遍历model.parameters。本次因此覆盖完整继承循环，并拒绝非学生优化器参数和非学生残留grad。未改原损失、旧实验、权重或源文件。</p></section>
+<section><h2>证据具体到哪一层</h2><table><tr><th>项目</th><th>本轮实际执行</th><th>未证明</th></tr><tr><td>策略接口</td><td>19条原输出经包装器、现有策略与原解析器回放，35条提议保留</td><td>新模型输出、场景执行、质量提升</td></tr><tr><td>工具接口</td><td>元数据记录对象上的原backend构造函数；记录回调的角色、位置参数和串行分派</td><td>真实PEFT/8B工具推理、资产预测正确</td></tr><tr><td>SFT入口</td><td>新包装器加显式记录版继承回调，检查训练作用域、参数归属和异常退出</td><td>实际Trainer循环、forward、backward、optimizer.step</td></tr><tr><td>教师</td><td>保留既有角色控制器，不在本轮串行SFT内调用教师</td><td>特权教师质量、在线蒸馏、EMA</td></tr></table><p>记录回调不是神经网络，19轮不是19个独立房间。v2/v3/v4/v5是同一来源的四次代码回放，共76条提议；绝不计为76次新生成。完整8B、梯度检查点、数值与显存仍未验证。</p></section>
+<section><h2>共同算法条件与剩余工作</h2><p>普通目标仍为原始token系数下的加权交叉熵；没有新损失或方法收益证据。训练后冻结工具底模的条件，是优化器始终只写学生参数、所有调用遵守同一锁、没有合并或其他权重写入。工具内容仍可能错误。</p><p>现有D监督与项目族混杂、原始图像/终局证据覆盖不足等问题保持。共同全语料更新频次仍要调用既有require_full_corpus_update核对；数量检查不能替代输入哈希。两套backend各自有限额，并未因此形成跨策略、工具与教师的整场总账；旧32次/900秒额度没有重开。</p><p>本轮是必要接口连接，尚不能称完整训练宿主或CVPR方法。全8B、原生整场/顶面流程、统一总预算、自由生成与独立场景强对照继续待做。</p></section>
+<section><h2>代码与完整推导</h2><p><a href="/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/role_bound_native_services.py">原生角色连接</a> · <a href="/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/role_isolated_mass_trainer.py">串行训练入口</a> · <a href="dispatch_v5/result.json">最终CPU记录</a> · <a href="revision_history.json">修改及导入失败记录</a></p><pre>共享模型的串行SFT与原生生成工具连接：实现、条件证明与边界
+
+一、研究目标没有变化
+仍要从文字生成完整可编辑室内场景，检验学习来源知识在具体空间中的应用是否超过普通计划、反馈与搜索。本轮只接训练/工具共同条件，不把参数隔离、锁或钩子当作新论文方法。
+上一轮确认现有D监督与项目族混杂、少量条件对照可由普通量测解释，这些限制没有因新增训练入口而消失。
+
+二、本轮接上的代码
+RoleBoundNativeServices复用NativePhaseTorchBackend、LocalToolVLMBackend与NativeMultiStagePolicy接口。策略进入policy_eval；原生create_completion进入tool_eval。两者持有同一模型、processor和RLock。
+工具后端has_adapter=False在这里不是工具应使用已训练策略，而是关闭旧后端自行控制adapter的第二层：真正的适配器关闭由外层SharedLearningRoles.tool_eval统一执行。原角色控制器仍必须先验证标准、未合并的两适配器PEFT配置及冻结底模。
+工具请求保持原VLMService位置/关键字参数接口。非训练阶段的跨线程请求通过共同锁串行；同线程嵌套由角色控制器拒绝。训练期间工具请求明确拒绝，避免回调等待另一个线程拿同一锁而死锁。
+工具解析、EOS及单后端限额仍复用既有实现。不同旧本地包装器的JSON附加提示并非逐token相同，本轮不将新绑定说成旧完整运行配置的原样复现。
+
+三、为什么SFT要包住整个继承训练循环
+当前Trainer.training_step在内部执行model.train、compute_loss、backward并返回；optimizer.step发生在_inner_training_loop更外层。只装饰compute_loss或training_step，不足以保证优化器也处于所声明的角色生命周期。
+RoleIsolatedMassTrainer在完整super().train期间保持student_train和共同锁，包括梯度检查点重算、裁剪及optimizer更新位置。训练期间不切teacher或tools；训练返回后再生成。
+create_optimizer调用原实现之后核对参数对象集合：只允许student LoRA参数各一次，不含teacher/base。创建或传入的优化器都检查。拒绝恢复/模型重建/超参试验/自动最佳权重载入、编译/JIT及自动批量重试；这些行为可能改变同一底模或复跑含义，尚未资格验证。
+另外Trainer可对model.parameters进行梯度裁剪，所以旧的非学生grad即使不归优化器，也可能改变学生裁剪系数。入口对非学生残留grad直接拒绝，不把requires_grad=False当作清除旧grad。
+这些限制是明示的执行范围，不是优化算法。任意外部回调绕过合同写权重、修改优化器组或私自调用底层模型均不在保证内。
+
+四、保留的普通目标和条件性证明
+新类不覆盖compute_loss，继续继承OriginalMassTrainer的加权因果交叉熵L=sum_ij w_ij*CE(theta_s;token_ij|prefix_ij)。没有新增loss、训练标签、teacher EMA或自动teacher复制。
+若初始W0身份相同；标准未合并LoRA；只有theta_s属于且持续属于优化器；无共享bias/额外模块更新；无其他写权重；所有调用遵守共同锁；则SFT写入只改变theta_s，W0与theta_t保持不变。
+tool_eval关闭adapter，因而工具使用相同的F(W0,x)。这只保证条件成立时的工具底模身份，不保证材质、质量、朝向等预测正确，也不保证端到端场景质量。
+训练输入、相同原始系数、梯度累积调度、全语料更新频次仍须按共同协议核验。已有require_full_corpus_update(trainer, expected_components)不能省略；组件数量检查也不能替代原始数据/图像哈希。入口类本身没有自动授予任何数据训练资格。
+训练角色内真实8B前后向、实际gradient checkpointing、FP16数值/GradScaler、KV/rope状态与峰值显存尚未运行；不能从代码范围或旧小网络外推。
+
+五、实际CPU验证到哪里
+使用现有Torch2.7.0+cu126、Transformers4.57.1与Accelerate1.10.1。初次解释器缺少已有Accelerate路径，进程在导入前失败；随后指向现有隔离deps，未安装/升级依赖。
+原19条策略输出经新包装器和现有NativeMultiStagePolicy/原解析器回放，35条工具提议保持。它们是原未完整卧室的缓存输出，不是新采样、新Agent或独立房间。
+实际调用了原两个backend构造函数，但model是只有配置/元数据的记录对象；没有构造神经模块、加载参数或调用编码器/模型。工厂创建零调用工具账本，不是一个已获准运行的服务。
+Trainer基类train/training_step/create_optimizer在检查中被显式记录回调替代，用于验证新包装器进入/退出、整循环范围、参数归属拒绝和异常恢复。实际继承Trainer训练循环、forward、backward和optimizer.step都没执行。不会把这项检查写成真实训练通过。
+非训练工具并发在记录回调上观察到顺序enter/exit；训练中的工具调用被拒绝。没有在真实AssetManager并发、真实PEFT或实际CUDA上重复资格验证。
+v2/v3/v4/v5分别保留源版本、原因和结果。每次完整回放仍是同一19条缓存，累计76条回放提议，不是76个新增任务；新模型调用、反向、更新、SDK、渲染、API始终为0。
+
+六、还未接通的关键事项
+这不是完整训练宿主：没有自动把新类放进旧HTTP进程，没有跨进程共享模型，旧32次/900秒预算没有重开。
+策略与工具各有已有后端限额，但还没有一张跨全部角色/重试/训练与教师forward的共同总账。不能以各自都有限额替代公平的整场总预算。
+teacher_eval原控制器存在，但本轮串行SFT不在compute_loss内部执行特权教师、在线蒸馏、教师EMA或搜索；不能称已实现闭环蒸馏训练。
+真实8B宿主、原生stage handover、顶面物体流程、图像/数据覆盖与有效终局样本仍需实测。原19轮并没有完整场景正样本；现有24个研究者动作和8个原则D也未因此变成专业完整示范。
+因此暂不为这个代码入口单独要求开大实例或启动全GRPO。下一轮继续把共同预算与完整数据/终局证据接好，再以明确范围验证实际8B执行。
+研究仍在进行。当前没有训练收益、完整正场景或CVPR级贡献证明；工程连接作为强对照共同基础保留。
+</pre></section>
+<section><h2>交付</h2><p><a href="summary.csv">证据层级表</a> · <a href="reading_ledger.json">实际源码阅读</a> · <a href="source_manifest.json">来源哈希</a> · <a href="protected_source_verification.json">579项旧源重验</a> · <a href="COMMANDS.txt">CPU复跑命令</a> · <a href="evidence.zip">证据包</a></p><p>第一次仅在解释器路径上缺少已有Accelerate；随后使用现有隔离deps，没有安装或升级包。未执行任何训练启动器、后台服务或付费资源操作。</p></section></body></html>

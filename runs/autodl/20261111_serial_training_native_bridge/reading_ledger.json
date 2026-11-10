@@ -1,0 +1,32 @@
+[
+  {
+    "source": "Local Transformers4.57.1 trainer.py",
+    "read": "training_step3981–4071 complete; create_optimizer1278–1345; inner loop gradient clip and update2690–2745; selected optimizer/wrapping/checkpointing call sites via exact-line search",
+    "finding": "Optimizer update lies outside training_step; clipping can inspect all model.parameters. No full Trainer loop executed this turn."
+  },
+  {
+    "source": "Existing phase_trainer.py and shared_learning_roles.py",
+    "read": "Both complete modules",
+    "finding": "OriginalMassTrainer coefficient compensation and compute_loss remain unchanged. Common role controller holds one RLock and forbids nested roles; full8B use not yet qualified."
+  },
+  {
+    "source": "NativePhaseTorchBackend and LocalToolVLMBackend",
+    "read": "Complete phase backend; tool encoding and create_completion plus binding scope",
+    "finding": "Existing tool backend owns a separate RLock and optional disable_adapter. New binding shares the role lock and gives adapter ownership only to the outer role."
+  },
+  {
+    "source": "Original VLMService and native asset analyzer",
+    "read": "VLMService signature/constructor/response branch; mesh_physics_analyzer276 call and parsing; selected AssetManager call sites584/1867",
+    "finding": "Asset analysis receives injected create_completion service. No OpenAI client constructed, raw HTTP host launched or mesh analysis executed."
+  },
+  {
+    "source": "LocalQwenEngine/LocalVLMService and complete_native_model_host.py",
+    "read": "Local encoding/load/completion/service paths; full complete-native host module",
+    "finding": "Old completed trial used a different local wrapper and a closed32request budget. New code integration is not a rerun or token-equivalent reproduction of that wrapper."
+  },
+  {
+    "source": "Prior paper/data audits",
+    "read": "Referenced existing SceneReVis/source-principle records only; no new full-paper or book claim",
+    "boundary": "Current engineering work does not add design labels, source knowledge or a new learning algorithm."
+  }
+]
