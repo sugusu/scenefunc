@@ -1,0 +1,60 @@
+{
+  "status": "ordinary_proposals_now_executed_and_original_proxy_checks_recomputed",
+  "prior_goal_turn_classification": "The previous turn was a read-only requested Git review; it did not implement the proposed control. This continuation implemented and ran that control instead of restating the plan.",
+  "scientific_update": "The two current development tasks do not require a learned decision mechanism to produce proxy-satisfying edits. A fixed public-input search found both, and unchanged native move kernels executed both. This weakens the justification for additional training on this example, without answering broader 3D generation or preference-learning questions.",
+  "algorithm_executed": {
+    "observations": "Initial public object IDs, boxes, poses, immutability, room/opening geometry, task regions and current supported checks.",
+    "proposals": "Explicit target-region centers, minimal forbidden-region translations, then a room-relative 9x9 translation lattice; round-robin objects, preserved yaw.",
+    "selection": "At most 128 evaluated endpoint states, at most two moves per joint candidate, four retained branches; first goal satisfying activity and initial preservation accepted. Both observed successes occurred at depth one, so this run did NOT validate the depth-two branch.",
+    "execution": "Selected proposals, not teacher moves, passed to original move closure and method bodies on original RoomScene records. Original 21-object state reproduced by the unchanged pinned builder. No model, paid API, training or GPU.",
+    "limits": "Procedural proxy scene, explicit numeric task regions, zero placement noise, no SDK session/bootstrap or physics, no manipulation trajectory, no aesthetic/semantic acceptance. Original bathroom access failure preserved. Ordinary engineering control, not a novel method."
+  },
+  "candidate_training_question": {
+    "symbols": "X = current observation, task and common evidence; D = decision text; A = tool action; theta = fixed model parameters during deployment.",
+    "conditioned_objective": "L_cond = lambda_D CE(D|X) + lambda_A CE(A|X,D)",
+    "auxiliary_objective": "L_aux = lambda_D CE(D|X) + lambda_A CE(A|X)",
+    "deployment": "Conditioned arm samples its own D then A; auxiliary arm directly samples A. Both receive identical public evidence and the same ordinary preview/search tool. Gold D is forbidden in primary deployment.",
+    "what_differs": "Inference computation and conditioning path, not a new source of spatial observations. Multi-task rationale learning and scratchpad-style intermediate computation both have prior work.",
+    "missing_D": "Do not invent labels or drop the original action-only units. Report the complete corpus and the subset with authentic D separately. Existing observation reconstruction is not yet uniformly equivalent to the original training material."
+  },
+  "theoretical_analysis_not_a_new_theorem": [
+    {
+      "claim": "Self-generated text alone adds no independent observation of the current environment.",
+      "assumptions": "Given X and fixed theta, D is generated using fresh internal randomness independent of hidden scene truth Z; no new tool query or retrieval is made between X and D.",
+      "derivation": "p(D|X,Z,theta)=p(D|X,theta), hence I(Z;D|X,theta)=0.",
+      "consequence": "This does not imply reasoning text cannot help a bounded network. It can change computation, representation or search. Such benefit must be measured; it cannot be described as acquiring missing geometric evidence. If D triggers an actual measurement, the assumption changes and the measurement must be supplied/accounted for in controls."
+    },
+    {
+      "claim": "A conditioned action policy is an ordinary latent-computation factorization.",
+      "derivation": "p(A|X)=sum_D p(D|X) p(A|X,D). Greedily choosing one D and then one A generally differs from maximizing this marginal, and neither rule guarantees task success.",
+      "consequence": "Teacher-conditioned action accuracy is insufficient. Deployment errors in D, omitted tool constraints, and the cost of generating D must be included. No guarantee that lower token CE improves geometric validity follows."
+    },
+    {
+      "claim": "Same supervision is different from same training or inference compute.",
+      "derivation": "The same target tokens and loss weights do not equalize compute when the conditioned action consumes a longer D prefix. At deployment, a direct-action arm can spend the saved D tokens on additional action candidates or tool queries.",
+      "consequence": "Report a supervision-matched contrast and measured cost/quality curves. Do not force the direct-action baseline to generate unused D merely to make it equally slow. An extra-compute direct-action/search control is necessary before attributing gains to decision conditioning."
+    },
+    {
+      "claim": "Task success here is weaker than complete 3D scene success.",
+      "derivation": "The endpoint predicate is activity_pass AND preserved_initial_true_checks AND no_new_primitive_violations. It deliberately does not imply every requirement was initially or finally true.",
+      "consequence": "Both actual endpoints retain access_bath_entry_width_0.6=False. Complete measured success is false; whole-room human-use success remains unknown. A successful existing-scene edit is not text-to-scene generation."
+    }
+  ],
+  "strong_controls_required": [
+    "Ordinary proposal/search with this public evaluator and all allowed edits",
+    "Frozen model with the same knowledge and tools",
+    "Same-supervision auxiliary decision learning with direct actions",
+    "Same-supervision self-generated-decision-conditioned actions",
+    "Direct-action candidate search allowed to spend comparable total computation, not forced wasted rationale generation"
+  ],
+  "do_not_claim": [
+    "A novel loss or a new information-theoretic result",
+    "Success on 12 independent rooms",
+    "The two-step beam or continuous movement path was validated",
+    "Complete scene generation succeeded",
+    "The ordinary solver beat the old model runs under matched compute",
+    "Append-only memory or human conditional preferences were tested"
+  ],
+  "remaining_preparation_gap_confirmed": "phase_host.NativeRoomPort still defaults to append_v1 while rebuilt observation material uses another versioned representation. A future model run must explicitly select and verify one compatible evidence format; this turn did not silently change the host.",
+  "next_investment_decision": "Do not expand training or request GPU for these two known proxy tasks. Retain this as an executed ordinary control. Any continued conditioned-decision study needs independent task families, self-generated closed-loop actions with matched tools/supervision, and a bridge back to full generation requirements. If ordinary methods explain the gains there as well, revise the mechanism claim instead of relabeling this implementation as innovation."
+}

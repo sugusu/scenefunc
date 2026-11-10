@@ -1,0 +1,15 @@
+{
+  "status": "fixed_before_search_execution",
+  "purpose": "Determine whether ordinary public-input proposal search can find proxy-satisfying endpoints, beyond merely rejecting archived bad actions.",
+  "development_status": "Posthoc ordinary control designed after reading this development family's failures. Not an independent benchmark.",
+  "source_fragments": "runs/autodl/20261110_executed_effects/actual_v2/source_fragments.jsonl",
+  "inputs": "All round-zero public tasks, deduplicated by exact parent plus public room geometry. Keep source mapping for all 12 cells. No future states, old model proposals or teacher decisions passed to search.",
+  "search": {"candidate_budget": 128, "root_budget": 64, "beam_width": 4, "max_depth": 2},
+  "candidate_rule": "Round-robin movable objects. Preserve yaw; explicit target-region center, minimal axis separation from task forbidden regions with 0.02m margin, then 9x9 room-relative lattice ordered by distance. No hardcoded object poses or IDs.",
+  "acceptance": "Declared activity checks true, no initially true supported check lost, no newly intersecting furniture or structural wall pair and no new XY boundary violation. Existing failures remain reported. Joint candidate acceptance against the initial state; no hard requirement for intermediate functional improvement.",
+  "added_safety_scope": "Public wall-slab intersection is an additional ordinary safety condition, separately reported; it was not in the previous furniture-pair preview summary. It must be shared by future methods.",
+  "stop": "First endpoint meeting scoped criteria, else fixed budget exhaustion. Do not tune and rerun this version to obtain success.",
+  "resources": "CPU, no models, no APIs, no training, no mesh download, no claim of native execution.",
+  "interpretation": "One room with two tasks, not twelve independent rooms; allowed endpoints are not full scene generation successes. No model superiority/efficiency inference from unmatched retrospective runs.",
+  "next_gate": "Only native execution plus independent geometry checks can establish that a selected endpoint is usable in the actual scene. Do not fabricate a scene or count public-record pose simulation as that execution."
+}

@@ -1,0 +1,42 @@
+{
+  "scope": "Targeted source and objective review supporting this implementation; not a new exhaustive literature search.",
+  "sources": [
+    {
+      "url": "https://aclanthology.org/2023.findings-acl.507.pdf",
+      "title": "Distilling Step-by-Step",
+      "read_this_turn": "Method Sections 3.1-3.2, equations 1-4 and task-prefix description; abstract on publisher page. Not all experiments/appendices reread.",
+      "finding": "Rationale as auxiliary multitask supervision with a task-label path not requiring rationale at test time is an established control. The paper also explicitly distinguishes rationale-conditioned inputs."
+    },
+    {
+      "url": "https://arxiv.org/abs/2112.00114",
+      "title": "Show Your Work: Scratchpads for Intermediate Computation with Language Models",
+      "read_this_turn": "Abstract and bibliographic page only; no new full-text-read claim.",
+      "finding": "Emitting intermediate computation as scratchpad text predates this candidate. No transfer result for our 3D tasks inferred."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/nepfaff/scenesmith/e888297a8b0a2f3acbb8634edf9def59cceab836/scenesmith/furniture_agents/tools/furniture_tools.py",
+      "read_this_turn": "Constructor, bounds validation, public move closure and complete move implementation; exact code also downloaded and used for the selected native kernel execution.",
+      "finding": "Native moves enforce identity/immutability and center bounds, apply placement noise, then update the transform. Tool success alone is not a geometry or activity certificate. This run explicitly uses zero noise."
+    },
+    {
+      "source": "scripts/920/search_moabit_reference.py at 75fc783f86d4fea78714639e110fbe77476ee106",
+      "read_this_turn": "Entire script",
+      "finding": "Existing MILP controls a different declared main-room/dining assembly. It is not the missing EVALFIX activity proposal loop, so it was not mislabeled as that comparison."
+    },
+    {
+      "source": "scripts/920/prepare_nesting_task.py and check_nesting_endpoints.py at the same pin",
+      "read_this_turn": "Task construction and original feasibility references read AFTER the new search code/protocol had been saved and the new search process started. They were not inputs to candidate generation.",
+      "finding": "The developer task is explicitly researcher-authored with procedural boxes and numeric activity regions. Previously saved manually specified feasibility paths exist; the new ordinary search independently constructs endpoints from public inputs."
+    },
+    {
+      "source": "scripts/920/build_reference_room.py at the same pin",
+      "read_this_turn": "Full script across bounded reads; executed unchanged, with only initial_reference.path relocated in its input plan.",
+      "finding": "All 12 furniture assets for this task are procedural proxies. Rebuilt native state exactly equals the saved original 21-object initial state."
+    },
+    {
+      "source": "original_evaluator/manifest.json",
+      "read_this_turn": "nesting_room_metrics and access source/entry points reviewed; local dependencies retrieved by import graph and reused unchanged. This turn does not claim every line of all eight helper files was newly read.",
+      "finding": "Original SDF-based task evaluator was actually rerun on before/after native states; all comparisons agree with the search predictions and retain the bathroom failure."
+    }
+  ]
+}

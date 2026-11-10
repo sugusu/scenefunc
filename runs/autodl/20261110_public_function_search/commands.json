@@ -1,0 +1,101 @@
+{
+  "cwd": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "common_environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "native_extra_environment": {
+    "PYTHONPATH": "/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps"
+  },
+  "commands": [
+    {
+      "phase": "ordinary_search",
+      "argv": [
+        "/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python",
+        "-B",
+        "scripts/autodl/run_public_function_search.py",
+        "--protocol",
+        "runs/autodl/20261110_public_function_search/protocol.json",
+        "--out",
+        "runs/autodl/20261110_public_function_search/actual_v1"
+      ],
+      "exit_code": 0,
+      "log": "run.log"
+    },
+    {
+      "phase": "native_attempt_before_resources",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "runs/autodl/20261110_public_function_search/native_v1/executed_kernel.py",
+        "--search",
+        "runs/autodl/20261110_public_function_search/actual_v1",
+        "--native-source",
+        "runs/autodl/20261110_public_function_search/native_source",
+        "--state-source",
+        "runs/autodl/20261110_native_state_runtime/source",
+        "--out",
+        "runs/autodl/20261110_public_function_search/native_v1"
+      ],
+      "exit_code": 1,
+      "log": "native.log",
+      "note": "Executed under scripts/autodl/execute_public_search_kernel.py at its saved v1 hash; preserved exact file is named here for review. Missing room.sdf, zero moves."
+    },
+    {
+      "phase": "unchanged_original_resource_rebuild",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "runs/autodl/20261110_public_function_search/rebuild_inputs/build_reference_room.py",
+        "--plan",
+        "runs/autodl/20261110_public_function_search/rebuild_inputs/build_plan.json",
+        "--scenesmith",
+        "runs/autodl/20261110_native_state_runtime/source",
+        "--out",
+        "runs/autodl/20261110_public_function_search/rebuilt_resource_v1"
+      ],
+      "exit_code": 0,
+      "log": "rebuild.log",
+      "elapsed_seconds": null,
+      "timing_note": "Start timestamp saved; standalone wall duration was not captured, so not included in a claimed total speed."
+    },
+    {
+      "phase": "native_selected_actions",
+      "argv": [
+        "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+        "-B",
+        "scripts/autodl/execute_public_search_kernel.py",
+        "--search",
+        "runs/autodl/20261110_public_function_search/actual_v1",
+        "--native-source",
+        "runs/autodl/20261110_public_function_search/native_source",
+        "--state-source",
+        "runs/autodl/20261110_native_state_runtime/source",
+        "--resource-room",
+        "runs/autodl/20261110_public_function_search/rebuilt_resource_v1/bundle/room_nesting_table_transfer",
+        "--out",
+        "runs/autodl/20261110_public_function_search/native_v2"
+      ],
+      "exit_code": 0,
+      "log": "native_v2.log"
+    },
+    {
+      "phase": "original_evaluator",
+      "argv": [
+        "/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python",
+        "-B",
+        "scripts/autodl/check_public_search_original_metrics.py",
+        "--run",
+        "runs/autodl/20261110_public_function_search"
+      ],
+      "exit_code": 0,
+      "log": "original_metric_check.log"
+    }
+  ],
+  "reproduction": "Use fresh output directories consistently; pinned SceneSmith state classes must be materialized using scripts/autodl/fetch_native_state_source.py if absent. No SDK services or model are started. Failed v1 attempt need not be repeated. All task geometry/reconstruction inputs are included.",
+  "search_did_not_read": "Saved later states, feasibility poses or original model calls. Original initial state/resources were read only for native validation after search results were saved.",
+  "resource_rebuild_count": 1,
+  "new_text_to_scene_generations": 0
+}
