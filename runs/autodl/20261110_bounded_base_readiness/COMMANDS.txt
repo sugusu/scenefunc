@@ -1,0 +1,16 @@
+Repository and branch: this repository, runs/autodl. Preserve prior results.
+
+Completed CPU audit (full byte hashes, audit_v1; failure later in an audit source path):
+python scripts/autodl/audit_bounded_base_readiness.py --work-base /root/autodl-tmp/agent_method_preparation_20261027/work --output runs/autodl/20261110_bounded_base_readiness/audit_v1
+
+Completed corrected audit (reuse completed full hashes only after locked file sizes/mtimes match):
+python scripts/autodl/audit_bounded_base_readiness.py --work-base /root/autodl-tmp/agent_method_preparation_20261027/work --output runs/autodl/20261110_bounded_base_readiness/audit_v2 --reuse-weight-receipt runs/autodl/20261110_bounded_base_readiness/audit_v1/result.json
+
+Actually executed launch gate v2: exit2, no model process/output directory.
+Run once after the existing bundled instance is available:
+bash runs/autodl/20261110_bounded_base_readiness/launch_once.sh
+
+Fixed output: runs/autodl/20261110_bounded_base_readiness/model_run_v1
+The existing runner refuses an existing output directory. Inspect any actual process/receipt before another attempt. Do not rename/retry failed runs automatically.
+
+Limits inherited unchanged:4turns,1move/turn,200seconds/model subprocess,1200seconds total model subprocess,8192input tokens,1024output tokens,5views at65536max pixels,float16. No paid API, training or resource opening. Actual free CUDA VRAM checked inside the subprocess. Resource gates are conservative settings, not measured minima.

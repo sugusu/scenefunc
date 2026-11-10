@@ -1,0 +1,11 @@
+{
+  "exit_code": 2,
+  "command": [
+    "bash",
+    "runs/autodl/20261110_bounded_base_readiness/launch_once.sh"
+  ],
+  "model_process_started": false,
+  "model_output_directory_exists": false,
+  "scope": "Real source/weight-stat/view guard followed by real resource check; no model inference",
+  "correction": "First guard queried file statvfs, exposing filesystem-wide free space; now query output directory, matching the data-volume quota. Both gates refused on RAM/no GPU. First receipt retained."
+}
