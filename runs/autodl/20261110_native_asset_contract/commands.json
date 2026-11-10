@@ -1,0 +1,43 @@
+{
+  "cwd": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "python": "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps"
+  },
+  "argv": [
+    [
+      "scripts/autodl/prepare_cached_asset_catalogue.py",
+      "--base",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work",
+      "--checkpoint",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/paris_local_run_results_20261104/B_mesh_feedback_sdpa_kv/tools/checkpoint.json",
+      "--out",
+      "NEW_CACHE_OUTPUT"
+    ],
+    [
+      "scripts/autodl/check_native_registry_snapshot.py",
+      "--base",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work",
+      "--checkpoint",
+      "/root/autodl-tmp/agent_method_preparation_20261027/work/paris_local_run_results_20261104/B_mesh_feedback_sdpa_kv/tools/checkpoint.json",
+      "--paper-state",
+      "runs/autodl/20261110_native_state_runtime/checkpoint_restore_v1/roundtrip_state.json",
+      "--out",
+      "NEW_REGISTRY_OUTPUT"
+    ],
+    [
+      "scripts/autodl/extract_cached_native_surfaces.py",
+      "--source",
+      "runs/autodl/20261110_native_state_runtime/source",
+      "--catalogue",
+      "runs/autodl/20261110_native_asset_contract/cache_v2/catalogue.json",
+      "--asset-id",
+      "hssd:ecf01604cd0958929fb26e0be43329844fa20e55",
+      "--out",
+      "NEW_SURFACE_OUTPUT"
+    ]
+  ],
+  "failed_attempt": "cache_v1 omitted required Drake dependency PYTHONPATH; cache_v2 used corrected environment, unchanged sample/code scope.",
+  "parent_commit": "c395ee8acbda0f1b37f8b7719f10d4cfab2a0344"
+}

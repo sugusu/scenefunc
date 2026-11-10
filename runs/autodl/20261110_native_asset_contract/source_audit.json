@@ -1,0 +1,125 @@
+{
+  "pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+  "scope": "Selected native branches and three fully read source files; no transitive zero-network proof.",
+  "source_files": [
+    {
+      "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/native_room_bridge_20261104/source/scenesmith/agent_utils/asset_manager.py",
+      "sha256": "a046c5b67a30e2aeb8e0612cab56d8bd3ecaf1d1829118a176a9ce25b52fd72a",
+      "functions": [
+        {
+          "name": "_convert_articulated_to_scene_object",
+          "start": 1464,
+          "end": 1563
+        },
+        {
+          "name": "_convert_mesh_to_simulation_asset",
+          "start": 1784,
+          "end": 1962
+        }
+      ]
+    },
+    {
+      "path": "runs/autodl/20261110_native_state_runtime/source/scenesmith/agent_utils/room.py",
+      "sha256": "5e830e3d769af65709a5d488b1872422d64c2e5d80a68b09dbd1a874e27be9dd",
+      "functions": [
+        {
+          "name": "extract_and_propagate_support_surfaces",
+          "start": 1649,
+          "end": 1853
+        },
+        {
+          "name": "to_drake_directive",
+          "start": 916,
+          "end": 1544
+        }
+      ]
+    },
+    {
+      "path": "runs/autodl/20261110_native_state_runtime/source/scenesmith/agent_utils/support_surface_extraction.py",
+      "sha256": "4be277f2289a2a0ca4f51323a3c38b2da9029f45ab8ea9daacda8328149cbeb0",
+      "functions": [
+        {
+          "name": "_compute_clearance_via_raycasting",
+          "start": 587,
+          "end": 679
+        },
+        {
+          "name": "_compute_surface_bounds",
+          "start": 682,
+          "end": 754
+        },
+        {
+          "name": "_load_and_prepare_mesh",
+          "start": 791,
+          "end": 857
+        },
+        {
+          "name": "extract_support_surfaces_from_mesh",
+          "start": 1004,
+          "end": 1131
+        }
+      ]
+    },
+    {
+      "path": "runs/autodl/20261110_native_asset_contract/tool_source/vlm_service.py",
+      "sha256": "2602aa9f12b0c064c1ea340971278336bd1f5b7ea2da6162bf72ebd1c1d0ee1f",
+      "functions": [
+        {
+          "name": "__init__",
+          "start": 19,
+          "end": 30
+        },
+        {
+          "name": "create_completion",
+          "start": 32,
+          "end": 126
+        }
+      ]
+    },
+    {
+      "path": "runs/autodl/20261110_native_asset_contract/tool_source/mesh_physics_analyzer.py",
+      "sha256": "084ce3b1b40da7e6e36f5b8b071711ccd4d7832b5f42666010801634b4fdbfa4",
+      "functions": [
+        {
+          "name": "analyze_mesh_orientation_and_material",
+          "start": 149,
+          "end": 356
+        }
+      ]
+    },
+    {
+      "path": "runs/autodl/20261110_native_asset_contract/tool_source/sdf_generator.py",
+      "sha256": "fc407fe320efb1c4e5293cc7738c57b13c8962f5f1fc438a450d7f35fa50167e",
+      "functions": [
+        {
+          "name": "generate_drake_sdf",
+          "start": 42,
+          "end": 248
+        },
+        {
+          "name": "rescale_sdf",
+          "start": 251,
+          "end": 302
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "Native ordinary-object Drake directives omit objects without SDF; actual ten-template test exported zero add_model entries. This does not describe every GLB renderer/exporter.",
+    "Native registry persistence omits surfaces/placement/immutable fields, but RoomScene can recompute surfaces. Do not infer irreversible upstream functional loss.",
+    "Cached geometry is Z-up; native surface extractor unconditionally rotates Y-up input. Explicit inverse conversion recovered exact cached bounds in this desk run.",
+    "HSSD ordinary mesh conversion calls VLM orientation/material/mass analysis. Turning off routing alone does not remove that call.",
+    "VLMService constructs an OpenAI client and selects Responses or Chat calls. No effective endpoint/account credentials were inspected; source alone does not establish actual billing.",
+    "SDF generation uses predicted mass and material friction, mesh inertia and supplied convex pieces. Mesh bounds/support surfaces do not supply these missing properties.",
+    "SDF generation mutates collision-piece coordinates with Y-up to Z-up rotation. Any later reuse needs explicit frame ownership; no double-conversion experiment was performed.",
+    "Articulated retrieval has a different branch using preprocessed SDF, but no suitable accessible asset pool was established in this turn."
+  ],
+  "not_executed": [
+    "VLMService construction or requests",
+    "native mesh physics analysis",
+    "SDF generation/collision decomposition",
+    "whole scene generation",
+    "new policy training"
+  ],
+  "next": "Use attributable common preprocessing or a measured local model backend for tool-side analysis; never fill unknown physics with invented ground truth."
+}

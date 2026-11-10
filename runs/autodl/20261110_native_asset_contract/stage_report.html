@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>共同资产路径：实际执行与方法边界</title>
+<style>body{font:17px/1.7 system-ui;max-width:1000px;margin:40px auto;padding:0 22px;color:#17212b}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:9px}a{color:#175b9c}</style>
+<h1>原生支撑面提取已实际跑通，完整资产流程仍有明确缺口</h1>
+<p>这轮把十个现有真实 HSSD 网格与旧场景摆放分开，形成不含旧坐标的资产目录；实现完整原生对象状态保存，并实际运行原生几何支撑提取。它们属于共同执行基础，不是新的三维 Agent 方法。</p>
+<table><tr><th>项目</th><th>实际结果</th></tr><tr><td>真实缓存</td><td>10 个网格；0 个 SDF；原生物体 Drake 导出为 0 项</td></tr><tr><td>状态恢复</td><td>旧反例中的 1 个支撑面经原注册表变为 0；完整快照保留为 1，另保留 immutable</td></tr><tr><td>原生桌面提取</td><td>1 个候选面，面积 0.717093 m²</td></tr><tr><td>实际资源</td><td>6.196 秒；峰值 524.9 MiB</td></tr><tr><td>研究效果</td><td>0 新模型调用，0 训练，0 新完整场景</td></tr></table>
+<h2>不能误判的两处接口</h2>
+<p>原生注册表没有保留全部场景字段，但原生 RoomScene 已有重新计算支撑面的流程。因此不能从字段缺失推导出整个上游系统不可恢复。本轮完整快照保留历史状态；另一个资产目录则不包含历史房间坐标，二者用途不同。</p>
+<p>原生支撑提取接受 Y-up 网格，旧缓存为 Z-up。本轮显式反向转换后交给未修改的原生算法，恢复包围盒最大误差为 0。桌面候选面原点高于网格顶面 1 cm，来自原生默认偏移；它不是新阈值，也不是物理接触已经验证。</p>
+<h2>为什么完整流程还没有就绪</h2>
+<p>这十件缓存没有 SDF。普通物体的原生 Drake 指令导出会跳过缺 SDF 的项，实际得到 0 个 add_model；其他 GLB 导出路径不一定如此。不能用网格可见代替完整仿真资产可用。新提取的桌面也不提供质量、摩擦和凸分解。</p>
+<p>完整读取 VLMService、mesh_physics_analyzer、sdf_generator 后确认：普通 HSSD 处理会渲染多视图、调用模型预测朝向/材质/质量，再建立仿真资产。没有实例化这些模型服务或读取账户配置。原生调用可在将来适配本地后端，但其正确性、资源和成本尚未实测。</p>
+<h2>对算法与强对照的影响</h2>
+<p>当前保留的机制问题仍是：相同监督下，自生成决定再行动，能否改善完整房间，并超过直接动作与等成本普通搜索？ThinkBLOX 已有三维渐进推理与动作监督；这一轮没有发现可单独承担创新的新机制。</p>
+<p>比较成本必须包括主策略、工具侧模型、渲染求解和资产预处理。使用相同源资产、参数和缓存规则；可以共享同输入的资产分析，但不能共享另一组的已摆放场景。预测物理属性保留来源和不确定性，不称为真实标注。</p>
+<p>下一步补齐共同资产/服务路径，才进入真实整场贯通。不要把这一个桌面的成功扩大成整个资产库准备完成，也不要因此扩大训练。</p>
+<p>HSSD 原始网格与转换后的 GLB 保留在本地，不上传 Git；外部资源哈希见清单。复跑需要具备对应资产的访问许可与本地文件。</p>
+<p><a href="summary.json">汇总</a> · <a href="desk_surface_v1/summary.json">桌面实际运行</a> · <a href="registry_v1/summary.json">状态恢复对照</a> · <a href="source_audit.json">源码依据</a> · <a href="experimental_implications.json">算法与成本边界</a> · <a href="reading_ledger.json">阅读范围</a> · <a href="commands.json">复跑命令</a></p></html>

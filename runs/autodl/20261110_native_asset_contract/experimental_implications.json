@@ -1,0 +1,21 @@
+{
+  "status": "Experimental implications, not a new algorithm or new theorem",
+  "candidate": "Compare self-generated D-conditioned furniture actions with same-supervision auxiliary-D/direct-A and ordinary search on final complete scenes.",
+  "learning_objective": "Keep previously specified original-token-weighted conditional likelihood. This asset work changes neither labels nor objectives.",
+  "cost_identity": "C_total = C_policy + C_tool_models + C_render_and_solver + C_asset_preprocessing; shared one-time preprocessing is reported separately with its amortization count.",
+  "reason": "Asset choice, resizing or retries can change tool-side inference and preprocessing. A smaller policy token count is not necessarily a lower complete-scene cost.",
+  "cache_controls": [
+    "Share immutable source asset pool and preprocessing recipe across arms; preserve source IDs and raw geometry hashes.",
+    "For reuse of a model-produced analysis, key on actual images/text, model/version, preprocessing and configuration; raw asset ID alone is insufficient.",
+    "Use isolated writable per-arm scene state. Never import a prior arm's placement, selected action, success label or finalized scene as asset metadata.",
+    "Choose cold versus warmed cache consistently. If preprocessing is shared, disclose its cost rather than charging the first arm only.",
+    "Mass/front/material estimates remain estimates with provenance. Unsupported semantics stay unknown.",
+    "All arms retain the same allowed modifications and common final-scene requirements; no deletion or size relaxation merely to pass."
+  ],
+  "scope_limits": [
+    "The ten meshes were selected in earlier work. They are not an unrestricted new asset benchmark or evidence of retrieval coverage.",
+    "One successful desk extraction does not certify the whole library, functional access, stability or full pipeline.",
+    "No new three-dimensional inductive bias or independent full-scene advantage is established.",
+    "Do not train again just because local preprocessing works. First close the real shared execution path and preserve strong ordinary controls."
+  ]
+}
