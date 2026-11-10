@@ -1,0 +1,13 @@
+Actual executed dependency restoration and fresh qualification:
+python scripts/autodl/restore_original_clip_in_ram.py --out runs/autodl/20261110_fresh_text_retrieval/restore_v1
+The matching live process was terminated at605.28seconds after its600second budget;235/236ranges were complete. Receipt retained, no whole-file restart.
+python scripts/autodl/finish_single_clip_ram_range.py --stage runs/autodl/20261110_fresh_text_retrieval
+NATIVEPY=/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python
+Use the existing native dependency PYTHONPATH recorded in execution_environment.json.
+OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 "$NATIVEPY" -u scripts/autodl/run_fresh_native_clip_retrieval.py --stage runs/autodl/20261110_fresh_text_retrieval
+
+Do not overwrite existing execution directories or automatically rerun inference.
+A new manual reproduction must use a new stage directory with the same frozen three-query protocol and an explicit valid restoration receipt. The RAM checkpoint is temporary; never bypass its full SHA/config checks.
+
+Full generation integration uses native_clip_runtime.bind_original_clip before native service startup. No old query-vector replay wrapper belongs on that fresh path.
+Future reproductions should also set PYTHONDONTWRITEBYTECODE=1 to avoid refilling source-backed bytecode caches; this was not set for the archived qualification.

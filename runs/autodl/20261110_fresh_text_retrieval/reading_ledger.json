@@ -1,0 +1,42 @@
+[
+  {
+    "source": "Pinned SceneSmith clip_embeddings.py",
+    "url": "https://github.com/nepfaff/scenesmith/blob/e888297a8b0a2f3acbb8634edf9def59cceab836/scenesmith/agent_utils/clip_embeddings.py",
+    "read": "Whole module: cache selection, native text/image encoding and cosine similarities",
+    "actual_execution": "Unchanged native get_text_embedding and cache-hit loader; local-file OpenCLIP constructor explicitly populated cache",
+    "not_claimed": "Native automatic remote weight download, image forward qualification or a modified/new encoder"
+  },
+  {
+    "source": "Pinned SceneSmith HSSD data_loader.py",
+    "url": "https://github.com/nepfaff/scenesmith/blob/e888297a8b0a2f3acbb8634edf9def59cceab836/scenesmith/agent_utils/hssd_retrieval/data_loader.py",
+    "read": "Metadata classes, index loading and lookup, lines1–185",
+    "actual_execution": "Native loader, scoring/filtering path and HTTP/export modules fully imported under package namespace",
+    "not_claimed": "Every index-image identity independently verified"
+  },
+  {
+    "source": "Pinned HSSD HTTP client",
+    "url": "https://github.com/nepfaff/scenesmith/blob/e888297a8b0a2f3acbb8634edf9def59cceab836/scenesmith/agent_utils/hssd_retrieval_server/client.py",
+    "read": "Retry bound and request path including for attempt in range(max_retries)",
+    "actual_execution": "One attempt per fixed request via max_retries1, real loopback server",
+    "not_claimed": "General failure-recovery evaluation"
+  },
+  {
+    "source": "Original HSM/DFN download records and official model config",
+    "revision": "01b771ed0d1395ca5ffdd279897d665ebe00dfd2",
+    "model": "apple/DFN5B-CLIP-ViT-H-14-378",
+    "url": "https://huggingface.co/apple/DFN5B-CLIP-ViT-H-14-378/tree/01b771ed0d1395ca5ffdd279897d665ebe00dfd2",
+    "read": "Original approved request, LFS SHA, successful old download receipt and735byteconfig; installed OpenCLIP2.32 signature/model config",
+    "actual_execution": "Recovered same3,947,081,637bytefile inRAM and matched original officialc07a17…SHA; CPU local loading and six text forwards",
+    "not_claimed": "New model selection, dataset expansion, training or paid model API"
+  },
+  {
+    "source": "Existing five-stage controller and external-service contract",
+    "local": [
+      "scripts/autodl/complete_native_pipeline.py",
+      "scripts/autodl/native_service_contract.py",
+      "scripts/autodl/check_retrieval_constructor.py"
+    ],
+    "read": "Full common pipeline and service guard; constructor qualification opening through cleanup checks",
+    "finding": "Fresh retrieval closes one dependency only. Five-stage policy/model/asset composition and final task verification remain separate; old doubles are not new full-generation evidence."
+  }
+]

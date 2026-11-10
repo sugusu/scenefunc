@@ -1,0 +1,46 @@
+INFO:root:Loaded ViT-H-14-378-quickgelu model config.
+INFO:root:Loading pretrained ViT-H-14-378-quickgelu weights (/dev/shm/original_dfn_clip_20261110_2m9t72h2/open_clip_pytorch_model.bin).
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Preloading HSSD retriever and CLIP model...
+INFO:scenesmith.agent_utils.hssd_retrieval.config:HSSD config initialized:
+  data_path: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models
+  preprocessed_path: /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/vendor/hsm/data/preprocessed
+  top_k: 5
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loading HSSD preprocessed data from /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/vendor/hsm/data/preprocessed
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded 10969 HSSD entries: 2220 with orientation data (20.2%), 8749 without (79.8%)
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded CLIP embeddings: shape=(14099, 1024), dtype=float32
+INFO:scenesmith.agent_utils.hssd_retrieval.data_loader:Loaded 481 WordNet categories, 14098 mesh embeddings, 4 object categories
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:HSSD retriever initialized (clip_device=cpu)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retriever preloaded in 1.29s (includes CLIP model)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Starting HSSD retrieval processing thread
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retrieval processing started
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 21:07:36] "GET /health HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fresh_clip_qualification: an office chair
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='an office chair', type=FURNITURE, dimensions=None
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'an office chair' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('61ad95ab', '0.328'), ('2d0300d4', '0.311'), ('7617ed32', '0.309'), ('69803a92', '0.307'), ('635ab59d', '0.306')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Returning 1 candidates (sorted by bbox_score)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Returning 1 candidates for 'an office chair'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 21:07:41] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fresh_clip_qualification: a rectangular dining table
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a rectangular dining table', type=FURNITURE, dimensions=None
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a rectangular dining table' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('eedc440b', '0.328'), ('468c7b29', '0.318'), ('9a325f46', '0.317'), ('9f43112d', '0.315'), ('ef43ca54', '0.310')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Returning 1 candidates (sorted by bbox_score)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Returning 1 candidates for 'a rectangular dining table'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 21:07:46] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Processing request from fresh_clip_qualification: a low bookshelf
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Retrieving multiple HSSD meshes: description='a low bookshelf', type=FURNITURE, dimensions=None
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Computing CLIP similarities for 'a low bookshelf' (category=large_objects, top_k=5)
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Filtered 5840 meshes for category 'large_objects'
+INFO:scenesmith.agent_utils.hssd_retrieval.clip_similarity:Top-5 CLIP candidates: [('94d86c2f', '0.324'), ('57346c22', '0.303'), ('cf36c412', '0.288'), ('9c61e7e9', '0.287'), ('cee43920', '0.274')]
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Processing 5 CLIP-filtered candidates
+INFO:scenesmith.agent_utils.hssd_retrieval.retrieval:Returning 1 candidates (sorted by bbox_score)
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Returning 1 candidates for 'a low bookshelf'
+INFO:werkzeug:127.0.0.1 - - [10/Nov/2026 21:07:49] "POST /retrieve_objects HTTP/1.1" 200 -
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Stopping HSSD retrieval processing thread
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:HSSD retrieval processing thread stopped
+INFO:scenesmith.agent_utils.hssd_retrieval_server.server_app:Cleaning up GPU memory (CLIP model)...
