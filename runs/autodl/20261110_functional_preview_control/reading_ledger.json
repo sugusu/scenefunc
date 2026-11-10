@@ -1,0 +1,106 @@
+{
+  "at_utc": "2026-11-10T01:46:13.054614+00:00",
+  "scope": "Targeted source review and concrete ordinary-control implementation; not a new complete field survey.",
+  "local_fully_read": [
+    {
+      "path": "scripts/autodl/phase_objective.py",
+      "sha256": "844240d707fd1cdf84ed1062e08a950b8c2b7b17275ff862723dba9f614374f6"
+    },
+    {
+      "path": "scripts/autodl/phase_deployment.py",
+      "sha256": "6c8f17ab14d0b39a9d8aa58c3b22500a4612e94f9fe5af34f51275ba31d6a3bf"
+    },
+    {
+      "path": "scripts/autodl/phase_policy.py",
+      "sha256": "eec22cb4cdda42371edc5d71515c9cfe9613582de3a063d4bfaddc7ad83975de"
+    },
+    {
+      "path": "scripts/autodl/phase_host.py",
+      "sha256": "3782ecc7e1e99de63d49603efd71d6a1fd7f6e3b776e2ca88eb32c29f9db5b47"
+    },
+    {
+      "path": "scripts/autodl/phase_trainer.py",
+      "sha256": "73cac96a280735e78409b241b6f6e95b498d041a3a88e99b21e0dfc65e9d297f"
+    },
+    {
+      "path": "scripts/autodl/audit_prospective_guard.py",
+      "sha256": "2b6f08d3737589e0ac31a70cf1c53c93e712979431fd39001d7ab3df9fc7030c"
+    }
+  ],
+  "pinned_920_read": {
+    "pin": "75fc783f86d4fea78714639e110fbe77476ee106",
+    "files": [
+      {
+        "path": "scripts/920/measure_room_access.py",
+        "coverage": "complete",
+        "finding": "SDF-backed obstacles, declared square-body scenario, 4-neighbour grid; reuse the declared grid semantics without assuming human validity.",
+        "sha256": "968bf2156c172a30b6dc8c500b99aade33268734cdde9520341f7b98a60d7b9d"
+      },
+      {
+        "path": "scripts/920/nesting_room_metrics.py",
+        "coverage": "complete",
+        "finding": "Explicit activity regions and current access checks are deterministic geometric proxies.",
+        "sha256": "c8f837540e979c356976898b0059ed411e9a008ff70f984a7bfb8eef42b5849a"
+      },
+      {
+        "path": "scripts/920/conditional_room_metrics.py",
+        "coverage": "complete text returned",
+        "finding": "Outside approach points cannot inherit the nearest inside cell; preserve this check.",
+        "sha256": "46dc23ebb6127e88036ce94239c4dbd3ea60e276224d41cfe519aaf590bbc9ea"
+      },
+      {
+        "path": "scripts/920/preflight_sourced_trajectory.py",
+        "coverage": "complete",
+        "finding": "Native metadata SDF presence controls original obstacle inclusion; public counterpart must calibrate object membership.",
+        "sha256": "09af86a11819827509a35f1a7d144e25e473c99ff5ec72bf9ac914a0ce4135d6"
+      },
+      {
+        "path": "scripts/920/measure_free_floor.py",
+        "coverage": "lines 1-70 only",
+        "finding": "Planar footprint/sweep formula; no general sweep implementation added.",
+        "sha256": "61acc43cdf0598bca0aa58edc54cc3fea93d42d144d7aef63ec4aa88da445ead"
+      }
+    ]
+  },
+  "papers": [
+    {
+      "url": "https://arxiv.org/html/2607.13539v1",
+      "title": "ThinkBLOX",
+      "read_this_turn": "Targeted repeat of III-A/III-B and data/setting passages; prior reading is not counted as newly completed full-paper reading.",
+      "finding": "Reason-action CE and parsed numeric plan/action consistency already exist. The current preview is an ordinary baseline, not a novel reason-grounding reward.",
+      "not_done": [
+        "Official model execution",
+        "New author-code reproduction",
+        "Every figure or supplementary material"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/html/2610.23121v1",
+      "title": "Scene-Designer",
+      "read_this_turn": "Abstract and main method 3.1/3.2 overview; no new full-paper reading claimed.",
+      "finding": "Existing observation-thought-action supervision and executed child/parent criticism constrain novelty of feedback-based selection.",
+      "not_done": [
+        "New model execution",
+        "New data download"
+      ]
+    }
+  ],
+  "official_tool_source": {
+    "url": "https://raw.githubusercontent.com/nepfaff/scenesmith/e888297a8b0a2f3acbb8634edf9def59cceab836/scenesmith/furniture_agents/tools/furniture_tools.py",
+    "coverage": "Constructor/noise profile, floor bounds, move-tool closure; full move implementation inspected locally and checked against primary pinned source online.",
+    "finding": "The public move interface fixes Z/roll/pitch and permits only XY/yaw; nominal endpoint prediction is not a dynamic motion guarantee."
+  },
+  "local_near_miss_checked": {
+    "candidate": "Original desk-work request still mentions an older clear-floor activity",
+    "resolution": "The actual request explicitly supplies a superseding current_activity_request and common task supplement. No contradictory-task bug is claimed."
+  },
+  "scoring_correction": {
+    "initial": "v1 outcome summary omitted new missing IDs when aggregate completeness was already false.",
+    "corrected": "v2 reuses byte-identical predictions, includes per-object newly missing IDs, matches all 72 earlier primitive-audit labels.",
+    "new_prediction_runs_on_rescore": 0,
+    "archived_v1_script": "executed_audit_v1.py"
+  },
+  "new_models": 0,
+  "new_training": 0,
+  "new_native_actions": 0
+}

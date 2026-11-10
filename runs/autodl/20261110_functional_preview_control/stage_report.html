@@ -1,0 +1,23 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>普通功能预检强对照：72条真实提议</title><style>body{max-width:1050px;margin:35px auto;padding:0 22px;font:17px/1.7 sans-serif;color:#243442}table{border-collapse:collapse;width:100%;margin:20px 0}td,th{border:1px solid #ccd5de;padding:9px;text-align:left}code{overflow-wrap:anywhere}.note{background:#edf3f7;padding:15px}a{color:#165587}</style>
+<h1>已实现并运行普通功能预检；当前错误不能直接作为新推理机制的证据</h1>
+<p>本轮在现有CPU上完成了一个更强的普通对照：从动作前已公开的墙体、门洞、家具、明确任务区域和操作参数，计算动作后的活动与通行检查。输入固定为原EVALFIX全部72条提议，来自同一开发房间的12条轨迹。没有挑掉失败，也没有生成新房间、调用模型或训练。</p>
+<p class="note">这是一项对已有轨迹的事后预测评估，不是新的闭环执行。下表不能读成“在新运行中阻止了36次损坏”，也不能推出完整场景生成已经成功。控制规则是在看过开发失败后完善的，必须在新任务冻结后再验证。</p>
+<table><tr><th>指标</th><th>原普通包围盒预检</th><th>加入普通功能预检</th></tr><tr><td>检出的新增损坏记录 / 36</td><td>32 / 36</td><td>36 / 36</td></tr><tr><td>漏掉的新增损坏</td><td>4</td><td>0</td></tr><tr><td>拒绝提议数 / 72</td><td>40</td><td>44</td></tr><tr><td>暂时允许 / 未解析未知</td><td>24 / 8</td><td>20 / 8</td></tr><tr><td>被拒绝的实际无新增损坏修复 / 2</td><td>0 / 2</td><td>0 / 2</td></tr></table>
+<p>另外8条被拒绝记录原本没有进入原生执行，不能计为避免了实际损坏。“暂时允许”只表示未预测到当前受支持检查的新损坏，不等于任务完成。存在旧失败的状态仍保持失败。</p>
+<h2>额外识别出的四个具体问题</h2><table><tr><th>原始记录</th><th>实际受损检查</th></tr><tr><td>desk_work_17_frozen_base_knowledge_feedback__00</td><td>access_kitchen_front_width_0.4, access_kitchen_front_width_0.5, access_kitchen_front_width_0.6</td></tr><tr><td>desk_work_17_decision_action__01</td><td>desk_knee_volume_clear</td></tr><tr><td>desk_work_29_action_only__00</td><td>desk_knee_volume_clear</td></tr><tr><td>desk_work_29_decision_action__02</td><td>access_bath_entry_width_0.5, access_kitchen_front_width_0.5, access_kitchen_front_width_0.6, access_wardrobe_front_width_0.5, access_wardrobe_front_width_0.6</td></tr></table>
+<p>这些记录中的动作、参数和评分阈值都未修改。原包围盒预检在全部72条上的输出逐项保持一致；新增部分只计算已经公开的活动区域和通行条件。</p>
+<h2>不是靠大量“不变”项凑正确率</h2>
+<p>在可预测的823项执行后检查中，普通预检与保存记录均一致。其中47项确实发生变化：通行23项、活动12项、几何或保留12项；这47项全部预测一致。始终预测“不变”的普通参照为776/823。未解析动作和不支持的情况不填充为正确答案。</p>
+<p>该结果验证了原有代理指标的可计算性，并非独立证明代理指标代表人类使用。道路采用声明的2厘米网格、方形身体宽度、假设门已打开；家具采用包围盒。没有验证真实坐姿、开门运动、物理搬运、舒适度或整体设计偏好。</p>
+<h2>与最近邻和候选算法的关系</h2>
+<p><a href="https://arxiv.org/html/2607.13539v1">ThinkBLOX</a>已将逐步判断与动作联合监督，并以解析出的数值计划和执行动作的一致性作为奖励。<a href="https://arxiv.org/html/2610.23121v1">Scene-Designer</a>已利用执行后的候选与父场景评价指导选择。因此，增加判断文字、工具反馈或普通功能预检都不能单独构成当前方法的新贡献。</p>
+<p>本轮结果把可检验的问题进一步收紧：在这些普通检查都向各组开放后，让动作读取模型自己生成的状态相关判断，能否比“同样学习判断，但直接产生动作”更早提出合格操作，或在相同成本下完成更多完整场景要求？训练目标仍是普通条件交叉熵。判断组与辅助监督组的区别是动作是否读取判断，不是多给一份真值或只让某一组使用预检。</p>
+<p>理论边界很简单：若名义执行和实际执行给确定性检查器提供完全相同的输入，其检查结果必相同。这是函数替换性质，不是新定理，更不保证物理运动可行。<a href="https://raw.githubusercontent.com/nepfaff/scenesmith/e888297a8b0a2f3acbb8634edf9def59cceab836/scenesmith/furniture_agents/tools/furniture_tools.py">原生工具源码</a>还可能加入摆放噪声；本轮检查一致不能推广到所有阈值附近或所有工具。</p>
+<h2>后续对照应怎样使用这项结果</h2>
+<p>普通搜索、冻结模型、相同监督直接动作、相同监督判断条件动作共享这项工具、资产、观察、动作权限与预算。预检和被拒绝的尝试都计成本。比较必须从各组自己的真实后状态继续，不能删掉旧轨迹中的坏动作后直接接上原来的后续输出。</p>
+<p>本预检的活动分支只覆盖本批明确的矩形区域和座位代理，不是通用完整场景求解器。新任务若不在支持范围，必须报告未知；不能假定此处的完美拟合会泛化。临时功能损失可能是合法联合修改的一部分，因此这里的单步保留检查也不能无条件升级为所有生成过程的硬门禁。</p>
+<p><strong>本轮不扩大训练，不请求GPU。</strong>新证据支持把普通功能检查纳入强对照，也支持停止将这四类具体错误包装成学习型决策的独有问题。完整生成的候选质量、任务解释和总成本收益仍未验证。</p>
+<h2>实际时间、修订和交付</h2>
+<p>首次整批计算13.12秒，其中提议预测计时5.94秒，进程峰值RSS约56.3MiB。评分修订1.39秒，直接复用字节一致的预测，不重新执行候选。没有新增API、模型推理、训练、原生动作、渲染或场景文件。</p>
+<p>v1统计遗漏了“整体完整性已经失败后，再少一个物体”的新增损坏；v2补上逐对象缺失，损坏记录由33变为36。全部72条损坏标签与此前逐物体/逐碰撞审计一致。v1日志、实际运行源码和原预测均保留，未改变预测器或阈值。运行源文件与旧输入哈希核验通过。</p>
+<p><a href="actual_v2/summary.json">最终统计</a> · <a href="summary.csv">72条完整比较</a> · <a href="actual_v2/predictions.json">预测原文</a> · <a href="change_sensitive_metrics.json">变化敏感统计</a> · <a href="verification.json">核验范围</a> · <a href="algorithm_and_theory.json">算法与理论边界</a> · <a href="reading_ledger.json">实际阅读记录</a> · <a href="commands.json">实际命令</a> · <a href="protocol.json">执行前范围</a></p></html>

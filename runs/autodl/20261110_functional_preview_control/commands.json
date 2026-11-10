@@ -1,0 +1,36 @@
+{
+  "cwd": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository",
+  "python": "/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "executed": [
+    {
+      "script": "executed_audit_v1.py",
+      "invoked_as": "scripts/autodl/audit_public_function_preview.py",
+      "args": [
+        "--effects",
+        "runs/autodl/20261110_executed_effects/actual_v2",
+        "--out",
+        "runs/autodl/20261110_functional_preview_control/actual_v1"
+      ],
+      "outcome": "completed; later found missing per-object loss accounting in scorer, predictions retained"
+    },
+    {
+      "script": "scripts/autodl/audit_public_function_preview.py",
+      "args": [
+        "--effects",
+        "runs/autodl/20261110_executed_effects/actual_v2",
+        "--predictions",
+        "runs/autodl/20261110_functional_preview_control/actual_v1/predictions.json",
+        "--out",
+        "runs/autodl/20261110_functional_preview_control/actual_v2"
+      ],
+      "outcome": "completed; corrected scoring without a new predictor run"
+    }
+  ],
+  "rerun_note": "Use a new --out directory; existing outputs are never overwritten. Without --predictions the final script runs the same predictor and corrected scorer."
+}

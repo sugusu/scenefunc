@@ -1,0 +1,48 @@
+{
+  "status": "ordinary_strong_control_established_on_one_archived_development_family",
+  "input": "Pre-action public wall/opening geometry, current object records, explicit task requirements, proposed action and current checks. No teacher D or after-state.",
+  "nominal_transition": "For supported upright floor move, deep-copy objects, set target XY/yaw and native-advertised Z=roll=pitch=0; do not infer physical movement.",
+  "evaluation": "Recompute original declared rectangular activity and square-body grid-access predicates plus existing ordinary envelope guard. Preserve unknown/unsupported outcomes.",
+  "decision": "Reject new primitive damage or True-to-False supported predicates; preserve pre-existing failures and separately check whether the goal is fulfilled. Allow is not success.",
+  "theory": {
+    "identity": "If the executed transition T equals the nominal transition T_hat on every input consumed by a deterministic checker f, then f(T(s,a),u)=f(T_hat(s,a),u).",
+    "proof": "Equality of deterministic checker inputs implies equality of outputs. This says nothing about unrepresented constraints or quality preferences.",
+    "conditions_not_proven_general": "Noise, alternate tool semantics, nonrectangular shells, unsupported geometry and threshold crossings can invalidate equality.",
+    "information": "A learned predictor of these computable proxies is not required to obtain their values; it may still save computation or help propose better actions, which must be measured.",
+    "not_novel": true
+  },
+  "candidate_study_retained": {
+    "question": "With the same observations, principles, teacher decisions and shared tools, does action conditioning on a self-generated decision improve complete-scene task outcomes or total cost beyond auxiliary decision supervision and ordinary search?",
+    "paired": "CE(D|X)+CE(A|X,D)",
+    "auxiliary": "CE(D|X)+CE(A|X)",
+    "judgment": "Standard conditional CE; this batch supplies a stronger competing ordinary tool, not a new loss.",
+    "deployment": "Generate D from the current state without teacher lookup; retain direct-action baseline, count all attempts/time/tokens and refresh own state after every native action.",
+    "controls": [
+      "Frozen model with same knowledge",
+      "Ordinary bounded multi-step search using the same preview",
+      "Same-supervision direct action",
+      "Same-supervision generated-D-conditioned action"
+    ],
+    "missing_evidence": [
+      "Native closed-loop evaluation with preview, not rejecting steps in old trajectories and reusing later outputs",
+      "Independent project/task families",
+      "Full generation including original required assets/relations and retained non-target objects",
+      "Gains beyond the ordinary preview/search and supervision-matched control"
+    ],
+    "training_expansion_now": false
+  },
+  "fairness": [
+    "All methods receive the same public geometry, tasks, candidate tools and preflight access",
+    "Charge preview cost and rejection against the common budget",
+    "Do not use hidden outcome records when proposing/filtering future actions",
+    "Bounded joint edits may require temporary functional tradeoffs; this one-step diagnostic is not a mandatory universal greedy policy",
+    "Current tasks are development reconstructions and all 72 proposals retained"
+  ],
+  "claims_not_supported": [
+    "We prevented 36 harms in a new rollout",
+    "The full room was successfully generated",
+    "This is a new research algorithm",
+    "Reason conditioning is ineffective in general"
+  ],
+  "next_action": "Use this tested function as the ordinary control in the bounded real-trajectory comparison. Do not train a new critic just to relearn these explicit geometric proxies."
+}
