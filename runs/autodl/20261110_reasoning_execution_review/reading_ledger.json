@@ -1,0 +1,101 @@
+{
+  "accessed_utc": "2026-11-10T07:22:34.752777+00:00",
+  "papers": [
+    {
+      "title": "Robotic Control via Embodied Chain-of-Thought Reasoning",
+      "url": "https://arxiv.org/html/2407.08693v2",
+      "sections_read": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "5.1",
+        "5.4",
+        "5.5",
+        "5.6"
+      ],
+      "not_done": [
+        "Remaining paper/appendix not fully read",
+        "No robot or model reproduction"
+      ]
+    },
+    {
+      "title": "Revisiting Embodied Chain-of-Thought for Generalizable Robot Manipulation",
+      "url": "https://arxiv.org/html/2606.03784v1",
+      "sections_read": [
+        "2.1",
+        "2.2",
+        "2.3",
+        "3.1",
+        "C.3-C.8 selected protocol and ablation passages"
+      ],
+      "not_done": [
+        "Not all appendix and figures",
+        "No model training or benchmark reproduction"
+      ]
+    }
+  ],
+  "author_code": [
+    {
+      "repository": "Oscar-Yang11/ERVLA",
+      "pin": "4e574e3f40a02678d958e092b41e91fb6b40a1de",
+      "read_scope": {
+        "src/data/transforms/load.py": [
+          "LoadData field formatting and get_prompt",
+          "VLMProcessor __call__, _build_messages, _build_label, build_action_message"
+        ],
+        "src/models/VLA/P2_Choice_KI.py": [
+          "get_action_vlm_condition_segments",
+          "first forward and its joint loss"
+        ],
+        "src/server/runtime/process_choice_nocot.py": [
+          "full file"
+        ],
+        "configs/data/sources/libero_cot.yaml": [
+          "full file"
+        ],
+        "configs/data/libero/libero_all_qwen3vl_choice_CoT_fromPT.yaml": [
+          "full file"
+        ],
+        "README.md": [
+          "overview and result explanations"
+        ],
+        "src/data/datasets/json_dataset.py": [
+          "targeted CoT frame loading references only"
+        ],
+        "src/data/transforms/transform.py": [
+          "function index only; not treated as read implementation"
+        ]
+      }
+    },
+    {
+      "repository": "MichalZawalski/embodied-CoT",
+      "pin": "1813ad76001f1e08095088f94a86c43fc0e457a3",
+      "read_scope": {
+        "prismatic/util/cot_utils.py": [
+          "full file"
+        ],
+        "prismatic/vla/datasets/datasets.py": [
+          "reasoning_dropout and RLDSBatchTransform only"
+        ],
+        "prismatic/extern/hf/modeling_prismatic.py": [
+          "OpenVLAForActionPrediction.predict_action only"
+        ],
+        "README.md": [
+          "quickstart, training, dataset and model scope"
+        ]
+      }
+    }
+  ],
+  "execution_scope": "AST-isolated, unchanged author method bodies on synthetic fixtures. Not whole modules, tokenizer, VLM, attention, diffusion or control execution.",
+  "local_code": [
+    "phase_policy.py",
+    "phase_deployment.py",
+    "phase_trainer.py",
+    "phase_objective.py",
+    "audit_conditioning_attribution.py",
+    "build_joint_serialization_control.py",
+    "full_generation_bridge.py",
+    "missing_decision_objective.py"
+  ],
+  "source_snapshot_policy": "Downloaded sources retained locally; Git stores pins, hashes and downloader instead of another distributed source copy."
+}

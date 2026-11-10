@@ -1,0 +1,9 @@
+From repository root; no weights or model server required.
+
+# Actual completed invocation (output already exists; do not overwrite):
+/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/bin/python -B scripts/autodl/probe_reasoning_supervision_routes.py --sources runs/autodl/20261110_reasoning_execution_review --material runs/autodl/20261110_storage_observation_recovery/material_v4/components.jsonl --out runs/autodl/20261110_reasoning_execution_review/executed_v1
+
+# Fresh clone: retrieve pinned small source files, then use a new output directory:
+python scripts/autodl/fetch_reasoning_route_sources.py --out runs/autodl/20261110_reasoning_execution_review/fresh_sources
+# Use the same Python environment with NumPy and torch; change --sources to fresh_sources and --out to a new path.
+# Neither command downloads models, launches training, calls paid APIs or edits scenes.
