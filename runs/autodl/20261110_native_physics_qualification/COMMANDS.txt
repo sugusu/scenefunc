@@ -1,0 +1,30 @@
+Executed locally from the repository root. No paid API or training.
+
+One model subprocess; published actual_v1 must not be overwritten or retried:
+python -B scripts/autodl/qualify_native_physics_once.py --stage runs/autodl/20261110_native_physics_qualification
+
+Downstream uses the existing hsm_cpu Python with PYTHONPATH containing existing native_observation_export/deps, native_observation_export/source, native_collision_path/deps, corpus_state_recovery/dependency/import and support_backend_probe_20261019/deps.
+Initial canonicalization completed in asset_v1, then wrapper AST compile failed.
+One explicit continuation reused the saved canonical mesh without another model/Blender request:
+$NATIVEPY -B scripts/autodl/finish_native_physics_asset.py \
+ --stage runs/autodl/20261110_native_physics_qualification \
+ --out runs/autodl/20261110_native_physics_qualification/asset_v2 \
+ --resume-canonical runs/autodl/20261110_native_physics_qualification/asset_v1/asset/native_nightstand.gltf
+
+asset_v2 completed SDF/registry and Drake parse, then failed at wrapper metadata only.
+Read-only verification loaded the SAME SDF using:
+plant=MultibodyPlant(.001); scene_graph=SceneGraph()
+plant.RegisterAsSourceForSceneGraph(scene_graph)
+models=Parser(plant).AddModels(str(saved_sdf)); plant.Finalize()
+body=plant.GetBodyByName('base_link',models[0])
+len(plant.GetVisualGeometriesForBody(body))
+plant.num_collision_geometries()
+body.default_mass()
+body.default_spatial_inertia().IsPhysicallyValid()
+
+The current finish script corrects both wrapper issues for future use. It was
+NOT rerun from scratch after correction; existing failure receipts remain authoritative.
+No fabricated VLM response, no threshold changes, no dynamic simulation.
+
+Metadata-only rebuild:
+python -B runs/autodl/20261110_native_physics_qualification/build_report.py

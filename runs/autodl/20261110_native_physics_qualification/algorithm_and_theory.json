@@ -1,0 +1,85 @@
+{
+  "status": "Executable comparison specification and elementary identification limits; not a new method/theorem or training authorization",
+  "endpoint": "Complete editable indoor scene generated from its original request; not single-asset export, repaired coordinates, tool return, teacher action match or rationale text quality",
+  "notation": {
+    "X": "Actual current multimodal scene, original requirements, same available observations and executed receipts",
+    "D": "Proposed public decision record, sampled from X, not a verified tool fact",
+    "A": "Executable native add/move/remove/stop action",
+    "C": "Mandatory task requirements evaluated on the final actual scene",
+    "LD": "The10 source units with original decision annotations;14 others retain only A"
+  },
+  "implemented_training_control": {
+    "source": "scripts/autodl/phase_objective.py",
+    "source_sha256": "844240d707fd1cdf84ed1062e08a950b8c2b7b17275ff862723dba9f614374f6",
+    "auxiliary": "L_aux = sum_i l_A(X_i,A_i; original w_Ai) + sum_{i in LD} l_D(X_i,D_i; original w_Di)",
+    "conditioned": "L_cond = sum_{i in LD} l_A(X_i,D_i,A_i; original w_Ai) + sum_{i not in LD} l_A(X_i,A_i; original w_Ai) + sum_{i in LD} l_D(X_i,D_i; original w_Di)",
+    "requirements": "Same original labels/token coefficients, images, model initialization and family allocation. Do not fabricate missing D or delete missing-D actions. Prefix lengths differ, so report compute; full Trainer accumulation not established by the local CE oracle.",
+    "deployment": "Direct A(X) versus D_hat~p(D|X), A~p(A|X,D_hat); all next observations come from each arm own executed state. No reference-D injection or saved downstream action replay.",
+    "current_material": "24 development units,19 original-observation encodings,5missing; not an independent generation test set."
+  },
+  "theory": [
+    {
+      "name": "No extra environmental information",
+      "assumptions": "Condition on fixed learned parameters; D uses only X and independent sampling randomness, no extra observations.",
+      "result": "I(Y;D|X,theta)=0. This is conditional independence, not a prohibition of finite-compute policy improvement.",
+      "not_identified": "No guarantee of improved 3D decision quality, faithfulness or human preference."
+    },
+    {
+      "name": "Teacher versus predicted decisions",
+      "assumptions": "Fixed X and same downstream action/tool policy; success probability v_X(d) lies in[0,1].",
+      "result": "|E_q v_X(D)-E_p v_X(D)| <= TV(q,p).",
+      "proof": "For f in[0,1], the maximal expectation difference over f equals TV; apply to v_X.",
+      "not_identified": "A single recorded reference D does not identify q, TV or an empirical task-success bound. Teacher-conditioned action likelihood is not deployment success."
+    },
+    {
+      "name": "Valid actions are a set",
+      "result": "For valid-action set V(X), success probability is sum_{a in V(X)}p(a|X), not merely p(A_reference|X).",
+      "limit": "Tool strings serialize continuous geometry, equivalent poses and multiple acceptable organizations. Exact-answer likelihood and majority voting over strings do not define full-scene utility."
+    },
+    {
+      "name": "Latent objective already has precedent",
+      "result": "For m_theta(A|X)=sum_D p_theta(D|X)p_theta(A|X,D), gradient log m = E_{posterior D|X,A}[grad log p_theta(D|X)+grad log p_theta(A|X,D)].",
+      "scope": "Standard differentiation of a mixture, assuming derivative/sum interchange and support; not a proposed new algorithm. LaTRO uses an expected-log-likelihood/KL surrogate, which is not the same as log marginal likelihood.",
+      "limit": "Dropping either derivative changes the objective; finite self-normalized importance gradients are generally biased. No latent objective was trained here."
+    },
+    {
+      "name": "Frequency is not voting distribution",
+      "result": "Empirical action frequencies converge to the marginal distribution under iid sampling; the majority winner converges to its mode when unique. They are different objects.",
+      "example": "With two outputs of probabilities.6/.4, limiting frequencies are.6/.4, while the majority winner is the first with probability approaching1.",
+      "scope": "Elementary clarification needed when translating text self-consistency to many valid 3D tool actions, not a new critique experiment."
+    },
+    {
+      "name": "Complete-scene and asset coverage",
+      "result": "If S is completion of all mandatory requirements and B is availability of all necessary assets/operations, S is a subset of B, hence P(S)<=P(B).",
+      "scope": "A single actual SDF import is evidence about one asset, not all-stage coverage. Unknown checks stay unknown; no conversion from a mean score into universal conjunction success."
+    }
+  ],
+  "strong_controls": [
+    "Frozen public base with same complete task and ordinary multi-operation search",
+    "Same-source auxiliary D training, direct A at deployment",
+    "Same-source self-generated D-conditioned A",
+    "Direct A allowed to spend saved reasoning compute on candidates; report quality-versus-total-budget"
+  ],
+  "cost_contract": "C_total includes policy D and A, native tool-side VLM (this actual call1585input/98output), acquisition, rendering, failed branches, checks, load/instance wall time. Zero paid API is not zero GPU or model cost. Training reported separately.",
+  "source_overlaps": [
+    {
+      "work": "Scene-Designer",
+      "url": "https://arxiv.org/html/2610.23121v1#S3.SS1",
+      "existing": "Observation-thought-action supervision; branch execution with critic-guided improvement. Reason-before-action is not a differentiator."
+    },
+    {
+      "work": "ThinkBLOX",
+      "url": "https://arxiv.org/html/2607.13539v1#S3.SS1",
+      "existing": "Progressive visual-state-conditioned reasoning/action and reasoning/action consistency. Consistency reward alone is not a differentiator."
+    },
+    {
+      "work": "LaTRO",
+      "url": "https://arxiv.org/html/2411.04282v2#S4",
+      "existing": "Learning rationales without annotated reasons using answer-likelihood and reference-KL objective. Missing-D learning is not new merely because applied to a scene."
+    }
+  ],
+  "research_decision": "Current paired D->A is an identified comparison, not an established main novelty. Do not expand training on one qualified asset. Complete common generation and ordinary baseline first, then require independent whole-room benefit beyond these controls. If ordinary fixes explain it, revise the claim rather than relabel engineering.",
+  "new_complete_scenes": 0,
+  "learned_benefit_established": false,
+  "goal_achieved": false
+}
