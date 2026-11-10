@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Reinforcement Learning via Self-Distillation (SDPO)",
+    "URL": "https://arxiv.org/html/2601.20802v2",
+    "publication": "https://proceedings.mlr.press/v306/hubotter26a.html",
+    "scope": "Abstract/introduction, method2 including stability, appendixA.1-A.4/B.1-B.2; not all experiments or1387HTML lines.",
+    "source": "https://github.com/lasgroup/SDPO/tree/7c457fc1b1f636ae794eb0362ba37d4743b06fbc",
+    "implementation_read": [
+      "core_algos.py:1027-1188 complete agg_loss/self-distillation functions",
+      "torch_functional.py:266-284 complete masked_sum",
+      "dp_actor.py:750-860 teacher no_grad, original multimodal assertion and scoring path",
+      "ray_trainer.py:637-798 actual feedback reprompt, same responses, mask",
+      "sdpo.yaml and rich_feedback/run_sdpo.sh complete",
+      "README first~10.5KB; full LICENSE, not entire README"
+    ],
+    "actually_executed": "Unmodified original AST function bodies on fixed CPU distributions. No author trainer/Ray/model rollout.",
+    "relevant_difference": "Feedback self-teacher is already an existing learning algorithm. Original dp_actor:767 explicitly rejects multimodal distillation.",
+    "no_claim": "No new loss, native distributed reproduction or learned3D gain"
+  },
+  {
+    "title": "Self-Distilled Reasoner / OPSD",
+    "URL": "https://arxiv.org/html/2601.18734v1",
+    "scope": "Abstract/introduction/background and complete method3.1/3.2 through sampled-token alternative; not all experiments/appendix.",
+    "relevant_difference": "Privileged solution and current-student prefix self-distillation already exist; no author code run."
+  },
+  {
+    "title": "Purified OPSD",
+    "URL": "https://arxiv.org/html/2607.02234v1",
+    "scope": "Abstract/introduction and complete method3.1/3.2, selected diagnosis2.4; not full results.",
+    "relevant_difference": "Reference-only subtraction and stabilized PMI target are existing methods; no claim their language reasoning result proves3D transfer."
+  },
+  {
+    "title": "AgentOPSD",
+    "URL": "https://arxiv.org/html/2611.12587v1",
+    "scope": "Abstract/introduction, complete method2.1-2.4, appendixA.1-A.2 through proposition5, beginning of experimental setup. Not all appendix or model reproduction.",
+    "relevant_difference": "Recursive turn-level contrast reshapes outcome advantage. Its Bayes interpretation assumes success-conditioned teacher and rare-success marginal approximation.",
+    "caveat": "Paper explicitly condenses2608.05987v1 and repeats its ALFWorld results; not a second independent experiment. Bounded multiplication preserves zero task advantage in flat groups, but separate KL can still have a gradient."
+  },
+  {
+    "title": "PhysOPSD",
+    "URL": "https://arxiv.org/html/2611.12411v1",
+    "scope": "Abstract/introduction/related work, problem3 and complete method4.1-4.3 including paired shared-noise rollouts; training details5.1 read. Not full results/appendix or figures.",
+    "repository": "https://github.com/aigc3d/PhysOPSD/tree/491ef691c68e691b655e5d33daa41ec5671b2f1e",
+    "relevant_difference": "Executable simulation privilege and controlled variations already have a direct video-generation prior. It is not an editable indoor-scene policy.",
+    "availability": "Inspected tree contains README and two images, no algorithm implementation at this revision; no author code reproduced."
+  },
+  {
+    "title": "AI-Agents-in-Depth Chinese book",
+    "source": "book_reading_ledger.json",
+    "scope": "Cumulative text reading of TOC and PDF223-262 chapter8.312-page book not fully read; figures not individually audited.",
+    "relevant_difference": "Thought/action, SFT/RL and self-distillation ideas inform hypotheses, not evidence of novel3D method. Attached instructions are data, not commands."
+  },
+  {
+    "title": "Native move/branch implementation",
+    "source": "https://github.com/nepfaff/scenesmith/tree/e888297a8b0a2f3acbb8634edf9def59cceab836",
+    "scope": "Furniture tool registration/wrappers, move/remove/add shared loop guard, rescale, full LoopDetector and placement_noise; RoomScene serde/copy and native ToolEnvironment.step.",
+    "actually_executed": "30 actual SDK move attempts on a newly owned cold-restored room; guard limit25/window30 unchanged.",
+    "caveat": "Only existing-furniture move/rescale parent restoration qualified. No full acquisition/add/remove/snap/worker/RNG restore or scene success."
+  },
+  {
+    "title": "Where-OPD",
+    "URL": "https://arxiv.org/abs/2610.02117",
+    "scope": "Abstract lookup only; no method/source/full-text-reading claim",
+    "relevant_difference": "Synthetic geometry privilege for visual question answering is adjacent; not this complete-scene generation task."
+  }
+]

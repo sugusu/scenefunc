@@ -1,0 +1,113 @@
+{
+  "status": "original_SDPO_CPU_objective_and_sampling_contract_checked",
+  "original_source_revision": "7c457fc1b1f636ae794eb0362ba37d4743b06fbc",
+  "original_source_functions": [
+    {
+      "path": "verl/utils/torch_functional.py",
+      "function": "masked_sum",
+      "first_line": 266,
+      "last_line": 284,
+      "function_sha256": "7529be2132ba6bd7bffabde42a6b05ed8cfa03a9f3386c09febdf2e65d3c2fea"
+    },
+    {
+      "path": "verl/trainer/ppo/core_algos.py",
+      "function": "agg_loss",
+      "first_line": 1027,
+      "last_line": 1082,
+      "function_sha256": "69527541db6ee77684872f86f6391868e2c3546f7610ecf8dfde536b5e3b804d"
+    },
+    {
+      "path": "verl/trainer/ppo/core_algos.py",
+      "function": "compute_self_distillation_loss",
+      "first_line": 1085,
+      "last_line": 1188,
+      "function_sha256": "47237d72b16bc845fd5da83b7d94424f1cd308d8da44daa72e89810278021328"
+    }
+  ],
+  "results": [
+    {
+      "path": "original_full_vocabulary",
+      "alpha": 0.0,
+      "scalar": 0.3652740407498063,
+      "independent_scalar": 0.3652740407498063,
+      "gradient": [
+        0.39999999999999997,
+        -0.2,
+        -0.19999999999999996
+      ]
+    },
+    {
+      "path": "original_full_vocabulary",
+      "alpha": 0.5,
+      "scalar": 0.09112079852546726,
+      "independent_scalar": 0.09112079852546737,
+      "gradient": [
+        0.09534161491043837,
+        -0.056301269628772625,
+        -0.039040345281665736
+      ]
+    },
+    {
+      "path": "original_full_vocabulary",
+      "alpha": 1.0,
+      "scalar": 0.3960584572042575,
+      "independent_scalar": 0.3960584572042575,
+      "gradient": [
+        0.4215322988783113,
+        -0.27206522429107444,
+        -0.1494670745872367
+      ]
+    },
+    {
+      "path": "original_topk",
+      "add_tail": true,
+      "scalar": 0.3960584572042575,
+      "independent_scalar": 0.3960584572042575
+    },
+    {
+      "path": "original_topk",
+      "add_tail": false,
+      "scalar": 0.3108185562425033,
+      "independent_scalar": 0.31081855624250354
+    },
+    {
+      "path": "sampled_kernel_fixed_prefix",
+      "exact_expectation": [
+        0.4215322988783112,
+        -0.27206522429107455,
+        -0.1494670745872367
+      ],
+      "full_reverse_KL_gradient": [
+        0.4215322988783113,
+        -0.27206522429107444,
+        -0.1494670745872367
+      ],
+      "greedy_only_gradient": [
+        0.43944491546724385,
+        -0.32958368660043286,
+        -0.10986122886681098
+      ],
+      "greedy_expectation_difference_L2": 0.07209617434181471,
+      "note": "Constructed three-token distribution; not a model/scene result."
+    },
+    {
+      "path": "no_feedback_mask",
+      "loss": 0.0,
+      "gradient_norm": 0.0
+    }
+  ],
+  "scope": "Pinned original function bodies only; no verl/Ray/distributed/multimodal trainer integration",
+  "known_limits": [
+    "Top-k support selected by student and shared with teacher",
+    "Teacher no_grad enforced in original dp_actor; kernel alone does not enforce it",
+    "Per-token fixed-prefix stop-gradient objective, not full sequential policy gradient",
+    "Greedy archive is not IID current-policy sampling; off-policy correction not provided",
+    "Dense loss/gradient alone proves neither teacher correctness nor scene improvement"
+  ],
+  "model_weights_loaded": false,
+  "VLM_forwards": 0,
+  "optimizer_updates": 0,
+  "paid_API_calls": 0,
+  "CUDA_initialized": false,
+  "seconds": 0.06196743808686733
+}
