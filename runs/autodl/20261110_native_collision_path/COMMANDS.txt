@@ -1,0 +1,12 @@
+Use existing Python3.11 hsm_cpu environment. No model, API, training or GPU required.
+PYTHONPATH=<STAGE>/deps:<REPO>/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 NO_PROXY=127.0.0.1,localhost
+
+Actually completed:
+python scripts/autodl/execute_native_collision_path.py --stage runs/autodl/20261110_native_collision_path --out runs/autodl/20261110_native_collision_path/actual_v1
+python runs/autodl/20261110_native_collision_path/probe_collision_consumer.py
+
+Do not rerun the request automatically: actual_v1 and consumer_pieces are exclusive outputs. Check live process handles and receipts first. Runtime has one native request only,240s client/260s parent caps; standalone server is terminated in finally. Native method and all geometry parameters remain the composed furniture defaults.
+
+Dependencies are stage-local and excluded from Git. Reinstallation uses only exact wheel URLs, sizes and SHA256 from dependency_receipt.json / pinned uv.lock. Wheel archives removed after installation; existing model/asset/source files retained. Source files are MIT SceneSmith at the recorded Git blob hashes.
+No full-runtime admission is granted; full_runtime_admission.json remains false.
