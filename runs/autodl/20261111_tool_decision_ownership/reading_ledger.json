@@ -1,0 +1,66 @@
+[
+  {
+    "title": "DirectLayout",
+    "url": "https://arxiv.org/html/2506.05341v2",
+    "version": "v2,23Oct2025",
+    "publication_evidence": "Author project page identifies NeurIPS2025; paper method reviewed as v2",
+    "read": "Abstract; full method3.1–3.5; experimental setup4.1, comparisons4.2 and ablations4.3 as displayed; limitations; AppendixA.2 andA.3; project text; author README",
+    "not_read": "All paper figures, full rendered prompt boxes inA.1, all supplementary/implementation/train examples; not a reproduction",
+    "repo": "rxjfighting/DirectLayout",
+    "pin": "4430535304124dbc8d48f6bb0ea5891e92267986",
+    "source_read": [
+      "services/generation.py complete",
+      "services/pipeline.py complete",
+      "services/optimization.py86–305 complete feedback/optimize methods;1–85 converter/constructor not fully read",
+      "core/prompts.py1–133 incl full CRITERIA_INTRO, BEV/3D prompt and reasoning-feedback, first part of visual-feedback prompt"
+    ],
+    "source_status": "Pinned36entry public tree, inference code available; README explicitly says specialized trained model cannot be released. No training scripts/jsonl/weights found in this inspected tree, not a claim about all possible release locations. Root LICENSE absent in inspected tree; selected raw source keptRAM only.",
+    "effect_on_algorithm": "Rationale-first spatial learning, context/function-aware criteria and asset feedback are direct prior. Same-source J/AUX and ordinary feedback must remain strong controls; our difference cannot be simply generating explanation before layout."
+  },
+  {
+    "title": "ScenePilot",
+    "url": "https://arxiv.org/html/2608.30307v1",
+    "version": "v1,31Aug2026",
+    "read": "Abstract; complete method3.1–3.5; AppendixA training settings;B.3 algorithm;C.5repair prompt;E.5limitations",
+    "not_read": "Full paper/all experiments/all appendix prompts/figures; no official training or inference run",
+    "source_status": "Project-linked GitHub Zjw-Louie/ScenePilot returns404 in this public lookup. No broader claim of nonexistence.",
+    "effect_on_algorithm": "Learned repair, room/group/anchor priors, history, local/global coordination and ordinary geometric cleanup already combined. Repair policy chooses proposals; scorer/search add capability. Report says GRPO vision tower trainable, LM backbone frozen; not verified against unavailable training code."
+  },
+  {
+    "title": "Search-to-World",
+    "url": "https://arxiv.org/html/2609.07605v2",
+    "version": "v2,17Sep2026",
+    "read": "Abstract;3.1–3.4;4.1–4.2;5.1–5.2 as displayed;AppendixB.1–B.3;author project text and pinned README",
+    "not_read": "Full paper/results/prompts/inventory/figures; no attached toy JSONL acquired or inspected; no training or reconstructor executed",
+    "repo": "night-killer/Search-to-World",
+    "pin": "3a81db9ae4dab601b1c20650d9d5c23832aac8c8",
+    "source_status": "Inspected21entry repository explicitly hosts static project site. No compressor/policy training source present in that tree; does not establish global release absence.",
+    "effect_on_algorithm": "Failure-conditioned recovery scope with learned compressor/policy already prior. Harness computes admissible set. Its web resource/reconstruction delivery criterion does not directly establish editable object-level indoor generation performance."
+  },
+  {
+    "title": "The Observability Gap",
+    "url": "https://arxiv.org/html/2603.26942v1",
+    "version": "v1,27Mar2026",
+    "publication_evidence": "Author README says CHI26 Workshop Paper, not CHI main",
+    "read": "Complete short-paper main text1–4 including experiment, results and limitations; author README",
+    "repo": "JasperWANG-911/CHI_evolve_agent",
+    "pin": "3c183533a6d217e320a60923a7b856f162141b06",
+    "source_read": [
+      "Agents/coding_agent/core.py77–173,332–428",
+      "Agents/execution_agent/core.py132–184",
+      "Orchestrator.py128–219",
+      "function_library/base_functions/full.py245–330",
+      "Other function spans listed by AST only, not full source reading"
+    ],
+    "source_status": "README says code coming soon, but pinned62entry tree already contains implementation files. Selected source exists; correspondence to paper experimental conditions not verified. No LICENSE found; no source redistribution.",
+    "effect_on_algorithm": "Output-only failure is task-specific diagnostic evidence. Many-to-one observation alone does not prove no policy can succeed; need incompatible required decisions under indistinguishable observations. Do not claim such an impossibility is established in local scenes."
+  },
+  {
+    "title": "SEK",
+    "url": "https://arxiv.org/html/2403.14121v2",
+    "version": "v2,10Jul2024;ECCV2024 as primary metadata",
+    "read": "This turn abstract/metadata and completeHTML3,4.1,4.2; priorS11 read officialPDF selected method/evaluation pages",
+    "not_read": "No author source identified/inspected; full paper/figures not newly read",
+    "effect_on_algorithm": "Knowledge base is dataset-mined pair/group relation probabilities with graph conditioning of diffusion. Do not relabel it expert-written design-principle reasoning; it already learns conditional use of relation priors."
+  }
+]

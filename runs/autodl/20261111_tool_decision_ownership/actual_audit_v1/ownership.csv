@@ -1,0 +1,36 @@
+packet,batch_index,name,category,policy_decides,tool_decides_or_computes,output_category
+floor:0,0,add_door,architecture_choice,"wall, opening type, position, dimensions",opening geometry and object creation,native_success_flag_not_task_correctness
+floor:1,0,add_window,architecture_choice,"wall, position, dimensions, sill",opening geometry and object creation,native_success_flag_not_task_correctness
+floor:1,1,add_window,architecture_choice,"wall, position, dimensions, sill",opening geometry and object creation,native_success_flag_not_task_correctness
+floor:2,0,get_material,retrieval_query,text query,material lookup and returned ID,native_success_flag_not_task_correctness
+floor:2,1,get_material,retrieval_query,text query,material lookup and returned ID,native_success_flag_not_task_correctness
+floor:2,2,get_material,retrieval_query,text query,material lookup and returned ID,native_success_flag_not_task_correctness
+floor:3,0,set_room_materials,material_assignment,room and material IDs,material application,native_success_flag_not_task_correctness
+floor:4,0,set_exterior_material,material_assignment,material ID,material application,native_success_flag_not_task_correctness
+floor:5,0,get_material,retrieval_query,text query,material lookup and returned ID,native_success_flag_not_task_correctness
+floor:5,1,get_material,retrieval_query,text query,material lookup and returned ID,native_success_flag_not_task_correctness
+floor:5,2,get_material,retrieval_query,text query,material lookup and returned ID,native_success_flag_not_task_correctness
+floor:6,0,set_room_materials,material_assignment,room and material IDs,material application,native_success_flag_not_task_correctness
+furniture:0,0,generate_assets,asset_request,"descriptions, names, desired dimensions, style",asset retrieval; mesh processing; separate VLM material/mass/front analysis,native_success_flag_not_task_correctness
+furniture:1,0,add_furniture_to_scene_tool,numeric_placement,"asset ID, x, y, yaw",instance ID; fixed floor/upright axes; native placement processing,native_success_flag_not_task_correctness
+furniture:1,1,add_furniture_to_scene_tool,numeric_placement,"asset ID, x, y, yaw",instance ID; fixed floor/upright axes; native placement processing,native_success_flag_not_task_correctness
+furniture:1,2,add_furniture_to_scene_tool,numeric_placement,"asset ID, x, y, yaw",instance ID; fixed floor/upright axes; native placement processing,native_success_flag_not_task_correctness
+furniture:1,3,add_furniture_to_scene_tool,numeric_placement,"asset ID, x, y, yaw",instance ID; fixed floor/upright axes; native placement processing,native_success_flag_not_task_correctness
+furniture:2,0,snap_to_object_tool,relation_choice,"object, target, toward/away/none",collision push-out; numeric orientation; snap algorithm and translation,native_success_flag_not_task_correctness
+furniture:2,1,snap_to_object_tool,relation_choice,"object, target, toward/away/none",collision push-out; numeric orientation; snap algorithm and translation,native_success_flag_not_task_correctness
+furniture:2,2,snap_to_object_tool,relation_choice,"object, target, toward/away/none",collision push-out; numeric orientation; snap algorithm and translation,native_success_flag_not_task_correctness
+furniture:2,3,snap_to_object_tool,relation_choice,"object, target, toward/away/none",collision push-out; numeric orientation; snap algorithm and translation,native_success_flag_not_task_correctness
+furniture:3,0,check_physics,measurement_request,whether/when to check,physics computation; not independently established task truth,historical_physics_report_unverified
+furniture:4,0,move_furniture_tool,numeric_move,"object ID, x, y, yaw",transform application and native processing,native_success_flag_not_task_correctness
+furniture:4,1,move_furniture_tool,numeric_move,"object ID, x, y, yaw",transform application and native processing,native_success_flag_not_task_correctness
+furniture:4,2,move_furniture_tool,numeric_move,"object ID, x, y, yaw",transform application and native processing,native_success_flag_not_task_correctness
+furniture:5,0,check_physics,measurement_request,whether/when to check,physics computation; not independently established task truth,historical_physics_report_unverified
+furniture:6,0,rescale_furniture_tool,scale_choice,object ID and scale multiplier,shared-asset edit and all affected instances,native_success_flag_not_task_correctness
+furniture:6,1,rescale_furniture_tool,scale_choice,object ID and scale multiplier,shared-asset edit and all affected instances,native_success_flag_not_task_correctness
+furniture:6,2,rescale_furniture_tool,scale_choice,object ID and scale multiplier,shared-asset edit and all affected instances,native_success_flag_not_task_correctness
+furniture:7,0,check_physics,measurement_request,whether/when to check,physics computation; not independently established task truth,historical_physics_report_unverified
+furniture:8,0,move_furniture_tool,numeric_move,"object ID, x, y, yaw",transform application and native processing,native_success_flag_not_task_correctness
+furniture:8,1,move_furniture_tool,numeric_move,"object ID, x, y, yaw",transform application and native processing,native_success_flag_not_task_correctness
+furniture:8,2,move_furniture_tool,numeric_move,"object ID, x, y, yaw",transform application and native processing,native_success_flag_not_task_correctness
+furniture:9,0,check_physics,measurement_request,whether/when to check,physics computation; not independently established task truth,historical_physics_report_unverified
+wall:0,0,generate_wall_assets,asset_request,"descriptions, names, desired dimensions, style",asset retrieval; mesh processing; separate VLM material/mass/front analysis,native_failure_or_partial_failure_not_infeasibility_proof
