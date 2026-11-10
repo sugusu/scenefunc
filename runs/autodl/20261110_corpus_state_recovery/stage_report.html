@@ -1,0 +1,31 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+<title>原始状态与资产恢复：实际结果</title>
+<style>body{max-width:1040px;margin:40px auto;padding:0 20px;font:17px/1.65 system-ui;color:#222}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #bbb;padding:8px}code{overflow-wrap:anywhere}</style>
+<h1>15 个状态已核对，3 个资产完成精确恢复</h1>
+<p>这轮修复的是下一次实验的输入可用性。没有训练、模型调用、新渲染或新场景生成，不能据此宣称算法收益。</p>
+<p>15 个缺失视图单元均找到唯一来源状态，共 339 条对象记录、
+2373 项可见字段比较，无不一致。证明强度见下表；通过历史哈希链接的记录与直接五视图绑定分别注明。</p>
+<p>采用原构建函数和隔离的 trimesh 4.7.4 后，沙发、移动桌、凳子三个资产的 canonical GLB、glTF 描述及缓冲区共 9 个文件，与冻结清单逐字节哈希一致。
+前面三次非精确结果保留。4.5.3 加载器会添加文件路径元数据，4.7.4 的本次原始加载结果为空；人为补回路径会改变归档。
+最终成功运行没有改源函数或补写路径元数据。此次实际用时 13.20 秒，峰值约 268.3 MiB。</p>
+<p>此前追加检查的 60 个同来源图片文件没有新增精确匹配。仍只有 9/24 个单元的五视图齐全；状态和部分几何相同不能代替原始视图。
+所有目标状态的完整原生资源包尚未恢复，本文不把局部资产闭合等同于整场可运行。</p>
+<h2>对下一轮方法比较的影响</h2>
+<p>现有完整视图单元中，6 个有决策说明监督，3 个没有，
+覆盖 4 个来源家族。可用于明确标注的运行诊断，不能悄悄替代原 24 单元训练或宣称泛化。</p>
+<p>候选机制仍是：相同场景、知识和监督下，动作读取模型自己生成的设计判断是否有额外执行收益。
+辅助说明监督与说明条件动作应保留同一目标权重；没有说明标签的步骤仍保留动作监督。部署不能根据测试标签是否存在决定走哪条路径。
+本轮没有选用新的潜变量损失，也没有证明缺少说明标签必然导致失败。</p>
+<p>精确原图恢复与统一新渲染必须成为两种明确的数据版本。若后续改用新渲染，所有方法共用同一版本，历史模型输出不能接在改变后的观察后面当作真实新轨迹。</p>
+<table><tr><th>单元</th><th>对象记录</th><th>状态来源证据</th></tr><tr><td>paper_table_modes_build_07</td><td>15</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>paper_table_modes_build_08</td><td>15</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>paper_table_modes_build_09</td><td>15</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>paper_table_modes_build_10</td><td>15</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>air_edit_01</td><td>24</td><td>joint_state_file_and_five_image_receipt</td></tr><tr><td>storage_edit_01</td><td>26</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>storage_edit_02</td><td>26</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>storage_edit_03</td><td>26</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>storage_edit_04</td><td>26</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>storage_edit_05</td><td>26</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>waterloo_edit_02</td><td>27</td><td>exact_current_input_history_state_hash; images declared in same frozen input</td></tr><tr><td>waterloo_edit_04</td><td>27</td><td>exact_current_input_history_state_hash; images declared in same frozen input</td></tr><tr><td>lifecycle_02</td><td>28</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>lifecycle_03</td><td>29</td><td>five_image_hashes_and_native_state_binding</td></tr><tr><td>fhouse_perimeter_01</td><td>14</td><td>five_image_hashes_and_native_state_binding</td></tr></table>
+<h2>可核查文件</h2><ul>
+<li><a href="recovery_manifest.json">状态与资产恢复清单</a></li>
+<li><a href="availability_cohort.json">24 单元可用性与监督覆盖</a></li>
+<li><a href="asset_recovery_v4/asset_checks.json">9 个文件的原始与实际哈希</a></li>
+<li><a href="state_audit_v2/units.json">逐项状态和字段核对</a></li>
+<li><a href="reading_ledger.json">源码实际阅读范围</a></li>
+<li><a href="COMMANDS.txt">执行命令</a></li>
+<li><a href="temporary_cleanup.json">仅本轮临时二进制清理</a></li>
+<li><a href="summary.json">结果摘要</a> · <a href="verification.json">核验范围</a></li></ul>
+<p>许可资产保存在本地，不随公开 Git 提交。旧实验和原始资产只读。全场功能、语义、物理与独立场景方法收益均未在本轮验证。</p></html>

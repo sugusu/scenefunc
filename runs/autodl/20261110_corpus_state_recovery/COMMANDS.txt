@@ -1,0 +1,33 @@
+Run from the repository root on branch runs/autodl. Existing result directories are immutable; use a new suffix to reproduce a command.
+No paid API, model inference, optimizer update, renderer or GPU is used below.
+
+1. Original source-family image recovery (completed; no new exact matches):
+python -B scripts/autodl/recover_remaining_family_views.py --prior runs/autodl/20261110_exact_view_recovery/recovery_v1/image_availability.json --plan runs/autodl/20261110_exact_view_recovery/recovery_v1/plan.json --pixel runs/autodl/20261110_exact_view_recovery/pixel_v1/pixel_equivalence.json --out runs/autodl/20261110_corpus_state_recovery/family_images_v1
+The fixed plan and all 60 attempts are in family_images_v1/; do not rerun the image scan without a new source.
+
+2. Source-state recovery (actual completed command):
+python -B scripts/autodl/audit_missing_view_states.py --out runs/autodl/20261110_corpus_state_recovery/state_audit_v2
+
+3. Dependency:
+The exact isolated wheel URL, SHA256 and size are in dependency/receipt.json. Only trimesh 4.7.4 was extracted to dependency/import; original environments were not changed.
+To reconstruct this environment elsewhere, download that exact wheel, verify SHA256 47af90235f7006316c37584b43d5f6c109a5069b252d7ab2bf8e6ed7c9fd953b, and install/extract it into a NEW isolated target with no dependencies. The helper otherwise uses the existing eval environment (NumPy 1.26.4).
+
+4. Exact asset reconstruction (actual successful command):
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' PYTHONPATH=/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_corpus_state_recovery/dependency/import /root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python scripts/autodl/recover_frozen_asset_geometry.py --source runs/autodl/20261110_corpus_state_recovery/source/build_reference_room.py --sofa /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/4/4979cfe2e691ac484078b909543db3f21b80462f.glb --expect-trimesh-version 4.7.4 --out runs/autodl/20261110_corpus_state_recovery/asset_recovery_v4
+
+Failed prior variants remain as receipts:
+v1 = local trimesh 4.5.3, normal load.
+v2 = local trimesh 4.5.3, --restore-source-metadata.
+v3 = isolated trimesh 4.7.4, --restore-source-metadata.
+v4 = isolated trimesh 4.7.4, normal load; all 9 asset files match the original manifest.
+Do not add --restore-source-metadata to v4. It was a tested and rejected reconstruction assumption, not a required preprocessing step.
+Superseded binary files from v1-v3 were removed after hashing; descriptors and checks remain. See temporary_cleanup.json.
+
+5. Recovery report and original-source/asset/state checks:
+python -B scripts/autodl/report_corpus_state_recovery.py --root runs/autodl/20261110_corpus_state_recovery
+
+6. Missing original views:
+Use existing scripts/autodl/export_missing_training_views.py only on the source host with the previously frozen missing-image manifest. This command was NOT executed here and is not a new experiment.
+Never silently replace missing images with fresh renders, zero images, target snapshots or bounding boxes. A fresh common render version would be a separately declared dataset for all comparison arms.
+
+No training subset or new loss is selected by these commands. The nine complete-view units remain a development availability cohort; full 24-unit training and actual free-model scene trajectories are still unexecuted on AutoDL.
