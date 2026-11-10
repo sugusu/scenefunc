@@ -27,6 +27,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     for name in ('material', 'equivalence', 'bindings', 'processor', 'scene-observation', 'out'):
         ap.add_argument('--'+name, type=Path, required=True)
+    ap.add_argument('--reference-encoding', type=Path,
+        default=Path('runs/autodl/20261110_stage_alignment_review/encoding_v2/encoding_records.json'),
+        help='Actual split-arm encoding records for this version of rebuilt observations')
     a = ap.parse_args(); a.out.mkdir(parents=True, exist_ok=False)
     start = time.monotonic()
     import torch
@@ -34,7 +37,7 @@ def main():
     from transformers import AutoProcessor
     from transformers.generation.stopping_criteria import EosTokenCriteria
     torch.set_num_threads(1)
-    source_hashes = {str(p): sha(p) for p in (a.material, a.equivalence, a.bindings, a.scene_observation)}
+    source_hashes = {str(p): sha(p) for p in (a.material, a.equivalence, a.bindings, a.scene_observation, a.reference_encoding)}
     if sha(a.scene_observation) != '1a27dd84bdf25ba771c64f59eacc165fd3e5b8365bc5ba08c1c2856cd51734f3':
         raise ValueError('Wrong upstream observation configuration')
     spec = importlib.util.spec_from_file_location('joint_observation_config', a.scene_observation)
@@ -47,8 +50,7 @@ def main():
     rebuilt = {r['unit_id']: r for r in json.loads(a.bindings.read_text())}
     old_vision = {r['unit_id']: r['transformed_sha256'] for r in json.loads(
         Path('runs/autodl/20261110_objective_source_review/material_manifest.json').read_text())['records']}
-    rebuilt_vision = {r['unit_id']: r['tensor_sha256'] for r in json.loads(
-        Path('runs/autodl/20261110_stage_alignment_review/encoding_v2/encoding_records.json').read_text())
+    rebuilt_vision = {r['unit_id']: r['tensor_sha256'] for r in json.loads(a.reference_encoding.read_text())
         if r['status'] == 'encoded'}
     records = []; classifications = []; observation = None; stream = None
     for c in rows:
@@ -153,7 +155,7 @@ def main():
                '<|im_end|><|im_end|>']
     for text in invalid:
         assert classify_stage(tok, tok.encode(text, add_special_tokens=False), stage='joint', eos_ids=eos)['kind'] == 'invalid'
-    if {str(p):sha(p) for p in (a.material, a.equivalence, a.bindings, a.scene_observation)} != source_hashes:
+    if {str(p):sha(p) for p in (a.material, a.equivalence, a.bindings, a.scene_observation, a.reference_encoding)} != source_hashes:
         raise ValueError('Inputs changed during execution')
     summary = dict(status='partial_multimodal_encoding_and_joint_host_replay_completed',
         units=len(records), encoded=sum(r['status']=='encoded' for r in records),

@@ -1,0 +1,92 @@
+{
+  "note": "Commands below reconstruct the successful stages. Historical failures v1/v2 retained with executed source snapshots. Generated BLEND was removed only after successful rendering/encoding; rebuild it before rerendering.",
+  "native_recovery": "Use scripts/autodl/recover_fhouse_observation_bundle.py --out <fresh_dir> --source <pinned SceneSmith checkout> --sofa <verified HSSD GLB> --mesh-deps runs/autodl/20261110_corpus_state_recovery/dependency/import with native Python3.11/trimesh4.5.3; canonical helper uses pinned4.7.4. Exact sources are in fhouse_v3/source and source receipt.",
+  "render_command": [
+    "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+    "-B",
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_native_observation_export/checkpoint_renderer/tools/render_five_views.py",
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remaining_observation_recovery/fhouse_export/step_006.blend",
+    "--out",
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_remaining_observation_recovery/fhouse_views"
+  ],
+  "encoding_command": [
+    "scripts/autodl/build_rebuilt_observation_material.py",
+    "--material",
+    "runs/autodl/20261110_stage_alignment_review/material_v2/components.jsonl",
+    "--registry",
+    "runs/autodl/20261110_remaining_observation_recovery/registry.json",
+    "--state-ledger",
+    "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+    "--processor",
+    "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/processor_only",
+    "--scene-observation",
+    "runs/autodl/20261110_native_observation_export/checkpoint_renderer/src/scene_observation.py",
+    "--out",
+    "<fresh_material_dir>"
+  ],
+  "joint_control": "scripts/autodl/build_joint_serialization_control.py --material <fresh_material_dir>/components.jsonl --processor <processor_only> --out <fresh_joint_dir>",
+  "joint_encoding": "scripts/autodl/check_joint_multimodal_control.py --material <fresh_joint_dir>/components.jsonl --equivalence runs/autodl/20261110_exact_view_recovery/pixel_v1/pixel_equivalence.json --bindings <fresh_material_dir>/observation_bindings.json --reference-encoding <fresh_material_dir>/encoding_records.json --processor <processor_only> --scene-observation runs/autodl/20261110_native_observation_export/checkpoint_renderer/src/scene_observation.py --out <fresh_check_dir>",
+  "schema_audit": "python -B scripts/autodl/audit_frozen_decision_schema.py --material runs/autodl/20261110_remaining_observation_recovery/material_v3/components.jsonl --out <fresh_schema_audit_dir>",
+  "verification": "python -B scripts/autodl/verify_remaining_observation_recovery.py --run runs/autodl/20261110_remaining_observation_recovery",
+  "native_environment": {
+    "PYTHONPATH": "runs/autodl/20261110_native_observation_export/deps:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "CUDA_VISIBLE_DEVICES": "",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "native_recovery_argv": [
+    "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+    "-B",
+    "scripts/autodl/recover_fhouse_observation_bundle.py",
+    "--out",
+    "<fresh_recovery_dir>",
+    "--source",
+    "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+    "--sofa",
+    "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/official_assets/hssd-models/objects/4/4979cfe2e691ac484078b909543db3f21b80462f.glb",
+    "--mesh-deps",
+    "runs/autodl/20261110_corpus_state_recovery/dependency/import"
+  ],
+  "native_export_argv": [
+    "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+    "-B",
+    "scripts/autodl/export_paper_native_blend.py",
+    "--source",
+    "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+    "--imported",
+    "<fresh_recovery_dir>/native_build/bundle",
+    "--out",
+    "<fresh_export_dir>",
+    "--state-ledger",
+    "runs/autodl/20261110_corpus_state_recovery/state_audit_v2/units.json",
+    "--unit",
+    "fhouse_perimeter_01",
+    "--checkpoint-labels"
+  ],
+  "render_wrapper_argv": [
+    "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+    "-B",
+    "scripts/autodl/render_paper_native_views.py",
+    "--source",
+    "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+    "--export",
+    "<fresh_export_dir>",
+    "--out",
+    "<fresh_views_dir>"
+  ],
+  "annotation_argv": [
+    "/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python",
+    "-B",
+    "scripts/autodl/finish_paper_native_observation.py",
+    "--source",
+    "runs/autodl/20261110_native_observation_export/checkpoint_renderer",
+    "--imported",
+    "<fresh_recovery_dir>/native_build/bundle",
+    "--export",
+    "<fresh_export_dir>",
+    "--views",
+    "<fresh_views_dir>",
+    "--checkpoint-labels"
+  ]
+}

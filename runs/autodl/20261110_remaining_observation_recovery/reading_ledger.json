@@ -1,0 +1,42 @@
+{
+  "accessed_utc": "2026-11-10T06:09:34.545115+00:00",
+  "scope": "Targeted primary-paper method/objective reading plus full frozen reference builder; not a new exhaustive field survey.",
+  "papers": [
+    {
+      "title": "ThinkBLOX",
+      "url": "https://arxiv.org/html/2607.13539v1",
+      "read_sections": [
+        "III-A SFT and reward formulation",
+        "III-B progressive inference",
+        "IV data construction",
+        "V-D ablation table and discussion"
+      ],
+      "bounded_finding": "The existing method learns continuous think/answer placement sequences with token CE and separately adds tiered reward optimization. Its reasoning ablations do not establish that our two-call protocol has independent value. No weights, repository implementation, supplement or reported performance reproduced."
+    },
+    {
+      "title": "Scene-Designer",
+      "url": "https://arxiv.org/html/2610.23121v1",
+      "read_sections": [
+        "3.1–3.2 training and construction experience",
+        "Appendix B observation/action formulation",
+        "Appendix C.1–C.3 local/global rewards"
+      ],
+      "bounded_finding": "The published method already trains observation-thought-action traces and ranks executed branches, comparing child scenes with their parent. A reason-first interface, tool feedback or branch selection alone is therefore not our distinct contribution. Its aggregate object-count reward is not equivalent to preserving a requested instance set. No new model inference or paper reproduction."
+    }
+  ],
+  "code_read": [
+    {
+      "source": "scripts/920/build_reference_room.py at 75fc783",
+      "scope": "Full builder, mesh helper, native SceneObject creation, support assignment, serialization and roundtrip."
+    },
+    {
+      "source": "P920-FCHOICE-v2 archived prepare_family_choice.py/configure_family_choice.py/revise_family_choice_orientation.py",
+      "scope": "Full source; exact procedural mesh parameters, catalogue proxy export and orientation revision."
+    },
+    {
+      "source": "export_paper_native_blend.py, render_paper_native_views.py, finish_paper_native_observation.py, native_state_override.py, build_rebuilt_observation_material.py",
+      "scope": "Full current wrappers and identity checks."
+    }
+  ],
+  "raw_targets": "All 10 distinct decision targets and paired action references read; no new targets authored."
+}
