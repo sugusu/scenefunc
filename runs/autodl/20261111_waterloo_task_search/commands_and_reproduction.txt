@@ -1,0 +1,15 @@
+运行位置：repository 根目录。原有文件只读，不安装新环境、不下载模型。
+原生解释器：/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python
+环境变量：PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+PYTHONPATH=/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps
+
+已实际执行：
+python scripts/autodl/prepare_waterloo_task_search.py --root runs/autodl/20261111_waterloo_task_search --scratch /dev/shm/waterloo_task_search_reproduction_20261111 --native-source runs/autodl/20261110_native_state_runtime/source
+python scripts/autodl/waterloo_task_search.py --root runs/autodl/20261111_waterloo_task_search --bundle /dev/shm/waterloo_task_search_20261111/native_build/bundle --native-source runs/autodl/20261110_native_state_runtime/source
+python scripts/autodl/export_waterloo_task_search.py --root runs/autodl/20261111_waterloo_task_search --bundle /dev/shm/waterloo_task_search_20261111/native_build/bundle --out /root/autodl-tmp/agent_method_preparation_20261027/work/waterloo_task_artifacts_20261111
+
+原结果目录含protocol.json，执行器拒绝覆盖/自动重跑。复现比较应复制source和source_manifest到新结果目录，指定新的scratch。
+prepare脚本仅依赖已在本地的原始HSSD沙发（固定SHA）与Git恢复的两类生成桌椅，不需要GPU。
+完整原生输入包和两种终态GLB位于geometry_artifact_manifest.json / native_bundle_archive.json的绝对路径。
+GLB是Y-up可视几何预览；原生状态是Z-up米制。CPU渲染器已处理Blender导入时的Y→Z转换。
+最早两个侧视图保留为initial_preview/hosting_preview，纠正相机后另存topdown，没有改动布局或检查结果。

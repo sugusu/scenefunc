@@ -1,0 +1,49 @@
+{
+  "project": "waterloo_table_transfer",
+  "source_split": "train_source_candidate/development",
+  "independent_test": false,
+  "original_house_reconstructed": false,
+  "original_tool_actions_used_as_proposals": false,
+  "automatic_task_extraction": false,
+  "researcher_task_binding_visible_to_both": true,
+  "arms": [
+    "B0_task_aware_ordinary_CSP",
+    "B1_case_compiled_CSP_diagnostic"
+  ],
+  "semantics": "B1 is a hand-compiled case strategy, not an Agent or learned mechanism.",
+  "common_budget": {
+    "candidate_cap": 55,
+    "committed_single_object_moves_cap": 4,
+    "local_model_calls": 0,
+    "paid_API_calls": 0,
+    "training_updates": 0
+  },
+  "candidate_space": {
+    "table_sides": [
+      -1,
+      1
+    ],
+    "seam_gaps_m": [
+      0.01,
+      0.03,
+      0.05
+    ],
+    "table_y_offsets_m": [
+      -0.02,
+      0.0,
+      0.02
+    ],
+    "chair_x_offsets_m": [
+      -0.15,
+      0.0,
+      0.15
+    ]
+  },
+  "common_order": "task violation count; squared displacement; candidate id",
+  "early_stop": "first candidate satisfying all frozen endpoint, access and conservative sweep checks",
+  "outcome": "conditional geometry, not human comfort/physics/full scene success",
+  "decision_rule": "Any factor already entailed by task constraints is deduplicated in both arms.",
+  "thresholds_from_frozen_source": true,
+  "no_quality_dependent_retry": true,
+  "source_reviewed_before_run": true
+}
