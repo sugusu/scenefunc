@@ -1,0 +1,38 @@
+Repository:
+/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+Restore required public source and ontology to RAM, not raw source-dataset assets:
+
+python - <<'PY'
+from pathlib import Path
+import urllib.request,json,hashlib
+root=Path('/dev/shm/symbolic_design_baseline_20261111');root.mkdir(exist_ok=True)
+pin='99f287acbfbf3970e90718895eeb10c87462dbf8'
+url=f'https://api.github.com/repos/DIASENGUPTA/SceneCritic/git/trees/{pin}?recursive=1'
+b=urllib.request.urlopen(url,timeout=45).read();(root/'tree.json').write_bytes(b)
+tree=json.loads(b);assert tree['sha']==pin and not tree['truncated']
+paths=[x['path'] for x in tree['tree'] if x['type']=='blob' and x['path'].startswith('benchmark/') and x['path'].endswith('.json')]
+manifest=[]
+for name in paths+['SceneCritic/SceneCritic_evaluator.py']:
+ u=f'https://raw.githubusercontent.com/DIASENGUPTA/SceneCritic/{pin}/{name}'
+ q=root/'source'/name;q.parent.mkdir(parents=True,exist_ok=True)
+ data=urllib.request.urlopen(u,timeout=45).read();q.write_bytes(data)
+ manifest.append(dict(path=name,url=u,bytes=len(data),sha256=hashlib.sha256(data).hexdigest()))
+(root/'task_manifest.json').write_text(json.dumps([v for v in manifest if v['path'].startswith('benchmark/')],indent=2))
+u='https://drive.usercontent.google.com/download?id=1Rj7WVNzUnkVp-GFBg4KILXGlTlJJxpkQ&export=download&source_audit=full'
+req=urllib.request.Request(u,headers={'Range':'bytes=0-1912315'})
+with urllib.request.urlopen(req,timeout=45) as response:data=response.read(4*1024*1024)
+assert len(data)==1912316 and hashlib.sha256(data).hexdigest()=='8a400c91f80ca61fbd466bb74b96f6afbc58004073d5e74903151f81de6a0e7d'
+assert len(json.loads(data))==79
+(root/'SceneOnto.json').write_bytes(data)
+PY
+
+Run original count/ontology functions and ordinary pooled count:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/qualify_symbolic_design_baseline.py --repo . --source-root /dev/shm/symbolic_design_baseline_20261111 --output runs/autodl/20261111_symbolic_design_baseline/actual_inventory_v1
+
+For independent reruns choose a fresh /dev/shm output directory; do not replace the frozen actual_inventory_v1. A minimal result rerun need not regenerate the source-reading report.
+
+With this study's reading/download manifests still in RAM, assemble report and source hashes:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_symbolic_design_baseline.py --repo . --source-root /dev/shm/symbolic_design_baseline_20261111
+
+The exact paper/source reading ranges, acquisition URLs and content hashes are in reading_ledger.json and primary_sources_manifest.json. No author launch script, geometry renderer, dataset-mining job, SDK, model server, or model API is executed. A metadata rerun does not repeat full paper/source reading.
