@@ -1,0 +1,12 @@
+Closed actual likelihood audit; do not launch again into this root.
+Prepare (CPU, completed before outcomes):
+  <eval_python> -B scripts/autodl/audit_allocation_likelihood.py --prepare --root runs/autodl/20261111_allocation_likelihood_audit --previous runs/autodl/20261111_activity_resource_program
+Processor-only preflight, no weights (completed):
+  OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 <existing_model_python> -B scripts/autodl/audit_allocation_likelihood.py --encode-only --root runs/autodl/20261111_allocation_likelihood_audit
+Actual bounded6teacher forwards (completed):
+  OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 timeout --signal=TERM --kill-after=10s 360 <existing_model_python> -B scripts/autodl/audit_allocation_likelihood.py --root runs/autodl/20261111_allocation_likelihood_audit
+Existing model Python: /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python
+Existing eval Python: /root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python
+Report only, no model execution:
+  <eval_python> -B scripts/autodl/report_allocation_likelihood.py --root runs/autodl/20261111_allocation_likelihood_audit
+Original image bytes remain in the pinned Git revision in the previous stage view_manifest.json; rehydrate them to the recorded RAM paths if the container has restarted, verifying hashes. No remote images or APIs are allowed by this audit.
