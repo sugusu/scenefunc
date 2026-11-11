@@ -1,0 +1,19 @@
+All three actual model commands and elapsed/cap values are in B_*/turn_00/model_process_receipt.json.
+Each request is frozen and uses local images. Reference labels never enter requests.
+Model revision:63e235a0c0d6e5bc2f8f3485214df4457fd2e672 (joint SFT, not author v10 adapter).
+Public dataset pin:e50788bdbe74644d98e62929cd24218c9110e812.
+
+Executed preparation:
+python scripts/autodl/prepare_native_critic_calibration.py --root runs/autodl/20261111_native_contract_calibration --images /root/autodl-tmp/agent_method_preparation_20261027/work/native_contract_images_20261111
+Executed one-model utility:
+/root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/native_critic_calibration_step.py --request <frozen B_*/turn_00/request.json> --output <fresh output directory>
+Model subprocesses must be serialized through furnished_pilot_process.py; do not rerun into existing directories or reset receipts.
+
+Executed ordinary control:
+python scripts/autodl/project_native_critic_constraints.py --root runs/autodl/20261111_native_contract_calibration
+Executed reporting:
+python scripts/autodl/report_native_critic_calibration.py --root runs/autodl/20261111_native_contract_calibration
+
+Source-only iARCS reading never imports its remote-model client, executes generated reward code, loads pickle, installs dependencies or downloads model/CAD weights.
+The six benchmark PNGs remain at absolute acquisition.json paths and are referenced by verified source hashes; not duplicated into Git or treated as training data.
+No new complete scene or native policy-tool execution occurred in this qualification stage.

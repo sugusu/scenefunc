@@ -1,0 +1,31 @@
+{
+  "stage": "Native input-contract qualification, not a new algorithm or full generation result",
+  "source_pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "dataset_pin": "e50788bdbe74644d98e62929cd24218c9110e812",
+  "selection": "First numimages=2 and first numimages=4 by original published annotation order, chosen before model outputs",
+  "model": "Existing frozen Scene-Builder 8B SFT revision63e235a0c0d6e5bc2f8f3485214df4457fd2e672; not a reproduced v10 Critic adapter or RL model",
+  "model_calls_max": 3,
+  "single_model_process_seconds_max": 200,
+  "all_model_process_seconds_max": 600,
+  "benchmark_calls": 2,
+  "optional_native_policy_contract_probe_calls": 1,
+  "paid_API": false,
+  "training": false,
+  "large_model_downloads": false,
+  "retries": false,
+  "original_failed_or_negative_records_preserved": true,
+  "prompt": "Pinned grpo_advantage.build_default_user_text(K), one topdown image per candidate, no system, native reasoning/answer response",
+  "interpretation": "Only input-contract qualification; 2 correlated benchmark rows cannot establish general accuracy or a new method. Not used for training.",
+  "resolution_contract": {
+    "checkpoint_processor_max_pixels": 16777216,
+    "actual_each_image": [
+      1024,
+      1024
+    ],
+    "image_downsampling_to_65536": false,
+    "source_runtime_decode_budget": 2048,
+    "dtype_deviation": "float16 on V100 instead of author bfloat16 examples; not a full numerical reproduction",
+    "source_adapter_not_present": "Joint SFT weights only, no v10 adapter"
+  },
+  "comparison_limit": "Several input factors differ from prior 25-view custom-JSON probe; no single-factor causal attribution from this qualification."
+}
