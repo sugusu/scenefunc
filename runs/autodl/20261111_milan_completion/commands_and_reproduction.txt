@@ -1,0 +1,15 @@
+Use the existing native interpreter and the already installed geometry dependency:
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+export PYTHONPATH=/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps
+cd /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+All commands below were actually executed with the current result root, with the same native Python:
+/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/prepare_milan_completion.py --root runs/autodl/20261111_milan_completion --scratch /dev/shm/milan_completion_prepare_check_20261111
+/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/recover_milan_assets.py --root runs/autodl/20261111_milan_completion --scratch /dev/shm/milan_completion_20261111
+/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/restore_milan_bundle.py --root runs/autodl/20261111_milan_completion --scratch /dev/shm/milan_completion_20261111 --native-source runs/autodl/20261110_native_state_runtime/source
+/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B scripts/autodl/complete_milan_workspace.py --root runs/autodl/20261111_milan_completion --scratch /dev/shm/milan_completion_20261111 --native-source runs/autodl/20261110_native_state_runtime/source
+
+The current search result has completion_protocol.json and refuses an overwrite. For a fresh reproduction, create a new result root, copy source/ and source_manifest.json, and use one fresh scratch consistently from preparation onward. The preparation check above only verifies the no-network input path and is not another scene search.
+The4 licensed fixture GLBs are persisted at /root/autodl-tmp/agent_method_preparation_20261027/work/milan_completion_artifacts_20261111/raw_assets/. Existing12 original HSSD assets remain in official_assets; do not redistribute gated assets.
+Only the already installed trimesh4.7.4 matches these old asset hashes. Wrong4.5.3 attempt and fixture sin(pi) normalization failures are retained; expected file hashes/geometry thresholds were never changed.
+The complete final GLB is gzip-compressed at the absolute path in persisted_artifact_manifest.json. Native states, catalog and resource hashes remain authoritative. The full original native bundle can be restored by these commands without model calls or new downloads.
