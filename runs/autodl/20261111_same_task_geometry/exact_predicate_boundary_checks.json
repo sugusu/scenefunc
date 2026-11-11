@@ -1,0 +1,98 @@
+[
+  {
+    "case": "two_triangles_tile_square",
+    "expected": "covered",
+    "actual": {
+      "status": "covered",
+      "target_area_exact": "1",
+      "uncovered_area_exact": "0",
+      "uncovered_area_m2": 0.0,
+      "source_triangles": [
+        0,
+        1
+      ],
+      "residual_fragments": 0,
+      "rational_semantics": "Exact finite input-coordinate rationals; no epsilon or area-threshold admission"
+    }
+  },
+  {
+    "case": "single_triangle_does_not_cover_square",
+    "expected": "uncovered",
+    "actual": {
+      "status": "uncovered",
+      "target_area_exact": "1",
+      "uncovered_area_exact": "1/2",
+      "uncovered_area_m2": 0.5,
+      "source_triangles": [
+        0
+      ],
+      "residual_fragments": 1,
+      "rational_semantics": "Exact finite input-coordinate rationals; no epsilon or area-threshold admission"
+    }
+  },
+  {
+    "case": "duplicate_triangle_does_not_fill_missing_half",
+    "expected": "uncovered",
+    "actual": {
+      "status": "uncovered",
+      "target_area_exact": "1",
+      "uncovered_area_exact": "1/2",
+      "uncovered_area_m2": 0.5,
+      "source_triangles": [
+        0,
+        0
+      ],
+      "residual_fragments": 1,
+      "rational_semantics": "Exact finite input-coordinate rationals; no epsilon or area-threshold admission"
+    }
+  },
+  {
+    "case": "disjoint_triangle",
+    "expected": "uncovered",
+    "actual": {
+      "status": "uncovered",
+      "target_area_exact": "1",
+      "uncovered_area_exact": "1",
+      "uncovered_area_m2": 1.0,
+      "source_triangles": [
+        2
+      ],
+      "residual_fragments": 1,
+      "rational_semantics": "Exact finite input-coordinate rationals; no epsilon or area-threshold admission"
+    }
+  },
+  {
+    "case": "reversed_orientation",
+    "expected": "covered",
+    "actual": {
+      "status": "covered",
+      "target_area_exact": "1",
+      "uncovered_area_exact": "0",
+      "uncovered_area_m2": 0.0,
+      "source_triangles": [
+        0,
+        1
+      ],
+      "residual_fragments": 0,
+      "rational_semantics": "Exact finite input-coordinate rationals; no epsilon or area-threshold admission"
+    }
+  },
+  {
+    "case": "tiny_real_gap_must_not_be_filled",
+    "expected": "uncovered",
+    "actual": {
+      "status": "uncovered",
+      "target_area_exact": "1",
+      "uncovered_area_exact": "9007/9007199254740992",
+      "uncovered_area_m2": 9.999778782798785e-13,
+      "source_triangles": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "residual_fragments": 1,
+      "rational_semantics": "Exact finite input-coordinate rationals; no epsilon or area-threshold admission"
+    }
+  }
+]

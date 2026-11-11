@@ -1,0 +1,48 @@
+{
+  "source_manifest_sha256": "13dd8965f9596ac42ce2ad506fc77a69b9aa2ec1bd673cb69189078c3fbbbbee",
+  "task_text_sha256": "dd0306071eadec6de4469d75f6a00e40ae80ad4013575f83df641cd39e86fb4d",
+  "task_text": "研究者依据建筑师任务说明构造的居住兼办公任务。此住宅供一位住户日常生活与在家工作，另需保留两人的用餐位置。办公资料可以留在工作面上，用餐时无需收走；办公区和餐区可辨识，同时办公位置与共同起居空间保持视觉联系。请完成工作面和坐席，并保留现有睡眠、起居、两餐位、冷藏、备餐、烹饪、水槽、淋浴、洗面盆、厕所、收纳及入口通行。可以增补家具并调整非固定家具，保留初始家具实例和尺寸，不删减必需用途；墙体、固定设施和床不改。不给定办公位置或推荐家具坐标。原住户原话不可得；人数、两餐位、资料持续占用、精确尺寸、初始家具和允许编辑范围均为研究假设。\n\n研究者补充的同任务机制检查（不是原住户数据）：住户工作时需要40×40厘米的资料区域；资料用餐时仍留在同一工作面。用餐时住户与一位客人各需35×25厘米的独立用餐区域，住户此时不另占工作席位。检查现有meal_table_0能否在两个活动阶段支持这些区域；同时占用的区域不得重叠。可使用0或90度的平面矩形区域；区域仅代表声明的研究代理，不能据此认定实际人体使用合格。这里只询问共享桌面的可行性，共享不行不等于整场任务不可能，可另用工作面。",
+  "contract": {
+    "work_m": [
+      0.4,
+      0.4
+    ],
+    "meal_m": [
+      0.35,
+      0.25
+    ],
+    "work_people": [
+      "resident"
+    ],
+    "meal_people": [
+      "resident",
+      "guest"
+    ],
+    "material_persists_during_meal": true,
+    "resident_working_during_meal": false,
+    "sharing_seat_between_modes_allowed": true,
+    "table_id": "meal_table_0",
+    "source": "Research-authored explicit contract, not automatic language interpretation",
+    "quality_scope": "Planar reservation feasibility only; no ergonomic or subjective label"
+  },
+  "world_xy_scales": [
+    1.0,
+    0.65
+  ],
+  "scale_fixed_before_packing": true,
+  "world_intervention": "New research initial world with one baked XY-scale table derivative; not an allowed policy edit or original HSSD asset",
+  "same_task_same_parameters": true,
+  "other29objects_unchanged": true,
+  "sample_status": "One previously exposed development source family, two controlled worlds; not independent test cases",
+  "hypotheses": [
+    "required_persistence",
+    "omit_persistence",
+    "force_separate_tables"
+  ],
+  "ground_truth": "Explicit contract plus positive geometric witness or sound necessary-area certificate; never unlabelled majority",
+  "source_task_score_unchanged": true,
+  "model_calls": 0,
+  "training_updates": 0,
+  "paid_API_calls": 0,
+  "no_quality_dependent_world_or_task_resampling": true
+}

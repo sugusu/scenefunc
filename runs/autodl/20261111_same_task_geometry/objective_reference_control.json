@@ -1,0 +1,45 @@
+{
+  "source": "SpatialGrammar2604.27555v1 displayed equation5; official project currently marks code coming soon",
+  "paper_expression": "-log sigmoid(beta*(log pi_theta(y_w|x)-log pi_theta(y_l|x)))",
+  "ordinary_DPO": "-log sigmoid(beta*((log pi_theta(y_w|x)-log pi_theta(y_l|x))-(log pi_ref(y_w|x)-log pi_ref(y_l|x))))",
+  "scope": "Audit of written objectives, not a claim that unpublished training code implements the displayed reference-free formula.",
+  "common_reference_omission_changes_loss_except_zero_reference_log_odds": true,
+  "beta": 0.1,
+  "examples": [
+    {
+      "synthetic_log_policy_odds": 0.0,
+      "synthetic_log_reference_odds": 0.0,
+      "standard_DPO_loss": 0.6931471805599453,
+      "reference_free_written_expression_loss": 0.6931471805599453,
+      "derivative_wrt_policy_log_odds_standard": -0.05,
+      "derivative_wrt_policy_log_odds_reference_free": -0.05
+    },
+    {
+      "synthetic_log_policy_odds": 2.0,
+      "synthetic_log_reference_odds": 2.0,
+      "standard_DPO_loss": 0.6931471805599453,
+      "reference_free_written_expression_loss": 0.5981388693815918,
+      "derivative_wrt_policy_log_odds_standard": -0.05,
+      "derivative_wrt_policy_log_odds_reference_free": -0.04501660026875222
+    },
+    {
+      "synthetic_log_policy_odds": -2.0,
+      "synthetic_log_reference_odds": -2.0,
+      "standard_DPO_loss": 0.6931471805599453,
+      "reference_free_written_expression_loss": 0.7981388693815918,
+      "derivative_wrt_policy_log_odds_standard": -0.05,
+      "derivative_wrt_policy_log_odds_reference_free": -0.0549833997312478
+    },
+    {
+      "synthetic_log_policy_odds": 2.0,
+      "synthetic_log_reference_odds": -2.0,
+      "standard_DPO_loss": 0.5130152523999526,
+      "reference_free_written_expression_loss": 0.5981388693815918,
+      "derivative_wrt_policy_log_odds_standard": -0.0401312339887548,
+      "derivative_wrt_policy_log_odds_reference_free": -0.04501660026875222
+    }
+  ],
+  "labels": "Synthetic mathematical scalars, no scene preference labels",
+  "optimizer_steps": 0,
+  "not_a_new_loss": true
+}

@@ -1,0 +1,10 @@
+# From repository root; all large intermediate worlds belong in RAM.
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+export PYTHONPATH="$PWD/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps"
+# Initial source bundle must be available with original71allowlisted resources.
+# First command intentionally preserves the observed floating-union qualification failure (exit1).
+/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python scripts/autodl/probe_task_preserving_geometry.py --root /dev/shm/same_task_probe_NEW --source-bundle /dev/shm/milan_completion_20261111/bundle --scratch /dev/shm/same_task_worlds_NEW
+# Continue from those exact fixed worlds; do not rerun/resample the first command.
+/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python scripts/autodl/finalize_task_geometry_probe.py --root /dev/shm/same_task_probe_NEW --scratch /dev/shm/same_task_worlds_NEW
+/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python scripts/autodl/audit_same_task_baselines.py --root /dev/shm/same_task_probe_NEW
+# No model call, training, mesh download or GPU request occurs.
