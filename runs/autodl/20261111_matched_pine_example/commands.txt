@@ -1,0 +1,9 @@
+仓库根目录，使用现有处理器环境；两个输出目录必须使用新名称。
+
+env CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python -B scripts/autodl/prepare_matched_pine_example.py --out /dev/shm/pine_example_recheck_metadata --scratch /dev/shm/pine_example_recheck_tensors --official-source /root/autodl-tmp/agent_method_preparation_20261027/work/professional_data_ingest_20261104/native_src/sft_dataset.py --checkpoint /root/autodl-tmp/agent_method_preparation_20261027/work/critic_public_runtime_20261104/checkpoint
+
+python -B scripts/autodl/audit_pine_identity_choice.py --out /dev/shm/pine_identity_recheck
+
+第一条只读本地模型配置/处理器和固定Git来源，生成两份示范编码，不读取模型张量、不训练。第二条只作四种静态实例分配核算。Git部分克隆若缺源对象，应先取回固定哈希，不将资源获取的耗时混入编码或方法效率。
+本次实际第一次命令使用RAM源文件；随后已确认上述持久源文件SHA完全相同，无需下载。
+.pt及参考图仅在RAM，Git交付保存来源、目标、代码、哈希与掩码结果；不把RAM状态当持久完整训练集。Pine继续是排除训练的开发来源。未取得任何新的训练、推理或资源授权。

@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>真实编码与Pine监督内容核查</title><style>body{font:17px/1.8 system-ui;max-width:1000px;margin:35px auto;padding:0 20px}td,th{border:1px solid #bbb;padding:10px;text-align:left}table{border-collapse:collapse}code{overflow-wrap:anywhere}</style>
+<h1>编码已跑通；用途组织与实例分配必须分开监督</h1>
+<p>用现有Qwen3-VL处理器和原始assistant构造函数，实际编码了Pine的直接动作A与决定加动作DA两个控制样本。未重跑22步加载/训练、未加载8B权重、未执行神经前向或新场景。</p>
+<table><tr><th>项目</th><th>A</th><th>DA</th></tr><tr><td>共同输入token</td><td>9320</td><td>9320，完全相同</td></tr><tr><td>共同动作目标token</td><td>53</td><td>53，完全相同</td></tr><tr><td>决定目标token</td><td>0</td><td>40，仅在目标中</td></tr></table>
+<p>实际处理耗时27.01秒，进程峰值约776MiB。两份样本使用同样的参考五视图与像素张量；但与历史部署文件比较，四张斜视图哈希不同，不能称旧五图精确重放。<a href="actual_v1/encoding.json">编码与掩码记录</a> · <a href="actual_v1/image_identity_comparison.json">图像身份限定</a>。</p>
+<p>进一步的静态核算发现，旧/新两桌使用同一网格，两把椅子也相同。交换实例的终态姿态后，剔除身份标签的世界几何完全相同，全部旧ID仍保留。旧桌椅直线端点位移合计由3.820m变为0.601m；这不是实际搬运路径或人类偏好。</p>
+<p>所以原示范仍可作正向模仿材料，但不能要求模型把“旧实例必须搬到相邻墙”当作唯一功能答案。真实项目中定制桌与IKEA桌的差别，被这套相同替代资产抹掉了。用途组织、研究者的实例分配与动作坐标需要分别标注。<a href="identity_audit_v2/result.json">四种分配的实际核算</a>。</p>
+<p>这是一个示范的两份编码和事后分配审计，不是多个独立样本或新方法胜出。Pine继续排除训练；旧结果不修改。普通CoT、相同信息的反馈/搜索、最小成本实例分配都保留为强对照。</p>
+<p><a href="learning_target_and_theory.txt">详细训练目标、条件性等价与研究边界</a> · <a href="commands.txt">可运行命令</a> · <a href="reading_ledger.json">新增源码与论文阅读范围</a> · <a href="verification.json">交付核验</a>。</p>
+<p>近邻：<a href="https://arxiv.org/html/2506.05341v2">DirectLayout v2</a>已有布局条件推理训练；<a href="https://github.com/rxjfighting/DirectLayout">其公开README</a>说明专用模型未发布，不能把替换模型后的配置称原样复现。这里没有提出新loss或确认CVPR贡献。本阶段0新模型调用、0训练，不请求开启计费资源。</p></html>

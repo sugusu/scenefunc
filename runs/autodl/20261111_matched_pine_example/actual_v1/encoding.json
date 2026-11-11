@@ -1,0 +1,121 @@
+{
+  "records": [
+    {
+      "arm": "action_only",
+      "original_function_lines": [
+        206,
+        284
+      ],
+      "prompt_tokens": 9320,
+      "full_tokens": 9373,
+      "action_tokens": 53,
+      "decision_tokens": 0,
+      "prompt_ids_sha256": "70154070f13efbad5666dae83ab4af589e3ebcf905c87b46041e8b4554fa66d8",
+      "pixel_sha256": "d7455ca41cd82d857d1744ebce9590cdd70ef770e787be10b649cf5e919fbfa3",
+      "target_action_text": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"old_desk_0\", \"x\": 2.09, \"y\": 0.25, \"yaw\": 90}}\n</tool_call><|im_end|>\n",
+      "decision_text": "",
+      "tensor_path": "/dev/shm/pine_native_example_20261111/encoded/action_only.pt",
+      "tensor_file_sha256": "4732ac39cdf20f0440871a8163887e7cb3b3a205690aee17257a7f61df8adec1",
+      "RAM_only": true,
+      "training_admitted": false
+    },
+    {
+      "arm": "decision_action",
+      "original_function_lines": [
+        206,
+        284
+      ],
+      "prompt_tokens": 9320,
+      "full_tokens": 9413,
+      "action_tokens": 53,
+      "decision_tokens": 40,
+      "prompt_ids_sha256": "70154070f13efbad5666dae83ab4af589e3ebcf905c87b46041e8b4554fa66d8",
+      "pixel_sha256": "d7455ca41cd82d857d1744ebce9590cdd70ef770e787be10b649cf5e919fbfa3",
+      "target_action_text": "<tool_call>\n{\"name\": \"move_furniture_tool\", \"arguments\": {\"object_id\": \"old_desk_0\", \"x\": 2.09, \"y\": 0.25, \"yaw\": 90}}\n</tool_call><|im_end|>\n",
+      "decision_text": "<think>\n在保留原桌和原椅的前提下，将旧桌移向相邻墙，为窗前另一个工作位留出位置；随后再安置第二张桌和椅子。\n</think>\n",
+      "tensor_path": "/dev/shm/pine_native_example_20261111/encoded/decision_action.pt",
+      "tensor_file_sha256": "4de3c15dbab554ac128f45e0d2019dea2079cfd1ccf8c622e71562d3eb704f1f",
+      "RAM_only": true,
+      "training_admitted": false
+    }
+  ],
+  "prompt": {
+    "images": [
+      {
+        "index": 0,
+        "origin": "/dev/shm/pine_native_example_20261111/encoded/step_000.topdown.png",
+        "sha256": "366dbf978c6e4a85d008e0c6bdbffc807ba9da4dfbc27550e25c2c5eeb343159",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "index": 1,
+        "origin": "/dev/shm/pine_native_example_20261111/encoded/step_000.south.png",
+        "sha256": "0d178576d0d81340a2606d971af7c06b8651e798210d1b1aad3694fc6613f42f",
+        "size": [
+          1024,
+          768
+        ]
+      },
+      {
+        "index": 2,
+        "origin": "/dev/shm/pine_native_example_20261111/encoded/step_000.east.png",
+        "sha256": "c2f93ea84d25b74759679871418a64073e79be99e462b4f33e931faee0c961f9",
+        "size": [
+          1024,
+          768
+        ]
+      },
+      {
+        "index": 3,
+        "origin": "/dev/shm/pine_native_example_20261111/encoded/step_000.west.png",
+        "sha256": "3e77c70771c85efa977cdb09e08e76b029bfd407de46f90c2b6fb98989815889",
+        "size": [
+          1024,
+          768
+        ]
+      },
+      {
+        "index": 4,
+        "origin": "/dev/shm/pine_native_example_20261111/encoded/step_000.north.png",
+        "sha256": "dd86a75eafb0079aa793e9b76daa479bd55400bfd941bb8410a0ed34cd713ed4",
+        "size": [
+          1024,
+          768
+        ]
+      }
+    ],
+    "input_tokens": 9320,
+    "input_shapes": {
+      "input_ids": [
+        1,
+        9320
+      ],
+      "attention_mask": [
+        1,
+        9320
+      ],
+      "pixel_values": [
+        1120,
+        1536
+      ],
+      "image_grid_thw": [
+        5,
+        3
+      ]
+    },
+    "chat_template_sha256": "c9a4051ef5ed84feca5794a65b1d61794c903628ce87b126ae82f7e02725da32",
+    "max_pixels": 65536,
+    "max_input_tokens": 18432
+  },
+  "same_original_deployment_text": true,
+  "same_new_images_and_prompt": true,
+  "same_action_target_tokens": true,
+  "target_not_in_generation_prefix": true,
+  "original_assistant_serialization": true,
+  "whole_original_dataset_loader_run": false,
+  "optimizer_or_neural_forward_run": false,
+  "Pine_training_exclusion_unchanged": true
+}
