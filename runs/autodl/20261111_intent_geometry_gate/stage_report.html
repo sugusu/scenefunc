@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>用途—几何诊断与训练边界 · 2026-11-11</title>
+<style>body{max-width:1050px;margin:36px auto;padding:0 20px;font:17px/1.75 system-ui;color:#182631}table{border-collapse:collapse;width:100%;margin:22px 0}td,th{border:1px solid #bdcbd5;padding:9px;text-align:left}th{background:#edf4f8}pre{white-space:pre-wrap;background:#f2f5f7;padding:16px}a{color:#075c96}.note{border-left:4px solid #5a7d96;padding-left:18px}small{color:#50616f}</style>
+<h1>真正出现了用途解释错误，但普通方法尚能解释修复</h1>
+<p>本轮实际完成8次已有本地8B模型生成。直接判定与程序提取后求解的最终判断均为3/4；程序法只有2/4准确表达活动语义。它在引用“资料用餐时仍留在同一工作面”的同时，遗漏了用餐阶段的资料占用。这个失误有真实原始输出，不能再归结为只是在修坐标。</p>
+<p class="note"><strong>结论边界：</strong>这是一个已暴露房间来源族的4个文字组件条件，不是4个独立房间、视觉测评、完整场景生成或训练成果。简单源规则和普通有界修复都能解释这些开发例，尚未建立新的Agent算法优势。</p>
+<h2>相同任务与几何证据，分别检验两种输出方式</h2>
+<p>同一住户先工作，之后与一位客人用餐。改变资料是否留在桌上，以及桌子大小；人物与所需区域尺寸保持不变。两方法获得相同原文和共同几何事实，系统输出格式不同。正确指定桌面可行性为下表“依据”列；它不等于整个房间无其他完成办法。</p>
+<table><tr><th>条件</th><th>依据</th><th>直接判定</th><th>程序法判定</th><th>程序语义</th></tr>
+<tr><td>资料保留＋原桌</td><td>可行</td><td>正确</td><td>正确</td><td>错误：漏资料用餐占用</td></tr>
+<tr><td>资料收走＋小桌</td><td>可行</td><td>错误</td><td>正确</td><td>正确</td></tr>
+<tr><td>资料保留＋小桌</td><td>不可行</td><td>正确</td><td>错误</td><td>错误：漏资料用餐占用</td></tr>
+<tr><td>资料收走＋原桌</td><td>可行</td><td>正确</td><td>正确</td><td>正确</td></tr></table>
+<p>最终判断准确率都是3/4，不能拿直接法的判断3/4与程序法的语义2/4混作同一个指标。直接法没有输出语义程序，因此其程序准确率未知。始终答可行也能得到3/4；这个小实验不用于估计总体准确率。</p>
+<h2>可核对的真实错误</h2>
+<pre>原文／模型引用：资料用餐时仍留在同一工作面
+模型实际字段：materials_active_phases = ["work"]
+应有字段（按明确研究任务）：["work", "meal"]</pre>
+<p>两条保留资料的条件均出现此矛盾。八个输出全部正常结束、引用都确为原文子串，仍不能据此认定语义被正确表达。引用内容会随任务改变，不能推断模型完全忽略输入。这里只观察一次贪心输出，不能推断正确程序不在模型整个分布中。</p>
+<h2>普通强对照和训练目标已经落到代码</h2>
+<table><tr><th>对照</th><th>实际结果</th><th>必须保留的限制</th></tr>
+<tr><td>直接判断／普通程序提取</td><td>各4次真实生成，判断各3/4</td><td>自定义组件工具；非作者完整原生Actor；没有K-way采样</td></tr>
+<tr><td>普通文字规则</td><td>现有4例均正确</td><td>看到结果后编写，只解释开发例；无泛化成绩</td></tr>
+<tr><td>普通最小程序修改教师</td><td>保留资料任务补一条占用边，得到4条校正目标</td><td>使用额外正确标签，是离线教师；不能与推理方法公平算4/4</td></tr>
+<tr><td>版本空间／MML分析</td><td>原桌标签无法区分两个程序；加入小桌标签才能区分</td><td>只在两候选语法和外部正确标签下成立；没有训练更新</td></tr></table>
+<p>实现与证明见<a href="algorithm_and_training.txt">算法、理论边界及训练目标</a>。标准CE或MML足以表达当前目标；本轮没有理由发明损失名。若正确程序未出现在这次观察池，单纯筛选不能产生它；普通枚举可以补全。更重要的是，若标签也来自同一个错误解析器，跨世界执行仍不能检出这个语义错误。</p>
+<p>原生SFT源码会训练assistant目标区间，默认包含已有解释，no_thinking路径支持只训练工具调用。本轮没有专家思维链，校正记录明确设为空；实际调用未修改的原生validator后，4条校正记录均被判为未知场景工具，见<a href="native_training_admission.json">训练动作准入记录</a>。因此这些记录只属于自定义组件目标，没有进入原生场景动作训练。</p>
+<h2>最近邻怎样限制方法主张</h2>
+<p><a href="https://aclanthology.org/2023.emnlp-main.313/">LINC</a>已经研究语义解析、证明器与投票，并指出信息遗漏可使证明器得到错误结论；<a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/8e9c7d4a48bdac81a58f983a64aaf42b-Paper-Conference.pdf">SATLM</a>已有声明式规格与自动求解。不能把本轮组件称为新的神经符号框架。</p>
+<p><a href="https://aclanthology.org/P16-1003/">Pasupat与Liang（2016）</a>已用额外标注的虚构世界排除伪正确程序；<a href="https://people.csail.mit.edu/asolar/SynthesisCourse2020/Lecture10.htm">CEGIS作者讲义</a>直接解释了反例指导合成。两者限制了把世界扰动或反例修复单独当创新的主张。<a href="https://arxiv.org/html/2605.30819v1">Function2Scene</a>则已连接功能解析、工具检查和保护高优先要求的场景修订。</p>
+<p>逐项阅读范围见<a href="reading_ledger.json">阅读记录</a>及<a href="method_difference.csv">方法差异</a>，不声称这些系统均已复现。书本当前续读覆盖166/312页提取文字；历史较早的全文阅读记录另存，不能把本次续读写成重新完整精读全书。本轮未逐页检查图像，产品例子未作为已核实能力引用。</p>
+<h2>成本和公平性</h2>
+<p>8次本地generate调用，输入5872、输出628，共6500 token。全程64.897秒，进程峰值约5.53 GiB、CUDA分配峰值约16.53 GiB。直接法首调用包含权重加载，不能比较两组推理速度；两组系统schema长度不同，输入token不等。所有调用无采样、无反馈、无重试，均EOS结束。未调用付费API、未训练、未下载权重或新增房间。已有实例和模型配额不能称为零总成本。</p>
+<p>四个条件及顺序在推理前固定。清理原文中一处归档来源措辞发生在所有模型调用前，旧准备文件完整保存于preparation_v1；不是看过结果后改题。完整原始请求、输出、回执、两类分数和成本见<a href="summary.csv">逐次表</a>、<a href="independent_recompute.json">原始输出重算</a>及<a href="source_entailment_review.json">引用—字段核对</a>。语义核对是研究者自审，不是独立人工标注。</p>
+<h2>对完整三维生成路线的判断</h2>
+<p>可以保留“把用途中的活动与持续材料，绑定到实际三维资源和生成动作”这个研究位置；现在已有真实模型错误和普通解释对照。但尚未证明它超过一般语义解析、修复或校正数据训练，也没有完整房间收益，不能宣称CVPR级方法已成立。</p>
+<p>后续比较必须让普通解析＋求解、普通校正CE/MML、通用反馈生成器拥有相同资产、动作与预算，并在独立来源房间中检查必需物体、功能要求、几何和旧功能能否一起达标。当前自定义JSON或桌面可行性提高不能替代整场生成。已有8次预算关闭，本报告不自动启动新模型调用、训练或扩数据。</p>
+<p><a href="reproduce.txt">CPU重算命令与复现范围</a> · <a href="repaired_program_teacher_records.json">未训练校正目标</a> · <a href="training_identifiability.json">实际版本空间和梯度算例</a> · <a href="source_before_after.json">579个源文件哈希</a> · <a href="delivery_verification.json">交付核验</a> · <a href="evidence.zip">证据包</a></p>
+<small>旧三维实验和标签保留。当前目标继续保持为完整场景生成与可信研究贡献；本阶段是证据进展，不是最终目标完成。</small></html>

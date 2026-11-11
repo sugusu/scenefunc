@@ -1,0 +1,341 @@
+{
+  "status": "completed",
+  "groups": [
+    {
+      "task_sha256": "9ac1c4a0cd1861559485ca15acf0c447a7004abaad68bfd0989b145198e9d351",
+      "case_ids": [
+        "case_00",
+        "case_02"
+      ],
+      "observed_greedy_program_pool": [
+        [
+          "work"
+        ]
+      ],
+      "sampled_pool_contains_consistent_program": false,
+      "enumerated_candidates": [
+        {
+          "materials_active_phases": [
+            "work"
+          ],
+          "world_verdicts": [
+            true,
+            true
+          ],
+          "all_labelled_worlds_match": false,
+          "matches": [
+            true,
+            false
+          ],
+          "activation_edge_edits": 0
+        },
+        {
+          "materials_active_phases": [
+            "work",
+            "meal"
+          ],
+          "world_verdicts": [
+            true,
+            false
+          ],
+          "all_labelled_worlds_match": true,
+          "matches": [
+            true,
+            true
+          ],
+          "activation_edge_edits": 1
+        }
+      ],
+      "selected": {
+        "materials_active_phases": [
+          "work",
+          "meal"
+        ],
+        "world_verdicts": [
+          true,
+          false
+        ],
+        "all_labelled_worlds_match": true,
+        "matches": [
+          true,
+          true
+        ],
+        "activation_edge_edits": 1
+      },
+      "new_candidate_created": true,
+      "teacher_reads_gold_world_labels": true,
+      "label_authority": "Research-authored task interpretation plus prior geometric certificates; not model consensus",
+      "novelty": "Finite minimum-edit enumeration/CEGIS-style supervision, ordinary strong control"
+    },
+    {
+      "task_sha256": "d266493d1faab509d4199e6f44654809b2b710f04ed7931e8a4d12b7656c797f",
+      "case_ids": [
+        "case_01",
+        "case_03"
+      ],
+      "observed_greedy_program_pool": [
+        [
+          "work"
+        ]
+      ],
+      "sampled_pool_contains_consistent_program": true,
+      "enumerated_candidates": [
+        {
+          "materials_active_phases": [
+            "work"
+          ],
+          "world_verdicts": [
+            true,
+            true
+          ],
+          "all_labelled_worlds_match": true,
+          "matches": [
+            true,
+            true
+          ],
+          "activation_edge_edits": 0
+        },
+        {
+          "materials_active_phases": [
+            "work",
+            "meal"
+          ],
+          "world_verdicts": [
+            false,
+            true
+          ],
+          "all_labelled_worlds_match": false,
+          "matches": [
+            false,
+            true
+          ],
+          "activation_edge_edits": 1
+        }
+      ],
+      "selected": {
+        "materials_active_phases": [
+          "work"
+        ],
+        "world_verdicts": [
+          true,
+          true
+        ],
+        "all_labelled_worlds_match": true,
+        "matches": [
+          true,
+          true
+        ],
+        "activation_edge_edits": 0
+      },
+      "new_candidate_created": false,
+      "teacher_reads_gold_world_labels": true,
+      "label_authority": "Research-authored task interpretation plus prior geometric certificates; not model consensus",
+      "novelty": "Finite minimum-edit enumeration/CEGIS-style supervision, ordinary strong control"
+    }
+  ],
+  "source_rule_results": [
+    {
+      "case": "case_00",
+      "arguments": {
+        "people_by_phase": {
+          "work": [
+            "resident"
+          ],
+          "meal": [
+            "resident",
+            "guest"
+          ]
+        },
+        "materials_active_phases": [
+          "work",
+          "meal"
+        ],
+        "evidence_quotes": [
+          "资料用餐时仍留在同一工作面"
+        ]
+      },
+      "score": {
+        "valid": true,
+        "prediction": true,
+        "correct": true,
+        "semantic_fields_exact": true,
+        "source_quotes_literal": true,
+        "source_quotes_entailment": "not automatically established",
+        "arguments": {
+          "people_by_phase": {
+            "work": [
+              "resident"
+            ],
+            "meal": [
+              "resident",
+              "guest"
+            ]
+          },
+          "materials_active_phases": [
+            "work",
+            "meal"
+          ],
+          "evidence_quotes": [
+            "资料用餐时仍留在同一工作面"
+          ]
+        }
+      },
+      "post_hoc": true,
+      "reads_only_task_and_common_geometry": true,
+      "independent_generalization_measure": false
+    },
+    {
+      "case": "case_02",
+      "arguments": {
+        "people_by_phase": {
+          "work": [
+            "resident"
+          ],
+          "meal": [
+            "resident",
+            "guest"
+          ]
+        },
+        "materials_active_phases": [
+          "work",
+          "meal"
+        ],
+        "evidence_quotes": [
+          "资料用餐时仍留在同一工作面"
+        ]
+      },
+      "score": {
+        "valid": true,
+        "prediction": false,
+        "correct": true,
+        "semantic_fields_exact": true,
+        "source_quotes_literal": true,
+        "source_quotes_entailment": "not automatically established",
+        "arguments": {
+          "people_by_phase": {
+            "work": [
+              "resident"
+            ],
+            "meal": [
+              "resident",
+              "guest"
+            ]
+          },
+          "materials_active_phases": [
+            "work",
+            "meal"
+          ],
+          "evidence_quotes": [
+            "资料用餐时仍留在同一工作面"
+          ]
+        }
+      },
+      "post_hoc": true,
+      "reads_only_task_and_common_geometry": true,
+      "independent_generalization_measure": false
+    },
+    {
+      "case": "case_01",
+      "arguments": {
+        "people_by_phase": {
+          "work": [
+            "resident"
+          ],
+          "meal": [
+            "resident",
+            "guest"
+          ]
+        },
+        "materials_active_phases": [
+          "work"
+        ],
+        "evidence_quotes": [
+          "资料在用餐前全部收走"
+        ]
+      },
+      "score": {
+        "valid": true,
+        "prediction": true,
+        "correct": true,
+        "semantic_fields_exact": true,
+        "source_quotes_literal": true,
+        "source_quotes_entailment": "not automatically established",
+        "arguments": {
+          "people_by_phase": {
+            "work": [
+              "resident"
+            ],
+            "meal": [
+              "resident",
+              "guest"
+            ]
+          },
+          "materials_active_phases": [
+            "work"
+          ],
+          "evidence_quotes": [
+            "资料在用餐前全部收走"
+          ]
+        }
+      },
+      "post_hoc": true,
+      "reads_only_task_and_common_geometry": true,
+      "independent_generalization_measure": false
+    },
+    {
+      "case": "case_03",
+      "arguments": {
+        "people_by_phase": {
+          "work": [
+            "resident"
+          ],
+          "meal": [
+            "resident",
+            "guest"
+          ]
+        },
+        "materials_active_phases": [
+          "work"
+        ],
+        "evidence_quotes": [
+          "资料在用餐前全部收走"
+        ]
+      },
+      "score": {
+        "valid": true,
+        "prediction": true,
+        "correct": true,
+        "semantic_fields_exact": true,
+        "source_quotes_literal": true,
+        "source_quotes_entailment": "not automatically established",
+        "arguments": {
+          "people_by_phase": {
+            "work": [
+              "resident"
+            ],
+            "meal": [
+              "resident",
+              "guest"
+            ]
+          },
+          "materials_active_phases": [
+            "work"
+          ],
+          "evidence_quotes": [
+            "资料在用餐前全部收走"
+          ]
+        }
+      },
+      "post_hoc": true,
+      "reads_only_task_and_common_geometry": true,
+      "independent_generalization_measure": false
+    }
+  ],
+  "all_four_posthoc_source_rule_cases_correct": true,
+  "arbitrary_semantic_repair_or_full_task_correctness_established": false,
+  "forward_calls": 0,
+  "training_updates": 0,
+  "paid_API_calls": 0,
+  "wall_seconds": 0.0015731379389762878,
+  "critical_scope": "Offline oracle-labelled teacher reconstruction is not an inference policy comparison; posthoc rules explain existing cases only."
+}

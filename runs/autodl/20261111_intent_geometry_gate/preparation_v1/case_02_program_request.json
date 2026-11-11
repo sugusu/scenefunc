@@ -1,0 +1,15 @@
+[
+  {
+    "role": "system",
+    "content": "You interpret use requirements for an existing furnished 3D room.\nThis is a TEXT-ONLY component, not full scene generation or visual perception.\nThe task text and the geometry tool observations are the complete common input.\nThe geometry observations report the capacities of specified footprint combinations,\nnot whether those combinations are required by the user's activity schedule.\nInfer the actual required combination from the text. Distinguish a person from\nmaterials left on a surface. Do not introduce unrequested simultaneous people,\nindependent tables, preference scores, or assumptions contradicting the text.\nReturn exactly one tool call and no chain of thought, commentary or markdown.\nevidence_quotes must be a nonempty list of exact substrings of the Task text.\nQuotes are source citations, not a fabricated expert rationale.\n\nTool: compile_activity_program(people_by_phase: object, materials_active_phases:\nlist[str] or null, evidence_quotes: list[str]).\nAvailable phase IDs: work, meal. Available person IDs: resident, guest.\npeople_by_phase maps each phase ID to the person IDs actually using that phase.\nmaterials_active_phases lists phases in which WORK MATERIALS occupy table area;\nit does not describe when a person is working. Use null only if unresolved.\nA common deterministic binder will combine this program with the SAME geometry\nfacts supplied here. It does not repair wrong interpretations or add people.\nRespond: <tool_call>{\"name\":\"compile_activity_program\",\"arguments\":{...}}</tool_call>.\n"
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "## Task\n研究者依据建筑师任务说明构造的居住兼办公任务。此住宅供一位住户日常生活与在家工作，另需保留两人的用餐位置。办公资料可以留在工作面上，用餐时无需收走；办公区和餐区可辨识，同时办公位置与共同起居空间保持视觉联系。请完成工作面和坐席，并保留现有睡眠、起居、两餐位、冷藏、备餐、烹饪、水槽、淋浴、洗面盆、厕所、收纳及入口通行。可以增补家具并调整非固定家具，保留初始家具实例和尺寸，不删减必需用途；墙体、固定设施和床不改。不给定办公位置或推荐家具坐标。原住户原话不可得；人数、两餐位、资料持续占用、精确尺寸、初始家具和允许编辑范围均为研究假设。\n\n研究者补充的同任务机制检查（不是原住户数据）：住户工作时需要40×40厘米的资料区域；资料用餐时仍留在同一工作面。用餐时住户与一位客人各需35×25厘米的独立用餐区域，住户此时不另占工作席位。检查现有meal_table_0能否在两个活动阶段支持这些区域；同时占用的区域不得重叠。可使用0或90度的平面矩形区域；区域仅代表声明的研究代理，不能据此认定实际人体使用合格。这里只询问共享桌面的可行性，共享不行不等于整场任务不可能，可另用工作面。\n\n## Memory\n{\"tool_origin\": \"Previously executed real-mesh reservation checks; same facts to both methods\", \"units\": \"metres\", \"footprints\": {\"work_materials\": [0.4, 0.4], \"each_meal\": [0.35, 0.25]}, \"geometry_fact\": {\"one_work_region_fits\": true, \"two_meal_regions_fit\": true, \"work_materials_plus_two_meal_regions_fit\": false}, \"evidence_limits\": \"Projected top-band reservations, not full ergonomics, subjective design or a visual observation\", \"original_objects_retained\": 30}"
+      }
+    ]
+  }
+]
