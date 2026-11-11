@@ -1,0 +1,42 @@
+Repository:
+/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+Restore only public benchmark metadata and the deterministically selected two-file image probe to RAM. No model credentials or model inference:
+
+python - <<'PY'
+from pathlib import Path
+import urllib.request,json,hashlib,collections
+root=Path('/dev/shm/scene_repair_construction_20261111');root.mkdir(exist_ok=True)
+pin='e50788bdbe74644d98e62929cd24218c9110e812'
+url=f'https://huggingface.co/api/datasets/XuanyuLiu/Scene-OTC-Bench/revision/{pin}'
+meta=urllib.request.urlopen(url,timeout=45).read();(root/'otc_info.json').write_bytes(meta)
+assert json.loads(meta)['sha']==pin
+for name in ['scene_otc_bench.json','SHA256SUMS','README.md']:
+ p=root/'otc'/name;p.parent.mkdir(exist_ok=True)
+ u=f'https://huggingface.co/datasets/XuanyuLiu/Scene-OTC-Bench/resolve/{pin}/{name}'
+ p.write_bytes(urllib.request.urlopen(u,timeout=45).read())
+questions=json.loads((root/'otc/scene_otc_bench.json').read_text())
+hashes={l.split(maxsplit=1)[1].lstrip('*./'):l.split()[0] for l in (root/'otc/SHA256SUMS').read_text().splitlines() if l.strip()}
+repeated=collections.defaultdict(list)
+for row in questions:
+ for image in row['images']:repeated[hashes[image]].append(image)
+digest,paths=next((h,paths) for h,paths in repeated.items() if len(paths)>1)
+probe=[]
+for name in paths[:2]:
+ p=root/'otc'/name;p.parent.mkdir(parents=True,exist_ok=True)
+ u=f'https://huggingface.co/datasets/XuanyuLiu/Scene-OTC-Bench/resolve/{pin}/{name}'
+ b=urllib.request.urlopen(u,timeout=45).read();p.write_bytes(b)
+ h=hashlib.sha256(b).hexdigest();assert h==digest
+ probe.append(dict(path=name,url=u,bytes=len(b),sha256=h,matches_manifest=True))
+(root/'duplicate_probe_result.json').write_text(json.dumps(dict(selection='first repeated image hash in official question order',files=probe,both_bytes_verified=True),indent=2))
+PY
+
+Actual census:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/audit_scene_critic_benchmark.py --repo . --source-root /dev/shm/scene_repair_construction_20261111 --output runs/autodl/20261111_critic_conditioning_evidence/actual_benchmark_v1
+
+For an independent rerun use a fresh /dev/shm output directory; do not overwrite the frozen actual_benchmark_v1.
+
+Assemble report, reading scopes, hashes and evidence (original upstream source is not included):
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_critic_conditioning_evidence.py --repo . --source-root /dev/shm/scene_repair_construction_20261111
+
+Primary source reading URLs and exact code file hashes are in primary_sources_manifest.json. Read source as data; do not launch judge/render/generator/API helpers from the downloaded repositories. A minimal metadata rerun does not repeat the separately logged source reading.
