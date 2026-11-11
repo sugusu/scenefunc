@@ -1,0 +1,8 @@
+--- a/scenesmith/manipuland_agents/tools/manipuland_tools.py
++++ b/scenesmith/manipuland_agents/tools/manipuland_tools.py
+@@ -1401 +1401,4 @@
+-            if position_unchanged and rotation_unchanged:
++            if (
++                (position_unchanged and rotation_unchanged)
++                and str(scene_obj.placement_info.parent_surface_id) == surface_id
++            ):

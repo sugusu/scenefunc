@@ -1,0 +1,27 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>支撑面身份与原生动作反馈复核 · 2026-11-11</title>
+<style>body{max-width:1040px;margin:35px auto;padding:0 20px;font:17px/1.8 system-ui;color:#193143}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{border:1px solid #b9cbd6;padding:10px;text-align:left}th{background:#edf4f8}a{color:#05628e}.note{border-left:4px solid #507c94;padding-left:16px}pre{white-space:pre-wrap;background:#f1f5f8;padding:16px}</style>
+<h1>同一局部坐标，不代表已到达另一支撑面</h1>
+<p>这轮实际读取并执行了原生move_manipuland分支，复现一个具体普通错误：从下层板中心移到上层板中心时，两处局部坐标都为(0,0)，工具因此误报NO_MOVEMENT，实际物体仍在下层。只在内存对照中增加支撑面ID比较后，同一动作把物体移高0.5米，且保留对象和网格身份。</p>
+<p class="note"><strong>这是一项后端正确性回归，不是Agent创新或完整场景生成成果。</strong>使用合成GLB及两个原生支撑面，没有模型调用、训练、API、物理仿真或路径规划；没有证据证明此错误导致了此前的模型或整房失败。</p>
+<h2>6次原生工具调用的实际结果</h2>
+<table><tr><th>固定回归输入</th><th>原实现</th><th>普通一条件修正</th><th>应检查的事实</th></tr>
+<tr><td>同支撑面，同局部坐标</td><td>NO_MOVEMENT；目标状态已成立</td><td>相同</td><td>success=false不等于功能目标失败；可单独计多余调用。</td></tr>
+<tr><td>另一层板，同局部坐标</td><td>NO_MOVEMENT；仍在下层Z=0.4</td><td>执行成功；上层Z=0.9，parent ID同步更新</td><td>支撑身份及世界姿态都要核对。</td></tr>
+<tr><td>同支撑面，局部平移0.1米</td><td>正确平移</td><td>正确平移</td><td>普通修正未改变这一对照行为。</td></tr></table>
+<p>调用原生RoomScene、SceneObject、PlacementInfo、SupportSurface和Drake变换，执行原生凸包、包含与净空检查。几何是10厘米合成方块和0.8米层板；没有用占位检查助手替代原生函数，但省略了服务启动和动作日志包装。完整调用及实际姿态见<a href="corrected_execution/results.json">原生结果</a>与<a href="summary.csv">逐次表</a>。</p>
+<h2>修正在哪一层、尚未应用到哪里</h2>
+<pre>原判断：局部位置相同 AND 局部旋转相同
+普通修正：上述条件 AND 当前支撑面ID等于目标支撑面ID</pre>
+<p>本轮固定源／目标支撑面变换。没有证明这一个条件能解决支撑面自身运动、过期缓存、碰撞、物理稳定或移动路径。<a href="candidate_integration.diff">可应用到副本的差异</a>已保存，并核对其AST与实际运行的修正分支一致；<strong>旧运行时和579个受保护文件均未修改。</strong></p>
+<p>固定实验源为e888297a8b0a2f3acbb8634edf9def59cceab836；另只读核查了main提交67cc408fd38334b4a926efef45e284302ed5055b，所涉文件SHA一致，见<a href="upstream_head_check.json">上游核查记录</a>。没有向作者提交Issue或PR，也没有自动更换历史实验后端。</p>
+<h2>首轮适配器失败保留，不能算进修正收益</h2>
+<p>第一轮因我的适配器漏载原生safe_convex_hull_2d而退出，尚未进入要验证的分支。补齐原函数后，在新目录执行同样三个输入；没有改样本、几何、噪声或阈值。失败脚本、原始部分结果和<a href="failed_attempt_v1.json">失败说明</a>都保留。旧部分结果中的running字段是异常退出前记录，<a href="execution_state.json">终止记录</a>明确它不是存活进程。</p>
+<p>成功回放的核内计时约1.453秒；首轮失败及阅读、取源成本未完整计时，因此不宣传速度优势。有效对照包含6次工具调用，首轮适配器失败另有2次方法调用，全程记录共8次；都不是独立生成场景或模型推理。</p>
+<h2>对训练与研究机制的影响</h2>
+<p>一个correct intent产生的合法转移可能被后端误拒绝；同一个NO_MOVEMENT又可能意味着目标原本已满足。若把success直接当Actor正负标签，就会混淆目标状态、调用效率和执行器错误。训练记录需保留动作前后实际状态、目标绑定、响应及执行器版本，不能只改成功标签却沿用旧观察。</p>
+<p>当前公开8B四阶段工具schema也不包含move_manipuland。本轮查的是原生后端的操纵物工具，不声称该模型已在新的工具阶段运行。回归数据未加入SFT，没有编造思维链。普通修正以后必须对所有方法一致生效，不能只给候选Agent开放。</p>
+<p><a href="algorithm_and_training.txt">算法、坐标系推导与训练标签规则</a>说明了成立条件。它们是普通状态验证原则，尚不是独立新学习机制。完整场景主线仍需要在正确工具、普通规划和直接动作CE这些强对照之上，证明跨来源的功能生成收益。</p>
+<h2>本轮实际阅读</h2>
+<p>补读书PDF178–189的全部提取文字，完成本次第6章剩余GUI与机器人段落。当前续读覆盖178/312页，仍有134页未在这次续读中读完；历史全文阅读记录另存。没有逐页看图，也未验证书中产品榜单或运行机器人示例。工具源码读取与实际执行函数的区分见<a href="reading_ledger.json">阅读记录</a>。</p>
+<p><a href="independent_recompute.json">独立重算与旧文件核验</a> · <a href="reproduce.txt">CPU复现命令</a> · <a href="delivery_verification.json">交付核验</a> · <a href="evidence.zip">证据包</a></p>
+<p>这轮为后续公平实验排除了一个具体执行混淆；没有因此扩大几何工程，也不据此认定Agent方向成功或失败。完整场景与研究贡献目标仍保持未完成。</p></html>

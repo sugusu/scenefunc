@@ -1,0 +1,70 @@
+{
+  "source_pin": "e888297a8b0a2f3acbb8634edf9def59cceab836",
+  "source_sha256": "38c570cbde5484f6d00ea794aadc374e3772e75b87deb4b1b583801a67e3d940",
+  "cases": [
+    "same_frame_same_local",
+    "other_frame_same_local",
+    "same_frame_changed_local"
+  ],
+  "decision_rule": "Predefined native regression cases, not neural scene generation outcomes",
+  "original_method_body_changed": false,
+  "patch_ast_guard_edits": 1,
+  "patched_guard": "(position_unchanged and rotation_unchanged) and str(scene_obj.placement_info.parent_surface_id) == surface_id",
+  "source_and_target_surface_transforms": "Fixed throughout each call; no claim about stale/moving surface frames",
+  "geometry": "Synthetic0.1mGLB and two native0.8m support planes atZ0.4/Z0.9; no HSSD files changed",
+  "native_types": [
+    "RoomScene",
+    "RoomGeometry",
+    "SceneObject",
+    "UniqueID",
+    "PlacementInfo",
+    "SupportSurface"
+  ],
+  "body_scope": [
+    {
+      "symbol": "_get_object_convex_hull_2d",
+      "start": 297,
+      "end": 348,
+      "original_body_ast_sha256": "022dc8d015c88fc3a0ef9c53b99ed93c6ba50abdd3afa10c793a1d7c2b10be82",
+      "omitted_decorators": []
+    },
+    {
+      "symbol": "_is_top_surface",
+      "start": 350,
+      "end": 390,
+      "original_body_ast_sha256": "c1f8abe5c62cbc1291473c2e610a9b914832e4d9673d8cb25e973990d030ed7e",
+      "omitted_decorators": []
+    },
+    {
+      "symbol": "_validate_convex_hull_footprint",
+      "start": 392,
+      "end": 474,
+      "original_body_ast_sha256": "21a33cbfc9103c7fbfcb8a0b636606d5bb7b253a8d3440a47d9377db8f20cc14",
+      "omitted_decorators": []
+    },
+    {
+      "symbol": "_move_manipuland_impl",
+      "start": 1223,
+      "end": 1543,
+      "original_body_ast_sha256": "6da8beb7c16876d866e106b48861966aca4e563932cdf6295e9f2031f2c4e98d",
+      "omitted_decorators": [
+        "log_scene_action"
+      ]
+    },
+    {
+      "symbol": "_create_placement_failure_result",
+      "start": 2228,
+      "end": 2245,
+      "original_body_ast_sha256": "f6fa4827de54f72c403a193c9682e183f963dbedef706e78e3ea0354f1e21be0",
+      "omitted_decorators": []
+    }
+  ],
+  "helpers_mocked": false,
+  "wrappers_omitted": "Action logging wrapper and unused service constructor/SDK bootstrap",
+  "mesh_collision_physics_or_path_replay": false,
+  "model_calls": 0,
+  "paid_API_calls": 0,
+  "training_updates": 0,
+  "whole_scenes_generated": 0,
+  "regression_is_not_research_benchmark": true
+}

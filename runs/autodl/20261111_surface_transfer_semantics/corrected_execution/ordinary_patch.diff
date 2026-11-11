@@ -1,0 +1,11 @@
+--- original_method
++++ ordinary_patch_method
+@@ -58,7 +58,7 @@
+         rotation_radians = math.radians(rotation_degrees)
+         position_unchanged = np.allclose(current_position_2d, position_2d, atol=1e-06)
+         rotation_unchanged = np.allclose(current_rotation_2d, rotation_radians, atol=1e-06)
+-        if position_unchanged and rotation_unchanged:
++        if (position_unchanged and rotation_unchanged) and str(scene_obj.placement_info.parent_surface_id) == surface_id:
+             console_logger.info(f"Manipuland '{scene_obj.name}'/'{object_id}' is already at position ({position_x:.3f}, {position_z:.3f}) and rotation {rotation_degrees:.1f}° - no movement needed")
+             return ManipulandOperationResult(success=False, message=f'{scene_obj.name} is already at the target position and rotation - no movement needed', object_id=object_id, error_type=ManipulandErrorType.NO_MOVEMENT).to_json()
+         console_logger.info(f'Moving manipuland {object_id} ({scene_obj.name}) to surface position ({position_x:.3f}, {position_z:.3f}), rotation {rotation_degrees:.1f}°')
