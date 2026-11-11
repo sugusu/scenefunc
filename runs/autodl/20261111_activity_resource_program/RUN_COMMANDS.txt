@@ -1,0 +1,47 @@
+2026-11-11 actual closed run; do not rerun completed model requests implicitly.
+Repository: /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+All old sources and thresholds retained. Model execution is custom allocation, not full native Actor.
+
+Prerequisite real source bundle: /dev/shm/milan_completion_20261111/bundle
+Its exact71file hashes and native restore are recorded under ../20261111_milan_completion/.
+If RAM storage expires, prepare a NEW scratch directory using existing scripts:
+  prepare_milan_completion.py; recover_milan_assets.py; restore_milan_bundle.py
+See ../20261111_milan_completion/code/ and algorithm_and_theory.txt there.
+Use historical trimesh4.7.4 overlay when rebuilding canonical asset resources; default4.5.3 serializes different bytes.
+The completed native bundle/state and mesh archive are retained in previous-stage artifacts; do not count restoration as new generation.
+
+CPU compiler (already completed4.7776seconds):
+  PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+  PYTHONPATH=$PWD/runs/autodl/20261110_corpus_state_recovery/dependency/import \
+  /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B \
+  scripts/autodl/activity_resource_program.py --root runs/autodl/20261111_activity_resource_program \
+  --bundle /dev/shm/milan_completion_20261111/bundle
+
+Original5annotated views were read with git show from the exact source revision in view_manifest.json.
+They remain in Git, not newly rendered or accepted as human assessment. Rehydrate bytes to the listed local paths and verify hashes if needed.
+
+Model preparation (no forward):
+  /root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python -B scripts/autodl/activity_resource_model.py \
+  --root runs/autodl/20261111_activity_resource_program --prepare-only
+
+Actual model run (already completed3forwards,88.1663seconds; no retry):
+  timeout --signal=TERM --kill-after=10s 480 \
+  /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python -B \
+  scripts/autodl/activity_resource_model.py --root runs/autodl/20261111_activity_resource_program
+The model contract and exact requests were frozen BEFORE launch. The first request had17639tokens and five original scene views; no truncation. Old256pixel/8192token wrapper was NOT used.
+The process emitted an inherited OMP_NUM_THREADS warning, retained in model_process.stderr. It completed all3forwards and ended naturally; no intervention/retry. No efficiency advantage is claimed.
+The second compact call explicitly reveals minimum added-object count0. It is oracle-minimum-assisted, not a pure geometric feedback experiment or an independent first decision.
+
+Actual native execution:
+  PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+  PYTHONPATH=$PWD/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps \
+  /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B \
+  scripts/autodl/execute_activity_program.py --root runs/autodl/20261111_activity_resource_program \
+  --scratch /dev/shm/milan_completion_20261111 --native-source runs/autodl/20261110_native_state_runtime/source
+
+Report only (no model or generation; may rebuild presentation after adding evidence):
+  PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+  /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python -B \
+  scripts/autodl/report_activity_resources.py --root runs/autodl/20261111_activity_resource_program
+
+This one exposed room and synthetic footprint variants remain development-only. No independent human preference, actual papers/plates, full dynamics, new learned policy, held-out generation advantage or CVPR-level novelty has been established.

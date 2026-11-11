@@ -1,0 +1,172 @@
+{
+  "task": "original_research_proxy",
+  "policy": "ordinary",
+  "turn": 0,
+  "plan": "shared",
+  "reservations": {
+    "persistent_work": {
+      "surface_id": "meal_table_0",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.2850000089406963,
+              -0.8723979234695436
+            ],
+            [
+              -0.2850000089406963,
+              -0.4723979234695436
+            ],
+            [
+              -0.5850000089406964,
+              -0.4723979234695436
+            ],
+            [
+              -0.5850000089406964,
+              -0.8723979234695436
+            ],
+            [
+              -0.2850000089406963,
+              -0.8723979234695436
+            ]
+          ]
+        ]
+      },
+      "active_modes": [
+        "work",
+        "meal"
+      ]
+    },
+    "meal_north": {
+      "surface_id": "meal_table_0",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.3,
+              -0.47239792346954323
+            ],
+            [
+              -0.3,
+              -0.17239792346954322
+            ],
+            [
+              -0.7,
+              -0.17239792346954322
+            ],
+            [
+              -0.7,
+              -0.47239792346954323
+            ],
+            [
+              -0.3,
+              -0.47239792346954323
+            ]
+          ]
+        ]
+      },
+      "active_modes": [
+        "meal"
+      ]
+    },
+    "meal_south": {
+      "surface_id": "meal_table_0",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.5850000089406966,
+              -0.8723979234695436
+            ],
+            [
+              -0.5850000089406966,
+              -0.4723979234695436
+            ],
+            [
+              -0.8850000089406966,
+              -0.4723979234695436
+            ],
+            [
+              -0.8850000089406966,
+              -0.8723979234695436
+            ],
+            [
+              -0.5850000089406966,
+              -0.8723979234695436
+            ]
+          ]
+        ]
+      },
+      "active_modes": [
+        "meal"
+      ]
+    }
+  },
+  "modes": {
+    "work": {
+      "resident": {
+        "seat_id": "meal_chair_n_0"
+      }
+    },
+    "meal": {
+      "resident": {
+        "seat_id": "meal_chair_n_0"
+      },
+      "guest": {
+        "seat_id": "meal_chair_s_0"
+      }
+    }
+  },
+  "correct_simultaneous_people_per_mode": {
+    "work": 1,
+    "meal": 2
+  },
+  "people_workspace_not_simultaneous": true,
+  "original_objects_exact": true,
+  "covered_by_actual_tabletop": {
+    "persistent_work": true,
+    "meal_north": true,
+    "meal_south": true
+  },
+  "region_pair_checks": [
+    {
+      "a": "persistent_work",
+      "b": "meal_north",
+      "overlap_m2": 0.0,
+      "simultaneous": true,
+      "same_surface": true
+    },
+    {
+      "a": "persistent_work",
+      "b": "meal_south",
+      "overlap_m2": 0.0,
+      "simultaneous": true,
+      "same_surface": true
+    },
+    {
+      "a": "meal_north",
+      "b": "meal_south",
+      "overlap_m2": 0.0,
+      "simultaneous": true,
+      "same_surface": true
+    }
+  ],
+  "final_native_objects": 30,
+  "new_furniture": 0,
+  "native_state_path": "original_research_proxy_ordinary_0_room_state.json",
+  "native_restore": {
+    "bundle_manifest_sha256": "13dd8965f9596ac42ce2ad506fc77a69b9aa2ec1bd673cb69189078c3fbbbbee",
+    "objects": 30,
+    "native_state_exact": true,
+    "actual_native_class": "scenesmith.agent_utils.room.RoomScene"
+  },
+  "geometry_facts_reference": "Unchanged original native scene; no new geometry",
+  "physical_material_objects_created": false,
+  "new_full_scene_generation": false,
+  "full_original_brief_satisfied": null,
+  "original_frozen_evaluator_modified": false,
+  "evidence_scope": "Qualified resource reservation and existing complete-scene reconstruction, not ergonomic/user acceptance or new construction search"
+}

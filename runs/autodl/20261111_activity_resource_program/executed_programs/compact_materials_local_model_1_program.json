@@ -1,0 +1,172 @@
+{
+  "task": "compact_materials",
+  "policy": "local_model",
+  "turn": 1,
+  "plan": "independent",
+  "reservations": {
+    "meal_north": {
+      "surface_id": "meal_table_0",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.21500000894069632,
+              -0.8223979234695435
+            ],
+            [
+              -0.21500000894069632,
+              -0.3723979234695436
+            ],
+            [
+              -0.5650000089406964,
+              -0.3723979234695436
+            ],
+            [
+              -0.5650000089406964,
+              -0.8223979234695435
+            ],
+            [
+              -0.21500000894069632,
+              -0.8223979234695435
+            ]
+          ]
+        ]
+      },
+      "active_modes": [
+        "meal"
+      ]
+    },
+    "meal_south": {
+      "surface_id": "meal_table_0",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -0.5650000089406966,
+              -0.8250000000000003
+            ],
+            [
+              -0.5650000089406966,
+              -0.37500000000000033
+            ],
+            [
+              -0.9150000089406967,
+              -0.37500000000000033
+            ],
+            [
+              -0.9150000089406967,
+              -0.8250000000000003
+            ],
+            [
+              -0.5650000089406966,
+              -0.8250000000000003
+            ]
+          ]
+        ]
+      },
+      "active_modes": [
+        "meal"
+      ]
+    },
+    "persistent_work": {
+      "surface_id": "ordinary_work_table_0",
+      "polygon": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.8999999999999995,
+              -0.8499999999999999
+            ],
+            [
+              -3.0999999999999996,
+              -0.8499999999999999
+            ],
+            [
+              -3.0999999999999996,
+              -1.15
+            ],
+            [
+              -2.8999999999999995,
+              -1.15
+            ],
+            [
+              -2.8999999999999995,
+              -0.8499999999999999
+            ]
+          ]
+        ]
+      },
+      "active_modes": [
+        "work",
+        "meal"
+      ]
+    }
+  },
+  "modes": {
+    "work": {
+      "resident": {
+        "seat_id": "ordinary_work_chair_0"
+      }
+    },
+    "meal": {
+      "resident": {
+        "seat_id": "meal_chair_n_0"
+      },
+      "guest": {
+        "seat_id": "meal_chair_s_0"
+      }
+    }
+  },
+  "correct_simultaneous_people_per_mode": {
+    "work": 1,
+    "meal": 2
+  },
+  "people_workspace_not_simultaneous": true,
+  "original_objects_exact": true,
+  "covered_by_actual_tabletop": {
+    "meal_north": true,
+    "meal_south": true,
+    "persistent_work": true
+  },
+  "region_pair_checks": [
+    {
+      "a": "meal_north",
+      "b": "meal_south",
+      "overlap_m2": 0.0,
+      "simultaneous": true,
+      "same_surface": true
+    },
+    {
+      "a": "meal_north",
+      "b": "persistent_work",
+      "overlap_m2": 0.0,
+      "simultaneous": true,
+      "same_surface": false
+    },
+    {
+      "a": "meal_south",
+      "b": "persistent_work",
+      "overlap_m2": 0.0,
+      "simultaneous": true,
+      "same_surface": false
+    }
+  ],
+  "final_native_objects": 32,
+  "new_furniture": 2,
+  "native_state_path": "compact_materials_local_model_1_room_state.json",
+  "native_restore": {
+    "bundle_manifest_sha256": "cfac484796a132aaf02a10cbaec2d989b60311fce8672a3068635270bf9b03dd",
+    "objects": 32,
+    "native_state_exact": true,
+    "actual_native_class": "scenesmith.agent_utils.room.RoomScene"
+  },
+  "geometry_facts_reference": "../20261111_milan_completion/completion_result.json",
+  "physical_material_objects_created": false,
+  "new_full_scene_generation": false,
+  "full_original_brief_satisfied": null,
+  "original_frozen_evaluator_modified": false,
+  "evidence_scope": "Qualified resource reservation and existing complete-scene reconstruction, not ergonomic/user acceptance or new construction search"
+}

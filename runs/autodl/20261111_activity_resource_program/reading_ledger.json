@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "title": "Activity-centric Scene Synthesis for Functional3D Scene Modeling",
+      "year": 2015,
+      "primary_url": "https://graphics.stanford.edu/~mdfisher/actSynth.html",
+      "paper_url": "https://graphics.stanford.edu/~mdfisher/papers/actSynth.pdf",
+      "code_revision": "c1783688dee3db1b04b0d15401d64937d17d5db5",
+      "actual_reading": "Project abstract; targeted paper/supplement method reading from preceding turn; this turn complete agent.h, scene.h, modelInstance.h, activityDatabase.cpp and synthesizerGeneral.cpp lines200-640. Not all888lines, dependencies, or code execution.",
+      "establishes": "Activity/object bindings and learned placement interactions are prior. Source has an explicit score bonus for shared objects.",
+      "source_locations": [
+        "scene.h:36-53",
+        "agent.h:63-75",
+        "activityDatabase.cpp:47-62",
+        "synthesizerGeneral.cpp:329-336",
+        "synthesizerGeneral.cpp:450-466"
+      ],
+      "limitations": "Shared-object score code alone does not establish that every candidate path realizes multi-agent sharing. No claim of prior temporal-persistence parity."
+    },
+    {
+      "title": "ScIntBench: Physical Interaction Plausibility in3D Scene Generation",
+      "version": "2610.37326v1,2026-10-27",
+      "primary_url": "https://arxiv.org/html/2610.37326v1",
+      "actual_reading": "This turn methods3.1-3.4, AppendixB.2,B.3,C.1-C.7,D.1-D.3. No official system/simulator or original scenes run.",
+      "establishes": "Prescribed native-capability manipulation evaluation with reference-controller calibration; missing capabilities remain missing.",
+      "difference": "Current code measures planar resource reservation and reconstructs unchanged scene states. It does not validate articulation, dynamic physics or human use."
+    },
+    {
+      "title": "Scene-Designer native Actor/tool branch",
+      "primary_url": "Local pinned upstream source",
+      "source": "native_execution_inventory_20261104/source/Designer/agent_rollout.py",
+      "actual_reading": "Parser, Task/Memory builder, prompt rendering; furniture tools and local catalog session read. AST copied builder/parser without importing gateway.",
+      "establishes": "Native Actor has its own generation/manipulation tools. Our allocation tool is custom, not that API.",
+      "objective_boundary": "Existing joint-SFT checkpoint only. No v10Critic adapter, Scene-GRPO training or native full Actor reproduction."
+    },
+    {
+      "title": "Previously reviewed Function2Scene, conditional-preference RPR, MUSE, SceneSmith",
+      "actual_reading": "Prior stages only; not newly reread in full this turn",
+      "establishes": "No claim that activity reasoning, conditional preferences, logs or feedback are first introduced here.",
+      "unknown": "Original full APIs/data and independent preference labels remain outside current evidence"
+    }
+  ],
+  "full_field_novelty_established": false
+}
