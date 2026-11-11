@@ -1,0 +1,8 @@
+No model/API/training commands are included. Original local assets and runtime required.
+Read public_source_manifest.json; retrieve selected pinned source text into SOURCE RAM paths if absent. Source files are not redistributed.
+Use a NEW output directory and NEW RAM directory for any rerun; copy PROTOCOL.json there. Preserve originals.
+Native command (old run already completed):
+env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONPATH=/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/audit_recorded_trajectory_compression.py --output NEW_OUTPUT --ram-output NEW_RAM
+/root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/check_trajectory_sft_boundary.py --output NEW_OUTPUT --ram-output NEW_SFT_RAM
+python scripts/autodl/compare_trajectory_selectors.py --output NEW_OUTPUT
+The full official Compressor is NOT run. Four-stage evidence must not be fabricated to bypass that boundary.

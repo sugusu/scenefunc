@@ -1,0 +1,201 @@
+{
+  "scope": "Original reader/message builder executed; no tokenization or gradient computation",
+  "model_constructions": 0,
+  "training_steps": 0,
+  "new_API_calls": 0,
+  "original_reader_sha256": "9e4d18f67e746af16f830d7e8d0da714964a43bfa320ef091a0092b3e9bb2569",
+  "original_memory_sha256": "553ec3c6624659bee3b2dfc77d3aa9f20cc92de7740a3e7eaedee3ceccb03d36",
+  "interpretation": "The loader is structural, not a whole-room quality validator. This does not show bad samples occur in OTA-35K. Our four-step excerpts omit their real construction prefix and must not be trained as standalone episodes.",
+  "recorded_prefix_recovery": {
+    "recorded_prefix_calls": 12,
+    "scene_instances": 9,
+    "memory_assets": 18,
+    "memory_placed_assets": 9,
+    "prefix_rendered_memory": "# Memory snapshot\nFurniture assets (9/18 placed):\n  - queen_bed_0              1.49×1.99×0.80m        @ (-0.45, -0.85) yaw=0°\n  - office_desk_1            1.20×0.60×0.76m        [generated, not placed]\n  - office_chair_2           0.58×0.61×0.99m        [generated, not placed]\n  - wardrobe_3               1.09×0.66×2.21m        [generated, not placed]\n  - dresser_4                1.53×0.44×1.83m        [generated, not placed]\n  - nightstand_5             0.48×0.47×0.60m        [generated, not placed]\n  - bookcase_6               0.92×0.45×1.80m        [generated, not placed]\n  - sofa_7                   1.80×0.96×0.91m        [generated, not placed]\n  - dining_table_8           0.95×0.94×0.71m        [generated, not placed]\n  - dining_chair_9           0.52×0.53×0.94m        [generated, not placed]\n  - office_desk_0            1.20×0.60×0.76m        @ (+0.25, +1.15) yaw=180°\n  - office_chair_0           0.58×0.61×0.99m        @ (+0.25, +0.55) yaw=0°\n  - wardrobe_0               1.09×0.66×2.21m        @ (+1.85, +0.15) yaw=0°\n  - dresser_0                1.53×0.44×1.83m        @ (+1.85, -0.95) yaw=0°\n  - nightstand_0             0.48×0.47×0.60m        @ (-1.05, -0.85) yaw=0°\n  - sofa_0                   1.80×0.96×0.91m        @ (-0.15, -1.90) yaw=0°\n  - dining_table_0           0.95×0.94×0.71m        @ (+0.10, -1.45) yaw=0°\n  - dining_chair_0           0.52×0.53×0.94m        @ (+0.95, -1.45) yaw=0°\nAsset library (asset_id for placement; separate from scene object_id):\n  - asset_id=queen_bed_0: 1.49×1.99×0.80m\n  - asset_id=office_desk_1: 1.20×0.60×0.76m\n  - asset_id=office_chair_2: 0.58×0.61×0.99m\n  - asset_id=wardrobe_3: 1.09×0.66×2.21m\n  - asset_id=dresser_4: 1.53×0.44×1.83m\n  - asset_id=nightstand_5: 0.48×0.47×0.60m\n  - asset_id=bookcase_6: 0.92×0.45×1.80m\n  - asset_id=sofa_7: 1.80×0.96×0.91m\n  - asset_id=dining_table_8: 0.95×0.94×0.71m\n  - asset_id=dining_chair_9: 0.52×0.53×0.94m\nYour last 5 action(s) (oldest → newest):\n  step-5: add_furniture_to_scene_tool(asset_id='sofa_7', x=-0.15, y=-1.9, yaw=0)  ✓ → object_id=sofa_0\n  step-4: add_furniture_to_scene_tool(asset_id='dining_table_8', x=0.1, y=-1.45, yaw=0)  ✓ → object_id=dining_table_0\n  step-3: add_furniture_to_scene_tool(asset_id='dining_chair_9', x=0.95, y=-1.45, yaw=0)  ✓ → object_id=dining_chair_0\n  step-2: add_furniture_to_scene_tool(asset_id='dining_chair_9', x=-0.55, y=-1.45, yaw=0)  ✓ → object_id=dining_chair_1\n  step-1: remove_furniture_tool(object_id='dining_chair_1')  ✓ Successfully removed dining_chair from scene\n    Recorded state BEFORE this action: {\"pos\": [-0.55, -1.45], \"rot\": 0.0, \"w\": 0.5247824490070343, \"d\": 0.5341122150421143, \"h\": 0.9397871603243289}",
+    "not_injected_into_loader": true
+  },
+  "rows": [
+    {
+      "arm": "B0",
+      "structurally_built_step_samples": 4,
+      "quality_gate_in_reader": false,
+      "training_admitted_by_this_audit": false,
+      "fixture_sha256": "24c5739057b93e46ffa20bf53fa868149400710fcd7f1bc829462142060ac4a7",
+      "fixtures_persisted_in_git": false,
+      "first_step_inventory_context_missing": true,
+      "sample_rows": [
+        {
+          "step_idx": 0,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot (empty)",
+          "captured_original_reasoning_chars": 606,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 0.55,
+                "y": -1.47,
+                "yaw": 180
+              }
+            }
+          ],
+          "source_original_tool_success": true
+        },
+        {
+          "step_idx": 1,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot\nYour last 1 action(s) (oldest → newest):\n  step-1: move_furniture_tool(object_id='dining_chair_0', x=0.55, y=-1.47, yaw=180)  ✓ Successfully moved dining_chair to new position and rotation",
+          "captured_original_reasoning_chars": 0,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 0.55,
+                "y": -1.47,
+                "yaw": 180
+              }
+            }
+          ],
+          "source_original_tool_success": false
+        },
+        {
+          "step_idx": 2,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot\nYour last 2 action(s) (oldest → newest):\n  step-2: move_furniture_tool(object_id='dining_chair_0', x=0.55, y=-1.47, yaw=180)  ✓ Successfully moved dining_chair to new position and rotation\n  step-1: move_furniture_tool(object_id='dining_chair_0', x=0.55, y=-1.47, yaw=180)  ❌ FAILED: dining_chair is already at the target position and rotation ",
+          "captured_original_reasoning_chars": 0,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 0.55,
+                "y": -1.47,
+                "yaw": 180
+              }
+            }
+          ],
+          "source_original_tool_success": false
+        },
+        {
+          "step_idx": 3,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot\nYour last 3 action(s) (oldest → newest):\n  step-3: move_furniture_tool(object_id='dining_chair_0', x=0.55, y=-1.47, yaw=180)  ✓ Successfully moved dining_chair to new position and rotation\n  step-2: move_furniture_tool(object_id='dining_chair_0', x=0.55, y=-1.47, yaw=180)  ❌ FAILED: dining_chair is already at the target position and rotation \n  step-1: move_furniture_tool(object_id='dining_chair_0', x=0.55, y=-1.47, yaw=180)  ❌ FAILED: dining_chair is already at the target position and rotation ",
+          "captured_original_reasoning_chars": 0,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 0.55,
+                "y": -1.47,
+                "yaw": 180
+              }
+            }
+          ],
+          "source_original_tool_success": false
+        }
+      ]
+    },
+    {
+      "arm": "B1_repaired",
+      "structurally_built_step_samples": 4,
+      "quality_gate_in_reader": false,
+      "training_admitted_by_this_audit": false,
+      "fixture_sha256": "2c59a48c1fdec41564a633f54056a474a4015f6b86125bc81fb76d9d239a311f",
+      "fixtures_persisted_in_git": false,
+      "first_step_inventory_context_missing": true,
+      "sample_rows": [
+        {
+          "step_idx": 0,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot (empty)",
+          "captured_original_reasoning_chars": 478,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 1.0,
+                "y": -1.35,
+                "yaw": 0
+              }
+            }
+          ],
+          "source_original_tool_success": true
+        },
+        {
+          "step_idx": 1,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot\nYour last 1 action(s) (oldest → newest):\n  step-1: move_furniture_tool(object_id='dining_chair_0', x=1.0, y=-1.35, yaw=0)  ✓ Successfully moved dining_chair to new position and rotation",
+          "captured_original_reasoning_chars": 0,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 1.0,
+                "y": 1.0,
+                "yaw": 0
+              }
+            }
+          ],
+          "source_original_tool_success": true
+        },
+        {
+          "step_idx": 2,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot\nYour last 2 action(s) (oldest → newest):\n  step-2: move_furniture_tool(object_id='dining_chair_0', x=1.0, y=-1.35, yaw=0)  ✓ Successfully moved dining_chair to new position and rotation\n  step-1: move_furniture_tool(object_id='dining_chair_0', x=1.0, y=1.0, yaw=0)  ✓ Successfully moved dining_chair to new position and rotation",
+          "captured_original_reasoning_chars": 0,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 1.0,
+                "y": 1.0,
+                "yaw": 0
+              }
+            }
+          ],
+          "source_original_tool_success": false
+        },
+        {
+          "step_idx": 3,
+          "scene_images": 5,
+          "memory_str": "# Memory snapshot\nYour last 3 action(s) (oldest → newest):\n  step-3: move_furniture_tool(object_id='dining_chair_0', x=1.0, y=-1.35, yaw=0)  ✓ Successfully moved dining_chair to new position and rotation\n  step-2: move_furniture_tool(object_id='dining_chair_0', x=1.0, y=1.0, yaw=0)  ✓ Successfully moved dining_chair to new position and rotation\n  step-1: move_furniture_tool(object_id='dining_chair_0', x=1.0, y=1.0, yaw=0)  ❌ FAILED: dining_chair is already at the target position and rotation ",
+          "captured_original_reasoning_chars": 0,
+          "default_target_contains_original_reasoning": true,
+          "explicit_actions_only_target_content": "",
+          "tool_calls": [
+            {
+              "name": "move_furniture_tool",
+              "arguments": {
+                "object_id": "dining_chair_0",
+                "x": 1.0,
+                "y": 1.0,
+                "yaw": 0
+              }
+            }
+          ],
+          "source_original_tool_success": false
+        }
+      ]
+    }
+  ]
+}

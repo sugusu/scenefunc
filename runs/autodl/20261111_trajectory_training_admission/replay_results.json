@@ -1,0 +1,2076 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "arm": "B0",
+      "candidate_index": 0,
+      "dropped_original_model_turns": [],
+      "retained_actions": 4,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": true,
+      "all_retained_tool_responses_preserved": true,
+      "world_and_response_reusable": true,
+      "requires_rebuilt_policy_history": false,
+      "old_reasoning_admitted": true,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 1,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.topdown.png",
+              "sha256": "a7705983b0691c381c39373587ab60fbd62da249ef327c66c56c02d3b72a9146"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.south.png",
+              "sha256": "937253df4099afcd4431170ce5aa4f5008a10d8e9001d286344f71c257b278fa"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.east.png",
+              "sha256": "ed30437029306019ae3f6ab7f47552e08b3a32a9dbad65d9550d4f34a9d0f954"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.west.png",
+              "sha256": "5d7eecb38de0ecf16f8dcbeabb2d0297e77000a31739ffe55f0411ec08cdc44c"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.north.png",
+              "sha256": "2866b7a06eb69ffd0457bffd274b13edf857db41b1b8880ae48277ce761a1e2c"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 2,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.topdown.png",
+              "sha256": "4f5391d58430780d180a5310341722db6f6d7d8b9bf93e0de9554fbb1b33e71f"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.south.png",
+              "sha256": "5277c309132de437ff3d3ab6281f2aa55201907a5dc0cbec0c5c23fae460fe55"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.east.png",
+              "sha256": "e7e9134ba66d3bb700ed49f3cf3700a29c1ec178710923f6380de6a3c82e4dba"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.west.png",
+              "sha256": "d8dba1db51cdf815f362ade978a499cbeb55c8bd843fad9b4aa8d2c6c7183145"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.north.png",
+              "sha256": "4fe35e8dfa752831ac165397df4052240307e161847865ed0d4dc1162cc35c2d"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.topdown.png",
+              "sha256": "882bcbe7e03c880af3f1181d72fdb9aeb6be8b0a67f5e48cc18fa28927845716"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.south.png",
+              "sha256": "8a4b626236e6710c980c1d5f0941708b5dd192b8bb4486ede8eeda70fdef51f3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.east.png",
+              "sha256": "0a97ff9cb038242a5e9c2aaf762cd365423304ac10ba19589cd7ef79c28377ab"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.west.png",
+              "sha256": "20235c9e3b95806aeac4cc839945307f3ba7739e05e4a7b5ca86d9394071121e"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.north.png",
+              "sha256": "47dac269959a49c485a43e183d7b8c6acffe24fd87b9061ddf31e189a9f0e519"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9"
+    },
+    {
+      "arm": "B0",
+      "candidate_index": 1,
+      "dropped_original_model_turns": [
+        1
+      ],
+      "retained_actions": 3,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": true,
+      "all_retained_tool_responses_preserved": true,
+      "world_and_response_reusable": true,
+      "requires_rebuilt_policy_history": true,
+      "old_reasoning_admitted": false,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 2,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.topdown.png",
+              "sha256": "4f5391d58430780d180a5310341722db6f6d7d8b9bf93e0de9554fbb1b33e71f"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.south.png",
+              "sha256": "5277c309132de437ff3d3ab6281f2aa55201907a5dc0cbec0c5c23fae460fe55"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.east.png",
+              "sha256": "e7e9134ba66d3bb700ed49f3cf3700a29c1ec178710923f6380de6a3c82e4dba"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.west.png",
+              "sha256": "d8dba1db51cdf815f362ade978a499cbeb55c8bd843fad9b4aa8d2c6c7183145"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_01/views/current_state.north.png",
+              "sha256": "4fe35e8dfa752831ac165397df4052240307e161847865ed0d4dc1162cc35c2d"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.topdown.png",
+              "sha256": "882bcbe7e03c880af3f1181d72fdb9aeb6be8b0a67f5e48cc18fa28927845716"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.south.png",
+              "sha256": "8a4b626236e6710c980c1d5f0941708b5dd192b8bb4486ede8eeda70fdef51f3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.east.png",
+              "sha256": "0a97ff9cb038242a5e9c2aaf762cd365423304ac10ba19589cd7ef79c28377ab"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.west.png",
+              "sha256": "20235c9e3b95806aeac4cc839945307f3ba7739e05e4a7b5ca86d9394071121e"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.north.png",
+              "sha256": "47dac269959a49c485a43e183d7b8c6acffe24fd87b9061ddf31e189a9f0e519"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9"
+    },
+    {
+      "arm": "B0",
+      "candidate_index": 2,
+      "dropped_original_model_turns": [
+        2
+      ],
+      "retained_actions": 3,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": true,
+      "all_retained_tool_responses_preserved": true,
+      "world_and_response_reusable": true,
+      "requires_rebuilt_policy_history": true,
+      "old_reasoning_admitted": false,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 1,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.topdown.png",
+              "sha256": "a7705983b0691c381c39373587ab60fbd62da249ef327c66c56c02d3b72a9146"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.south.png",
+              "sha256": "937253df4099afcd4431170ce5aa4f5008a10d8e9001d286344f71c257b278fa"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.east.png",
+              "sha256": "ed30437029306019ae3f6ab7f47552e08b3a32a9dbad65d9550d4f34a9d0f954"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.west.png",
+              "sha256": "5d7eecb38de0ecf16f8dcbeabb2d0297e77000a31739ffe55f0411ec08cdc44c"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_00/views/current_state.north.png",
+              "sha256": "2866b7a06eb69ffd0457bffd274b13edf857db41b1b8880ae48277ce761a1e2c"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.topdown.png",
+              "sha256": "882bcbe7e03c880af3f1181d72fdb9aeb6be8b0a67f5e48cc18fa28927845716"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.south.png",
+              "sha256": "8a4b626236e6710c980c1d5f0941708b5dd192b8bb4486ede8eeda70fdef51f3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.east.png",
+              "sha256": "0a97ff9cb038242a5e9c2aaf762cd365423304ac10ba19589cd7ef79c28377ab"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.west.png",
+              "sha256": "20235c9e3b95806aeac4cc839945307f3ba7739e05e4a7b5ca86d9394071121e"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.north.png",
+              "sha256": "47dac269959a49c485a43e183d7b8c6acffe24fd87b9061ddf31e189a9f0e519"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9"
+    },
+    {
+      "arm": "B0",
+      "candidate_index": 3,
+      "dropped_original_model_turns": [
+        1,
+        2
+      ],
+      "retained_actions": 2,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": true,
+      "all_retained_tool_responses_preserved": true,
+      "world_and_response_reusable": true,
+      "requires_rebuilt_policy_history": true,
+      "old_reasoning_admitted": false,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 0.55,
+              "y": -1.47,
+              "yaw": 180
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 0.55,
+              "y": -1.47,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 180.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 180
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "after_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.topdown.png",
+              "sha256": "882bcbe7e03c880af3f1181d72fdb9aeb6be8b0a67f5e48cc18fa28927845716"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.south.png",
+              "sha256": "8a4b626236e6710c980c1d5f0941708b5dd192b8bb4486ede8eeda70fdef51f3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.east.png",
+              "sha256": "0a97ff9cb038242a5e9c2aaf762cd365423304ac10ba19589cd7ef79c28377ab"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.west.png",
+              "sha256": "20235c9e3b95806aeac4cc839945307f3ba7739e05e4a7b5ca86d9394071121e"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B0/turn_02/views/current_state.north.png",
+              "sha256": "47dac269959a49c485a43e183d7b8c6acffe24fd87b9061ddf31e189a9f0e519"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "457b01a59092f8453524129afaa73f9e4f5e3372eee40b0b1ad9e1020d751ce9"
+    },
+    {
+      "arm": "B1_repaired",
+      "candidate_index": 0,
+      "dropped_original_model_turns": [],
+      "retained_actions": 4,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": true,
+      "all_retained_tool_responses_preserved": true,
+      "world_and_response_reusable": true,
+      "requires_rebuilt_policy_history": false,
+      "old_reasoning_admitted": true,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": -1.35,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 1,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.topdown.png",
+              "sha256": "893bbdbdc5b8783a81e55bd519d2badad80e6d1907c386f3c3a80deec52f6c15"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.south.png",
+              "sha256": "6815b42d644b14266b3240ec3a5a01044dacec201aef4d757071ff171f7af215"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.east.png",
+              "sha256": "680d81f372f627d810956955f75f75d66e612610f6a1b9ab35ba99a8d92a3100"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.west.png",
+              "sha256": "966a239de1e519cd5cc051d5a858e476c02bf1e7bcb9c4ec6a118725aadade72"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.north.png",
+              "sha256": "6d2b4fab6d48a430f644dddabaada023b319e8d19670e202dcb725fd20a543cd"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 2,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.topdown.png",
+              "sha256": "ff98d4bb9a1e581ca059c9485673abc33c95658a3c2473562c51051482b67c43"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.south.png",
+              "sha256": "e8ca24e6bff2672c70f1b8430f3f6d2717fff95558a335a960214407d5f0459a"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.east.png",
+              "sha256": "31d8cf0446db6302e7d144035167e79364dcf1c478d5f9bb3c587152979c0be7"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.west.png",
+              "sha256": "1eb5027e4ca9cec324769e722991099f75cb4629fa0a6fd470c5adcce15761b9"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.north.png",
+              "sha256": "69771f5494d64ce132c7ebb4162614be7c294b1109ea69963777e31edb88acb9"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.topdown.png",
+              "sha256": "5b9b4a9178b2aba7e9174959728d1fb1b9ce0c7c15e610bf92a560d35e89c56b"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.south.png",
+              "sha256": "64bc9fd438ab301c2fc66e686f44cc85ff48125fd3ccf346c48e5fce89451af3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.east.png",
+              "sha256": "d2ed4132a0d6539dd02326ea7de67a2521fa17aade7e5b5ad89f743af6404276"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.west.png",
+              "sha256": "9a712140fcd74d707d1e5299d7152e409cd20ccb670475479f4932128f9dd115"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.north.png",
+              "sha256": "ce8330da6a6df8f405429627a5d8c6c99cfe7afedf89aac65443ece8ed6b3df2"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58"
+    },
+    {
+      "arm": "B1_repaired",
+      "candidate_index": 1,
+      "dropped_original_model_turns": [
+        1
+      ],
+      "retained_actions": 3,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": false,
+      "all_retained_tool_responses_preserved": false,
+      "world_and_response_reusable": false,
+      "requires_rebuilt_policy_history": true,
+      "old_reasoning_admitted": false,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": -1.35,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 2,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": false,
+          "response_matches_original": false,
+          "output_world_matches_original": true,
+          "before_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.topdown.png",
+              "sha256": "ff98d4bb9a1e581ca059c9485673abc33c95658a3c2473562c51051482b67c43"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.south.png",
+              "sha256": "e8ca24e6bff2672c70f1b8430f3f6d2717fff95558a335a960214407d5f0459a"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.east.png",
+              "sha256": "31d8cf0446db6302e7d144035167e79364dcf1c478d5f9bb3c587152979c0be7"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.west.png",
+              "sha256": "1eb5027e4ca9cec324769e722991099f75cb4629fa0a6fd470c5adcce15761b9"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_01/views/current_state.north.png",
+              "sha256": "69771f5494d64ce132c7ebb4162614be7c294b1109ea69963777e31edb88acb9"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.topdown.png",
+              "sha256": "5b9b4a9178b2aba7e9174959728d1fb1b9ce0c7c15e610bf92a560d35e89c56b"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.south.png",
+              "sha256": "64bc9fd438ab301c2fc66e686f44cc85ff48125fd3ccf346c48e5fce89451af3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.east.png",
+              "sha256": "d2ed4132a0d6539dd02326ea7de67a2521fa17aade7e5b5ad89f743af6404276"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.west.png",
+              "sha256": "9a712140fcd74d707d1e5299d7152e409cd20ccb670475479f4932128f9dd115"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.north.png",
+              "sha256": "ce8330da6a6df8f405429627a5d8c6c99cfe7afedf89aac65443ece8ed6b3df2"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58"
+    },
+    {
+      "arm": "B1_repaired",
+      "candidate_index": 2,
+      "dropped_original_model_turns": [
+        2
+      ],
+      "retained_actions": 3,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": true,
+      "all_retained_tool_responses_preserved": true,
+      "world_and_response_reusable": true,
+      "requires_rebuilt_policy_history": true,
+      "old_reasoning_admitted": false,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": -1.35,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 1,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.topdown.png",
+              "sha256": "893bbdbdc5b8783a81e55bd519d2badad80e6d1907c386f3c3a80deec52f6c15"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.south.png",
+              "sha256": "6815b42d644b14266b3240ec3a5a01044dacec201aef4d757071ff171f7af215"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.east.png",
+              "sha256": "680d81f372f627d810956955f75f75d66e612610f6a1b9ab35ba99a8d92a3100"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.west.png",
+              "sha256": "966a239de1e519cd5cc051d5a858e476c02bf1e7bcb9c4ec6a118725aadade72"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_00/views/current_state.north.png",
+              "sha256": "6d2b4fab6d48a430f644dddabaada023b319e8d19670e202dcb725fd20a543cd"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.topdown.png",
+              "sha256": "5b9b4a9178b2aba7e9174959728d1fb1b9ce0c7c15e610bf92a560d35e89c56b"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.south.png",
+              "sha256": "64bc9fd438ab301c2fc66e686f44cc85ff48125fd3ccf346c48e5fce89451af3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.east.png",
+              "sha256": "d2ed4132a0d6539dd02326ea7de67a2521fa17aade7e5b5ad89f743af6404276"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.west.png",
+              "sha256": "9a712140fcd74d707d1e5299d7152e409cd20ccb670475479f4932128f9dd115"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.north.png",
+              "sha256": "ce8330da6a6df8f405429627a5d8c6c99cfe7afedf89aac65443ece8ed6b3df2"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58"
+    },
+    {
+      "arm": "B1_repaired",
+      "candidate_index": 3,
+      "dropped_original_model_turns": [
+        1,
+        2
+      ],
+      "retained_actions": 2,
+      "final_world_preserved_exactly": true,
+      "all_retained_input_worlds_preserved": false,
+      "all_retained_tool_responses_preserved": false,
+      "world_and_response_reusable": false,
+      "requires_rebuilt_policy_history": true,
+      "old_reasoning_admitted": false,
+      "training_admitted": false,
+      "non_admission": [
+        "Furniture-only development trace, not four-stage source",
+        "Endpoint fails declared simultaneous-use proxy; no full-room success label",
+        "Any compressed policy memory/reasoning must be rebuilt, not copied"
+      ],
+      "steps": [
+        {
+          "source_model_turn": 0,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": -1.35,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "input_world_matches_original": true,
+          "response_matches_original": true,
+          "output_world_matches_original": true,
+          "before_world_sha256": "e5e5df51ed1e71114160a1679ca5671403bc33aa4fd00c8fe4d33cc9392db024",
+          "after_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "original_input_images_verified": [
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.topdown.png",
+              "sha256": "f30c4e7f740bb497f4503268114b4f1fafe8c3079d664401aed065f8726560f0"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.south.png",
+              "sha256": "3200fa63c69a38c81c59cb501a6c0a4e2f65ed05c3027b23ae79bd5be186da47"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.east.png",
+              "sha256": "8968db32d4b1562550b47d305d6b7fdbaef30eecc5953643fa8011d36f8f4d7a"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.west.png",
+              "sha256": "9ca7b645a1da98dc51a9fbfb8d4f783fafed3a645c6d8d715c063143d2e44edf"
+            },
+            {
+              "path": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/views/current_state.north.png",
+              "sha256": "c4cb3c37044e9c784dba9c435cb535c88537d8f76f041def391e085b6e3c3624"
+            }
+          ]
+        },
+        {
+          "source_model_turn": 3,
+          "call": {
+            "name": "move_furniture_tool",
+            "arguments": {
+              "object_id": "dining_chair_0",
+              "x": 1.0,
+              "y": 1.0,
+              "yaw": 0
+            }
+          },
+          "response": {
+            "success": true,
+            "message": "Successfully moved dining_chair to new position and rotation",
+            "object_id": "dining_chair_0",
+            "error_type": null,
+            "current_position": null,
+            "attempted_position": null,
+            "current_rotation": null,
+            "attempted_rotation": null,
+            "suggested_action": null
+          },
+          "original_response": {
+            "success": false,
+            "message": "dining_chair is already at the target position and rotation - no movement needed",
+            "object_id": "dining_chair_0",
+            "error_type": "no_movement",
+            "current_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "attempted_position": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 0.0
+            },
+            "current_rotation": {
+              "roll": 0.0,
+              "pitch": -0.0,
+              "yaw": 0.0
+            },
+            "attempted_rotation": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0
+            },
+            "suggested_action": "Try moving to a different position or rotation"
+          },
+          "input_world_matches_original": false,
+          "response_matches_original": false,
+          "output_world_matches_original": true,
+          "before_world_sha256": "648b9c804b57715fc4e9dfa16645cfb2a7f94e73c81b50fe5ba19dba720e9410",
+          "after_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58",
+          "original_input_images_verified": [
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.topdown.png",
+              "sha256": "5b9b4a9178b2aba7e9174959728d1fb1b9ce0c7c15e610bf92a560d35e89c56b"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.south.png",
+              "sha256": "64bc9fd438ab301c2fc66e686f44cc85ff48125fd3ccf346c48e5fce89451af3"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.east.png",
+              "sha256": "d2ed4132a0d6539dd02326ea7de67a2521fa17aade7e5b5ad89f743af6404276"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.west.png",
+              "sha256": "9a712140fcd74d707d1e5299d7152e409cd20ccb670475479f4932128f9dd115"
+            },
+            {
+              "path": "/dev/shm/FRP1-PARIS-B-20261111/B1_repaired/turn_02/views/current_state.north.png",
+              "sha256": "ce8330da6a6df8f405429627a5d8c6c99cfe7afedf89aac65443ece8ed6b3df2"
+            }
+          ]
+        }
+      ],
+      "final_world_sha256": "4a08043ba17d1317b104f9697535969ea28630dc865aa43105cb7cdc2b2f1b58"
+    }
+  ],
+  "elapsed_seconds": 13.953030683100224,
+  "native_actions": 24,
+  "deletion_replays": 8,
+  "new_model_calls": 0,
+  "training_steps": 0,
+  "new_API_calls": 0,
+  "new_scenes_generated": 0,
+  "full_official_CTC_runs": 0,
+  "full_physics_runs": 0
+}
