@@ -1,0 +1,127 @@
+{
+  "id": "pine_adjacent_old_desk_before_second_workstation",
+  "role": "Audited development demonstration; NOT inserted into any train split",
+  "input": {
+    "task": {
+      "task_id": "pine_transfer_study",
+      "researcher_authored_brief": "为两位住户布置一间书房兼访客房。两人需要同时做各自的桌面工作；保留旧桌与原椅实例，可以移动它们，允许增加家具。保留书架、沙发和从入口到它们的使用通路。访客睡眠和创作活动也是用途，但现有资产并未证明可展开客床或具体创作工序，须如实标未知。窗、门和房壳固定。",
+      "original_resident_request": null,
+      "provenance": "Research transfer based on reported activities; not an original brief or historic initial room.",
+      "geometry_assumptions": {
+        "interior_rectangle": [
+          -2.4,
+          -2.0,
+          4.8,
+          4.0
+        ],
+        "height": 2.7,
+        "origin": "All room dimensions, apertures and initial positions are researcher assumptions. 55m2 source area is whole apartment, not this room.",
+        "window": "North x=-0.7..1.1, sill0.9m; no operation/daylight simulation",
+        "door": "South x=-0.1..0.9; no leaf sweep"
+      },
+      "required_activities": [
+        "Two concurrent desktop workstations",
+        "Retain old desk/chair identity",
+        "Book and collection storage access",
+        "Sofa access",
+        "Guest sleeping and creative use: report unknown mechanisms"
+      ],
+      "uncertainties": [
+        "No surveyed source-room dimensions",
+        "No original IKEA or bespoke asset",
+        "No historical initial state or operation order",
+        "Guest sleeping mechanism and clearances",
+        "Storage capacity",
+        "Work equipment, knee/ergonomic comfort",
+        "Creative process/material requirements",
+        "Moving path/effort"
+      ]
+    },
+    "before_state_git_path": "runs/920/P920-PINE-v1_20261106T002523Z/native/initial_state.json",
+    "before_state_sha256": "32697f4a614ad7f895b58ae5403425d6c4b58d8728df9b17b55508c3549dd820",
+    "five_view_references": [
+      {
+        "git_path": "runs/920/P920-PINE-v1_20261106T002523Z/views/step_000.topdown.png",
+        "sha256": "366dbf978c6e4a85d008e0c6bdbffc807ba9da4dfbc27550e25c2c5eeb343159",
+        "bytes": 2052427,
+        "content_verified_now": true
+      },
+      {
+        "git_path": "runs/920/P920-PINE-v1_20261106T002523Z/views/step_000.south.png",
+        "sha256": "0d178576d0d81340a2606d971af7c06b8651e798210d1b1aad3694fc6613f42f",
+        "bytes": 1503665,
+        "content_verified_now": true
+      },
+      {
+        "git_path": "runs/920/P920-PINE-v1_20261106T002523Z/views/step_000.east.png",
+        "sha256": "c2f93ea84d25b74759679871418a64073e79be99e462b4f33e931faee0c961f9",
+        "bytes": 1381640,
+        "content_verified_now": true
+      },
+      {
+        "git_path": "runs/920/P920-PINE-v1_20261106T002523Z/views/step_000.west.png",
+        "sha256": "3e77c70771c85efa977cdb09e08e76b029bfd407de46f90c2b6fb98989815889",
+        "bytes": 1503849,
+        "content_verified_now": true
+      },
+      {
+        "git_path": "runs/920/P920-PINE-v1_20261106T002523Z/views/step_000.north.png",
+        "sha256": "dd86a75eafb0079aa793e9b76daa479bd55400bfd941bb8410a0ed34cd713ed4",
+        "bytes": 1444251,
+        "content_verified_now": true
+      }
+    ],
+    "deployment_request_git_path": "runs/920/P920-EDITSTUDY-v1_20261106T074752Z/evaluation/Pine_action_only_17/recorded/round_000/request.json"
+  },
+  "target": {
+    "decision": "在保留原桌和原椅的前提下，将旧桌移向相邻墙，为窗前另一个工作位留出位置；随后再安置第二张桌和椅子。",
+    "first_native_action": {
+      "name": "move_furniture_tool",
+      "arguments": {
+        "object_id": "old_desk_0",
+        "x": 2.09,
+        "y": 0.25,
+        "yaw": 90
+      }
+    },
+    "follow_through_actions": [
+      {
+        "name": "move_furniture_tool",
+        "arguments": {
+          "object_id": "old_chair_0",
+          "x": 1.18,
+          "y": 0.25,
+          "yaw": 270
+        }
+      },
+      {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_03f226dd0e012925a8674564c4de19cb786c9a88",
+          "x": 0.3,
+          "y": 1.65,
+          "yaw": 180
+        }
+      },
+      {
+        "name": "add_furniture_to_scene_tool",
+        "arguments": {
+          "asset_id": "catalog_6dba8ae88c9979be6b022dbf4d80cd88dd8e5b02",
+          "x": 0.3,
+          "y": 0.8,
+          "yaw": 0
+        }
+      }
+    ],
+    "decision_text_author": "Research assistant retrospective summary, not a recovered historical designer thought",
+    "source_supported": "Window desk by Gurney plus residents reusing an IKEA desk on the adjacent wall for concurrent work",
+    "researcher_supplied": "Shell, substitute assets, initial layout, coordinates, action ordering and chair operations"
+  },
+  "targets_are_not_deployment_input": true,
+  "old_desk_retention_is_input_constraint_not_learned_insight": true,
+  "unique_optimum": false,
+  "counterfactual_preference_label": null,
+  "joint_4_action_outcome_not_attributed_to_first_move_alone": true,
+  "training_admitted": false,
+  "exclusion_reason": "Pine is an exposed development family explicitly excluded from the existing 22-action training and retrieval."
+}

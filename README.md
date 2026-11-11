@@ -2,6 +2,10 @@
 
 [巴黎开间 A/B 实验：代码、固定依赖、实际记录与 920 复现说明](paris/README.md)
 
+[核定一项可监督的设计选择：Pine（2026-11-11）](runs/autodl/20261111_pine_decision_supervision/stage_report.html)：已核对初始五视图、真实重建动作、部署输入和旧22步训练回执。正向示范可以用于定义模仿目标，不要求先凑两份成功偏好方案；该项目仍保留开发集排除，未新增训练。来源中的住户/设计师决定与研究者坐标、操作顺序分别标明。
+
+[全书提取文字与SceneExplorer源码审查（2026-11-11）](runs/autodl/20261111_sceneexplorer_source_review/stage_report.html)：书312页提取文字的覆盖记录、作者接受稿和关键生成/调度源码审阅已补齐；不等于全部图表、引用论文或系统均已复现。
+
 [整屋用途转换的实际对照（2026-11-11）](runs/autodl/20261111_lifecycle_case_comparison_v2/stage_report.html)：在另一套研究重建住宅中，普通搜索与案例条件排序都在第3个原生候选完成了声明的办公室转换，保留其余28个对象记录，终态及GLB相同；原有淋浴接近警告仍保留。两组各24次失败的前版也完整保存。新增桌椅、原生冷恢复、整屋预览和[逐组结果](runs/autodl/20261111_lifecycle_case_comparison_v2/summary.csv)已实际运行，零新增模型调用/训练；这是条件几何与用途分配证据，不是从空房完整生成成功或案例Agent创新。许可几何的绝对路径见报告内清单，不随Git发布。
 
 [最新训练目标与真实轨迹审计（2026-11-11）](runs/autodl/20261111_trajectory_training_admission/stage_report.html)：两条已有模型轨迹、八个删除子集、24 次原生移动回放；普通规则解释了本例全部安全压缩收益，未新增完整场景成功、模型调用或训练。算法、训练目标和证明边界见[完整说明](runs/autodl/20261111_trajectory_training_admission/algorithm_and_theory.txt)，逐组结果见[summary.csv](runs/autodl/20261111_trajectory_training_admission/summary.csv)。研究目标仍未完成，这些是开发证据，不是已验证的 CVPR 方法。

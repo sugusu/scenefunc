@@ -1,0 +1,58 @@
+{
+  "source_pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+  "sources": {
+    "pin": "a0565e50ed7d32c0e09132b9311c0b9b91165405",
+    "files": [
+      {
+        "path": "src/grpo_objective.py",
+        "url": "https://api.github.com/repos/ZJU-OmniAI/Scene-Designer/git/blobs/54565bc136d5f39091aba1e42d9ca4f1870204e1",
+        "sha256": "ceea6b9832276709425b33051bc2a225a11bb146a78dc61c63db78d0ea6128de",
+        "blob": "54565bc136d5f39091aba1e42d9ca4f1870204e1",
+        "bytes": 1106,
+        "lines": 21
+      },
+      {
+        "path": "src/grpo_rollout.py",
+        "url": "https://api.github.com/repos/ZJU-OmniAI/Scene-Designer/git/blobs/d8b9e7fc3a03e67efcfecbb8c693a8b6ff9e2d64",
+        "sha256": "0e15f1dd771d2c3b382e78a65b0c1f87050242fba36e36bf076095981102796e",
+        "blob": "d8b9e7fc3a03e67efcfecbb8c693a8b6ff9e2d64",
+        "bytes": 24013,
+        "lines": 575
+      },
+      {
+        "path": "src_critic/critic_reward.py",
+        "url": "https://api.github.com/repos/ZJU-OmniAI/Scene-Designer/git/blobs/fb2f0bd5a3da824cbdda49dc6fd0be96aa3f6a45",
+        "sha256": "ebfe6242e287e88845bd80df56974d0bfccdb5637793bf1ed87ff4cbf5a1ba26",
+        "blob": "fb2f0bd5a3da824cbdda49dc6fd0be96aa3f6a45",
+        "bytes": 8634,
+        "lines": 189
+      },
+      {
+        "path": "src_critic/grpo_advantage.py",
+        "url": "https://api.github.com/repos/ZJU-OmniAI/Scene-Designer/git/blobs/5101c7a6a742f68abce1d6580127469a3ca6656a",
+        "sha256": "9243154a236f61db27f2dc673c6a77381f02c1c3b4b9906ba16eacf4d637afe6",
+        "blob": "5101c7a6a742f68abce1d6580127469a3ca6656a",
+        "bytes": 22834,
+        "lines": 565
+      }
+    ],
+    "raw_download_initial_attempt": "SSL EOF, ordinary official Git blobs API fallback; no TLS verification disabled"
+  },
+  "actual_text_read": {
+    "src/grpo_objective.py": "1-21 complete",
+    "src/grpo_rollout.py": "1-575 complete",
+    "src_critic/critic_reward.py": "1-189 complete",
+    "src_critic/grpo_advantage.py": "Newly read1-44,97-141,171-252,354-381,460-565; together with prior recorded ranges covers complete565 lines"
+  },
+  "code_execution": false,
+  "model_calls": 0,
+  "optimizer_updates": 0,
+  "findings": [
+    "Branch rollout restores the same parent before sibling execution and restores the saved chosen state rather than executing the chosen tools a second time.",
+    "First branch reuses the greedy probe and others are sampled; do not describe this concrete implementation as N identically sampled completions without qualification.",
+    "Strict-ranking parser rejects ties; an identical final geometry is not independently justified as a preferred design. No measured Critic prediction or training effect is inferred.",
+    "Existing legality gate already has zero local advantages when all candidates are known illegal. Unknown or missing scene paths are separately marked unchecked and treated eligible by that public helper; this is not proof of legality.",
+    "These are existing implementation/ordinary-control facts, not a new algorithm. A positive imitation example does not require a successful neural preference pair."
+  ],
+  "further_action": "Stopped expanding this source branch after these reads; proceeded to actual Pine decision-to-action supervision recovery."
+}
