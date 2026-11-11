@@ -1,0 +1,50 @@
+{
+  "role": "Post-trajectory factual selection diagnostic on correlated checkpoints, not independent rooms or human design preference",
+  "ranking": [
+    {
+      "arm": "B0_pool",
+      "strict_JSON_valid": true,
+      "format_error": null,
+      "explicit_choice_relaxed_parse": "C0",
+      "matches_ordinary_rule": false,
+      "ordinary_allowed_ties": [
+        "C2"
+      ],
+      "source_sha256": "b537cc68f6ecc0368e443199ec25a6f72bbd8899223f50e153de308a961dd656",
+      "parsing_note": "Relaxed parse reported only to expose explicit choice; duplicate keys are not silently accepted as strict format success."
+    },
+    {
+      "arm": "B1_pool",
+      "strict_JSON_valid": false,
+      "format_error": "duplicate JSON key dining_chair_sofa",
+      "explicit_choice_relaxed_parse": "C0",
+      "matches_ordinary_rule": false,
+      "ordinary_allowed_ties": [
+        "C2"
+      ],
+      "source_sha256": "535ad71d3f5be746e87800129a5ae8612a228a46d8013bea5b3ba084cac4bcf7",
+      "parsing_note": "Relaxed parse reported only to expose explicit choice; duplicate keys are not silently accepted as strict format success."
+    }
+  ],
+  "all_candidates_identical_object_ID_set": [
+    "dining_chair_0",
+    "dining_table_0",
+    "dresser_0",
+    "nightstand_0",
+    "office_chair_0",
+    "office_desk_0",
+    "queen_bed_0",
+    "sofa_0",
+    "wardrobe_0"
+  ],
+  "all_candidates_include_bed_and_nightstand": true,
+  "claim_other_candidates_lack_bed_is_contradicted_by_state": true,
+  "not_a_novel_algorithm": "The successful selector is the stated ordinary lexicographic check. No advantage of applicability prompt established.",
+  "limitations": [
+    "25 low-resolution model image inputs, five per candidate; not exhaustive strong-VLM test",
+    "no expert preference labels",
+    "same-room correlated states",
+    "reconstructed limited floor editing bridge, not full native physics",
+    "B1 policy pre-forward scheduling failure and repair retained; all actual costs counted"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "orchestrator_pid": 2189,
+  "reason": "Initial B1 model launched during B0 CPU rendering; hold orchestration only until that exact model terminates so no duplicate launch or overlapping model forward occurs. Child render and model continue.",
+  "time": 1794360491.8944027,
+  "signal": "SIGSTOP",
+  "resumed_unix": 1794360518.8706264,
+  "resume_signal": "SIGCONT",
+  "B1_terminal_exit": 1,
+  "observed_overlap_correction": "The hold was too late: B0 turn01 had already been launched by the old orchestrator after it prematurely treated B1 live status as failure. Both model loaders overlapped, causing B1 pre-forward OOM. Later exclusive launch lock fixes coordination. This was our scheduling fault."
+}

@@ -1,0 +1,14 @@
+目录中所有模型输出都来自本地8B真实调用，无付费API、训练或手工代写答案。
+保留了原B1加载失败、并发调度过程、代码旧版本与明确协议修订。不要把它写成完全未偏离的预注册比较。
+
+只复核持久场景，不调用模型：
+cd /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/restore_furnished_pilot_artifact.py --root runs/autodl/20261111_furnished_pair_pilot --arm B2_selected_recorded_state --output /dev/shm/fresh_selected_restore
+PYTHONPATH=/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python /root/autodl-tmp/agent_method_preparation_20261027/work/paris_local_run_results_20261104/audit_scene.py --checkpoint /dev/shm/fresh_selected_restore/checkpoint.json --out /dev/shm/fresh_selected_restore/audit.json
+output目录必须全新；如已存在应检查已有文件，不自动覆盖。
+
+单次原始模型请求的真实运行命令记录于各turn的model_process_receipt.json；不允许在原目录重复执行来挑答案。
+已执行主入口：scripts/autodl/furnished_pair_pilot.py、furnished_ordinary_search.py、furnished_shared_pool.py。
+所有数据输入路径、场景及模型修订在initial_freeze.json、PAIR_PROTOCOL.json和各原始request.json中。
+这些执行器是固定开发场景诊断程序，不能当作通用完整生成系统。模型启动应使用furnished_pilot_process.py的独占锁，严禁再次并发加载8B。
+大场景与原始PNG不重复推到Git，实际持久路径及哈希见artifact_manifest.json；完整资产仍依赖冻结本地网格，不能声称只有Git仓库即可得到HSSD原始资产。

@@ -1,0 +1,63 @@
+{
+  "run_id": "FRP1-PARIS-B-20261111",
+  "condition": "B_simultaneous_work_and_meal",
+  "arms": {
+    "B0": "native joint output + shared case + ordinary observation/feedback",
+    "B1": "same information + explicit applicability-check protocol, no labels supplied",
+    "B2": "ordinary search with same permitted move operations; algorithm frozen before model outputs, candidate and timing coverage must be reported"
+  },
+  "task": {
+    "case": "19_remote_studio",
+    "role": "development",
+    "starting_scene": "../同项目原柜实验/冻结开发输入/19_remote_studio/initial.json",
+    "shared_view": "../同项目原柜实验/冻结开发输入/19_remote_studio/需求卡.svg",
+    "brief": "在给定的巴黎开间内为一位居家办公的住户安排睡眠、收纳、办公和用餐。工作材料平摊占80×50厘米，用餐需要60×40厘米可用台面。住户重视窗景，也希望尽量留下日常活动空间。请交付完整可编辑的房间。吃饭期间工作材料也必须原位平摊，不能收起或移动。"
+  },
+  "all_terminals_cross_evaluated_under": [
+    "A",
+    "B"
+  ],
+  "source_start_checkpoint": "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/cpu_replay/keep/tools/checkpoint.json",
+  "shared_case_sha256": "200b45e1d0b20c6f6ec7bc11f8ac24ee1b1d8e3d00116ac5ead6c88c2e998f27",
+  "first_request_sha256": {
+    "B0": "fa10ca2f62dba8fcb70315d0aa04f87c2a87558924596db59a2f774322459181",
+    "B1": "a31e30c126a92b0ae665dc6a2ad87ae7d553157b56cccb602c93473d98d4ef57"
+  },
+  "max_policy_calls_per_arm": 4,
+  "max_all_model_calls": 12,
+  "max_single_model_process_seconds": 200,
+  "max_all_model_process_seconds": 1200,
+  "retry_after_model_error": false,
+  "training": false,
+  "paid_API_calls": 0,
+  "knowledge_contains_target_designer_explanation": false,
+  "control_scope": "untrained prompt-level mechanism comparison; not a trained/new algorithm claim",
+  "unknowns_not_passed": true,
+  "condition_interpretation": "Working materials remain laid out while meal surface is available; no requirement for two people simultaneously working and dining.",
+  "source_identity": "19_remote_studio researcher reconstruction; original professional project identity not independently established in this pilot",
+  "B2_frozen_algorithm": {
+    "name": "ordinary deterministic surface-blockage proxy search",
+    "rounds": 4,
+    "objects": "all placed floor-furniture IDs, sorted",
+    "translations_m": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "directions": [
+      "+x",
+      "-x",
+      "+y",
+      "-y"
+    ],
+    "rotations_deg": [
+      -90,
+      90
+    ],
+    "candidate_scope": "relative single-object edits, no scaling/add/remove; finite search, no completeness claim",
+    "proxy_ranking": "out-of-floor count then XY AABB furniture overlap area then work/dining surface blockage area then total moved translation and yaw penalty; compare stay as candidate, no target coordinates",
+    "native_execution_budget": 4,
+    "all_proxy_candidates_counted": true,
+    "asymmetry": "ordinary geometric proxy computations counted and timed separately; native tool actions <=4 for all arms; no claim of identical FLOPs or globally optimal search"
+  }
+}

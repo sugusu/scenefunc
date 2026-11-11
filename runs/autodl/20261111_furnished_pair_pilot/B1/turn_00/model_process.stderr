@@ -1,0 +1,32 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:10,  3.53s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:06<00:06,  3.04s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:09<00:03,  3.02s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:11<00:03,  3.72s/it]
+Traceback (most recent call last):
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/model_step.py", line 88, in <module>
+    main()
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository/scripts/autodl/model_step.py", line 63, in main
+    result = engine.complete(read(args.request), purpose='autodl_bounded_complete_state_edit')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/paris_local_run_results_20261104/local_vlm_sdpa.py", line 171, in complete
+    self._load_model()
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/paris_local_run_results_20261104/local_vlm_sdpa.py", line 142, in _load_model
+    self._model = Qwen3VLForConditionalGeneration.from_pretrained(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/lib/python3.12/site-packages/transformers/modeling_utils.py", line 277, in _wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/lib/python3.12/site-packages/transformers/modeling_utils.py", line 5048, in from_pretrained
+    ) = cls._load_pretrained_model(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/lib/python3.12/site-packages/transformers/modeling_utils.py", line 5468, in _load_pretrained_model
+    _error_msgs, disk_offload_index = load_shard_file(args)
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/lib/python3.12/site-packages/transformers/modeling_utils.py", line 843, in load_shard_file
+    disk_offload_index = _load_state_dict_into_meta_model(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/agent_method_preparation_20261027/work/inference_autodl_20261103/runtime/lib/python3.12/site-packages/transformers/modeling_utils.py", line 750, in _load_state_dict_into_meta_model
+    param = param.to(casting_dtype)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 36.00 MiB. GPU 0 has a total capacity of 31.73 GiB of which 256.00 KiB is free. Process 491037 has 16.67 GiB memory in use. Process 491534 has 15.06 GiB memory in use. Of the allocated memory 16.26 GiB is allocated by PyTorch, and 60.13 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
