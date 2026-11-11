@@ -1,0 +1,56 @@
+[
+  {
+    "title": "On-Policy Context Distillation for Language Models",
+    "url": "https://arxiv.org/html/2602.12275v1",
+    "read": "Full section3 including Algorithm1 and3.1 teacher choices; abstract/introduction excerpts; not all experiments or appendices",
+    "actual_execution": "Unmodified kl_penalty definition only; six CPU tensor-kernel evaluations on authored probability vectors",
+    "not_executed": "No complete VeRL training, rollout or model forward"
+  },
+  {
+    "title": "Instruct, Not Answer: Using Instruction Privileges in On-Policy Context Distillation",
+    "url": "https://arxiv.org/html/2609.32201v1",
+    "read": "Sections2–5 and7 extracted HTML text including displayed tables; not whole introduction,related-work6,appendices or figure-image review",
+    "important_fact": "Section4 explicitly states forward KL, full vocabulary and no clipping",
+    "official_training_code_acquired": false,
+    "not_inferred": "A cited Fermat theorem repository is not treated as this paper's official distillation implementation"
+  },
+  {
+    "title": "ECOS: Environment-Calibrated On-Policy Self-Distillation for Language Agents",
+    "url": "https://arxiv.org/html/2611.12232v1",
+    "read": "Full methods3.1–3.5 andAppendixA including Algorithm1;4.1,4.3,4.4 anddiscussion5;4.2 partial;B1/B2 training settings andB3 two trajectory/skill examples,B4 masks; not allpaper/figures/C,D",
+    "actual_code_acquired": false,
+    "availability_scope": "No author training repository obtained from this lookup; not a global claim that code is unavailable",
+    "teacher_information_is_not_local_scene_ground_truth": true
+  },
+  {
+    "title": "Microsoft LMOps official source",
+    "pin": "6f53ef41c951de0962bbf27fe3f5819eabc8ce0e",
+    "files": [
+      {
+        "path": "opcd/README.md",
+        "read": "Initial setup/codewalkthrough/math usage through web; rest not all read"
+      },
+      {
+        "path": "opcd/scripts/math_consolidate.sh",
+        "read": "Full script; not executed"
+      },
+      {
+        "path": "opcd/verl/verl/trainer/ppo/core_algos.py",
+        "read": "kl_penalty831–878 only; not whole core_algos"
+      },
+      {
+        "path": "opcd/verl/verl/workers/actor/dp_actor.py",
+        "read": "284–378,473–505,614–640,700–748 and log-softmax/Top-k searches; not whole actor"
+      },
+      {
+        "path": "opcd/verl/verl/trainer/ppo/ray_trainer.py",
+        "read": "2710–2818 and on_policy_merge/Top-k linkage searches; not whole161KBtrainer"
+      }
+    ],
+    "scope": "Partial source read with specific executable kernel isolated; no official full-system reproduction"
+  },
+  {
+    "title": "Book",
+    "read": "Prior312/312 extracted text coverage retained from5a5ceaa; no new book pages claimed in this stage"
+  }
+]

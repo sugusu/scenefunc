@@ -1,0 +1,14 @@
+实际运行原始OPCD数学核与解析目标核查；不需要GPU、模型权重或API：
+
+env CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/qualify_privileged_training_objectives.py --repo . --source-root /dev/shm/privileged_context_review_20261111/opcd_source --output runs/autodl/20261111_privileged_training_objectives/reproduction_new
+
+输出目录必须不存在。实际运行是actual_v1；该脚本仅compile已读的kl_penalty定义，没有import整个VeRL或创建模型。两组概率向量都是人为数学见证，不是原生策略logit；6次函数调用与2次autograd都不计为神经模型前向或训练。它还只读核对旧35条工具记录的标签完整性，不用success伪造环境回报。
+
+source-root中下载文件和download_manifest.json的URL、固定提交、字节SHA256见primary_sources_manifest.json。可按这些固定rawURL重新获取，校验一致后运行。源码仅在RAM，不随Git交付全文。
+
+报告构建和旧源哈希核查：
+env PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_privileged_training_objectives.py --repo .
+
+报告器核对原生batch_index表与原有19条响应/35次工具记录、重算579个受保护源哈希，并生成stage_report.html、manifest.json和evidence.zip。它不运行原生SDK、图像模型、完整训练或评测。native_batch_contract.csv/json是对同一旧轨迹的派生适配材料，不是额外样本或独立实验。
+
+磁盘清理例外：source_download_cache_cleanup.json记录一份不在579保护清单内的旧公开PDF缓存已删除，其他图页、文字、数据/代码保留。旧下载清单若要求paper.pdf会正确提示缺失，不能改清单消除告警。RAM备份若仍在，可在需要复核时恢复相同字节；否则按该记录的固定版本URL获取并核验哈希。两版含不同内容的旧原生归档没有删除。未删除在用权重/环境，没有硬链接去重。

@@ -1,0 +1,112 @@
+{
+  "kind": "Original OPCD mathematical-kernel qualification and conditional-objective theory checks",
+  "pin": "6f53ef41c951de0962bbf27fe3f5819eabc8ce0e",
+  "upstream_definition": {
+    "path": "opcd/verl/verl/trainer/ppo/core_algos.py",
+    "start": 831,
+    "end": 878,
+    "file_sha256": "f3d3cbc02ed50d1d5759a960a50528b8a9448ae929b0189a1352ccbd66f210ae"
+  },
+  "authored_witnesses": [
+    {
+      "student": [
+        0.6,
+        0.3,
+        0.1
+      ],
+      "teacher": [
+        0.7,
+        0.2,
+        0.1
+      ],
+      "selected": [
+        0
+      ],
+      "full_original_kernel": 0.02914912453609428,
+      "independent_full_KL": 0.029149124536094334,
+      "selected_unnormalized_original_kernel": -0.09249040789635496,
+      "selected_renormalized_original_kernel": 0.0,
+      "aggregated_tail_reference_KL": 0.022582421084357415,
+      "tail_chain_rule_residual": -8.066464163292153e-17,
+      "evidence_type": "Authored finite-distribution mathematical witness, not scene data"
+    },
+    {
+      "student": [
+        0.9,
+        0.09,
+        0.01
+      ],
+      "teacher": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "selected": [
+        0
+      ],
+      "full_original_kernel": 0.024323220316221403,
+      "independent_full_KL": 0.02432322031622146,
+      "selected_unnormalized_original_kernel": -0.04866049914324813,
+      "selected_renormalized_original_kernel": 0.0,
+      "aggregated_tail_reference_KL": 0.02065421891274638,
+      "tail_chain_rule_residual": -5.5077470362263625e-17,
+      "evidence_type": "Authored finite-distribution mathematical witness, not scene data"
+    }
+  ],
+  "hidden_context_witness": {
+    "teacher_contexts": [
+      [
+        0.8,
+        0.18,
+        0.02
+      ],
+      [
+        0.02,
+        0.18,
+        0.8
+      ]
+    ],
+    "results": {
+      "teacher_to_student": {
+        "optimum": [
+          0.41000000000000003,
+          0.18,
+          0.41000000000000003
+        ],
+        "objective": 0.47435515665277184,
+        "max_abs_logit_gradient": 2.7755575615628914e-17
+      },
+      "student_to_teacher": {
+        "optimum": [
+          0.2921392673034073,
+          0.41572146539318544,
+          0.2921392673034073
+        ],
+        "objective": 0.8370586307761347,
+        "max_abs_logit_gradient": 1.4433259882187398e-16
+      }
+    }
+  },
+  "interpretation": "Forward/reverse KL and truncated/renormalized/full-vocabulary objectives are distinct; none of these witnesses is a 3D policy result",
+  "standard_tail_coarsening_not_claimed_novel": true,
+  "source_kernel_calls": 6,
+  "autograd_calls": 2,
+  "model_objects_instantiated": 0,
+  "pretrained_model_forwards": 0,
+  "optimizer_updates": 0,
+  "scene_executions": 0,
+  "paid_API_calls": 0,
+  "torch_version": "2.7.0+cu126",
+  "seconds": 3.704946953803301,
+  "existing_native_record_scope": {
+    "tool_calls": 35,
+    "policy_responses": 19,
+    "independent_tasks": 1,
+    "expert_correctness_known": 0,
+    "complete_scene_success_known": 0,
+    "environment_command_advantages_not_estimated": true,
+    "reason": "One partial historical run is not eight sampled complete trajectories with task rewards; tool success is not task correctness",
+    "calls_sha256": "d67e8fb2b2de32e8aabfc8366dafe5e04e6fb1bfcfae2cc989fc3dbdf832fcfd",
+    "decisions_sha256": "3c1f4145a4b20560b2ac4220048f6993fadb36e05d4688de6493d58d45ff1688"
+  }
+}
