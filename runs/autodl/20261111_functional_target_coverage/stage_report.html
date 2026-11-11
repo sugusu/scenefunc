@@ -1,0 +1,26 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+<title>完整功能任务与训练目标覆盖复核 · 2026-11-11</title>
+<style>body{max-width:1080px;margin:35px auto;padding:0 20px;font:17px/1.8 system-ui;color:#192f40}table{border-collapse:collapse;width:100%}th,td{border:1px solid #b8cad4;padding:10px;text-align:left}th{background:#edf3f7}a{color:#065e91}.note{border-left:4px solid #527e94;padding-left:18px}small{color:#536572}</style>
+<h1>用途确实复杂，但公开流程已有持久性与转换要求</h1>
+<p>已完整读取存档中32份非空功能叙述，连同1个缺失原文的旧别名，33条全部进入<a href="brief_review.csv">审阅表</a>。严格按“进行中作品跨时段保存”定义，陶艺工作室、男孩卧室、夫妻餐厅三例明确符合；它们的公开生成约束都已经保留了相应内容。不能把上一轮自定义组件的错误扩大成现有场景系统普遍不理解这类需求。</p>
+<p class="note">这些叙述是论文作者编写或改写的功能任务，不是32份真实住户访谈。本轮是研究者自审，无独立设计师标签，不估计人群频率，也没有计算生成器失败率。没有新增模型调用、付费API、训练或完整房间生成。</p>
+<h2>真实原文中的区别会改变生成动作</h2>
+<table><tr><th>公开案例</th><th>原文要求及效果</th><th>公开流程已经具备的证据</th><th>仍未证明</th></tr>
+<tr><td>04 陶艺与绘画工作室</td><td>陶艺作品晾干时不应为绘画反复挪动；另有清空的工作面与分类储物。</td><td>公开约束明确写了跨时段保留晾干作品、独立晾干面和容量。</td><td>真实负载尺寸、网格、跨活动执行和物理稳定性。</td></tr>
+<tr><td>05 男孩卧室</td><td>未完成模型不应在两次制作之间被拆掉；不等于禁止整体移动。</td><td>公开约束允许转移到项目架；最终JSON有未完成模型实例，对发布方盒复算为架面内且底部贴顶。</td><td>组装状态跨活动保持、真实网格使用、移动轨迹和整房质量。</td></tr>
+<tr><td>09 夫妻餐厅</td><td>日常保留进行中工作，朋友来吃饭时可移到附近临时存放面，不要完全打包。</td><td>公开约束写出临时目的地、清空后状态与模式转换条件。</td><td>每件负载是否有实际容量和可执行转换；不能从一个静态final推断。</td></tr></table>
+<p>原文—生成约束的精确字符区间和哈希见<a href="original_to_derived_review.json">逐项核对</a>；没有宣称读完三份合计很长的全部约束，只完整读了原始任务并定向核对11条规则。男孩卧室的正例见<a href="published_positive_binding.json">方盒几何复算</a>，它不是网格碰撞、人体仿真或完整生成通过。</p>
+<h2>这怎样改变算法与训练设计</h2>
+<p>比“保留还是清空”更准确的中间状态需要区分：保持物体身份、保留组装状态、指定时段继续占用、允许整体搬动、允许临时收纳，以及未知的容量或轨迹。若把保留模型错误编成锁死XYZ，会拒绝合法方案；若把临时收纳当删除物体，会虚增几何成功率。</p>
+<p>已建立三份<a href="grounded_effect_contracts.json">有来源的部分效果说明</a>，未知尺寸、目的地和原生动作轨迹保持未知，没有编造用户偏好或专家思维链。它们尚不是模型预测，也没有进入原生SFT。</p>
+<p><a href="algorithm_scope.txt">算法、必要条件与训练目标详解</a>给出了共同库存、分模式布局、效果约束与转换的普通联合求解形式，明确要求普通CSP／规划和同数据动作CE作为强对照。单模式分别可行不保证联合可行；这属于已有规划性质，不主张新定理。当前还没有超过这些普通方法的第4项算法。</p>
+<p>另一个重要数据界限是：公开iter文件记录优化迭代，不能自动当成工作→用餐的活动序列。最后状态存在项目架并不证明所有转换可行；未渲染每件作品也不自动构成失败，可以用公开声明的虚拟负载检查功能容量。两种判断都需要具体证据。</p>
+<h2>补读的最近邻和实际源码</h2>
+<p><a href="https://arxiv.org/html/2608.06161v1">iARCS</a>已有逐任务奖励代码生成、反馈修订和LoRA/DDPO。实际读取其固定提交的4份源码／配置；所读验证器检查运行结果的形状与有限值，不能由此推出原文语义正确。没有运行其API或训练，也不将逐任务适配等同于一个零样本多任务策略。源码只在内存中阅读，证据包只保存<a href="external_source_receipt.json">URL、提交与哈希</a>。</p>
+<p><a href="https://graphics.cs.uh.edu/wp-content/papers/2020/2020-TVCG-MotionPlanningforConvertible.pdf">Motion Planning for Convertible Indoor Scene Layout Design</a>的方法正文已定向读PDF第3–7页：给定源／参考布局，建立物体对应，再规划机械约束下的移动与停止。<a href="https://researchportal.bath.ac.uk/en/publications/sceneexplorer-an-interactive-system-for-expanding-scheduling-and-/">SceneExplorer</a>的作者机构摘要也已确认功能布局探索与转换调度，全文访问未成功。不能因为它们不是LLM方法，就声称多状态场景和转换规划是首次提出。</p>
+<p>SDGScenes只取得出版摘要，全文未取得，暂不据此作细节排重。逐项覆盖、访问失败、运行范围及源文件校验见<a href="reading_ledger.json">实际阅读记录</a>、<a href="external_branch_review.json">源码分支审查</a>。</p>
+<h2>研究取舍</h2>
+<p>保留“完整功能需求怎样落实到真实资源与生成动作”的研究目标；更准确的关注点是表达之后的执行与跨状态保持，而不是先假定现有解析器缺少某个词。新机制需要在相同信息、资产、动作与总预算下，超过普通语义解析＋规划、普通动作SFT和通用反馈生成器，并改善独立来源的完整房间。</p>
+<p>这轮提供了完整任务审阅、明确的反证与正例、可核对效果说明、普通强对照和代码，不是把负面结论作为研究终点。但目前仍没有充分证据启动大训练或宣称CVPR级创新。旧8次本地生成预算保持关闭，本轮也没有请求新计费资源。</p>
+<p><a href="complete_brief_review.json">33条完整审阅记录</a> · <a href="summary.json">实际统计和脚本耗时</a> · <a href="protected_sources.json">579个受保护文件校验</a> · <a href="reproduce.txt">CPU重算命令</a> · <a href="delivery_verification.json">交付核验</a> · <a href="evidence.zip">证据包</a></p>
+<small>原始公开叙述、未明确授权的数据和外部源码均未整包复制进Git；旧研究输入未改。完整研究目标仍进行中，本阶段不等于完整场景方法已经验证成功。</small></html>
