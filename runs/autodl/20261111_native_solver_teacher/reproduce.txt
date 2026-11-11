@@ -1,0 +1,12 @@
+# Run from repository root. These commands do not run a model or train.
+# Initial71resource bundle must first be restored with the existing Milan preparation/asset recovery scripts.
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+export PYTHONPATH="$PWD/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps"
+# Use NEW destinations; never overwrite the recorded run.
+/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python scripts/autodl/replay_milan_native_teacher.py --root /dev/shm/teacher_replay_NEW --bundle /dev/shm/milan_completion_20261111/bundle --scratch /dev/shm/teacher_replay_scratch_NEW
+/root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/encode_native_solver_teacher.py --root /dev/shm/teacher_replay_NEW
+/root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/encode_native_solver_teacher.py --root /dev/shm/teacher_replay_NEW --variant catalog_projection
+# Reconstruct from persisted metadata without running the two actions again:
+python scripts/autodl/restore_native_solver_teacher.py --root runs/autodl/20261111_native_solver_teacher --source-bundle /dev/shm/milan_completion_20261111/bundle --destination /dev/shm/teacher_persisted_restore_NEW
+# Initial five images are referenced by SHA and pinned git paths in sft_sample_provenance.json.
+# If RAM is lost, restore those same PNG blobs from the listed git revision before encoding.
