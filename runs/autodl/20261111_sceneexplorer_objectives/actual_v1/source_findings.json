@@ -1,0 +1,69 @@
+{
+  "functionality_entrypoint": {
+    "path": "sk.py",
+    "lines": [
+      1153,
+      1424
+    ],
+    "direct_object_keys": [
+      "area",
+      "attachedObj",
+      "modelId",
+      "scale",
+      "startState"
+    ],
+    "user_brief_argument": false
+  },
+  "required_prior_tables": [
+    {
+      "path": "static/dataset/dynamic_objects_data.json",
+      "present_in_pinned_tree": false,
+      "locally_fetched": false
+    },
+    {
+      "path": "dataset/occurrenceCount/res_ratio.json",
+      "present_in_pinned_tree": false,
+      "locally_fetched": false
+    },
+    {
+      "path": "dataset/objCatListAliv2.json",
+      "present_in_pinned_tree": true,
+      "locally_fetched": false
+    }
+  ],
+  "lower_method_attribute_not_call": [
+    {
+      "line": 1307,
+      "expression": "objcat.lower.replace"
+    }
+  ],
+  "prior_subvector_references": [
+    {
+      "line": 1353,
+      "context": "Store"
+    },
+    {
+      "line": 1376,
+      "context": "Load"
+    }
+  ],
+  "prior_subvector_index_writes": 0,
+  "prior_subvector_scope": "Initialized to zero, read in the prior bonus, no indexed updates in this function. Static finding, not a run of that branch.",
+  "grouping": {
+    "norm3_lines": [
+      1498,
+      1505
+    ],
+    "code_distance": "sum of absolute component differences (L1)",
+    "paper_distance": "L-infinity in section5",
+    "standard_equivalence": false
+  },
+  "action_size_assignments": [
+    {
+      "line": 1534,
+      "statement": "main_poly = mod.state_list[mod.target_state].poly"
+    }
+  ],
+  "findings_scope": "Pinned public code only. No patches applied; this does not quantify paper-result errors or imply all paths fail.",
+  "full_functionality_pipeline_executed": false
+}

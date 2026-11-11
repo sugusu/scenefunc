@@ -1,0 +1,16 @@
+在仓库根目录运行。只读固定版外部源码和元数据，不需要GPU、权重或模型API。
+
+原始评分函数在已使用的native CPU环境运行：
+env CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python scripts/autodl/qualify_sceneexplorer_objectives.py --repo . --source-root /dev/shm/sceneexplorer_context_review_20261111/source --output runs/autodl/20261111_sceneexplorer_objectives/reproduction_new
+
+评分脚本只载入已审阅的evaluate_layout和angle_diff定义，不import原main，不启动10进程布局搜索，不运行会清除outputs的入口。读取作者sample3和五套模块多边形注释，保留其全部六个家具模块与四个建筑条目；只计算原始状态的预筛选分数。64是理论状态组合数，实际只执行1个组合；并未生成64个场景，也不代表三维碰撞与完整功能验证。
+
+缓存指标审阅仅需系统Python：
+env PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/audit_cache_decision_semantics.py --repo . --source-root /dev/shm/sceneexplorer_context_review_20261111/cache_source --output runs/autodl/20261111_sceneexplorer_objectives/cache_audit_reproduction_new
+
+两个输出目录必须尚不存在，避免覆写旧运行。实际运行记录分别为actual_v1/result.json和cache_metric_audit_v1/result.json。当前source-root是RAM临时目录；长期复核可根据primary_sources_manifest.json逐文件获取固定Git提交URL并核验SHA256。重新获取的网页/PDF哈希若变动，应记录新版本，不得假装与旧响应逐字相同。源码、论文全文和图片不放入交付包。
+
+报告与旧输入核验：
+env PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_sceneexplorer_objectives.py --repo .
+
+报告器重算指定579个受保护源的哈希；它不复跑旧神经网络、FCL、渲染或原生场景。book_reading_ledger.json记录实际文字阅读范围；重新提取或检查哈希不是一次新的阅读。第三方脚本中的模型运行示例没有被执行；书中的指令不作为本会话授权。

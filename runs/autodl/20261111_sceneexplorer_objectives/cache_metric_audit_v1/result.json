@@ -1,0 +1,61 @@
+{
+  "kind": "Pinned upstream AST metric audit; no model execution",
+  "pin": "e9085eafcc6c83e60c548de69060c4bd5b210c96",
+  "files": [
+    {
+      "path": "esys/composable_vision.py",
+      "sha256": "2ce0c83cea26578fc1ace1fef756e40bdde15a4d39f5cc8afe60c9371d309b94",
+      "correctness_assignments": [
+        {
+          "line": 186,
+          "expression": "fc = ans in full_txt"
+        },
+        {
+          "line": 186,
+          "expression": "pc = ans in pre_txt"
+        }
+      ],
+      "reported_agreement": [
+        {
+          "line": 188,
+          "expression": "cats[c]['agree'].append(int(fc == pc))"
+        }
+      ],
+      "metric_interpretation": "Equality of answer-substring correctness indicators, including both wrong",
+      "exact_decoded_string_agreement_measured_here": false,
+      "exact_executed_tool_arguments_agreement_measured_here": false
+    },
+    {
+      "path": "esys/composable_vision_shift.py",
+      "sha256": "9fb79e3b41760d7e8afd8d2c3342cff70f7dc5f2f06064d454b41782c80e0016",
+      "correctness_assignments": [
+        {
+          "line": 105,
+          "expression": "fc = int(ans in full_txt)"
+        },
+        {
+          "line": 105,
+          "expression": "sc = int(ans in sh_txt)"
+        }
+      ],
+      "reported_agreement": [
+        {
+          "line": 107,
+          "expression": "cats[c]['agree'].append(int(fc == sc))"
+        }
+      ],
+      "metric_interpretation": "Equality of answer-substring correctness indicators, including both wrong",
+      "exact_decoded_string_agreement_measured_here": false,
+      "exact_executed_tool_arguments_agreement_measured_here": false
+    }
+  ],
+  "vision_task_source": "gen_tasks uses PIL drawings and ten question/policy templates in the inspected branch",
+  "scope": "These two scripts only. Other experiments and the complete paper may use different metrics/data.",
+  "inference": "Reported agreement in these scripts alone cannot certify identical action JSON or complete scene traces",
+  "unchanged": true,
+  "model_forwards": 0,
+  "training_updates": 0,
+  "new_scene_trials": 0,
+  "paid_API_calls": 0,
+  "seconds": 0.017890019342303276
+}
