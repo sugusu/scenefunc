@@ -1,0 +1,78 @@
+{
+  "frozen_unix": 1794382439.346582,
+  "project": "michelet_lifecycle_transfer",
+  "source_split": "already_exposed_researcher_reconstruction_development",
+  "selection": "First remaining recoverable complete dwelling with explicit discontinued/retained uses, after input review and before candidate evaluation.",
+  "rejected_before_run": {
+    "budapest": "Single preselected clothes rail and explicit quick-access brief are insufficient to test case-based allocation.",
+    "fhouse": "Only shared living/dining room; excludes cooking/sleep/hygiene."
+  },
+  "inputs": "Unmodified historical task, initial construction recipe and byte-identical 16-entry catalog; no target final state/program.",
+  "arms": [
+    "B0_task_aware_search",
+    "B1_case_condition_order"
+  ],
+  "common_information": [
+    "task",
+    "initial complete native state",
+    "all 16 catalog entries",
+    "both case cards",
+    "same geometric tools"
+  ],
+  "only_difference": "B1 inserts a source-condition/use-allocation compatibility tie breaker into the ordinary proposal order; same backend selector and feasibility tests.",
+  "common_candidate_space": {
+    "bed_action": [
+      "keep",
+      "remove_explicitly_unneeded"
+    ],
+    "work_allocation": [
+      "add_catalog_table_and_chair",
+      "reuse_family_table_and_one_chair"
+    ],
+    "workspace": "Frozen convertible-room bounds; generated lattice, no source target coordinates",
+    "table_yaw_degrees": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "chair_sides": [
+      -1,
+      1
+    ],
+    "lattice_spacing_m": 0.3,
+    "wall_margin_m": 0.1,
+    "chair_edge_gap_m": 0.15
+  },
+  "common_budget": {
+    "native_candidate_cap": 24,
+    "accepted_single_object_operations_cap": 3,
+    "wall_seconds_cap_per_arm": 180,
+    "local_model_calls": 0,
+    "paid_API_calls": 0,
+    "training_updates": 0
+  },
+  "selector": "First candidate in common ranked stream passing allocation, object preservation, containment, sampled ground support, surface-intersection and access checks; no improvement required at intermediate edits.",
+  "access": {
+    "grid_m": 0.05,
+    "assumed_body_height_m": 1.8,
+    "square_body_widths_m": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "preservation": "No fixed use endpoint loses reachability relative to initial state; new office approach must pass all declared widths."
+  },
+  "contact_threshold_m": 0.0001,
+  "ground_tolerance_m": 0.001,
+  "task_change_allowed": false,
+  "no_outcome_dependent_retry": true,
+  "resource_scope": "CPU only; no new asset downloads, model loading, training or paid resources",
+  "retained_uncertainties": [
+    "Furniture serving as desk is a catalog substitute, not verified equipment/ergonomics.",
+    "Body widths, approach points, room and assets are research assumptions.",
+    "Removed bed destination, carrying, privacy, daylight, utilities and true functional use remain unknown."
+  ],
+  "full_scene_generation_success": null,
+  "claim": "Finite whole-dwelling completion diagnostic, not a novel Agent or from-empty generation result"
+}

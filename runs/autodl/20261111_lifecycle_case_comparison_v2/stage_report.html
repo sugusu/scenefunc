@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><title>整屋用途转换：普通搜索与案例条件排序</title>
+<style>body{font:16px/1.65 system-ui;max-width:1150px;margin:35px auto;padding:0 20px;color:#203040}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbc8d4;padding:9px}img{max-width:100%}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}pre{white-space:pre-wrap;background:#eef3f7;padding:16px}small{color:#596b7a}</style>
+<h1>整屋用途转换已经实际完成；本例案例条件先验没有独立收益</h1>
+<p>研究者重建住宅的用途转换开发实验。不是实测原住宅、从空房生成、神经Agent结果或已成立的CVPR贡献。目标住宅自身最终方案与动作未输入提案器。两组的原生终态和GLB完全相同。</p>
+<h2>实际结果</h2><table><tr><th>实现</th><th>普通搜索</th><th>案例条件排序</th></tr>
+<tr><td>v1有限检查后采纳</td><td>0 / 24</td><td>0 / 24</td></tr>
+<tr><td>v2首次有效的原生检查序号</td><td>3</td><td>3</td></tr>
+<tr><td>选中候选 / 总候选</td><td>615 / 1120</td><td>615 / 1120</td></tr>
+<tr><td>原生对象：初态→终态</td><td>29→30</td><td>29→30</td></tr>
+<tr><td>操作</td><td>允许移出1床，加入1桌1椅</td><td>相同</td></tr>
+<tr><td>其余完整保留的对象记录</td><td>28</td><td>28</td></tr>
+<tr><td>办公室代理接近检查</td><td>3/3</td><td>3/3</td></tr>
+<tr><td>保留用途代理接近检查</td><td>44/45，无退化</td><td>44/45，无退化</td></tr>
+<tr><td>最终家具 / 结构表面相交</td><td>0 / 0</td><td>0 / 0</td></tr></table>
+<p>保留用途中，0.6米方形代理到淋浴点的原有失败未解决；目标住宅的设备、人体操作、隐私和旧床移出处未知。基座高度检查不是物理稳定性，桌面可用面积/人体工学没有完成验证。</p>
+<h2>可查看的实际场景</h2><p>俯视图仅隐藏屋顶与外墙，保留内部隔墙；蓝色为新办公桌椅，不代表原材质。两组结果相同，分别列出仅为明确方法对应。</p>
+<details><summary>共同初态</summary><img src="initial_topdown.webp" alt="共同原生住宅初态"></details>
+<div class="pair"><section><h3>B0 普通任务搜索</h3><img src="final_topdown.webp" alt="普通搜索实际终态"></section><section><h3>B1 案例条件排序</h3><img src="final_topdown.webp" alt="案例条件排序的相同实际终态"></section></div>
+<h2>为什么不能把本例写成案例方法成功</h2><p>Pine的已有工作面与新工作面共存原则、TM8的持续卧室需求核查，经过本任务条件解释后，落实成了普通任务已要求的“保留餐位、不保留明确释放的旧床”。在所有可进入原生验证的候选上，案例惩罚为常数，故实际访问顺序相同。完整1120项列表在被拒域中有重排，不能声称所有排序都相同。不同执行次序和缓存状态下的一次耗时也不构成效率优势。</p>
+<p>原先v1保留：两组各24次均失败，没有采纳。v2是看到失败后一次明确记载的公共普通修正：预筛座位后方人体代理格点占用；没有改最终阈值、资产、候选空间或24次预算，也没有第三轮扩搜索。因此v2是开发修正结果，不是独立留出测试。</p>
+<h2>阅读、理论与运行材料</h2><ul><li><a href="summary.csv">v2逐组表</a> / <a href="../20261111_lifecycle_case_comparison/summary.csv">保留v1逐组表</a></li><li><a href="algorithm_and_theory.txt">算法、等价性质、训练目标与证明边界</a></li><li><a href="reading_ledger.json">实际阅读范围及两次全文获取失败</a></li><li><a href="functional_coverage_audit.json">功能覆盖与协议偏差</a></li><li><a href="actual_committed_edits.json">实际采纳的对象与姿态</a></li><li><a href="persisted_geometry_manifest.json">持久几何、两组可打开的GLB路径和哈希</a></li><li><a href="geometry_export_receipt.json">原生冷恢复与GLB重新载入证据</a></li><li><a href="training_target_admission.json">训练数据资格</a></li><li><a href="protected_before_after.json">579份原输入前后哈希</a></li><li><a href="evidence.zip">文本/执行证据包（图与许可几何单列，不复制进ZIP）</a></li></ul>
+<p>最近邻：<a href="https://arxiv.org/html/2605.30819v1">Function2Scene</a>已使用住户/活动条件和工具修复；<a href="https://www.nevertoosmall.com/post/two-creative-maximalists-living-minimally">Pine</a>与<a href="https://www.archdaily.com/1001060/tm8-apartment-dd">TM8</a>是设计报告，不是对本实验结果的人评。本轮未取得SceneExplorer全文，不声称已完成全领域排重。</p>
+<h2>运行成本与后续边界</h2><pre>{
+  &quot;v1_search_wall_seconds&quot;: 24.63288600742817,
+  &quot;v2_search_wall_seconds&quot;: 21.35808353871107,
+  &quot;v2_arms_seconds&quot;: {
+    &quot;B0_task_aware_search&quot;: 2.0480783507227898,
+    &quot;B1_case_condition_order&quot;: 0.977693123742938
+  },
+  &quot;native_export_and_cold_restore_seconds&quot;: 73.57902185246348,
+  &quot;peak_search_rss_kib&quot;: 1526516,
+  &quot;extra_paid_API_calls&quot;: 0,
+  &quot;local_neural_inference_calls&quot;: 0,
+  &quot;training_updates&quot;: 0
+}</pre><p>当前阶段未开启新资源。几何持久文件是17.33MB的gzip，双方指向同一份已证实相同的内容；未用硬链接复制旧证据。可打开的未压缩GLB位于/dev/shm，属临时路径；重启后按命令从持久文件解压。相同几何仅保存一份，双方完整状态和原生资源清单各自保留。</p>
+<p>研究继续，但这轮不增加该住宅预算、训练或把普通修正包装成创新。下一步应检验能改变有效决策/搜索代价的具体机制；从需求自动生成整屋、真实神经方法和独立房间效果仍未验证，目标尚未完成。</p>

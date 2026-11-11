@@ -1,0 +1,22 @@
+已实际运行（repository根目录）：
+python -B scripts/autodl/prepare_lifecycle_comparison.py --root runs/autodl/20261111_lifecycle_case_comparison --scratch /dev/shm/lifecycle_case_comparison_20261111 --catalog-bundle /dev/shm/milan_completion_20261111/bundle
+nativePython -B runs/autodl/20261111_lifecycle_case_comparison/source/scripts/920/build_lifecycle_input.py --plan runs/autodl/20261111_lifecycle_case_comparison/local_build_plan.json --out /dev/shm/lifecycle_case_comparison_20261111/initial
+nativePython -B scripts/autodl/compare_lifecycle_allocations.py --root runs/autodl/20261111_lifecycle_case_comparison --scratch /dev/shm/lifecycle_case_comparison_20261111
+# 上一行v1执行时的真实代码保留在v1/executed_code/，当前脚本含明确的v2可选普通预筛。
+# v2固定同一输入，初态路径通过RAM软链接共享；全部输入只读。它是公开开发修正，不是再次跑同配置挑结果。
+nativePython -B scripts/autodl/compare_lifecycle_allocations.py --root runs/autodl/20261111_lifecycle_case_comparison_v2 --scratch /dev/shm/lifecycle_case_comparison_v2_20261111
+nativePython -B scripts/autodl/export_lifecycle_comparison.py --root runs/autodl/20261111_lifecycle_case_comparison_v2 --scratch /dev/shm/lifecycle_case_comparison_v2_20261111
+evalPython -B scripts/autodl/render_lifecycle_comparison.py --input /dev/shm/lifecycle_case_comparison_v2_20261111/geometry/initial.glb --output runs/autodl/20261111_lifecycle_case_comparison_v2/initial_topdown.png
+evalPython -B scripts/autodl/render_lifecycle_comparison.py --input /dev/shm/lifecycle_case_comparison_v2_20261111/geometry/B0_task_aware_search.glb --output runs/autodl/20261111_lifecycle_case_comparison_v2/final_topdown.png
+# 两PNG已转换为逐像素一致的lossless WebP；原PNG留在RAM，未作为模型输入。
+
+nativePython=/root/autodl-tmp/scene_generation_handoff_20261014_v2/work/envs/hsm_cpu/bin/python
+evalPython=/root/autodl-tmp/layout_experience_pilot/envs/eval/bin/python
+PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+PYTHONPATH=<repository>/runs/autodl/20261110_corpus_state_recovery/dependency/import:/root/autodl-tmp/scene_generation_next_20261016/work/support_backend_probe_20261019/deps
+
+程序拒绝覆盖已跑目录。复现应另建输出目录，使用source_manifest中原输入/代码及同样协议。catalog.json SHA为d3847eda41e338bbbf2b91904c3935c0a04405d268fa77fa26aa7838bb2f5320。
+仅在已有RAM目录消失时，将持久GLB解压到新的RAM位置后用Blender打开；不需要模型、GPU或付费API：
+python -c 'import gzip,pathlib; p=pathlib.Path("/root/autodl-tmp/agent_method_preparation_20261027/work/lifecycle_case_artifacts_20261111/shared_completed_scene.glb.gz"); pathlib.Path("/dev/shm/lifecycle_completed.glb").write_bytes(gzip.decompress(p.read_bytes()))'
+该解压命令是已知标准操作说明，本报告未额外重复解压一次。两组相同GLB均由实际原生状态独立导出并重载验证。
+完整新原生包目前在RAM；许可资产未随Git/ZIP重新发布。跨机器还需已获许可的16项资产；资产字节与重建路径见manifest，而不是一个已经完整移植的训练数据集。
