@@ -1,0 +1,113 @@
+{
+  "kind": "Public PSD evidence and unchanged target-packing qualification, not model or scene execution",
+  "code_pin": "778be78bdac582b51a975ff819046583aad383e0",
+  "data_pin": "257d3d5a9a056fd357ac4a92c6edbc20dc0cb3b1",
+  "checked_data_files": {
+    "repairs/river_native/repair_rows_clean.jsonl": "65a41917dcc53f93f12df6c9753e5844c6d3179ebfb272da7bede8a90737d039",
+    "traces/river_native/repair_search_traces.jsonl": "3aac1030255c9a154cdeea9e126230311872770f13fe192e4c02e336c6e11584",
+    "targets/river_native/top20_targets.jsonl": "5efa1ba52bfef69b3a4cab102e6058fed4beb876c4e4fd6d55f8ee738c21768a"
+  },
+  "public_repairs": {
+    "rows": 375,
+    "unique_tasks": 264,
+    "retained_hint_count_distribution": {
+      "1": 178,
+      "2": 62,
+      "3": 23,
+      "4": 1
+    },
+    "executed_hint_count_distribution": {
+      "1": 176,
+      "2": 64,
+      "3": 23,
+      "4": 1
+    },
+    "single_hint_tasks": 176,
+    "multi_hint_tasks": 88,
+    "traces_with_unretained_executed_hints": [
+      {
+        "task_id": "multi_turn_miss_func_121",
+        "category": "miss_func",
+        "retained_repair_hint_count": 1,
+        "executed_final_hint_count": 2,
+        "additional_executed_hint_turns": "1",
+        "recorded_attempts": 4,
+        "failed_original": true,
+        "author_reported_final_pass": true,
+        "hint_free_attempts": 0,
+        "evidence_scope": "joint_slate_full_task",
+        "isolated_hint_causal_effect": "not_estimated",
+        "locally_reexecuted": false
+      },
+      {
+        "task_id": "multi_turn_miss_param_162",
+        "category": "miss_param",
+        "retained_repair_hint_count": 1,
+        "executed_final_hint_count": 2,
+        "additional_executed_hint_turns": "3",
+        "recorded_attempts": 3,
+        "failed_original": true,
+        "author_reported_final_pass": true,
+        "hint_free_attempts": 0,
+        "evidence_scope": "joint_slate_full_task",
+        "isolated_hint_causal_effect": "not_estimated",
+        "locally_reexecuted": false
+      }
+    ],
+    "rows_supported_by_joint_slate": 199,
+    "recorded_attempts": 423,
+    "recorded_passing_attempts": 265,
+    "hint_free_attempts": 9,
+    "warning": "Released success-selected search traces do not estimate population repair yield or isolated hint treatment effects; author verifier outcomes were read, not reexecuted"
+  },
+  "original_kernel": {
+    "path": "psd/training/river_psd.py",
+    "sha256": "ae60d24a989f4cfdaa5730c87d143b4aff66698286053764eea61362954f14ea",
+    "ranges": [
+      {
+        "name": "validate_target",
+        "first_line": 51,
+        "last_line": 90
+      },
+      {
+        "name": "expanded_datums",
+        "first_line": 93,
+        "last_line": 117
+      },
+      {
+        "name": "native_datum",
+        "first_line": 120,
+        "last_line": 147
+      }
+    ],
+    "calls": 4650,
+    "targets": 1550,
+    "expanded_datums": 31000,
+    "all_coefficients_identical": true,
+    "source_target_counts": {
+      "preserve": 1175,
+      "repair": 375
+    },
+    "source_row_mass": {
+      "preserve": 374.999999999999,
+      "repair": 375.0
+    },
+    "source_weighted_token_mass": {
+      "preserve": 25531.419841269795,
+      "repair": 22389.0
+    },
+    "max_weight_mass_residual": 7.105427357601002e-15,
+    "native_input_token_presentations": 7335530,
+    "expanded_input_token_presentations": 146710600,
+    "server_reduction_dropout_FP8_and_optimizer_equivalence_not_tested": true,
+    "cached_top20_is_conditional_teacher_distribution": true,
+    "original_tail_probability_not_in_cache": true
+  },
+  "actual_model_objects": 0,
+  "model_forwards": 0,
+  "optimizer_updates": 0,
+  "environment_replays": 0,
+  "paid_API_calls": 0,
+  "full_3D_generations": 0,
+  "seconds": 80.80675362795591
+}

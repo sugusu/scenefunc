@@ -1,0 +1,15 @@
+Run from /root/autodl-tmp/agent_method_preparation_20261027/work/autodl_continuation_20261110/repository
+
+Pinned public code and dataset, no model/backend:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/prepare_verified_repair_sources.py --output /dev/shm/verified_repair_review_20261111/public_source
+
+Actual released repair census and original pure target-packing kernels:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/qualify_verified_repair_supervision.py --repo . --source-root /dev/shm/verified_repair_review_20261111/public_source --output runs/autodl/20261111_verified_repair_supervision/actual_public_v1
+
+Authored mathematical witnesses (no neural model or optimizer):
+CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /root/autodl-tmp/agent_method_preparation_20261027/work/v100_runtime_20261104/runtime/bin/python scripts/autodl/qualify_cross_view_transfer.py --output runs/autodl/20261111_verified_repair_supervision/actual_math_v1
+
+Report, hashes and delivery:
+PYTHONDONTWRITEBYTECODE=1 python scripts/autodl/report_verified_repair_supervision.py --repo . --source-root /dev/shm/verified_repair_review_20261111/public_source
+
+Both qualification scripts refuse to overwrite an existing result directory. For independent reruns use fresh /dev/shm output directories; do not delete/replace old results just to rerun. Report uses the frozen actual_public_v1 and actual_math_v1 records.
