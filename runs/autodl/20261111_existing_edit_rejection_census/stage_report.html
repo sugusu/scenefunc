@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>144条响应：普通接口问题与设计学习分开</title><style>body{font:17px/1.8 system-ui;max-width:980px;margin:35px auto;padding:0 20px}td,th{border:1px solid #bbb;padding:10px;text-align:left}table{border-collapse:collapse}code{overflow-wrap:anywhere}</style>
+<h1>旧学习对照的133次拒绝，究竟是什么</h1><p>已实际逐条读取144份旧模型响应、144份对应请求和12份执行总记录，并用原严格验证器回放。没有新增模型预测、原生工具执行或训练。</p>
+<table><tr><th>类别</th><th>数量</th><th>本轮处理</th></tr><tr><td>完整只读查询携带多余参数</td><td>131</td><td>普通规范化后均通过原参数检查；仍只是查询</td></tr><tr><td>不完整输出</td><td>2</td><td>继续拒绝，不猜测或补全</td></tr><tr><td>旧记录中实际原生调用</td><td>11</td><td>6次添加、5次移除；本轮不重新执行</td></tr><tr><td>显式think段</td><td>0</td><td>不据此推断内部没有推理</td></tr></table>
+<p>实现的<code>zero_argument_query.py</code>只处理被明确公布为空参数的只读查询，保留原文与修正记录，并要求再次严格验证。移动、增删、物体ID、资产和截断输出均不修补。这是共同工程基线，不是Agent创新。</p>
+<p><strong>11/144→142/144只是旧输出的接口可接收率。</strong>不能写成场景生成成功率；新增可接收项都是查询，没有增加设计改动。成功查询可能改变后续模型行为，因此也不能把本轮回放当作修正后的真实闭环实验。</p>
+<p>旧训练没有展示收益的结果保留。新证据把其解释边界收紧到：大量输出未进入家具编辑，尚不能清楚隔离决定监督的作用。<a href="../20261111_pine_decision_supervision/stage_report.html">Pine的一项正向决定示范</a>已核定，但仍保持开发集排除，不凭空扩成偏好数据。</p>
+<p><a href="actual_v5/result.json">实际逐组汇总</a> · <a href="actual_v5/rows.json">144条原响应对应与回放结果</a> · <a href="actual_v5/source_receipts.json">固定Git来源</a> · <a href="interpretation.txt">算法边界、训练解释与复现命令</a> · <a href="object_acquisition.json">缺失对象获取记录</a></p>
+<p>四个未完成审计尝试均保留。最终使用相同144条记录，未换样本、未改质量阈值或原评价。整体研究目标仍未完成；本轮不请求开启GPU。</p></html>
