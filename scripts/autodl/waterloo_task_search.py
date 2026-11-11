@@ -362,7 +362,7 @@ def main():
         independent_projects=1, scope='Second development project, same source family already used in research.',
         full_scene_generation_success=None))
     with (root/'summary.csv').open('w', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=list(results[0])); writer.writeheader(); writer.writerows(results)
+        writer = csv.DictWriter(f, fieldnames=list(results[0]), lineterminator='\n'); writer.writeheader(); writer.writerows(results)
 
 
 if __name__ == '__main__':
